@@ -1,2 +1,2 @@
-# Ontology Engineering Benchmark (OEB)
+# Ontology Engineering Benchmark (OEEB)
 Benchmark for assessing ontology engineering tasks
