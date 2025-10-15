@@ -7,6 +7,7 @@ from langchain_ollama import OllamaEmbeddings
 import difflib
 import Levenshtein
 import textdistance
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
 import re
 import os
@@ -92,7 +93,7 @@ def pre_process(gen_class, ground_class, info_type, model_id=None):
             exact = g in gen_class
             best_match, best_score = None, 0.0
             for c in gen_class:
-                if info_type == "lexical_match":
+                if info_type == "sequence_match":
                     sim = difflib.SequenceMatcher(None, g, c).ratio()
                 elif info_type == "levenshtein":
                     dist = Levenshtein.distance(g, c)
@@ -109,40 +110,60 @@ def pre_process(gen_class, ground_class, info_type, model_id=None):
                 "Best Candidate Match": best_match,
                 "Similarity": round(best_score, 3)
             })
-
-        for c in set(item["Best Candidate Match"] for item in coverage_info):
-            best = max(
-                (itm for itm in coverage_info if itm["Best Candidate Match"] == c),
-                key=lambda x: x["Similarity"]
-            )
-            coverage_info_new.append(best)
+        if info_type == "jaro_winkler":
+            for pred in {item["Best Candidate Match"] for item in coverage_info}:
+                best = max(
+                    (itm for itm in coverage_info if itm["Best Candidate Match"] == pred),
+                    key=lambda x: x["Similarity"]
+                )
+                coverage_info_new.append(best)
+        else:
+            for c in set(item["Best Candidate Match"] for item in coverage_info):
+                best = max(
+                    (itm for itm in coverage_info if itm["Best Candidate Match"] == c),
+                    key=lambda x: x["Similarity"]
+                )
+                coverage_info_new.append(best)
         
     avg_sim = sum(item["Similarity"] for item in coverage_info_new) / len(ground_class)
     all_concepts = sorted(set(ground_class) | set(gen_class))
     return coverage_info, coverage_info_new, avg_sim, all_concepts
 
 def cal_metrics(gen_class, ground_class, info_type, model_id=None):
-    coverage_info, coverage_info_new, avg_sim, all_concepts = pre_process(gen_class, ground_class, info_type, model_id)
-    sim_map = { itm["Best Candidate Match"]: itm["Similarity"] for itm in coverage_info_new }
-    y_true  = [1 if concept in ground_class else 0 for concept in all_concepts]
-    y_score = [sim_map.get(concept, 0.0) for concept in all_concepts]
-    
-    TP = sum(y_true[i] * y_score[i]       for i in range(len(all_concepts)))
-    FP = sum((1 - y_true[i]) * y_score[i] for i in range(len(all_concepts)))
-    FN = sum(y_true[i] * (1 - y_score[i]) for i in range(len(all_concepts)))
-    TN = sum((1 - y_true[i]) * (1 - y_score[i]) for i in range(len(all_concepts)))
-    print(f"TP={TP}, FP={FP}, FN={FN}, TN={TN}")
+    if info_type == "hard_match":
+        all_concepts = sorted(set(ground_class) | set(gen_class))
+        y_true = [1 if c in ground_class else 0 for c in all_concepts]
+        y_pred = [1 if c in gen_class else 0 for c in all_concepts]
+        avg_sim = len(set(gen_class) & set(ground_class)) / len(ground_class)
+        accuracy  = accuracy_score(y_true, y_pred)
+        precision = precision_score(y_true, y_pred, zero_division=0)
+        recall    = recall_score(y_true, y_pred, zero_division=0)
+        f1        = f1_score(y_true, y_pred, zero_division=0)
+
+    else:
+        coverage_info, coverage_info_new, avg_sim, all_concepts = pre_process(gen_class, ground_class, info_type, model_id)
 
 
-    precision = TP / (TP + FP) if TP + FP else 0.0
-    recall    = TP / (TP + FN) if TP + FN else 0.0
-    accuracy  = (TP + TN) / len(all_concepts)
-    f1        = 2 * precision * recall / (precision + recall) if precision + recall else 0.0
-    
-    print(f"Precision: {precision}")
-    print(f"Recall:    {recall}")
-    print(f"Accuracy:  {accuracy}")
-    print(f"F1-score:  {f1}")
+        sim_map = { itm["Best Candidate Match"]: itm["Similarity"] for itm in coverage_info_new }
+        y_true  = [1 if concept in ground_class else 0 for concept in all_concepts]
+        y_score = [sim_map.get(concept, 0.0) for concept in all_concepts]
+
+        TP = sum(y_true[i] * y_score[i]       for i in range(len(all_concepts)))
+        FP = sum((1 - y_true[i]) * y_score[i] for i in range(len(all_concepts)))
+        FN = sum(y_true[i] * (1 - y_score[i]) for i in range(len(all_concepts)))
+        TN = sum((1 - y_true[i]) * (1 - y_score[i]) for i in range(len(all_concepts)))
+        print(f"TP={TP}, FP={FP}, FN={FN}, TN={TN}")
+
+
+        precision = TP / (TP + FP) if TP + FP else 0.0
+        recall    = TP / (TP + FN) if TP + FN else 0.0
+        accuracy  = (TP + TN) / len(all_concepts)
+        f1        = 2 * precision * recall / (precision + recall) if precision + recall else 0.0
+
+        print(f"Precision: {precision}")
+        print(f"Recall:    {recall}")
+        print(f"Accuracy:  {accuracy}")
+        print(f"F1-score:  {f1}")
     return avg_sim, precision, recall, accuracy, f1
 
 def _normalize(text: str) -> str:
@@ -214,7 +235,8 @@ def main():
     gen_class = extract_classes(args_dict["generate_onto_file_path"])
     ground_class = extract_classes(args_dict["ground_onto_file_path"])
     info_list = [
-        "lexical_match",
+        "hard_match",
+        "sequence_match",
         "levenshtein",
         "jaro_winkler",
         "semantic",
@@ -251,6 +273,7 @@ def main():
                 "accuracy": accuracy,
                 "f1": f1
             }
+    print(result)
     with open(args_dict["save_file_path"], "w") as f:
         json.dump(result, f)
 
