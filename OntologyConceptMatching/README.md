@@ -21,9 +21,7 @@ These metrics jointly measure the **correctness**, **completeness**, and **consi
 
 **Definition:**
 
-\[
-\text{Precision} = \frac{\text{True Positives (TP)}}{\text{True Positives (TP)} + \text{False Positives (FP)}}
-\]
+Precision = True Positives (TP) / [True Positives (TP) + False Positives (FP)]
 
 **Interpretation:**
 
@@ -37,9 +35,9 @@ A higher Precision indicates that the model makes fewer false predictions when i
 
 **Definition:**
 
-\[
-\text{Recall} = \frac{\text{True Positives (TP)}}{\text{True Positives (TP)} + \text{False Negatives (FN)}}
-\]
+**Definition:**
+
+Recall = True Positives (TP) / [True Positives (TP) + False Negatives (FN)]
 
 **Interpretation:**
 
@@ -53,9 +51,7 @@ A higher Recall means the model retrieves a larger portion of the gold ontology 
 
 **Definition:**
 
-\[
-\text{F1-score} = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
-\]
+F1-score = 2 × (Precision × Recall) / (Precision + Recall)
 
 **Interpretation:**
 
@@ -69,9 +65,7 @@ A higher F1-score indicates the model maintains both high Precision and high Rec
 
 **Definition:**
 
-\[
-\text{Accuracy} = \frac{\text{Number of correct predictions}}{\text{Total number of predictions}}
-\]
+Accuracy = Number of correct predictions / Total number of predictions
 
 **Interpretation:**
 
@@ -85,9 +79,7 @@ The **Coverage Rate** is introduced to assess how comprehensively the model-gene
 
 **Definition:**
 
-\[
-\text{Coverage Rate} = \frac{\text{Number of matched gold classes}}{\text{Total number of gold classes}}
-\]
+Coverage Rate = Number of matched gold classes / Total number of gold classes
 
 **Interpretation:**
 
@@ -120,6 +112,7 @@ A higher Coverage Rate indicates that the model not only produces accurate label
 ```bash
 python eval.py --model_id embeddinggemma,nomic-embed-text --generate_onto_file_path generated_software.owl --ground_onto_file_path ground_software.owl --save_file_path result.json 
 ```
+
 
 
 
