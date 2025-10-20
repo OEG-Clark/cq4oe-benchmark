@@ -1,17 +1,106 @@
 # Ontology Concept Matching
 
-The Ontology Concept Label Matching task evaluates how well large language models (LLMs) can generate concept names that correctly correspond to the standard class labels defined in  ontology.
+The Ontology Concept Label Matching task evaluates how well large language models (LLMs) can generate concept names that correctly correspond to the standard class labels defined in ontology.
 
 
 ## Evaluation
 
-### Evaluation Quantitative Measurement
+To evaluate the models’ ability to **recognize**, **name**, and **align** ontology concepts accurately, we employ the following quantitative metrics:
 
-To assess the model’s ability to recognize, name, and match ontology concepts accurately, we use quantitative metrics such as Precision, Recall, F1 score, Accuracy, and Coverage Rate to measure correctness completeness, and consistency with the original ontology. Noted that Coverage Rate is introduced to evaluate how comprehensively the model-generated labels represent the original ontology. Coverage Rate=Number of matched gold classes/Total number of gold classes. ​A higher Coverage Rate indicates that the LLM not only produces accurate labels but also covers a wider range of ontology concepts.
+- **Precision**
+- **Recall**
+- **F1-score**
+- **Accuracy**
+- **Coverage Rate**
 
-### Evaluation Metrics
+These metrics jointly measure the **correctness**, **completeness**, and **consistency** of the model outputs with respect to the original ontology.
+
+### Precision
+
+**Precision** measures the proportion of correctly predicted ontology classes among all classes predicted by the model.
+
+**Definition:**
+
+\[
+\text{Precision} = \frac{\text{True Positives (TP)}}{\text{True Positives (TP)} + \text{False Positives (FP)}}
+\]
+
+**Interpretation:**
+
+A higher Precision indicates that the model makes fewer false predictions when identifying ontology classes.
+
+---
+
+### Recall
+
+**Recall** measures how many of the actual (gold) ontology classes are correctly identified by the model.
+
+**Definition:**
+
+\[
+\text{Recall} = \frac{\text{True Positives (TP)}}{\text{True Positives (TP)} + \text{False Negatives (FN)}}
+\]
+
+**Interpretation:**
+
+A higher Recall means the model retrieves a larger portion of the gold ontology concepts, reflecting better coverage of true classes.
+
+---
+
+### F1-score
+
+**F1-score** represents the harmonic mean of Precision and Recall, balancing both correctness and completeness.
+
+**Definition:**
+
+\[
+\text{F1-score} = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
+\]
+
+**Interpretation:**
+
+A higher F1-score indicates the model maintains both high Precision and high Recall in recognizing ontology concepts.
+
+---
+
+### Accuracy
+
+**Accuracy** measures the overall proportion of correctly classified ontology concepts among all predictions.
+
+**Definition:**
+
+\[
+\text{Accuracy} = \frac{\text{Number of correct predictions}}{\text{Total number of predictions}}
+\]
+
+**Interpretation:**
+
+A higher Accuracy reflects that the model consistently aligns its predicted ontology concepts with the gold ontology.
+
+---
+
+### Coverage Rate
+
+The **Coverage Rate** is introduced to assess how comprehensively the model-generated labels represent the classes in the reference ontology.
+
+**Definition:**
+
+\[
+\text{Coverage Rate} = \frac{\text{Number of matched gold classes}}{\text{Total number of gold classes}}
+\]
+
+**Interpretation:**
+
+A higher Coverage Rate indicates that the model not only produces accurate labels but also covers a **broader range of ontology concepts**.
+
+---
+
+### Computation Techniques for Evaluation Metrics
 
 **Hard Match Ratio**: Evaluates whether the generated label exactly matches the same label from the original ontology
+
+**Information Content(IC) Score from WordNet**:
+
 
 **Sequence Match Ratio**: Uses sequence alignment techniques to evaluate token-level ordering and overlap between labels.
 
@@ -31,6 +120,7 @@ To assess the model’s ability to recognize, name, and match ontology concepts 
 ```bash
 python eval.py --model_id embeddinggemma,nomic-embed-text --generate_onto_file_path generated_software.owl --ground_onto_file_path ground_software.owl --save_file_path result.json 
 ```
+
 
 
 
