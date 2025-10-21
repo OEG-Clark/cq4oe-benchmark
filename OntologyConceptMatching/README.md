@@ -97,8 +97,8 @@ This technique evaluates whether the generated label exactly matches the corresp
 
 For example, if the LLM generates the concept “wineRegion” while the original ontology contains the label “wine”, the two are considered non-matching because their surface forms differ. In this case, the result produces one False Positive (the extra generated label) and one False Negative (the missing gold label). Conversely, if the model generates “wine”, it is counted as a True Positive match.
 
-**Information Content(IC) Score from WordNet**:
-the Information Content (IC) Score provides a semantic-level comparison between generated and reference ontology labels. This method quantifies how specific a concept is based on its frequency in a reference corpus such as Brown or SemCor—less frequent concepts have higher IC values, indicating greater semantic specificity.
+**Information Content(IC) from WordNet**:
+the Information Content (IC) Score provides a semantic-level comparison between generated and reference ontology labels. This method quantifies how specific a concept is based on its frequency in a reference corpus such as Brown or SemCor, less frequent concepts have higher IC values, indicating greater semantic specificity.
 
 Each ontology label is mapped to its corresponding WordNet synset, and its IC value is retrieved from a precomputed dictionary (e.g., ic-brown.dat). Semantic similarity between generated and gold labels is then computed using measures such as Resnik, Lin, or Jiang-Conrath similarity.
 
@@ -139,6 +139,7 @@ Following the soft-matching setting, each gold concept is paired with the genera
 ```bash
 python eval.py --model_id embeddinggemma,nomic-embed-text --generate_onto_file_path generated_software.owl --ground_onto_file_path ground_software.owl --save_file_path result.json 
 ```
+
 
 
 
