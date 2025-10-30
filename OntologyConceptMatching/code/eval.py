@@ -129,6 +129,9 @@ def pre_process(gen_class, ground_class, info_type, model_id=None):
     all_concepts = sorted(set(ground_class) | set(gen_class))
     return coverage_info, coverage_info_new, avg_sim, all_concepts
 
+def normalize(concept):
+    return concept.lower().strip().replace('_', ' ').replace('-', ' ')
+
 def cal_metrics(gen_class, ground_class, info_type, model_id=None):
     if info_type == "hard_match":
         all_concepts = sorted(set(ground_class) | set(gen_class))
@@ -234,6 +237,9 @@ def main():
     model_id = args_dict["model_id"]
     gen_class = extract_classes(args_dict["generate_onto_file_path"])
     ground_class = extract_classes(args_dict["ground_onto_file_path"])
+    
+    normalized_gen_class =  [normalize(c) for c in gen_class]
+    normalized_ground_class =  [normalize(c) for c in ground_class]
     info_list = [
         "hard_match",
         "sequence_match",
@@ -245,7 +251,7 @@ def main():
     result = {}
     for info_type in info_list:
         if info_type == "synonym":
-            coverage_rate, precision, recall, accuracy, f1 = cal_synonym(gen_class, ground_class)
+            coverage_rate, precision, recall, accuracy, f1 = cal_synonym(normalized_gen_class, normalized_ground_class)
             result[info_type] = {
                 "coverage_rate": coverage_rate,
                 "precision": precision,
@@ -255,7 +261,7 @@ def main():
             }
         elif info_type == "semantic":
             for _model_id in model_id.split(","):
-                avg_sim, precision, recall, accuracy, f1 = cal_metrics(gen_class, ground_class, info_type, _model_id)
+                avg_sim, precision, recall, accuracy, f1 = cal_metrics(normalized_gen_class, normalized_ground_class, info_type, _model_id)
                 info_id = info_type + "_" + _model_id
                 result[info_id] = {
                     "coverage_rate": avg_sim,
@@ -265,7 +271,7 @@ def main():
                     "f1": f1
                 }
         else:
-            avg_sim, precision, recall, accuracy, f1 = cal_metrics(gen_class, ground_class, info_type, model_id)
+            avg_sim, precision, recall, accuracy, f1 = cal_metrics(normalized_gen_class, normalized_ground_class, info_type, model_id)
             result[info_type] = {
                 "coverage_rate": avg_sim,
                 "precision": precision,
