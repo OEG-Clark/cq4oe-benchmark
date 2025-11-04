@@ -1,0 +1,290 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/example/software-ontology#"
+     xml:base="http://www.semanticweb.org/example/software-ontology"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/example/software-ontology"/>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- CQ: Who developed it? -->
+    <owl:ObjectProperty rdf:about="#developedBy">
+        <rdfs:domain rdf:resource="#Software"/>
+        <rdfs:range rdf:resource="#Agent"/>
+        <rdfs:comment>Links a software to its developer(s).</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <!-- CQ: Who owns the copyright? -->
+    <owl:ObjectProperty rdf:about="#copyrightHeldBy">
+        <rdfs:domain rdf:resource="#Software"/>
+        <rdfs:range rdf:resource="#Agent"/>
+        <rdfs:comment>Links a software to its copyright holder.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <!-- CQ: What software can perform task x? -->
+    <owl:ObjectProperty rdf:about="#performsTask">
+        <rdfs:domain rdf:resource="#Software"/>
+        <rdfs:range rdf:resource="#Task"/>
+        <rdfs:comment>Specifies a task or function that the software can perform.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <!-- CQ: What is the algorithm used to process this data? -->
+    <owl:ObjectProperty rdf:about="#usesAlgorithm">
+        <rdfs:domain rdf:resource="#Software"/>
+        <rdfs:range rdf:resource="#Algorithm"/>
+        <rdfs:comment>Indicates the algorithm used by the software.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <!-- CQ: What are the input and output formats for this software? -->
+    <owl:ObjectProperty rdf:about="#hasInputFormat">
+        <rdfs:domain rdf:resource="#Software"/>
+        <rdfs:range rdf:resource="#DataFormat"/>
+        <rdfs:comment>Specifies a valid input data format for the software.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#hasOutputFormat">
+        <rdfs:domain rdf:resource="#Software"/>
+        <rdfs:range rdf:resource="#DataFormat"/>
+        <rdfs:comment>Specifies an output or export data format for the software.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <!-- CQ: What is the version of this software? -->
+    <owl:ObjectProperty rdf:about="#hasVersion">
+        <rdfs:domain rdf:resource="#Software"/>
+        <rdfs:range rdf:resource="#Version"/>
+        <rdfs:comment>Links a software product to its specific versions.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <!-- CQ: What license and what is permissiveness? -->
+    <owl:ObjectProperty rdf:about="#hasLicense">
+        <rdfs:domain rdf:resource="#Software"/>
+        <rdfs:range rdf:resource="#License"/>
+        <rdfs:comment>Specifies the license under which the software is distributed.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <!-- CQ: Where is the documentation? / How do I get help? -->
+    <owl:ObjectProperty rdf:about="#hasSupportResource">
+        <rdfs:domain rdf:resource="#Software"/>
+        <rdfs:range rdf:resource="#SupportResource"/>
+        <rdfs:comment>Links software to a support resource like documentation, a forum, or a tutorial.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <!-- CQ: What platform does the software run on? -->
+    <owl:ObjectProperty rdf:about="#runsOnPlatform">
+        <rdfs:domain rdf:resource="#Software"/>
+        <rdfs:range rdf:resource="#Platform"/>
+        <rdfs:comment>Specifies the platform (e.g., OS) on which the software can run.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <!-- CQ: What hardware do I need to run this software? -->
+    <owl:ObjectProperty rdf:about="#requiresHardware">
+        <rdfs:domain rdf:resource="#Software"/>
+        <rdfs:range rdf:resource="#Hardware"/>
+        <rdfs:comment>Specifies hardware requirements for the software.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <!-- CQ: How do I cite the software? -->
+    <owl:ObjectProperty rdf:about="#isCitedIn">
+        <rdfs:domain rdf:resource="#Software"/>
+        <rdfs:range rdf:resource="#Publication"/>
+        <rdfs:comment>Links software to a publication where it is cited or described.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <!-- CQ: What are the alternatives to this software? -->
+    <owl:ObjectProperty rdf:about="#isAlternativeTo">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdfs:domain rdf:resource="#Software"/>
+        <rdfs:range rdf:resource="#Software"/>
+        <rdfs:comment>Indicates that two software tools can be considered alternatives.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <!-- CQ: Is this software compatible with x? -->
+    <owl:ObjectProperty rdf:about="#isCompatibleWith">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdfs:domain rdf:resource="#Software"/>
+        <rdfs:range rdf:resource="#Software"/>
+        <rdfs:comment>Indicates compatibility between two software tools.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <!-- CQ: Does this software meet the ISO-4 standard? -->
+    <owl:ObjectProperty rdf:about="#conformsToStandard">
+        <rdfs:domain rdf:resource="#Software"/>
+        <rdfs:range rdf:resource="#Standard"/>
+        <rdfs:comment>Indicates a standard that the software conforms to.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- CQ: What is the homepage of the software? -->
+    <owl:DatatypeProperty rdf:about="#homepage">
+        <rdfs:domain rdf:resource="#Software"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+    </owl:DatatypeProperty>
+
+    <!-- CQ: Where can I get the software? -->
+    <owl:DatatypeProperty rdf:about="#downloadURL">
+        <rdfs:domain rdf:resource="#Software"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+    </owl:DatatypeProperty>
+
+    <!-- CQ: What type of software (API, Desktop application etc) is it? -->
+    <owl:DatatypeProperty rdf:about="#softwareType">
+        <rdfs:domain rdf:resource="#Software"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <!-- CQ: Is it FOSS? / Is it open source or not? -->
+    <owl:DatatypeProperty rdf:about="#isFOSS">
+        <rdfs:domain rdf:resource="#Software"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+
+    <!-- CQ: Is it free or not? -->
+    <owl:DatatypeProperty rdf:about="#isFree">
+        <rdfs:domain rdf:resource="#Software"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+
+    <!-- CQ: Is it scriptable? -->
+    <owl:DatatypeProperty rdf:about="#isScriptable">
+        <rdfs:domain rdf:resource="#Software"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+
+    <!-- CQ: Is it extensible? -->
+    <owl:DatatypeProperty rdf:about="#isExtensible">
+        <rdfs:domain rdf:resource="#Software"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+
+    <!-- CQ: In what language was it implemented? -->
+    <owl:DatatypeProperty rdf:about="#implementationLanguage">
+        <rdfs:domain rdf:resource="#Software"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <!-- CQ: Are there any modification to the algorithm the tool uses? -->
+    <owl:DatatypeProperty rdf:about="#algorithmModificationDescription">
+        <rdfs:domain rdf:resource="#Software"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <!-- CQ: What is the version of this software? -->
+    <owl:DatatypeProperty rdf:about="#versionNumber">
+        <rdfs:domain rdf:resource="#Version"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <!-- CQ: When was the 1.0 version released? -->
+    <owl:DatatypeProperty rdf:about="#releaseDate">
+        <rdfs:domain rdf:resource="#Version"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    </owl:DatatypeProperty>
+
+    <!-- CQ: What new features are in this version? -->
+    <owl:DatatypeProperty rdf:about="#versionFeatures">
+        <rdfs:domain rdf:resource="#Version"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <!-- CQ: What license and what is permissiveness? -->
+    <owl:DatatypeProperty rdf:about="#isPermissive">
+        <rdfs:domain rdf:resource="#License"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+
+    <!-- CQ: Where is the documentation? -->
+    <owl:DatatypeProperty rdf:about="#resourceURL">
+        <rdfs:domain rdf:resource="#SupportResource"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+    </owl:DatatypeProperty>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:Class rdf:about="#Software">
+        <rdfs:comment>Represents a software tool, application, API, or web service.</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Agent">
+        <rdfs:comment>Represents a person, group, or organization, such as a developer or user.</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Algorithm">
+        <rdfs:comment>Represents a named algorithm that a software tool might use.</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="#DataFormat">
+        <rdfs:comment>Represents a data format, such as CSV, XML, or a proprietary format.</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Task">
+        <rdfs:comment>Represents a specific function or capability of a software tool.</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Version">
+        <rdfs:comment>Represents a specific version of a software product, with its own release date and features.</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="#License">
+        <rdfs:comment>Represents the license under which a software is distributed.</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="#SupportResource">
+        <rdfs:comment>A resource for getting help or information about a software, such as documentation or a forum.</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Documentation">
+        <rdfs:subClassOf rdf:resource="#SupportResource"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Tutorial">
+        <rdfs:subClassOf rdf:resource="#SupportResource"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Forum">
+        <rdfs:subClassOf rdf:resource="#SupportResource"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#MailingList">
+        <rdfs:subClassOf rdf:resource="#SupportResource"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Platform">
+        <rdfs:comment>Represents a computational platform, such as an operating system (e.g., Windows, Linux) or a web browser.</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Hardware">
+        <rdfs:comment>Represents a hardware component required by the software, like a specific graphics card.</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Publication">
+        <rdfs:comment>Represents a publication, such as a scientific paper, that cites or describes the software.</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Standard">
+        <rdfs:comment>Represents a formal standard, such as an ISO standard, that software might conform to.</rdfs:comment>
+    </owl:Class>
+
+</rdf:RDF>
+

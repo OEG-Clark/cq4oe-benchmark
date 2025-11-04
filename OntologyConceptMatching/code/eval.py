@@ -8,6 +8,7 @@ import difflib
 import Levenshtein
 import textdistance
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+from redundancy import *
 
 import re
 import os
@@ -61,6 +62,7 @@ def extract_classes(file_path):
 def pre_process(gen_class, ground_class, info_type, model_id=None):
     coverage_info = []
     coverage_info_new = []
+    res = []
     if model_id and info_type == "semantic":  
         encoder = OllamaEmbeddings(model=model_id)
         all_texts = ground_class + gen_class
@@ -87,6 +89,9 @@ def pre_process(gen_class, ground_class, info_type, model_id=None):
                 (itm for itm in coverage_info if itm["Best Candidate Match"] == pred),
                 key=lambda x: x["Similarity"]
             )
+            temp = {"pred": pred, "ground": best['Gold Concept'], "sim": best['Similarity']}
+            # print(f"{c} -> {best['Gold Concept']} (similarity: {best['Similarity']:.2f})")
+            res.append(temp)
             coverage_info_new.append(best)
     else:
         for g in ground_class:
@@ -116,6 +121,9 @@ def pre_process(gen_class, ground_class, info_type, model_id=None):
                     (itm for itm in coverage_info if itm["Best Candidate Match"] == pred),
                     key=lambda x: x["Similarity"]
                 )
+                temp = {"pred": pred, "ground": best['Gold Concept'], "sim": best['Similarity']}
+            # print(f"{c} -> {best['Gold Concept']} (similarity: {best['Similarity']:.2f})")
+                res.append(temp)
                 coverage_info_new.append(best)
         else:
             for c in set(item["Best Candidate Match"] for item in coverage_info):
@@ -123,10 +131,15 @@ def pre_process(gen_class, ground_class, info_type, model_id=None):
                     (itm for itm in coverage_info if itm["Best Candidate Match"] == c),
                     key=lambda x: x["Similarity"]
                 )
+                temp = {"pred": c, "ground": best['Gold Concept'], "sim": best['Similarity']}
+            # print(f"{c} -> {best['Gold Concept']} (similarity: {best['Similarity']:.2f})")
+                res.append(temp)
                 coverage_info_new.append(best)
         
     avg_sim = sum(item["Similarity"] for item in coverage_info_new) / len(ground_class)
     all_concepts = sorted(set(ground_class) | set(gen_class))
+    print(info_type)
+    print(res)
     return coverage_info, coverage_info_new, avg_sim, all_concepts
 
 def normalize(concept):
@@ -151,16 +164,23 @@ def cal_metrics(gen_class, ground_class, info_type, model_id=None):
         y_true  = [1 if concept in ground_class else 0 for concept in all_concepts]
         y_score = [sim_map.get(concept, 0.0) for concept in all_concepts]
 
-        TP = sum(y_true[i] * y_score[i]       for i in range(len(all_concepts)))
-        FP = sum((1 - y_true[i]) * y_score[i] for i in range(len(all_concepts)))
-        FN = sum(y_true[i] * (1 - y_score[i]) for i in range(len(all_concepts)))
-        TN = sum((1 - y_true[i]) * (1 - y_score[i]) for i in range(len(all_concepts)))
-        print(f"TP={TP}, FP={FP}, FN={FN}, TN={TN}")
+        # TP = sum(y_true[i] * y_score[i]       for i in range(len(all_concepts)))
+        # FP = sum((1 - y_true[i]) * y_score[i] for i in range(len(all_concepts)))
+        # FN = sum(y_true[i] * (1 - y_score[i]) for i in range(len(all_concepts)))
+        # TN = sum((1 - y_true[i]) * (1 - y_score[i]) for i in range(len(all_concepts)))
+        # print(f"TP={TP}, FP={FP}, FN={FN}, TN={TN}")
 
+        TP = sum(item["Similarity"] for item in coverage_info_new)
+        FN = sum(1 - item["Similarity"] for item in coverage_info_new)
+        matched = {item["Best Candidate Match"] for item in coverage_info_new}
+        FP = len([c for c in gen_class if c not in matched])
+        print(f"TP={TP}, FP={FP}, FN={FN}")
+        
 
         precision = TP / (TP + FP) if TP + FP else 0.0
         recall    = TP / (TP + FN) if TP + FN else 0.0
-        accuracy  = (TP + TN) / len(all_concepts)
+        # accuracy  = (TP + TN) / len(all_concepts)
+        accuracy  = TP / len(ground_class) if len(ground_class) else 0.0
         f1        = 2 * precision * recall / (precision + recall) if precision + recall else 0.0
 
         print(f"Precision: {precision}")
@@ -280,6 +300,17 @@ def main():
                 "f1": f1
             }
     print(result)
+    
+    ### Redundancy
+    lib = OWLSemanticLibrary(args_dict["generate_onto_file_path"], gen_class, "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/redundancy")
+    caculat_redu_hybird = lib.Caculate_redu_hybird(gen_class)
+    caculat_redu_cosine = lib.Caculate_redu_cosine(gen_class)
+
+   # Redundancy(Redundant labels from the WordNet synonyms lib）
+    caculat_redu_sysnonyms = Caculat_redu_sysnonyms(gen_class, "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/redundancy")
+
+    lib.print_concept_ics(sort_by="ic_desc")
+    
     with open(args_dict["save_file_path"], "w") as f:
         json.dump(result, f)
 
