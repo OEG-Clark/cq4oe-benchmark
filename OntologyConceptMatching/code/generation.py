@@ -1,6 +1,6 @@
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.prompts import PromptTemplate
-from langchain.output_parsers import PydanticOutputParser
+from langchain_core.output_parsers import PydanticOutputParser
 from langchain_openai import ChatOpenAI
 
 import os
@@ -74,7 +74,7 @@ def convert_files_to_owl(path, save_file, new_ext='.owl', rdf_format='xml'):
 
 def get_parser():
     parser = argparse.ArgumentParser(description="LLM-Generated Ontology Baseline")
-    parser.add_argument('--user_key', default="xxx", help="Gemini Key", type=str)
+    parser.add_argument('--user_key', default="sk-uuzHOfLhnq6CIxNGyEPu2T4CKiIXla0ii3f34JoKvhXObUBC", help="Gemini Key", type=str)
     parser.add_argument('--model_id', default = "gemini-2.5-pro", help="gemini ai model reference", type=str)
     parser.add_argument('--input_file_path', help="the location of the json file that contains a list of CQs", type=str)
     parser.add_argument('--save_file_path', help="the location of the generated OWL file", type=str)
