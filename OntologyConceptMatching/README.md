@@ -82,6 +82,7 @@ python eval.py --model_id embeddinggemma,nomic-embed-text --generate_onto_file_p
 | `--generate_onto_file_path` | Path to the generated ontology OWL/RDF file to be evaluated | `generated_software.owl` | Yes |
 | `--ground_onto_file_path` | Path to the ground truth/reference ontology OWL/RDF file | `ground_software.owl` | Yes |
 | `--save_file_path` | Path where evaluation results in JSON format will be saved | `result.json` | Yes |
+| `--redundancy_folder` | Path where redundancy evaluation results in TXT format will be saved | `Redundancy_cosine_results.txt` | Yes |
 
 **Output Format:**
 
