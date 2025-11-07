@@ -72,7 +72,7 @@ def pre_process(gen_class, ground_class, info_type, model_id=None):
         ground_embed = embeddings[:len(ground_class)]
         
         gen_embed = embeddings[len(ground_class):]
-        for idx_g, g in enumerate(gen_class):
+        for idx_g, g in enumerate(ground_class):
             sims = util.cos_sim(
                 ground_embed[idx_g],
                 gen_embed
@@ -172,8 +172,9 @@ def cal_metrics(gen_class, ground_class, info_type, model_id=None):
 
         TP = sum(item["Similarity"] for item in coverage_info_new)
         FN = sum(1 - item["Similarity"] for item in coverage_info_new)
-        matched = {item["Best Candidate Match"] for item in coverage_info_new}
+        matched = [item["Best Candidate Match"] for item in coverage_info_new]
         FP = len([c for c in gen_class if c not in matched])
+        # FN = len([c for c in matched if c not in gen_class])
         print(f"TP={TP}, FP={FP}, FN={FN}")
         
 
@@ -241,12 +242,28 @@ def cal_synonym(gen_class, ground_class):
     return coverage_rate, precision, recall, accuracy, f1
 
 
+def strtobool(val):
+    """Conver a string representation of truth to true (1) or false (0).
+    True values are 'y', 'yes', 't', 'true', 'on', and '1'; false values
+    are 'n', 'no', 'f', 'false', 'off', and '0'.  Raises ValueError if
+    'val' is anything else.
+    """
+    val = val.lower()
+    if val in ('y', 'yes', 't', 'true', 'on', '1'):
+        return 1
+    elif val in ('n', 'no', 'f', 'false', 'off', '0'):
+        return 0
+    else:
+        raise ValueError("invalid truth value %r" % (val,))
+
+
 def get_parser():
     parser = argparse.ArgumentParser(description="Evaluation of the generated ontology")
     parser.add_argument('--model_id', default = "embeddinggemma", help="""string of ollama embedding model id, if more models needed, please using "," to seperate them""", type=str)
     parser.add_argument('--generate_onto_file_path', help="the location of generated ontology file ", type=str)
     parser.add_argument('--ground_onto_file_path', help="the location of ground truth ontology file", type=str)
     parser.add_argument('--save_file_path', help="the location of the saved result that contains lexical ", type=str)
+    parser.add_argument('--redundancy_folder', default="/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/software/redundancy", help="the location of the saved result of redundancy check", type=str)
     return parser
 
 
@@ -300,17 +317,11 @@ def main():
                 "f1": f1
             }
     print(result)
-    
     ### Redundancy
-    lib = OWLSemanticLibrary(args_dict["generate_onto_file_path"], gen_class, "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/redundancy")
+    lib = OWLSemanticLibrary(args_dict["generate_onto_file_path"], gen_class, args_dict["redundancy_folder"])
     caculat_redu_hybird = lib.Caculate_redu_hybird(gen_class)
     caculat_redu_cosine = lib.Caculate_redu_cosine(gen_class)
-
-   # Redundancy(Redundant labels from the WordNet synonyms lib）
-    caculat_redu_sysnonyms = Caculat_redu_sysnonyms(gen_class, "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/redundancy")
-
-    lib.print_concept_ics(sort_by="ic_desc")
-    
+    caculat_redu_sysnonyms = Caculat_redu_sysnonyms(gen_class, args_dict["redundancy_folder"])
     with open(args_dict["save_file_path"], "w") as f:
         json.dump(result, f)
 
