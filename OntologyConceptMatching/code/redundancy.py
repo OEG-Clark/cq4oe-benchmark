@@ -24,15 +24,15 @@ class OWLSemanticLibrary:
     def load_ontology(self):
         if not os.path.exists(self.owl_file_path):
             raise FileNotFoundError(f"OWL file not found: {self.owl_file_path}")
-        print(f"Loading OWL ontology: {self.owl_file_path}")
+        # print(f"Loading OWL ontology: {self.owl_file_path}")
         try:
             file_iri = f"file://{os.path.abspath(self.owl_file_path)}"
             self.ontology = owl.get_ontology(file_iri).load()
-            print(f"Loaded ontology: {self.ontology.name}")
+            # print(f"Loaded ontology: {self.ontology.name}")
             self._extract_concepts()
             self._build_hierarchy()
-            print(f"Extracted {len(self.concepts)} concepts")
-            print(f"Built {self.concept_hierarchy.number_of_edges()} hierarchical relations")
+            # print(f"Extracted {len(self.concepts)} concepts")
+            # print(f"Built {self.concept_hierarchy.number_of_edges()} hierarchical relations")
             #print the hierarchy edges
             for u, v in self.concept_hierarchy.edges():
                 print(f"{u} -> {v}")   
@@ -64,7 +64,7 @@ class OWLSemanticLibrary:
                 }
     
     def _build_hierarchy(self):
-        print("Building concept hierarchy...")
+        # print("Building concept hierarchy...")
         for name in self.concepts.keys():
             self.concept_hierarchy.add_node(name)
         for name, info in self.concepts.items():
@@ -79,7 +79,7 @@ class OWLSemanticLibrary:
     def _calculate_concept_properties(self):
         root_nodes = [n for n in self.concept_hierarchy.nodes()
                       if self.concept_hierarchy.in_degree(n) == 0]
-        print(f"Found {len(root_nodes)} root concepts: {root_nodes[:5]}")
+        # print(f"Found {len(root_nodes)} root concepts: {root_nodes[:5]}")
         for name in self.concepts:
             try:
                 depths = []
@@ -90,7 +90,7 @@ class OWLSemanticLibrary:
                 self.concepts[name]['ancestors'] = set(nx.ancestors(self.concept_hierarchy, name))
                 self.concepts[name]['descendants'] = set(nx.descendants(self.concept_hierarchy, name))
             except Exception as e:
-                print(f"Error computing properties for concept {name}: {e}")
+                # print(f"Error computing properties for concept {name}: {e}")
                 self.concepts[name]['depth'] = 0
 
     # =============== Classical IC: IC(c) = -log p(c) / log N ∈ [0,1] ===============
@@ -215,7 +215,7 @@ WineRegion → [0.2,0.2,0.1,0.2,0.3,0.2,0.2,0.2,0.2,0.1,...]
                 first_red = abs(ic1 - ic2)  # IC 差值
                 text_sim = self._textual_similarity(c1, c2)  # 文本相似度
                 hybird_sim = (1 - first_red) * text_sim  # 混合相似度
-                print(f"Pair: ({c1}, {c2}) | ICs: ({ic1:.6f}, {ic2:.6f}) | IC AbsDiff: {first_red:.6f} | Text Sim: {text_sim:.6f} | Hybird Sim: {hybird_sim:.6f}")  
+                # print(f"Pair: ({c1}, {c2}) | ICs: ({ic1:.6f}, {ic2:.6f}) | IC AbsDiff: {first_red:.6f} | Text Sim: {text_sim:.6f} | Hybird Sim: {hybird_sim:.6f}")  
                 redundancy_results.append({
                     'Concept 1': c1,
                     'Concept 2': c2,
@@ -242,9 +242,9 @@ WineRegion → [0.2,0.2,0.1,0.2,0.3,0.2,0.2,0.2,0.2,0.1,...]
                 f.write(f"{item}\n")
             f.write(f"\nTotal pairs: {pariwise}\n")
             f.write(f"Average Hybird Similarity: {avg_hybird_sim:.6f}\n")
-        print(f"Total pairs: {pariwise}")
+        # print(f"Total pairs: {pariwise}")
 
-        print(f"Average Hybird Similarity: {avg_hybird_sim:.6f}")
+        # print(f"Average Hybird Similarity: {avg_hybird_sim:.6f}")
                 
     def Caculate_redu_cosine(self, list):
         #the total reduceny is caculate by the ic and text similarity, it read from the concept lists, get the parir of concepts
@@ -261,7 +261,7 @@ WineRegion → [0.2,0.2,0.1,0.2,0.3,0.2,0.2,0.2,0.2,0.1,...]
                 ic2 = self._ic(c2)
          
                 text_sim = self._textual_similarity(c1, c2)  
-                print(f"Pair: ({c1}, {c2}) | ICs: ({ic1:.6f}, {ic2:.6f}) | Text Sim: {text_sim:.6f}")
+                # print(f"Pair: ({c1}, {c2}) | ICs: ({ic1:.6f}, {ic2:.6f}) | Text Sim: {text_sim:.6f}")
                 redundancy_results_cosine.append({
                     'Concept 1': c1,
                     'Concept 2': c2,
@@ -282,8 +282,8 @@ WineRegion → [0.2,0.2,0.1,0.2,0.3,0.2,0.2,0.2,0.2,0.1,...]
             f.write(f"\nTotal pairs: {pariwise}\n")
             f.write(f"Average Text Similarity based on cosine: {avg_hybird_sim:.6f}\n")
          #print the redundancy results
-        print(f"Total pairs: {pariwise}")
-        print(f"Average Text Similarity based on cosine: {avg_hybird_sim:.6f}")
+        # print(f"Total pairs: {pariwise}")
+        # print(f"Average Text Similarity based on cosine: {avg_hybird_sim:.6f}")
 
 
 def Caculat_redu_sysnonyms(concept_list, out_folder):
@@ -311,8 +311,8 @@ def Caculat_redu_sysnonyms(concept_list, out_folder):
                 synonyms2.add(lemma.name().lower())
 
        #print the concept and its synonyms
-        print(f"Concept: {concept1}, Synonyms: {synonyms1}")
-        print(f"Concept: {concept2}, Synonyms: {synonyms2}")
+        # print(f"Concept: {concept1}, Synonyms: {synonyms1}")
+        # print(f"Concept: {concept2}, Synonyms: {synonyms2}")
 
 
 
@@ -323,11 +323,11 @@ def Caculat_redu_sysnonyms(concept_list, out_folder):
            #print the concept and its synonyms,which are redundant
            #print the concept and its synonyms
             
-            print(f"Redundant pair: ({concept1}, {concept2}) | Synonyms1: {synonyms1} | Synonyms2: {synonyms2}")
+            # print(f"Redundant pair: ({concept1}, {concept2}) | Synonyms1: {synonyms1} | Synonyms2: {synonyms2}")
             #caculate the total redundant pairs
     total_redundant_pairs = len(redundant_pairs)
 
-    print(f"Total redundant pairs found: {total_redundant_pairs}")
+    # print(f"Total redundant pairs found: {total_redundant_pairs}")
     #save the redundant pairs in a text file
     avg_redundant_synonyms = total_redundant_pairs / len(concept_list) if len(concept_list) > 0 else 0.0
     #save
@@ -340,7 +340,7 @@ def Caculat_redu_sysnonyms(concept_list, out_folder):
             f.write(f"{pair}\n")
         f.write(f"\nTotal redundant pairs: {total_redundant_pairs}\n")
         f.write(f"Average redundant pairs per concept: {avg_redundant_synonyms:.6f}\n")
-    print(f"Average redundant pairs per concept: {avg_redundant_synonyms:.6f}")
+    # print(f"Average redundant pairs per concept: {avg_redundant_synonyms:.6f}")
     return redundant_pairs
 
         #get the pair of concepts and caculate the redundancy
