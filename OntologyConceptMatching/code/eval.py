@@ -62,6 +62,7 @@ def extract_classes(file_path):
 def pre_process(gen_class, ground_class, info_type, model_id=None):
     coverage_info = []
     coverage_info_new = []
+    pre_gold = [] 
     res = []
     if model_id and info_type == "semantic":  
         encoder = OllamaEmbeddings(model=model_id)
@@ -93,6 +94,7 @@ def pre_process(gen_class, ground_class, info_type, model_id=None):
             # print(f"{c} -> {best['Gold Concept']} (similarity: {best['Similarity']:.2f})")
             res.append(temp)
             coverage_info_new.append(best)
+            
     else:
         for g in ground_class:
             exact = g in gen_class
@@ -136,11 +138,10 @@ def pre_process(gen_class, ground_class, info_type, model_id=None):
                 res.append(temp)
                 coverage_info_new.append(best)
         
-    avg_sim = sum(item["Similarity"] for item in coverage_info_new) / len(ground_class)
+    avg_sim = sum(item["Similarity"] for item in coverage_info) / len(ground_class)
     all_concepts = sorted(set(ground_class) | set(gen_class))
-    print(info_type)
-    print(res)
-    return coverage_info, coverage_info_new, avg_sim, all_concepts
+    return coverage_info, coverage_info_new, res, avg_sim, all_concepts
+
 
 def normalize(concept):
     return concept.lower().strip().replace('_', ' ').replace('-', ' ')
@@ -157,23 +158,16 @@ def cal_metrics(gen_class, ground_class, info_type, model_id=None):
         f1        = f1_score(y_true, y_pred, zero_division=0)
 
     else:
-        coverage_info, coverage_info_new, avg_sim, all_concepts = pre_process(gen_class, ground_class, info_type, model_id)
+        coverage_info, coverage_info_new, res, avg_sim, all_concepts = pre_process(gen_class, ground_class, info_type, model_id)
+        #create 
+        
 
 
-        sim_map = { itm["Best Candidate Match"]: itm["Similarity"] for itm in coverage_info_new }
-        y_true  = [1 if concept in ground_class else 0 for concept in all_concepts]
-        y_score = [sim_map.get(concept, 0.0) for concept in all_concepts]
+        TP = sum(item["Similarity"] for item in coverage_info)
+        FN = sum(1 - item["Similarity"] for item in coverage_info)
+        FP=sum(1 - item["sim"] for item in res)
 
-        # TP = sum(y_true[i] * y_score[i]       for i in range(len(all_concepts)))
-        # FP = sum((1 - y_true[i]) * y_score[i] for i in range(len(all_concepts)))
-        # FN = sum(y_true[i] * (1 - y_score[i]) for i in range(len(all_concepts)))
-        # TN = sum((1 - y_true[i]) * (1 - y_score[i]) for i in range(len(all_concepts)))
-        # print(f"TP={TP}, FP={FP}, FN={FN}, TN={TN}")
-
-        TP = sum(item["Similarity"] for item in coverage_info_new)
-        FN = sum(1 - item["Similarity"] for item in coverage_info_new)
-        matched = [item["Best Candidate Match"] for item in coverage_info_new]
-        FP = len([c for c in gen_class if c not in matched])
+       #matched = [item["Best Candidate Match"] for item in coverage_info]
         # FN = len([c for c in matched if c not in gen_class])
         print(f"TP={TP}, FP={FP}, FN={FN}")
         
@@ -183,7 +177,6 @@ def cal_metrics(gen_class, ground_class, info_type, model_id=None):
         # accuracy  = (TP + TN) / len(all_concepts)
         accuracy  = TP / len(ground_class) if len(ground_class) else 0.0
         f1        = 2 * precision * recall / (precision + recall) if precision + recall else 0.0
-
         print(f"Precision: {precision}")
         print(f"Recall:    {recall}")
         print(f"Accuracy:  {accuracy}")

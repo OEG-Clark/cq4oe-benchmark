@@ -179,58 +179,47 @@ def get_property_ranges(prop_dict):
         range_list.append(prop_string)
     return sorted(range_list)
 
-def pre_process(gen_props, ground_props, info_type, model_id=None):
+def pre_process(gen_class, ground_class, info_type, model_id=None):
     coverage_info = []
     coverage_info_new = []
+    pre_gold = [] 
     res = []
     if model_id and info_type == "semantic":  
         encoder = OllamaEmbeddings(model=model_id)
-        all_texts = ground_props + gen_props
+        all_texts = ground_class + gen_class
 
         embeddings = encoder.embed_documents(all_texts)
 
-        ground_embed = embeddings[:len(ground_props)]
+        ground_embed = embeddings[:len(ground_class)]
         
-        gen_embed = embeddings[len(ground_props):]
-        for idx_g, g in enumerate(ground_props):
-            # Handle potential empty list for gen_embed
-            if not gen_embed:
-                sims = []
-            else:
-                sims = util.cos_sim(
-                    ground_embed[idx_g],
-                    gen_embed
-                )[0]
-                
-            if sims is not None and len(sims) > 0:
-                best_idx = sims.argmax()
-                best_match_prop = gen_props[best_idx]
-                best_sim = round(float(sims[best_idx]), 3)
-            else:
-                best_match_prop = "None"
-                best_sim = 0.0
-
+        gen_embed = embeddings[len(ground_class):]
+        for idx_g, g in enumerate(ground_class):
+            sims = util.cos_sim(
+                ground_embed[idx_g],
+                gen_embed
+            )[0]  
+            best_idx = sims.argmax()
             coverage_info.append({
                 "Gold Concept": g,
                 "Exact Match": "",
-                "Best Candidate Match": best_match_prop,
-                "Similarity": best_sim
+                "Best Candidate Match": gen_class[best_idx],
+                "Similarity": round(float(sims[best_idx]), 3)
             })
-            
         for pred in {item["Best Candidate Match"] for item in coverage_info}:
-            if pred == "None": continue
             best = max(
                 (itm for itm in coverage_info if itm["Best Candidate Match"] == pred),
                 key=lambda x: x["Similarity"]
             )
             temp = {"pred": pred, "ground": best['Gold Concept'], "sim": best['Similarity']}
+            # print(f"{c} -> {best['Gold Concept']} (similarity: {best['Similarity']:.2f})")
             res.append(temp)
             coverage_info_new.append(best)
+            
     else:
-        for g in ground_props:
-            exact = g in gen_props
+        for g in ground_class:
+            exact = g in gen_class
             best_match, best_score = None, 0.0
-            for c in gen_props:
+            for c in gen_class:
                 if info_type == "sequence_match":
                     sim = difflib.SequenceMatcher(None, g, c).ratio()
                 elif info_type == "levenshtein":
@@ -239,8 +228,7 @@ def pre_process(gen_props, ground_props, info_type, model_id=None):
                 elif info_type == "jaro_winkler":
                     sim = textdistance.jaro_winkler.normalized_similarity(g, c)
                 else:
-                    print(f"Metric type '{info_type}' is not properly defined.")
-                    sim = 0.0 # Default sim to 0 if type is wrong
+                    print("Metric type is not proper defined.")
                 if sim > best_score:
                     best_score, best_match = sim, c
             coverage_info.append({
@@ -249,73 +237,70 @@ def pre_process(gen_props, ground_props, info_type, model_id=None):
                 "Best Candidate Match": best_match,
                 "Similarity": round(best_score, 3)
             })
-            
-        for pred in {item["Best Candidate Match"] for item in coverage_info}:
-            if pred is None: continue
-            
-            matching_items = [itm for itm in coverage_info if itm["Best Candidate Match"] == pred]
-            if not matching_items:
-                continue
-                
-            best = max(matching_items, key=lambda x: x["Similarity"])
-            
-            temp = {"pred": pred, "ground": best['Gold Concept'], "sim": best['Similarity']}
-            res.append(temp)
-            coverage_info_new.append(best)
+        if info_type == "jaro_winkler":
+            for pred in {item["Best Candidate Match"] for item in coverage_info}:
+                best = max(
+                    (itm for itm in coverage_info if itm["Best Candidate Match"] == pred),
+                    key=lambda x: x["Similarity"]
+                )
+                temp = {"pred": pred, "ground": best['Gold Concept'], "sim": best['Similarity']}
+            # print(f"{c} -> {best['Gold Concept']} (similarity: {best['Similarity']:.2f})")
+                res.append(temp)
+                coverage_info_new.append(best)
+        else:
+            for c in set(item["Best Candidate Match"] for item in coverage_info):
+                best = max(
+                    (itm for itm in coverage_info if itm["Best Candidate Match"] == c),
+                    key=lambda x: x["Similarity"]
+                )
+                temp = {"pred": c, "ground": best['Gold Concept'], "sim": best['Similarity']}
+            # print(f"{c} -> {best['Gold Concept']} (similarity: {best['Similarity']:.2f})")
+                res.append(temp)
+                coverage_info_new.append(best)
         
-    avg_sim = sum(item["Similarity"] for item in coverage_info_new) / len(ground_props) if ground_props else 0.0
-    all_concepts = sorted(set(ground_props) | set(gen_props))
-    
-    
-    res_sorted = sorted(res, key=lambda x: x['sim'], reverse=True)
-    
-    return coverage_info, coverage_info_new, avg_sim, all_concepts
+    avg_sim = sum(item["Similarity"] for item in coverage_info) / len(ground_class)
+    all_concepts = sorted(set(ground_class) | set(gen_class))
+    return coverage_info, coverage_info_new, res, avg_sim, all_concepts
+
 
 def normalize(concept):
     return concept.lower().strip().replace('_', ' ').replace('-', ' ')
 
-def cal_metrics(gen_props, ground_props, info_type, model_id=None):
+def cal_metrics(gen_class, ground_class, info_type, model_id=None):
     if info_type == "hard_match":
-        all_concepts = sorted(set(ground_props) | set(gen_props))
-        
-        matches = [c for c in all_concepts if c in ground_props and c in gen_props]
-        unmatched_generated = [c for c in all_concepts if c in gen_props and c not in ground_props]
-        unmatched_ground = [c for c in all_concepts if c in ground_props and c not in gen_props]
-
-        y_true = [1 if c in ground_props else 0 for c in all_concepts]
-        y_pred = [1 if c in gen_props else 0 for c in all_concepts]
-        avg_sim = len(matches) / len(ground_props) if ground_props else 0.0
+        all_concepts = sorted(set(ground_class) | set(gen_class))
+        y_true = [1 if c in ground_class else 0 for c in all_concepts]
+        y_pred = [1 if c in gen_class else 0 for c in all_concepts]
+        avg_sim = len(set(gen_class) & set(ground_class)) / len(ground_class)
         accuracy  = accuracy_score(y_true, y_pred)
         precision = precision_score(y_true, y_pred, zero_division=0)
         recall    = recall_score(y_true, y_pred, zero_division=0)
         f1        = f1_score(y_true, y_pred, zero_division=0)
 
     else:
-        coverage_info, coverage_info_new, avg_sim, all_concepts = pre_process(gen_props, ground_props, info_type, model_id)
-
-        sim_map = { itm["Best Candidate Match"]: itm["Similarity"] for itm in coverage_info_new }
-        y_true  = [1 if c in ground_props else 0 for c in all_concepts]
-        y_score = [sim_map.get(concept, 0.0) for concept in all_concepts]
-
-        TP = sum(item["Similarity"] for item in coverage_info_new)
-        FN = sum(1 - item["Similarity"] for item in coverage_info_new)
+        coverage_info, coverage_info_new, res, avg_sim, all_concepts = pre_process(gen_class, ground_class, info_type, model_id)
+        #create 
         
-        matched_gen_props = {item["Best Candidate Match"] for item in coverage_info_new}
-        FP = len([c for c in gen_props if c not in matched_gen_props])
-        
+
+
+        TP = sum(item["Similarity"] for item in coverage_info)
+        FN = sum(1 - item["Similarity"] for item in coverage_info)
+        FP=sum(1 - item["sim"] for item in res)
+
+       #matched = [item["Best Candidate Match"] for item in coverage_info]
+        # FN = len([c for c in matched if c not in gen_class])
         print(f"TP={TP}, FP={FP}, FN={FN}")
         
+
         precision = TP / (TP + FP) if TP + FP else 0.0
         recall    = TP / (TP + FN) if TP + FN else 0.0
-        accuracy  = TP / len(ground_props) if len(ground_props) else 0.0
+        # accuracy  = (TP + TN) / len(all_concepts)
+        accuracy  = TP / len(ground_class) if len(ground_class) else 0.0
         f1        = 2 * precision * recall / (precision + recall) if precision + recall else 0.0
-
-        print(f"\n--- {info_type} Aggregate Scores ---")
         print(f"Precision: {precision}")
         print(f"Recall:    {recall}")
         print(f"Accuracy:  {accuracy}")
         print(f"F1-score:  {f1}")
-    
     return avg_sim, precision, recall, accuracy, f1
 
 def evaluate_hard_type_match(gen_props_dict, ground_props_dict):
