@@ -23,7 +23,39 @@
 
     # Descriptive Content
     dcterms:description """
-Represents labels as dense embedding vectors using pretrained language modelsand computes cosine similarity between them. Captures meaning-level correspondence even when labels share few or no common tokens. 
+This metric aims to evaluate if the generated label semantically aligned with any existing label in the gold standard ontology.
+
+**Calculation Process:**
+
+1. Select a pre-trained semantic natural language encoder.
+
+2. Encoding the generated label and gold standard ontology into vectors.
+
+3. Calculate the cosine similarity between the generated label vector and vectors in the gold standard ontology.
+
+4. Range of the semantic cosine similarity is between 0 and 1; Noted higher value indicate better match.
+
+**Example:**
+
+Encoder: mxbai-embed-large
+
+Generate_Label_1: hasWine 
+
+Generate_Label_2: wine
+
+Generate_Label_3: hasLiquor 
+
+Gold_Standard_Label: Has Wine
+
+Result: 
+
+1. SemanticCosineSimilarity(Encoder(Generate_Label_1), Encoder(Gold_Standard_Label)) = 0.7772
+2. SemanticCosineSimilarity(Encoder(Generate_Label_2), Encoder(Gold_Standard_Label)) = 0.8840
+3. SemanticCosineSimilarity(Encoder(Generate_Label_3), Encoder(Gold_Standard_Label)) = 0.4690
+
+**What is being measured?**
+
+This metric captures meaning-level correspondence between generated label and labels in gold standard ontology. 
 """ ;
     dcat:keyword "Ontology Concept Matching"@en ;
     dcat:keyword "Metric"@en ;

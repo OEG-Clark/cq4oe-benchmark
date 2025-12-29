@@ -23,7 +23,37 @@
 
     # Descriptive Content
     dcterms:description """
-Uses token-level similarity via difflib SequenceMatcher to capture partially matching or reordered labels. 
+This metric aims to evaluate the token-level similarity between the generated label and the gold standard ontology.
+
+**Calculation Process:**
+
+1. Find the longest contiguous match between the generated label and any label in the gold standard ontology.
+
+2. After the best match is found, extend the match while symbols keep matching.
+
+3. Recurse on the left and right regions around that match to get more matching blocks;
+
+4. Let M is the total matched elements across all matching blocks, the final result is 2*M / (len(generated_label) + len(gold_standard_label))
+
+5. The range of SequenceMatchRatio is between 0 and 1. Higher ratio indicate better match.
+
+**Example:** 
+
+Generated_label: wine region
+
+Gold_standard_label: region of wine
+
+Result: 
+
+Match_1: region
+
+Match_2: wine
+
+SequenceMatchRatio(Generated_label, Gold_standard_label) = 2*(12/25) = 0.48
+
+**What is being measured?**
+
+This metric captures partially matching or reordered expressions.
 """ ;
     dcat:keyword "Ontology Concept Matching"@en ;
     dcat:keyword "Metric"@en ;

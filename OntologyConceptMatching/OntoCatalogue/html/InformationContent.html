@@ -86,7 +86,30 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12 well" style="font-size: 16px;"> <p>Maps labels to WordNet synsets and uses precomputed Information Content values with semantic similarity measures (Resnik, Lin, Jiang-Conrath). </p></div>
+                <div class="col-md-12 well" style="font-size: 16px;"> <p>This metric aims to evaluate the similarity between generated label and the labels in the gold standard ontology with focus of semantic-level comparison using WordNet synsets.</p>
+<p><strong>Calculation Process:</strong></p>
+<ol>
+<li>
+<p>Map the generated label to WordNet synsets.</p>
+</li>
+<li>
+<p>Choose a information content source corpus (eg. SemCor, Brown, BNC, etc.)</p>
+</li>
+<li>
+<p>Count occurrences at the synset level: For each synset, collect count from the corpus.</p>
+</li>
+<li>
+<p>Compute a probability for each synset, the probability (p(s)) is based on the frequency of synset divided by the total counts.</p>
+</li>
+<li>
+<p>Compute Information Content: -log(p(s))</p>
+</li>
+<li>
+<p>Turn IC into a similarity (or distance) score by using Resnik similarity, Lin similarity, etc.</p>
+</li>
+</ol>
+<p><strong>Why Information Content is excluding from the current evaluation:</strong></p>
+<p>This metric measures semantic specificity and handles compound terms by decomposing into sub-concepts. However, it have to be excluded for now</p></div>
             </div>
             <div class="row flex-space-between"> 
                 <div class="col-md-12 align-items-center"> 

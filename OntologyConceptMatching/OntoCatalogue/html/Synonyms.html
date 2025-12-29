@@ -86,7 +86,27 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12 well" style="font-size: 16px;"> <p>Performs exact matching against WordNet synonym relations, counting predictions as correct if they match the gold label or any of its known synonyms. </p></div>
+                <div class="col-md-12 well" style="font-size: 16px;"> <p>This metric aims to evaluate if the generated label and all of its corresponding synonyms if is the exact match to the gold standard ontology.</p>
+<p><strong>Calculation Process:</strong></p>
+<ol>
+<li>
+<p>Get all synonyms of the generated label from the WordNet dataset as generated label set.</p>
+</li>
+<li>
+<p>Matching all labels in generate label set with labels from the gold standard ontology.</p>
+</li>
+<li>
+<p>If there is a perfect match, the result is 1; otherwise, the result is 0.</p>
+</li>
+</ol>
+<p><strong>Example:</strong> </p>
+<p>Generated_label: Wine</p>
+<p>Generated_label_set: Wine, alcohol, vintage, red_wine, white_wine, dark_red, ..., etc.</p>
+<p>Gold_standard_label: red_wine</p>
+<p>Result: </p>
+<p>Synonyms(Gold_standard_label, Generated_label_set) = 1</p>
+<p><strong>What is being measured?</strong></p>
+<p>This metric identifies semantically equivalent concepts expressed through different lexical forms by utlizing the synonym relation of the WordNet or other lexical dictionary.</p></div>
             </div>
             <div class="row flex-space-between"> 
                 <div class="col-md-12 align-items-center"> 

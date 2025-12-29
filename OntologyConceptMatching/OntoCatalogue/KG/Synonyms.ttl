@@ -23,7 +23,31 @@
 
     # Descriptive Content
     dcterms:description """
-Performs exact matching against WordNet synonym relations, counting predictions as correct if they match the gold label or any of its known synonyms. 
+This metric aims to evaluate if the generated label and all of its corresponding synonyms if is the exact match to the gold standard ontology.
+
+**Calculation Process:**
+
+1. Get all synonyms of the generated label from the WordNet dataset as generated label set.
+
+2. Matching all labels in generate label set with labels from the gold standard ontology.
+
+3. If there is a perfect match, the result is 1; otherwise, the result is 0.
+
+**Example:** 
+
+Generated_label: Wine
+
+Generated_label_set: Wine, alcohol, vintage, red_wine, white_wine, dark_red, ..., etc.
+
+Gold_standard_label: red_wine
+
+Result: 
+
+Synonyms(Gold_standard_label, Generated_label_set) = 1
+
+**What is being measured?**
+
+This metric identifies semantically equivalent concepts expressed through different lexical forms by utlizing the synonym relation of the WordNet or other lexical dictionary.
 """ ;
     dcat:keyword "Ontology Concept Matching"@en ;
     dcat:keyword "Metric"@en ;

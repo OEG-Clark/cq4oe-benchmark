@@ -82,55 +82,71 @@
             <div class="row">
                 <div class="col-md-12"> 
                     <button type="button" class="btn btn-primary" onclick="window.location.href='https://oeg-upm.github.io/fair_ontologies/doc/catalog.html#metric'" style="position: absolute; top: 10px; right: 10px;">Back</button>
-                    <h1 class="miClase text-center">LevenshteinDistance: Character-level edit distance approximation</h1>
+                    <h1 class="miClase text-center">JaroWinklerDistance: String similarity metric emphasizing common prefixes</h1>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12 well" style="font-size: 16px;"> <p>This metric aims to evaluate the character-level similarity between the generated label and the gold standard ontology. Goal is the minimum number of single-character edits to transform string from generated label to the label in gold standard ontology, where edits are insert, delete, substitute and each edit cost is 1.</p>
+                <div class="col-md-12 well" style="font-size: 16px;"> <p>This metric aims to evaluate the similarity between generated label and the labels in the gold standard ontology with an emphasize of common prefixes.</p>
 <p><strong>Calculation Process:</strong></p>
 <ol>
 <li>
-<p>Build a matrix of the size [len(generated label)+1, len(gold standard ontology)+1], put the generated label along the left side and put the label of the gold standard ontology along the top. Each cell will store the best (smallest) edit count needed to transform the left-side prefix into the top-side prefix.</p>
+<p>Set the matching window size based on the string lengths, which is the length of the longer string, divided by 2, round down and minus 1.   </p>
 </li>
 <li>
-<p>Fill the top row with increasing numbers from left to right and fill the left column with increasing numbers from top to bottom. </p>
+<p>Find all matching characters in the generated label and the labels in the gold standard ontology.</p>
 </li>
 <li>
-<p>The final Levenshtein distance is at the bottom right corner of the matrix.</p>
+<p>Write down the matched characters in the order they appear in each string (using the matched positions). Compare these two matched-character sequences and convert mismatch count into the transposition count.</p>
 </li>
 <li>
-<p>The similarity is calculated as 1-levenshtein_distance/max(len(generated label), len(gold standard ontology))</p>
+<p>Calcuate Jaro distances as: avg(sum(len(matched_character)/len(generated_label), len(matched_character)/len(gold_standard_label), (len(matched_character)-transposition_count)/len(matched_character)))</p>
 </li>
 <li>
-<p>In our case, we utlized the dependency of python-Levenshtein. And the similairty range is from 0 to 1. The higher similairty indicate better match.</p>
+<p>Apply Winkler prefix boost: Jaro_distances + len(common_prefix)<em>p</em>(1 - Jaro_distances); noted p is constant scaling factor that is greater than 0 and smalled than 0.25.</p>
+</li>
+<li>
+<p>The range of jaro_winkler distance is from 0 to 1. 0 as no similarity shared between labels, and 1 means the identical labels.</p>
 </li>
 </ol>
-<p>Example: </p>
-<p>Generated_label: wine region</p>
-<p>Gold_standard_label: region of wine</p>
+<p><strong>Example:</strong></p>
+<p>Generate_Label: wine region</p>
+<p>Gold_Standard_Label: wine type</p>
 <p>Result: </p>
 <ol>
-<li>Levenshtein.distance(Generated_label, Gold_standard_label) = 11</li>
-<li>similarity = 1 - 11/max(11, 14) = 0.214</li>
+<li>
+<p>Windows Size: (max(len(Generate_Label), len(Gold_Standard_Label)) / 2) - 1 = 4</p>
+</li>
+<li>
+<p>Greedily find matching characters: for example Generate_Label[0] == Gold_Standard_Label[0]; Generate_Label[6] == Gold_Standard_Label[8], etc. Total matching character: 6</p>
+</li>
+<li>
+<p>Getting the transposition count: 0</p>
+</li>
+<li>
+<p>Jaro similarity result: (6/11 + 6/9 + (6-0)/6)/3 = 0.7374</p>
+</li>
+<li>
+<p>Winkler prefix boost: use the default setting of scaling factor, which is 0.1. therefore the jaro_winkler distance: 0.7374 + 4<em>0.1</em>(1- 0.7374) = 0.8424</p>
+</li>
 </ol>
 <p><strong>What is being measured?</strong></p>
-<p>This metric captures spelling-level closeness; robust to minor typographical or morphological variations.</p></div>
+<p>This metric is particularly effective for labels sharing morphological roots or hierarchical naming patterns</p></div>
             </div>
             <div class="row flex-space-between"> 
                 <div class="col-md-12 align-items-center"> 
                     <h4 class="miClase text-left text-separation">Metric information</h4> 
-                    <a href="LevenshteinDistance.ttl" title="RDF Resource Description
+                    <a href="JaroWinklerDistance.ttl" title="RDF Resource Description
                     Framework"> <img border="0" src="http://www.w3.org/RDF/icons/rdf_flyer.24"
                     alt="RDF Resource Description Framework Flyer Icon"/></a>
                 </div> 
             </div>
             <div class="row row-equal" >
                 <div class="col-md-3 well tag_div"> <strong>Title</strong></div>
-                <div class="col-md-9 well"> Character-level edit distance approximation </div>
+                <div class="col-md-9 well"> String similarity metric emphasizing common prefixes </div>
             </div>
             <div class="row row-equal" >
                 <div class="col-md-3 well tag_div"> <strong>Identifier</strong></div>
-                <div class="col-md-9 well"><a href="https://w3id.org/soel/metric/LevenshteinDistance" target="_blank">https://w3id.org/soel/metric/LevenshteinDistance</a></div>
+                <div class="col-md-9 well"><a href="https://w3id.org/soel/metric/JaroWinklerDistance" target="_blank">https://w3id.org/soel/metric/JaroWinklerDistance</a></div>
                 <!-- <div class="col-md-9 well"><a href="https://w3id.org/foops/test/URI1" target="_blank">https://w3id.org/foops/test/URI1</a></div> -->
             </div>
             <div class="row row-equal" style="display: none;" >
@@ -160,7 +176,7 @@
             </div>
             <!-- <div class="row row-equal" >
                 <div class="col-md-3 well tag_div"> <strong>Landing Page</strong></div>
-                <div class="col-md-9 well"><a href="https://w3id.org/soel/metric/LevenshteinDistance" target="_blank">https://w3id.org/soel/metric/LevenshteinDistance</a></div>
+                <div class="col-md-9 well"><a href="https://w3id.org/soel/metric/JaroWinklerDistance" target="_blank">https://w3id.org/soel/metric/JaroWinklerDistance</a></div>
             </div> -->
             <div class="row row-equal" >
                 <div class="col-md-3 well tag_div"> <strong>Deminsion</strong></div>

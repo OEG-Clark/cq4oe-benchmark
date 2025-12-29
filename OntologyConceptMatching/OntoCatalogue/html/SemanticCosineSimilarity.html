@@ -86,7 +86,36 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12 well" style="font-size: 16px;"> <p>Represents labels as dense embedding vectors using pretrained language modelsand computes cosine similarity between them. Captures meaning-level correspondence even when labels share few or no common tokens. </p></div>
+                <div class="col-md-12 well" style="font-size: 16px;"> <p>This metric aims to evaluate if the generated label semantically aligned with any existing label in the gold standard ontology.</p>
+<p><strong>Calculation Process:</strong></p>
+<ol>
+<li>
+<p>Select a pre-trained semantic natural language encoder.</p>
+</li>
+<li>
+<p>Encoding the generated label and gold standard ontology into vectors.</p>
+</li>
+<li>
+<p>Calculate the cosine similarity between the generated label vector and vectors in the gold standard ontology.</p>
+</li>
+<li>
+<p>Range of the semantic cosine similarity is between 0 and 1; Noted higher value indicate better match.</p>
+</li>
+</ol>
+<p><strong>Example:</strong></p>
+<p>Encoder: mxbai-embed-large</p>
+<p>Generate_Label_1: hasWine </p>
+<p>Generate_Label_2: wine</p>
+<p>Generate_Label_3: hasLiquor </p>
+<p>Gold_Standard_Label: Has Wine</p>
+<p>Result: </p>
+<ol>
+<li>SemanticCosineSimilarity(Encoder(Generate_Label_1), Encoder(Gold_Standard_Label)) = 0.7772</li>
+<li>SemanticCosineSimilarity(Encoder(Generate_Label_2), Encoder(Gold_Standard_Label)) = 0.8840</li>
+<li>SemanticCosineSimilarity(Encoder(Generate_Label_3), Encoder(Gold_Standard_Label)) = 0.4690</li>
+</ol>
+<p><strong>What is being measured?</strong></p>
+<p>This metric captures meaning-level correspondence between generated label and labels in gold standard ontology. </p></div>
             </div>
             <div class="row flex-space-between"> 
                 <div class="col-md-12 align-items-center"> 

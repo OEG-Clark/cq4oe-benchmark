@@ -86,7 +86,20 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12 well" style="font-size: 16px;"> <p>Exact lexical string comparison that evaluates if generated labels exactly match reference labels. This is the strictest matching approach with zero tolerance for variations.</p></div>
+                <div class="col-md-12 well" style="font-size: 16px;"> <p>This metric aims to evaluate if the generated label exactly match any existing label in the gold standard ontology.</p>
+<p><strong>Example:</strong>
+Generate_Label_1: Wine</p>
+<p>Generate_Label_2: wine</p>
+<p>Generate_Label_3: Liquor </p>
+<p>Gold_Standard_Label: Wine</p>
+<p>Result: </p>
+<ol>
+<li>HardMatchRatio(Generate_Label_1, Gold_Standard_Label) = 1</li>
+<li>HardMatchRatio(Generate_Label_2, Gold_Standard_Label) = 0</li>
+<li>HardMatchRatio(Generate_Label_3, Gold_Standard_Label) = 0</li>
+</ol>
+<p><strong>What is being measured?</strong></p>
+<p>This metric strictly compare the generated label to the labels in the gold standard ontology at a string-level. This is the strictest matching approach with zero tolerance for variations and no semantic element is being considered. </p></div>
             </div>
             <div class="row flex-space-between"> 
                 <div class="col-md-12 align-items-center"> 
