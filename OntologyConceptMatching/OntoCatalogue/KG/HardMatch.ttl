@@ -23,7 +23,28 @@
 
     # Descriptive Content
     dcterms:description """
-Exact lexical string comparison that evaluates if generated labels exactly match reference labels. This is the strictest matching approach with zero tolerance for variations.
+This metric aims to evaluate if the generated label exactly match any existing label in the gold standard ontology. If the generated label matched to any label in the gold standard ontology, the result will be 1, otherwise, the result is strickly 0.
+
+**Example:**
+
+Generate_Label_1: Wine
+
+Generate_Label_2: wine
+
+Generate_Label_3: Liquor 
+
+Gold_Standard_Label: Wine
+
+Result: 
+
+1. HardMatchRatio(Generate_Label_1, Gold_Standard_Label) = 1
+2. HardMatchRatio(Generate_Label_2, Gold_Standard_Label) = 0
+3. HardMatchRatio(Generate_Label_3, Gold_Standard_Label) = 0
+
+
+**What is being measured?**
+
+This metric strictly compare the generated label to the labels in the gold standard ontology at a string-level. This is the strictest matching approach with zero tolerance for variations and no semantic element is being considered. 
 """ ;
     dcat:keyword "Ontology Concept Matching"@en ;
     dcat:keyword "Metric"@en ;

@@ -23,7 +23,26 @@
 
     # Descriptive Content
     dcterms:description """
-Maps labels to WordNet synsets and uses precomputed Information Content values with semantic similarity measures (Resnik, Lin, Jiang-Conrath). 
+This metric aims to evaluate the similarity between generated label and the labels in the gold standard ontology with focus of semantic-level comparison using WordNet synsets.
+
+**Calculation Process:**
+
+1. Map the generated label to WordNet synsets.
+
+2. Choose a information content source corpus (eg. SemCor, Brown, BNC, etc.)
+
+3. Count occurrences at the synset level: For each synset, collect count from the corpus.
+
+4. Compute a probability for each synset, the probability (p(s)) is based on the frequency of synset divided by the total counts.
+
+5. Compute Information Content: -log(p(s))
+
+6. Turn IC into a similarity (or distance) score by using Resnik similarity, Lin similarity, etc.
+
+**Why Information Content is excluding from the current evaluation:**
+
+This metric measures semantic specificity and handles compound terms by decomposing into sub-concepts. However, it have to be excluded for now
+
 """ ;
     dcat:keyword "Ontology Concept Matching"@en ;
     dcat:keyword "Metric"@en ;

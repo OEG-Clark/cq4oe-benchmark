@@ -86,7 +86,34 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12 well" style="font-size: 16px;"> <p>Uses token-level similarity via difflib SequenceMatcher to capture partially matching or reordered labels. </p></div>
+                <div class="col-md-12 well" style="font-size: 16px;"> <p>This metric aims to evaluate the token-level similarity between the generated label and the gold standard ontology.</p>
+<p><strong>Calculation Process:</strong></p>
+<ol>
+<li>
+<p>Find the longest contiguous match between the generated label and any label in the gold standard ontology.</p>
+</li>
+<li>
+<p>After the best match is found, extend the match while symbols keep matching.</p>
+</li>
+<li>
+<p>Recurse on the left and right regions around that match to get more matching blocks;</p>
+</li>
+<li>
+<p>Let M is the total matched elements across all matching blocks, the final result is 2*M / (len(generated_label) + len(gold_standard_label))</p>
+</li>
+<li>
+<p>The range of SequenceMatchRatio is between 0 and 1. Higher ratio indicate better match.</p>
+</li>
+</ol>
+<p><strong>Example:</strong> </p>
+<p>Generated_label: wine region</p>
+<p>Gold_standard_label: region of wine</p>
+<p>Result: </p>
+<p>Match_1: region</p>
+<p>Match_2: wine</p>
+<p>SequenceMatchRatio(Generated_label, Gold_standard_label) = 2*(12/25) = 0.48</p>
+<p><strong>What is being measured?</strong></p>
+<p>This metric captures partially matching or reordered expressions.</p></div>
             </div>
             <div class="row flex-space-between"> 
                 <div class="col-md-12 align-items-center"> 

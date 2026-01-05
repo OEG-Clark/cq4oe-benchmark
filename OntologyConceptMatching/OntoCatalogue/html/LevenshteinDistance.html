@@ -86,7 +86,35 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12 well" style="font-size: 16px;"> <p>Calculates the minimum number of character-level edits needed to transform one label into another. </p></div>
+                <div class="col-md-12 well" style="font-size: 16px;"> <p>This metric aims to evaluate the character-level similarity between the generated label and the gold standard ontology. Goal is the minimum number of single-character edits to transform string from generated label to the label in gold standard ontology, where edits are insert, delete, substitute and each edit cost is 1.</p>
+<p><strong>Calculation Process:</strong></p>
+<ol>
+<li>
+<p>Build a matrix of the size [len(generated label)+1, len(gold standard ontology)+1], put the generated label along the left side and put the label of the gold standard ontology along the top. Each cell will store the best (smallest) edit count needed to transform the left-side prefix into the top-side prefix.</p>
+</li>
+<li>
+<p>Fill the top row with increasing numbers from left to right and fill the left column with increasing numbers from top to bottom. </p>
+</li>
+<li>
+<p>The final Levenshtein distance is at the bottom right corner of the matrix.</p>
+</li>
+<li>
+<p>The similarity is calculated as 1-levenshtein_distance/max(len(generated label), len(gold standard ontology))</p>
+</li>
+<li>
+<p>In our case, we utlized the dependency of python-Levenshtein. And the similairty range is from 0 to 1. The higher similairty indicate better match.</p>
+</li>
+</ol>
+<p>Example: </p>
+<p>Generated_label: wine region</p>
+<p>Gold_standard_label: region of wine</p>
+<p>Result: </p>
+<ol>
+<li>Levenshtein.distance(Generated_label, Gold_standard_label) = 11</li>
+<li>similarity = 1 - 11/max(11, 14) = 0.214</li>
+</ol>
+<p><strong>What is being measured?</strong></p>
+<p>This metric captures spelling-level closeness; robust to minor typographical or morphological variations.</p></div>
             </div>
             <div class="row flex-space-between"> 
                 <div class="col-md-12 align-items-center"> 

@@ -86,7 +86,51 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12 well" style="font-size: 16px;"> <p>Measures string similarity while emphasizing common prefixes, making it particularly effective for hierarchically-named concepts. </p></div>
+                <div class="col-md-12 well" style="font-size: 16px;"> <p>This metric aims to evaluate the similarity between generated label and the labels in the gold standard ontology with an emphasize of common prefixes.</p>
+<p><strong>Calculation Process:</strong></p>
+<ol>
+<li>
+<p>Set the matching window size based on the string lengths, which is the length of the longer string, divided by 2, round down and minus 1.   </p>
+</li>
+<li>
+<p>Find all matching characters in the generated label and the labels in the gold standard ontology.</p>
+</li>
+<li>
+<p>Write down the matched characters in the order they appear in each string (using the matched positions). Compare these two matched-character sequences and convert mismatch count into the transposition count.</p>
+</li>
+<li>
+<p>Calcuate Jaro distances as: avg(sum(len(matched_character)/len(generated_label), len(matched_character)/len(gold_standard_label), (len(matched_character)-transposition_count)/len(matched_character)))</p>
+</li>
+<li>
+<p>Apply Winkler prefix boost: Jaro_distances + len(common_prefix)<em>p</em>(1 - Jaro_distances); noted p is constant scaling factor that is greater than 0 and smalled than 0.25.</p>
+</li>
+<li>
+<p>The range of jaro_winkler distance is from 0 to 1. 0 as no similarity shared between labels, and 1 means the identical labels.</p>
+</li>
+</ol>
+<p><strong>Example:</strong></p>
+<p>Generate_Label: wine region</p>
+<p>Gold_Standard_Label: wine type</p>
+<p>Result: </p>
+<ol>
+<li>
+<p>Windows Size: (max(len(Generate_Label), len(Gold_Standard_Label)) / 2) - 1 = 4</p>
+</li>
+<li>
+<p>Greedily find matching characters: for example Generate_Label[0] == Gold_Standard_Label[0]; Generate_Label[6] == Gold_Standard_Label[8], etc. Total matching character: 6</p>
+</li>
+<li>
+<p>Getting the transposition count: 0</p>
+</li>
+<li>
+<p>Jaro similarity result: (6/11 + 6/9 + (6-0)/6)/3 = 0.7374</p>
+</li>
+<li>
+<p>Winkler prefix boost: use the default setting of scaling factor, which is 0.1. therefore the jaro_winkler distance: 0.7374 + 4<em>0.1</em>(1- 0.7374) = 0.8424</p>
+</li>
+</ol>
+<p><strong>What is being measured?</strong></p>
+<p>This metric is particularly effective for labels sharing morphological roots or hierarchical naming patterns</p></div>
             </div>
             <div class="row flex-space-between"> 
                 <div class="col-md-12 align-items-center"> 
