@@ -1,0 +1,248 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://example.org/software.owl#"
+     xml:base="http://example.org/software.owl"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+  <owl:Ontology rdf:about="http://example.org/software.owl">
+    <rdfs:label>Software Ontology</rdfs:label>
+    <rdfs:comment>An ontology for modeling software based on competency questions.</rdfs:comment>
+  </owl:Ontology>
+
+  <!-- Classes -->
+  <owl:Class rdf:about="#Software">
+    <rdfs:label>Software</rdfs:label>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Algorithm">
+    <rdfs:label>Algorithm</rdfs:label>
+  </owl:Class>
+
+  <owl:Class rdf:about="#DataFormat">
+    <rdfs:label>Data Format</rdfs:label>
+  </owl:Class>
+
+  <owl:Class rdf:about="#SoftwareType">
+    <rdfs:label>Software Type</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#DesktopApplication">
+    <rdfs:subClassOf rdf:resource="#SoftwareType"/>
+    <rdfs:label>Desktop Application</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#WebService">
+    <rdfs:subClassOf rdf:resource="#SoftwareType"/>
+    <rdfs:label>Web Service</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#API">
+    <rdfs:subClassOf rdf:resource="#SoftwareType"/>
+    <rdfs:label>API</rdfs:label>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Task">
+    <rdfs:label>Task</rdfs:label>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Input">
+    <rdfs:label>Input</rdfs:label>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Output">
+    <rdfs:label>Output</rdfs:label>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Developer">
+    <rdfs:label>Developer</rdfs:label>
+  </owl:Class>
+
+  <owl:Class rdf:about="#User">
+    <rdfs:label>User</rdfs:label>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Standard">
+    <rdfs:label>Standard</rdfs:label>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Version">
+    <rdfs:label>Version</rdfs:label>
+  </owl:Class>
+
+  <owl:Class rdf:about="#License">
+    <rdfs:label>License</rdfs:label>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Community">
+    <rdfs:label>Community</rdfs:label>
+  </owl:Class>
+
+  <owl:Class rdf:about="#CopyrightHolder">
+    <rdfs:label>Copyright Holder</rdfs:label>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Citation">
+    <rdfs:label>Citation</rdfs:label>
+  </owl:Class>
+
+  <owl:Class rdf:about="#ExtensionMethod">
+    <rdfs:label>Extension Method</rdfs:label>
+  </owl:Class>
+
+  <owl:Class rdf:about="#HardwareRequirement">
+    <rdfs:label>Hardware Requirement</rdfs:label>
+  </owl:Class>
+
+  <owl:Class rdf:about="#ProgrammingLanguage">
+    <rdfs:label>Programming Language</rdfs:label>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Platform">
+    <rdfs:label>Platform</rdfs:label>
+  </owl:Class>
+
+  <owl:Class rdf:about="#UsageExample">
+    <rdfs:label>Usage Example</rdfs:label>
+  </owl:Class>
+
+  <owl:Class rdf:about="#SupportMethod">
+    <rdfs:label>Support Method</rdfs:label>
+  </owl:Class>
+
+  <!-- Object Properties -->
+  <owl:ObjectProperty rdf:about="#usesAlgorithm">
+    <rdfs:domain rdf:resource="#Software"/>
+    <rdfs:range rdf:resource="#Algorithm"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#providesXMLEditing">
+    <rdfs:domain rdf:resource="#Software"/>
+    <rdfs:range rdf:resource="#DataFormat"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#hasSoftwareType">
+    <rdfs:domain rdf:resource="#Software"/>
+    <rdfs:range rdf:resource="#SoftwareType"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#performsTask">
+    <rdfs:domain rdf:resource="#Software"/>
+    <rdfs:range rdf:resource="#Task"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#hasInput">
+    <rdfs:domain rdf:resource="#Software"/>
+    <rdfs:range rdf:resource="#Input"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#hasOutput">
+    <rdfs:domain rdf:resource="#Software"/>
+    <rdfs:range rdf:resource="#Output"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#createdBy">
+    <rdfs:domain rdf:resource="#Software"/>
+    <rdfs:range rdf:resource="#Developer"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#supportsStandard">
+    <rdfs:domain rdf:resource="#Software"/>
+    <rdfs:range rdf:resource="#Standard"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#availableAt">
+    <rdfs:domain rdf:resource="#Software"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#hasHomepage">
+    <rdfs:domain rdf:resource="#Software"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#hasVersion">
+    <rdfs:domain rdf:resource="#Software"/>
+    <rdfs:range rdf:resource="#Version"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#usedBy">
+    <rdfs:domain rdf:resource="#Software"/>
+    <rdfs:range rdf:resource="#User"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#developedBy">
+    <rdfs:domain rdf:resource="#Software"/>
+    <rdfs:range rdf:resource="#Developer"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#ownsCopyright">
+    <rdfs:domain rdf:resource="#CopyrightHolder"/>
+    <rdfs:range rdf:resource="#Software"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#hasCommunity">
+    <rdfs:domain rdf:resource="#Software"/>
+    <rdfs:range rdf:resource="#Community"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#hasSupport">
+    <rdfs:domain rdf:resource="#Software"/>
+    <rdfs:range rdf:resource="#SupportMethod"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#canBeExtendedBy">
+    <rdfs:domain rdf:resource="#Software"/>
+    <rdfs:range rdf:resource="#ExtensionMethod"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#requiresHardware">
+    <rdfs:domain rdf:resource="#Software"/>
+    <rdfs:range rdf:resource="#HardwareRequirement"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#implementedIn">
+    <rdfs:domain rdf:resource="#Software"/>
+    <rdfs:range rdf:resource="#ProgrammingLanguage"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#runsOn">
+    <rdfs:domain rdf:resource="#Software"/>
+    <rdfs:range rdf:resource="#Platform"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#hasUsageExample">
+    <rdfs:domain rdf:resource="#Software"/>
+    <rdfs:range rdf:resource="#UsageExample"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#hasCitation">
+    <rdfs:domain rdf:resource="#Software"/>
+    <rdfs:range rdf:resource="#Citation"/>
+  </owl:ObjectProperty>
+
+  <!-- Datatype Properties -->
+  <owl:DatatypeProperty rdf:about="#versionNumber">
+    <rdfs:domain rdf:resource="#Version"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="#releaseDate">
+    <rdfs:domain rdf:resource="#Version"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="#isOpenSource">
+    <rdfs:domain rdf:resource="#Software"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="#requiresPassword">
+    <rdfs:domain rdf:resource="#Software"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="#hasCost">
+    <rdfs:domain rdf:resource="#Software"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+
+</rdf:RDF>
