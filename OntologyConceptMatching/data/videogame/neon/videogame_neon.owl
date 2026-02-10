@@ -1,0 +1,200 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+  <owl:Ontology rdf:about="http://example.org/gaming_ontology"/>
+
+  <!-- Classes -->
+  <owl:Class rdf:ID="Player"/>
+  <owl:Class rdf:ID="Game"/>
+  <owl:Class rdf:ID="Achievement"/>
+  <owl:Class rdf:ID="Item"/>
+  <owl:Class rdf:ID="Map"/>
+  <owl:Class rdf:ID="Creator"/>
+  <owl:Class rdf:ID="Genre"/>
+  <owl:Class rdf:ID="Ability"/>
+  <owl:Class rdf:ID="InAppPurchase"/>
+  <owl:Class rdf:ID="Location"/>
+  <owl:Class rdf:ID="CharacterClass"/>
+  <owl:Class rdf:ID="PurchaseTime"/>
+  <owl:Class rdf:ID="DifficultyLevel"/>
+
+  <!-- Object Properties -->
+  <owl:ObjectProperty rdf:ID="hasFriend">
+    <rdfs:domain rdf:resource="#Player"/>
+    <rdfs:range rdf:resource="#Player"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="hasAchievement">
+    <rdfs:domain rdf:resource="#Player"/>
+    <rdfs:range rdf:resource="#Achievement"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="playsWith">
+    <rdfs:domain rdf:resource="#Player"/>
+    <rdfs:range rdf:resource="#Player"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="hasItem">
+    <rdfs:domain rdf:resource="#Player"/>
+    <rdfs:range rdf:resource="#Item"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="hasCreator">
+    <rdfs:domain rdf:resource="#Game"/>
+    <rdfs:range rdf:resource="#Creator"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="hasGenre">
+    <rdfs:domain rdf:resource="#Game"/>
+    <rdfs:range rdf:resource="#Genre"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="hasAbility">
+    <rdfs:domain rdf:resource="#Item"/>
+    <rdfs:range rdf:resource="#Ability"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="ownsGame">
+    <rdfs:domain rdf:resource="#Player"/>
+    <rdfs:range rdf:resource="#Game"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="hasMap">
+    <rdfs:domain rdf:resource="#Game"/>
+    <rdfs:range rdf:resource="#Map"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="usesDifficulty">
+    <rdfs:domain rdf:resource="#Player"/>
+    <rdfs:range rdf:resource="#DifficultyLevel"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="hasEquipment">
+    <rdfs:domain rdf:resource="#Player"/>
+    <rdfs:range rdf:resource="#Item"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="madePurchase">
+    <rdfs:domain rdf:resource="#Player"/>
+    <rdfs:range rdf:resource="#InAppPurchase"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="livesIn">
+    <rdfs:domain rdf:resource="#Player"/>
+    <rdfs:range rdf:resource="#Location"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="hasDeathLocation">
+    <rdfs:domain rdf:resource="#Player"/>
+    <rdfs:range rdf:resource="#Location"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="hasPurchaseTime">
+    <rdfs:domain rdf:resource="#InAppPurchase"/>
+    <rdfs:range rdf:resource="#PurchaseTime"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="hasCharacterClass">
+    <rdfs:domain rdf:resource="#Player"/>
+    <rdfs:range rdf:resource="#CharacterClass"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="preferredWeapon">
+    <rdfs:domain rdf:resource="#Player"/>
+    <rdfs:range rdf:resource="#Item"/>
+  </owl:ObjectProperty>
+
+  <!-- Data Properties -->
+  <owl:DatatypeProperty rdf:ID="username">
+    <rdfs:domain rdf:resource="#Player"/>
+    <rdfs:range rdf:resource="xsd:string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="totalHoursPlayed">
+    <rdfs:domain rdf:resource="#Game"/>
+    <rdfs:range rdf:resource="xsd:integer"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="achievementType">
+    <rdfs:domain rdf:resource="#Achievement"/>
+    <rdfs:range rdf:resource="xsd:string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="releaseDate">
+    <rdfs:domain rdf:resource="#Game"/>
+    <rdfs:range rdf:resource="xsd:date"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="killCount">
+    <rdfs:domain rdf:resource="#Player"/>
+    <rdfs:range rdf:resource="xsd:integer"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="percentage">
+    <!-- Used for various percentages, domain specified in subproperties if needed -->
+    <rdfs:range rdf:resource="xsd:float"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="lastPlayed">
+    <rdfs:domain rdf:resource="#Player"/>
+    <rdfs:range rdf:resource="xsd:date"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="deathsInLevel">
+    <rdfs:domain rdf:resource="#Player"/>
+    <rdfs:range rdf:resource="xsd:integer"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="moneySpent">
+    <rdfs:domain rdf:resource="#Player"/>
+    <rdfs:range rdf:resource="xsd:float"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="purchaseTimeValue">
+    <rdfs:domain rdf:resource="#PurchaseTime"/>
+    <rdfs:range rdf:resource="xsd:string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="coordinate">
+    <rdfs:domain rdf:resource="#Location"/>
+    <rdfs:range rdf:resource="xsd:string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="clickedAdvertisementCount">
+    <rdfs:domain rdf:resource="#Player"/>
+    <rdfs:range rdf:resource="xsd:integer"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="gamesWithAllAchievements">
+    <rdfs:domain rdf:resource="#Player"/>
+    <rdfs:range rdf:resource="xsd:integer"/>
+  </owl:DatatypeProperty>
+
+  <!-- Subproperties for specific percentages -->
+  <owl:DatatypeProperty rdf:ID="percentageHasItem">
+    <rdfs:subPropertyOf rdf:resource="#percentage"/>
+    <rdfs:domain rdf:resource="#Game"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="percentageSkipCutscenes">
+    <rdfs:subPropertyOf rdf:resource="#percentage"/>
+    <rdfs:domain rdf:resource="#Game"/>
+  </owl:DatatypeProperty>
+
+  <!-- Instances or subclasses for enums -->
+  <Genre rdf:ID="RPG"/>
+  <Genre rdf:ID="Adventure"/>
+  <Genre rdf:ID="Puzzle"/>
+
+  <Achievement rdf:ID="SkillBased"/>
+  <Achievement rdf:ID="Veteran"/>
+  <Achievement rdf:ID="Luck"/>
+
+  <Ability rdf:ID="Magic"/>
+  <Ability rdf:ID="Equipable"/>
+  <Ability rdf:ID="DamageDealing"/>
+
+</rdf:RDF>
