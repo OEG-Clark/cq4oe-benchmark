@@ -1,179 +1,84 @@
 <?xml version="1.0"?>
 <rdf:RDF xmlns="http://example.org/odrl-ontology#"
      xml:base="http://example.org/odrl-ontology"
-     xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
 
-<owl:Ontology rdf:about="http://example.org/odrl-ontology">
-  <rdfs:label>ODRL Ontology based on Competency Questions</rdfs:label>
-  <rdfs:comment>An ontology for modeling rights, permissions, duties, contracts, and related concepts in digital contexts.</rdfs:comment>
-</owl:Ontology>
+<owl:Ontology rdf:about="http://example.org/odrl-ontology"/>
 
 <!-- Classes -->
-<owl:Class rdf:ID="Right">
-  <rdfs:label>Right</rdfs:label>
-  <rdfs:comment>A general right in a contract or agreement.</rdfs:comment>
-</owl:Class>
-
+<owl:Class rdf:ID="Right"/>
+<owl:Class rdf:ID="Duty"/>
 <owl:Class rdf:ID="Permission">
-  <rdfs:subClassOf rdf:resource="#Right"/>
-  <rdfs:label>Permission</rdfs:label>
-  <rdfs:comment>A type of right that allows an action.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Right"/>
 </owl:Class>
-
-<owl:Class rdf:ID="Duty">
-  <rdfs:label>Duty</rdfs:label>
-  <rdfs:comment>An obligation in a contract.</rdfs:comment>
-</owl:Class>
-
 <owl:Class rdf:ID="TransferRight">
-  <rdfs:subClassOf rdf:resource="#Permission"/>
-  <rdfs:label>Transfer Right</rdfs:label>
-  <rdfs:comment>A permission to transfer rights.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Permission"/>
 </owl:Class>
-
-<owl:Class rdf:ID="AggregationPermission">
-  <rdfs:subClassOf rdf:resource="#TransferRight"/>
-  <rdfs:label>Aggregation Permission</rdfs:label>
+<owl:Class rdf:ID="ContractParty"/>
+<owl:Class rdf:ID="Role"/>
+<owl:Class rdf:ID="Constraint"/>
+<owl:Class rdf:ID="FairUseConstraint">
+    <rdfs:subClassOf rdf:resource="#Constraint"/>
 </owl:Class>
+<owl:Class rdf:ID="Meter"/>
+<owl:Class rdf:ID="Document"/>
+<owl:Class rdf:ID="Container"/>
 
-<owl:Class rdf:ID="DisaggregationPermission">
-  <rdfs:subClassOf rdf:resource="#TransferRight"/>
-  <rdfs:label>Disaggregation Permission</rdfs:label>
-</owl:Class>
+<!-- Disjointness Axioms -->
+<owl:AllDisjointClasses>
+    <owl:members rdf:parseType="Collection">
+        <owl:Class rdf:about="#Right"/>
+        <owl:Class rdf:about="#Duty"/>
+        <owl:Class rdf:about="#ContractParty"/>
+        <owl:Class rdf:about="#Role"/>
+        <owl:Class rdf:about="#Constraint"/>
+        <owl:Class rdf:about="#Meter"/>
+        <owl:Class rdf:about="#Document"/>
+        <owl:Class rdf:about="#Container"/>
+    </owl:members>
+</owl:AllDisjointClasses>
 
-<owl:Class rdf:ID="ContractParty">
-  <rdfs:label>Contract Party</rdfs:label>
-  <rdfs:comment>A party involved in a contract.</rdfs:comment>
-</owl:Class>
-
-<owl:Class rdf:ID="Role">
-  <rdfs:label>Role</rdfs:label>
-  <rdfs:comment>Role of a contract party (e.g., assignor, assignee).</rdfs:comment>
-</owl:Class>
-
-<owl:Class rdf:ID="StatusInformation">
-  <rdfs:label>Status Information</rdfs:label>
-  <rdfs:comment>Information about the status of rights, duties, etc.</rdfs:comment>
-</owl:Class>
-
-<owl:Class rdf:ID="DocumentType">
-  <rdfs:label>Document Type</rdfs:label>
-  <rdfs:comment>Type of document in a negotiation process.</rdfs:comment>
-</owl:Class>
-
-<owl:Class rdf:ID="NegotiationProcess">
-  <rdfs:label>Negotiation Process</rdfs:label>
-  <rdfs:comment>The process of negotiating contracts or rights.</rdfs:comment>
-</owl:Class>
-
-<owl:Class rdf:ID="Constraint">
-  <rdfs:label>Constraint</rdfs:label>
-  <rdfs:comment>A condition or limitation on rights or duties.</rdfs:comment>
-</owl:Class>
-
-<owl:Class rdf:ID="PaymentDuty">
-  <rdfs:subClassOf rdf:resource="#Duty"/>
-  <rdfs:label>Payment Duty</rdfs:label>
-  <rdfs:comment>A duty related to payment.</rdfs:comment>
-</owl:Class>
-
-<owl:Class rdf:ID="FairUsePermission">
-  <rdfs:subClassOf rdf:resource="#Permission"/>
-  <rdfs:label>Fair Use Permission</rdfs:label>
-  <rdfs:comment>A permission for fair use exceptions.</rdfs:comment>
-</owl:Class>
-
-<owl:Class rdf:ID="Container">
-  <rdfs:label>Container</rdfs:label>
-  <rdfs:comment>A grouping element for rights or permissions (optional).</rdfs:comment>
-</owl:Class>
-
-<owl:Class rdf:ID="Meter">
-  <rdfs:label>Meter</rdfs:label>
-  <rdfs:comment>A meter used in right operands or constraints.</rdfs:comment>
-</owl:Class>
-
-<!-- Properties -->
-<owl:ObjectProperty rdf:ID="hasImprovedNextRight">
-  <rdfs:domain rdf:resource="#Right"/>
-  <rdfs:range rdf:resource="#Right"/>
-  <rdfs:label>has improved next right</rdfs:label>
-  <rdfs:comment>Links a right to an improved next version.</rdfs:comment>
+<!-- Object Properties -->
+<owl:ObjectProperty rdf:ID="hasPermission">
+    <rdfs:domain rdf:resource="#ContractParty"/>
+    <rdfs:range rdf:resource="#Permission"/>
 </owl:ObjectProperty>
-
-<owl:ObjectProperty rdf:ID="hasStatus">
-  <rdfs:domain rdf:resource="#Right"/>
-  <rdfs:range rdf:resource="#StatusInformation"/>
-  <rdfs:label>has status</rdfs:label>
-  <rdfs:comment>Associates status information with a right.</rdfs:comment>
+<owl:ObjectProperty rdf:ID="hasDuty">
+    <rdfs:domain rdf:resource="#ContractParty"/>
+    <rdfs:range rdf:resource="#Duty"/>
 </owl:ObjectProperty>
-
-<owl:ObjectProperty rdf:ID="supportsLink">
-  <rdfs:domain rdf:resource="#NegotiationProcess"/>
-  <rdfs:range rdf:resource="#DocumentType"/>
-  <rdfs:label>supports link</rdfs:label>
-  <rdfs:comment>Indicates that the negotiation process supports links between document types.</rdfs:comment>
-</owl:ObjectProperty>
-
 <owl:ObjectProperty rdf:ID="hasRole">
-  <rdfs:domain rdf:resource="#Permission"/>
-  <rdfs:range rdf:resource="#Role"/>
-  <rdfs:label>has role</rdfs:label>
-  <rdfs:comment>Associates a role with a permission or duty (extended via domain).</rdfs:comment>
+    <rdfs:domain rdf:resource="#ContractParty"/>
+    <rdfs:range rdf:resource="#Role"/>
 </owl:ObjectProperty>
-
-<owl:ObjectProperty rdf:ID="hasParty">
-  <rdfs:domain rdf:resource="#Right"/>
-  <rdfs:range rdf:resource="#ContractParty"/>
-  <rdfs:label>has party</rdfs:label>
-  <rdfs:comment>Links a right or duty to a contract party.</rdfs:comment>
-</owl:ObjectProperty>
-
-<owl:DatatypeProperty rdf:ID="hasMeterType">
-  <rdfs:domain rdf:resource="#Meter"/>
-  <rdfs:range rdf:resource="xsd:string"/>
-  <rdfs:label>has meter type</rdfs:label>
-  <rdfs:comment>Specifies the type of a meter used in right operands.</rdfs:comment>
-</owl:DatatypeProperty>
-
-<owl:DatatypeProperty rdf:ID="isFulfilled">
-  <rdfs:domain rdf:resource="#Duty"/>
-  <rdfs:range rdf:resource="xsd:boolean"/>
-  <rdfs:label>is fulfilled</rdfs:label>
-  <rdfs:comment>Indicates if a duty is fulfilled.</rdfs:comment>
-</owl:DatatypeProperty>
-
 <owl:ObjectProperty rdf:ID="hasConstraint">
-  <rdfs:domain rdf:resource="#Duty"/>
-  <rdfs:range rdf:resource="#Constraint"/>
-  <rdfs:label>has constraint</rdfs:label>
-  <rdfs:comment>Associates a constraint with a duty.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Duty"/>
+    <rdfs:range rdf:resource="#Constraint"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasMeter">
+    <rdfs:domain rdf:resource="#Right"/>
+    <rdfs:range rdf:resource="#Meter"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="linksToDocument">
+    <rdfs:domain rdf:resource="#Document"/>
+    <rdfs:range rdf:resource="#Document"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="supportsInheritance">
+    <rdfs:domain rdf:resource="#Right"/>
+    <rdfs:range rdf:resource="#Right"/>
 </owl:ObjectProperty>
 
-<owl:DatatypeProperty rdf:ID="hasLateDate">
-  <rdfs:domain rdf:resource="#PaymentDuty"/>
-  <rdfs:range rdf:resource="xsd:dateTime"/>
-  <rdfs:label>has late date</rdfs:label>
-  <rdfs:comment>Specifies a late date for payment duties.</rdfs:comment>
+<!-- Data Properties -->
+<owl:DatatypeProperty rdf:ID="hasStatus">
+    <rdfs:domain rdf:resource="#Duty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 </owl:DatatypeProperty>
-
-<owl:ObjectProperty rdf:ID="handlesFairUse">
-  <rdfs:domain rdf:resource="#Permission"/>
-  <rdfs:range rdf:resource="#FairUsePermission"/>
-  <rdfs:label>handles fair use</rdfs:label>
-  <rdfs:comment>Links to fair use handling.</rdfs:comment>
-</owl:ObjectProperty>
-
-<owl:ObjectProperty rdf:ID="contains">
-  <rdfs:domain rdf:resource="#Container"/>
-  <rdfs:range rdf:resource="#Right"/>
-  <rdfs:label>contains</rdfs:label>
-  <rdfs:comment>Indicates that a container holds rights or permissions.</rdfs:comment>
-</owl:ObjectProperty>
-
-<!-- Inheritance is naturally expressed via rdfs:subClassOf in OWL, so no need for an explicit property. -->
+<owl:DatatypeProperty rdf:ID="hasLateDate">
+    <rdfs:domain rdf:resource="#Duty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+</owl:DatatypeProperty>
 
 </rdf:RDF>
