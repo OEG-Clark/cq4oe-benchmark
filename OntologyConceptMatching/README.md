@@ -53,7 +53,7 @@ The Ontology Property Matching task evaluates how well LLMs can generate and cor
 3. Run the following command in the `code` folder:
 
 ```bash
-python eval.py --model_id embeddinggemma,nomic-embed-text --generate_onto_file_path generated_software.owl --ground_onto_file_path ground_software.owl --save_file_path result.json 
+python eval.py --model_id embeddinggemma,nomic-embed-text --generate_onto_file_path generated_software.owl --ground_onto_file_path ground_software.owl --save_file_folder ../data/odrl/
 ```
 
 **Evaluation Script Arguments:**
@@ -63,7 +63,7 @@ python eval.py --model_id embeddinggemma,nomic-embed-text --generate_onto_file_p
 | `--model_id` | Comma-separated list of embedding models to use for semantic evaluation (used by Ollama) | `embeddinggemma` | Yes |
 | `--generate_onto_file_path` | Path to the generated ontology OWL/RDF file to be evaluated | `generated_software.owl` | Yes |
 | `--ground_onto_file_path` | Path to the ground truth/reference ontology OWL/RDF file | `ground_software.owl` | Yes |
-| `--save_file_path` | Path where evaluation results in JSON format will be saved | `result.json` | Yes |
+| `--save_file_folder` | Path where evaluation results and analysis report in json format will be saved | `result.json` | Yes |
 | `--redundancy_folder` | Path where redundancy evaluation results in TXT format will be saved | `Redundancy_cosine_results.txt` | No |
 
 **Output Format:**
@@ -89,6 +89,49 @@ The evaluation results are saved as JSON with the following structure:
 ```
 
 Each method generates its own set of metrics, allowing comprehensive evaluation across multiple matching strategies.
+
+**Report Format:**
+
+The evaluation reports are saved as JSON with the following strucutre:
+
+```json
+{
+  "hard_match": [
+    {
+      "Gold Concept": "schema:organization",
+      "Exact Match": "yes",
+      "Best Candidate Match": "organization",
+      "Similarity": 1.0
+    },
+    {
+      "Gold Concept": "constraint",
+      "Exact Match": "yes",
+      "Best Candidate Match": "constraint",
+      "Similarity": 1.0
+    },
+    ...
+  ],
+  "sequence_match": [...],
+  "levenshtein": [...],
+  "jaro_winkler": [...],
+  "semantic_embeddinggemma": [...]
+}
+```
+
+| Field | Description |
+|-------|-------------|
+| `Gold Concept` | The reference concept/property from the ground truth ontology |
+| `Exact Match` | Whether an exact string match was found ("yes" or "") |
+| `Best Candidate Match` | The closest matching element from the generated ontology |
+| `Similarity` | Numerical similarity score (0.0 to 1.0) based on the matching method |
+
+**Matching Methods in Report:**
+
+- **hard_match**: Exact lexical string comparison
+- **sequence_match**: Token-level similarity (robust to reordering)
+- **levenshtein**: Character-level edit distance
+- **jaro_winkler**: String similarity emphasizing common prefixes
+- **semantic_[model]**: Dense vector representation using embedding models (e.g., embeddinggemma, nomic-embed-text)
 
 ### Evaluation for Concepts/Classes
 
@@ -196,6 +239,42 @@ For property type and function evaluations:
   "f1": 0.92
 }
 ```
+
+**Report Format:**
+
+The evaluation reports are saved as JSON with the following strucutre:
+
+```json
+{
+  "hard_match": [
+    {
+      "Gold Concept": "schema:organization",
+      "Exact Match": "yes",
+      "Best Candidate Match": "organization",
+      "Similarity": 1.0
+    },
+    {
+      "Gold Concept": "constraint",
+      "Exact Match": "yes",
+      "Best Candidate Match": "constraint",
+      "Similarity": 1.0
+    },
+    ...
+  ],
+  "sequence_match": [...],
+  "levenshtein": [...],
+  "jaro_winkler": [...],
+  "semantic_embeddinggemma": [...]
+}
+```
+
+| Field | Description |
+|-------|-------------|
+| `Gold Concept` | The reference concept/property from the ground truth ontology |
+| `Exact Match` | Whether an exact string match was found ("yes" or "") |
+| `Best Candidate Match` | The closest matching element from the generated ontology |
+| `Similarity` | Numerical similarity score (0.0 to 1.0) based on the matching method |
+
 
 ### Evaluation for Properties
 
