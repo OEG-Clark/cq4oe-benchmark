@@ -268,6 +268,19 @@ def normalize(concept):
 
 def cal_metrics(gen_class, ground_class, info_type, model_id=None):
     if info_type == "hard_match":
+        coverage_info = []
+        for g in ground_class:
+            best_match, best_score = None, 0.0
+            for c in gen_class:
+                if g == c:
+                    best_match = c
+                    best_score = 1.0
+            coverage_info.append({
+                "Gold Concept": g,
+                "Exact Match": "",
+                "Best Candidate Match": best_match,
+                "Similarity": best_score
+            })
         all_concepts = sorted(set(ground_class) | set(gen_class))
         y_true = [1 if c in ground_class else 0 for c in all_concepts]
         y_pred = [1 if c in gen_class else 0 for c in all_concepts]
@@ -301,7 +314,7 @@ def cal_metrics(gen_class, ground_class, info_type, model_id=None):
         print(f"Recall:    {recall}")
         print(f"Accuracy:  {accuracy}")
         print(f"F1-score:  {f1}")
-    return avg_sim, precision, recall, accuracy, f1
+    return coverage_info, avg_sim, precision, recall, accuracy, f1
 
 def evaluate_hard_type_match(gen_props_dict, ground_props_dict):
     match_results = []
@@ -447,11 +460,12 @@ def run_evaluation_suite(gen_list_raw, ground_list_raw, model_id, info_list):
     normalized_ground_list = [normalize(c) for c in ground_list_raw]
     
     result_suite = {}
+    report_suite = {}
     for info_type in info_list:
         print(f"\n--- Calculating {info_type} metrics ---")
         if info_type == "semantic":
             for _model_id in model_id.split(","):
-                avg_sim, precision, recall, accuracy, f1 = cal_metrics(
+                coverage_info, avg_sim, precision, recall, accuracy, f1 = cal_metrics(
                     normalized_gen_list, normalized_ground_list, info_type, _model_id
                 )
                 info_id = info_type + "_" + _model_id
@@ -459,16 +473,18 @@ def run_evaluation_suite(gen_list_raw, ground_list_raw, model_id, info_list):
                     "coverage_rate": avg_sim, "precision": precision,
                     "recall": recall, "accuracy": accuracy, "f1": f1
                 }
+                report_suite[info_id] = coverage_info
         else:
-            avg_sim, precision, recall, accuracy, f1 = cal_metrics(
+            coverage_info, avg_sim, precision, recall, accuracy, f1 = cal_metrics(
                 normalized_gen_list, normalized_ground_list, info_type, model_id
             )
             result_suite[info_type] = {
                 "coverage_rate": avg_sim, "precision": precision,
                 "recall": recall, "accuracy": accuracy, "f1": f1
             }
+            report_suite[info_type] = coverage_info
     
-    return result_suite
+    return result_suite, report_suite
 
 # --- END NEW EVALUATION SUITE FUNCTION ---
 
@@ -535,31 +551,40 @@ def main():
     print("\n" + "="*40)
     print("  1. EVALUATING PROPERTY NAMES")
     print("="*40)
-    prop_results = run_evaluation_suite(gen_prop_names, ground_prop_names, model_id, info_list)
+    prop_results, prop_report = run_evaluation_suite(gen_prop_names, ground_prop_names, model_id, info_list)
     print(prop_results)
     
     with open(args_dict["save_file_name"] + "_properties.json", "w") as f:
         json.dump(prop_results, f)
+        
+    with open(args_dict["save_file_name"] + "_properties_report.json", "w") as f:
+        json.dump(prop_report, f)
     
    
     print("\n" + "="*40)
     print("  2. EVALUATING PROPERTY DOMAINS")
     print("="*40)
-    domain_results = run_evaluation_suite(gen_domain_strings, ground_domain_strings, model_id, info_list)
+    domain_results, domain_report = run_evaluation_suite(gen_domain_strings, ground_domain_strings, model_id, info_list)
     print(domain_results)
     
     with open(args_dict["save_file_name"] + "_domains.json", "w") as f:
         json.dump(domain_results, f)
         
+    with open(args_dict["save_file_name"] + "_domains_report.json", "w") as f:
+        json.dump(domain_report, f)
+        
         
     print("\n" + "="*40)
     print("  3. EVALUATING PROPERTY RANGES")
     print("="*40)
-    range_results = run_evaluation_suite(gen_range_strings, ground_range_strings, model_id, info_list)
+    range_results, range_report = run_evaluation_suite(gen_range_strings, ground_range_strings, model_id, info_list)
     print(range_results)
     
     with open(args_dict["save_file_name"] + "_ranges.json", "w") as f:
         json.dump(range_results, f)
+        
+    with open(args_dict["save_file_name"] + "_ranges_report.json", "w") as f:
+        json.dump(range_report, f)
     
     print(type_list)
     print(func_list)

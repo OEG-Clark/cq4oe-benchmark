@@ -148,6 +148,19 @@ def normalize(concept):
 
 def cal_metrics(gen_class, ground_class, info_type, model_id=None):
     if info_type == "hard_match":
+        coverage_info = []
+        for g in ground_class:
+            best_match, best_score = None, 0.0
+            for c in gen_class:
+                if g == c:
+                    best_match = c
+                    best_score = 1.0
+            coverage_info.append({
+                "Gold Concept": g,
+                "Exact Match": "",
+                "Best Candidate Match": best_match,
+                "Similarity": best_score
+            })
         all_concepts = sorted(set(ground_class) | set(gen_class))
         y_true = [1 if c in ground_class else 0 for c in all_concepts]
         y_pred = [1 if c in gen_class else 0 for c in all_concepts]
@@ -159,9 +172,6 @@ def cal_metrics(gen_class, ground_class, info_type, model_id=None):
 
     else:
         coverage_info, coverage_info_new, res, avg_sim, all_concepts = pre_process(gen_class, ground_class, info_type, model_id)
-        #create 
-        
-
 
         TP = sum(item["Similarity"] for item in coverage_info)
         FN = sum(1 - item["Similarity"] for item in coverage_info)
@@ -181,7 +191,7 @@ def cal_metrics(gen_class, ground_class, info_type, model_id=None):
         print(f"Recall:    {recall}")
         print(f"Accuracy:  {accuracy}")
         print(f"F1-score:  {f1}")
-    return avg_sim, precision, recall, accuracy, f1
+    return coverage_info, avg_sim, precision, recall, accuracy, f1
 
 def _normalize(text: str) -> str:
     
@@ -255,7 +265,7 @@ def get_parser():
     parser.add_argument('--model_id', default = "embeddinggemma", help="""string of ollama embedding model id, if more models needed, please using "," to seperate them""", type=str)
     parser.add_argument('--generate_onto_file_path', help="the location of generated ontology file ", type=str)
     parser.add_argument('--ground_onto_file_path', help="the location of ground truth ontology file", type=str)
-    parser.add_argument('--save_file_path', help="the location of the saved result that contains lexical ", type=str)
+    parser.add_argument('--save_file_folder', help="the location of the saved result that contains lexical ", type=str)
     parser.add_argument('--redundancy_folder', default="/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/software/redundancy", help="the location of the saved result of redundancy check", type=str)
     return parser
 
@@ -268,8 +278,12 @@ def main():
     gen_class = extract_classes(args_dict["generate_onto_file_path"])
     ground_class = extract_classes(args_dict["ground_onto_file_path"])
     
+    result_file = os.path.join(args_dict["save_file_folder"], "result.json")
+    report_file = os.path.join(args_dict["save_file_folder"], "report.json")
+    
     normalized_gen_class =  [normalize(c) for c in gen_class]
     normalized_ground_class =  [normalize(c) for c in ground_class]
+    
     info_list = [
         "hard_match",
         "sequence_match",
@@ -279,6 +293,7 @@ def main():
         "synonym"
     ]
     result = {}
+    report = {}
     for info_type in info_list:
         if info_type == "synonym":
             coverage_rate, precision, recall, accuracy, f1 = cal_synonym(normalized_gen_class, normalized_ground_class)
@@ -291,7 +306,7 @@ def main():
             }
         elif info_type == "semantic":
             for _model_id in model_id.split(","):
-                avg_sim, precision, recall, accuracy, f1 = cal_metrics(normalized_gen_class, normalized_ground_class, info_type, _model_id)
+                coverage_info, avg_sim, precision, recall, accuracy, f1 = cal_metrics(normalized_gen_class, normalized_ground_class, info_type, _model_id)
                 info_id = info_type + "_" + _model_id
                 result[info_id] = {
                     "coverage_rate": avg_sim,
@@ -300,8 +315,9 @@ def main():
                     "accuracy": accuracy,
                     "f1": f1
                 }
+                report[info_id] = coverage_info
         else:
-            avg_sim, precision, recall, accuracy, f1 = cal_metrics(normalized_gen_class, normalized_ground_class, info_type, model_id)
+            coverage_info, avg_sim, precision, recall, accuracy, f1 = cal_metrics(normalized_gen_class, normalized_ground_class, info_type, model_id)
             result[info_type] = {
                 "coverage_rate": avg_sim,
                 "precision": precision,
@@ -309,14 +325,18 @@ def main():
                 "accuracy": accuracy,
                 "f1": f1
             }
+            report[info_type] = coverage_info
     print(result)
     ### Redundancy
     lib = OWLSemanticLibrary(args_dict["generate_onto_file_path"], gen_class, args_dict["redundancy_folder"])
     caculat_redu_hybird = lib.Caculate_redu_hybird(gen_class)
     caculat_redu_cosine = lib.Caculate_redu_cosine(gen_class)
     caculat_redu_sysnonyms = Caculat_redu_sysnonyms(gen_class, args_dict["redundancy_folder"])
-    with open(args_dict["save_file_path"], "w") as f:
+    with open(result_file, "w") as f:
         json.dump(result, f)
+    
+    with open(report_file, "w") as f:
+        json.dump(report, f)
 
 
 main()
