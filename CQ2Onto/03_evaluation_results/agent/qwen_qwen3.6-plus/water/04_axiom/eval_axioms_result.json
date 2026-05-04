@@ -1,0 +1,3051 @@
+{
+  "config": {
+    "gold_file": "00_gold_standard/water/axioms/water_axiom_gold.json",
+    "pred_file": "02_atomic_axioms/agent/qwen_qwen3.6-plus/water/water_cq2onto_agent_ontology_atomic_tbox.json",
+    "class_csv": "03_evaluation_results/agent/qwen_qwen3.6-plus/water/01_class/class_best_matching.csv",
+    "property_csv": "03_evaluation_results/agent/qwen_qwen3.6-plus/water/02_property/property_best_matching.csv",
+    "layer2_threshold": 0.6,
+    "layer2_model": "embeddinggemma",
+    "layer2_skipped": true
+  },
+  "results": {
+    "layer1_stats_gold": {
+      "total": 43,
+      "by_term_type": {
+        "Class": 19,
+        "ObjectProperty": 16,
+        "DatatypeProperty": 8
+      },
+      "by_term_axiom": {
+        "Class": {
+          "SubClassOf": 18,
+          "DisjointClasses": 1
+        },
+        "ObjectProperty": {
+          "Domain": 6,
+          "Range": 6,
+          "InverseOf": 4
+        },
+        "DatatypeProperty": {
+          "Domain": 2,
+          "Range": 6
+        }
+      }
+    },
+    "layer1_stats_pred": {
+      "total": 138,
+      "by_term_type": {
+        "Class": 22,
+        "ObjectProperty": 56,
+        "DatatypeProperty": 60
+      },
+      "by_term_axiom": {
+        "Class": {
+          "Declaration": 13,
+          "DisjointClasses": 2,
+          "SubClassOf": 7
+        },
+        "ObjectProperty": {
+          "Declaration": 14,
+          "Domain": 14,
+          "InverseOf": 14,
+          "Range": 14
+        },
+        "DatatypeProperty": {
+          "Characteristics": 15,
+          "Declaration": 15,
+          "Domain": 15,
+          "Range": 15
+        }
+      }
+    },
+    "layer3": {
+      "evaluation": [
+        {
+          "side": "gold",
+          "axiom_id": "AX1",
+          "term": "AcceptabilityProperty",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "AcceptabilityProperty ⊑ WaterProperty",
+          "status": "tp",
+          "reason": "matched pred AX13",
+          "pred_match": {
+            "id": "AX13",
+            "dl": "Physical Property ⊑ Water Property",
+            "axiom_type": "SubClassOf",
+            "term": "Physical Property"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX2",
+          "term": "Actuator",
+          "term_type": "Class",
+          "axiom_type": "DisjointClasses",
+          "dl": "DisjointClasses(Actuator, Sensor)",
+          "status": "tp",
+          "reason": "matched pred AX2",
+          "pred_match": {
+            "id": "AX2",
+            "dl": "DisjointClasses(Actuator, Sensor)",
+            "axiom_type": "DisjointClasses",
+            "term": "Actuator"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX3",
+          "term": "Actuator",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "Actuator ⊑ Device",
+          "status": "tp",
+          "reason": "matched pred AX3",
+          "pred_match": {
+            "id": "AX3",
+            "dl": "Actuator ⊑ Device",
+            "axiom_type": "SubClassOf",
+            "term": "Actuator"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX4",
+          "term": "ChemicalProperty",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "ChemicalProperty ⊑ WaterProperty",
+          "status": "tp",
+          "reason": "matched pred AX7",
+          "pred_match": {
+            "id": "AX7",
+            "dl": "Chemical Property ⊑ Water Property",
+            "axiom_type": "SubClassOf",
+            "term": "Chemical Property"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX5",
+          "term": "Device",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "Device ⊑ ∀makesMeasurement.Measurement",
+          "status": "mismatch",
+          "reason": "pred AX9 differs: expr_type ObjectAllValuesFrom vs Class",
+          "pred_match": {
+            "id": "AX9",
+            "dl": "Device ⊑ Asset",
+            "axiom_type": "SubClassOf",
+            "term": "Device"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX6",
+          "term": "FeatureOfInterest",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "FeatureOfInterest ⊑ ∀hasMeasurement.Measurement",
+          "status": "skip",
+          "reason": "subject 'FeatureOfInterest' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX7",
+          "term": "Measurement",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "Measurement ⊑ ∀hasTimestamp.datetime'>",
+          "status": "fn",
+          "reason": "pred has no SubClassOf axiom on 'Measurement'",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX8",
+          "term": "Meter",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "Meter ⊑ Sensor",
+          "status": "skip",
+          "reason": "subject 'Meter' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX9",
+          "term": "Point",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "Point ⊑ Geometry",
+          "status": "skip",
+          "reason": "subject 'Point' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX10",
+          "term": "Sensor",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "Sensor ⊑ Device",
+          "status": "tp",
+          "reason": "matched pred AX15",
+          "pred_match": {
+            "id": "AX15",
+            "dl": "Sensor ⊑ Device",
+            "axiom_type": "SubClassOf",
+            "term": "Sensor"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX11",
+          "term": "TimeBasedTariff",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "TimeBasedTariff ⊑ Tariff",
+          "status": "skip",
+          "reason": "subject 'TimeBasedTariff' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX12",
+          "term": "Water",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "Water ⊑ FeatureOfInterest",
+          "status": "fn",
+          "reason": "pred has no SubClassOf axiom on 'Water Indicator'",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX13",
+          "term": "Water",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "Water ⊑ ∀hasProperty.WaterProperty",
+          "status": "fn",
+          "reason": "pred has no SubClassOf axiom on 'Water Indicator'",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX14",
+          "term": "WaterAsset",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "WaterAsset ⊑ FeatureOfInterest",
+          "status": "fn",
+          "reason": "pred has no SubClassOf axiom on 'Asset'",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX15",
+          "term": "WaterMeter",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "WaterMeter ⊑ Meter",
+          "status": "mismatch",
+          "reason": "pred AX20 differs: class 'Meter' not aligned to 'Device'",
+          "pred_match": {
+            "id": "AX20",
+            "dl": "Water Meter ⊑ Device",
+            "axiom_type": "SubClassOf",
+            "term": "Water Meter"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX16",
+          "term": "WaterMeter",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "WaterMeter ⊑ ≤1 hasFabricationNumber.⊤",
+          "status": "mismatch",
+          "reason": "pred AX21 differs: expr_type ObjectMaxCardinality vs Class",
+          "pred_match": {
+            "id": "AX21",
+            "dl": "Water Meter ⊑ Asset",
+            "axiom_type": "SubClassOf",
+            "term": "Water Meter"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX17",
+          "term": "WaterMeter",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "WaterMeter ⊑ ≤1 hasFirmwareVersion.⊤",
+          "status": "fn",
+          "reason": "pred has no SubClassOf axiom on 'Water Meter'",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX18",
+          "term": "WaterMeter",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "WaterMeter ⊑ ≤1 hasHardwareVersion.⊤",
+          "status": "fn",
+          "reason": "pred has no SubClassOf axiom on 'Water Meter'",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX19",
+          "term": "WaterMeter",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "WaterMeter ⊑ ≤1 hasVersion.⊤",
+          "status": "fn",
+          "reason": "pred has no SubClassOf axiom on 'Water Meter'",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX20",
+          "term": "appliesTo",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃appliesTo.⊤ ⊑ Tariff",
+          "status": "skip",
+          "reason": "subject 'appliesTo' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX21",
+          "term": "appliesTo",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀appliesTo.WaterMeter",
+          "status": "skip",
+          "reason": "subject 'appliesTo' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX22",
+          "term": "featureIsMeasuredByDevice",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃featureIsMeasuredByDevice.⊤ ⊑ FeatureOfInterest",
+          "status": "skip",
+          "reason": "subject 'featureIsMeasuredByDevice' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX23",
+          "term": "featureIsMeasuredByDevice",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀featureIsMeasuredByDevice.Device",
+          "status": "skip",
+          "reason": "subject 'featureIsMeasuredByDevice' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX24",
+          "term": "hasBillingPeriod",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃hasBillingPeriod.⊤ ⊑ Tariff",
+          "status": "skip",
+          "reason": "subject 'hasBillingPeriod' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX25",
+          "term": "hasBillingPeriod",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀hasBillingPeriod.TemporalDuration",
+          "status": "skip",
+          "reason": "subject 'hasBillingPeriod' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX26",
+          "term": "hasDuration",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃hasDuration.⊤ ⊑ Tariff",
+          "status": "skip",
+          "reason": "subject 'hasDuration' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX27",
+          "term": "hasDuration",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀hasDuration.TemporalDuration",
+          "status": "skip",
+          "reason": "subject 'hasDuration' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX28",
+          "term": "hasKPI",
+          "term_type": "ObjectProperty",
+          "axiom_type": "InverseOf",
+          "dl": "hasKPI ≡ isKPIOf⁻",
+          "status": "skip",
+          "reason": "subject 'hasKPI' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX29",
+          "term": "hasPeriod",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃hasPeriod.⊤ ⊑ Tariff",
+          "status": "skip",
+          "reason": "subject 'hasPeriod' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX30",
+          "term": "hasPeriod",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀hasPeriod.TemporalDuration",
+          "status": "skip",
+          "reason": "subject 'hasPeriod' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX31",
+          "term": "hasPhenomenonTime",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃hasPhenomenonTime.⊤ ⊑ Measurement",
+          "status": "skip",
+          "reason": "subject 'hasPhenomenonTime' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX32",
+          "term": "hasPhenomenonTime",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀hasPhenomenonTime.TemporalEntity",
+          "status": "skip",
+          "reason": "subject 'hasPhenomenonTime' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX33",
+          "term": "isKPIOf",
+          "term_type": "ObjectProperty",
+          "axiom_type": "InverseOf",
+          "dl": "isKPIOf ≡ hasKPI⁻",
+          "status": "skip",
+          "reason": "subject 'isKPIOf' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX34",
+          "term": "makesMeasurement",
+          "term_type": "ObjectProperty",
+          "axiom_type": "InverseOf",
+          "dl": "makesMeasurement ≡ measurementMadeBy⁻",
+          "status": "mismatch",
+          "reason": "pred AX77 differs: inverse-property 'measurementMadeBy' not aligned to 'is provided by'",
+          "pred_match": {
+            "id": "AX77",
+            "dl": "provides measurement ≡ is provided by⁻",
+            "axiom_type": "InverseOf",
+            "term": "provides measurement"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX35",
+          "term": "measurementMadeBy",
+          "term_type": "ObjectProperty",
+          "axiom_type": "InverseOf",
+          "dl": "measurementMadeBy ≡ makesMeasurement⁻",
+          "status": "skip",
+          "reason": "subject 'measurementMadeBy' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX36",
+          "term": "hasBillingDate",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Domain",
+          "dl": "∃hasBillingDate.⊤ ⊑ Tariff",
+          "status": "skip",
+          "reason": "subject 'hasBillingDate' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX37",
+          "term": "hasBillingDate",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Range",
+          "dl": "hasBillingDate maps-to datetime'>",
+          "status": "skip",
+          "reason": "subject 'hasBillingDate' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX38",
+          "term": "hasFabricationNumber",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Range",
+          "dl": "hasFabricationNumber maps-to ⊤",
+          "status": "mismatch",
+          "reason": "pred AX94 differs: expr_type Top vs Datatype",
+          "pred_match": {
+            "id": "AX94",
+            "dl": "has fabrication number maps-to xsd:string",
+            "axiom_type": "Range",
+            "term": "has fabrication number"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX39",
+          "term": "hasFirmwareVersion",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Range",
+          "dl": "hasFirmwareVersion maps-to ⊤",
+          "status": "mismatch",
+          "reason": "pred AX98 differs: expr_type Top vs Datatype",
+          "pred_match": {
+            "id": "AX98",
+            "dl": "has firmware version maps-to xsd:string",
+            "axiom_type": "Range",
+            "term": "has firmware version"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX40",
+          "term": "hasHardwareVersion",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Range",
+          "dl": "hasHardwareVersion maps-to ⊤",
+          "status": "mismatch",
+          "reason": "pred AX106 differs: expr_type Top vs Datatype",
+          "pred_match": {
+            "id": "AX106",
+            "dl": "has hardware version maps-to xsd:string",
+            "axiom_type": "Range",
+            "term": "has hardware version"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX41",
+          "term": "hasStartTimestamp",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Domain",
+          "dl": "∃hasStartTimestamp.⊤ ⊑ Tariff",
+          "status": "tp",
+          "reason": "matched pred AX125",
+          "pred_match": {
+            "id": "AX125",
+            "dl": "∃has start date.⊤ ⊑ Tariff",
+            "axiom_type": "Domain",
+            "term": "has start date"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX42",
+          "term": "hasStartTimestamp",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Range",
+          "dl": "hasStartTimestamp maps-to datetime'>",
+          "status": "tp",
+          "reason": "matched pred AX126",
+          "pred_match": {
+            "id": "AX126",
+            "dl": "has start date maps-to datetime'>",
+            "axiom_type": "Range",
+            "term": "has start date"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX43",
+          "term": "hasVersion",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Range",
+          "dl": "hasVersion maps-to ⊤",
+          "status": "mismatch",
+          "reason": "pred AX138 differs: expr_type Top vs Datatype",
+          "pred_match": {
+            "id": "AX138",
+            "dl": "has version maps-to xsd:string",
+            "axiom_type": "Range",
+            "term": "has version"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX1",
+          "term": "Actuator",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: Actuator (Class)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'Actuator' not matched by any gold axiom on 'Actuator'",
+          "pred_match": {
+            "id": "AX1",
+            "dl": "Declaration: Actuator (Class)",
+            "axiom_type": "Declaration",
+            "term": "Actuator"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX4",
+          "term": "Asset",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: Asset (Class)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'Asset' not matched by any gold axiom on 'Water asset'",
+          "pred_match": {
+            "id": "AX4",
+            "dl": "Declaration: Asset (Class)",
+            "axiom_type": "Declaration",
+            "term": "Asset"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX5",
+          "term": "Chemical Property",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: Chemical Property (Class)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'Chemical Property' not matched by any gold axiom on 'ChemicalProperty'",
+          "pred_match": {
+            "id": "AX5",
+            "dl": "Declaration: Chemical Property (Class)",
+            "axiom_type": "Declaration",
+            "term": "Chemical Property"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX6",
+          "term": "Chemical Property",
+          "term_type": "Class",
+          "axiom_type": "DisjointClasses",
+          "dl": "DisjointClasses(Chemical Property, Physical Property)",
+          "status": "fp",
+          "reason": "pred DisjointClasses axiom on 'Chemical Property' not matched by any gold axiom on 'ChemicalProperty'",
+          "pred_match": {
+            "id": "AX6",
+            "dl": "DisjointClasses(Chemical Property, Physical Property)",
+            "axiom_type": "DisjointClasses",
+            "term": "Chemical Property"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX8",
+          "term": "Device",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: Device (Class)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'Device' not matched by any gold axiom on 'Device'",
+          "pred_match": {
+            "id": "AX8",
+            "dl": "Declaration: Device (Class)",
+            "axiom_type": "Declaration",
+            "term": "Device"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX11",
+          "term": "Measurement",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: Measurement (Class)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'Measurement' not matched by any gold axiom on 'Measurement'",
+          "pred_match": {
+            "id": "AX11",
+            "dl": "Declaration: Measurement (Class)",
+            "axiom_type": "Declaration",
+            "term": "Measurement"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX12",
+          "term": "Physical Property",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: Physical Property (Class)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'Physical Property' not matched by any gold axiom on 'Acceptability property'",
+          "pred_match": {
+            "id": "AX12",
+            "dl": "Declaration: Physical Property (Class)",
+            "axiom_type": "Declaration",
+            "term": "Physical Property"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX14",
+          "term": "Sensor",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: Sensor (Class)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'Sensor' not matched by any gold axiom on 'Sensor'",
+          "pred_match": {
+            "id": "AX14",
+            "dl": "Declaration: Sensor (Class)",
+            "axiom_type": "Declaration",
+            "term": "Sensor"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX16",
+          "term": "Tariff",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: Tariff (Class)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'Tariff' not matched by any gold axiom on 'Tariff'",
+          "pred_match": {
+            "id": "AX16",
+            "dl": "Declaration: Tariff (Class)",
+            "axiom_type": "Declaration",
+            "term": "Tariff"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX17",
+          "term": "Water Distribution Infrastructure",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: Water Distribution Infrastructure (Class)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'Water Distribution Infrastructure' not matched by any gold axiom on 'Water infrastructure'",
+          "pred_match": {
+            "id": "AX17",
+            "dl": "Declaration: Water Distribution Infrastructure (Class)",
+            "axiom_type": "Declaration",
+            "term": "Water Distribution Infrastructure"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX18",
+          "term": "Water Indicator",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: Water Indicator (Class)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'Water Indicator' not matched by any gold axiom on 'Water'",
+          "pred_match": {
+            "id": "AX18",
+            "dl": "Declaration: Water Indicator (Class)",
+            "axiom_type": "Declaration",
+            "term": "Water Indicator"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX19",
+          "term": "Water Meter",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: Water Meter (Class)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'Water Meter' not matched by any gold axiom on 'Water meter'",
+          "pred_match": {
+            "id": "AX19",
+            "dl": "Declaration: Water Meter (Class)",
+            "axiom_type": "Declaration",
+            "term": "Water Meter"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX22",
+          "term": "Water Property",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: Water Property (Class)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'Water Property' not matched by any gold axiom on 'Water property'",
+          "pred_match": {
+            "id": "AX22",
+            "dl": "Declaration: Water Property (Class)",
+            "axiom_type": "Declaration",
+            "term": "Water Property"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX39",
+          "term": "has property",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: has property (ObjectProperty)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'has property' not matched by any gold axiom on 'has property'",
+          "pred_match": {
+            "id": "AX39",
+            "dl": "Declaration: has property (ObjectProperty)",
+            "axiom_type": "Declaration",
+            "term": "has property"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX40",
+          "term": "has property",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃has property.⊤ ⊑ Measurement",
+          "status": "fp",
+          "reason": "pred Domain axiom on 'has property' not matched by any gold axiom on 'has property'",
+          "pred_match": {
+            "id": "AX40",
+            "dl": "∃has property.⊤ ⊑ Measurement",
+            "axiom_type": "Domain",
+            "term": "has property"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX41",
+          "term": "has property",
+          "term_type": "ObjectProperty",
+          "axiom_type": "InverseOf",
+          "dl": "has property ≡ is property of⁻",
+          "status": "fp",
+          "reason": "pred InverseOf axiom on 'has property' not matched by any gold axiom on 'has property'",
+          "pred_match": {
+            "id": "AX41",
+            "dl": "has property ≡ is property of⁻",
+            "axiom_type": "InverseOf",
+            "term": "has property"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX42",
+          "term": "has property",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀has property.Water Property",
+          "status": "fp",
+          "reason": "pred Range axiom on 'has property' not matched by any gold axiom on 'has property'",
+          "pred_match": {
+            "id": "AX42",
+            "dl": "⊤ ⊑ ∀has property.Water Property",
+            "axiom_type": "Range",
+            "term": "has property"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX75",
+          "term": "provides measurement",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: provides measurement (ObjectProperty)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'provides measurement' not matched by any gold axiom on 'makes measurement'",
+          "pred_match": {
+            "id": "AX75",
+            "dl": "Declaration: provides measurement (ObjectProperty)",
+            "axiom_type": "Declaration",
+            "term": "provides measurement"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX76",
+          "term": "provides measurement",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃provides measurement.⊤ ⊑ Water Meter",
+          "status": "fp",
+          "reason": "pred Domain axiom on 'provides measurement' not matched by any gold axiom on 'makes measurement'",
+          "pred_match": {
+            "id": "AX76",
+            "dl": "∃provides measurement.⊤ ⊑ Water Meter",
+            "axiom_type": "Domain",
+            "term": "provides measurement"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX78",
+          "term": "provides measurement",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀provides measurement.Measurement",
+          "status": "fp",
+          "reason": "pred Range axiom on 'provides measurement' not matched by any gold axiom on 'makes measurement'",
+          "pred_match": {
+            "id": "AX78",
+            "dl": "⊤ ⊑ ∀provides measurement.Measurement",
+            "axiom_type": "Range",
+            "term": "provides measurement"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX91",
+          "term": "has fabrication number",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Characteristics",
+          "dl": "Functional(has fabrication number)",
+          "status": "fp",
+          "reason": "pred Characteristics axiom on 'has fabrication number' not matched by any gold axiom on 'has fabrication number'",
+          "pred_match": {
+            "id": "AX91",
+            "dl": "Functional(has fabrication number)",
+            "axiom_type": "Characteristics",
+            "term": "has fabrication number"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX92",
+          "term": "has fabrication number",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: has fabrication number (DatatypeProperty)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'has fabrication number' not matched by any gold axiom on 'has fabrication number'",
+          "pred_match": {
+            "id": "AX92",
+            "dl": "Declaration: has fabrication number (DatatypeProperty)",
+            "axiom_type": "Declaration",
+            "term": "has fabrication number"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX93",
+          "term": "has fabrication number",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Domain",
+          "dl": "∃has fabrication number.⊤ ⊑ Water Meter",
+          "status": "fp",
+          "reason": "pred Domain axiom on 'has fabrication number' not matched by any gold axiom on 'has fabrication number'",
+          "pred_match": {
+            "id": "AX93",
+            "dl": "∃has fabrication number.⊤ ⊑ Water Meter",
+            "axiom_type": "Domain",
+            "term": "has fabrication number"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX95",
+          "term": "has firmware version",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Characteristics",
+          "dl": "Functional(has firmware version)",
+          "status": "fp",
+          "reason": "pred Characteristics axiom on 'has firmware version' not matched by any gold axiom on 'has firmware version'",
+          "pred_match": {
+            "id": "AX95",
+            "dl": "Functional(has firmware version)",
+            "axiom_type": "Characteristics",
+            "term": "has firmware version"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX96",
+          "term": "has firmware version",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: has firmware version (DatatypeProperty)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'has firmware version' not matched by any gold axiom on 'has firmware version'",
+          "pred_match": {
+            "id": "AX96",
+            "dl": "Declaration: has firmware version (DatatypeProperty)",
+            "axiom_type": "Declaration",
+            "term": "has firmware version"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX97",
+          "term": "has firmware version",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Domain",
+          "dl": "∃has firmware version.⊤ ⊑ Water Meter",
+          "status": "fp",
+          "reason": "pred Domain axiom on 'has firmware version' not matched by any gold axiom on 'has firmware version'",
+          "pred_match": {
+            "id": "AX97",
+            "dl": "∃has firmware version.⊤ ⊑ Water Meter",
+            "axiom_type": "Domain",
+            "term": "has firmware version"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX103",
+          "term": "has hardware version",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Characteristics",
+          "dl": "Functional(has hardware version)",
+          "status": "fp",
+          "reason": "pred Characteristics axiom on 'has hardware version' not matched by any gold axiom on 'has hardware version'",
+          "pred_match": {
+            "id": "AX103",
+            "dl": "Functional(has hardware version)",
+            "axiom_type": "Characteristics",
+            "term": "has hardware version"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX104",
+          "term": "has hardware version",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: has hardware version (DatatypeProperty)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'has hardware version' not matched by any gold axiom on 'has hardware version'",
+          "pred_match": {
+            "id": "AX104",
+            "dl": "Declaration: has hardware version (DatatypeProperty)",
+            "axiom_type": "Declaration",
+            "term": "has hardware version"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX105",
+          "term": "has hardware version",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Domain",
+          "dl": "∃has hardware version.⊤ ⊑ Water Meter",
+          "status": "fp",
+          "reason": "pred Domain axiom on 'has hardware version' not matched by any gold axiom on 'has hardware version'",
+          "pred_match": {
+            "id": "AX105",
+            "dl": "∃has hardware version.⊤ ⊑ Water Meter",
+            "axiom_type": "Domain",
+            "term": "has hardware version"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX107",
+          "term": "has manufacturer",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Characteristics",
+          "dl": "Functional(has manufacturer)",
+          "status": "fp",
+          "reason": "pred Characteristics axiom on 'has manufacturer' not matched by any gold axiom on 'has manufacturer'",
+          "pred_match": {
+            "id": "AX107",
+            "dl": "Functional(has manufacturer)",
+            "axiom_type": "Characteristics",
+            "term": "has manufacturer"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX108",
+          "term": "has manufacturer",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: has manufacturer (DatatypeProperty)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'has manufacturer' not matched by any gold axiom on 'has manufacturer'",
+          "pred_match": {
+            "id": "AX108",
+            "dl": "Declaration: has manufacturer (DatatypeProperty)",
+            "axiom_type": "Declaration",
+            "term": "has manufacturer"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX109",
+          "term": "has manufacturer",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Domain",
+          "dl": "∃has manufacturer.⊤ ⊑ Water Meter",
+          "status": "fp",
+          "reason": "pred Domain axiom on 'has manufacturer' not matched by any gold axiom on 'has manufacturer'",
+          "pred_match": {
+            "id": "AX109",
+            "dl": "∃has manufacturer.⊤ ⊑ Water Meter",
+            "axiom_type": "Domain",
+            "term": "has manufacturer"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX110",
+          "term": "has manufacturer",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Range",
+          "dl": "has manufacturer maps-to xsd:string",
+          "status": "fp",
+          "reason": "pred Range axiom on 'has manufacturer' not matched by any gold axiom on 'has manufacturer'",
+          "pred_match": {
+            "id": "AX110",
+            "dl": "has manufacturer maps-to xsd:string",
+            "axiom_type": "Range",
+            "term": "has manufacturer"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX111",
+          "term": "has model",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Characteristics",
+          "dl": "Functional(has model)",
+          "status": "fp",
+          "reason": "pred Characteristics axiom on 'has model' not matched by any gold axiom on 'has model'",
+          "pred_match": {
+            "id": "AX111",
+            "dl": "Functional(has model)",
+            "axiom_type": "Characteristics",
+            "term": "has model"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX112",
+          "term": "has model",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: has model (DatatypeProperty)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'has model' not matched by any gold axiom on 'has model'",
+          "pred_match": {
+            "id": "AX112",
+            "dl": "Declaration: has model (DatatypeProperty)",
+            "axiom_type": "Declaration",
+            "term": "has model"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX113",
+          "term": "has model",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Domain",
+          "dl": "∃has model.⊤ ⊑ Water Meter",
+          "status": "fp",
+          "reason": "pred Domain axiom on 'has model' not matched by any gold axiom on 'has model'",
+          "pred_match": {
+            "id": "AX113",
+            "dl": "∃has model.⊤ ⊑ Water Meter",
+            "axiom_type": "Domain",
+            "term": "has model"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX114",
+          "term": "has model",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Range",
+          "dl": "has model maps-to xsd:string",
+          "status": "fp",
+          "reason": "pred Range axiom on 'has model' not matched by any gold axiom on 'has model'",
+          "pred_match": {
+            "id": "AX114",
+            "dl": "has model maps-to xsd:string",
+            "axiom_type": "Range",
+            "term": "has model"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX123",
+          "term": "has start date",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Characteristics",
+          "dl": "Functional(has start date)",
+          "status": "fp",
+          "reason": "pred Characteristics axiom on 'has start date' not matched by any gold axiom on 'has start timestamp'",
+          "pred_match": {
+            "id": "AX123",
+            "dl": "Functional(has start date)",
+            "axiom_type": "Characteristics",
+            "term": "has start date"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX124",
+          "term": "has start date",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: has start date (DatatypeProperty)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'has start date' not matched by any gold axiom on 'has start timestamp'",
+          "pred_match": {
+            "id": "AX124",
+            "dl": "Declaration: has start date (DatatypeProperty)",
+            "axiom_type": "Declaration",
+            "term": "has start date"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX135",
+          "term": "has version",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Characteristics",
+          "dl": "Functional(has version)",
+          "status": "fp",
+          "reason": "pred Characteristics axiom on 'has version' not matched by any gold axiom on 'has version'",
+          "pred_match": {
+            "id": "AX135",
+            "dl": "Functional(has version)",
+            "axiom_type": "Characteristics",
+            "term": "has version"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX136",
+          "term": "has version",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: has version (DatatypeProperty)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'has version' not matched by any gold axiom on 'has version'",
+          "pred_match": {
+            "id": "AX136",
+            "dl": "Declaration: has version (DatatypeProperty)",
+            "axiom_type": "Declaration",
+            "term": "has version"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX137",
+          "term": "has version",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Domain",
+          "dl": "∃has version.⊤ ⊑ Water Meter",
+          "status": "fp",
+          "reason": "pred Domain axiom on 'has version' not matched by any gold axiom on 'has version'",
+          "pred_match": {
+            "id": "AX137",
+            "dl": "∃has version.⊤ ⊑ Water Meter",
+            "axiom_type": "Domain",
+            "term": "has version"
+          }
+        }
+      ],
+      "counts_overall": {
+        "tp": 7,
+        "fn": 7,
+        "fp": 42,
+        "mismatch": 8,
+        "skip": 21
+      },
+      "counts_by_term": {
+        "Class": {
+          "tp": 5,
+          "fn": 7,
+          "fp": 13,
+          "mismatch": 3,
+          "skip": 4
+        },
+        "ObjectProperty": {
+          "tp": 0,
+          "fn": 0,
+          "fp": 7,
+          "mismatch": 1,
+          "skip": 15
+        },
+        "DatatypeProperty": {
+          "tp": 2,
+          "fn": 0,
+          "fp": 22,
+          "mismatch": 4,
+          "skip": 2
+        }
+      },
+      "counts_by_combo": {
+        "Class|SubClassOf": {
+          "tp": 4,
+          "fn": 7,
+          "fp": 0,
+          "mismatch": 3,
+          "skip": 4
+        },
+        "Class|DisjointClasses": {
+          "tp": 1,
+          "fn": 0,
+          "fp": 1,
+          "mismatch": 0,
+          "skip": 0
+        },
+        "ObjectProperty|Domain": {
+          "tp": 0,
+          "fn": 0,
+          "fp": 2,
+          "mismatch": 0,
+          "skip": 6
+        },
+        "ObjectProperty|Range": {
+          "tp": 0,
+          "fn": 0,
+          "fp": 2,
+          "mismatch": 0,
+          "skip": 6
+        },
+        "ObjectProperty|InverseOf": {
+          "tp": 0,
+          "fn": 0,
+          "fp": 1,
+          "mismatch": 1,
+          "skip": 3
+        },
+        "DatatypeProperty|Domain": {
+          "tp": 1,
+          "fn": 0,
+          "fp": 6,
+          "mismatch": 0,
+          "skip": 1
+        },
+        "DatatypeProperty|Range": {
+          "tp": 1,
+          "fn": 0,
+          "fp": 2,
+          "mismatch": 4,
+          "skip": 1
+        },
+        "Class|Declaration": {
+          "tp": 0,
+          "fn": 0,
+          "fp": 12,
+          "mismatch": 0,
+          "skip": 0
+        },
+        "ObjectProperty|Declaration": {
+          "tp": 0,
+          "fn": 0,
+          "fp": 2,
+          "mismatch": 0,
+          "skip": 0
+        },
+        "DatatypeProperty|Characteristics": {
+          "tp": 0,
+          "fn": 0,
+          "fp": 7,
+          "mismatch": 0,
+          "skip": 0
+        },
+        "DatatypeProperty|Declaration": {
+          "tp": 0,
+          "fn": 0,
+          "fp": 7,
+          "mismatch": 0,
+          "skip": 0
+        }
+      }
+    },
+    "layer4": {
+      "per_term": {
+        "Class": {
+          "tp": 5,
+          "fp": 17,
+          "fp_layer3": 16,
+          "fp_unaligned": 1,
+          "fn": 14,
+          "fn_layer3": 10,
+          "fn_unaligned": 4,
+          "mismatch": 3,
+          "skip": 4,
+          "precision": 0.22727272727272727,
+          "recall": 0.2631578947368421,
+          "f1": 0.24390243902439024
+        },
+        "ObjectProperty": {
+          "tp": 0,
+          "fp": 56,
+          "fp_layer3": 8,
+          "fp_unaligned": 48,
+          "fn": 16,
+          "fn_layer3": 1,
+          "fn_unaligned": 15,
+          "mismatch": 1,
+          "skip": 15,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "DatatypeProperty": {
+          "tp": 2,
+          "fp": 58,
+          "fp_layer3": 26,
+          "fp_unaligned": 32,
+          "fn": 6,
+          "fn_layer3": 4,
+          "fn_unaligned": 2,
+          "mismatch": 4,
+          "skip": 2,
+          "precision": 0.03333333333333333,
+          "recall": 0.25,
+          "f1": 0.058823529411764705
+        }
+      },
+      "grand": {
+        "tp": 7,
+        "fp": 131,
+        "fn": 36,
+        "precision": 0.050724637681159424,
+        "recall": 0.16279069767441862,
+        "f1": 0.07734806629834254
+      },
+      "unaligned_lists": {
+        "Class": {
+          "gold": [
+            {
+              "id": "AX6",
+              "term": "FeatureOfInterest",
+              "axiom_type": "SubClassOf",
+              "dl": "FeatureOfInterest ⊑ ∀hasMeasurement.Measurement"
+            },
+            {
+              "id": "AX8",
+              "term": "Meter",
+              "axiom_type": "SubClassOf",
+              "dl": "Meter ⊑ Sensor"
+            },
+            {
+              "id": "AX9",
+              "term": "Point",
+              "axiom_type": "SubClassOf",
+              "dl": "Point ⊑ Geometry"
+            },
+            {
+              "id": "AX11",
+              "term": "TimeBasedTariff",
+              "axiom_type": "SubClassOf",
+              "dl": "TimeBasedTariff ⊑ Tariff"
+            }
+          ],
+          "pred": [
+            {
+              "id": "AX10",
+              "term": "Location",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: Location (Class)"
+            }
+          ]
+        },
+        "ObjectProperty": {
+          "gold": [
+            {
+              "id": "AX20",
+              "term": "appliesTo",
+              "axiom_type": "Domain",
+              "dl": "∃appliesTo.⊤ ⊑ Tariff"
+            },
+            {
+              "id": "AX21",
+              "term": "appliesTo",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀appliesTo.WaterMeter"
+            },
+            {
+              "id": "AX22",
+              "term": "featureIsMeasuredByDevice",
+              "axiom_type": "Domain",
+              "dl": "∃featureIsMeasuredByDevice.⊤ ⊑ FeatureOfInterest"
+            },
+            {
+              "id": "AX23",
+              "term": "featureIsMeasuredByDevice",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀featureIsMeasuredByDevice.Device"
+            },
+            {
+              "id": "AX24",
+              "term": "hasBillingPeriod",
+              "axiom_type": "Domain",
+              "dl": "∃hasBillingPeriod.⊤ ⊑ Tariff"
+            },
+            {
+              "id": "AX25",
+              "term": "hasBillingPeriod",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀hasBillingPeriod.TemporalDuration"
+            },
+            {
+              "id": "AX26",
+              "term": "hasDuration",
+              "axiom_type": "Domain",
+              "dl": "∃hasDuration.⊤ ⊑ Tariff"
+            },
+            {
+              "id": "AX27",
+              "term": "hasDuration",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀hasDuration.TemporalDuration"
+            },
+            {
+              "id": "AX28",
+              "term": "hasKPI",
+              "axiom_type": "InverseOf",
+              "dl": "hasKPI ≡ isKPIOf⁻"
+            },
+            {
+              "id": "AX29",
+              "term": "hasPeriod",
+              "axiom_type": "Domain",
+              "dl": "∃hasPeriod.⊤ ⊑ Tariff"
+            },
+            {
+              "id": "AX30",
+              "term": "hasPeriod",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀hasPeriod.TemporalDuration"
+            },
+            {
+              "id": "AX31",
+              "term": "hasPhenomenonTime",
+              "axiom_type": "Domain",
+              "dl": "∃hasPhenomenonTime.⊤ ⊑ Measurement"
+            },
+            {
+              "id": "AX32",
+              "term": "hasPhenomenonTime",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀hasPhenomenonTime.TemporalEntity"
+            },
+            {
+              "id": "AX33",
+              "term": "isKPIOf",
+              "axiom_type": "InverseOf",
+              "dl": "isKPIOf ≡ hasKPI⁻"
+            },
+            {
+              "id": "AX35",
+              "term": "measurementMadeBy",
+              "axiom_type": "InverseOf",
+              "dl": "measurementMadeBy ≡ makesMeasurement⁻"
+            }
+          ],
+          "pred": [
+            {
+              "id": "AX23",
+              "term": "defined for location",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: defined for location (ObjectProperty)"
+            },
+            {
+              "id": "AX24",
+              "term": "defined for location",
+              "axiom_type": "Domain",
+              "dl": "∃defined for location.⊤ ⊑ Water Indicator"
+            },
+            {
+              "id": "AX25",
+              "term": "defined for location",
+              "axiom_type": "InverseOf",
+              "dl": "defined for location ≡ defines indicator⁻"
+            },
+            {
+              "id": "AX26",
+              "term": "defined for location",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀defined for location.Location"
+            },
+            {
+              "id": "AX27",
+              "term": "defines indicator",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: defines indicator (ObjectProperty)"
+            },
+            {
+              "id": "AX28",
+              "term": "defines indicator",
+              "axiom_type": "Domain",
+              "dl": "∃defines indicator.⊤ ⊑ Location"
+            },
+            {
+              "id": "AX29",
+              "term": "defines indicator",
+              "axiom_type": "InverseOf",
+              "dl": "defines indicator ≡ defined for location⁻"
+            },
+            {
+              "id": "AX30",
+              "term": "defines indicator",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀defines indicator.Water Indicator"
+            },
+            {
+              "id": "AX31",
+              "term": "has actuator",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has actuator (ObjectProperty)"
+            },
+            {
+              "id": "AX32",
+              "term": "has actuator",
+              "axiom_type": "Domain",
+              "dl": "∃has actuator.⊤ ⊑ Water Distribution Infrastructure"
+            },
+            {
+              "id": "AX33",
+              "term": "has actuator",
+              "axiom_type": "InverseOf",
+              "dl": "has actuator ≡ is actuator of⁻"
+            },
+            {
+              "id": "AX34",
+              "term": "has actuator",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀has actuator.Actuator"
+            },
+            {
+              "id": "AX35",
+              "term": "has asset",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has asset (ObjectProperty)"
+            },
+            {
+              "id": "AX36",
+              "term": "has asset",
+              "axiom_type": "Domain",
+              "dl": "∃has asset.⊤ ⊑ Water Distribution Infrastructure"
+            },
+            {
+              "id": "AX37",
+              "term": "has asset",
+              "axiom_type": "InverseOf",
+              "dl": "has asset ≡ is asset of⁻"
+            },
+            {
+              "id": "AX38",
+              "term": "has asset",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀has asset.Asset"
+            },
+            {
+              "id": "AX43",
+              "term": "has sensor",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has sensor (ObjectProperty)"
+            },
+            {
+              "id": "AX44",
+              "term": "has sensor",
+              "axiom_type": "Domain",
+              "dl": "∃has sensor.⊤ ⊑ Water Distribution Infrastructure"
+            },
+            {
+              "id": "AX45",
+              "term": "has sensor",
+              "axiom_type": "InverseOf",
+              "dl": "has sensor ≡ is sensor of⁻"
+            },
+            {
+              "id": "AX46",
+              "term": "has sensor",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀has sensor.Sensor"
+            },
+            {
+              "id": "AX47",
+              "term": "has tariff",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has tariff (ObjectProperty)"
+            },
+            {
+              "id": "AX48",
+              "term": "has tariff",
+              "axiom_type": "Domain",
+              "dl": "∃has tariff.⊤ ⊑ Water Meter"
+            },
+            {
+              "id": "AX49",
+              "term": "has tariff",
+              "axiom_type": "InverseOf",
+              "dl": "has tariff ≡ is tariff of⁻"
+            },
+            {
+              "id": "AX50",
+              "term": "has tariff",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀has tariff.Tariff"
+            },
+            {
+              "id": "AX51",
+              "term": "is actuator of",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: is actuator of (ObjectProperty)"
+            },
+            {
+              "id": "AX52",
+              "term": "is actuator of",
+              "axiom_type": "Domain",
+              "dl": "∃is actuator of.⊤ ⊑ Actuator"
+            },
+            {
+              "id": "AX53",
+              "term": "is actuator of",
+              "axiom_type": "InverseOf",
+              "dl": "is actuator of ≡ has actuator⁻"
+            },
+            {
+              "id": "AX54",
+              "term": "is actuator of",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀is actuator of.Water Distribution Infrastructure"
+            },
+            {
+              "id": "AX55",
+              "term": "is asset of",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: is asset of (ObjectProperty)"
+            },
+            {
+              "id": "AX56",
+              "term": "is asset of",
+              "axiom_type": "Domain",
+              "dl": "∃is asset of.⊤ ⊑ Asset"
+            },
+            {
+              "id": "AX57",
+              "term": "is asset of",
+              "axiom_type": "InverseOf",
+              "dl": "is asset of ≡ has asset⁻"
+            },
+            {
+              "id": "AX58",
+              "term": "is asset of",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀is asset of.Water Distribution Infrastructure"
+            },
+            {
+              "id": "AX59",
+              "term": "is property of",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: is property of (ObjectProperty)"
+            },
+            {
+              "id": "AX60",
+              "term": "is property of",
+              "axiom_type": "Domain",
+              "dl": "∃is property of.⊤ ⊑ Water Property"
+            },
+            {
+              "id": "AX61",
+              "term": "is property of",
+              "axiom_type": "InverseOf",
+              "dl": "is property of ≡ has property⁻"
+            },
+            {
+              "id": "AX62",
+              "term": "is property of",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀is property of.Measurement"
+            },
+            {
+              "id": "AX63",
+              "term": "is provided by",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: is provided by (ObjectProperty)"
+            },
+            {
+              "id": "AX64",
+              "term": "is provided by",
+              "axiom_type": "Domain",
+              "dl": "∃is provided by.⊤ ⊑ Measurement"
+            },
+            {
+              "id": "AX65",
+              "term": "is provided by",
+              "axiom_type": "InverseOf",
+              "dl": "is provided by ≡ provides measurement⁻"
+            },
+            {
+              "id": "AX66",
+              "term": "is provided by",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀is provided by.Water Meter"
+            },
+            {
+              "id": "AX67",
+              "term": "is sensor of",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: is sensor of (ObjectProperty)"
+            },
+            {
+              "id": "AX68",
+              "term": "is sensor of",
+              "axiom_type": "Domain",
+              "dl": "∃is sensor of.⊤ ⊑ Sensor"
+            },
+            {
+              "id": "AX69",
+              "term": "is sensor of",
+              "axiom_type": "InverseOf",
+              "dl": "is sensor of ≡ has sensor⁻"
+            },
+            {
+              "id": "AX70",
+              "term": "is sensor of",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀is sensor of.Water Distribution Infrastructure"
+            },
+            {
+              "id": "AX71",
+              "term": "is tariff of",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: is tariff of (ObjectProperty)"
+            },
+            {
+              "id": "AX72",
+              "term": "is tariff of",
+              "axiom_type": "Domain",
+              "dl": "∃is tariff of.⊤ ⊑ Tariff"
+            },
+            {
+              "id": "AX73",
+              "term": "is tariff of",
+              "axiom_type": "InverseOf",
+              "dl": "is tariff of ≡ has tariff⁻"
+            },
+            {
+              "id": "AX74",
+              "term": "is tariff of",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀is tariff of.Water Meter"
+            }
+          ]
+        },
+        "DatatypeProperty": {
+          "gold": [
+            {
+              "id": "AX36",
+              "term": "hasBillingDate",
+              "axiom_type": "Domain",
+              "dl": "∃hasBillingDate.⊤ ⊑ Tariff"
+            },
+            {
+              "id": "AX37",
+              "term": "hasBillingDate",
+              "axiom_type": "Range",
+              "dl": "hasBillingDate maps-to datetime'>"
+            }
+          ],
+          "pred": [
+            {
+              "id": "AX79",
+              "term": "has billing date",
+              "axiom_type": "Characteristics",
+              "dl": "Functional(has billing date)"
+            },
+            {
+              "id": "AX80",
+              "term": "has billing date",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has billing date (DatatypeProperty)"
+            },
+            {
+              "id": "AX81",
+              "term": "has billing date",
+              "axiom_type": "Domain",
+              "dl": "∃has billing date.⊤ ⊑ Water Meter"
+            },
+            {
+              "id": "AX82",
+              "term": "has billing date",
+              "axiom_type": "Range",
+              "dl": "has billing date maps-to datetime'>"
+            },
+            {
+              "id": "AX83",
+              "term": "has billing period",
+              "axiom_type": "Characteristics",
+              "dl": "Functional(has billing period)"
+            },
+            {
+              "id": "AX84",
+              "term": "has billing period",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has billing period (DatatypeProperty)"
+            },
+            {
+              "id": "AX85",
+              "term": "has billing period",
+              "axiom_type": "Domain",
+              "dl": "∃has billing period.⊤ ⊑ Water Meter"
+            },
+            {
+              "id": "AX86",
+              "term": "has billing period",
+              "axiom_type": "Range",
+              "dl": "has billing period maps-to xsd:string"
+            },
+            {
+              "id": "AX87",
+              "term": "has duration",
+              "axiom_type": "Characteristics",
+              "dl": "Functional(has duration)"
+            },
+            {
+              "id": "AX88",
+              "term": "has duration",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has duration (DatatypeProperty)"
+            },
+            {
+              "id": "AX89",
+              "term": "has duration",
+              "axiom_type": "Domain",
+              "dl": "∃has duration.⊤ ⊑ Tariff"
+            },
+            {
+              "id": "AX90",
+              "term": "has duration",
+              "axiom_type": "Range",
+              "dl": "has duration maps-to timedelta'>"
+            },
+            {
+              "id": "AX99",
+              "term": "has geolocation",
+              "axiom_type": "Characteristics",
+              "dl": "Functional(has geolocation)"
+            },
+            {
+              "id": "AX100",
+              "term": "has geolocation",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has geolocation (DatatypeProperty)"
+            },
+            {
+              "id": "AX101",
+              "term": "has geolocation",
+              "axiom_type": "Domain",
+              "dl": "∃has geolocation.⊤ ⊑ Water Meter"
+            },
+            {
+              "id": "AX102",
+              "term": "has geolocation",
+              "axiom_type": "Range",
+              "dl": "has geolocation maps-to xsd:string"
+            },
+            {
+              "id": "AX115",
+              "term": "has power",
+              "axiom_type": "Characteristics",
+              "dl": "Functional(has power)"
+            },
+            {
+              "id": "AX116",
+              "term": "has power",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has power (DatatypeProperty)"
+            },
+            {
+              "id": "AX117",
+              "term": "has power",
+              "axiom_type": "Domain",
+              "dl": "∃has power.⊤ ⊑ Water Meter"
+            },
+            {
+              "id": "AX118",
+              "term": "has power",
+              "axiom_type": "Range",
+              "dl": "has power maps-to xsd:float"
+            },
+            {
+              "id": "AX119",
+              "term": "has radio frequency level",
+              "axiom_type": "Characteristics",
+              "dl": "Functional(has radio frequency level)"
+            },
+            {
+              "id": "AX120",
+              "term": "has radio frequency level",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has radio frequency level (DatatypeProperty)"
+            },
+            {
+              "id": "AX121",
+              "term": "has radio frequency level",
+              "axiom_type": "Domain",
+              "dl": "∃has radio frequency level.⊤ ⊑ Water Meter"
+            },
+            {
+              "id": "AX122",
+              "term": "has radio frequency level",
+              "axiom_type": "Range",
+              "dl": "has radio frequency level maps-to xsd:float"
+            },
+            {
+              "id": "AX127",
+              "term": "has tariff period",
+              "axiom_type": "Characteristics",
+              "dl": "Functional(has tariff period)"
+            },
+            {
+              "id": "AX128",
+              "term": "has tariff period",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has tariff period (DatatypeProperty)"
+            },
+            {
+              "id": "AX129",
+              "term": "has tariff period",
+              "axiom_type": "Domain",
+              "dl": "∃has tariff period.⊤ ⊑ Tariff"
+            },
+            {
+              "id": "AX130",
+              "term": "has tariff period",
+              "axiom_type": "Range",
+              "dl": "has tariff period maps-to xsd:string"
+            },
+            {
+              "id": "AX131",
+              "term": "has temporal setting",
+              "axiom_type": "Characteristics",
+              "dl": "Functional(has temporal setting)"
+            },
+            {
+              "id": "AX132",
+              "term": "has temporal setting",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has temporal setting (DatatypeProperty)"
+            },
+            {
+              "id": "AX133",
+              "term": "has temporal setting",
+              "axiom_type": "Domain",
+              "dl": "∃has temporal setting.⊤ ⊑ Measurement"
+            },
+            {
+              "id": "AX134",
+              "term": "has temporal setting",
+              "axiom_type": "Range",
+              "dl": "has temporal setting maps-to xsd:string"
+            }
+          ]
+        }
+      }
+    },
+    "alignments": {
+      "class": {
+        "Acceptability property": "Physical Property",
+        "Actuator": "Actuator",
+        "ChemicalProperty": "Chemical Property",
+        "Device": "Device",
+        "Measurement": "Measurement",
+        "Sensor": "Sensor",
+        "Tariff": "Tariff",
+        "Water": "Water Indicator",
+        "Water asset": "Asset",
+        "Water infrastructure": "Water Distribution Infrastructure",
+        "Water meter": "Water Meter",
+        "Water property": "Water Property"
+      },
+      "property": {
+        "has fabrication number": "has fabrication number",
+        "has firmware version": "has firmware version",
+        "has hardware version": "has hardware version",
+        "has manufacturer": "has manufacturer",
+        "has model": "has model",
+        "has start timestamp": "has start date",
+        "has version": "has version",
+        "has property": "has property",
+        "makes measurement": "provides measurement"
+      }
+    },
+    "cq_coverage": {
+      "per_cq": {
+        "CQ01": {
+          "question": "",
+          "n_axioms": 1,
+          "n_tp": 0,
+          "rate": 0.0,
+          "fully_covered": false,
+          "any_covered": false,
+          "covered": false,
+          "axiom_ids": [
+            "AX14"
+          ],
+          "tp_axiom_ids": [],
+          "missing_axiom_ids": [
+            "AX14"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX14",
+              "dl": "WaterAsset ⊑ FeatureOfInterest",
+              "status": "fn"
+            }
+          ]
+        },
+        "CQ04": {
+          "question": "",
+          "n_axioms": 10,
+          "n_tp": 3,
+          "rate": 0.3,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX3",
+            "AX5",
+            "AX6",
+            "AX8",
+            "AX10",
+            "AX15",
+            "AX22",
+            "AX23",
+            "AX42",
+            "AX43"
+          ],
+          "tp_axiom_ids": [
+            "AX3",
+            "AX10",
+            "AX42"
+          ],
+          "missing_axiom_ids": [
+            "AX5",
+            "AX6",
+            "AX8",
+            "AX15",
+            "AX22",
+            "AX23",
+            "AX43"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX5",
+              "dl": "Device ⊑ ∀makesMeasurement.Measurement",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX6",
+              "dl": "FeatureOfInterest ⊑ ∀hasMeasurement.Measurement",
+              "status": "skip"
+            },
+            {
+              "id": "AX8",
+              "dl": "Meter ⊑ Sensor",
+              "status": "skip"
+            },
+            {
+              "id": "AX15",
+              "dl": "WaterMeter ⊑ Meter",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX22",
+              "dl": "∃featureIsMeasuredByDevice.⊤ ⊑ FeatureOfInterest",
+              "status": "skip"
+            },
+            {
+              "id": "AX23",
+              "dl": "⊤ ⊑ ∀featureIsMeasuredByDevice.Device",
+              "status": "skip"
+            },
+            {
+              "id": "AX43",
+              "dl": "hasVersion maps-to ⊤",
+              "status": "mismatch"
+            }
+          ]
+        },
+        "CQ05": {
+          "question": "",
+          "n_axioms": 2,
+          "n_tp": 2,
+          "rate": 1.0,
+          "fully_covered": true,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX2",
+            "AX3"
+          ],
+          "tp_axiom_ids": [
+            "AX2",
+            "AX3"
+          ],
+          "missing_axiom_ids": [],
+          "missing_axioms": []
+        },
+        "CQ06": {
+          "question": "",
+          "n_axioms": 9,
+          "n_tp": 3,
+          "rate": 0.3333333333333333,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX2",
+            "AX5",
+            "AX6",
+            "AX7",
+            "AX10",
+            "AX22",
+            "AX23",
+            "AX42",
+            "AX43"
+          ],
+          "tp_axiom_ids": [
+            "AX2",
+            "AX10",
+            "AX42"
+          ],
+          "missing_axiom_ids": [
+            "AX5",
+            "AX6",
+            "AX7",
+            "AX22",
+            "AX23",
+            "AX43"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX5",
+              "dl": "Device ⊑ ∀makesMeasurement.Measurement",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX6",
+              "dl": "FeatureOfInterest ⊑ ∀hasMeasurement.Measurement",
+              "status": "skip"
+            },
+            {
+              "id": "AX7",
+              "dl": "Measurement ⊑ ∀hasTimestamp.datetime'>",
+              "status": "fn"
+            },
+            {
+              "id": "AX22",
+              "dl": "∃featureIsMeasuredByDevice.⊤ ⊑ FeatureOfInterest",
+              "status": "skip"
+            },
+            {
+              "id": "AX23",
+              "dl": "⊤ ⊑ ∀featureIsMeasuredByDevice.Device",
+              "status": "skip"
+            },
+            {
+              "id": "AX43",
+              "dl": "hasVersion maps-to ⊤",
+              "status": "mismatch"
+            }
+          ]
+        },
+        "CQ08": {
+          "question": "",
+          "n_axioms": 4,
+          "n_tp": 0,
+          "rate": 0.0,
+          "fully_covered": false,
+          "any_covered": false,
+          "covered": false,
+          "axiom_ids": [
+            "AX8",
+            "AX15",
+            "AX16",
+            "AX30"
+          ],
+          "tp_axiom_ids": [],
+          "missing_axiom_ids": [
+            "AX8",
+            "AX15",
+            "AX16",
+            "AX30"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX8",
+              "dl": "Meter ⊑ Sensor",
+              "status": "skip"
+            },
+            {
+              "id": "AX15",
+              "dl": "WaterMeter ⊑ Meter",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX16",
+              "dl": "WaterMeter ⊑ ≤1 hasFabricationNumber.⊤",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX30",
+              "dl": "⊤ ⊑ ∀hasPeriod.TemporalDuration",
+              "status": "skip"
+            }
+          ]
+        },
+        "CQ09": {
+          "question": "",
+          "n_axioms": 2,
+          "n_tp": 0,
+          "rate": 0.0,
+          "fully_covered": false,
+          "any_covered": false,
+          "covered": false,
+          "axiom_ids": [
+            "AX8",
+            "AX15"
+          ],
+          "tp_axiom_ids": [],
+          "missing_axiom_ids": [
+            "AX8",
+            "AX15"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX8",
+              "dl": "Meter ⊑ Sensor",
+              "status": "skip"
+            },
+            {
+              "id": "AX15",
+              "dl": "WaterMeter ⊑ Meter",
+              "status": "mismatch"
+            }
+          ]
+        },
+        "CQ10": {
+          "question": "",
+          "n_axioms": 4,
+          "n_tp": 0,
+          "rate": 0.0,
+          "fully_covered": false,
+          "any_covered": false,
+          "covered": false,
+          "axiom_ids": [
+            "AX8",
+            "AX15",
+            "AX19",
+            "AX40"
+          ],
+          "tp_axiom_ids": [],
+          "missing_axiom_ids": [
+            "AX8",
+            "AX15",
+            "AX19",
+            "AX40"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX8",
+              "dl": "Meter ⊑ Sensor",
+              "status": "skip"
+            },
+            {
+              "id": "AX15",
+              "dl": "WaterMeter ⊑ Meter",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX19",
+              "dl": "WaterMeter ⊑ ≤1 hasVersion.⊤",
+              "status": "fn"
+            },
+            {
+              "id": "AX40",
+              "dl": "hasHardwareVersion maps-to ⊤",
+              "status": "mismatch"
+            }
+          ]
+        },
+        "CQ11": {
+          "question": "",
+          "n_axioms": 4,
+          "n_tp": 0,
+          "rate": 0.0,
+          "fully_covered": false,
+          "any_covered": false,
+          "covered": false,
+          "axiom_ids": [
+            "AX8",
+            "AX15",
+            "AX18",
+            "AX32"
+          ],
+          "tp_axiom_ids": [],
+          "missing_axiom_ids": [
+            "AX8",
+            "AX15",
+            "AX18",
+            "AX32"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX8",
+              "dl": "Meter ⊑ Sensor",
+              "status": "skip"
+            },
+            {
+              "id": "AX15",
+              "dl": "WaterMeter ⊑ Meter",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX18",
+              "dl": "WaterMeter ⊑ ≤1 hasHardwareVersion.⊤",
+              "status": "fn"
+            },
+            {
+              "id": "AX32",
+              "dl": "⊤ ⊑ ∀hasPhenomenonTime.TemporalEntity",
+              "status": "skip"
+            }
+          ]
+        },
+        "CQ12": {
+          "question": "",
+          "n_axioms": 4,
+          "n_tp": 0,
+          "rate": 0.0,
+          "fully_covered": false,
+          "any_covered": false,
+          "covered": false,
+          "axiom_ids": [
+            "AX8",
+            "AX15",
+            "AX17",
+            "AX31"
+          ],
+          "tp_axiom_ids": [],
+          "missing_axiom_ids": [
+            "AX8",
+            "AX15",
+            "AX17",
+            "AX31"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX8",
+              "dl": "Meter ⊑ Sensor",
+              "status": "skip"
+            },
+            {
+              "id": "AX15",
+              "dl": "WaterMeter ⊑ Meter",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX17",
+              "dl": "WaterMeter ⊑ ≤1 hasFirmwareVersion.⊤",
+              "status": "fn"
+            },
+            {
+              "id": "AX31",
+              "dl": "∃hasPhenomenonTime.⊤ ⊑ Measurement",
+              "status": "skip"
+            }
+          ]
+        },
+        "CQ18": {
+          "question": "",
+          "n_axioms": 2,
+          "n_tp": 0,
+          "rate": 0.0,
+          "fully_covered": false,
+          "any_covered": false,
+          "covered": false,
+          "axiom_ids": [
+            "AX8",
+            "AX15"
+          ],
+          "tp_axiom_ids": [],
+          "missing_axiom_ids": [
+            "AX8",
+            "AX15"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX8",
+              "dl": "Meter ⊑ Sensor",
+              "status": "skip"
+            },
+            {
+              "id": "AX15",
+              "dl": "WaterMeter ⊑ Meter",
+              "status": "mismatch"
+            }
+          ]
+        },
+        "CQ19": {
+          "question": "",
+          "n_axioms": 2,
+          "n_tp": 0,
+          "rate": 0.0,
+          "fully_covered": false,
+          "any_covered": false,
+          "covered": false,
+          "axiom_ids": [
+            "AX8",
+            "AX15"
+          ],
+          "tp_axiom_ids": [],
+          "missing_axiom_ids": [
+            "AX8",
+            "AX15"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX8",
+              "dl": "Meter ⊑ Sensor",
+              "status": "skip"
+            },
+            {
+              "id": "AX15",
+              "dl": "WaterMeter ⊑ Meter",
+              "status": "mismatch"
+            }
+          ]
+        },
+        "CQ20": {
+          "question": "",
+          "n_axioms": 3,
+          "n_tp": 0,
+          "rate": 0.0,
+          "fully_covered": false,
+          "any_covered": false,
+          "covered": false,
+          "axiom_ids": [
+            "AX8",
+            "AX9",
+            "AX15"
+          ],
+          "tp_axiom_ids": [],
+          "missing_axiom_ids": [
+            "AX8",
+            "AX9",
+            "AX15"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX8",
+              "dl": "Meter ⊑ Sensor",
+              "status": "skip"
+            },
+            {
+              "id": "AX9",
+              "dl": "Point ⊑ Geometry",
+              "status": "skip"
+            },
+            {
+              "id": "AX15",
+              "dl": "WaterMeter ⊑ Meter",
+              "status": "mismatch"
+            }
+          ]
+        },
+        "CQ25": {
+          "question": "",
+          "n_axioms": 7,
+          "n_tp": 1,
+          "rate": 0.14285714285714285,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX5",
+            "AX7",
+            "AX8",
+            "AX15",
+            "AX36",
+            "AX37",
+            "AX42"
+          ],
+          "tp_axiom_ids": [
+            "AX42"
+          ],
+          "missing_axiom_ids": [
+            "AX5",
+            "AX7",
+            "AX8",
+            "AX15",
+            "AX36",
+            "AX37"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX5",
+              "dl": "Device ⊑ ∀makesMeasurement.Measurement",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX7",
+              "dl": "Measurement ⊑ ∀hasTimestamp.datetime'>",
+              "status": "fn"
+            },
+            {
+              "id": "AX8",
+              "dl": "Meter ⊑ Sensor",
+              "status": "skip"
+            },
+            {
+              "id": "AX15",
+              "dl": "WaterMeter ⊑ Meter",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX36",
+              "dl": "∃hasBillingDate.⊤ ⊑ Tariff",
+              "status": "skip"
+            },
+            {
+              "id": "AX37",
+              "dl": "hasBillingDate maps-to datetime'>",
+              "status": "skip"
+            }
+          ]
+        },
+        "CQ33": {
+          "question": "",
+          "n_axioms": 3,
+          "n_tp": 1,
+          "rate": 0.3333333333333333,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX1",
+            "AX12",
+            "AX13"
+          ],
+          "tp_axiom_ids": [
+            "AX1"
+          ],
+          "missing_axiom_ids": [
+            "AX12",
+            "AX13"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX12",
+              "dl": "Water ⊑ FeatureOfInterest",
+              "status": "fn"
+            },
+            {
+              "id": "AX13",
+              "dl": "Water ⊑ ∀hasProperty.WaterProperty",
+              "status": "fn"
+            }
+          ]
+        },
+        "CQ34": {
+          "question": "",
+          "n_axioms": 3,
+          "n_tp": 1,
+          "rate": 0.3333333333333333,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX4",
+            "AX12",
+            "AX13"
+          ],
+          "tp_axiom_ids": [
+            "AX4"
+          ],
+          "missing_axiom_ids": [
+            "AX12",
+            "AX13"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX12",
+              "dl": "Water ⊑ FeatureOfInterest",
+              "status": "fn"
+            },
+            {
+              "id": "AX13",
+              "dl": "Water ⊑ ∀hasProperty.WaterProperty",
+              "status": "fn"
+            }
+          ]
+        },
+        "CQ37": {
+          "question": "",
+          "n_axioms": 3,
+          "n_tp": 1,
+          "rate": 0.3333333333333333,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX14",
+            "AX33",
+            "AX41"
+          ],
+          "tp_axiom_ids": [
+            "AX41"
+          ],
+          "missing_axiom_ids": [
+            "AX14",
+            "AX33"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX14",
+              "dl": "WaterAsset ⊑ FeatureOfInterest",
+              "status": "fn"
+            },
+            {
+              "id": "AX33",
+              "dl": "isKPIOf ≡ hasKPI⁻",
+              "status": "skip"
+            }
+          ]
+        },
+        "CQ38": {
+          "question": "",
+          "n_axioms": 7,
+          "n_tp": 0,
+          "rate": 0.0,
+          "fully_covered": false,
+          "any_covered": false,
+          "covered": false,
+          "axiom_ids": [
+            "AX7",
+            "AX11",
+            "AX15",
+            "AX20",
+            "AX21",
+            "AX38",
+            "AX39"
+          ],
+          "tp_axiom_ids": [],
+          "missing_axiom_ids": [
+            "AX7",
+            "AX11",
+            "AX15",
+            "AX20",
+            "AX21",
+            "AX38",
+            "AX39"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX7",
+              "dl": "Measurement ⊑ ∀hasTimestamp.datetime'>",
+              "status": "fn"
+            },
+            {
+              "id": "AX11",
+              "dl": "TimeBasedTariff ⊑ Tariff",
+              "status": "skip"
+            },
+            {
+              "id": "AX15",
+              "dl": "WaterMeter ⊑ Meter",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX20",
+              "dl": "∃appliesTo.⊤ ⊑ Tariff",
+              "status": "skip"
+            },
+            {
+              "id": "AX21",
+              "dl": "⊤ ⊑ ∀appliesTo.WaterMeter",
+              "status": "skip"
+            },
+            {
+              "id": "AX38",
+              "dl": "hasFabricationNumber maps-to ⊤",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX39",
+              "dl": "hasFirmwareVersion maps-to ⊤",
+              "status": "mismatch"
+            }
+          ]
+        },
+        "CQ39": {
+          "question": "",
+          "n_axioms": 6,
+          "n_tp": 0,
+          "rate": 0.0,
+          "fully_covered": false,
+          "any_covered": false,
+          "covered": false,
+          "axiom_ids": [
+            "AX11",
+            "AX15",
+            "AX20",
+            "AX21",
+            "AX28",
+            "AX29"
+          ],
+          "tp_axiom_ids": [],
+          "missing_axiom_ids": [
+            "AX11",
+            "AX15",
+            "AX20",
+            "AX21",
+            "AX28",
+            "AX29"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX11",
+              "dl": "TimeBasedTariff ⊑ Tariff",
+              "status": "skip"
+            },
+            {
+              "id": "AX15",
+              "dl": "WaterMeter ⊑ Meter",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX20",
+              "dl": "∃appliesTo.⊤ ⊑ Tariff",
+              "status": "skip"
+            },
+            {
+              "id": "AX21",
+              "dl": "⊤ ⊑ ∀appliesTo.WaterMeter",
+              "status": "skip"
+            },
+            {
+              "id": "AX28",
+              "dl": "hasKPI ≡ isKPIOf⁻",
+              "status": "skip"
+            },
+            {
+              "id": "AX29",
+              "dl": "∃hasPeriod.⊤ ⊑ Tariff",
+              "status": "skip"
+            }
+          ]
+        },
+        "CQ40": {
+          "question": "",
+          "n_axioms": 5,
+          "n_tp": 0,
+          "rate": 0.0,
+          "fully_covered": false,
+          "any_covered": false,
+          "covered": false,
+          "axiom_ids": [
+            "AX15",
+            "AX20",
+            "AX21",
+            "AX34",
+            "AX35"
+          ],
+          "tp_axiom_ids": [],
+          "missing_axiom_ids": [
+            "AX15",
+            "AX20",
+            "AX21",
+            "AX34",
+            "AX35"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX15",
+              "dl": "WaterMeter ⊑ Meter",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX20",
+              "dl": "∃appliesTo.⊤ ⊑ Tariff",
+              "status": "skip"
+            },
+            {
+              "id": "AX21",
+              "dl": "⊤ ⊑ ∀appliesTo.WaterMeter",
+              "status": "skip"
+            },
+            {
+              "id": "AX34",
+              "dl": "makesMeasurement ≡ measurementMadeBy⁻",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX35",
+              "dl": "measurementMadeBy ≡ makesMeasurement⁻",
+              "status": "skip"
+            }
+          ]
+        },
+        "CQ42": {
+          "question": "",
+          "n_axioms": 5,
+          "n_tp": 0,
+          "rate": 0.0,
+          "fully_covered": false,
+          "any_covered": false,
+          "covered": false,
+          "axiom_ids": [
+            "AX15",
+            "AX20",
+            "AX21",
+            "AX24",
+            "AX25"
+          ],
+          "tp_axiom_ids": [],
+          "missing_axiom_ids": [
+            "AX15",
+            "AX20",
+            "AX21",
+            "AX24",
+            "AX25"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX15",
+              "dl": "WaterMeter ⊑ Meter",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX20",
+              "dl": "∃appliesTo.⊤ ⊑ Tariff",
+              "status": "skip"
+            },
+            {
+              "id": "AX21",
+              "dl": "⊤ ⊑ ∀appliesTo.WaterMeter",
+              "status": "skip"
+            },
+            {
+              "id": "AX24",
+              "dl": "∃hasBillingPeriod.⊤ ⊑ Tariff",
+              "status": "skip"
+            },
+            {
+              "id": "AX25",
+              "dl": "⊤ ⊑ ∀hasBillingPeriod.TemporalDuration",
+              "status": "skip"
+            }
+          ]
+        },
+        "CQ43": {
+          "question": "",
+          "n_axioms": 7,
+          "n_tp": 0,
+          "rate": 0.0,
+          "fully_covered": false,
+          "any_covered": false,
+          "covered": false,
+          "axiom_ids": [
+            "AX15",
+            "AX20",
+            "AX21",
+            "AX24",
+            "AX25",
+            "AX26",
+            "AX27"
+          ],
+          "tp_axiom_ids": [],
+          "missing_axiom_ids": [
+            "AX15",
+            "AX20",
+            "AX21",
+            "AX24",
+            "AX25",
+            "AX26",
+            "AX27"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX15",
+              "dl": "WaterMeter ⊑ Meter",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX20",
+              "dl": "∃appliesTo.⊤ ⊑ Tariff",
+              "status": "skip"
+            },
+            {
+              "id": "AX21",
+              "dl": "⊤ ⊑ ∀appliesTo.WaterMeter",
+              "status": "skip"
+            },
+            {
+              "id": "AX24",
+              "dl": "∃hasBillingPeriod.⊤ ⊑ Tariff",
+              "status": "skip"
+            },
+            {
+              "id": "AX25",
+              "dl": "⊤ ⊑ ∀hasBillingPeriod.TemporalDuration",
+              "status": "skip"
+            },
+            {
+              "id": "AX26",
+              "dl": "∃hasDuration.⊤ ⊑ Tariff",
+              "status": "skip"
+            },
+            {
+              "id": "AX27",
+              "dl": "⊤ ⊑ ∀hasDuration.TemporalDuration",
+              "status": "skip"
+            }
+          ]
+        }
+      },
+      "n_total": 21,
+      "n_fully_covered": 1,
+      "n_any_covered": 7,
+      "fully_coverage": 0.047619047619047616,
+      "any_coverage": 0.3333333333333333,
+      "average_rate": 0.13219954648526078
+    }
+  }
+}

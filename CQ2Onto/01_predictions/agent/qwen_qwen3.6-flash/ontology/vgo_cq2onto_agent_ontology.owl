@@ -1,0 +1,466 @@
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:vaem="http://www.linkedmodel.org/schema/vaem#">
+ 
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Player">
+  <rdfs:comment xml:lang="en">Represents a user or player interacting with the gaming system.</rdfs:comment>
+  <rdfs:label xml:lang="en">Player</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added disjoint axioms with Game, Item, and Achievement.: To satisfy OOPS pitfall regarding missing disjoint axioms and prevent logical overlap between distinct core entities.</vaem:rationale>
+  <dc:source>(competency_question) CQ01, CQ02, CQ03, CQ05, CQ07, CQ22, CQ24, CQ25, CQ26, CQ27, CQ29, CQ35, CQ52, CQ56, CQ57, CQ63, CQ64, CQ65, CQ66
+    (pitfall) Lacks disjoint axioms between classes</dc:source>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Game"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Item"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Achievement"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Game">
+  <rdfs:comment xml:lang="en">Represents a playable video game within the system.</rdfs:comment>
+  <rdfs:label xml:lang="en">Game</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added disjoint axioms with Player, Item, and Achievement.: To satisfy OOPS pitfall regarding missing disjoint axioms.</vaem:rationale>
+  <dc:source>(competency_question) CQ03, CQ08, CQ09, CQ10, CQ11, CQ12, CQ13, CQ15, CQ17, CQ22, CQ25, CQ29, CQ35, CQ55, New CQ1
+    (pitfall) Lacks disjoint axioms between classes</dc:source>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Player"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Item"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Achievement"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Achievement">
+  <rdfs:comment xml:lang="en">Represents a milestone or reward unlocked by a player or associated with a game.</rdfs:comment>
+  <rdfs:label xml:lang="en">Achievement</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added disjoint axioms with Item and Game.: To satisfy OOPS pitfall regarding missing disjoint axioms.</vaem:rationale>
+  <dc:source>(competency_question) CQ05, CQ07, CQ08, CQ10, CQ11, CQ24, CQ27, CQ35
+    (pitfall) Lacks disjoint axioms between classes</dc:source>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Item"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#AchievementType">
+  <rdfs:comment xml:lang="en">Represents the category or classification of an achievement.</rdfs:comment>
+  <rdfs:label xml:lang="en">AchievementType</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added disjoint axiom with Genre.: To satisfy OOPS pitfall regarding missing disjoint axioms.</vaem:rationale>
+  <dc:source>(competency_question) CQ10, CQ11, CQ27
+    (pitfall) Lacks disjoint axioms between classes</dc:source>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Genre"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Genre">
+  <rdfs:comment xml:lang="en">Represents the category or style of a game (e.g., RPG, FPS, Strategy).</rdfs:comment>
+  <rdfs:label xml:lang="en">Genre</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added disjoint axiom with AchievementType.: To satisfy OOPS pitfall regarding missing disjoint axioms.</vaem:rationale>
+  <dc:source>(competency_question) CQ12, CQ17
+    (pitfall) Lacks disjoint axioms between classes</dc:source>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#AchievementType"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Item">
+  <rdfs:comment xml:lang="en">Represents a collectible, consumable, or usable object within a game.</rdfs:comment>
+  <rdfs:label xml:lang="en">Item</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added disjoint axioms with Player, Game, and Achievement.: To satisfy OOPS pitfall regarding missing disjoint axioms.</vaem:rationale>
+  <dc:source>(competency_question) CQ13, CQ19, CQ26, CQ52, CQ55
+    (pitfall) Lacks disjoint axioms between classes</dc:source>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Player"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Game"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Achievement"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Ability">
+  <rdfs:comment xml:lang="en">Represents a skill, power, or effect that an item can provide.</rdfs:comment>
+  <rdfs:label xml:lang="en">Ability</rdfs:label>
+  <dc:source>(competency_question) CQ19</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#InAppPurchase">
+  <rdfs:comment xml:lang="en">Represents a transaction where a player buys virtual goods or currency.</rdfs:comment>
+  <rdfs:label xml:lang="en">InAppPurchase</rdfs:label>
+  <dc:source>(competency_question) CQ56, CQ57, CQ62, CQ64, CQ65, CQ66</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Location">
+  <rdfs:comment xml:lang="en">Represents a geographical region or country where a player resides.</rdfs:comment>
+  <rdfs:label xml:lang="en">Location</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added disjoint axiom with PlayingArea.: To satisfy OOPS pitfall regarding missing disjoint axioms.</vaem:rationale>
+  <dc:source>(competency_question) CQ63, CQ65, CQ66
+    (pitfall) Lacks disjoint axioms between classes</dc:source>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#PlayingArea"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#PlayingArea">
+  <rdfs:comment xml:lang="en">Represents a specific zone, map, or region within a game world.</rdfs:comment>
+  <rdfs:label xml:lang="en">PlayingArea</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added disjoint axiom with Location.: To satisfy OOPS pitfall regarding missing disjoint axioms.</vaem:rationale>
+  <dc:source>(competency_question) New CQ1
+    (pitfall) Lacks disjoint axioms between classes</dc:source>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Location"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Equipment">
+  <rdfs:comment xml:lang="en">Represents gear or tools specifically used by a player in a game.</rdfs:comment>
+  <rdfs:label xml:lang="en">Equipment</rdfs:label>
+  <dc:source>(competency_question) CQ52</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasFriend">
+  <rdfs:comment xml:lang="en">Represents a social friendship relationship between two players.</rdfs:comment>
+  <rdfs:label xml:lang="en">has friend</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added owl:inverseOf axiom pointing to isFriendOf.: To satisfy OOPS pitfall regarding missing inverse properties.</vaem:rationale>
+  <dc:source>(competency_question) CQ02, CQ03, CQ05, CQ07
+    (pitfall) Missing inverse relationship</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#isFriendOf"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isFriendOf">
+  <rdfs:comment xml:lang="en">Inverse of hasFriend. Represents that a player is a friend of another player.</rdfs:comment>
+  <rdfs:label xml:lang="en">is friend of</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property and linked with owl:inverseOf.: To satisfy OOPS pitfall regarding missing inverse properties.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationship</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasFriend"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#playsGame">
+  <rdfs:comment xml:lang="en">Indicates that a player has played or is actively playing a specific game.</rdfs:comment>
+  <rdfs:label xml:lang="en">plays game</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added owl:inverseOf axiom pointing to isPlayedBy.: To satisfy OOPS pitfall regarding missing inverse properties.</vaem:rationale>
+  <dc:source>(competency_question) CQ03, CQ25, CQ29, CQ35
+    (pitfall) Missing inverse relationship</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#isPlayedBy"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isPlayedBy">
+  <rdfs:comment xml:lang="en">Inverse of playsGame. Indicates that a game is played by a player.</rdfs:comment>
+  <rdfs:label xml:lang="en">is played by</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property and linked with owl:inverseOf.: To satisfy OOPS pitfall regarding missing inverse properties.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationship</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#playsGame"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasAchievement">
+  <rdfs:comment xml:lang="en">Indicates that a game contains or offers a specific achievement.</rdfs:comment>
+  <rdfs:label xml:lang="en">has achievement</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added owl:inverseOf axiom pointing to isAchievementIn.: To satisfy OOPS pitfall regarding missing inverse properties.</vaem:rationale>
+  <dc:source>(competency_question) CQ08, CQ35
+    (pitfall) Missing inverse relationship</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Achievement"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#isAchievementIn"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isAchievementIn">
+  <rdfs:comment xml:lang="en">Inverse of hasAchievement. Indicates that an achievement is contained in a game.</rdfs:comment>
+  <rdfs:label xml:lang="en">is achievement in</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property and linked with owl:inverseOf.: To satisfy OOPS pitfall regarding missing inverse properties.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationship</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Achievement"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasAchievement"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasObtainedAchievement">
+  <rdfs:comment xml:lang="en">Indicates that a player has successfully unlocked or received an achievement.</rdfs:comment>
+  <rdfs:label xml:lang="en">has obtained achievement</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added owl:inverseOf axiom pointing to isObtainedBy.: To satisfy OOPS pitfall regarding missing inverse properties.</vaem:rationale>
+  <dc:source>(competency_question) CQ05, CQ07, CQ24, CQ27
+    (pitfall) Missing inverse relationship</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Achievement"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#isObtainedBy"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isObtainedBy">
+  <rdfs:comment xml:lang="en">Inverse of hasObtainedAchievement. Indicates that an achievement is obtained by a player.</rdfs:comment>
+  <rdfs:label xml:lang="en">is obtained by</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property and linked with owl:inverseOf.: To satisfy OOPS pitfall regarding missing inverse properties.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationship</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Achievement"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasObtainedAchievement"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasType">
+  <rdfs:comment xml:lang="en">Classifies an achievement into a specific type or category.</rdfs:comment>
+  <rdfs:label xml:lang="en">has type</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added owl:inverseOf axiom pointing to hasAchievementType.: To satisfy OOPS pitfall regarding missing inverse properties.</vaem:rationale>
+  <dc:source>(competency_question) CQ10, CQ11, CQ27
+    (pitfall) Missing inverse relationship</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Achievement"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#AchievementType"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasAchievementType"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasAchievementType">
+  <rdfs:comment xml:lang="en">Inverse of hasType. Associates an achievement type with achievements.</rdfs:comment>
+  <rdfs:label xml:lang="en">has achievement type</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property and linked with owl:inverseOf.: To satisfy OOPS pitfall regarding missing inverse properties.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationship</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#AchievementType"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Achievement"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasType"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasGenre">
+  <rdfs:comment xml:lang="en">Associates a game with its primary genre classification.</rdfs:comment>
+  <rdfs:label xml:lang="en">has genre</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added owl:inverseOf axiom pointing to hasGameGenre.: To satisfy OOPS pitfall regarding missing inverse properties.</vaem:rationale>
+  <dc:source>(competency_question) CQ12, CQ17
+    (pitfall) Missing inverse relationship</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Genre"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasGameGenre"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasGameGenre">
+  <rdfs:comment xml:lang="en">Inverse of hasGenre. Associates a genre with games.</rdfs:comment>
+  <rdfs:label xml:lang="en">has game genre</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property and linked with owl:inverseOf.: To satisfy OOPS pitfall regarding missing inverse properties.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationship</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Genre"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasGenre"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasItem">
+  <rdfs:comment xml:lang="en">Indicates that a game contains or features a specific item.</rdfs:comment>
+  <rdfs:label xml:lang="en">has item</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added owl:inverseOf axiom pointing to isItemIn.: To satisfy OOPS pitfall regarding missing inverse properties.</vaem:rationale>
+  <dc:source>(competency_question) CQ13
+    (pitfall) Missing inverse relationship</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#isItemIn"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isItemIn">
+  <rdfs:comment xml:lang="en">Inverse of hasItem. Indicates that an item is featured in a game.</rdfs:comment>
+  <rdfs:label xml:lang="en">is item in</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property and linked with owl:inverseOf.: To satisfy OOPS pitfall regarding missing inverse properties.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationship</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasItem"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasPlayerItem">
+  <rdfs:comment xml:lang="en">Indicates that a player possesses or carries a specific item.</rdfs:comment>
+  <rdfs:label xml:lang="en">has player item</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added owl:inverseOf axiom pointing to isPlayerItem.: To satisfy OOPS pitfall regarding missing inverse properties.</vaem:rationale>
+  <dc:source>(competency_question) CQ26
+    (pitfall) Missing inverse relationship</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#isPlayerItem"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isPlayerItem">
+  <rdfs:comment xml:lang="en">Inverse of hasPlayerItem. Indicates that an item is possessed by a player.</rdfs:comment>
+  <rdfs:label xml:lang="en">is player item</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property and linked with owl:inverseOf.: To satisfy OOPS pitfall regarding missing inverse properties.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationship</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasPlayerItem"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasAbility">
+  <rdfs:comment xml:lang="en">Links an item to a specific ability or effect it provides.</rdfs:comment>
+  <rdfs:label xml:lang="en">has ability</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added owl:inverseOf axiom pointing to isAbilityOf.: To satisfy OOPS pitfall regarding missing inverse properties.</vaem:rationale>
+  <dc:source>(competency_question) CQ19
+    (pitfall) Missing inverse relationship</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Ability"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#isAbilityOf"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isAbilityOf">
+  <rdfs:comment xml:lang="en">Inverse of hasAbility. Indicates that an ability is provided by an item.</rdfs:comment>
+  <rdfs:label xml:lang="en">is ability of</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property and linked with owl:inverseOf.: To satisfy OOPS pitfall regarding missing inverse properties.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationship</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Ability"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasAbility"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasEquipment">
+  <rdfs:comment xml:lang="en">Indicates that a player is equipped with specific gear in a game context.</rdfs:comment>
+  <rdfs:label xml:lang="en">has equipment</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added owl:inverseOf axiom pointing to isEquipmentOf.: To satisfy OOPS pitfall regarding missing inverse properties.</vaem:rationale>
+  <dc:source>(competency_question) CQ52
+    (pitfall) Missing inverse relationship</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#isEquipmentOf"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isEquipmentOf">
+  <rdfs:comment xml:lang="en">Inverse of hasEquipment. Indicates that gear is equipped by a player.</rdfs:comment>
+  <rdfs:label xml:lang="en">is equipment of</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property and linked with owl:inverseOf.: To satisfy OOPS pitfall regarding missing inverse properties.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationship</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasEquipment"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#usableInGame">
+  <rdfs:comment xml:lang="en">Indicates that an item can be used or is compatible with a specific game.</rdfs:comment>
+  <rdfs:label xml:lang="en">usable in game</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added owl:inverseOf axiom pointing to hasUsableItem.: To satisfy OOPS pitfall regarding missing inverse properties.</vaem:rationale>
+  <dc:source>(competency_question) CQ55
+    (pitfall) Missing inverse relationship</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasUsableItem"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasUsableItem">
+  <rdfs:comment xml:lang="en">Inverse of usableInGame. Indicates that a game has a usable item.</rdfs:comment>
+  <rdfs:label xml:lang="en">has usable item</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property and linked with owl:inverseOf.: To satisfy OOPS pitfall regarding missing inverse properties.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationship</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#usableInGame"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasInAppPurchase">
+  <rdfs:comment xml:lang="en">Links a player to a specific in-app purchase transaction.</rdfs:comment>
+  <rdfs:label xml:lang="en">has in app purchase</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added owl:inverseOf axiom pointing to hasPlayerPurchase.: To satisfy OOPS pitfall regarding missing inverse properties.</vaem:rationale>
+  <dc:source>(competency_question) CQ56, CQ57, CQ62, CQ64, CQ65, CQ66
+    (pitfall) Missing inverse relationship</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#InAppPurchase"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasPlayerPurchase"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasPlayerPurchase">
+  <rdfs:comment xml:lang="en">Inverse of hasInAppPurchase. Links an in-app purchase to a player.</rdfs:comment>
+  <rdfs:label xml:lang="en">has player purchase</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property and linked with owl:inverseOf.: To satisfy OOPS pitfall regarding missing inverse properties.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationship</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#InAppPurchase"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasInAppPurchase"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#livesIn">
+  <rdfs:comment xml:lang="en">Indicates the geographical location or country where a player resides.</rdfs:comment>
+  <rdfs:label xml:lang="en">lives in</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added owl:inverseOf axiom pointing to hasResident.: To satisfy OOPS pitfall regarding missing inverse properties.</vaem:rationale>
+  <dc:source>(competency_question) CQ63, CQ65, CQ66
+    (pitfall) Missing inverse relationship</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Location"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasResident"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasResident">
+  <rdfs:comment xml:lang="en">Inverse of livesIn. Indicates that a location has a resident player.</rdfs:comment>
+  <rdfs:label xml:lang="en">has resident</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property and linked with owl:inverseOf.: To satisfy OOPS pitfall regarding missing inverse properties.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationship</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Location"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#livesIn"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasPlayingArea">
+  <rdfs:comment xml:lang="en">Indicates that a game contains or features a specific playing area or zone.</rdfs:comment>
+  <rdfs:label xml:lang="en">has playing area</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added owl:inverseOf axiom pointing to isPlayingAreaIn.: To satisfy OOPS pitfall regarding missing inverse properties.</vaem:rationale>
+  <dc:source>(competency_question) New CQ1
+    (pitfall) Missing inverse relationship</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#PlayingArea"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#isPlayingAreaIn"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isPlayingAreaIn">
+  <rdfs:comment xml:lang="en">Inverse of hasPlayingArea. Indicates that a playing area is contained in a game.</rdfs:comment>
+  <rdfs:label xml:lang="en">is playing area in</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property and linked with owl:inverseOf.: To satisfy OOPS pitfall regarding missing inverse properties.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationship</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#PlayingArea"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasPlayingArea"/>
+</owl:ObjectProperty>
+
+  <!-- owl:DatatypeProperty declarations -->
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasUsername">
+  <rdfs:comment xml:lang="en">Links a player to their unique username string.</rdfs:comment>
+  <rdfs:label xml:lang="en">has username</rdfs:label>
+  <dc:source>(competency_question) CQ01</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#releaseDate">
+  <rdfs:comment xml:lang="en">Stores the official release date of a game.</rdfs:comment>
+  <rdfs:label xml:lang="en">release date</rdfs:label>
+  <dc:source>(competency_question) CQ15</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:date"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasKillCount">
+  <rdfs:comment xml:lang="en">Records the total number of kills achieved by a player.</rdfs:comment>
+  <rdfs:label xml:lang="en">has kill count</rdfs:label>
+  <dc:source>(competency_question) CQ22</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:integer"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#totalPlaytime">
+  <rdfs:comment xml:lang="en">Records the cumulative hours played for a specific game.</rdfs:comment>
+  <rdfs:label xml:lang="en">total playtime</rdfs:label>
+  <dc:source>(competency_question) CQ09</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:decimal"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#purchaseCount">
+  <rdfs:comment xml:lang="en">Records the total number of in-app purchases made by a player.</rdfs:comment>
+  <rdfs:label xml:lang="en">purchase count</rdfs:label>
+  <dc:source>(competency_question) CQ56, CQ57, CQ66</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:integer"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#purchaseTime">
+  <rdfs:comment xml:lang="en">Records the time of day when an in-app purchase was completed.</rdfs:comment>
+  <rdfs:label xml:lang="en">purchase time</rdfs:label>
+  <dc:source>(competency_question) CQ62</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#InAppPurchase"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:time"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#timeToFirstIAP">
+  <rdfs:comment xml:lang="en">Records the duration a player spent in the game before making their first in-app purchase.</rdfs:comment>
+  <rdfs:label xml:lang="en">time to first IAP</rdfs:label>
+  <dc:source>(competency_question) CQ64</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:decimal"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+</rdf:RDF>

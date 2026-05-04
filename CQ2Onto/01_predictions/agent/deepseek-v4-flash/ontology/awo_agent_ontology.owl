@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:vaem="http://www.linkedmodel.org/schema/vaem#">
+ 
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Organism">
+  <rdfs:comment xml:lang="en">A living entity.</rdfs:comment>
+  <rdfs:label xml:lang="en">Organism</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added disjointWith PlantPart: PlantPart is not a type of Organism, so they should be disjoint.</vaem:rationale>
+  <dc:source>(pitfall) Missing disjoint axioms</dc:source>
+  <owl:disjointWith rdf:resource='http://www.semanticweb.org/myontology#PlantPart'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Animal">
+  <rdfs:comment xml:lang="en">An animal.</rdfs:comment>
+  <rdfs:label xml:lang="en">Animal</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added disjointWith Plant: Animal and Plant are disjoint classes.</vaem:rationale>
+  <dc:source>(pitfall) Missing disjoint axioms</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Organism'/><owl:disjointWith rdf:resource='http://www.semanticweb.org/myontology#Plant'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Plant">
+  <rdfs:comment xml:lang="en">A plant.</rdfs:comment>
+  <rdfs:label xml:lang="en">Plant</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added disjointWith Animal: Plant and Animal are disjoint.</vaem:rationale>
+  <dc:source>(pitfall) Missing disjoint axioms</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Organism'/><owl:disjointWith rdf:resource='http://www.semanticweb.org/myontology#Animal'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#PlantPart">
+  <rdfs:comment xml:lang="en">A part of a plant such as leaf, stem, root, fruit, etc.</rdfs:comment>
+  <rdfs:label xml:lang="en">Plant part</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added disjointWith Organism: PlantPart is not an Organism, so they should be disjoint.</vaem:rationale>
+  <dc:source>(pitfall) Missing disjoint axioms</dc:source>
+  <owl:disjointWith rdf:resource='http://www.semanticweb.org/myontology#Organism'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Herbivore">
+  <rdfs:comment xml:lang="en">An animal that primarily eats plants or plant parts.</rdfs:comment>
+  <rdfs:label xml:lang="en">Herbivore</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added disjointWith Carnivore and Omnivore: Dietary classes are mutually disjoint.</vaem:rationale>
+  <dc:source>(pitfall) Missing disjoint axioms</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Animal'/><owl:disjointWith rdf:resource='http://www.semanticweb.org/myontology#Carnivore'/><owl:disjointWith rdf:resource='http://www.semanticweb.org/myontology#Omnivore'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Carnivore">
+  <rdfs:comment xml:lang="en">An animal that primarily eats other animals.</rdfs:comment>
+  <rdfs:label xml:lang="en">Carnivore</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added disjointWith Herbivore and Omnivore: Dietary classes are mutually disjoint.</vaem:rationale>
+  <dc:source>(pitfall) Missing disjoint axioms</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Animal'/><owl:disjointWith rdf:resource='http://www.semanticweb.org/myontology#Herbivore'/><owl:disjointWith rdf:resource='http://www.semanticweb.org/myontology#Omnivore'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Omnivore">
+  <rdfs:comment xml:lang="en">An animal that eats both animals and plants or plant parts.</rdfs:comment>
+  <rdfs:label xml:lang="en">Omnivore</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added disjointWith Herbivore and Carnivore: Dietary classes are mutually disjoint.</vaem:rationale>
+  <dc:source>(pitfall) Missing disjoint axioms</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Animal'/><owl:disjointWith rdf:resource='http://www.semanticweb.org/myontology#Herbivore'/><owl:disjointWith rdf:resource='http://www.semanticweb.org/myontology#Carnivore'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#CarnivorousPlant">
+  <rdfs:comment xml:lang="en">A plant that captures and digests animals.</rdfs:comment>
+  <rdfs:label xml:lang="en">Carnivorous plant</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Plant'/>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#eats">
+  <rdfs:comment xml:lang="en">Indicates that one organism consumes another organism.</rdfs:comment>
+  <rdfs:label xml:lang="en">eats</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Organism"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Organism"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#eatsPlantPart">
+  <rdfs:comment xml:lang="en">Indicates that an animal consumes a plant part.</rdfs:comment>
+  <rdfs:label xml:lang="en">eats plant part</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#PlantPart"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isEatenBy">
+  <rdfs:comment xml:lang="en">Inverse of eats.</rdfs:comment>
+  <rdfs:label xml:lang="en">is eaten by</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added domain and range: The property lacked domain and range, which is required for completeness.</vaem:rationale>
+  <dc:source>(pitfall) Object property without domain or range</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Organism"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Organism"/>
+  <owl:inverseOf rdf:resource='http://www.semanticweb.org/myontology#eats'/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isPlantPartEatenBy">
+  <rdfs:comment xml:lang="en">Inverse of eatsPlantPart.</rdfs:comment>
+  <rdfs:label xml:lang="en">is plant part eaten by</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added domain and range: The property lacked domain and range. Also reviewed annotations; they are correct.</vaem:rationale>
+  <dc:source>(pitfall) Object property without domain or range
+    (pitfall) Annotation properties swapped or misused (no action needed)</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#PlantPart"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+  <owl:inverseOf rdf:resource='http://www.semanticweb.org/myontology#eatsPlantPart'/>
+</owl:ObjectProperty>
+
+</rdf:RDF>

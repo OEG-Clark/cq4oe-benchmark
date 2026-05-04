@@ -1,0 +1,601 @@
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:vaem="http://www.linkedmodel.org/schema/vaem#">
+ 
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Software">
+  <rdfs:comment xml:lang="en">A software tool or application that performs specific tasks, processes data, or provides services.</rdfs:comment>
+  <rdfs:label xml:lang="en">Software</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created Software class: Central entity for all competency questions regarding software tools, their features, versions, and metadata.
+    [Pitfall Resolution Agent] Created Software class: Central entity for all competency questions regarding software tools, their features, versions, and metadata.</vaem:rationale>
+  <dc:source>(competency_question) CQ04, CQ05, CQ06, CQ07, CQ08, CQ11, CQ14, CQ15, CQ16, CQ17, CQ19, CQ21, CQ22, CQ23, CQ26, CQ29, CQ30, CQ32, CQ36, CQ37, CQ38, CQ40, CQ45, CQ46, CQ54, CQ55, CQ57, CQ58, CQ59, CQ60, CQ65, CQ68, CQ73, CQ84, CQ85</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#SoftwareVersion">
+  <rdfs:comment xml:lang="en">A specific release or iteration of a software tool.</rdfs:comment>
+  <rdfs:label xml:lang="en">Software Version</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created SoftwareVersion class: Needed to track version-specific attributes like release dates and new features (CQ54, CQ55, CQ57, CQ29).
+    [Pitfall Resolution Agent] Created SoftwareVersion class: Needed to track version-specific attributes like release dates and new features.</vaem:rationale>
+  <dc:source>(competency_question) CQ29, CQ54, CQ55, CQ57</dc:source>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Developer"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Algorithm">
+  <rdfs:comment xml:lang="en">A named and published computational procedure or method used by software.</rdfs:comment>
+  <rdfs:label xml:lang="en">Algorithm</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created Algorithm class: Required to answer questions about algorithms used and modified by software (CQ04, CQ05).
+    [Pitfall Resolution Agent] Created Algorithm class: Required to answer questions about algorithms used and modified by software.</vaem:rationale>
+  <dc:source>(competency_question) CQ04, CQ05</dc:source>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Feature"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Task">
+  <rdfs:comment xml:lang="en">A specific operation or function that software can perform.</rdfs:comment>
+  <rdfs:label xml:lang="en">Task</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created Task class: Needed to map software capabilities to user tasks (CQ08, CQ14).
+    [Pitfall Resolution Agent] Created Task class: Needed to map software capabilities to user tasks.</vaem:rationale>
+  <dc:source>(competency_question) CQ08, CQ14</dc:source>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#DataFormat"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#DataFormat">
+  <rdfs:comment xml:lang="en">A standardized way of encoding data, including file formats and data structures.</rdfs:comment>
+  <rdfs:label xml:lang="en">Data Format</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created DataFormat class: Central to questions about input/output formats, interoperability, and supported file types (CQ14, CQ16, CQ17, CQ19, CQ21, CQ22, CQ23, CQ26, CQ29).
+    [Pitfall Resolution Agent] Created DataFormat class: Central to questions about input/output formats, interoperability, and supported file types.</vaem:rationale>
+  <dc:source>(competency_question) CQ14, CQ16, CQ17, CQ19, CQ21, CQ22, CQ23, CQ26, CQ29</dc:source>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Task"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Developer">
+  <rdfs:comment xml:lang="en">An individual or organization responsible for creating or maintaining software.</rdfs:comment>
+  <rdfs:label xml:lang="en">Developer</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created Developer class: Needed to identify creators and enable collaboration inquiries (CQ36, CQ38).
+    [Pitfall Resolution Agent] Created Developer class: Needed to identify creators and enable collaboration inquiries.</vaem:rationale>
+  <dc:source>(competency_question) CQ36, CQ38</dc:source>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#SoftwareVersion"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#License">
+  <rdfs:comment xml:lang="en">A legal agreement governing the use, modification, and distribution of software.</rdfs:comment>
+  <rdfs:label xml:lang="en">License</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created License class: Required to capture licensing terms and permissiveness (CQ59).
+    [Pitfall Resolution Agent] Created License class: Required to capture licensing terms and permissiveness.</vaem:rationale>
+  <dc:source>(competency_question) CQ59</dc:source>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#SoftwareType"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#ProgrammingLanguage">
+  <rdfs:comment xml:lang="en">A formal language used to implement software.</rdfs:comment>
+  <rdfs:label xml:lang="en">Programming Language</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created ProgrammingLanguage class: Needed to answer implementation language questions (CQ84).
+    [Pitfall Resolution Agent] Created ProgrammingLanguage class: Needed to answer implementation language questions.</vaem:rationale>
+  <dc:source>(competency_question) CQ84</dc:source>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Platform"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Platform">
+  <rdfs:comment xml:lang="en">An operating system or hardware environment on which software runs.</rdfs:comment>
+  <rdfs:label xml:lang="en">Platform</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created Platform class: Needed to specify runtime environments (CQ85).
+    [Pitfall Resolution Agent] Created Platform class: Needed to specify runtime environments.</vaem:rationale>
+  <dc:source>(competency_question) CQ85</dc:source>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#ProgrammingLanguage"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Feature">
+  <rdfs:comment xml:lang="en">A specific capability or functionality provided by software.</rdfs:comment>
+  <rdfs:label xml:lang="en">Feature</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created Feature class: Needed to capture specific functionalities like XML editing or version-specific updates (CQ06, CQ55).
+    [Pitfall Resolution Agent] Created Feature class: Needed to capture specific functionalities like XML editing or version-specific updates.</vaem:rationale>
+  <dc:source>(competency_question) CQ06, CQ55</dc:source>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Algorithm"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#SoftwareType">
+  <rdfs:comment xml:lang="en">The category or deployment model of the software (e.g., API, Desktop application).</rdfs:comment>
+  <rdfs:label xml:lang="en">Software Type</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created SoftwareType class: Needed to classify software by its architectural type (CQ07).
+    [Pitfall Resolution Agent] Created SoftwareType class: Needed to classify software by its architectural type.</vaem:rationale>
+  <dc:source>(competency_question) CQ07</dc:source>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#DeploymentType"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#License"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#DeploymentType">
+  <rdfs:comment xml:lang="en">How the software is delivered or accessed (e.g., Web service, Local installation).</rdfs:comment>
+  <rdfs:label xml:lang="en">Deployment Type</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created DeploymentType class: Needed to answer web service availability questions (CQ11).
+    [Pitfall Resolution Agent] Created DeploymentType class: Needed to answer web service availability questions.</vaem:rationale>
+  <dc:source>(competency_question) CQ11</dc:source>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#SoftwareType"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#MaintenanceStatus">
+  <rdfs:comment xml:lang="en">The current state of software maintenance and updates.</rdfs:comment>
+  <rdfs:label xml:lang="en">Maintenance Status</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created MaintenanceStatus class: Needed to identify actively maintained open source software (CQ26).
+    [Pitfall Resolution Agent] Created MaintenanceStatus class: Needed to identify actively maintained open source software.</vaem:rationale>
+  <dc:source>(competency_question) CQ26</dc:source>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#DevelopmentModel"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#DevelopmentModel">
+  <rdfs:comment xml:lang="en">The organizational approach to software development (e.g., Open source, Community driven).</rdfs:comment>
+  <rdfs:label xml:lang="en">Development Model</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created DevelopmentModel class: Needed to capture community vs proprietary development models (CQ58).
+    [Pitfall Resolution Agent] Created DevelopmentModel class: Needed to capture community vs proprietary development models.</vaem:rationale>
+  <dc:source>(competency_question) CQ58</dc:source>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#MaintenanceStatus"/>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#usesAlgorithm">
+  <rdfs:comment xml:lang="en">Links a software tool to the algorithm it implements.</rdfs:comment>
+  <rdfs:label xml:lang="en">uses algorithm</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created usesAlgorithm property: Answers CQ04 about named/published algorithms used by the tool.
+    [Pitfall Resolution Agent] Created usesAlgorithm property: Answers CQ04 about named/published algorithms used by the tool.</vaem:rationale>
+  <dc:source>(competency_question) CQ04</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Algorithm"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#isUsedBy"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#performsTask">
+  <rdfs:comment xml:lang="en">Links a software tool to the tasks it can execute.</rdfs:comment>
+  <rdfs:label xml:lang="en">performs task</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created performsTask property: Answers CQ08 about software capabilities for specific tasks.
+    [Pitfall Resolution Agent] Created performsTask property: Answers CQ08 about software capabilities for specific tasks.</vaem:rationale>
+  <dc:source>(competency_question) CQ08</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Task"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#isPerformedBy"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#supportsFormat">
+  <rdfs:comment xml:lang="en">Indicates that a software tool can read, write, or process a specific data format.</rdfs:comment>
+  <rdfs:label xml:lang="en">supports format</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created supportsFormat property: Answers CQ14, CQ16, CQ19, CQ22, CQ23 about format compatibility and interoperability.
+    [Pitfall Resolution Agent] Created supportsFormat property: Answers CQ14, CQ16, CQ19, CQ22, CQ23 about format compatibility and interoperability.</vaem:rationale>
+  <dc:source>(competency_question) CQ14, CQ16, CQ19, CQ22, CQ23</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#DataFormat"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#isSupportedBy"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasInputFormat">
+  <rdfs:comment xml:lang="en">Specifies the data formats accepted as valid input by the software.</rdfs:comment>
+  <rdfs:label xml:lang="en">has input format</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created hasInputFormat property: Answers CQ17 and CQ21 about valid inputs.
+    [Pitfall Resolution Agent] Created hasInputFormat property: Answers CQ17 and CQ21 about valid inputs.</vaem:rationale>
+  <dc:source>(competency_question) CQ17, CQ21</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#DataFormat"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#isInputFor"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasOutputFormat">
+  <rdfs:comment xml:lang="en">Specifies the data formats produced as output by the software.</rdfs:comment>
+  <rdfs:label xml:lang="en">has output format</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created hasOutputFormat property: Answers CQ17 and CQ29 about data exports.
+    [Pitfall Resolution Agent] Created hasOutputFormat property: Answers CQ17 and CQ29 about data exports.</vaem:rationale>
+  <dc:source>(competency_question) CQ17, CQ29</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#DataFormat"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#isOutputFor"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#developedBy">
+  <rdfs:comment xml:lang="en">Links a software tool to its creator or maintaining organization.</rdfs:comment>
+  <rdfs:label xml:lang="en">developed by</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created developedBy property: Answers CQ36 about software authors and CQ38 for collaboration.
+    [Pitfall Resolution Agent] Created developedBy property: Answers CQ36 about software authors and CQ38 for collaboration.</vaem:rationale>
+  <dc:source>(competency_question) CQ36, CQ38</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Developer"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#develops"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#implementedIn">
+  <rdfs:comment xml:lang="en">Specifies the programming language used to build the software.</rdfs:comment>
+  <rdfs:label xml:lang="en">implemented in</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created implementedIn property: Answers CQ84 about implementation language.
+    [Pitfall Resolution Agent] Created implementedIn property: Answers CQ84 about implementation language.</vaem:rationale>
+  <dc:source>(competency_question) CQ84</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#ProgrammingLanguage"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#implements"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#runsOnPlatform">
+  <rdfs:comment xml:lang="en">Specifies the operating system or hardware platform required to run the software.</rdfs:comment>
+  <rdfs:label xml:lang="en">runs on platform</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created runsOnPlatform property: Answers CQ85 about runtime environments.
+    [Pitfall Resolution Agent] Created runsOnPlatform property: Answers CQ85 about runtime environments.</vaem:rationale>
+  <dc:source>(competency_question) CQ85</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Platform"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#runsSoftwareOn"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasVersion">
+  <rdfs:comment xml:lang="en">Links a software tool to a specific version release.</rdfs:comment>
+  <rdfs:label xml:lang="en">has version</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created hasVersion property: Answers CQ54 about version tracking.
+    [Pitfall Resolution Agent] Created hasVersion property: Answers CQ54 about version tracking.</vaem:rationale>
+  <dc:source>(competency_question) CQ54</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#SoftwareVersion"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#isVersionOf"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasFeature">
+  <rdfs:comment xml:lang="en">Links a software tool or version to a specific capability or functionality.</rdfs:comment>
+  <rdfs:label xml:lang="en">has feature</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created hasFeature property: Answers CQ06 (XML editing) and CQ55 (new features in version).
+    [Pitfall Resolution Agent] Created hasFeature property: Answers CQ06 (XML editing) and CQ55 (new features in version).</vaem:rationale>
+  <dc:source>(competency_question) CQ06, CQ55</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Feature"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasFeatureInverse"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasLicense">
+  <rdfs:comment xml:lang="en">Links a software tool to its governing license.</rdfs:comment>
+  <rdfs:label xml:lang="en">has license</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created hasLicense property: Answers CQ59 about licensing terms.
+    [Pitfall Resolution Agent] Created hasLicense property: Answers CQ59 about licensing terms.</vaem:rationale>
+  <dc:source>(competency_question) CQ59</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#License"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#licenses"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasSoftwareType">
+  <rdfs:comment xml:lang="en">Classifies the software by its architectural or delivery type.</rdfs:comment>
+  <rdfs:label xml:lang="en">has software type</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created hasSoftwareType property: Answers CQ07 about API, Desktop, etc.
+    [Pitfall Resolution Agent] Created hasSoftwareType property: Answers CQ07 about API, Desktop, etc.</vaem:rationale>
+  <dc:source>(competency_question) CQ07</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#SoftwareType"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasSoftwareTypeInverse"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasDeploymentType">
+  <rdfs:comment xml:lang="en">Indicates how the software is deployed or accessed.</rdfs:comment>
+  <rdfs:label xml:lang="en">has deployment type</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created hasDeploymentType property: Answers CQ11 about web service availability.
+    [Pitfall Resolution Agent] Created hasDeploymentType property: Answers CQ11 about web service availability.</vaem:rationale>
+  <dc:source>(competency_question) CQ11</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#DeploymentType"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasDeploymentTypeInverse"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasDevelopmentModel">
+  <rdfs:comment xml:lang="en">Describes the organizational approach to software development.</rdfs:comment>
+  <rdfs:label xml:lang="en">has development model</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created hasDevelopmentModel property: Answers CQ58 about open source vs community development.
+    [Pitfall Resolution Agent] Created hasDevelopmentModel property: Answers CQ58 about open source vs community development.</vaem:rationale>
+  <dc:source>(competency_question) CQ58</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#DevelopmentModel"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasDevelopmentModelInverse"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasMaintenanceStatus">
+  <rdfs:comment xml:lang="en">Indicates the current maintenance and update status of the software.</rdfs:comment>
+  <rdfs:label xml:lang="en">has maintenance status</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created hasMaintenanceStatus property: Answers CQ26 about maintained open source software.
+    [Pitfall Resolution Agent] Created hasMaintenanceStatus property: Answers CQ26 about maintained open source software.</vaem:rationale>
+  <dc:source>(competency_question) CQ26</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#MaintenanceStatus"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#maintainedByStatus"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isUsedBy">
+  <rdfs:comment xml:lang="en">Inverse of usesAlgorithm. Links an algorithm to the software that implements it.</rdfs:comment>
+  <rdfs:label xml:lang="en">is used by</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created isUsedBy inverse property: Addressed OOPS! pitfall: missing inverse relationship for usesAlgorithm.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse property</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Algorithm"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#usesAlgorithm"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isPerformedBy">
+  <rdfs:comment xml:lang="en">Inverse of performsTask. Links a task to the software that executes it.</rdfs:comment>
+  <rdfs:label xml:lang="en">is performed by</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created isPerformedBy inverse property: Addressed OOPS! pitfall: missing inverse relationship for performsTask.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse property</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Task"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#performsTask"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isSupportedBy">
+  <rdfs:comment xml:lang="en">Inverse of supportsFormat. Links a data format to the software that supports it.</rdfs:comment>
+  <rdfs:label xml:lang="en">is supported by</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created isSupportedBy inverse property: Addressed OOPS! pitfall: missing inverse relationship for supportsFormat.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse property</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#DataFormat"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#supportsFormat"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isInputFor">
+  <rdfs:comment xml:lang="en">Inverse of hasInputFormat. Links a data format to the software that accepts it as input.</rdfs:comment>
+  <rdfs:label xml:lang="en">is input for</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created isInputFor inverse property: Addressed OOPS! pitfall: missing inverse relationship for hasInputFormat.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse property</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#DataFormat"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasInputFormat"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isOutputFor">
+  <rdfs:comment xml:lang="en">Inverse of hasOutputFormat. Links a data format to the software that produces it as output.</rdfs:comment>
+  <rdfs:label xml:lang="en">is output for</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created isOutputFor inverse property: Addressed OOPS! pitfall: missing inverse relationship for hasOutputFormat.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse property</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#DataFormat"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasOutputFormat"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#develops">
+  <rdfs:comment xml:lang="en">Inverse of developedBy. Links a developer to the software they create or maintain.</rdfs:comment>
+  <rdfs:label xml:lang="en">develops</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created develops inverse property: Addressed OOPS! pitfall: missing inverse relationship for developedBy.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse property</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Developer"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#developedBy"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#implements">
+  <rdfs:comment xml:lang="en">Inverse of implementedIn. Links a programming language to the software built with it.</rdfs:comment>
+  <rdfs:label xml:lang="en">implements</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created implements inverse property: Addressed OOPS! pitfall: missing inverse relationship for implementedIn.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse property</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#ProgrammingLanguage"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#implementedIn"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#runsSoftwareOn">
+  <rdfs:comment xml:lang="en">Inverse of runsOnPlatform. Links a platform to the software that runs on it.</rdfs:comment>
+  <rdfs:label xml:lang="en">runs software on</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created runsSoftwareOn inverse property: Addressed OOPS! pitfall: missing inverse relationship for runsOnPlatform.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse property</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Platform"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#runsOnPlatform"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isVersionOf">
+  <rdfs:comment xml:lang="en">Inverse of hasVersion. Links a software version to the software it belongs to.</rdfs:comment>
+  <rdfs:label xml:lang="en">is version of</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created isVersionOf inverse property: Addressed OOPS! pitfall: missing inverse relationship for hasVersion.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse property</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#SoftwareVersion"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasVersion"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasFeatureInverse">
+  <rdfs:comment xml:lang="en">Inverse of hasFeature. Links a feature to the software or version that provides it.</rdfs:comment>
+  <rdfs:label xml:lang="en">has feature inverse</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created hasFeatureInverse inverse property: Addressed OOPS! pitfall: missing inverse relationship for hasFeature.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse property</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Feature"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasFeature"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#licenses">
+  <rdfs:comment xml:lang="en">Inverse of hasLicense. Links a license to the software it governs.</rdfs:comment>
+  <rdfs:label xml:lang="en">licenses</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created licenses inverse property: Addressed OOPS! pitfall: missing inverse relationship for hasLicense.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse property</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#License"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasLicense"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasSoftwareTypeInverse">
+  <rdfs:comment xml:lang="en">Inverse of hasSoftwareType. Links a software type to the software classified under it.</rdfs:comment>
+  <rdfs:label xml:lang="en">has software type inverse</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created hasSoftwareTypeInverse inverse property: Addressed OOPS! pitfall: missing inverse relationship for hasSoftwareType.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse property</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#SoftwareType"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasSoftwareType"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasDeploymentTypeInverse">
+  <rdfs:comment xml:lang="en">Inverse of hasDeploymentType. Links a deployment type to the software deployed via it.</rdfs:comment>
+  <rdfs:label xml:lang="en">has deployment type inverse</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created hasDeploymentTypeInverse inverse property: Addressed OOPS! pitfall: missing inverse relationship for hasDeploymentType.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse property</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#DeploymentType"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasDeploymentType"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasDevelopmentModelInverse">
+  <rdfs:comment xml:lang="en">Inverse of hasDevelopmentModel. Links a development model to the software following it.</rdfs:comment>
+  <rdfs:label xml:lang="en">has development model inverse</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created hasDevelopmentModelInverse inverse property: Addressed OOPS! pitfall: missing inverse relationship for hasDevelopmentModel.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse property</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#DevelopmentModel"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasDevelopmentModel"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#maintainedByStatus">
+  <rdfs:comment xml:lang="en">Inverse of hasMaintenanceStatus. Links a maintenance status to the software it describes.</rdfs:comment>
+  <rdfs:label xml:lang="en">maintained by status</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created maintainedByStatus inverse property: Addressed OOPS! pitfall: missing inverse relationship for hasMaintenanceStatus.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse property</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#MaintenanceStatus"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasMaintenanceStatus"/>
+</owl:ObjectProperty>
+
+  <!-- owl:DatatypeProperty declarations -->
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasVersionString">
+  <rdfs:comment xml:lang="en">The version identifier string for a software release.</rdfs:comment>
+  <rdfs:label xml:lang="en">has version string</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created hasVersionString property: Captures version numbers like '1.0' or '2.1.3' (CQ54, CQ57).
+    [Pitfall Resolution Agent] Created hasVersionString property: Captures version numbers like '1.0' or '2.1.3'.</vaem:rationale>
+  <dc:source>(competency_question) CQ54, CQ57</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#SoftwareVersion"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasReleaseDate">
+  <rdfs:comment xml:lang="en">The date when the software or a specific version was released.</rdfs:comment>
+  <rdfs:label xml:lang="en">has release date</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created hasReleaseDate property: Answers CQ45 and CQ57 about software age and version release dates.
+    [Pitfall Resolution Agent] Created hasReleaseDate property: Answers CQ45 and CQ57 about software age and version release dates.</vaem:rationale>
+  <dc:source>(competency_question) CQ45, CQ57</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#isFree">
+  <rdfs:comment xml:lang="en">Indicates whether the software is free of charge.</rdfs:comment>
+  <rdfs:label xml:lang="en">is free</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created isFree property: Answers CQ68 about cost.
+    [Pitfall Resolution Agent] Created isFree property: Answers CQ68 about cost.</vaem:rationale>
+  <dc:source>(competency_question) CQ68</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#isOpenSource">
+  <rdfs:comment xml:lang="en">Indicates whether the software source code is publicly available.</rdfs:comment>
+  <rdfs:label xml:lang="en">is open source</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created isOpenSource property: Answers CQ60 about open source status.
+    [Pitfall Resolution Agent] Created isOpenSource property: Answers CQ60 about open source status.</vaem:rationale>
+  <dc:source>(competency_question) CQ60</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#isFoss">
+  <rdfs:comment xml:lang="en">Indicates whether the software is Free and Open Source Software.</rdfs:comment>
+  <rdfs:label xml:lang="en">is foss</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created isFoss property: Answers CQ65 about FOSS status.
+    [Pitfall Resolution Agent] Created isFoss property: Answers CQ65 about FOSS status.</vaem:rationale>
+  <dc:source>(competency_question) CQ65</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasDevelopmentActivity">
+  <rdfs:comment xml:lang="en">Describes the current level of development activity or update frequency.</rdfs:comment>
+  <rdfs:label xml:lang="en">has development activity</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created hasDevelopmentActivity property: Answers CQ46 about how actively the software is developed.
+    [Pitfall Resolution Agent] Created hasDevelopmentActivity property: Answers CQ46 about how actively the software is developed.</vaem:rationale>
+  <dc:source>(competency_question) CQ46</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasDocumentationUrl">
+  <rdfs:comment xml:lang="en">The URL where software documentation can be found.</rdfs:comment>
+  <rdfs:label xml:lang="en">has documentation url</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created hasDocumentationUrl property: Answers CQ73 about documentation location.
+    [Pitfall Resolution Agent] Created hasDocumentationUrl property: Answers CQ73 about documentation location.</vaem:rationale>
+  <dc:source>(competency_question) CQ73</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasHomepageUrl">
+  <rdfs:comment xml:lang="en">The official homepage URL for the software.</rdfs:comment>
+  <rdfs:label xml:lang="en">has homepage url</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created hasHomepageUrl property: Answers CQ37 about the software homepage.
+    [Pitfall Resolution Agent] Created hasHomepageUrl property: Answers CQ37 about the software homepage.</vaem:rationale>
+  <dc:source>(competency_question) CQ37</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasDownloadUrl">
+  <rdfs:comment xml:lang="en">The URL from which the software can be downloaded.</rdfs:comment>
+  <rdfs:label xml:lang="en">has download url</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created hasDownloadUrl property: Answers CQ30 and CQ40 about acquisition URLs.
+    [Pitfall Resolution Agent] Created hasDownloadUrl property: Answers CQ30 and CQ40 about acquisition URLs.</vaem:rationale>
+  <dc:source>(competency_question) CQ30, CQ40</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasSupportUrl">
+  <rdfs:comment xml:lang="en">The URL where users can obtain help or support.</rdfs:comment>
+  <rdfs:label xml:lang="en">has support url</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created hasSupportUrl property: Answers CQ32 about help resources.
+    [Pitfall Resolution Agent] Created hasSupportUrl property: Answers CQ32 about help resources.</vaem:rationale>
+  <dc:source>(competency_question) CQ32</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasCollaborationUrl">
+  <rdfs:comment xml:lang="en">The URL for contacting developers or initiating collaboration.</rdfs:comment>
+  <rdfs:label xml:lang="en">has collaboration url</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created hasCollaborationUrl property: Answers CQ38 about developer collaboration.
+    [Pitfall Resolution Agent] Created hasCollaborationUrl property: Answers CQ38 about developer collaboration.</vaem:rationale>
+  <dc:source>(competency_question) CQ38</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasAlgorithmModification">
+  <rdfs:comment xml:lang="en">A description of any modifications made to the underlying algorithm.</rdfs:comment>
+  <rdfs:label xml:lang="en">has algorithm modification</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created hasAlgorithmModification property: Answers CQ05 about algorithm changes.
+    [Pitfall Resolution Agent] Created hasAlgorithmModification property: Answers CQ05 about algorithm changes.</vaem:rationale>
+  <dc:source>(competency_question) CQ05</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#licensePermissiveness">
+  <rdfs:comment xml:lang="en">Describes the permissiveness level of the software license.</rdfs:comment>
+  <rdfs:label xml:lang="en">license permissiveness</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created licensePermissiveness property: Answers CQ59 about license terms and restrictiveness.
+    [Pitfall Resolution Agent] Created licensePermissiveness property: Answers CQ59 about license terms and restrictiveness.</vaem:rationale>
+  <dc:source>(competency_question) CQ59</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+</rdf:RDF>

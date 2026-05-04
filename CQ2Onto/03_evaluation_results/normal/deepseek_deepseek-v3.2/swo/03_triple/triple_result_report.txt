@@ -1,0 +1,204 @@
+========================================================================
+THREE-LAYER PROPERTY-AXIOM EVALUATION REPORT
+========================================================================
+
+LAYER 1 — Triple Statistics
+────────────────────────────────────────────────────────────────────────
+  Property counts by axiom shape, per property type.
+    full         = both rdfs:domain and rdfs:range declared
+    domain_only  = only rdfs:domain declared
+    range_only   = only rdfs:range declared
+    undefined    = neither declared
+
+                        Full   Dom-only   Rng-only   Undef   Total
+  Gold:
+    ObjectProperty         3          0          7       8      18
+    DatatypeProperty       0          0          5       0       5
+    TOTAL                  ─          ─          ─       ─      23
+
+  Pred:
+    ObjectProperty         6          1          0       0       7
+    DatatypeProperty      15          0          0       0      15
+    TOTAL                  ─          ─          ─       ─      22
+
+LAYER 2 — Semantic Overview
+────────────────────────────────────────────────────────────────────────
+  Each property is represented as a normalized text string derived from its axioms.
+  string and embedded; one-to-one greedy match by cosine.
+  Threshold: 0.6    Model: embeddinggemma
+
+  Standard precision/recall definitions are used.
+                               P       R      F1      TP      FP      FN   gold   pred
+  Overall                  0.455   0.435   0.444      10      12      13     23     22
+  ObjectProperty           1.000   0.389   0.560       7       0      11     18      7
+  DatatypeProperty         0.200   0.600   0.300       3      12       2      5     15
+
+  ObjectProperty aligned pairs (showing up to 10):
+    [0.767]  gold:'has license'
+            pred:'software has license license'
+    [0.741]  gold:'implements algorithm'
+            pred:'algorithm has modification'
+    [0.727]  gold:'is developed by'
+            pred:'software developed by developer'
+    [0.687]  gold:'has output'
+            pred:'software has output format format'
+    [0.682]  gold:'has input'
+            pred:'software has input format format'
+    [0.665]  gold:'has interface software interface'
+            pred:'software performs task task'
+    [0.651]  gold:'is software for'
+            pred:'software uses algorithm algorithm'
+
+  DatatypeProperty aligned pairs (showing up to 10):
+    [0.799]  gold:'has release date xsd string'
+            pred:'software has release date xsd date'
+    [0.763]  gold:'has documentation xsd string'
+            pred:'software has documentation xsd anyuri'
+    [0.677]  gold:'has download location xsd string'
+            pred:'software has feature xsd string'
+
+LAYER 3 — Strict Alignment (via best-matching tables)
+────────────────────────────────────────────────────────────────────────
+  9 property pairs from property_best_matching.csv.
+  Domain evaluated via class_best_matching.csv;
+  Range evaluated via class_best_matching.csv (ObjectProperty)
+  or normalized XSD equality (DatatypeProperty).
+
+  Evaluation criteria:
+    skip      — gold None and pred None (nothing declared on either side)
+    TP        — both declared and set-equal under the alignment table
+    FP        — pred declared but gold did not
+    FN        — gold declared but pred did not
+    mismatch  — both declared but they disagree under the alignment table
+                (mismatch contributes to both FP and FN)
+
+  Metric formula (mismatch counts as both FP and FN):
+    FP_total = fp + mismatch       (pred-side errors)
+    FN_total = fn + mismatch       (gold-side gaps)
+    P  = TP / (TP + FP_total)
+    R  = TP / (TP + FN_total)
+
+  [ObjectProperty]  6 aligned pair(s)
+    Type     P=1.000  R=1.000  F1=1.000  (TP=6, FP=0, FN=0; FP and FN include mismatch=0; skip=0)
+    Domain   P=0.000  R=0.000  F1=0.000  (TP=0, FP=6, FN=1; FP and FN include mismatch=1; skip=0)
+    Range    P=0.000  R=0.000  F1=0.000  (TP=0, FP=5, FN=1; FP and FN include mismatch=0; skip=0)
+    Overall  P=0.000  R=0.000  F1=0.000  (TP=0, FP=11, FN=2; type + domain + range judgments combined)
+
+    Per-pair detail:
+      gold:has format specification  ↔  pred:has modification
+        type    gold=ObjectProperty  pred=ObjectProperty  → TP
+        domain  gold=['data item']  pred=['Algorithm']  → MISMATCH
+        range   gold=['data format specification']   pred=None   → FN
+      gold:has input  ↔  pred:has input format
+        type    gold=ObjectProperty  pred=ObjectProperty  → TP
+        domain  gold=None  pred=['Software']  → FP
+        range   gold=None   pred=['Format']   → FP
+      gold:has license  ↔  pred:has license
+        type    gold=ObjectProperty  pred=ObjectProperty  → TP
+        domain  gold=None  pred=['Software']  → FP
+        range   gold=None   pred=['License']   → FP
+      gold:has output  ↔  pred:has output format
+        type    gold=ObjectProperty  pred=ObjectProperty  → TP
+        domain  gold=None  pred=['Software']  → FP
+        range   gold=None   pred=['Format']   → FP
+      gold:is developed by  ↔  pred:developed by
+        type    gold=ObjectProperty  pred=ObjectProperty  → TP
+        domain  gold=None  pred=['Software']  → FP
+        range   gold=None   pred=['Developer']   → FP
+      gold:uses platform  ↔  pred:uses algorithm
+        type    gold=ObjectProperty  pred=ObjectProperty  → TP
+        domain  gold=None  pred=['Software']  → FP
+        range   gold=None   pred=['Algorithm']   → FP
+
+    No fully aligned triples.
+
+  [DatatypeProperty]  3 aligned pair(s)
+    Type     P=1.000  R=1.000  F1=1.000  (TP=3, FP=0, FN=0; FP and FN include mismatch=0; skip=0)
+    Domain   P=0.000  R=0.000  F1=0.000  (TP=0, FP=3, FN=0; FP and FN include mismatch=0; skip=0)
+    Range    P=0.000  R=0.000  F1=0.000  (TP=0, FP=3, FN=3; FP and FN include mismatch=3; skip=0)
+    Overall  P=0.000  R=0.000  F1=0.000  (TP=0, FP=6, FN=3; type + domain + range judgments combined)
+
+    Per-pair detail:
+      gold:has documentation  ↔  pred:has documentation
+        type    gold=DatatypeProperty  pred=DatatypeProperty  → TP
+        domain  gold=None  pred=['Software']  → FP
+        range   gold=['xsd:string']   pred=['xsd:anyuri']   → MISMATCH
+      gold:has release date  ↔  pred:has release date
+        type    gold=DatatypeProperty  pred=DatatypeProperty  → TP
+        domain  gold=None  pred=['Software']  → FP
+        range   gold=['xsd:string']   pred=['xsd:date']   → MISMATCH
+      gold:has website homepage  ↔  pred:has homepage
+        type    gold=DatatypeProperty  pred=DatatypeProperty  → TP
+        domain  gold=None  pred=['Software']  → FP
+        range   gold=['xsd:http://www.w3.org/2000/01/rdf-schema#literal']   pred=['xsd:anyuri']   → MISMATCH
+
+    No fully aligned triples.
+
+  [Grand Overall — all property types, domain + range combined]
+    P=0.000  R=0.000  F1=0.000  (TP=0, FP=17, FN=5; FP and FN include mismatch=4)
+
+LAYER 4 — Global Overview
+────────────────────────────────────────────────────────────────────────
+  Layer 3 evaluates only properties already aligned by the upstream
+  step. Layer 4 extends the evaluation to the full ontology:
+    FP_global = Layer-3 FP + every domain/range axiom of every
+                              UNALIGNED pred property
+    FN_global = Layer-3 FN + every domain/range axiom of every
+                              UNALIGNED gold property
+  TP is unchanged. P / R / F1 reflect the whole ontology.
+  (Layer-3 FP/FN already include mismatch — see Layer 3 above.)
+
+  [ObjectProperty]
+    P=0.000  R=0.000  F1=0.000
+    TP = 0
+    FP = 13   (Layer-3 FP: 11  +  unaligned pred axioms: 2)
+    FN = 13   (Layer-3 FN: 2  +  unaligned gold axioms: 11)
+    Unaligned gold properties: 12 (contributing 11 axioms to FN)
+    Unaligned pred properties: 1 (contributing 2 axioms to FP)
+    Gold properties with no aligned pred (full axioms count as FN):
+      - has function: domain=None  range=['function']  (1 axiom)
+      - has specified data input: domain=None  range=['data item']  (1 axiom)
+      - has specified data output: domain=None  range=['data item']  (1 axiom)
+      - uses software: domain=['SWO_0000001']  range=['SWO_0000001']  (2 axioms)
+      - is software for: domain=None  range=None  (0 axioms)
+      - implements: domain=None  range=['algorithm']  (1 axiom)
+      - is encoded in: domain=None  range=None  (0 axioms)
+      - has version: domain=None  range=['version number']  (1 axiom)
+      - has interface: domain=None  range=['software interface']  (1 axiom)
+      - has clause: domain=None  range=None  (0 axioms)
+      - is alternative format of: domain=['data format specification']  range=['data format specification']  (2 axioms)
+      - has declared status: domain=None  range=['Development status']  (1 axiom)
+    Pred properties with no aligned gold (full axioms count as FP):
+      - performs task: domain=['Software']  range=['Task']  (2 axioms)
+
+  [DatatypeProperty]
+    P=0.000  R=0.000  F1=0.000
+    TP = 0
+    FP = 30   (Layer-3 FP: 6  +  unaligned pred axioms: 24)
+    FN = 5    (Layer-3 FN: 3  +  unaligned gold axioms: 2)
+    Unaligned gold properties: 2 (contributing 2 axioms to FN)
+    Unaligned pred properties: 12 (contributing 24 axioms to FP)
+    Gold properties with no aligned pred (full axioms count as FN):
+      - has download location: domain=None  range=['xsd:string']  (1 axiom)
+      - has support URL: domain=None  range=['xsd:http://www.w3.org/2000/01/rdf-schema#literal']  (1 axiom)
+    Pred properties with no aligned gold (full axioms count as FP):
+      - has software type: domain=['Software']  range=['xsd:string']  (2 axioms)
+      - has version: domain=['Software']  range=['xsd:string']  (2 axioms)
+      - has implementation language: domain=['Software']  range=['xsd:string']  (2 axioms)
+      - has platform: domain=['Software']  range=['xsd:string']  (2 axioms)
+      - has availability: domain=['Software']  range=['xsd:string']  (2 axioms)
+      - has help: domain=['Software']  range=['xsd:string']  (2 axioms)
+      - has age: domain=['Software']  range=['xsd:string']  (2 axioms)
+      - has development activity: domain=['Software']  range=['xsd:string']  (2 axioms)
+      - has feature: domain=['Software']  range=['xsd:string']  (2 axioms)
+      - is open source: domain=['Software']  range=['xsd:boolean']  (2 axioms)
+      - is free: domain=['Software']  range=['xsd:boolean']  (2 axioms)
+      - provides XML editing: domain=['Software']  range=['xsd:boolean']  (2 axioms)
+
+  [Grand Overall — global, all property types]
+    P=0.000  R=0.000  F1=0.000
+    TP = 0
+    FP = 43   (Layer-3 FP: 17  +  unaligned pred axioms: 26)
+    FN = 18   (Layer-3 FN: 5  +  unaligned gold axioms: 13)
+
+========================================================================

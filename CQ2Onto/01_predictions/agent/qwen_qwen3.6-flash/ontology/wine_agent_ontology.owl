@@ -1,0 +1,348 @@
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:vaem="http://www.linkedmodel.org/schema/vaem#">
+ 
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Wine">
+  <rdfs:comment xml:lang="en">A beverage produced by fermenting grapes, characterized by region, grape variety, color, vintage, and sensory attributes.</rdfs:comment>
+  <rdfs:label xml:lang="en">Wine</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created Wine class: Central entity required to answer CQ1 and CQ6 regarding wine characteristics and vintage effects.
+    [Pitfall Resolution Agent] Created Wine class: Central entity required to answer CQ1 and CQ6 regarding wine characteristics and vintage effects.</vaem:rationale>
+  <dc:source>(competency_question) CQ1
+    (competency_question) CQ6</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#WineRegion">
+  <rdfs:comment xml:lang="en">A geographical area recognized for its wine production, often associated with specific grape varieties and typical wine colors.</rdfs:comment>
+  <rdfs:label xml:lang="en">Wine Region</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created WineRegion class: Required to model regional origins (Bordeaux, Napa) and answer CQ2, CQ7, and CQnew1.
+    [Pitfall Resolution Agent] Created WineRegion class: Required to model regional origins (Bordeaux, Napa) and answer CQ2, CQ7, and CQnew1.</vaem:rationale>
+  <dc:source>(competency_question) CQ2
+    (competency_question) CQ7
+    (competency_question) CQnew1</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#GrapeVariety">
+  <rdfs:comment xml:lang="en">A specific cultivar of grape used in winemaking, defining the genetic and flavor profile of the wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">Grape Variety</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created GrapeVariety class: Needed to link wines and regions to specific grapes (e.g., Zinfandel, Bordeaux blends) per CQ1, CQ7, CQnew1.
+    [Pitfall Resolution Agent] Created GrapeVariety class: Needed to link wines and regions to specific grapes (e.g., Zinfandel, Bordeaux blends) per CQ1, CQ7, CQnew1.</vaem:rationale>
+  <dc:source>(competency_question) CQ1
+    (competency_question) CQ7
+    (competency_question) CQnew1</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#WineColor">
+  <rdfs:comment xml:lang="en">The visual color category of a wine, typically classified as red, white, or rosé.</rdfs:comment>
+  <rdfs:label xml:lang="en">Wine Color</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created WineColor class: Required to model color attributes for wines and regions, addressing CQ1 and CQ2.
+    [Pitfall Resolution Agent] Created WineColor class: Required to model color attributes for wines and regions, addressing CQ1 and CQ2.</vaem:rationale>
+  <dc:source>(competency_question) CQ1
+    (competency_question) CQ2</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#RedWine">
+  <rdfs:comment xml:lang="en">A wine characterized by red or purple hues, derived from dark-colored grape varieties.</rdfs:comment>
+  <rdfs:label xml:lang="en">Red Wine</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created RedWine class: Specific color category needed to answer CQ2 regarding Bordeaux wine types.
+    [Pitfall Resolution Agent] Created RedWine class: Specific color category needed to answer CQ2 regarding Bordeaux wine types.
+    [Pitfall Resolution Agent] Changed superclass to Wine and added disjoint axiom with WhiteWine: Fixed semantic modeling error (was incorrectly subclass of WineColor) and addressed disjoint axioms pitfall.</vaem:rationale>
+  <dc:source>(competency_question) CQ2
+    (pitfall) The ontology lacks disjoint axioms between classes or between properties that should be defined as disjoint.</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#Wine"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#WhiteWine"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#WhiteWine">
+  <rdfs:comment xml:lang="en">A wine characterized by pale yellow to golden hues, typically made from green or red grapes with skins removed.</rdfs:comment>
+  <rdfs:label xml:lang="en">White Wine</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created WhiteWine class: Specific color category needed to answer CQ2 regarding Bordeaux wine types.
+    [Pitfall Resolution Agent] Created WhiteWine class: Specific color category needed to answer CQ2 regarding Bordeaux wine types.
+    [Pitfall Resolution Agent] Changed superclass to Wine and added disjoint axiom with RedWine: Fixed semantic modeling error (was incorrectly subclass of WineColor) and addressed disjoint axioms pitfall.</vaem:rationale>
+  <dc:source>(competency_question) CQ2
+    (pitfall) The ontology lacks disjoint axioms between classes or between properties that should be defined as disjoint.</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#Wine"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#RedWine"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#VintageYear">
+  <rdfs:comment xml:lang="en">The calendar year in which the grapes for a specific wine were harvested.</rdfs:comment>
+  <rdfs:label xml:lang="en">Vintage Year</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created VintageYear class: Required to model temporal harvest data and answer CQ6 and CQ7 about vintage variations and quality.
+    [Pitfall Resolution Agent] Created VintageYear class: Required to model temporal harvest data and answer CQ6 and CQ7 about vintage variations and quality.</vaem:rationale>
+  <dc:source>(competency_question) CQ6
+    (competency_question) CQ7</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#WineCharacteristic">
+  <rdfs:comment xml:lang="en">A sensory or descriptive attribute used to evaluate or describe a wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">Wine Characteristic</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created WineCharacteristic class: Superclass for specific sensory attributes to structure CQ1 and CQ6 requirements.
+    [Pitfall Resolution Agent] Created WineCharacteristic class: Superclass for specific sensory attributes to structure CQ1 and CQ6 requirements.
+    [Pitfall Resolution Agent] Added hasCharacteristic property linking to Wine: Resolved isolated elements pitfall by connecting the class to the ontology graph.</vaem:rationale>
+  <dc:source>(competency_question) CQ1
+    (competency_question) CQ6
+    (pitfall) Ontology elements are created isolated, with no relation to the rest of the ontology.</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Bouquet">
+  <rdfs:comment xml:lang="en">The complex aroma profile of a wine, often developing with age, distinct from primary grape aromas.</rdfs:comment>
+  <rdfs:label xml:lang="en">Bouquet</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created Bouquet class: Specific characteristic mentioned in CQ1 and CQ6 to model wine aroma attributes.
+    [Pitfall Resolution Agent] Created Bouquet class: Specific characteristic mentioned in CQ1 and CQ6 to model wine aroma attributes.</vaem:rationale>
+  <dc:source>(competency_question) CQ1
+    (competency_question) CQ6</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#WineCharacteristic"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Body">
+  <rdfs:comment xml:lang="en">The perceived weight, texture, and mouthfeel of a wine in the mouth, influenced by alcohol, sugar, and tannins.</rdfs:comment>
+  <rdfs:label xml:lang="en">Body</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created Body class: Specific characteristic mentioned in CQ1 and CQ6 to model wine tactile attributes.
+    [Pitfall Resolution Agent] Created Body class: Specific characteristic mentioned in CQ1 and CQ6 to model wine tactile attributes.</vaem:rationale>
+  <dc:source>(competency_question) CQ1
+    (competency_question) CQ6</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#WineCharacteristic"/>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasRegion">
+  <rdfs:comment xml:lang="en">Links a wine to the geographical region where it was produced.</rdfs:comment>
+  <rdfs:label xml:lang="en">has region</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created hasRegion property: Needed to associate wines with their origin regions for CQ1.
+    [Pitfall Resolution Agent] Created hasRegion property: Needed to associate wines with their origin regions for CQ1.
+    [Pitfall Resolution Agent] Added inverse property hasWine: Addressed missing inverse relationship pitfall.</vaem:rationale>
+  <dc:source>(competency_question) CQ1
+    (pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#WineRegion"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasWine"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasWine">
+  <rdfs:comment xml:lang="en">Inverse of hasRegion. Links a wine region to the wines produced there.</rdfs:comment>
+  <rdfs:label xml:lang="en">has wine</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created hasWine property: Inverse of hasRegion to satisfy missing inverse pitfall.</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WineRegion"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasRegion"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasGrapeVariety">
+  <rdfs:comment xml:lang="en">Links a wine to the primary grape variety or blend used in its production.</rdfs:comment>
+  <rdfs:label xml:lang="en">has grape variety</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created hasGrapeVariety property: Required to answer CQ1 and CQ7 regarding grape composition.
+    [Pitfall Resolution Agent] Created hasGrapeVariety property: Required to answer CQ1 and CQ7 regarding grape composition.
+    [Pitfall Resolution Agent] Added inverse property usedInWine: Addressed missing inverse relationship pitfall.</vaem:rationale>
+  <dc:source>(competency_question) CQ1
+    (competency_question) CQ7
+    (pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#GrapeVariety"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#usedInWine"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#usedInWine">
+  <rdfs:comment xml:lang="en">Inverse of hasGrapeVariety. Links a grape variety to the wines it is used in.</rdfs:comment>
+  <rdfs:label xml:lang="en">used in wine</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created usedInWine property: Inverse of hasGrapeVariety to satisfy missing inverse pitfall.</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#GrapeVariety"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasGrapeVariety"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasColor">
+  <rdfs:comment xml:lang="en">Links a wine to its visual color classification.</rdfs:comment>
+  <rdfs:label xml:lang="en">has color</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created hasColor property: Needed to model wine color attributes for CQ1.
+    [Pitfall Resolution Agent] Created hasColor property: Needed to model wine color attributes for CQ1.
+    [Pitfall Resolution Agent] Added inverse property colorOf: Addressed missing inverse relationship pitfall.</vaem:rationale>
+  <dc:source>(competency_question) CQ1
+    (pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#WineColor"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#colorOf"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#colorOf">
+  <rdfs:comment xml:lang="en">Inverse of hasColor. Links a wine color to the wines that have it.</rdfs:comment>
+  <rdfs:label xml:lang="en">color of</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created colorOf property: Inverse of hasColor to satisfy missing inverse pitfall.</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WineColor"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasColor"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasVintageYear">
+  <rdfs:comment xml:lang="en">Links a wine to the specific year its grapes were harvested.</rdfs:comment>
+  <rdfs:label xml:lang="en">has vintage year</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created hasVintageYear property: Required to model temporal harvest data for CQ6 and CQ7.
+    [Pitfall Resolution Agent] Created hasVintageYear property: Required to model temporal harvest data for CQ6 and CQ7.
+    [Pitfall Resolution Agent] Added inverse property vintageOf: Addressed missing inverse relationship pitfall.</vaem:rationale>
+  <dc:source>(competency_question) CQ6
+    (competency_question) CQ7
+    (pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#VintageYear"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#vintageOf"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#vintageOf">
+  <rdfs:comment xml:lang="en">Inverse of hasVintageYear. Links a vintage year to the wines from that year.</rdfs:comment>
+  <rdfs:label xml:lang="en">vintage of</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created vintageOf property: Inverse of hasVintageYear to satisfy missing inverse pitfall.</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#VintageYear"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasVintageYear"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasBouquet">
+  <rdfs:comment xml:lang="en">Links a wine to its specific bouquet characteristic. Note: This attribute can vary significantly across different vintage years.</rdfs:comment>
+  <rdfs:label xml:lang="en">has bouquet</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created hasBouquet property: Directly addresses CQ1 and CQ6 by modeling aroma characteristics and their potential vintage dependency.
+    [Pitfall Resolution Agent] Created hasBouquet property: Directly addresses CQ1 and CQ6 by modeling aroma characteristics and their potential vintage dependency.
+    [Pitfall Resolution Agent] Added inverse property bouquetOf: Addressed missing inverse relationship pitfall.</vaem:rationale>
+  <dc:source>(competency_question) CQ1
+    (competency_question) CQ6
+    (pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Bouquet"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#bouquetOf"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#bouquetOf">
+  <rdfs:comment xml:lang="en">Inverse of hasBouquet. Links a bouquet characteristic to the wines that have it.</rdfs:comment>
+  <rdfs:label xml:lang="en">bouquet of</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created bouquetOf property: Inverse of hasBouquet to satisfy missing inverse pitfall.</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Bouquet"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasBouquet"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasBody">
+  <rdfs:comment xml:lang="en">Links a wine to its specific body characteristic. Note: This attribute can vary significantly across different vintage years.</rdfs:comment>
+  <rdfs:label xml:lang="en">has body</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created hasBody property: Directly addresses CQ1 and CQ6 by modeling mouthfeel characteristics and their potential vintage dependency.
+    [Pitfall Resolution Agent] Created hasBody property: Directly addresses CQ1 and CQ6 by modeling mouthfeel characteristics and their potential vintage dependency.
+    [Pitfall Resolution Agent] Added inverse property bodyOf: Addressed missing inverse relationship pitfall.</vaem:rationale>
+  <dc:source>(competency_question) CQ1
+    (competency_question) CQ6
+    (pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Body"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#bodyOf"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#bodyOf">
+  <rdfs:comment xml:lang="en">Inverse of hasBody. Links a body characteristic to the wines that have it.</rdfs:comment>
+  <rdfs:label xml:lang="en">body of</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created bodyOf property: Inverse of hasBody to satisfy missing inverse pitfall.</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Body"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasBody"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#producesGrape">
+  <rdfs:comment xml:lang="en">Links a wine region to the grape varieties commonly cultivated and used for winemaking in that area.</rdfs:comment>
+  <rdfs:label xml:lang="en">produces grape</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created producesGrape property: Required to answer CQnew1 about grapes used in Bordeaux and CQ7 about Napa Zinfandel.
+    [Pitfall Resolution Agent] Created producesGrape property: Required to answer CQnew1 about grapes used in Bordeaux and CQ7 about Napa Zinfandel.
+    [Pitfall Resolution Agent] Added inverse property grownInRegion: Addressed missing inverse relationship pitfall.</vaem:rationale>
+  <dc:source>(competency_question) CQnew1
+    (competency_question) CQ7
+    (pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WineRegion"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#GrapeVariety"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#grownInRegion"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#grownInRegion">
+  <rdfs:comment xml:lang="en">Inverse of producesGrape. Links a grape variety to the wine regions where it is grown.</rdfs:comment>
+  <rdfs:label xml:lang="en">grown in region</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created grownInRegion property: Inverse of producesGrape to satisfy missing inverse pitfall.</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#GrapeVariety"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#WineRegion"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#producesGrape"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasTypicalColor">
+  <rdfs:comment xml:lang="en">Links a wine region to the predominant color of wines typically produced in that region.</rdfs:comment>
+  <rdfs:label xml:lang="en">has typical color</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created hasTypicalColor property: Needed to answer CQ2 regarding whether Bordeaux produces red or white wines.
+    [Pitfall Resolution Agent] Created hasTypicalColor property: Needed to answer CQ2 regarding whether Bordeaux produces red or white wines.
+    [Pitfall Resolution Agent] Added inverse property typicalColorOf: Addressed missing inverse relationship pitfall.</vaem:rationale>
+  <dc:source>(competency_question) CQ2
+    (pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WineRegion"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#WineColor"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#typicalColorOf"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#typicalColorOf">
+  <rdfs:comment xml:lang="en">Inverse of hasTypicalColor. Links a wine color to the regions where it is typically produced.</rdfs:comment>
+  <rdfs:label xml:lang="en">typical color of</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created typicalColorOf property: Inverse of hasTypicalColor to satisfy missing inverse pitfall.</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WineColor"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#WineRegion"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasTypicalColor"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasGoodVintage">
+  <rdfs:comment xml:lang="en">Links a wine region to years that historically produced high-quality wines, often specific to certain grape varieties.</rdfs:comment>
+  <rdfs:label xml:lang="en">has good vintage</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created hasGoodVintage property: Required to answer CQ7 about good vintages for Napa Zinfandel.
+    [Pitfall Resolution Agent] Created hasGoodVintage property: Required to answer CQ7 about good vintages for Napa Zinfandel.
+    [Pitfall Resolution Agent] Added inverse property goodVintageFor: Addressed missing inverse relationship pitfall.</vaem:rationale>
+  <dc:source>(competency_question) CQ7
+    (pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WineRegion"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#VintageYear"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#goodVintageFor"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#goodVintageFor">
+  <rdfs:comment xml:lang="en">Inverse of hasGoodVintage. Links a vintage year to the wine regions where it is considered a good vintage.</rdfs:comment>
+  <rdfs:label xml:lang="en">good vintage for</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created goodVintageFor property: Inverse of hasGoodVintage to satisfy missing inverse pitfall.</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#VintageYear"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#WineRegion"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasGoodVintage"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasCharacteristic">
+  <rdfs:comment xml:lang="en">Links a wine to its general sensory or descriptive characteristics.</rdfs:comment>
+  <rdfs:label xml:lang="en">has characteristic</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created hasCharacteristic property: Added to connect WineCharacteristic class and resolve isolation pitfall.</vaem:rationale>
+  <dc:source>(pitfall) Ontology elements are created isolated, with no relation to the rest of the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#WineCharacteristic"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#characteristicOf"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#characteristicOf">
+  <rdfs:comment xml:lang="en">Inverse of hasCharacteristic. Links a wine characteristic to the wines that have it.</rdfs:comment>
+  <rdfs:label xml:lang="en">characteristic of</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created characteristicOf property: Inverse of hasCharacteristic to satisfy missing inverse pitfall and connect WineCharacteristic.</vaem:rationale>
+  <dc:source>(pitfall) Ontology elements are created isolated, with no relation to the rest of the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WineCharacteristic"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasCharacteristic"/>
+</owl:ObjectProperty>
+
+</rdf:RDF>

@@ -1,0 +1,462 @@
+$ /opt/conda/bin/python /home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/maseo_code/maseo/cqbycq/cli.py --config /home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/maseo_code/maseo/cqbycq/dataset/.run_config.yaml --cqs_file /home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/maseo_code/maseo/cqbycq/dataset/cqs/awo_cqs.json --save_file /home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/maseo_code/maseo/cqbycq/dataset/cqbycq/qwen_qwen3.6-27b/ontology/awo_cqbycq_ontology.owl
+
+CQ-by-CQ starting with 7 competency questions.
+Base URI: http://www.semanticweb.org/myontology#
+Max attempts: 3
+
+--- Attempt 1 / 3 ---
+
+======================================================================
+[1/7] CQ1: Which animal eats which other animal?
+======================================================================
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Animal">
+  <rdfs:comment xml:lang="en">A living organism of the kingdom Animalia.</rdfs:comment>
+  <rdfs:label xml:lang="en">Animal</rdfs:label>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#eats">
+  <rdfs:comment xml:lang="en">Relates an animal to another animal that it consumes.</rdfs:comment>
+  <rdfs:label xml:lang="en">eats</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+</owl:ObjectProperty>
+
+</rdf:RDF>
+
+======================================================================
+[2/7] CQ2: Is [this animal] a herbivore?
+======================================================================
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Animal">
+  <rdfs:comment xml:lang="en">A living organism of the kingdom Animalia.</rdfs:comment>
+  <rdfs:label xml:lang="en">Animal</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Plant">
+  <rdfs:comment xml:lang="en">A living organism of the kingdom Plantae.</rdfs:comment>
+  <rdfs:label xml:lang="en">Plant</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Herbivore">
+  <rdfs:comment xml:lang="en">An animal that feeds primarily on plants.</rdfs:comment>
+  <rdfs:label xml:lang="en">Herbivore</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Animal'/>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#eats">
+  <rdfs:comment xml:lang="en">Relates an animal to another animal that it consumes.</rdfs:comment>
+  <rdfs:label xml:lang="en">eats</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+</owl:ObjectProperty>
+
+</rdf:RDF>
+
+======================================================================
+[3/7] CQ3: Which plant parts does [this omnivorous or herbivorourus animal] eat?
+======================================================================
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Animal">
+  <rdfs:comment xml:lang="en">A living organism of the kingdom Animalia.</rdfs:comment>
+  <rdfs:label xml:lang="en">Animal</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Plant">
+  <rdfs:comment xml:lang="en">A living organism of the kingdom Plantae.</rdfs:comment>
+  <rdfs:label xml:lang="en">Plant</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Herbivore">
+  <rdfs:comment xml:lang="en">An animal that feeds primarily on plants.</rdfs:comment>
+  <rdfs:label xml:lang="en">Herbivore</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Animal'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Omnivore">
+  <rdfs:comment xml:lang="en">An animal that feeds on both plants and animals.</rdfs:comment>
+  <rdfs:label xml:lang="en">Omnivore</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Animal'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#PlantPart">
+  <rdfs:comment xml:lang="en">A structural component of a plant.</rdfs:comment>
+  <rdfs:label xml:lang="en">Plant Part</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Plant'/>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#eats">
+  <rdfs:comment xml:lang="en">Relates an animal to another animal that it consumes.</rdfs:comment>
+  <rdfs:label xml:lang="en">eats</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#eatsPlantPart">
+  <rdfs:comment xml:lang="en">Relates an animal to a plant part that it consumes.</rdfs:comment>
+  <rdfs:label xml:lang="en">eats plant part</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#PlantPart"/>
+</owl:ObjectProperty>
+
+</rdf:RDF>
+
+======================================================================
+[4/7] CQ4: Does a lion eat plants or plant parts?
+======================================================================
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Animal">
+  <rdfs:comment xml:lang="en">A living organism of the kingdom Animalia.</rdfs:comment>
+  <rdfs:label xml:lang="en">Animal</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Plant">
+  <rdfs:comment xml:lang="en">A living organism of the kingdom Plantae.</rdfs:comment>
+  <rdfs:label xml:lang="en">Plant</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Herbivore">
+  <rdfs:comment xml:lang="en">An animal that feeds primarily on plants.</rdfs:comment>
+  <rdfs:label xml:lang="en">Herbivore</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Animal'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Omnivore">
+  <rdfs:comment xml:lang="en">An animal that feeds on both plants and animals.</rdfs:comment>
+  <rdfs:label xml:lang="en">Omnivore</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Animal'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#PlantPart">
+  <rdfs:comment xml:lang="en">A structural component of a plant.</rdfs:comment>
+  <rdfs:label xml:lang="en">Plant Part</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Plant'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Lion">
+  <rdfs:comment xml:lang="en">A large feline predator of the genus Panthera.</rdfs:comment>
+  <rdfs:label xml:lang="en">Lion</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Animal'/>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#eats">
+  <rdfs:comment xml:lang="en">Relates an animal to another animal that it consumes.</rdfs:comment>
+  <rdfs:label xml:lang="en">eats</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#eatsPlantPart">
+  <rdfs:comment xml:lang="en">Relates an animal to a plant part that it consumes.</rdfs:comment>
+  <rdfs:label xml:lang="en">eats plant part</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#PlantPart"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#eatsPlant">
+  <rdfs:comment xml:lang="en">Relates an animal to a plant that it consumes.</rdfs:comment>
+  <rdfs:label xml:lang="en">eats plant</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Plant"/>
+</owl:ObjectProperty>
+
+</rdf:RDF>
+
+======================================================================
+[5/7] CQ6: Which plants eat animals?
+======================================================================
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Animal">
+  <rdfs:comment xml:lang="en">A living organism of the kingdom Animalia.</rdfs:comment>
+  <rdfs:label xml:lang="en">Animal</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Plant">
+  <rdfs:comment xml:lang="en">A living organism of the kingdom Plantae.</rdfs:comment>
+  <rdfs:label xml:lang="en">Plant</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Herbivore">
+  <rdfs:comment xml:lang="en">An animal that feeds primarily on plants.</rdfs:comment>
+  <rdfs:label xml:lang="en">Herbivore</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Animal'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Omnivore">
+  <rdfs:comment xml:lang="en">An animal that feeds on both plants and animals.</rdfs:comment>
+  <rdfs:label xml:lang="en">Omnivore</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Animal'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#PlantPart">
+  <rdfs:comment xml:lang="en">A structural component of a plant.</rdfs:comment>
+  <rdfs:label xml:lang="en">Plant Part</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Plant'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Lion">
+  <rdfs:comment xml:lang="en">A large feline predator of the genus Panthera.</rdfs:comment>
+  <rdfs:label xml:lang="en">Lion</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Animal'/>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#eats">
+  <rdfs:comment xml:lang="en">Relates an animal to another animal that it consumes.</rdfs:comment>
+  <rdfs:label xml:lang="en">eats</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#eatsPlantPart">
+  <rdfs:comment xml:lang="en">Relates an animal to a plant part that it consumes.</rdfs:comment>
+  <rdfs:label xml:lang="en">eats plant part</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#PlantPart"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#eatsPlant">
+  <rdfs:comment xml:lang="en">Relates an animal to a plant that it consumes.</rdfs:comment>
+  <rdfs:label xml:lang="en">eats plant</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Plant"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#eatsAnimal">
+  <rdfs:comment xml:lang="en">Relates a plant to an animal that it consumes.</rdfs:comment>
+  <rdfs:label xml:lang="en">eats animal</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Plant"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+</owl:ObjectProperty>
+
+</rdf:RDF>
+
+======================================================================
+[6/7] CQ7: Which animals eat [these animals]?
+======================================================================
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Animal">
+  <rdfs:comment xml:lang="en">A living organism of the kingdom Animalia.</rdfs:comment>
+  <rdfs:label xml:lang="en">Animal</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Plant">
+  <rdfs:comment xml:lang="en">A living organism of the kingdom Plantae.</rdfs:comment>
+  <rdfs:label xml:lang="en">Plant</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Herbivore">
+  <rdfs:comment xml:lang="en">An animal that feeds primarily on plants.</rdfs:comment>
+  <rdfs:label xml:lang="en">Herbivore</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Animal'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Omnivore">
+  <rdfs:comment xml:lang="en">An animal that feeds on both plants and animals.</rdfs:comment>
+  <rdfs:label xml:lang="en">Omnivore</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Animal'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#PlantPart">
+  <rdfs:comment xml:lang="en">A structural component of a plant.</rdfs:comment>
+  <rdfs:label xml:lang="en">Plant Part</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Plant'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Lion">
+  <rdfs:comment xml:lang="en">A large feline predator of the genus Panthera.</rdfs:comment>
+  <rdfs:label xml:lang="en">Lion</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Animal'/>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#eats">
+  <rdfs:comment xml:lang="en">Relates an animal to another animal that it consumes.</rdfs:comment>
+  <rdfs:label xml:lang="en">eats</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#eatsPlantPart">
+  <rdfs:comment xml:lang="en">Relates an animal to a plant part that it consumes.</rdfs:comment>
+  <rdfs:label xml:lang="en">eats plant part</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#PlantPart"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#eatsPlant">
+  <rdfs:comment xml:lang="en">Relates an animal to a plant that it consumes.</rdfs:comment>
+  <rdfs:label xml:lang="en">eats plant</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Plant"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#eatsAnimal">
+  <rdfs:comment xml:lang="en">Relates a plant to an animal that it consumes.</rdfs:comment>
+  <rdfs:label xml:lang="en">eats animal</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Plant"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+</owl:ObjectProperty>
+
+</rdf:RDF>
+
+======================================================================
+[7/7] CQ14: Are there animals that are carnivore but still eat some plants or parts of plants?
+======================================================================
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Animal">
+  <rdfs:comment xml:lang="en">A living organism of the kingdom Animalia.</rdfs:comment>
+  <rdfs:label xml:lang="en">Animal</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Plant">
+  <rdfs:comment xml:lang="en">A living organism of the kingdom Plantae.</rdfs:comment>
+  <rdfs:label xml:lang="en">Plant</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Herbivore">
+  <rdfs:comment xml:lang="en">An animal that feeds primarily on plants.</rdfs:comment>
+  <rdfs:label xml:lang="en">Herbivore</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Animal'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Omnivore">
+  <rdfs:comment xml:lang="en">An animal that feeds on both plants and animals.</rdfs:comment>
+  <rdfs:label xml:lang="en">Omnivore</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Animal'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#PlantPart">
+  <rdfs:comment xml:lang="en">A structural component of a plant.</rdfs:comment>
+  <rdfs:label xml:lang="en">Plant Part</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Plant'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Lion">
+  <rdfs:comment xml:lang="en">A large feline predator of the genus Panthera.</rdfs:comment>
+  <rdfs:label xml:lang="en">Lion</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Animal'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Carnivore">
+  <rdfs:comment xml:lang="en">An animal that feeds primarily on other animals.</rdfs:comment>
+  <rdfs:label xml:lang="en">Carnivore</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Animal'/>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#eats">
+  <rdfs:comment xml:lang="en">Relates an animal to another animal that it consumes.</rdfs:comment>
+  <rdfs:label xml:lang="en">eats</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#eatsPlantPart">
+  <rdfs:comment xml:lang="en">Relates an animal to a plant part that it consumes.</rdfs:comment>
+  <rdfs:label xml:lang="en">eats plant part</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#PlantPart"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#eatsPlant">
+  <rdfs:comment xml:lang="en">Relates an animal to a plant that it consumes.</rdfs:comment>
+  <rdfs:label xml:lang="en">eats plant</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Plant"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#eatsAnimal">
+  <rdfs:comment xml:lang="en">Relates a plant to an animal that it consumes.</rdfs:comment>
+  <rdfs:label xml:lang="en">eats animal</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Plant"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+</owl:ObjectProperty>
+
+</rdf:RDF>
+
+==================================================
+CQ-BY-CQ COMPLETED SUCCESSFULLY!
+Ontology written to: /home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/maseo_code/maseo/cqbycq/dataset/cqbycq/qwen_qwen3.6-27b/ontology/awo_cqbycq_ontology.owl
+==================================================

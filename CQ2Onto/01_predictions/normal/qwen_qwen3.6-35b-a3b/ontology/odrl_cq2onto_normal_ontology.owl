@@ -1,0 +1,358 @@
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:vaem="http://www.linkedmodel.org/schema/vaem#">
+ 
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Policy">
+  <rdfs:comment xml:lang="en">A set of rules that govern the use, distribution, or modification of digital assets.</rdfs:comment>
+  <rdfs:label xml:lang="en">Policy</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class: Addressed New CQ1 and New CQ2 regarding policy linkage and conflict resolution.</vaem:rationale>
+  <dc:source>(competency_question) New CQ1: Which policy is directly linked to a given asset?
+    (competency_question) New CQ2: What conflict resolution strategy is specified by a policy?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Rule">
+  <rdfs:comment xml:lang="en">A single policy statement that can include permissions, prohibitions, and duties.</rdfs:comment>
+  <rdfs:label xml:lang="en">Rule</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class: Addressed New CQ4 and New CQ5 regarding rule activation and duty consequences.</vaem:rationale>
+  <dc:source>(competency_question) New CQ4: Which rule is activated upon the failure of another rule?
+    (competency_question) New CQ5: What duty is specified as a consequence of another duty?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Asset">
+  <rdfs:comment xml:lang="en">The digital object or content to which a policy applies.</rdfs:comment>
+  <rdfs:label xml:lang="en">Asset</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class: Addressed New CQ1 regarding asset-policy linkage.</vaem:rationale>
+  <dc:source>(competency_question) New CQ1: Which policy is directly linked to a given asset?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Party">
+  <rdfs:comment xml:lang="en">An entity involved in a policy or rule, such as a user, provider, or assignee.</rdfs:comment>
+  <rdfs:label xml:lang="en">Party</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class: Addressed CQ06 and CQ10 regarding contract parties and rights/duties support.</vaem:rationale>
+  <dc:source>(competency_question) CQ06: Expressing the various roles of contract parties within the Permission/Duty element.
+    (competency_question) CQ10: How are rights and duties supported for all contract parties?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Role">
+  <rdfs:comment xml:lang="en">The specific function or capacity of a party within a policy context (e.g., assignee, assigner, target).</rdfs:comment>
+  <rdfs:label xml:lang="en">Role</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class: Addressed CQ06 regarding party roles.</vaem:rationale>
+  <dc:source>(competency_question) CQ06: Expressing the various roles of contract parties within the Permission/Duty element.</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Permission">
+  <rdfs:comment xml:lang="en">A rule that grants a party the right to perform an action on an asset.</rdfs:comment>
+  <rdfs:label xml:lang="en">Permission</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class: Addressed CQ03, CQ06, CQ24 regarding permissions, transfer rights, and exclusivity.</vaem:rationale>
+  <dc:source>(competency_question) CQ03: Shall the permissions 'Aggregation' and 'Disaggregation' be of the type Transfer Rights?
+    (competency_question) CQ24: How to express exclusive permissions?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Prohibition">
+  <rdfs:comment xml:lang="en">A rule that forbids a party from performing an action on an asset.</rdfs:comment>
+  <rdfs:label xml:lang="en">Prohibition</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class: Addressed New CQ3 and New CQ6 regarding prohibitions, remedies, and operators.</vaem:rationale>
+  <dc:source>(competency_question) New CQ3: What duty is specified as a remedy for the violation of a prohibition?
+    (competency_question) New CQ6: What operator is used in the constraints of a prohibition?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Duty">
+  <rdfs:comment xml:lang="en">A rule that requires a party to perform an action or provide something.</rdfs:comment>
+  <rdfs:label xml:lang="en">Duty</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class: Addressed CQ06, CQ10, New CQ3, New CQ5 regarding duties and consequences.</vaem:rationale>
+  <dc:source>(competency_question) CQ06: Expressing the various roles of contract parties within the Permission/Duty element.
+    (competency_question) New CQ5: What duty is specified as a consequence of another duty?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Constraint">
+  <rdfs:comment xml:lang="en">A condition or limitation that restricts the application of a permission, prohibition, or duty.</rdfs:comment>
+  <rdfs:label xml:lang="en">Constraint</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class: Addressed CQ08, CQ13, CQ14, CQ21, CQ26, New CQ6 regarding constraint modeling.</vaem:rationale>
+  <dc:source>(competency_question) CQ14: How do we express 'and', 'or', 'xor' constraints?
+    (competency_question) CQ21: How to express constraints on requirements?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#LogicalConstraint">
+  <rdfs:comment xml:lang="en">A constraint that combines other constraints using logical operators (AND, OR, XOR, NOT).</rdfs:comment>
+  <rdfs:label xml:lang="en">Logical Constraint</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class and axiom: Addressed CQ08 and CQ14. Modeled as a subclass of Constraint to support inheritance (CQ33).</vaem:rationale>
+  <dc:source>(competency_question) CQ08: How to provide a 'NOT' expression?
+    (competency_question) CQ14: How do we express 'and', 'or', 'xor' constraints?</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#Constraint"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#TemporalConstraint">
+  <rdfs:comment xml:lang="en">A constraint that specifies time-based conditions or sequencing.</rdfs:comment>
+  <rdfs:label xml:lang="en">Temporal Constraint</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class and axiom: Addressed CQ31 regarding sequencing in REL.</vaem:rationale>
+  <dc:source>(competency_question) CQ31: Do we need 'Sequencing' as part of the REL?</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#Constraint"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Condition">
+  <rdfs:comment xml:lang="en">A specific type of constraint that must be satisfied for a rule to take effect.</rdfs:comment>
+  <rdfs:label xml:lang="en">Condition</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class and axiom: Addressed CQ26 regarding conditions via constraints.</vaem:rationale>
+  <dc:source>(competency_question) CQ26: How to express Condition via Constraints?</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#Constraint"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Remedy">
+  <rdfs:comment xml:lang="en">A duty specified as a consequence or compensation for violating a prohibition.</rdfs:comment>
+  <rdfs:label xml:lang="en">Remedy</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class and axiom: Addressed New CQ3. Modeled as a subclass of Duty.</vaem:rationale>
+  <dc:source>(competency_question) New CQ3: What duty is specified as a remedy for the violation of a prohibition?</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#Duty"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#ConflictResolutionStrategy">
+  <rdfs:comment xml:lang="en">A policy-level specification defining how to resolve conflicts between rules.</rdfs:comment>
+  <rdfs:label xml:lang="en">Conflict Resolution Strategy</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class: Addressed New CQ2.</vaem:rationale>
+  <dc:source>(competency_question) New CQ2: What conflict resolution strategy is specified by a policy?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#TransferRight">
+  <rdfs:comment xml:lang="en">A category of rights that allow the transfer of permissions or duties to other parties.</rdfs:comment>
+  <rdfs:label xml:lang="en">Transfer Right</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class: Addressed CQ03 regarding transfer rights.</vaem:rationale>
+  <dc:source>(competency_question) CQ03: Shall the permissions 'Aggregation' and 'Disaggregation' be of the type Transfer Rights?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Aggregation">
+  <rdfs:comment xml:lang="en">A specific transfer right that allows combining multiple assets or rights.</rdfs:comment>
+  <rdfs:label xml:lang="en">Aggregation</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class and axiom: Addressed CQ03. Modeled as a subclass of TransferRight.</vaem:rationale>
+  <dc:source>(competency_question) CQ03: Shall the permissions 'Aggregation' and 'Disaggregation' be of the type Transfer Rights?</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#TransferRight"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Disaggregation">
+  <rdfs:comment xml:lang="en">A specific transfer right that allows separating combined assets or rights.</rdfs:comment>
+  <rdfs:label xml:lang="en">Disaggregation</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class and axiom: Addressed CQ03. Modeled as a subclass of TransferRight.</vaem:rationale>
+  <dc:source>(competency_question) CQ03: Shall the permissions 'Aggregation' and 'Disaggregation' be of the type Transfer Rights?</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#TransferRight"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#ExclusivePermission">
+  <rdfs:comment xml:lang="en">A permission that cannot be granted to multiple parties simultaneously.</rdfs:comment>
+  <rdfs:label xml:lang="en">Exclusive Permission</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class and axiom: Addressed CQ24. Modeled as a subclass of Permission.</vaem:rationale>
+  <dc:source>(competency_question) CQ24: How to express exclusive permissions?</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#Permission"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#LogicalOperator">
+  <rdfs:comment xml:lang="en">Represents logical operators like AND, OR, XOR, NOT used in logical constraints.</rdfs:comment>
+  <rdfs:label xml:lang="en">Logical Operator</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class: Addressed CQ08, CQ14, New CQ6 as the range for hasLogicalOperator.</vaem:rationale>
+  <dc:source>(competency_question) CQ08: How to provide a 'NOT' expression?
+    (competency_question) CQ14: How do we express 'and', 'or', 'xor' constraints?
+    (competency_question) New CQ6: What operator is used in the constraints of a prohibition?</dc:source>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasPolicy">
+  <rdfs:comment xml:lang="en">Links an asset to the policy governing it.</rdfs:comment>
+  <rdfs:label xml:lang="en">has policy</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property and axiom: Addressed New CQ1. Added inverseOf axiom for bidirectional querying.</vaem:rationale>
+  <dc:source>(competency_question) New CQ1: Which policy is directly linked to a given asset?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Asset"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Policy"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#isPolicyOf"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isPolicyOf">
+  <rdfs:comment xml:lang="en">Inverse of hasPolicy. Links a policy to the asset it governs.</rdfs:comment>
+  <rdfs:label xml:lang="en">is policy of</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property and axiom: Addressed New CQ1. Added inverseOf axiom.</vaem:rationale>
+  <dc:source>(competency_question) New CQ1: Which policy is directly linked to a given asset?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Policy"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Asset"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasPolicy"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasRule">
+  <rdfs:comment xml:lang="en">Links a policy to its constituent rules.</rdfs:comment>
+  <rdfs:label xml:lang="en">has rule</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Addressed New CQ4 and New CQ5 regarding rule activation and consequences.</vaem:rationale>
+  <dc:source>(competency_question) New CQ4: Which rule is activated upon the failure of another rule?
+    (competency_question) New CQ5: What duty is specified as a consequence of another duty?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Policy"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasAsset">
+  <rdfs:comment xml:lang="en">Links a rule to the asset it applies to.</rdfs:comment>
+  <rdfs:label xml:lang="en">has asset</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Addressed New CQ1.</vaem:rationale>
+  <dc:source>(competency_question) New CQ1: Which policy is directly linked to a given asset?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Asset"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasParty">
+  <rdfs:comment xml:lang="en">Links a policy or rule to the parties involved.</rdfs:comment>
+  <rdfs:label xml:lang="en">has party</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Addressed CQ06 and CQ10 regarding contract parties.</vaem:rationale>
+  <dc:source>(competency_question) CQ06: Expressing the various roles of contract parties within the Permission/Duty element.
+    (competency_question) CQ10: How are rights and duties supported for all contract parties?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Policy"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Party"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasRole">
+  <rdfs:comment xml:lang="en">Specifies the role of a party within a policy context.</rdfs:comment>
+  <rdfs:label xml:lang="en">has role</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Addressed CQ06.</vaem:rationale>
+  <dc:source>(competency_question) CQ06: Expressing the various roles of contract parties within the Permission/Duty element.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Party"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Role"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasPermission">
+  <rdfs:comment xml:lang="en">Links a rule to a permission it contains.</rdfs:comment>
+  <rdfs:label xml:lang="en">has permission</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Addressed CQ03, CQ06, CQ24.</vaem:rationale>
+  <dc:source>(competency_question) CQ03: Shall the permissions 'Aggregation' and 'Disaggregation' be of the type Transfer Rights?
+    (competency_question) CQ24: How to express exclusive permissions?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Permission"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasProhibition">
+  <rdfs:comment xml:lang="en">Links a rule to a prohibition it contains.</rdfs:comment>
+  <rdfs:label xml:lang="en">has prohibition</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Addressed New CQ3 and New CQ6.</vaem:rationale>
+  <dc:source>(competency_question) New CQ3: What duty is specified as a remedy for the violation of a prohibition?
+    (competency_question) New CQ6: What operator is used in the constraints of a prohibition?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Prohibition"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasDuty">
+  <rdfs:comment xml:lang="en">Links a rule to a duty it contains.</rdfs:comment>
+  <rdfs:label xml:lang="en">has duty</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Addressed CQ06, CQ10, New CQ3, New CQ5.</vaem:rationale>
+  <dc:source>(competency_question) CQ06: Expressing the various roles of contract parties within the Permission/Duty element.
+    (competency_question) New CQ5: What duty is specified as a consequence of another duty?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Duty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasConstraint">
+  <rdfs:comment xml:lang="en">Links a permission, prohibition, or duty to its constraints.</rdfs:comment>
+  <rdfs:label xml:lang="en">has constraint</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Addressed CQ08, CQ13, CQ14, CQ21, CQ26, New CQ6.</vaem:rationale>
+  <dc:source>(competency_question) CQ14: How do we express 'and', 'or', 'xor' constraints?
+    (competency_question) CQ21: How to express constraints on requirements?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Permission"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Constraint"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasLogicalOperator">
+  <rdfs:comment xml:lang="en">Specifies the logical operator (AND, OR, XOR, NOT) used in a logical constraint.</rdfs:comment>
+  <rdfs:label xml:lang="en">has logical operator</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Addressed CQ08, CQ14, New CQ6.</vaem:rationale>
+  <dc:source>(competency_question) CQ08: How to provide a 'NOT' expression?
+    (competency_question) CQ14: How do we express 'and', 'or', 'xor' constraints?
+    (competency_question) New CQ6: What operator is used in the constraints of a prohibition?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#LogicalConstraint"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#LogicalOperator"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasRemedy">
+  <rdfs:comment xml:lang="en">Links a prohibition to the duty that serves as a remedy for its violation.</rdfs:comment>
+  <rdfs:label xml:lang="en">has remedy</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Addressed New CQ3.</vaem:rationale>
+  <dc:source>(competency_question) New CQ3: What duty is specified as a remedy for the violation of a prohibition?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Prohibition"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Remedy"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasConsequence">
+  <rdfs:comment xml:lang="en">Links a duty to another duty that is triggered as a consequence.</rdfs:comment>
+  <rdfs:label xml:lang="en">has consequence</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Addressed New CQ5.</vaem:rationale>
+  <dc:source>(competency_question) New CQ5: What duty is specified as a consequence of another duty?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Duty"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Duty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasFailureRule">
+  <rdfs:comment xml:lang="en">Links a rule to another rule that is activated upon its failure.</rdfs:comment>
+  <rdfs:label xml:lang="en">has failure rule</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Addressed New CQ4.</vaem:rationale>
+  <dc:source>(competency_question) New CQ4: Which rule is activated upon the failure of another rule?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasConflictResolutionStrategy">
+  <rdfs:comment xml:lang="en">Specifies the conflict resolution strategy for a policy.</rdfs:comment>
+  <rdfs:label xml:lang="en">has conflict resolution strategy</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Addressed New CQ2.</vaem:rationale>
+  <dc:source>(competency_question) New CQ2: What conflict resolution strategy is specified by a policy?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Policy"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#ConflictResolutionStrategy"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasSequencing">
+  <rdfs:comment xml:lang="en">Specifies the sequencing order between constraints.</rdfs:comment>
+  <rdfs:label xml:lang="en">has sequencing</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Addressed CQ31.</vaem:rationale>
+  <dc:source>(competency_question) CQ31: Do we need 'Sequencing' as part of the REL?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Constraint"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Constraint"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasNestedConstraint">
+  <rdfs:comment xml:lang="en">Links a constraint to a nested constraint.</rdfs:comment>
+  <rdfs:label xml:lang="en">has nested constraint</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Addressed CQ13.</vaem:rationale>
+  <dc:source>(competency_question) CQ13: Shall ODRLv2 allow for nested constraints?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Constraint"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Constraint"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasCondition">
+  <rdfs:comment xml:lang="en">Links a rule to its condition.</rdfs:comment>
+  <rdfs:label xml:lang="en">has condition</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Addressed CQ26.</vaem:rationale>
+  <dc:source>(competency_question) CQ26: How to express Condition via Constraints?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Condition"/>
+</owl:ObjectProperty>
+
+  <!-- owl:DatatypeProperty declarations -->
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#isExclusive">
+  <rdfs:comment xml:lang="en">Indicates whether a permission is exclusive.</rdfs:comment>
+  <rdfs:label xml:lang="en">is exclusive</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Addressed CQ24.</vaem:rationale>
+  <dc:source>(competency_question) CQ24: How to express exclusive permissions?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Permission"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:boolean"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#isTransferRight">
+  <rdfs:comment xml:lang="en">Indicates whether a permission is a transfer right.</rdfs:comment>
+  <rdfs:label xml:lang="en">is transfer right</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Addressed CQ03.</vaem:rationale>
+  <dc:source>(competency_question) CQ03: Shall the permissions 'Aggregation' and 'Disaggregation' be of the type Transfer Rights?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Permission"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:boolean"/>
+</owl:DatatypeProperty>
+
+</rdf:RDF>

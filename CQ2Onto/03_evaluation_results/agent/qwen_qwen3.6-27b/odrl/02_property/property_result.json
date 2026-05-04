@@ -1,0 +1,421 @@
+{
+  "config": {
+    "top_n": 3,
+    "final_threshold": 0.7,
+    "model_id": "embeddinggemma",
+    "methods": [
+      "hard_match",
+      "sequence_match",
+      "levenshtein",
+      "jaro_winkler",
+      "semantic"
+    ],
+    "summary": {
+      "n_gold": 28,
+      "n_pred": 25
+    }
+  },
+  "results": [
+    {
+      "id": "type_distribution",
+      "ObjectProperty": {
+        "gold_count": 28,
+        "pred_count": 25,
+        "diff": -3,
+        "note": "pred missing 3"
+      }
+    },
+    {
+      "id": "label_matching",
+      "ObjectProperty": {
+        "n_gold_labels": 28,
+        "n_pred_labels": 25,
+        "gold_to_pred": {
+          "Only One": [],
+          "action": [],
+          "and": [],
+          "andSequence": [],
+          "assignee": [],
+          "assigner": [],
+          "conflict": [],
+          "consequence": [
+            {
+              "pred": "is Consequence Of",
+              "score": 0.8485,
+              "method": "top3_avg(jaro_winkler+semantic+sequence_match)"
+            }
+          ],
+          "constraint": [
+            {
+              "pred": "constrains",
+              "score": 0.92,
+              "method": "top3_avg(jaro_winkler+levenshtein+sequence_match)"
+            }
+          ],
+          "duty": [],
+          "failure": [],
+          "function": [],
+          "hasPolicy": [
+            {
+              "pred": "contains Policy",
+              "score": 0.7489,
+              "method": "top3_avg(jaro_winkler+semantic+sequence_match)"
+            }
+          ],
+          "implies": [],
+          "inheritFrom": [
+            {
+              "pred": "inherits From",
+              "score": 0.9522,
+              "method": "top3_avg(jaro_winkler+levenshtein+sequence_match)"
+            }
+          ],
+          "inheritRelation": [],
+          "leftOperand": [],
+          "obligation": [],
+          "operand": [],
+          "operator": [
+            {
+              "pred": "has Operator",
+              "score": 0.8603,
+              "method": "top3_avg(jaro_winkler+semantic+sequence_match)"
+            }
+          ],
+          "or": [],
+          "partOf": [],
+          "permission": [],
+          "prohibition": [],
+          "relation": [],
+          "remedy": [
+            {
+              "pred": "is Remedy For",
+              "score": 0.7808,
+              "method": "top3_avg(jaro_winkler+semantic+sequence_match)"
+            }
+          ],
+          "scope": [],
+          "target": []
+        },
+        "pred_to_gold": {
+          "activated Upon Failure Of": [],
+          "activates Upon Failure": [],
+          "constrains": [
+            {
+              "gold": "constraint",
+              "score": 0.92,
+              "method": "top3_avg(jaro_winkler+levenshtein+sequence_match)"
+            }
+          ],
+          "contains Policy": [
+            {
+              "gold": "hasPolicy",
+              "score": 0.7489,
+              "method": "top3_avg(jaro_winkler+semantic+sequence_match)"
+            }
+          ],
+          "has Conflict Resolution Strategy": [],
+          "has Constraint": [],
+          "has Container": [],
+          "has Logical Operator": [],
+          "has Nested Constraint": [],
+          "has Operator": [
+            {
+              "gold": "operator",
+              "score": 0.8603,
+              "method": "top3_avg(jaro_winkler+semantic+sequence_match)"
+            }
+          ],
+          "has Party": [],
+          "has Rule": [],
+          "inherits From": [
+            {
+              "gold": "inheritFrom",
+              "score": 0.9522,
+              "method": "top3_avg(jaro_winkler+levenshtein+sequence_match)"
+            }
+          ],
+          "is Consequence Of": [
+            {
+              "gold": "consequence",
+              "score": 0.8485,
+              "method": "top3_avg(jaro_winkler+semantic+sequence_match)"
+            }
+          ],
+          "is Inherited By": [],
+          "is Linked By Policy": [],
+          "is Logical Operator Of": [],
+          "is Nested In": [],
+          "is Operator Of": [],
+          "is Party In": [],
+          "is Remedied By": [],
+          "is Remedy For": [
+            {
+              "gold": "remedy",
+              "score": 0.7808,
+              "method": "top3_avg(jaro_winkler+semantic+sequence_match)"
+            }
+          ],
+          "is Rule Of": [],
+          "links To Asset": [],
+          "resolves Conflicts For": []
+        },
+        "metrics_per_method": {
+          "hard_match": {
+            "coverage": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "gold_covered": 0,
+            "pred_supported": 0
+          },
+          "sequence_match": {
+            "coverage": 0.1429,
+            "precision": 0.16,
+            "recall": 0.1429,
+            "f1": 0.1509,
+            "gold_covered": 4,
+            "pred_supported": 4
+          },
+          "levenshtein": {
+            "coverage": 0.0714,
+            "precision": 0.08,
+            "recall": 0.0714,
+            "f1": 0.0755,
+            "gold_covered": 2,
+            "pred_supported": 2
+          },
+          "jaro_winkler": {
+            "coverage": 0.2857,
+            "precision": 0.32,
+            "recall": 0.2857,
+            "f1": 0.3019,
+            "gold_covered": 8,
+            "pred_supported": 8
+          },
+          "semantic": {
+            "coverage": 0.4643,
+            "precision": 0.52,
+            "recall": 0.4643,
+            "f1": 0.4906,
+            "gold_covered": 13,
+            "pred_supported": 13
+          }
+        },
+        "metrics_best": {
+          "coverage": 0.2143,
+          "precision": 0.24,
+          "recall": 0.2143,
+          "f1": 0.2264,
+          "gold_covered": 6,
+          "pred_supported": 6
+        }
+      },
+      "DatatypeProperty": null,
+      "AnnotationProperty": null,
+      "overall": {
+        "coverage": 0.2143,
+        "precision": 0.24,
+        "recall": 0.2143,
+        "f1": 0.2264,
+        "gold_covered": 6,
+        "pred_supported": 6
+      }
+    },
+    {
+      "id": "functional_check",
+      "Functional": {
+        "precision": null,
+        "recall": null,
+        "f1": null,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "fn_from_pairs": 0,
+        "fn_from_unaligned": 0
+      },
+      "InverseFunctional": {
+        "precision": null,
+        "recall": null,
+        "f1": null,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "fn_from_pairs": 0,
+        "fn_from_unaligned": 0
+      }
+    },
+    {
+      "id": "characteristics_check",
+      "n_pairs_evaluated": 0,
+      "n_pairs_skipped": 6,
+      "per_characteristic": {
+        "Functional": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "mutex_partner": null,
+          "details": []
+        },
+        "InverseFunctional": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "mutex_partner": null,
+          "details": []
+        },
+        "Transitive": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "mutex_partner": null,
+          "details": []
+        },
+        "Symmetric": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "mutex_partner": "Asymmetric",
+          "details": []
+        },
+        "Asymmetric": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "mutex_partner": "Symmetric",
+          "details": []
+        },
+        "Reflexive": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "mutex_partner": "Irreflexive",
+          "details": []
+        },
+        "Irreflexive": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "mutex_partner": "Reflexive",
+          "details": []
+        }
+      },
+      "overall": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "precision": null,
+        "recall": null,
+        "f1": null
+      },
+      "unaligned_gold_with_chars": [],
+      "per_characteristic_ontology": {
+        "Functional": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "fn_from_pairs": 0,
+          "fn_from_unaligned": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "mutex_partner": null
+        },
+        "InverseFunctional": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "fn_from_pairs": 0,
+          "fn_from_unaligned": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "mutex_partner": null
+        },
+        "Transitive": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "fn_from_pairs": 0,
+          "fn_from_unaligned": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "mutex_partner": null
+        },
+        "Symmetric": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "fn_from_pairs": 0,
+          "fn_from_unaligned": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "mutex_partner": "Asymmetric"
+        },
+        "Asymmetric": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "fn_from_pairs": 0,
+          "fn_from_unaligned": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "mutex_partner": "Symmetric"
+        },
+        "Reflexive": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "fn_from_pairs": 0,
+          "fn_from_unaligned": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "mutex_partner": "Irreflexive"
+        },
+        "Irreflexive": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "fn_from_pairs": 0,
+          "fn_from_unaligned": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "mutex_partner": "Reflexive"
+        }
+      },
+      "overall_ontology": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "precision": null,
+        "recall": null,
+        "f1": null
+      }
+    }
+  ]
+}

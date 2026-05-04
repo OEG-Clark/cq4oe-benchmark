@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:vaem="http://www.linkedmodel.org/schema/vaem#">
+ 
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Organism">
+  <rdfs:comment xml:lang="en">A living entity that can consume other organisms or parts thereof.</rdfs:comment>
+  <rdfs:label xml:lang="en">Organism</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class: Top-level class to unify animals and plants for general feeding relationships</vaem:rationale>
+  <dc:source>(competency_question) CQ1, CQ6, CQ7</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Animal">
+  <rdfs:comment xml:lang="en">A multicellular eukaryotic organism that typically consumes other organisms.</rdfs:comment>
+  <rdfs:label xml:lang="en">Animal</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class: Subclass of Organism to model animal-specific behaviors and diets</vaem:rationale>
+  <dc:source>(competency_question) CQ1, CQ2, CQ3, CQ4, CQ7, CQ14</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Organism'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Plant">
+  <rdfs:comment xml:lang="en">A multicellular eukaryotic organism that typically produces its own food but may also consume organisms.</rdfs:comment>
+  <rdfs:label xml:lang="en">Plant</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class: Subclass of Organism to model plant-specific behaviors, including carnivorous plants</vaem:rationale>
+  <dc:source>(competency_question) CQ6</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Organism'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Herbivore">
+  <rdfs:comment xml:lang="en">An animal that primarily eats plants or plant parts.</rdfs:comment>
+  <rdfs:label xml:lang="en">Herbivore</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class: Models dietary classification to answer CQ2</vaem:rationale>
+  <dc:source>(competency_question) CQ2</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Animal'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Carnivore">
+  <rdfs:comment xml:lang="en">An animal that primarily eats other animals, but may occasionally consume plants.</rdfs:comment>
+  <rdfs:label xml:lang="en">Carnivore</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class: Models dietary classification to answer CQ14</vaem:rationale>
+  <dc:source>(competency_question) CQ14</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Animal'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Omnivore">
+  <rdfs:comment xml:lang="en">An animal that eats both plants and animals.</rdfs:comment>
+  <rdfs:label xml:lang="en">Omnivore</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class: Models dietary classification to support CQ3</vaem:rationale>
+  <dc:source>(competency_question) CQ3</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Animal'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#PlantPart">
+  <rdfs:comment xml:lang="en">A specific component of a plant, such as leaves, roots, fruits, or seeds.</rdfs:comment>
+  <rdfs:label xml:lang="en">PlantPart</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class: Domain for plant consumption queries</vaem:rationale>
+  <dc:source>(competency_question) CQ3, CQ4</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Lion">
+  <rdfs:comment xml:lang="en">A large carnivorous feline mammal.</rdfs:comment>
+  <rdfs:label xml:lang="en">Lion</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class: Concrete example to directly address CQ4</vaem:rationale>
+  <dc:source>(competency_question) CQ4</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Animal'/>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Carnivore'/>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#eats">
+  <rdfs:comment xml:lang="en">Represents a feeding relationship where one organism consumes another.</rdfs:comment>
+  <rdfs:label xml:lang="en">eats</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: General property to answer CQ1, CQ6, CQ7</vaem:rationale>
+  <dc:source>(competency_question) CQ1, CQ6, CQ7</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Organism"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Organism"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#eatsPlant">
+  <rdfs:comment xml:lang="en">Represents an animal consuming an entire plant.</rdfs:comment>
+  <rdfs:label xml:lang="en">eatsPlant</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Specific property to answer CQ4</vaem:rationale>
+  <dc:source>(competency_question) CQ4</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Plant"/>
+  <rdfs:subPropertyOf rdf:resource='http://www.semanticweb.org/myontology#eats'/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#eatsPlantPart">
+  <rdfs:comment xml:lang="en">Represents an animal consuming a specific part of a plant.</rdfs:comment>
+  <rdfs:label xml:lang="en">eatsPlantPart</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Specific property to answer CQ3, CQ4, CQ14</vaem:rationale>
+  <dc:source>(competency_question) CQ3, CQ4, CQ14</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#PlantPart"/>
+  <rdfs:subPropertyOf rdf:resource='http://www.semanticweb.org/myontology#eats'/>
+</owl:ObjectProperty>
+
+</rdf:RDF>

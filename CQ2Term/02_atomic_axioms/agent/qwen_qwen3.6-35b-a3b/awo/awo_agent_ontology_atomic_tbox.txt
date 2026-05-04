@@ -1,0 +1,155 @@
+====================================================================================================
+ATOMIC TBOX AXIOMS
+====================================================================================================
+
+── Class ──
+
+  Term: Animal  [Class]
+    Declaration                Declaration: Animal (Class)
+      Subject: Animal
+      Object : Class
+    SubClassOf                 Animal ⊑ Organism
+      Subject: Animal
+      Object : Organism
+    DisjointClasses            DisjointClasses(Animal, Plant)
+      Subject: Animal
+      Object : Plant
+
+  Term: Carnivore  [Class]
+    Declaration                Declaration: Carnivore (Class)
+      Subject: Carnivore
+      Object : Class
+    SubClassOf                 Carnivore ⊑ Animal
+      Subject: Carnivore
+      Object : Animal
+    DisjointClasses            DisjointClasses(Carnivore, Herbivore)
+      Subject: Carnivore
+      Object : Herbivore
+    DisjointClasses            DisjointClasses(Carnivore, Omnivore)
+      Subject: Carnivore
+      Object : Omnivore
+
+  Term: Herbivore  [Class]
+    Declaration                Declaration: Herbivore (Class)
+      Subject: Herbivore
+      Object : Class
+    SubClassOf                 Herbivore ⊑ Animal
+      Subject: Herbivore
+      Object : Animal
+    DisjointClasses            DisjointClasses(Herbivore, Omnivore)
+      Subject: Herbivore
+      Object : Omnivore
+
+  Term: Lion  [Class]
+    Declaration                Declaration: Lion (Class)
+      Subject: Lion
+      Object : Class
+    SubClassOf                 Lion ⊑ Carnivore
+      Subject: Lion
+      Object : Carnivore
+
+  Term: Omnivore  [Class]
+    Declaration                Declaration: Omnivore (Class)
+      Subject: Omnivore
+      Object : Class
+    SubClassOf                 Omnivore ⊑ Animal
+      Subject: Omnivore
+      Object : Animal
+
+  Term: Organism  [Class]
+    Declaration                Declaration: Organism (Class)
+      Subject: Organism
+      Object : Class
+
+  Term: Plant  [Class]
+    Declaration                Declaration: Plant (Class)
+      Subject: Plant
+      Object : Class
+    SubClassOf                 Plant ⊑ Organism
+      Subject: Plant
+      Object : Organism
+
+  Term: Plant Part  [Class]
+    Declaration                Declaration: Plant Part (Class)
+      Subject: Plant Part
+      Object : Class
+
+
+── ObjectProperty ──
+
+  Term: eaten by  [ObjectProperty]
+    Declaration                Declaration: eaten by (ObjectProperty)
+      Subject: eaten by
+      Object : ObjectProperty
+    InverseOf                  eaten by ≡ eats⁻
+      Subject: eaten by
+      Object : eats
+    Domain                     ∃eaten by.⊤ ⊑ Organism
+      Subject: eaten by
+      Object : Organism
+    Range                      ⊤ ⊑ ∀eaten by.Organism
+      Subject: eaten by
+      Object : Organism
+
+  Term: eaten by organism  [ObjectProperty]
+    Declaration                Declaration: eaten by organism (ObjectProperty)
+      Subject: eaten by organism
+      Object : ObjectProperty
+    InverseOf                  eaten by organism ≡ eats plant part⁻
+      Subject: eaten by organism
+      Object : eats plant part
+    Domain                     ∃eaten by organism.⊤ ⊑ Plant Part
+      Subject: eaten by organism
+      Object : Plant Part
+    Range                      ⊤ ⊑ ∀eaten by organism.Organism
+      Subject: eaten by organism
+      Object : Organism
+
+  Term: eats  [ObjectProperty]
+    Declaration                Declaration: eats (ObjectProperty)
+      Subject: eats
+      Object : ObjectProperty
+    InverseOf                  eats ≡ eaten by⁻
+      Subject: eats
+      Object : eaten by
+    Domain                     ∃eats.⊤ ⊑ Organism
+      Subject: eats
+      Object : Organism
+    Range                      ⊤ ⊑ ∀eats.Organism
+      Subject: eats
+      Object : Organism
+
+  Term: eats plant part  [ObjectProperty]
+    Declaration                Declaration: eats plant part (ObjectProperty)
+      Subject: eats plant part
+      Object : ObjectProperty
+    InverseOf                  eats plant part ≡ eaten by organism⁻
+      Subject: eats plant part
+      Object : eaten by organism
+    Domain                     ∃eats plant part.⊤ ⊑ Organism
+      Subject: eats plant part
+      Object : Organism
+    Range                      ⊤ ⊑ ∀eats plant part.Plant Part
+      Subject: eats plant part
+      Object : Plant Part
+
+
+====================================================================================================
+STATISTICS
+====================================================================================================
+
+  Classes:               8  (defined: 0, primitive: 8)
+  ObjectProperties:      4
+  DatatypeProperties:    0
+
+  Axiom Breakdown:
+    Declaration               12
+    DisjointClasses           4
+    Domain                    4
+    InverseOf                 4
+    Range                     4
+    SubClassOf                6
+    ------------------------------
+    Total TBox Axioms         34
+
+====================================================================================================

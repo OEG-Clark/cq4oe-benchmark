@@ -1,0 +1,4555 @@
+{
+  "config": {
+    "gold_file": "00_gold_standard/swo/axioms/swo_axiom_gold.json",
+    "pred_file": "02_atomic_axioms/cqbycq/qwen_qwen3.6-27b/swo/swo_cq2onto_cqbycq_ontology_atomic_tbox.json",
+    "class_csv": "03_evaluation_results/cqbycq/qwen_qwen3.6-27b/swo/01_class/class_best_matching.csv",
+    "property_csv": "03_evaluation_results/cqbycq/qwen_qwen3.6-27b/swo/02_property/property_best_matching.csv",
+    "layer2_threshold": 0.6,
+    "layer2_model": "embeddinggemma",
+    "layer2_skipped": true
+  },
+  "results": {
+    "layer1_stats_gold": {
+      "total": 86,
+      "by_term_type": {
+        "Class": 40,
+        "ObjectProperty": 35,
+        "DatatypeProperty": 11
+      },
+      "by_term_axiom": {
+        "Class": {
+          "Declaration": 30,
+          "SubClassOf": 9,
+          "EquivalentClasses": 1
+        },
+        "ObjectProperty": {
+          "Declaration": 18,
+          "Range": 10,
+          "Domain": 3,
+          "SubPropertyOf": 1,
+          "Characteristics": 1,
+          "InverseOf": 2
+        },
+        "DatatypeProperty": {
+          "Declaration": 5,
+          "Range": 5,
+          "SubPropertyOf": 1
+        }
+      }
+    },
+    "layer1_stats_pred": {
+      "total": 183,
+      "by_term_type": {
+        "Class": 43,
+        "ObjectProperty": 87,
+        "DatatypeProperty": 53
+      },
+      "by_term_axiom": {
+        "Class": {
+          "Declaration": 31,
+          "SubClassOf": 12
+        },
+        "ObjectProperty": {
+          "Declaration": 29,
+          "Domain": 29,
+          "Range": 29
+        },
+        "DatatypeProperty": {
+          "Declaration": 17,
+          "Domain": 17,
+          "Range": 17,
+          "Characteristics": 2
+        }
+      }
+    },
+    "layer3": {
+      "evaluation": [
+        {
+          "side": "gold",
+          "axiom_id": "AX1",
+          "term": ".csv",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: .csv (Class)",
+          "status": "skip",
+          "reason": "subject '.csv' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX2",
+          "term": "CEL ASCII format",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: CEL ASCII format (Class)",
+          "status": "skip",
+          "reason": "subject 'CEL ASCII format' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX3",
+          "term": "CEL binary format",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: CEL binary format (Class)",
+          "status": "tp",
+          "reason": "matched pred AX23",
+          "pred_match": {
+            "id": "AX23",
+            "dl": "Declaration: Open Format (Class)",
+            "axiom_type": "Declaration",
+            "term": "Open Format"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX4",
+          "term": "Development status",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: Development status (Class)",
+          "status": "tp",
+          "reason": "matched pred AX11",
+          "pred_match": {
+            "id": "AX11",
+            "dl": "Declaration: Development Type (Class)",
+            "axiom_type": "Declaration",
+            "term": "Development Type"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX5",
+          "term": "Free",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: Free (Class)",
+          "status": "skip",
+          "reason": "subject 'Free' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX6",
+          "term": "Free",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "Free ⊑ Purchase cost",
+          "status": "skip",
+          "reason": "subject 'Free' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX7",
+          "term": "GIF",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: GIF (Class)",
+          "status": "skip",
+          "reason": "subject 'GIF' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX8",
+          "term": "Maintained",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: Maintained (Class)",
+          "status": "tp",
+          "reason": "matched pred AX20",
+          "pred_match": {
+            "id": "AX20",
+            "dl": "Declaration: Maintained (Class)",
+            "axiom_type": "Declaration",
+            "term": "Maintained"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX9",
+          "term": "Maintained",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "Maintained ⊑ Development status",
+          "status": "mismatch",
+          "reason": "pred AX21 differs: class 'Development status' not aligned to 'Maintenance Status'",
+          "pred_match": {
+            "id": "AX21",
+            "dl": "Maintained ⊑ Maintenance Status",
+            "axiom_type": "SubClassOf",
+            "term": "Maintained"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX10",
+          "term": "Not Free",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: Not Free (Class)",
+          "status": "skip",
+          "reason": "subject 'Not Free' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX11",
+          "term": "Not Free",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "Not Free ⊑ Purchase cost",
+          "status": "skip",
+          "reason": "subject 'Not Free' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX12",
+          "term": "Open source software license",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: Open source software license (Class)",
+          "status": "tp",
+          "reason": "matched pred AX27",
+          "pred_match": {
+            "id": "AX27",
+            "dl": "Declaration: Open Source License (Class)",
+            "axiom_type": "Declaration",
+            "term": "Open Source License"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX13",
+          "term": "Open source software license",
+          "term_type": "Class",
+          "axiom_type": "EquivalentClasses",
+          "dl": "Open source software license ≡ ∃has clause.Source code available",
+          "status": "fn",
+          "reason": "pred has no EquivalentClasses axiom on 'Open Source License'",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX14",
+          "term": "Open source software license",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "Open source software license ⊑ licence",
+          "status": "tp",
+          "reason": "matched pred AX28",
+          "pred_match": {
+            "id": "AX28",
+            "dl": "Open Source License ⊑ License",
+            "axiom_type": "SubClassOf",
+            "term": "Open Source License"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX15",
+          "term": "Open source software license",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "Open source software license ⊑ ∃has clause.Source code available",
+          "status": "fn",
+          "reason": "pred has no SubClassOf axiom on 'Open Source License'",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX16",
+          "term": "PROcess",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: PROcess (Class)",
+          "status": "skip",
+          "reason": "subject 'PROcess' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX17",
+          "term": "Purchase cost",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: Purchase cost (Class)",
+          "status": "skip",
+          "reason": "subject 'Purchase cost' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX18",
+          "term": "Source code available",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: Source code available (Class)",
+          "status": "skip",
+          "reason": "subject 'Source code available' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX19",
+          "term": "XML",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: XML (Class)",
+          "status": "skip",
+          "reason": "subject 'XML' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX20",
+          "term": "XML",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "XML ⊑ data format specification",
+          "status": "skip",
+          "reason": "subject 'XML' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX21",
+          "term": "algorithm",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: algorithm (Class)",
+          "status": "tp",
+          "reason": "matched pred AX1",
+          "pred_match": {
+            "id": "AX1",
+            "dl": "Declaration: Algorithm (Class)",
+            "axiom_type": "Declaration",
+            "term": "Algorithm"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX22",
+          "term": "application programming interface",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: application programming interface (Class)",
+          "status": "skip",
+          "reason": "subject 'application programming interface' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX23",
+          "term": "application programming interface",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "application programming interface ⊑ software interface",
+          "status": "skip",
+          "reason": "subject 'application programming interface' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX24",
+          "term": "data format specification",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: data format specification (Class)",
+          "status": "skip",
+          "reason": "subject 'data format specification' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX25",
+          "term": "data item",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: data item (Class)",
+          "status": "tp",
+          "reason": "matched pred AX8",
+          "pred_match": {
+            "id": "AX8",
+            "dl": "Declaration: Data (Class)",
+            "axiom_type": "Declaration",
+            "term": "Data"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX26",
+          "term": "data item",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "data item ⊑ ∃is encoded in.data format specification",
+          "status": "fn",
+          "reason": "pred has no SubClassOf axiom on 'Data'",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX27",
+          "term": "desktop graphical user interface",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: desktop graphical user interface (Class)",
+          "status": "skip",
+          "reason": "subject 'desktop graphical user interface' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX28",
+          "term": "file rendering",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: file rendering (Class)",
+          "status": "skip",
+          "reason": "subject 'file rendering' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX29",
+          "term": "function",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: function (Class)",
+          "status": "tp",
+          "reason": "matched pred AX12",
+          "pred_match": {
+            "id": "AX12",
+            "dl": "Declaration: Documentation (Class)",
+            "axiom_type": "Declaration",
+            "term": "Documentation"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX30",
+          "term": "licence",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: licence (Class)",
+          "status": "tp",
+          "reason": "matched pred AX19",
+          "pred_match": {
+            "id": "AX19",
+            "dl": "Declaration: License (Class)",
+            "axiom_type": "Declaration",
+            "term": "License"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX31",
+          "term": "plain text file format",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: plain text file format (Class)",
+          "status": "tp",
+          "reason": "matched pred AX31",
+          "pred_match": {
+            "id": "AX31",
+            "dl": "Declaration: Proprietary Format (Class)",
+            "axiom_type": "Declaration",
+            "term": "Proprietary Format"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX32",
+          "term": "programming language",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: programming language (Class)",
+          "status": "tp",
+          "reason": "matched pred AX30",
+          "pred_match": {
+            "id": "AX30",
+            "dl": "Declaration: Programming Language (Class)",
+            "axiom_type": "Declaration",
+            "term": "Programming Language"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX33",
+          "term": "software",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: software (Class)",
+          "status": "tp",
+          "reason": "matched pred AX34",
+          "pred_match": {
+            "id": "AX34",
+            "dl": "Declaration: Software Type (Class)",
+            "axiom_type": "Declaration",
+            "term": "Software Type"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX34",
+          "term": "software developer organization",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: software developer organization (Class)",
+          "status": "tp",
+          "reason": "matched pred AX25",
+          "pred_match": {
+            "id": "AX25",
+            "dl": "Declaration: Open Source Development (Class)",
+            "axiom_type": "Declaration",
+            "term": "Open Source Development"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX35",
+          "term": "software developer role",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: software developer role (Class)",
+          "status": "tp",
+          "reason": "matched pred AX10",
+          "pred_match": {
+            "id": "AX10",
+            "dl": "Declaration: Developer (Class)",
+            "axiom_type": "Declaration",
+            "term": "Developer"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX36",
+          "term": "software interface",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: software interface (Class)",
+          "status": "skip",
+          "reason": "subject 'software interface' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX37",
+          "term": "text editing",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: text editing (Class)",
+          "status": "tp",
+          "reason": "matched pred AX42",
+          "pred_match": {
+            "id": "AX42",
+            "dl": "Declaration: XML Editing (Class)",
+            "axiom_type": "Declaration",
+            "term": "XML Editing"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX38",
+          "term": "version number",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: version number (Class)",
+          "status": "tp",
+          "reason": "matched pred AX39",
+          "pred_match": {
+            "id": "AX39",
+            "dl": "Declaration: Version (Class)",
+            "axiom_type": "Declaration",
+            "term": "Version"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX39",
+          "term": "web service",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: web service (Class)",
+          "status": "tp",
+          "reason": "matched pred AX40",
+          "pred_match": {
+            "id": "AX40",
+            "dl": "Declaration: Web Service (Class)",
+            "axiom_type": "Declaration",
+            "term": "Web Service"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX40",
+          "term": "web service",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "web service ⊑ software interface",
+          "status": "mismatch",
+          "reason": "pred AX41 differs: class 'software interface' not aligned to 'Software Type'",
+          "pred_match": {
+            "id": "AX41",
+            "dl": "Web Service ⊑ Software Type",
+            "axiom_type": "SubClassOf",
+            "term": "Web Service"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX41",
+          "term": "has clause",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: has clause (ObjectProperty)",
+          "status": "skip",
+          "reason": "subject 'has clause' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX42",
+          "term": "has declared status",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: has declared status (ObjectProperty)",
+          "status": "skip",
+          "reason": "subject 'has declared status' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX43",
+          "term": "has declared status",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀has declared status.Development status",
+          "status": "skip",
+          "reason": "subject 'has declared status' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX44",
+          "term": "has format specification",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: has format specification (ObjectProperty)",
+          "status": "tp",
+          "reason": "matched pred AX101",
+          "pred_match": {
+            "id": "AX101",
+            "dl": "Declaration: has modification (ObjectProperty)",
+            "axiom_type": "Declaration",
+            "term": "has modification"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX45",
+          "term": "has format specification",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃has format specification.⊤ ⊑ data item",
+          "status": "mismatch",
+          "reason": "pred AX102 differs: class 'data item' not aligned to 'Algorithm'",
+          "pred_match": {
+            "id": "AX102",
+            "dl": "∃has modification.⊤ ⊑ Algorithm",
+            "axiom_type": "Domain",
+            "term": "has modification"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX46",
+          "term": "has format specification",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀has format specification.data format specification",
+          "status": "mismatch",
+          "reason": "pred AX103 differs: class 'data format specification' not aligned to 'Algorithm Modification'",
+          "pred_match": {
+            "id": "AX103",
+            "dl": "⊤ ⊑ ∀has modification.Algorithm Modification",
+            "axiom_type": "Range",
+            "term": "has modification"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX47",
+          "term": "has format specification",
+          "term_type": "ObjectProperty",
+          "axiom_type": "SubPropertyOf",
+          "dl": "has format specification ⊑ is encoded in",
+          "status": "fn",
+          "reason": "pred has no SubPropertyOf axiom on 'has modification'",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX48",
+          "term": "has function",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: has function (ObjectProperty)",
+          "status": "tp",
+          "reason": "matched pred AX74",
+          "pred_match": {
+            "id": "AX74",
+            "dl": "Declaration: has documentation (ObjectProperty)",
+            "axiom_type": "Declaration",
+            "term": "has documentation"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX49",
+          "term": "has function",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀has function.function",
+          "status": "tp",
+          "reason": "matched pred AX76",
+          "pred_match": {
+            "id": "AX76",
+            "dl": "⊤ ⊑ ∀has documentation.Documentation",
+            "axiom_type": "Range",
+            "term": "has documentation"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX50",
+          "term": "has input",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: has input (ObjectProperty)",
+          "status": "tp",
+          "reason": "matched pred AX89",
+          "pred_match": {
+            "id": "AX89",
+            "dl": "Declaration: has input (ObjectProperty)",
+            "axiom_type": "Declaration",
+            "term": "has input"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX51",
+          "term": "has interface",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: has interface (ObjectProperty)",
+          "status": "skip",
+          "reason": "subject 'has interface' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX52",
+          "term": "has interface",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀has interface.software interface",
+          "status": "skip",
+          "reason": "subject 'has interface' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX53",
+          "term": "has license",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: has license (ObjectProperty)",
+          "status": "tp",
+          "reason": "matched pred AX95",
+          "pred_match": {
+            "id": "AX95",
+            "dl": "Declaration: has license (ObjectProperty)",
+            "axiom_type": "Declaration",
+            "term": "has license"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX54",
+          "term": "has output",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: has output (ObjectProperty)",
+          "status": "tp",
+          "reason": "matched pred AX107",
+          "pred_match": {
+            "id": "AX107",
+            "dl": "Declaration: has output format (ObjectProperty)",
+            "axiom_type": "Declaration",
+            "term": "has output format"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX55",
+          "term": "has specified data input",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: has specified data input (ObjectProperty)",
+          "status": "skip",
+          "reason": "subject 'has specified data input' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX56",
+          "term": "has specified data input",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀has specified data input.data item",
+          "status": "skip",
+          "reason": "subject 'has specified data input' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX57",
+          "term": "has specified data output",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: has specified data output (ObjectProperty)",
+          "status": "skip",
+          "reason": "subject 'has specified data output' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX58",
+          "term": "has specified data output",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀has specified data output.data item",
+          "status": "skip",
+          "reason": "subject 'has specified data output' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX59",
+          "term": "has version",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: has version (ObjectProperty)",
+          "status": "tp",
+          "reason": "matched pred AX113",
+          "pred_match": {
+            "id": "AX113",
+            "dl": "Declaration: has software version (ObjectProperty)",
+            "axiom_type": "Declaration",
+            "term": "has software version"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX60",
+          "term": "has version",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀has version.version number",
+          "status": "tp",
+          "reason": "matched pred AX115",
+          "pred_match": {
+            "id": "AX115",
+            "dl": "⊤ ⊑ ∀has software version.Version",
+            "axiom_type": "Range",
+            "term": "has software version"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX61",
+          "term": "implements",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: implements (ObjectProperty)",
+          "status": "tp",
+          "reason": "matched pred AX119",
+          "pred_match": {
+            "id": "AX119",
+            "dl": "Declaration: is implemented in (ObjectProperty)",
+            "axiom_type": "Declaration",
+            "term": "is implemented in"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX62",
+          "term": "implements",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀implements.algorithm",
+          "status": "mismatch",
+          "reason": "pred AX121 differs: class 'algorithm' not aligned to 'Programming Language'",
+          "pred_match": {
+            "id": "AX121",
+            "dl": "⊤ ⊑ ∀is implemented in.Programming Language",
+            "axiom_type": "Range",
+            "term": "is implemented in"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX63",
+          "term": "is alternative format of",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Characteristics",
+          "dl": "Symmetric(is alternative format of)",
+          "status": "skip",
+          "reason": "subject 'is alternative format of' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX64",
+          "term": "is alternative format of",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: is alternative format of (ObjectProperty)",
+          "status": "skip",
+          "reason": "subject 'is alternative format of' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX65",
+          "term": "is alternative format of",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃is alternative format of.⊤ ⊑ data format specification",
+          "status": "skip",
+          "reason": "subject 'is alternative format of' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX66",
+          "term": "is alternative format of",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀is alternative format of.data format specification",
+          "status": "skip",
+          "reason": "subject 'is alternative format of' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX67",
+          "term": "is developed by",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: is developed by (ObjectProperty)",
+          "status": "tp",
+          "reason": "matched pred AX68",
+          "pred_match": {
+            "id": "AX68",
+            "dl": "Declaration: has developer (ObjectProperty)",
+            "axiom_type": "Declaration",
+            "term": "has developer"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX68",
+          "term": "is encoded in",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: is encoded in (ObjectProperty)",
+          "status": "skip",
+          "reason": "subject 'is encoded in' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX69",
+          "term": "is software for",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: is software for (ObjectProperty)",
+          "status": "skip",
+          "reason": "subject 'is software for' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX70",
+          "term": "is software for",
+          "term_type": "ObjectProperty",
+          "axiom_type": "InverseOf",
+          "dl": "is software for ≡ uses software⁻",
+          "status": "skip",
+          "reason": "subject 'is software for' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX71",
+          "term": "uses platform",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: uses platform (ObjectProperty)",
+          "status": "tp",
+          "reason": "matched pred AX128",
+          "pred_match": {
+            "id": "AX128",
+            "dl": "Declaration: uses algorithm (ObjectProperty)",
+            "axiom_type": "Declaration",
+            "term": "uses algorithm"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX72",
+          "term": "uses software",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: uses software (ObjectProperty)",
+          "status": "tp",
+          "reason": "matched pred AX110",
+          "pred_match": {
+            "id": "AX110",
+            "dl": "Declaration: has software type (ObjectProperty)",
+            "axiom_type": "Declaration",
+            "term": "has software type"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX73",
+          "term": "uses software",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃uses software.⊤ ⊑ ⊤",
+          "status": "mismatch",
+          "reason": "pred AX111 differs: expr_type Top vs Class",
+          "pred_match": {
+            "id": "AX111",
+            "dl": "∃has software type.⊤ ⊑ Tool",
+            "axiom_type": "Domain",
+            "term": "has software type"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX74",
+          "term": "uses software",
+          "term_type": "ObjectProperty",
+          "axiom_type": "InverseOf",
+          "dl": "uses software ≡ is software for⁻",
+          "status": "fn",
+          "reason": "pred has no InverseOf axiom on 'has software type'",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX75",
+          "term": "uses software",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀uses software.⊤",
+          "status": "mismatch",
+          "reason": "pred AX112 differs: expr_type Top vs Class",
+          "pred_match": {
+            "id": "AX112",
+            "dl": "⊤ ⊑ ∀has software type.Software Type",
+            "axiom_type": "Range",
+            "term": "has software type"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX76",
+          "term": "has documentation",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: has documentation (DatatypeProperty)",
+          "status": "tp",
+          "reason": "matched pred AX140",
+          "pred_match": {
+            "id": "AX140",
+            "dl": "Declaration: has documentation URL (DatatypeProperty)",
+            "axiom_type": "Declaration",
+            "term": "has documentation URL"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX77",
+          "term": "has documentation",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Range",
+          "dl": "has documentation maps-to xsd:string",
+          "status": "mismatch",
+          "reason": "pred AX142 differs: expr_type Datatype vs Top",
+          "pred_match": {
+            "id": "AX142",
+            "dl": "has documentation URL maps-to ⊤",
+            "axiom_type": "Range",
+            "term": "has documentation URL"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX78",
+          "term": "has download location",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: has download location (DatatypeProperty)",
+          "status": "skip",
+          "reason": "subject 'has download location' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX79",
+          "term": "has download location",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Range",
+          "dl": "has download location maps-to xsd:string",
+          "status": "skip",
+          "reason": "subject 'has download location' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX80",
+          "term": "has download location",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "SubPropertyOf",
+          "dl": "has download location ⊑ has website homepage",
+          "status": "skip",
+          "reason": "subject 'has download location' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX81",
+          "term": "has release date",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: has release date (DatatypeProperty)",
+          "status": "tp",
+          "reason": "matched pred AX158",
+          "pred_match": {
+            "id": "AX158",
+            "dl": "Declaration: has release date (DatatypeProperty)",
+            "axiom_type": "Declaration",
+            "term": "has release date"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX82",
+          "term": "has release date",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Range",
+          "dl": "has release date maps-to xsd:string",
+          "status": "mismatch",
+          "reason": "pred AX160 differs: expr_type Datatype vs Top",
+          "pred_match": {
+            "id": "AX160",
+            "dl": "has release date maps-to ⊤",
+            "axiom_type": "Range",
+            "term": "has release date"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX83",
+          "term": "has support URL",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: has support URL (DatatypeProperty)",
+          "status": "tp",
+          "reason": "matched pred AX131",
+          "pred_match": {
+            "id": "AX131",
+            "dl": "Declaration: has URL (DatatypeProperty)",
+            "axiom_type": "Declaration",
+            "term": "has URL"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX84",
+          "term": "has support URL",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Range",
+          "dl": "has support URL maps-to ⊤",
+          "status": "tp",
+          "reason": "matched pred AX133",
+          "pred_match": {
+            "id": "AX133",
+            "dl": "has URL maps-to ⊤",
+            "axiom_type": "Range",
+            "term": "has URL"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX85",
+          "term": "has website homepage",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: has website homepage (DatatypeProperty)",
+          "status": "tp",
+          "reason": "matched pred AX146",
+          "pred_match": {
+            "id": "AX146",
+            "dl": "Declaration: has homepage (DatatypeProperty)",
+            "axiom_type": "Declaration",
+            "term": "has homepage"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX86",
+          "term": "has website homepage",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Range",
+          "dl": "has website homepage maps-to ⊤",
+          "status": "tp",
+          "reason": "matched pred AX148",
+          "pred_match": {
+            "id": "AX148",
+            "dl": "has homepage maps-to ⊤",
+            "axiom_type": "Range",
+            "term": "has homepage"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX13",
+          "term": "Documentation",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "Documentation ⊑ Help Resource",
+          "status": "fp",
+          "reason": "pred SubClassOf axiom on 'Documentation' not matched by any gold axiom on 'function'",
+          "pred_match": {
+            "id": "AX13",
+            "dl": "Documentation ⊑ Help Resource",
+            "axiom_type": "SubClassOf",
+            "term": "Documentation"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX24",
+          "term": "Open Format",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "Open Format ⊑ Format",
+          "status": "fp",
+          "reason": "pred SubClassOf axiom on 'Open Format' not matched by any gold axiom on 'CEL binary format'",
+          "pred_match": {
+            "id": "AX24",
+            "dl": "Open Format ⊑ Format",
+            "axiom_type": "SubClassOf",
+            "term": "Open Format"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX26",
+          "term": "Open Source Development",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "Open Source Development ⊑ Development Type",
+          "status": "fp",
+          "reason": "pred SubClassOf axiom on 'Open Source Development' not matched by any gold axiom on 'software developer organization'",
+          "pred_match": {
+            "id": "AX26",
+            "dl": "Open Source Development ⊑ Development Type",
+            "axiom_type": "SubClassOf",
+            "term": "Open Source Development"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX32",
+          "term": "Proprietary Format",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "Proprietary Format ⊑ Format",
+          "status": "fp",
+          "reason": "pred SubClassOf axiom on 'Proprietary Format' not matched by any gold axiom on 'plain text file format'",
+          "pred_match": {
+            "id": "AX32",
+            "dl": "Proprietary Format ⊑ Format",
+            "axiom_type": "SubClassOf",
+            "term": "Proprietary Format"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX43",
+          "term": "XML Editing",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "XML Editing ⊑ Capability",
+          "status": "fp",
+          "reason": "pred SubClassOf axiom on 'XML Editing' not matched by any gold axiom on 'text editing'",
+          "pred_match": {
+            "id": "AX43",
+            "dl": "XML Editing ⊑ Capability",
+            "axiom_type": "SubClassOf",
+            "term": "XML Editing"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX69",
+          "term": "has developer",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃has developer.⊤ ⊑ Tool",
+          "status": "fp",
+          "reason": "pred Domain axiom on 'has developer' not matched by any gold axiom on 'is developed by'",
+          "pred_match": {
+            "id": "AX69",
+            "dl": "∃has developer.⊤ ⊑ Tool",
+            "axiom_type": "Domain",
+            "term": "has developer"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX70",
+          "term": "has developer",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀has developer.Developer",
+          "status": "fp",
+          "reason": "pred Range axiom on 'has developer' not matched by any gold axiom on 'is developed by'",
+          "pred_match": {
+            "id": "AX70",
+            "dl": "⊤ ⊑ ∀has developer.Developer",
+            "axiom_type": "Range",
+            "term": "has developer"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX75",
+          "term": "has documentation",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃has documentation.⊤ ⊑ Tool",
+          "status": "fp",
+          "reason": "pred Domain axiom on 'has documentation' not matched by any gold axiom on 'has function'",
+          "pred_match": {
+            "id": "AX75",
+            "dl": "∃has documentation.⊤ ⊑ Tool",
+            "axiom_type": "Domain",
+            "term": "has documentation"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX90",
+          "term": "has input",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃has input.⊤ ⊑ Data Export",
+          "status": "fp",
+          "reason": "pred Domain axiom on 'has input' not matched by any gold axiom on 'has input'",
+          "pred_match": {
+            "id": "AX90",
+            "dl": "∃has input.⊤ ⊑ Data Export",
+            "axiom_type": "Domain",
+            "term": "has input"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX91",
+          "term": "has input",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀has input.Data",
+          "status": "fp",
+          "reason": "pred Range axiom on 'has input' not matched by any gold axiom on 'has input'",
+          "pred_match": {
+            "id": "AX91",
+            "dl": "⊤ ⊑ ∀has input.Data",
+            "axiom_type": "Range",
+            "term": "has input"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX96",
+          "term": "has license",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃has license.⊤ ⊑ Tool",
+          "status": "fp",
+          "reason": "pred Domain axiom on 'has license' not matched by any gold axiom on 'has license'",
+          "pred_match": {
+            "id": "AX96",
+            "dl": "∃has license.⊤ ⊑ Tool",
+            "axiom_type": "Domain",
+            "term": "has license"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX97",
+          "term": "has license",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀has license.License",
+          "status": "fp",
+          "reason": "pred Range axiom on 'has license' not matched by any gold axiom on 'has license'",
+          "pred_match": {
+            "id": "AX97",
+            "dl": "⊤ ⊑ ∀has license.License",
+            "axiom_type": "Range",
+            "term": "has license"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX108",
+          "term": "has output format",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃has output format.⊤ ⊑ Tool",
+          "status": "fp",
+          "reason": "pred Domain axiom on 'has output format' not matched by any gold axiom on 'has output'",
+          "pred_match": {
+            "id": "AX108",
+            "dl": "∃has output format.⊤ ⊑ Tool",
+            "axiom_type": "Domain",
+            "term": "has output format"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX109",
+          "term": "has output format",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀has output format.Format",
+          "status": "fp",
+          "reason": "pred Range axiom on 'has output format' not matched by any gold axiom on 'has output'",
+          "pred_match": {
+            "id": "AX109",
+            "dl": "⊤ ⊑ ∀has output format.Format",
+            "axiom_type": "Range",
+            "term": "has output format"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX114",
+          "term": "has software version",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃has software version.⊤ ⊑ Tool",
+          "status": "fp",
+          "reason": "pred Domain axiom on 'has software version' not matched by any gold axiom on 'has version'",
+          "pred_match": {
+            "id": "AX114",
+            "dl": "∃has software version.⊤ ⊑ Tool",
+            "axiom_type": "Domain",
+            "term": "has software version"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX120",
+          "term": "is implemented in",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃is implemented in.⊤ ⊑ Tool",
+          "status": "fp",
+          "reason": "pred Domain axiom on 'is implemented in' not matched by any gold axiom on 'implements'",
+          "pred_match": {
+            "id": "AX120",
+            "dl": "∃is implemented in.⊤ ⊑ Tool",
+            "axiom_type": "Domain",
+            "term": "is implemented in"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX129",
+          "term": "uses algorithm",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃uses algorithm.⊤ ⊑ Tool",
+          "status": "fp",
+          "reason": "pred Domain axiom on 'uses algorithm' not matched by any gold axiom on 'uses platform'",
+          "pred_match": {
+            "id": "AX129",
+            "dl": "∃uses algorithm.⊤ ⊑ Tool",
+            "axiom_type": "Domain",
+            "term": "uses algorithm"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX130",
+          "term": "uses algorithm",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀uses algorithm.Algorithm",
+          "status": "fp",
+          "reason": "pred Range axiom on 'uses algorithm' not matched by any gold axiom on 'uses platform'",
+          "pred_match": {
+            "id": "AX130",
+            "dl": "⊤ ⊑ ∀uses algorithm.Algorithm",
+            "axiom_type": "Range",
+            "term": "uses algorithm"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX132",
+          "term": "has URL",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Domain",
+          "dl": "∃has URL.⊤ ⊑ Download Source",
+          "status": "fp",
+          "reason": "pred Domain axiom on 'has URL' not matched by any gold axiom on 'has support URL'",
+          "pred_match": {
+            "id": "AX132",
+            "dl": "∃has URL.⊤ ⊑ Download Source",
+            "axiom_type": "Domain",
+            "term": "has URL"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX141",
+          "term": "has documentation URL",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Domain",
+          "dl": "∃has documentation URL.⊤ ⊑ Documentation",
+          "status": "fp",
+          "reason": "pred Domain axiom on 'has documentation URL' not matched by any gold axiom on 'has documentation'",
+          "pred_match": {
+            "id": "AX141",
+            "dl": "∃has documentation URL.⊤ ⊑ Documentation",
+            "axiom_type": "Domain",
+            "term": "has documentation URL"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX147",
+          "term": "has homepage",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Domain",
+          "dl": "∃has homepage.⊤ ⊑ Tool",
+          "status": "fp",
+          "reason": "pred Domain axiom on 'has homepage' not matched by any gold axiom on 'has website homepage'",
+          "pred_match": {
+            "id": "AX147",
+            "dl": "∃has homepage.⊤ ⊑ Tool",
+            "axiom_type": "Domain",
+            "term": "has homepage"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX159",
+          "term": "has release date",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Domain",
+          "dl": "∃has release date.⊤ ⊑ Tool",
+          "status": "fp",
+          "reason": "pred Domain axiom on 'has release date' not matched by any gold axiom on 'has release date'",
+          "pred_match": {
+            "id": "AX159",
+            "dl": "∃has release date.⊤ ⊑ Tool",
+            "axiom_type": "Domain",
+            "term": "has release date"
+          }
+        }
+      ],
+      "counts_overall": {
+        "tp": 35,
+        "fn": 5,
+        "fp": 22,
+        "mismatch": 9,
+        "skip": 37
+      },
+      "counts_by_term": {
+        "Class": {
+          "tp": 17,
+          "fn": 3,
+          "fp": 5,
+          "mismatch": 2,
+          "skip": 18
+        },
+        "ObjectProperty": {
+          "tp": 12,
+          "fn": 2,
+          "fp": 13,
+          "mismatch": 5,
+          "skip": 16
+        },
+        "DatatypeProperty": {
+          "tp": 6,
+          "fn": 0,
+          "fp": 4,
+          "mismatch": 2,
+          "skip": 3
+        }
+      },
+      "counts_by_combo": {
+        "Class|Declaration": {
+          "tp": 16,
+          "fn": 0,
+          "fp": 0,
+          "mismatch": 0,
+          "skip": 14
+        },
+        "Class|SubClassOf": {
+          "tp": 1,
+          "fn": 2,
+          "fp": 5,
+          "mismatch": 2,
+          "skip": 4
+        },
+        "Class|EquivalentClasses": {
+          "tp": 0,
+          "fn": 1,
+          "fp": 0,
+          "mismatch": 0,
+          "skip": 0
+        },
+        "ObjectProperty|Declaration": {
+          "tp": 10,
+          "fn": 0,
+          "fp": 0,
+          "mismatch": 0,
+          "skip": 8
+        },
+        "ObjectProperty|Range": {
+          "tp": 2,
+          "fn": 0,
+          "fp": 5,
+          "mismatch": 3,
+          "skip": 5
+        },
+        "ObjectProperty|Domain": {
+          "tp": 0,
+          "fn": 0,
+          "fp": 8,
+          "mismatch": 2,
+          "skip": 1
+        },
+        "ObjectProperty|SubPropertyOf": {
+          "tp": 0,
+          "fn": 1,
+          "fp": 0,
+          "mismatch": 0,
+          "skip": 0
+        },
+        "ObjectProperty|Characteristics": {
+          "tp": 0,
+          "fn": 0,
+          "fp": 0,
+          "mismatch": 0,
+          "skip": 1
+        },
+        "ObjectProperty|InverseOf": {
+          "tp": 0,
+          "fn": 1,
+          "fp": 0,
+          "mismatch": 0,
+          "skip": 1
+        },
+        "DatatypeProperty|Declaration": {
+          "tp": 4,
+          "fn": 0,
+          "fp": 0,
+          "mismatch": 0,
+          "skip": 1
+        },
+        "DatatypeProperty|Range": {
+          "tp": 2,
+          "fn": 0,
+          "fp": 0,
+          "mismatch": 2,
+          "skip": 1
+        },
+        "DatatypeProperty|SubPropertyOf": {
+          "tp": 0,
+          "fn": 0,
+          "fp": 0,
+          "mismatch": 0,
+          "skip": 1
+        },
+        "DatatypeProperty|Domain": {
+          "tp": 0,
+          "fn": 0,
+          "fp": 4,
+          "mismatch": 0,
+          "skip": 0
+        }
+      }
+    },
+    "layer4": {
+      "per_term": {
+        "Class": {
+          "tp": 17,
+          "fp": 26,
+          "fp_layer3": 7,
+          "fp_unaligned": 19,
+          "fn": 23,
+          "fn_layer3": 5,
+          "fn_unaligned": 18,
+          "mismatch": 2,
+          "skip": 18,
+          "precision": 0.3953488372093023,
+          "recall": 0.425,
+          "f1": 0.40963855421686746
+        },
+        "ObjectProperty": {
+          "tp": 12,
+          "fp": 75,
+          "fp_layer3": 18,
+          "fp_unaligned": 57,
+          "fn": 23,
+          "fn_layer3": 7,
+          "fn_unaligned": 16,
+          "mismatch": 5,
+          "skip": 16,
+          "precision": 0.13793103448275862,
+          "recall": 0.34285714285714286,
+          "f1": 0.19672131147540983
+        },
+        "DatatypeProperty": {
+          "tp": 6,
+          "fp": 47,
+          "fp_layer3": 6,
+          "fp_unaligned": 41,
+          "fn": 5,
+          "fn_layer3": 2,
+          "fn_unaligned": 3,
+          "mismatch": 2,
+          "skip": 3,
+          "precision": 0.11320754716981132,
+          "recall": 0.5454545454545454,
+          "f1": 0.1875
+        }
+      },
+      "grand": {
+        "tp": 35,
+        "fp": 148,
+        "fn": 51,
+        "precision": 0.1912568306010929,
+        "recall": 0.4069767441860465,
+        "f1": 0.26022304832713755
+      },
+      "unaligned_lists": {
+        "Class": {
+          "gold": [
+            {
+              "id": "AX1",
+              "term": ".csv",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: .csv (Class)"
+            },
+            {
+              "id": "AX2",
+              "term": "CEL ASCII format",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: CEL ASCII format (Class)"
+            },
+            {
+              "id": "AX5",
+              "term": "Free",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: Free (Class)"
+            },
+            {
+              "id": "AX6",
+              "term": "Free",
+              "axiom_type": "SubClassOf",
+              "dl": "Free ⊑ Purchase cost"
+            },
+            {
+              "id": "AX7",
+              "term": "GIF",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: GIF (Class)"
+            },
+            {
+              "id": "AX10",
+              "term": "Not Free",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: Not Free (Class)"
+            },
+            {
+              "id": "AX11",
+              "term": "Not Free",
+              "axiom_type": "SubClassOf",
+              "dl": "Not Free ⊑ Purchase cost"
+            },
+            {
+              "id": "AX16",
+              "term": "PROcess",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: PROcess (Class)"
+            },
+            {
+              "id": "AX17",
+              "term": "Purchase cost",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: Purchase cost (Class)"
+            },
+            {
+              "id": "AX18",
+              "term": "Source code available",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: Source code available (Class)"
+            },
+            {
+              "id": "AX19",
+              "term": "XML",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: XML (Class)"
+            },
+            {
+              "id": "AX20",
+              "term": "XML",
+              "axiom_type": "SubClassOf",
+              "dl": "XML ⊑ data format specification"
+            },
+            {
+              "id": "AX22",
+              "term": "application programming interface",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: application programming interface (Class)"
+            },
+            {
+              "id": "AX23",
+              "term": "application programming interface",
+              "axiom_type": "SubClassOf",
+              "dl": "application programming interface ⊑ software interface"
+            },
+            {
+              "id": "AX24",
+              "term": "data format specification",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: data format specification (Class)"
+            },
+            {
+              "id": "AX27",
+              "term": "desktop graphical user interface",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: desktop graphical user interface (Class)"
+            },
+            {
+              "id": "AX28",
+              "term": "file rendering",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: file rendering (Class)"
+            },
+            {
+              "id": "AX36",
+              "term": "software interface",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: software interface (Class)"
+            }
+          ],
+          "pred": [
+            {
+              "id": "AX2",
+              "term": "Algorithm Modification",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: Algorithm Modification (Class)"
+            },
+            {
+              "id": "AX3",
+              "term": "Capability",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: Capability (Class)"
+            },
+            {
+              "id": "AX4",
+              "term": "Cel File",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: Cel File (Class)"
+            },
+            {
+              "id": "AX5",
+              "term": "Cel File",
+              "axiom_type": "SubClassOf",
+              "dl": "Cel File ⊑ Format"
+            },
+            {
+              "id": "AX6",
+              "term": "Community Development",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: Community Development (Class)"
+            },
+            {
+              "id": "AX7",
+              "term": "Community Development",
+              "axiom_type": "SubClassOf",
+              "dl": "Community Development ⊑ Development Type"
+            },
+            {
+              "id": "AX9",
+              "term": "Data Export",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: Data Export (Class)"
+            },
+            {
+              "id": "AX14",
+              "term": "Download Source",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: Download Source (Class)"
+            },
+            {
+              "id": "AX15",
+              "term": "Export Capability",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: Export Capability (Class)"
+            },
+            {
+              "id": "AX16",
+              "term": "Export Capability",
+              "axiom_type": "SubClassOf",
+              "dl": "Export Capability ⊑ Capability"
+            },
+            {
+              "id": "AX17",
+              "term": "Format",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: Format (Class)"
+            },
+            {
+              "id": "AX18",
+              "term": "Help Resource",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: Help Resource (Class)"
+            },
+            {
+              "id": "AX22",
+              "term": "Maintenance Status",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: Maintenance Status (Class)"
+            },
+            {
+              "id": "AX29",
+              "term": "Platform",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: Platform (Class)"
+            },
+            {
+              "id": "AX33",
+              "term": "Requirement",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: Requirement (Class)"
+            },
+            {
+              "id": "AX35",
+              "term": "Task",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: Task (Class)"
+            },
+            {
+              "id": "AX36",
+              "term": "Tool",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: Tool (Class)"
+            },
+            {
+              "id": "AX37",
+              "term": "Valid Input",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: Valid Input (Class)"
+            },
+            {
+              "id": "AX38",
+              "term": "Valid Input",
+              "axiom_type": "SubClassOf",
+              "dl": "Valid Input ⊑ Format"
+            }
+          ]
+        },
+        "ObjectProperty": {
+          "gold": [
+            {
+              "id": "AX41",
+              "term": "has clause",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has clause (ObjectProperty)"
+            },
+            {
+              "id": "AX42",
+              "term": "has declared status",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has declared status (ObjectProperty)"
+            },
+            {
+              "id": "AX43",
+              "term": "has declared status",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀has declared status.Development status"
+            },
+            {
+              "id": "AX51",
+              "term": "has interface",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has interface (ObjectProperty)"
+            },
+            {
+              "id": "AX52",
+              "term": "has interface",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀has interface.software interface"
+            },
+            {
+              "id": "AX55",
+              "term": "has specified data input",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has specified data input (ObjectProperty)"
+            },
+            {
+              "id": "AX56",
+              "term": "has specified data input",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀has specified data input.data item"
+            },
+            {
+              "id": "AX57",
+              "term": "has specified data output",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has specified data output (ObjectProperty)"
+            },
+            {
+              "id": "AX58",
+              "term": "has specified data output",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀has specified data output.data item"
+            },
+            {
+              "id": "AX63",
+              "term": "is alternative format of",
+              "axiom_type": "Characteristics",
+              "dl": "Symmetric(is alternative format of)"
+            },
+            {
+              "id": "AX64",
+              "term": "is alternative format of",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: is alternative format of (ObjectProperty)"
+            },
+            {
+              "id": "AX65",
+              "term": "is alternative format of",
+              "axiom_type": "Domain",
+              "dl": "∃is alternative format of.⊤ ⊑ data format specification"
+            },
+            {
+              "id": "AX66",
+              "term": "is alternative format of",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀is alternative format of.data format specification"
+            },
+            {
+              "id": "AX68",
+              "term": "is encoded in",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: is encoded in (ObjectProperty)"
+            },
+            {
+              "id": "AX69",
+              "term": "is software for",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: is software for (ObjectProperty)"
+            },
+            {
+              "id": "AX70",
+              "term": "is software for",
+              "axiom_type": "InverseOf",
+              "dl": "is software for ≡ uses software⁻"
+            }
+          ],
+          "pred": [
+            {
+              "id": "AX44",
+              "term": "can perform",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: can perform (ObjectProperty)"
+            },
+            {
+              "id": "AX45",
+              "term": "can perform",
+              "axiom_type": "Domain",
+              "dl": "∃can perform.⊤ ⊑ Tool"
+            },
+            {
+              "id": "AX46",
+              "term": "can perform",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀can perform.Task"
+            },
+            {
+              "id": "AX47",
+              "term": "can process data",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: can process data (ObjectProperty)"
+            },
+            {
+              "id": "AX48",
+              "term": "can process data",
+              "axiom_type": "Domain",
+              "dl": "∃can process data.⊤ ⊑ Tool"
+            },
+            {
+              "id": "AX49",
+              "term": "can process data",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀can process data.Data"
+            },
+            {
+              "id": "AX50",
+              "term": "can process output from",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: can process output from (ObjectProperty)"
+            },
+            {
+              "id": "AX51",
+              "term": "can process output from",
+              "axiom_type": "Domain",
+              "dl": "∃can process output from.⊤ ⊑ Tool"
+            },
+            {
+              "id": "AX52",
+              "term": "can process output from",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀can process output from.Tool"
+            },
+            {
+              "id": "AX53",
+              "term": "created by tool",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: created by tool (ObjectProperty)"
+            },
+            {
+              "id": "AX54",
+              "term": "created by tool",
+              "axiom_type": "Domain",
+              "dl": "∃created by tool.⊤ ⊑ Data"
+            },
+            {
+              "id": "AX55",
+              "term": "created by tool",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀created by tool.Tool"
+            },
+            {
+              "id": "AX56",
+              "term": "exported by version",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: exported by version (ObjectProperty)"
+            },
+            {
+              "id": "AX57",
+              "term": "exported by version",
+              "axiom_type": "Domain",
+              "dl": "∃exported by version.⊤ ⊑ Data Export"
+            },
+            {
+              "id": "AX58",
+              "term": "exported by version",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀exported by version.Version"
+            },
+            {
+              "id": "AX59",
+              "term": "exports from format",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: exports from format (ObjectProperty)"
+            },
+            {
+              "id": "AX60",
+              "term": "exports from format",
+              "axiom_type": "Domain",
+              "dl": "∃exports from format.⊤ ⊑ Export Capability"
+            },
+            {
+              "id": "AX61",
+              "term": "exports from format",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀exports from format.Format"
+            },
+            {
+              "id": "AX62",
+              "term": "exports to format",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: exports to format (ObjectProperty)"
+            },
+            {
+              "id": "AX63",
+              "term": "exports to format",
+              "axiom_type": "Domain",
+              "dl": "∃exports to format.⊤ ⊑ Export Capability"
+            },
+            {
+              "id": "AX64",
+              "term": "exports to format",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀exports to format.Format"
+            },
+            {
+              "id": "AX65",
+              "term": "has capability",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has capability (ObjectProperty)"
+            },
+            {
+              "id": "AX66",
+              "term": "has capability",
+              "axiom_type": "Domain",
+              "dl": "∃has capability.⊤ ⊑ Tool"
+            },
+            {
+              "id": "AX67",
+              "term": "has capability",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀has capability.Capability"
+            },
+            {
+              "id": "AX71",
+              "term": "has development type",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has development type (ObjectProperty)"
+            },
+            {
+              "id": "AX72",
+              "term": "has development type",
+              "axiom_type": "Domain",
+              "dl": "∃has development type.⊤ ⊑ Tool"
+            },
+            {
+              "id": "AX73",
+              "term": "has development type",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀has development type.Development Type"
+            },
+            {
+              "id": "AX77",
+              "term": "has download source",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has download source (ObjectProperty)"
+            },
+            {
+              "id": "AX78",
+              "term": "has download source",
+              "axiom_type": "Domain",
+              "dl": "∃has download source.⊤ ⊑ Tool"
+            },
+            {
+              "id": "AX79",
+              "term": "has download source",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀has download source.Download Source"
+            },
+            {
+              "id": "AX80",
+              "term": "has export capability",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has export capability (ObjectProperty)"
+            },
+            {
+              "id": "AX81",
+              "term": "has export capability",
+              "axiom_type": "Domain",
+              "dl": "∃has export capability.⊤ ⊑ Tool"
+            },
+            {
+              "id": "AX82",
+              "term": "has export capability",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀has export capability.Export Capability"
+            },
+            {
+              "id": "AX83",
+              "term": "has exported data",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has exported data (ObjectProperty)"
+            },
+            {
+              "id": "AX84",
+              "term": "has exported data",
+              "axiom_type": "Domain",
+              "dl": "∃has exported data.⊤ ⊑ Data Export"
+            },
+            {
+              "id": "AX85",
+              "term": "has exported data",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀has exported data.Data"
+            },
+            {
+              "id": "AX86",
+              "term": "has help resource",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has help resource (ObjectProperty)"
+            },
+            {
+              "id": "AX87",
+              "term": "has help resource",
+              "axiom_type": "Domain",
+              "dl": "∃has help resource.⊤ ⊑ Tool"
+            },
+            {
+              "id": "AX88",
+              "term": "has help resource",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀has help resource.Help Resource"
+            },
+            {
+              "id": "AX92",
+              "term": "has input format",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has input format (ObjectProperty)"
+            },
+            {
+              "id": "AX93",
+              "term": "has input format",
+              "axiom_type": "Domain",
+              "dl": "∃has input format.⊤ ⊑ Tool"
+            },
+            {
+              "id": "AX94",
+              "term": "has input format",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀has input format.Format"
+            },
+            {
+              "id": "AX98",
+              "term": "has maintenance status",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has maintenance status (ObjectProperty)"
+            },
+            {
+              "id": "AX99",
+              "term": "has maintenance status",
+              "axiom_type": "Domain",
+              "dl": "∃has maintenance status.⊤ ⊑ Tool"
+            },
+            {
+              "id": "AX100",
+              "term": "has maintenance status",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀has maintenance status.Maintenance Status"
+            },
+            {
+              "id": "AX104",
+              "term": "has new feature",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has new feature (ObjectProperty)"
+            },
+            {
+              "id": "AX105",
+              "term": "has new feature",
+              "axiom_type": "Domain",
+              "dl": "∃has new feature.⊤ ⊑ Version"
+            },
+            {
+              "id": "AX106",
+              "term": "has new feature",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀has new feature.Capability"
+            },
+            {
+              "id": "AX116",
+              "term": "has valid input",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has valid input (ObjectProperty)"
+            },
+            {
+              "id": "AX117",
+              "term": "has valid input",
+              "axiom_type": "Domain",
+              "dl": "∃has valid input.⊤ ⊑ Tool"
+            },
+            {
+              "id": "AX118",
+              "term": "has valid input",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀has valid input.Valid Input"
+            },
+            {
+              "id": "AX122",
+              "term": "runs on",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: runs on (ObjectProperty)"
+            },
+            {
+              "id": "AX123",
+              "term": "runs on",
+              "axiom_type": "Domain",
+              "dl": "∃runs on.⊤ ⊑ Tool"
+            },
+            {
+              "id": "AX124",
+              "term": "runs on",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀runs on.Platform"
+            },
+            {
+              "id": "AX125",
+              "term": "satisfies requirement",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: satisfies requirement (ObjectProperty)"
+            },
+            {
+              "id": "AX126",
+              "term": "satisfies requirement",
+              "axiom_type": "Domain",
+              "dl": "∃satisfies requirement.⊤ ⊑ Tool"
+            },
+            {
+              "id": "AX127",
+              "term": "satisfies requirement",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀satisfies requirement.Requirement"
+            }
+          ]
+        },
+        "DatatypeProperty": {
+          "gold": [
+            {
+              "id": "AX78",
+              "term": "has download location",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has download location (DatatypeProperty)"
+            },
+            {
+              "id": "AX79",
+              "term": "has download location",
+              "axiom_type": "Range",
+              "dl": "has download location maps-to xsd:string"
+            },
+            {
+              "id": "AX80",
+              "term": "has download location",
+              "axiom_type": "SubPropertyOf",
+              "dl": "has download location ⊑ has website homepage"
+            }
+          ],
+          "pred": [
+            {
+              "id": "AX134",
+              "term": "has developer name",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has developer name (DatatypeProperty)"
+            },
+            {
+              "id": "AX135",
+              "term": "has developer name",
+              "axiom_type": "Domain",
+              "dl": "∃has developer name.⊤ ⊑ Developer"
+            },
+            {
+              "id": "AX136",
+              "term": "has developer name",
+              "axiom_type": "Range",
+              "dl": "has developer name maps-to ⊤"
+            },
+            {
+              "id": "AX137",
+              "term": "has development activity",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has development activity (DatatypeProperty)"
+            },
+            {
+              "id": "AX138",
+              "term": "has development activity",
+              "axiom_type": "Domain",
+              "dl": "∃has development activity.⊤ ⊑ Tool"
+            },
+            {
+              "id": "AX139",
+              "term": "has development activity",
+              "axiom_type": "Range",
+              "dl": "has development activity maps-to ⊤"
+            },
+            {
+              "id": "AX143",
+              "term": "has help URL",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has help URL (DatatypeProperty)"
+            },
+            {
+              "id": "AX144",
+              "term": "has help URL",
+              "axiom_type": "Domain",
+              "dl": "∃has help URL.⊤ ⊑ Help Resource"
+            },
+            {
+              "id": "AX145",
+              "term": "has help URL",
+              "axiom_type": "Range",
+              "dl": "has help URL maps-to ⊤"
+            },
+            {
+              "id": "AX149",
+              "term": "has language name",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has language name (DatatypeProperty)"
+            },
+            {
+              "id": "AX150",
+              "term": "has language name",
+              "axiom_type": "Domain",
+              "dl": "∃has language name.⊤ ⊑ Programming Language"
+            },
+            {
+              "id": "AX151",
+              "term": "has language name",
+              "axiom_type": "Range",
+              "dl": "has language name maps-to ⊤"
+            },
+            {
+              "id": "AX152",
+              "term": "has modification details",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has modification details (DatatypeProperty)"
+            },
+            {
+              "id": "AX153",
+              "term": "has modification details",
+              "axiom_type": "Domain",
+              "dl": "∃has modification details.⊤ ⊑ Algorithm Modification"
+            },
+            {
+              "id": "AX154",
+              "term": "has modification details",
+              "axiom_type": "Range",
+              "dl": "has modification details maps-to ⊤"
+            },
+            {
+              "id": "AX155",
+              "term": "has permissiveness",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has permissiveness (DatatypeProperty)"
+            },
+            {
+              "id": "AX156",
+              "term": "has permissiveness",
+              "axiom_type": "Domain",
+              "dl": "∃has permissiveness.⊤ ⊑ License"
+            },
+            {
+              "id": "AX157",
+              "term": "has permissiveness",
+              "axiom_type": "Range",
+              "dl": "has permissiveness maps-to ⊤"
+            },
+            {
+              "id": "AX161",
+              "term": "has requirement description",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has requirement description (DatatypeProperty)"
+            },
+            {
+              "id": "AX162",
+              "term": "has requirement description",
+              "axiom_type": "Domain",
+              "dl": "∃has requirement description.⊤ ⊑ Requirement"
+            },
+            {
+              "id": "AX163",
+              "term": "has requirement description",
+              "axiom_type": "Range",
+              "dl": "has requirement description maps-to ⊤"
+            },
+            {
+              "id": "AX164",
+              "term": "has version release date",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has version release date (DatatypeProperty)"
+            },
+            {
+              "id": "AX165",
+              "term": "has version release date",
+              "axiom_type": "Domain",
+              "dl": "∃has version release date.⊤ ⊑ Version"
+            },
+            {
+              "id": "AX166",
+              "term": "has version release date",
+              "axiom_type": "Range",
+              "dl": "has version release date maps-to ⊤"
+            },
+            {
+              "id": "AX167",
+              "term": "has version string",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has version string (DatatypeProperty)"
+            },
+            {
+              "id": "AX168",
+              "term": "has version string",
+              "axiom_type": "Domain",
+              "dl": "∃has version string.⊤ ⊑ Version"
+            },
+            {
+              "id": "AX169",
+              "term": "has version string",
+              "axiom_type": "Range",
+              "dl": "has version string maps-to ⊤"
+            },
+            {
+              "id": "AX170",
+              "term": "is FOSS",
+              "axiom_type": "Characteristics",
+              "dl": "Functional(is FOSS)"
+            },
+            {
+              "id": "AX171",
+              "term": "is FOSS",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: is FOSS (DatatypeProperty)"
+            },
+            {
+              "id": "AX172",
+              "term": "is FOSS",
+              "axiom_type": "Domain",
+              "dl": "∃is FOSS.⊤ ⊑ Tool"
+            },
+            {
+              "id": "AX173",
+              "term": "is FOSS",
+              "axiom_type": "Range",
+              "dl": "is FOSS maps-to ⊤"
+            },
+            {
+              "id": "AX174",
+              "term": "is collaboration possible",
+              "axiom_type": "Characteristics",
+              "dl": "Functional(is collaboration possible)"
+            },
+            {
+              "id": "AX175",
+              "term": "is collaboration possible",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: is collaboration possible (DatatypeProperty)"
+            },
+            {
+              "id": "AX176",
+              "term": "is collaboration possible",
+              "axiom_type": "Domain",
+              "dl": "∃is collaboration possible.⊤ ⊑ Developer"
+            },
+            {
+              "id": "AX177",
+              "term": "is collaboration possible",
+              "axiom_type": "Range",
+              "dl": "is collaboration possible maps-to ⊤"
+            },
+            {
+              "id": "AX178",
+              "term": "is free",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: is free (DatatypeProperty)"
+            },
+            {
+              "id": "AX179",
+              "term": "is free",
+              "axiom_type": "Domain",
+              "dl": "∃is free.⊤ ⊑ Tool"
+            },
+            {
+              "id": "AX180",
+              "term": "is free",
+              "axiom_type": "Range",
+              "dl": "is free maps-to ⊤"
+            },
+            {
+              "id": "AX181",
+              "term": "is open source",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: is open source (DatatypeProperty)"
+            },
+            {
+              "id": "AX182",
+              "term": "is open source",
+              "axiom_type": "Domain",
+              "dl": "∃is open source.⊤ ⊑ Tool"
+            },
+            {
+              "id": "AX183",
+              "term": "is open source",
+              "axiom_type": "Range",
+              "dl": "is open source maps-to ⊤"
+            }
+          ]
+        }
+      }
+    },
+    "alignments": {
+      "class": {
+        "CEL binary format": "Open Format",
+        "Development status": "Development Type",
+        "Maintained": "Maintained",
+        "Open source software license": "Open Source License",
+        "algorithm": "Algorithm",
+        "data item": "Data",
+        "function": "Documentation",
+        "licence": "License",
+        "plain text file format": "Proprietary Format",
+        "programming language": "Programming Language",
+        "software": "Software Type",
+        "software developer organization": "Open Source Development",
+        "software developer role": "Developer",
+        "text editing": "XML Editing",
+        "version number": "Version",
+        "web service": "Web Service"
+      },
+      "property": {
+        "has documentation": "has documentation URL",
+        "has release date": "has release date",
+        "has support URL": "has URL",
+        "has website homepage": "has homepage",
+        "has format specification": "has modification",
+        "has function": "has documentation",
+        "has input": "has input",
+        "has license": "has license",
+        "has output": "has output format",
+        "has version": "has software version",
+        "implements": "is implemented in",
+        "is developed by": "has developer",
+        "uses platform": "uses algorithm",
+        "uses software": "has software type"
+      }
+    },
+    "cq_coverage": {
+      "per_cq": {
+        "CQ04": {
+          "question": "",
+          "n_axioms": 4,
+          "n_tp": 2,
+          "rate": 0.5,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX21",
+            "AX61",
+            "AX62",
+            "AX74"
+          ],
+          "tp_axiom_ids": [
+            "AX21",
+            "AX61"
+          ],
+          "missing_axiom_ids": [
+            "AX62",
+            "AX74"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX62",
+              "dl": "⊤ ⊑ ∀implements.algorithm",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX74",
+              "dl": "uses software ≡ is software for⁻",
+              "status": "fn"
+            }
+          ]
+        },
+        "CQ05": {
+          "question": "",
+          "n_axioms": 4,
+          "n_tp": 2,
+          "rate": 0.5,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX21",
+            "AX61",
+            "AX62",
+            "AX74"
+          ],
+          "tp_axiom_ids": [
+            "AX21",
+            "AX61"
+          ],
+          "missing_axiom_ids": [
+            "AX62",
+            "AX74"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX62",
+              "dl": "⊤ ⊑ ∀implements.algorithm",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX74",
+              "dl": "uses software ≡ is software for⁻",
+              "status": "fn"
+            }
+          ]
+        },
+        "CQ06": {
+          "question": "",
+          "n_axioms": 11,
+          "n_tp": 2,
+          "rate": 0.18181818181818182,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX19",
+            "AX20",
+            "AX42",
+            "AX69",
+            "AX70",
+            "AX74",
+            "AX78",
+            "AX80",
+            "AX81",
+            "AX82",
+            "AX83"
+          ],
+          "tp_axiom_ids": [
+            "AX81",
+            "AX83"
+          ],
+          "missing_axiom_ids": [
+            "AX19",
+            "AX20",
+            "AX42",
+            "AX69",
+            "AX70",
+            "AX74",
+            "AX78",
+            "AX80",
+            "AX82"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX19",
+              "dl": "Declaration: XML (Class)",
+              "status": "skip"
+            },
+            {
+              "id": "AX20",
+              "dl": "XML ⊑ data format specification",
+              "status": "skip"
+            },
+            {
+              "id": "AX42",
+              "dl": "Declaration: has declared status (ObjectProperty)",
+              "status": "skip"
+            },
+            {
+              "id": "AX69",
+              "dl": "Declaration: is software for (ObjectProperty)",
+              "status": "skip"
+            },
+            {
+              "id": "AX70",
+              "dl": "is software for ≡ uses software⁻",
+              "status": "skip"
+            },
+            {
+              "id": "AX74",
+              "dl": "uses software ≡ is software for⁻",
+              "status": "fn"
+            },
+            {
+              "id": "AX78",
+              "dl": "Declaration: has download location (DatatypeProperty)",
+              "status": "skip"
+            },
+            {
+              "id": "AX80",
+              "dl": "has download location ⊑ has website homepage",
+              "status": "skip"
+            },
+            {
+              "id": "AX82",
+              "dl": "has release date maps-to xsd:string",
+              "status": "mismatch"
+            }
+          ]
+        },
+        "CQ07": {
+          "question": "",
+          "n_axioms": 7,
+          "n_tp": 0,
+          "rate": 0.0,
+          "fully_covered": false,
+          "any_covered": false,
+          "covered": false,
+          "axiom_ids": [
+            "AX22",
+            "AX23",
+            "AX27",
+            "AX45",
+            "AX46",
+            "AX74",
+            "AX77"
+          ],
+          "tp_axiom_ids": [],
+          "missing_axiom_ids": [
+            "AX22",
+            "AX23",
+            "AX27",
+            "AX45",
+            "AX46",
+            "AX74",
+            "AX77"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX22",
+              "dl": "Declaration: application programming interface (Class)",
+              "status": "skip"
+            },
+            {
+              "id": "AX23",
+              "dl": "application programming interface ⊑ software interface",
+              "status": "skip"
+            },
+            {
+              "id": "AX27",
+              "dl": "Declaration: desktop graphical user interface (Class)",
+              "status": "skip"
+            },
+            {
+              "id": "AX45",
+              "dl": "∃has format specification.⊤ ⊑ data item",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX46",
+              "dl": "⊤ ⊑ ∀has format specification.data format specification",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX74",
+              "dl": "uses software ≡ is software for⁻",
+              "status": "fn"
+            },
+            {
+              "id": "AX77",
+              "dl": "has documentation maps-to xsd:string",
+              "status": "mismatch"
+            }
+          ]
+        },
+        "CQ08": {
+          "question": "",
+          "n_axioms": 4,
+          "n_tp": 0,
+          "rate": 0.0,
+          "fully_covered": false,
+          "any_covered": false,
+          "covered": false,
+          "axiom_ids": [
+            "AX16",
+            "AX69",
+            "AX70",
+            "AX74"
+          ],
+          "tp_axiom_ids": [],
+          "missing_axiom_ids": [
+            "AX16",
+            "AX69",
+            "AX70",
+            "AX74"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX16",
+              "dl": "Declaration: PROcess (Class)",
+              "status": "skip"
+            },
+            {
+              "id": "AX69",
+              "dl": "Declaration: is software for (ObjectProperty)",
+              "status": "skip"
+            },
+            {
+              "id": "AX70",
+              "dl": "is software for ≡ uses software⁻",
+              "status": "skip"
+            },
+            {
+              "id": "AX74",
+              "dl": "uses software ≡ is software for⁻",
+              "status": "fn"
+            }
+          ]
+        },
+        "CQ11": {
+          "question": "",
+          "n_axioms": 6,
+          "n_tp": 2,
+          "rate": 0.3333333333333333,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX45",
+            "AX46",
+            "AX74",
+            "AX77",
+            "AX85",
+            "AX86"
+          ],
+          "tp_axiom_ids": [
+            "AX85",
+            "AX86"
+          ],
+          "missing_axiom_ids": [
+            "AX45",
+            "AX46",
+            "AX74",
+            "AX77"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX45",
+              "dl": "∃has format specification.⊤ ⊑ data item",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX46",
+              "dl": "⊤ ⊑ ∀has format specification.data format specification",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX74",
+              "dl": "uses software ≡ is software for⁻",
+              "status": "fn"
+            },
+            {
+              "id": "AX77",
+              "dl": "has documentation maps-to xsd:string",
+              "status": "mismatch"
+            }
+          ]
+        },
+        "CQ14": {
+          "question": "",
+          "n_axioms": 7,
+          "n_tp": 2,
+          "rate": 0.2857142857142857,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX7",
+            "AX28",
+            "AX53",
+            "AX54",
+            "AX69",
+            "AX70",
+            "AX74"
+          ],
+          "tp_axiom_ids": [
+            "AX53",
+            "AX54"
+          ],
+          "missing_axiom_ids": [
+            "AX7",
+            "AX28",
+            "AX69",
+            "AX70",
+            "AX74"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX7",
+              "dl": "Declaration: GIF (Class)",
+              "status": "skip"
+            },
+            {
+              "id": "AX28",
+              "dl": "Declaration: file rendering (Class)",
+              "status": "skip"
+            },
+            {
+              "id": "AX69",
+              "dl": "Declaration: is software for (ObjectProperty)",
+              "status": "skip"
+            },
+            {
+              "id": "AX70",
+              "dl": "is software for ≡ uses software⁻",
+              "status": "skip"
+            },
+            {
+              "id": "AX74",
+              "dl": "uses software ≡ is software for⁻",
+              "status": "fn"
+            }
+          ]
+        },
+        "CQ15": {
+          "question": "",
+          "n_axioms": 5,
+          "n_tp": 3,
+          "rate": 0.6,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX25",
+            "AX26",
+            "AX53",
+            "AX54",
+            "AX74"
+          ],
+          "tp_axiom_ids": [
+            "AX25",
+            "AX53",
+            "AX54"
+          ],
+          "missing_axiom_ids": [
+            "AX26",
+            "AX74"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX26",
+              "dl": "data item ⊑ ∃is encoded in.data format specification",
+              "status": "fn"
+            },
+            {
+              "id": "AX74",
+              "dl": "uses software ≡ is software for⁻",
+              "status": "fn"
+            }
+          ]
+        },
+        "CQ16": {
+          "question": "",
+          "n_axioms": 7,
+          "n_tp": 1,
+          "rate": 0.14285714285714285,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX25",
+            "AX26",
+            "AX51",
+            "AX52",
+            "AX69",
+            "AX70",
+            "AX74"
+          ],
+          "tp_axiom_ids": [
+            "AX25"
+          ],
+          "missing_axiom_ids": [
+            "AX26",
+            "AX51",
+            "AX52",
+            "AX69",
+            "AX70",
+            "AX74"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX26",
+              "dl": "data item ⊑ ∃is encoded in.data format specification",
+              "status": "fn"
+            },
+            {
+              "id": "AX51",
+              "dl": "Declaration: has interface (ObjectProperty)",
+              "status": "skip"
+            },
+            {
+              "id": "AX52",
+              "dl": "⊤ ⊑ ∀has interface.software interface",
+              "status": "skip"
+            },
+            {
+              "id": "AX69",
+              "dl": "Declaration: is software for (ObjectProperty)",
+              "status": "skip"
+            },
+            {
+              "id": "AX70",
+              "dl": "is software for ≡ uses software⁻",
+              "status": "skip"
+            },
+            {
+              "id": "AX74",
+              "dl": "uses software ≡ is software for⁻",
+              "status": "fn"
+            }
+          ]
+        },
+        "CQ17": {
+          "question": "",
+          "n_axioms": 9,
+          "n_tp": 4,
+          "rate": 0.4444444444444444,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX38",
+            "AX39",
+            "AX40",
+            "AX41",
+            "AX51",
+            "AX52",
+            "AX53",
+            "AX54",
+            "AX74"
+          ],
+          "tp_axiom_ids": [
+            "AX38",
+            "AX39",
+            "AX53",
+            "AX54"
+          ],
+          "missing_axiom_ids": [
+            "AX40",
+            "AX41",
+            "AX51",
+            "AX52",
+            "AX74"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX40",
+              "dl": "web service ⊑ software interface",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX41",
+              "dl": "Declaration: has clause (ObjectProperty)",
+              "status": "skip"
+            },
+            {
+              "id": "AX51",
+              "dl": "Declaration: has interface (ObjectProperty)",
+              "status": "skip"
+            },
+            {
+              "id": "AX52",
+              "dl": "⊤ ⊑ ∀has interface.software interface",
+              "status": "skip"
+            },
+            {
+              "id": "AX74",
+              "dl": "uses software ≡ is software for⁻",
+              "status": "fn"
+            }
+          ]
+        },
+        "CQ19": {
+          "question": "",
+          "n_axioms": 5,
+          "n_tp": 1,
+          "rate": 0.2,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX2",
+            "AX3",
+            "AX51",
+            "AX52",
+            "AX74"
+          ],
+          "tp_axiom_ids": [
+            "AX3"
+          ],
+          "missing_axiom_ids": [
+            "AX2",
+            "AX51",
+            "AX52",
+            "AX74"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX2",
+              "dl": "Declaration: CEL ASCII format (Class)",
+              "status": "skip"
+            },
+            {
+              "id": "AX51",
+              "dl": "Declaration: has interface (ObjectProperty)",
+              "status": "skip"
+            },
+            {
+              "id": "AX52",
+              "dl": "⊤ ⊑ ∀has interface.software interface",
+              "status": "skip"
+            },
+            {
+              "id": "AX74",
+              "dl": "uses software ≡ is software for⁻",
+              "status": "fn"
+            }
+          ]
+        },
+        "CQ21": {
+          "question": "",
+          "n_axioms": 2,
+          "n_tp": 1,
+          "rate": 0.5,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX44",
+            "AX74"
+          ],
+          "tp_axiom_ids": [
+            "AX44"
+          ],
+          "missing_axiom_ids": [
+            "AX74"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX74",
+              "dl": "uses software ≡ is software for⁻",
+              "status": "fn"
+            }
+          ]
+        },
+        "CQ22": {
+          "question": "",
+          "n_axioms": 19,
+          "n_tp": 7,
+          "rate": 0.3684210526315789,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX1",
+            "AX24",
+            "AX25",
+            "AX26",
+            "AX38",
+            "AX39",
+            "AX40",
+            "AX41",
+            "AX48",
+            "AX51",
+            "AX52",
+            "AX53",
+            "AX54",
+            "AX63",
+            "AX64",
+            "AX65",
+            "AX66",
+            "AX72",
+            "AX74"
+          ],
+          "tp_axiom_ids": [
+            "AX25",
+            "AX38",
+            "AX39",
+            "AX48",
+            "AX53",
+            "AX54",
+            "AX72"
+          ],
+          "missing_axiom_ids": [
+            "AX1",
+            "AX24",
+            "AX26",
+            "AX40",
+            "AX41",
+            "AX51",
+            "AX52",
+            "AX63",
+            "AX64",
+            "AX65",
+            "AX66",
+            "AX74"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX1",
+              "dl": "Declaration: .csv (Class)",
+              "status": "skip"
+            },
+            {
+              "id": "AX24",
+              "dl": "Declaration: data format specification (Class)",
+              "status": "skip"
+            },
+            {
+              "id": "AX26",
+              "dl": "data item ⊑ ∃is encoded in.data format specification",
+              "status": "fn"
+            },
+            {
+              "id": "AX40",
+              "dl": "web service ⊑ software interface",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX41",
+              "dl": "Declaration: has clause (ObjectProperty)",
+              "status": "skip"
+            },
+            {
+              "id": "AX51",
+              "dl": "Declaration: has interface (ObjectProperty)",
+              "status": "skip"
+            },
+            {
+              "id": "AX52",
+              "dl": "⊤ ⊑ ∀has interface.software interface",
+              "status": "skip"
+            },
+            {
+              "id": "AX63",
+              "dl": "Symmetric(is alternative format of)",
+              "status": "skip"
+            },
+            {
+              "id": "AX64",
+              "dl": "Declaration: is alternative format of (ObjectProperty)",
+              "status": "skip"
+            },
+            {
+              "id": "AX65",
+              "dl": "∃is alternative format of.⊤ ⊑ data format specification",
+              "status": "skip"
+            },
+            {
+              "id": "AX66",
+              "dl": "⊤ ⊑ ∀is alternative format of.data format specification",
+              "status": "skip"
+            },
+            {
+              "id": "AX74",
+              "dl": "uses software ≡ is software for⁻",
+              "status": "fn"
+            }
+          ]
+        },
+        "CQ23": {
+          "question": "",
+          "n_axioms": 22,
+          "n_tp": 8,
+          "rate": 0.36363636363636365,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX24",
+            "AX25",
+            "AX26",
+            "AX38",
+            "AX39",
+            "AX40",
+            "AX41",
+            "AX48",
+            "AX51",
+            "AX52",
+            "AX53",
+            "AX54",
+            "AX63",
+            "AX64",
+            "AX65",
+            "AX66",
+            "AX70",
+            "AX74",
+            "AX80",
+            "AX81",
+            "AX82",
+            "AX83"
+          ],
+          "tp_axiom_ids": [
+            "AX25",
+            "AX38",
+            "AX39",
+            "AX48",
+            "AX53",
+            "AX54",
+            "AX81",
+            "AX83"
+          ],
+          "missing_axiom_ids": [
+            "AX24",
+            "AX26",
+            "AX40",
+            "AX41",
+            "AX51",
+            "AX52",
+            "AX63",
+            "AX64",
+            "AX65",
+            "AX66",
+            "AX70",
+            "AX74",
+            "AX80",
+            "AX82"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX24",
+              "dl": "Declaration: data format specification (Class)",
+              "status": "skip"
+            },
+            {
+              "id": "AX26",
+              "dl": "data item ⊑ ∃is encoded in.data format specification",
+              "status": "fn"
+            },
+            {
+              "id": "AX40",
+              "dl": "web service ⊑ software interface",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX41",
+              "dl": "Declaration: has clause (ObjectProperty)",
+              "status": "skip"
+            },
+            {
+              "id": "AX51",
+              "dl": "Declaration: has interface (ObjectProperty)",
+              "status": "skip"
+            },
+            {
+              "id": "AX52",
+              "dl": "⊤ ⊑ ∀has interface.software interface",
+              "status": "skip"
+            },
+            {
+              "id": "AX63",
+              "dl": "Symmetric(is alternative format of)",
+              "status": "skip"
+            },
+            {
+              "id": "AX64",
+              "dl": "Declaration: is alternative format of (ObjectProperty)",
+              "status": "skip"
+            },
+            {
+              "id": "AX65",
+              "dl": "∃is alternative format of.⊤ ⊑ data format specification",
+              "status": "skip"
+            },
+            {
+              "id": "AX66",
+              "dl": "⊤ ⊑ ∀is alternative format of.data format specification",
+              "status": "skip"
+            },
+            {
+              "id": "AX70",
+              "dl": "is software for ≡ uses software⁻",
+              "status": "skip"
+            },
+            {
+              "id": "AX74",
+              "dl": "uses software ≡ is software for⁻",
+              "status": "fn"
+            },
+            {
+              "id": "AX80",
+              "dl": "has download location ⊑ has website homepage",
+              "status": "skip"
+            },
+            {
+              "id": "AX82",
+              "dl": "has release date maps-to xsd:string",
+              "status": "mismatch"
+            }
+          ]
+        },
+        "CQ26": {
+          "question": "",
+          "n_axioms": 5,
+          "n_tp": 1,
+          "rate": 0.2,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX12",
+            "AX47",
+            "AX51",
+            "AX52",
+            "AX74"
+          ],
+          "tp_axiom_ids": [
+            "AX12"
+          ],
+          "missing_axiom_ids": [
+            "AX47",
+            "AX51",
+            "AX52",
+            "AX74"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX47",
+              "dl": "has format specification ⊑ is encoded in",
+              "status": "fn"
+            },
+            {
+              "id": "AX51",
+              "dl": "Declaration: has interface (ObjectProperty)",
+              "status": "skip"
+            },
+            {
+              "id": "AX52",
+              "dl": "⊤ ⊑ ∀has interface.software interface",
+              "status": "skip"
+            },
+            {
+              "id": "AX74",
+              "dl": "uses software ≡ is software for⁻",
+              "status": "fn"
+            }
+          ]
+        },
+        "CQ29": {
+          "question": "",
+          "n_axioms": 11,
+          "n_tp": 5,
+          "rate": 0.45454545454545453,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX25",
+            "AX26",
+            "AX44",
+            "AX48",
+            "AX51",
+            "AX52",
+            "AX53",
+            "AX54",
+            "AX57",
+            "AX58",
+            "AX74"
+          ],
+          "tp_axiom_ids": [
+            "AX25",
+            "AX44",
+            "AX48",
+            "AX53",
+            "AX54"
+          ],
+          "missing_axiom_ids": [
+            "AX26",
+            "AX51",
+            "AX52",
+            "AX57",
+            "AX58",
+            "AX74"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX26",
+              "dl": "data item ⊑ ∃is encoded in.data format specification",
+              "status": "fn"
+            },
+            {
+              "id": "AX51",
+              "dl": "Declaration: has interface (ObjectProperty)",
+              "status": "skip"
+            },
+            {
+              "id": "AX52",
+              "dl": "⊤ ⊑ ∀has interface.software interface",
+              "status": "skip"
+            },
+            {
+              "id": "AX57",
+              "dl": "Declaration: has specified data output (ObjectProperty)",
+              "status": "skip"
+            },
+            {
+              "id": "AX58",
+              "dl": "⊤ ⊑ ∀has specified data output.data item",
+              "status": "skip"
+            },
+            {
+              "id": "AX74",
+              "dl": "uses software ≡ is software for⁻",
+              "status": "fn"
+            }
+          ]
+        },
+        "CQ30": {
+          "question": "",
+          "n_axioms": 8,
+          "n_tp": 4,
+          "rate": 0.5,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX35",
+            "AX36",
+            "AX37",
+            "AX55",
+            "AX56",
+            "AX59",
+            "AX60",
+            "AX74"
+          ],
+          "tp_axiom_ids": [
+            "AX35",
+            "AX37",
+            "AX59",
+            "AX60"
+          ],
+          "missing_axiom_ids": [
+            "AX36",
+            "AX55",
+            "AX56",
+            "AX74"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX36",
+              "dl": "Declaration: software interface (Class)",
+              "status": "skip"
+            },
+            {
+              "id": "AX55",
+              "dl": "Declaration: has specified data input (ObjectProperty)",
+              "status": "skip"
+            },
+            {
+              "id": "AX56",
+              "dl": "⊤ ⊑ ∀has specified data input.data item",
+              "status": "skip"
+            },
+            {
+              "id": "AX74",
+              "dl": "uses software ≡ is software for⁻",
+              "status": "fn"
+            }
+          ]
+        },
+        "CQ32": {
+          "question": "",
+          "n_axioms": 3,
+          "n_tp": 0,
+          "rate": 0.0,
+          "fully_covered": false,
+          "any_covered": false,
+          "covered": false,
+          "axiom_ids": [
+            "AX55",
+            "AX56",
+            "AX74"
+          ],
+          "tp_axiom_ids": [],
+          "missing_axiom_ids": [
+            "AX55",
+            "AX56",
+            "AX74"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX55",
+              "dl": "Declaration: has specified data input (ObjectProperty)",
+              "status": "skip"
+            },
+            {
+              "id": "AX56",
+              "dl": "⊤ ⊑ ∀has specified data input.data item",
+              "status": "skip"
+            },
+            {
+              "id": "AX74",
+              "dl": "uses software ≡ is software for⁻",
+              "status": "fn"
+            }
+          ]
+        },
+        "CQ36": {
+          "question": "",
+          "n_axioms": 4,
+          "n_tp": 2,
+          "rate": 0.5,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX67",
+            "AX74",
+            "AX75",
+            "AX76"
+          ],
+          "tp_axiom_ids": [
+            "AX67",
+            "AX76"
+          ],
+          "missing_axiom_ids": [
+            "AX74",
+            "AX75"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX74",
+              "dl": "uses software ≡ is software for⁻",
+              "status": "fn"
+            },
+            {
+              "id": "AX75",
+              "dl": "⊤ ⊑ ∀uses software.⊤",
+              "status": "mismatch"
+            }
+          ]
+        },
+        "CQ37": {
+          "question": "",
+          "n_axioms": 4,
+          "n_tp": 2,
+          "rate": 0.5,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX36",
+            "AX59",
+            "AX60",
+            "AX74"
+          ],
+          "tp_axiom_ids": [
+            "AX59",
+            "AX60"
+          ],
+          "missing_axiom_ids": [
+            "AX36",
+            "AX74"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX36",
+              "dl": "Declaration: software interface (Class)",
+              "status": "skip"
+            },
+            {
+              "id": "AX74",
+              "dl": "uses software ≡ is software for⁻",
+              "status": "fn"
+            }
+          ]
+        },
+        "CQ38": {
+          "question": "",
+          "n_axioms": 4,
+          "n_tp": 2,
+          "rate": 0.5,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX67",
+            "AX74",
+            "AX75",
+            "AX76"
+          ],
+          "tp_axiom_ids": [
+            "AX67",
+            "AX76"
+          ],
+          "missing_axiom_ids": [
+            "AX74",
+            "AX75"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX74",
+              "dl": "uses software ≡ is software for⁻",
+              "status": "fn"
+            },
+            {
+              "id": "AX75",
+              "dl": "⊤ ⊑ ∀uses software.⊤",
+              "status": "mismatch"
+            }
+          ]
+        },
+        "CQ40": {
+          "question": "",
+          "n_axioms": 6,
+          "n_tp": 2,
+          "rate": 0.3333333333333333,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX35",
+            "AX36",
+            "AX37",
+            "AX55",
+            "AX56",
+            "AX74"
+          ],
+          "tp_axiom_ids": [
+            "AX35",
+            "AX37"
+          ],
+          "missing_axiom_ids": [
+            "AX36",
+            "AX55",
+            "AX56",
+            "AX74"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX36",
+              "dl": "Declaration: software interface (Class)",
+              "status": "skip"
+            },
+            {
+              "id": "AX55",
+              "dl": "Declaration: has specified data input (ObjectProperty)",
+              "status": "skip"
+            },
+            {
+              "id": "AX56",
+              "dl": "⊤ ⊑ ∀has specified data input.data item",
+              "status": "skip"
+            },
+            {
+              "id": "AX74",
+              "dl": "uses software ≡ is software for⁻",
+              "status": "fn"
+            }
+          ]
+        },
+        "CQ45": {
+          "question": "",
+          "n_axioms": 3,
+          "n_tp": 2,
+          "rate": 0.6666666666666666,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX49",
+            "AX50",
+            "AX74"
+          ],
+          "tp_axiom_ids": [
+            "AX49",
+            "AX50"
+          ],
+          "missing_axiom_ids": [
+            "AX74"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX74",
+              "dl": "uses software ≡ is software for⁻",
+              "status": "fn"
+            }
+          ]
+        },
+        "CQ46": {
+          "question": "",
+          "n_axioms": 6,
+          "n_tp": 4,
+          "rate": 0.6666666666666666,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX4",
+            "AX8",
+            "AX9",
+            "AX31",
+            "AX32",
+            "AX74"
+          ],
+          "tp_axiom_ids": [
+            "AX4",
+            "AX8",
+            "AX31",
+            "AX32"
+          ],
+          "missing_axiom_ids": [
+            "AX9",
+            "AX74"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX9",
+              "dl": "Maintained ⊑ Development status",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX74",
+              "dl": "uses software ≡ is software for⁻",
+              "status": "fn"
+            }
+          ]
+        },
+        "CQ54": {
+          "question": "",
+          "n_axioms": 3,
+          "n_tp": 0,
+          "rate": 0.0,
+          "fully_covered": false,
+          "any_covered": false,
+          "covered": false,
+          "axiom_ids": [
+            "AX57",
+            "AX58",
+            "AX74"
+          ],
+          "tp_axiom_ids": [],
+          "missing_axiom_ids": [
+            "AX57",
+            "AX58",
+            "AX74"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX57",
+              "dl": "Declaration: has specified data output (ObjectProperty)",
+              "status": "skip"
+            },
+            {
+              "id": "AX58",
+              "dl": "⊤ ⊑ ∀has specified data output.data item",
+              "status": "skip"
+            },
+            {
+              "id": "AX74",
+              "dl": "uses software ≡ is software for⁻",
+              "status": "fn"
+            }
+          ]
+        },
+        "CQ55": {
+          "question": "",
+          "n_axioms": 7,
+          "n_tp": 2,
+          "rate": 0.2857142857142857,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX29",
+            "AX42",
+            "AX43",
+            "AX57",
+            "AX58",
+            "AX74",
+            "AX84"
+          ],
+          "tp_axiom_ids": [
+            "AX29",
+            "AX84"
+          ],
+          "missing_axiom_ids": [
+            "AX42",
+            "AX43",
+            "AX57",
+            "AX58",
+            "AX74"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX42",
+              "dl": "Declaration: has declared status (ObjectProperty)",
+              "status": "skip"
+            },
+            {
+              "id": "AX43",
+              "dl": "⊤ ⊑ ∀has declared status.Development status",
+              "status": "skip"
+            },
+            {
+              "id": "AX57",
+              "dl": "Declaration: has specified data output (ObjectProperty)",
+              "status": "skip"
+            },
+            {
+              "id": "AX58",
+              "dl": "⊤ ⊑ ∀has specified data output.data item",
+              "status": "skip"
+            },
+            {
+              "id": "AX74",
+              "dl": "uses software ≡ is software for⁻",
+              "status": "fn"
+            }
+          ]
+        },
+        "CQ57": {
+          "question": "",
+          "n_axioms": 5,
+          "n_tp": 2,
+          "rate": 0.4,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX49",
+            "AX50",
+            "AX57",
+            "AX58",
+            "AX74"
+          ],
+          "tp_axiom_ids": [
+            "AX49",
+            "AX50"
+          ],
+          "missing_axiom_ids": [
+            "AX57",
+            "AX58",
+            "AX74"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX57",
+              "dl": "Declaration: has specified data output (ObjectProperty)",
+              "status": "skip"
+            },
+            {
+              "id": "AX58",
+              "dl": "⊤ ⊑ ∀has specified data output.data item",
+              "status": "skip"
+            },
+            {
+              "id": "AX74",
+              "dl": "uses software ≡ is software for⁻",
+              "status": "fn"
+            }
+          ]
+        },
+        "CQ58": {
+          "question": "",
+          "n_axioms": 10,
+          "n_tp": 4,
+          "rate": 0.4,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX12",
+            "AX13",
+            "AX14",
+            "AX15",
+            "AX18",
+            "AX47",
+            "AX67",
+            "AX74",
+            "AX75",
+            "AX76"
+          ],
+          "tp_axiom_ids": [
+            "AX12",
+            "AX14",
+            "AX67",
+            "AX76"
+          ],
+          "missing_axiom_ids": [
+            "AX13",
+            "AX15",
+            "AX18",
+            "AX47",
+            "AX74",
+            "AX75"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX13",
+              "dl": "Open source software license ≡ ∃has clause.Source code available",
+              "status": "fn"
+            },
+            {
+              "id": "AX15",
+              "dl": "Open source software license ⊑ ∃has clause.Source code available",
+              "status": "fn"
+            },
+            {
+              "id": "AX18",
+              "dl": "Declaration: Source code available (Class)",
+              "status": "skip"
+            },
+            {
+              "id": "AX47",
+              "dl": "has format specification ⊑ is encoded in",
+              "status": "fn"
+            },
+            {
+              "id": "AX74",
+              "dl": "uses software ≡ is software for⁻",
+              "status": "fn"
+            },
+            {
+              "id": "AX75",
+              "dl": "⊤ ⊑ ∀uses software.⊤",
+              "status": "mismatch"
+            }
+          ]
+        },
+        "CQ59": {
+          "question": "",
+          "n_axioms": 4,
+          "n_tp": 2,
+          "rate": 0.5,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX14",
+            "AX47",
+            "AX71",
+            "AX74"
+          ],
+          "tp_axiom_ids": [
+            "AX14",
+            "AX71"
+          ],
+          "missing_axiom_ids": [
+            "AX47",
+            "AX74"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX47",
+              "dl": "has format specification ⊑ is encoded in",
+              "status": "fn"
+            },
+            {
+              "id": "AX74",
+              "dl": "uses software ≡ is software for⁻",
+              "status": "fn"
+            }
+          ]
+        },
+        "CQ60": {
+          "question": "",
+          "n_axioms": 7,
+          "n_tp": 2,
+          "rate": 0.2857142857142857,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX12",
+            "AX13",
+            "AX14",
+            "AX15",
+            "AX18",
+            "AX47",
+            "AX74"
+          ],
+          "tp_axiom_ids": [
+            "AX12",
+            "AX14"
+          ],
+          "missing_axiom_ids": [
+            "AX13",
+            "AX15",
+            "AX18",
+            "AX47",
+            "AX74"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX13",
+              "dl": "Open source software license ≡ ∃has clause.Source code available",
+              "status": "fn"
+            },
+            {
+              "id": "AX15",
+              "dl": "Open source software license ⊑ ∃has clause.Source code available",
+              "status": "fn"
+            },
+            {
+              "id": "AX18",
+              "dl": "Declaration: Source code available (Class)",
+              "status": "skip"
+            },
+            {
+              "id": "AX47",
+              "dl": "has format specification ⊑ is encoded in",
+              "status": "fn"
+            },
+            {
+              "id": "AX74",
+              "dl": "uses software ≡ is software for⁻",
+              "status": "fn"
+            }
+          ]
+        },
+        "CQ65": {
+          "question": "",
+          "n_axioms": 7,
+          "n_tp": 2,
+          "rate": 0.2857142857142857,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX12",
+            "AX13",
+            "AX14",
+            "AX15",
+            "AX18",
+            "AX47",
+            "AX74"
+          ],
+          "tp_axiom_ids": [
+            "AX12",
+            "AX14"
+          ],
+          "missing_axiom_ids": [
+            "AX13",
+            "AX15",
+            "AX18",
+            "AX47",
+            "AX74"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX13",
+              "dl": "Open source software license ≡ ∃has clause.Source code available",
+              "status": "fn"
+            },
+            {
+              "id": "AX15",
+              "dl": "Open source software license ⊑ ∃has clause.Source code available",
+              "status": "fn"
+            },
+            {
+              "id": "AX18",
+              "dl": "Declaration: Source code available (Class)",
+              "status": "skip"
+            },
+            {
+              "id": "AX47",
+              "dl": "has format specification ⊑ is encoded in",
+              "status": "fn"
+            },
+            {
+              "id": "AX74",
+              "dl": "uses software ≡ is software for⁻",
+              "status": "fn"
+            }
+          ]
+        },
+        "CQ68": {
+          "question": "",
+          "n_axioms": 9,
+          "n_tp": 2,
+          "rate": 0.2222222222222222,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX5",
+            "AX6",
+            "AX10",
+            "AX11",
+            "AX17",
+            "AX30",
+            "AX47",
+            "AX71",
+            "AX74"
+          ],
+          "tp_axiom_ids": [
+            "AX30",
+            "AX71"
+          ],
+          "missing_axiom_ids": [
+            "AX5",
+            "AX6",
+            "AX10",
+            "AX11",
+            "AX17",
+            "AX47",
+            "AX74"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX5",
+              "dl": "Declaration: Free (Class)",
+              "status": "skip"
+            },
+            {
+              "id": "AX6",
+              "dl": "Free ⊑ Purchase cost",
+              "status": "skip"
+            },
+            {
+              "id": "AX10",
+              "dl": "Declaration: Not Free (Class)",
+              "status": "skip"
+            },
+            {
+              "id": "AX11",
+              "dl": "Not Free ⊑ Purchase cost",
+              "status": "skip"
+            },
+            {
+              "id": "AX17",
+              "dl": "Declaration: Purchase cost (Class)",
+              "status": "skip"
+            },
+            {
+              "id": "AX47",
+              "dl": "has format specification ⊑ is encoded in",
+              "status": "fn"
+            },
+            {
+              "id": "AX74",
+              "dl": "uses software ≡ is software for⁻",
+              "status": "fn"
+            }
+          ]
+        },
+        "CQ73": {
+          "question": "",
+          "n_axioms": 5,
+          "n_tp": 4,
+          "rate": 0.8,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX33",
+            "AX34",
+            "AX59",
+            "AX60",
+            "AX74"
+          ],
+          "tp_axiom_ids": [
+            "AX33",
+            "AX34",
+            "AX59",
+            "AX60"
+          ],
+          "missing_axiom_ids": [
+            "AX74"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX74",
+              "dl": "uses software ≡ is software for⁻",
+              "status": "fn"
+            }
+          ]
+        },
+        "CQ84": {
+          "question": "",
+          "n_axioms": 5,
+          "n_tp": 1,
+          "rate": 0.2,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX26",
+            "AX39",
+            "AX68",
+            "AX73",
+            "AX74"
+          ],
+          "tp_axiom_ids": [
+            "AX39"
+          ],
+          "missing_axiom_ids": [
+            "AX26",
+            "AX68",
+            "AX73",
+            "AX74"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX26",
+              "dl": "data item ⊑ ∃is encoded in.data format specification",
+              "status": "fn"
+            },
+            {
+              "id": "AX68",
+              "dl": "Declaration: is encoded in (ObjectProperty)",
+              "status": "skip"
+            },
+            {
+              "id": "AX73",
+              "dl": "∃uses software.⊤ ⊑ ⊤",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX74",
+              "dl": "uses software ≡ is software for⁻",
+              "status": "fn"
+            }
+          ]
+        },
+        "CQ85": {
+          "question": "",
+          "n_axioms": 2,
+          "n_tp": 0,
+          "rate": 0.0,
+          "fully_covered": false,
+          "any_covered": false,
+          "covered": false,
+          "axiom_ids": [
+            "AX74",
+            "AX79"
+          ],
+          "tp_axiom_ids": [],
+          "missing_axiom_ids": [
+            "AX74",
+            "AX79"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX74",
+              "dl": "uses software ≡ is software for⁻",
+              "status": "fn"
+            },
+            {
+              "id": "AX79",
+              "dl": "has download location maps-to xsd:string",
+              "status": "skip"
+            }
+          ]
+        }
+      },
+      "n_total": 35,
+      "n_fully_covered": 0,
+      "n_any_covered": 30,
+      "fully_coverage": 0.0,
+      "any_coverage": 0.8571428571428571,
+      "average_rate": 0.3463086287146438
+    }
+  }
+}

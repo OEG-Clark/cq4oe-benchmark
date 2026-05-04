@@ -1,0 +1,221 @@
+====================================================================================================
+ATOMIC TBOX AXIOMS
+====================================================================================================
+
+── Class ──
+
+  Term: Body  [Class]
+    Declaration                Declaration: Body (Class)
+      Subject: Body
+      Object : Class
+    SubClassOf                 Body ⊑ Wine Characteristic
+      Subject: Body
+      Object : Wine Characteristic
+
+  Term: Bordeaux Wine  [Class]
+    Declaration                Declaration: Bordeaux Wine (Class)
+      Subject: Bordeaux Wine
+      Object : Class
+    SubClassOf                 Bordeaux Wine ⊑ Wine
+      Subject: Bordeaux Wine
+      Object : Wine
+
+  Term: Bouquet  [Class]
+    Declaration                Declaration: Bouquet (Class)
+      Subject: Bouquet
+      Object : Class
+    SubClassOf                 Bouquet ⊑ Wine Characteristic
+      Subject: Bouquet
+      Object : Wine Characteristic
+
+  Term: Color  [Class]
+    Declaration                Declaration: Color (Class)
+      Subject: Color
+      Object : Class
+    SubClassOf                 Color ⊑ Wine Characteristic
+      Subject: Color
+      Object : Wine Characteristic
+
+  Term: Grape  [Class]
+    Declaration                Declaration: Grape (Class)
+      Subject: Grape
+      Object : Class
+
+  Term: Red  [Class]
+    Declaration                Declaration: Red (Class)
+      Subject: Red
+      Object : Class
+    SubClassOf                 Red ⊑ Color
+      Subject: Red
+      Object : Color
+    DisjointClasses            DisjointClasses(Red, White)
+      Subject: Red
+      Object : White
+
+  Term: Red Wine  [Class]
+    Declaration                Declaration: Red Wine (Class)
+      Subject: Red Wine
+      Object : Class
+    SubClassOf                 Red Wine ⊑ Wine
+      Subject: Red Wine
+      Object : Wine
+    DisjointClasses            DisjointClasses(Red Wine, White Wine)
+      Subject: Red Wine
+      Object : White Wine
+
+  Term: Region  [Class]
+    Declaration                Declaration: Region (Class)
+      Subject: Region
+      Object : Class
+
+  Term: Vintage Year  [Class]
+    Declaration                Declaration: Vintage Year (Class)
+      Subject: Vintage Year
+      Object : Class
+
+  Term: White  [Class]
+    Declaration                Declaration: White (Class)
+      Subject: White
+      Object : Class
+    SubClassOf                 White ⊑ Color
+      Subject: White
+      Object : Color
+
+  Term: White Wine  [Class]
+    Declaration                Declaration: White Wine (Class)
+      Subject: White Wine
+      Object : Class
+    SubClassOf                 White Wine ⊑ Wine
+      Subject: White Wine
+      Object : Wine
+
+  Term: Wine  [Class]
+    Declaration                Declaration: Wine (Class)
+      Subject: Wine
+      Object : Class
+
+  Term: Wine Characteristic  [Class]
+    Declaration                Declaration: Wine Characteristic (Class)
+      Subject: Wine Characteristic
+      Object : Class
+
+
+── ObjectProperty ──
+
+  Term: has body  [ObjectProperty]
+    Declaration                Declaration: has body (ObjectProperty)
+      Subject: has body
+      Object : ObjectProperty
+    SubPropertyOf              has body ⊑ has characteristic
+      Subject: has body
+      Object : has characteristic
+    Domain                     ∃has body.⊤ ⊑ Wine
+      Subject: has body
+      Object : Wine
+    Range                      ⊤ ⊑ ∀has body.Body
+      Subject: has body
+      Object : Body
+
+  Term: has bouquet  [ObjectProperty]
+    Declaration                Declaration: has bouquet (ObjectProperty)
+      Subject: has bouquet
+      Object : ObjectProperty
+    SubPropertyOf              has bouquet ⊑ has characteristic
+      Subject: has bouquet
+      Object : has characteristic
+    Domain                     ∃has bouquet.⊤ ⊑ Wine
+      Subject: has bouquet
+      Object : Wine
+    Range                      ⊤ ⊑ ∀has bouquet.Bouquet
+      Subject: has bouquet
+      Object : Bouquet
+
+  Term: has characteristic  [ObjectProperty]
+    Declaration                Declaration: has characteristic (ObjectProperty)
+      Subject: has characteristic
+      Object : ObjectProperty
+    Domain                     ∃has characteristic.⊤ ⊑ Wine
+      Subject: has characteristic
+      Object : Wine
+    Range                      ⊤ ⊑ ∀has characteristic.Wine Characteristic
+      Subject: has characteristic
+      Object : Wine Characteristic
+
+  Term: has color  [ObjectProperty]
+    Declaration                Declaration: has color (ObjectProperty)
+      Subject: has color
+      Object : ObjectProperty
+    SubPropertyOf              has color ⊑ has characteristic
+      Subject: has color
+      Object : has characteristic
+    Domain                     ∃has color.⊤ ⊑ Wine
+      Subject: has color
+      Object : Wine
+    Range                      ⊤ ⊑ ∀has color.Color
+      Subject: has color
+      Object : Color
+
+  Term: has good vintage  [ObjectProperty]
+    Declaration                Declaration: has good vintage (ObjectProperty)
+      Subject: has good vintage
+      Object : ObjectProperty
+    Domain                     ∃has good vintage.⊤ ⊑ Grape
+      Subject: has good vintage
+      Object : Grape
+    Range                      ⊤ ⊑ ∀has good vintage.Vintage Year
+      Subject: has good vintage
+      Object : Vintage Year
+
+  Term: has grape  [ObjectProperty]
+    Declaration                Declaration: has grape (ObjectProperty)
+      Subject: has grape
+      Object : ObjectProperty
+    Domain                     ∃has grape.⊤ ⊑ Wine
+      Subject: has grape
+      Object : Wine
+    Range                      ⊤ ⊑ ∀has grape.Grape
+      Subject: has grape
+      Object : Grape
+
+  Term: has vintage year  [ObjectProperty]
+    Declaration                Declaration: has vintage year (ObjectProperty)
+      Subject: has vintage year
+      Object : ObjectProperty
+    Domain                     ∃has vintage year.⊤ ⊑ Wine
+      Subject: has vintage year
+      Object : Wine
+    Range                      ⊤ ⊑ ∀has vintage year.Vintage Year
+      Subject: has vintage year
+      Object : Vintage Year
+
+  Term: is produced in  [ObjectProperty]
+    Declaration                Declaration: is produced in (ObjectProperty)
+      Subject: is produced in
+      Object : ObjectProperty
+    Domain                     ∃is produced in.⊤ ⊑ Wine
+      Subject: is produced in
+      Object : Wine
+    Range                      ⊤ ⊑ ∀is produced in.Region
+      Subject: is produced in
+      Object : Region
+
+
+====================================================================================================
+STATISTICS
+====================================================================================================
+
+  Classes:               13  (defined: 0, primitive: 13)
+  ObjectProperties:      8
+  DatatypeProperties:    0
+
+  Axiom Breakdown:
+    Declaration               21
+    DisjointClasses           2
+    Domain                    8
+    Range                     8
+    SubClassOf                8
+    SubPropertyOf             3
+    ------------------------------
+    Total TBox Axioms         50
+
+====================================================================================================

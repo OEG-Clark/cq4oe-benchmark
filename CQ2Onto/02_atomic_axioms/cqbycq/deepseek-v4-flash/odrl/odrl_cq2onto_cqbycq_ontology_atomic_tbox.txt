@@ -1,0 +1,341 @@
+====================================================================================================
+ATOMIC TBOX AXIOMS
+====================================================================================================
+
+── Class ──
+
+  Term: AND Constraint  [Class]
+    Declaration                Declaration: AND Constraint (Class)
+      Subject: AND Constraint
+      Object : Class
+    SubClassOf                 AND Constraint ⊑ Constraint
+      Subject: AND Constraint
+      Object : Constraint
+
+  Term: Aggregation  [Class]
+    Declaration                Declaration: Aggregation (Class)
+      Subject: Aggregation
+      Object : Class
+    SubClassOf                 Aggregation ⊑ Transfer Rights
+      Subject: Aggregation
+      Object : Transfer Rights
+
+  Term: Condition  [Class]
+    Declaration                Declaration: Condition (Class)
+      Subject: Condition
+      Object : Class
+
+  Term: Conflict Resolution Strategy  [Class]
+    Declaration                Declaration: Conflict Resolution Strategy (Class)
+      Subject: Conflict Resolution Strategy
+      Object : Class
+
+  Term: Constraint  [Class]
+    Declaration                Declaration: Constraint (Class)
+      Subject: Constraint
+      Object : Class
+
+  Term: Container  [Class]
+    Declaration                Declaration: Container (Class)
+      Subject: Container
+      Object : Class
+    SubClassOf                 Container ⊑ Resource
+      Subject: Container
+      Object : Resource
+
+  Term: Contract Party  [Class]
+    Declaration                Declaration: Contract Party (Class)
+      Subject: Contract Party
+      Object : Class
+
+  Term: Disaggregation  [Class]
+    Declaration                Declaration: Disaggregation (Class)
+      Subject: Disaggregation
+      Object : Class
+    SubClassOf                 Disaggregation ⊑ Transfer Rights
+      Subject: Disaggregation
+      Object : Transfer Rights
+
+  Term: Duty  [Class]
+    Declaration                Declaration: Duty (Class)
+      Subject: Duty
+      Object : Class
+    SubClassOf                 Duty ⊑ Policy
+      Subject: Duty
+      Object : Policy
+
+  Term: Exclusive Permission  [Class]
+    Declaration                Declaration: Exclusive Permission (Class)
+      Subject: Exclusive Permission
+      Object : Class
+    SubClassOf                 Exclusive Permission ⊑ Permission
+      Subject: Exclusive Permission
+      Object : Permission
+
+  Term: OR Constraint  [Class]
+    Declaration                Declaration: OR Constraint (Class)
+      Subject: OR Constraint
+      Object : Class
+    SubClassOf                 OR Constraint ⊑ Constraint
+      Subject: OR Constraint
+      Object : Constraint
+
+  Term: Permission  [Class]
+    Declaration                Declaration: Permission (Class)
+      Subject: Permission
+      Object : Class
+    SubClassOf                 Permission ⊑ Policy
+      Subject: Permission
+      Object : Policy
+
+  Term: Policy  [Class]
+    Declaration                Declaration: Policy (Class)
+      Subject: Policy
+      Object : Class
+
+  Term: Prohibition  [Class]
+    Declaration                Declaration: Prohibition (Class)
+      Subject: Prohibition
+      Object : Class
+    SubClassOf                 Prohibition ⊑ Duty
+      Subject: Prohibition
+      Object : Duty
+
+  Term: Requirement  [Class]
+    Declaration                Declaration: Requirement (Class)
+      Subject: Requirement
+      Object : Class
+
+  Term: Resource  [Class]
+    Declaration                Declaration: Resource (Class)
+      Subject: Resource
+      Object : Class
+
+  Term: Sequencing  [Class]
+    Declaration                Declaration: Sequencing (Class)
+      Subject: Sequencing
+      Object : Class
+    SubClassOf                 Sequencing ⊑ Permission
+      Subject: Sequencing
+      Object : Permission
+
+  Term: Transfer Rights  [Class]
+    Declaration                Declaration: Transfer Rights (Class)
+      Subject: Transfer Rights
+      Object : Class
+    SubClassOf                 Transfer Rights ⊑ Permission
+      Subject: Transfer Rights
+      Object : Permission
+
+  Term: XOR Constraint  [Class]
+    Declaration                Declaration: XOR Constraint (Class)
+      Subject: XOR Constraint
+      Object : Class
+    SubClassOf                 XOR Constraint ⊑ Constraint
+      Subject: XOR Constraint
+      Object : Constraint
+
+
+── ObjectProperty ──
+
+  Term: contains  [ObjectProperty]
+    Declaration                Declaration: contains (ObjectProperty)
+      Subject: contains
+      Object : ObjectProperty
+    Domain                     ∃contains.⊤ ⊑ Container
+      Subject: contains
+      Object : Container
+    Range                      ⊤ ⊑ ∀contains.Resource
+      Subject: contains
+      Object : Resource
+
+  Term: has asset  [ObjectProperty]
+    Declaration                Declaration: has asset (ObjectProperty)
+      Subject: has asset
+      Object : ObjectProperty
+    SubPropertyOf              has asset ⊑ has policy asset
+      Subject: has asset
+      Object : has policy asset
+    Domain                     ∃has asset.⊤ ⊑ Permission
+      Subject: has asset
+      Object : Permission
+    Range                      ⊤ ⊑ ∀has asset.Resource
+      Subject: has asset
+      Object : Resource
+
+  Term: has condition constraint  [ObjectProperty]
+    Declaration                Declaration: has condition constraint (ObjectProperty)
+      Subject: has condition constraint
+      Object : ObjectProperty
+    Domain                     ∃has condition constraint.⊤ ⊑ Condition
+      Subject: has condition constraint
+      Object : Condition
+    Range                      ⊤ ⊑ ∀has condition constraint.Constraint
+      Subject: has condition constraint
+      Object : Constraint
+
+  Term: has conflict resolution strategy  [ObjectProperty]
+    Declaration                Declaration: has conflict resolution strategy (ObjectProperty)
+      Subject: has conflict resolution strategy
+      Object : ObjectProperty
+    Domain                     ∃has conflict resolution strategy.⊤ ⊑ Policy
+      Subject: has conflict resolution strategy
+      Object : Policy
+    Range                      ⊤ ⊑ ∀has conflict resolution strategy.Conflict Resolution Strategy
+      Subject: has conflict resolution strategy
+      Object : Conflict Resolution Strategy
+
+  Term: has consequence duty  [ObjectProperty]
+    Declaration                Declaration: has consequence duty (ObjectProperty)
+      Subject: has consequence duty
+      Object : ObjectProperty
+    Domain                     ∃has consequence duty.⊤ ⊑ Duty
+      Subject: has consequence duty
+      Object : Duty
+    Range                      ⊤ ⊑ ∀has consequence duty.Duty
+      Subject: has consequence duty
+      Object : Duty
+
+  Term: has constraint  [ObjectProperty]
+    Declaration                Declaration: has constraint (ObjectProperty)
+      Subject: has constraint
+      Object : ObjectProperty
+    Domain                     ∃has constraint.⊤ ⊑ Requirement
+      Subject: has constraint
+      Object : Requirement
+    Range                      ⊤ ⊑ ∀has constraint.Constraint
+      Subject: has constraint
+      Object : Constraint
+
+  Term: has duty asset  [ObjectProperty]
+    Declaration                Declaration: has duty asset (ObjectProperty)
+      Subject: has duty asset
+      Object : ObjectProperty
+    SubPropertyOf              has duty asset ⊑ has policy asset
+      Subject: has duty asset
+      Object : has policy asset
+    Domain                     ∃has duty asset.⊤ ⊑ Duty
+      Subject: has duty asset
+      Object : Duty
+    Range                      ⊤ ⊑ ∀has duty asset.Resource
+      Subject: has duty asset
+      Object : Resource
+
+  Term: has grantee  [ObjectProperty]
+    Declaration                Declaration: has grantee (ObjectProperty)
+      Subject: has grantee
+      Object : ObjectProperty
+    Domain                     ∃has grantee.⊤ ⊑ Permission
+      Subject: has grantee
+      Object : Permission
+    Range                      ⊤ ⊑ ∀has grantee.Contract Party
+      Subject: has grantee
+      Object : Contract Party
+
+  Term: has grantor  [ObjectProperty]
+    Declaration                Declaration: has grantor (ObjectProperty)
+      Subject: has grantor
+      Object : ObjectProperty
+    Domain                     ∃has grantor.⊤ ⊑ Permission
+      Subject: has grantor
+      Object : Permission
+    Range                      ⊤ ⊑ ∀has grantor.Contract Party
+      Subject: has grantor
+      Object : Contract Party
+
+  Term: has obligee  [ObjectProperty]
+    Declaration                Declaration: has obligee (ObjectProperty)
+      Subject: has obligee
+      Object : ObjectProperty
+    Domain                     ∃has obligee.⊤ ⊑ Duty
+      Subject: has obligee
+      Object : Duty
+    Range                      ⊤ ⊑ ∀has obligee.Contract Party
+      Subject: has obligee
+      Object : Contract Party
+
+  Term: has obligor  [ObjectProperty]
+    Declaration                Declaration: has obligor (ObjectProperty)
+      Subject: has obligor
+      Object : ObjectProperty
+    Domain                     ∃has obligor.⊤ ⊑ Duty
+      Subject: has obligor
+      Object : Duty
+    Range                      ⊤ ⊑ ∀has obligor.Contract Party
+      Subject: has obligor
+      Object : Contract Party
+
+  Term: has policy asset  [ObjectProperty]
+    Declaration                Declaration: has policy asset (ObjectProperty)
+      Subject: has policy asset
+      Object : ObjectProperty
+    Domain                     ∃has policy asset.⊤ ⊑ Policy
+      Subject: has policy asset
+      Object : Policy
+    Range                      ⊤ ⊑ ∀has policy asset.Resource
+      Subject: has policy asset
+      Object : Resource
+
+  Term: has prohibition constraint  [ObjectProperty]
+    Declaration                Declaration: has prohibition constraint (ObjectProperty)
+      Subject: has prohibition constraint
+      Object : ObjectProperty
+    Domain                     ∃has prohibition constraint.⊤ ⊑ Prohibition
+      Subject: has prohibition constraint
+      Object : Prohibition
+    Range                      ⊤ ⊑ ∀has prohibition constraint.Constraint
+      Subject: has prohibition constraint
+      Object : Constraint
+
+  Term: has remedy  [ObjectProperty]
+    Declaration                Declaration: has remedy (ObjectProperty)
+      Subject: has remedy
+      Object : ObjectProperty
+    Domain                     ∃has remedy.⊤ ⊑ Prohibition
+      Subject: has remedy
+      Object : Prohibition
+    Range                      ⊤ ⊑ ∀has remedy.Duty
+      Subject: has remedy
+      Object : Duty
+
+  Term: has sub-constraint  [ObjectProperty]
+    Declaration                Declaration: has sub-constraint (ObjectProperty)
+      Subject: has sub-constraint
+      Object : ObjectProperty
+    Domain                     ∃has sub-constraint.⊤ ⊑ Constraint
+      Subject: has sub-constraint
+      Object : Constraint
+    Range                      ⊤ ⊑ ∀has sub-constraint.Constraint
+      Subject: has sub-constraint
+      Object : Constraint
+
+  Term: is activated on failure of  [ObjectProperty]
+    Declaration                Declaration: is activated on failure of (ObjectProperty)
+      Subject: is activated on failure of
+      Object : ObjectProperty
+    Domain                     ∃is activated on failure of.⊤ ⊑ Policy
+      Subject: is activated on failure of
+      Object : Policy
+    Range                      ⊤ ⊑ ∀is activated on failure of.Policy
+      Subject: is activated on failure of
+      Object : Policy
+
+
+====================================================================================================
+STATISTICS
+====================================================================================================
+
+  Classes:               19  (defined: 0, primitive: 19)
+  ObjectProperties:      16
+  DatatypeProperties:    0
+
+  Axiom Breakdown:
+    Declaration               35
+    Domain                    16
+    Range                     16
+    SubClassOf                12
+    SubPropertyOf             2
+    ------------------------------
+    Total TBox Axioms         81
+
+====================================================================================================

@@ -1,0 +1,841 @@
+{
+  "config": {
+    "semantic_threshold": 0.6,
+    "embedding_model": "embeddinggemma",
+    "class_csv": "03_evaluation_results/normal/deepseek_deepseek-v3.2/odrl/01_class/class_best_matching.csv",
+    "property_csv": "03_evaluation_results/normal/deepseek_deepseek-v3.2/odrl/02_property/property_best_matching.csv"
+  },
+  "results": [
+    {
+      "id": "layer1_statistics",
+      "gold": {
+        "ObjectProperty": {
+          "full": 13,
+          "domain_only": 1,
+          "range_only": 6,
+          "undefined": 8
+        },
+        "DatatypeProperty": {
+          "full": 0,
+          "domain_only": 0,
+          "range_only": 0,
+          "undefined": 0
+        }
+      },
+      "pred": {
+        "ObjectProperty": {
+          "full": 13,
+          "domain_only": 0,
+          "range_only": 0,
+          "undefined": 0
+        },
+        "DatatypeProperty": {
+          "full": 2,
+          "domain_only": 0,
+          "range_only": 0,
+          "undefined": 0
+        }
+      },
+      "gold_totals": {
+        "ObjectProperty": 28,
+        "DatatypeProperty": 0
+      },
+      "pred_totals": {
+        "ObjectProperty": 13,
+        "DatatypeProperty": 2
+      },
+      "gold_grand_total": 28,
+      "pred_grand_total": 15
+    },
+    {
+      "id": "layer2_semantic",
+      "threshold": 0.6,
+      "model_id": "embeddinggemma",
+      "overall": {
+        "n_gold": 28,
+        "n_pred": 15,
+        "tp": 13,
+        "fp": 2,
+        "fn": 15,
+        "precision": 0.8667,
+        "recall": 0.4643,
+        "f1": 0.6047
+      },
+      "ObjectProperty": {
+        "n_gold": 28,
+        "n_pred": 13,
+        "tp": 13,
+        "fp": 0,
+        "fn": 15,
+        "precision": 1.0,
+        "recall": 0.4643,
+        "f1": 0.6341,
+        "matches": [
+          {
+            "gold_predicate": "remedy",
+            "pred_predicate": "has remedy",
+            "gold_text": "prohibition remedy duty",
+            "pred_text": "prohibition has remedy duty",
+            "score": 0.9271
+          },
+          {
+            "gold_predicate": "consequence",
+            "pred_predicate": "has consequence",
+            "gold_text": "duty consequence duty",
+            "pred_text": "duty has consequence duty",
+            "score": 0.9271
+          },
+          {
+            "gold_predicate": "operator",
+            "pred_predicate": "has operator",
+            "gold_text": "constraint operator operator",
+            "pred_text": "constraint has operator operator",
+            "score": 0.9216
+          },
+          {
+            "gold_predicate": "failure",
+            "pred_predicate": "activates upon failure",
+            "gold_text": "rule failure rule",
+            "pred_text": "rule activates upon failure rule",
+            "score": 0.872
+          },
+          {
+            "gold_predicate": "constraint",
+            "pred_predicate": "has constraint",
+            "gold_text": "constraint",
+            "pred_text": "rule has constraint constraint",
+            "score": 0.7894
+          },
+          {
+            "gold_predicate": "hasPolicy",
+            "pred_predicate": "has rule",
+            "gold_text": "asset has policy policy",
+            "pred_text": "policy has rule rule",
+            "score": 0.7579
+          },
+          {
+            "gold_predicate": "function",
+            "pred_predicate": "has party",
+            "gold_text": "function party",
+            "pred_text": "rule has party party",
+            "score": 0.7175
+          },
+          {
+            "gold_predicate": "relation",
+            "pred_predicate": "has asset",
+            "gold_text": "relation asset",
+            "pred_text": "rule has asset asset",
+            "score": 0.7079
+          },
+          {
+            "gold_predicate": "conflict",
+            "pred_predicate": "has conflict resolution strategy",
+            "gold_text": "policy conflict conflict term",
+            "pred_text": "policy has conflict resolution strategy conflict resolution strategy",
+            "score": 0.7053
+          },
+          {
+            "gold_predicate": "operand",
+            "pred_predicate": "has sub constraint",
+            "gold_text": "logical constraint operand",
+            "pred_text": "constraint has sub constraint constraint",
+            "score": 0.6981
+          },
+          {
+            "gold_predicate": "inheritRelation",
+            "pred_predicate": "is inherited from",
+            "gold_text": "inherit relation",
+            "pred_text": "rule is inherited from rule",
+            "score": 0.6789
+          },
+          {
+            "gold_predicate": "andSequence",
+            "pred_predicate": "has sequencing",
+            "gold_text": "and sequence",
+            "pred_text": "policy has sequencing thing",
+            "score": 0.6539
+          },
+          {
+            "gold_predicate": "inheritFrom",
+            "pred_predicate": "is contained in",
+            "gold_text": "policy inherit from policy",
+            "pred_text": "policy is contained in container",
+            "score": 0.6462
+          }
+        ]
+      },
+      "DatatypeProperty": {
+        "n_gold": 0,
+        "n_pred": 2,
+        "tp": 0,
+        "fp": 2,
+        "fn": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "matches": []
+      }
+    },
+    {
+      "id": "layer3_strict",
+      "n_aligned_total": 6,
+      "ObjectProperty": {
+        "n_aligned_pairs": 6,
+        "type": {
+          "tp": 6,
+          "fp": 0,
+          "fn": 0,
+          "mismatch": 0,
+          "skip": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "domain": {
+          "tp": 3,
+          "fp": 2,
+          "fn": 0,
+          "mismatch": 1,
+          "skip": 0,
+          "precision": 0.5,
+          "recall": 0.75,
+          "f1": 0.6
+        },
+        "range": {
+          "tp": 3,
+          "fp": 2,
+          "fn": 0,
+          "mismatch": 1,
+          "skip": 0,
+          "precision": 0.5,
+          "recall": 0.75,
+          "f1": 0.6
+        },
+        "overall": {
+          "tp": 6,
+          "fp": 4,
+          "fn": 0,
+          "mismatch": 2,
+          "skip": 0,
+          "precision": 0.5,
+          "recall": 0.75,
+          "f1": 0.6
+        },
+        "fully_aligned": [
+          {
+            "predicate_type": "ObjectProperty",
+            "gold_predicate": "consequence",
+            "pred_predicate": "has consequence",
+            "gold_type": "ObjectProperty",
+            "pred_type": "ObjectProperty",
+            "gold_domain": [
+              "Duty"
+            ],
+            "pred_domain": [
+              "Duty"
+            ],
+            "gold_range": [
+              "Duty"
+            ],
+            "pred_range": [
+              "Duty"
+            ],
+            "type_verdict": "tp",
+            "domain_verdict": "tp",
+            "range_verdict": "tp",
+            "is_full_match": true
+          },
+          {
+            "predicate_type": "ObjectProperty",
+            "gold_predicate": "operator",
+            "pred_predicate": "has operator",
+            "gold_type": "ObjectProperty",
+            "pred_type": "ObjectProperty",
+            "gold_domain": [
+              "Constraint"
+            ],
+            "pred_domain": [
+              "Constraint"
+            ],
+            "gold_range": [
+              "Operator"
+            ],
+            "pred_range": [
+              "Operator"
+            ],
+            "type_verdict": "tp",
+            "domain_verdict": "tp",
+            "range_verdict": "tp",
+            "is_full_match": true
+          },
+          {
+            "predicate_type": "ObjectProperty",
+            "gold_predicate": "remedy",
+            "pred_predicate": "has remedy",
+            "gold_type": "ObjectProperty",
+            "pred_type": "ObjectProperty",
+            "gold_domain": [
+              "Prohibition"
+            ],
+            "pred_domain": [
+              "Prohibition"
+            ],
+            "gold_range": [
+              "Duty"
+            ],
+            "pred_range": [
+              "Duty"
+            ],
+            "type_verdict": "tp",
+            "domain_verdict": "tp",
+            "range_verdict": "tp",
+            "is_full_match": true
+          }
+        ]
+      },
+      "DatatypeProperty": {
+        "n_aligned_pairs": 0,
+        "type": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "mismatch": 0,
+          "skip": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "domain": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "mismatch": 0,
+          "skip": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "range": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "mismatch": 0,
+          "skip": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "overall": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "mismatch": 0,
+          "skip": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "fully_aligned": []
+      },
+      "grand_overall": {
+        "tp": 6,
+        "fp": 4,
+        "fn": 0,
+        "mismatch": 2,
+        "skip": 0,
+        "precision": 0.5,
+        "recall": 0.75,
+        "f1": 0.6
+      },
+      "grand_type": {
+        "tp": 6,
+        "fp": 0,
+        "fn": 0,
+        "mismatch": 0,
+        "skip": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "grand_domain": {
+        "tp": 3,
+        "fp": 2,
+        "fn": 0,
+        "mismatch": 1,
+        "skip": 0,
+        "precision": 0.5,
+        "recall": 0.75,
+        "f1": 0.6
+      },
+      "grand_range": {
+        "tp": 3,
+        "fp": 2,
+        "fn": 0,
+        "mismatch": 1,
+        "skip": 0,
+        "precision": 0.5,
+        "recall": 0.75,
+        "f1": 0.6
+      },
+      "type_mismatches": [],
+      "all_pairs": [
+        {
+          "predicate_type": "ObjectProperty",
+          "gold_predicate": "andSequence",
+          "pred_predicate": "has sequencing",
+          "gold_type": "ObjectProperty",
+          "pred_type": "ObjectProperty",
+          "gold_domain": null,
+          "pred_domain": [
+            "Policy"
+          ],
+          "gold_range": null,
+          "pred_range": [
+            "Thing"
+          ],
+          "type_verdict": "tp",
+          "domain_verdict": "fp",
+          "range_verdict": "fp",
+          "is_full_match": false
+        },
+        {
+          "predicate_type": "ObjectProperty",
+          "gold_predicate": "consequence",
+          "pred_predicate": "has consequence",
+          "gold_type": "ObjectProperty",
+          "pred_type": "ObjectProperty",
+          "gold_domain": [
+            "Duty"
+          ],
+          "pred_domain": [
+            "Duty"
+          ],
+          "gold_range": [
+            "Duty"
+          ],
+          "pred_range": [
+            "Duty"
+          ],
+          "type_verdict": "tp",
+          "domain_verdict": "tp",
+          "range_verdict": "tp",
+          "is_full_match": true
+        },
+        {
+          "predicate_type": "ObjectProperty",
+          "gold_predicate": "constraint",
+          "pred_predicate": "has constraint",
+          "gold_type": "ObjectProperty",
+          "pred_type": "ObjectProperty",
+          "gold_domain": null,
+          "pred_domain": [
+            "Rule"
+          ],
+          "gold_range": null,
+          "pred_range": [
+            "Constraint"
+          ],
+          "type_verdict": "tp",
+          "domain_verdict": "fp",
+          "range_verdict": "fp",
+          "is_full_match": false
+        },
+        {
+          "predicate_type": "ObjectProperty",
+          "gold_predicate": "inheritFrom",
+          "pred_predicate": "is inherited from",
+          "gold_type": "ObjectProperty",
+          "pred_type": "ObjectProperty",
+          "gold_domain": [
+            "Policy"
+          ],
+          "pred_domain": [
+            "Rule"
+          ],
+          "gold_range": [
+            "Policy"
+          ],
+          "pred_range": [
+            "Rule"
+          ],
+          "type_verdict": "tp",
+          "domain_verdict": "mismatch",
+          "range_verdict": "mismatch",
+          "is_full_match": false
+        },
+        {
+          "predicate_type": "ObjectProperty",
+          "gold_predicate": "operator",
+          "pred_predicate": "has operator",
+          "gold_type": "ObjectProperty",
+          "pred_type": "ObjectProperty",
+          "gold_domain": [
+            "Constraint"
+          ],
+          "pred_domain": [
+            "Constraint"
+          ],
+          "gold_range": [
+            "Operator"
+          ],
+          "pred_range": [
+            "Operator"
+          ],
+          "type_verdict": "tp",
+          "domain_verdict": "tp",
+          "range_verdict": "tp",
+          "is_full_match": true
+        },
+        {
+          "predicate_type": "ObjectProperty",
+          "gold_predicate": "remedy",
+          "pred_predicate": "has remedy",
+          "gold_type": "ObjectProperty",
+          "pred_type": "ObjectProperty",
+          "gold_domain": [
+            "Prohibition"
+          ],
+          "pred_domain": [
+            "Prohibition"
+          ],
+          "gold_range": [
+            "Duty"
+          ],
+          "pred_range": [
+            "Duty"
+          ],
+          "type_verdict": "tp",
+          "domain_verdict": "tp",
+          "range_verdict": "tp",
+          "is_full_match": true
+        }
+      ]
+    },
+    {
+      "id": "layer4_global",
+      "ObjectProperty": {
+        "matched": 6,
+        "extra": 20,
+        "extra_layer3": 6,
+        "extra_unaligned": 14,
+        "missing": 27,
+        "missing_layer3": 2,
+        "missing_unaligned": 25,
+        "precision": 0.2308,
+        "recall": 0.1818,
+        "f1": 0.2034,
+        "unaligned_gold_count": 22,
+        "unaligned_pred_count": 7,
+        "unaligned_gold_axiom_count": 25,
+        "unaligned_pred_axiom_count": 14,
+        "unaligned_gold": [
+          {
+            "predicate": "action",
+            "domain": null,
+            "range": [
+              "Action"
+            ],
+            "axiom_count": 1
+          },
+          {
+            "predicate": "and",
+            "domain": null,
+            "range": null,
+            "axiom_count": 0
+          },
+          {
+            "predicate": "assignee",
+            "domain": null,
+            "range": [
+              "Party"
+            ],
+            "axiom_count": 1
+          },
+          {
+            "predicate": "assigner",
+            "domain": null,
+            "range": [
+              "Party"
+            ],
+            "axiom_count": 1
+          },
+          {
+            "predicate": "conflict",
+            "domain": [
+              "Policy"
+            ],
+            "range": [
+              "ConflictTerm"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "duty",
+            "domain": [
+              "Permission"
+            ],
+            "range": [
+              "Duty"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "failure",
+            "domain": [
+              "Rule"
+            ],
+            "range": [
+              "Rule"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "function",
+            "domain": null,
+            "range": [
+              "Party"
+            ],
+            "axiom_count": 1
+          },
+          {
+            "predicate": "hasPolicy",
+            "domain": [
+              "Asset"
+            ],
+            "range": [
+              "Policy"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "implies",
+            "domain": [
+              "Action"
+            ],
+            "range": [
+              "Action"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "inheritRelation",
+            "domain": null,
+            "range": null,
+            "axiom_count": 0
+          },
+          {
+            "predicate": "leftOperand",
+            "domain": [
+              "Constraint"
+            ],
+            "range": [
+              "LeftOperand"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "obligation",
+            "domain": [
+              "Policy"
+            ],
+            "range": [
+              "Duty"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "operand",
+            "domain": [
+              "LogicalConstraint"
+            ],
+            "range": null,
+            "axiom_count": 1
+          },
+          {
+            "predicate": "or",
+            "domain": null,
+            "range": null,
+            "axiom_count": 0
+          },
+          {
+            "predicate": "partOf",
+            "domain": null,
+            "range": null,
+            "axiom_count": 0
+          },
+          {
+            "predicate": "permission",
+            "domain": [
+              "Policy"
+            ],
+            "range": [
+              "Permission"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "prohibition",
+            "domain": [
+              "Policy"
+            ],
+            "range": [
+              "Prohibition"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "relation",
+            "domain": null,
+            "range": [
+              "Asset"
+            ],
+            "axiom_count": 1
+          },
+          {
+            "predicate": "scope",
+            "domain": null,
+            "range": null,
+            "axiom_count": 0
+          },
+          {
+            "predicate": "Only One",
+            "domain": null,
+            "range": null,
+            "axiom_count": 0
+          },
+          {
+            "predicate": "target",
+            "domain": null,
+            "range": [
+              "Asset"
+            ],
+            "axiom_count": 1
+          }
+        ],
+        "unaligned_pred": [
+          {
+            "predicate": "has rule",
+            "domain": [
+              "Policy"
+            ],
+            "range": [
+              "Rule"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "has asset",
+            "domain": [
+              "Rule"
+            ],
+            "range": [
+              "Asset"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "has party",
+            "domain": [
+              "Rule"
+            ],
+            "range": [
+              "Party"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "activates upon failure",
+            "domain": [
+              "Rule"
+            ],
+            "range": [
+              "Rule"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "has conflict resolution strategy",
+            "domain": [
+              "Policy"
+            ],
+            "range": [
+              "Conflict Resolution Strategy"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "has sub constraint",
+            "domain": [
+              "Constraint"
+            ],
+            "range": [
+              "Constraint"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "is contained in",
+            "domain": [
+              "Policy"
+            ],
+            "range": [
+              "Container"
+            ],
+            "axiom_count": 2
+          }
+        ]
+      },
+      "DatatypeProperty": {
+        "matched": 0,
+        "extra": 4,
+        "extra_layer3": 0,
+        "extra_unaligned": 4,
+        "missing": 0,
+        "missing_layer3": 0,
+        "missing_unaligned": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "unaligned_gold_count": 0,
+        "unaligned_pred_count": 2,
+        "unaligned_gold_axiom_count": 0,
+        "unaligned_pred_axiom_count": 4,
+        "unaligned_gold": [],
+        "unaligned_pred": [
+          {
+            "predicate": "has policy ID",
+            "domain": [
+              "Policy"
+            ],
+            "range": [
+              "xsd:string"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "has rule ID",
+            "domain": [
+              "Rule"
+            ],
+            "range": [
+              "xsd:string"
+            ],
+            "axiom_count": 2
+          }
+        ]
+      },
+      "grand_overall": {
+        "matched": 6,
+        "extra": 24,
+        "extra_layer3": 6,
+        "extra_unaligned": 18,
+        "missing": 27,
+        "missing_layer3": 2,
+        "missing_unaligned": 25,
+        "precision": 0.2,
+        "recall": 0.1818,
+        "f1": 0.1905
+      }
+    }
+  ]
+}

@@ -1,0 +1,345 @@
+====================================================================================================
+ATOMIC TBOX AXIOMS
+====================================================================================================
+
+── Class ──
+
+  Term: Asset  [Class]
+    Declaration                Declaration: Asset (Class)
+      Subject: Asset
+      Object : Class
+
+  Term: Conflict Resolution Strategy  [Class]
+    Declaration                Declaration: Conflict Resolution Strategy (Class)
+      Subject: Conflict Resolution Strategy
+      Object : Class
+
+  Term: Constraint  [Class]
+    Declaration                Declaration: Constraint (Class)
+      Subject: Constraint
+      Object : Class
+
+  Term: Duty  [Class]
+    Declaration                Declaration: Duty (Class)
+      Subject: Duty
+      Object : Class
+    SubClassOf                 Duty ⊑ Rule
+      Subject: Duty
+      Object : Rule
+    DisjointClasses            DisjointClasses(Duty, Permission)
+      Subject: Duty
+      Object : Permission
+    DisjointClasses            DisjointClasses(Duty, Prohibition)
+      Subject: Duty
+      Object : Prohibition
+
+  Term: Operator  [Class]
+    Declaration                Declaration: Operator (Class)
+      Subject: Operator
+      Object : Class
+
+  Term: Party  [Class]
+    Declaration                Declaration: Party (Class)
+      Subject: Party
+      Object : Class
+
+  Term: Permission  [Class]
+    Declaration                Declaration: Permission (Class)
+      Subject: Permission
+      Object : Class
+    SubClassOf                 Permission ⊑ Rule
+      Subject: Permission
+      Object : Rule
+    DisjointClasses            DisjointClasses(Permission, Prohibition)
+      Subject: Permission
+      Object : Prohibition
+
+  Term: Policy  [Class]
+    Declaration                Declaration: Policy (Class)
+      Subject: Policy
+      Object : Class
+
+  Term: Prohibition  [Class]
+    Declaration                Declaration: Prohibition (Class)
+      Subject: Prohibition
+      Object : Class
+    SubClassOf                 Prohibition ⊑ Rule
+      Subject: Prohibition
+      Object : Rule
+
+  Term: Rule  [Class]
+    Declaration                Declaration: Rule (Class)
+      Subject: Rule
+      Object : Class
+
+
+── ObjectProperty ──
+
+  Term: activates upon failure  [ObjectProperty]
+    Declaration                Declaration: activates upon failure (ObjectProperty)
+      Subject: activates upon failure
+      Object : ObjectProperty
+    InverseOf                  activates upon failure ≡ is activated by failure⁻
+      Subject: activates upon failure
+      Object : is activated by failure
+    Domain                     ∃activates upon failure.⊤ ⊑ Rule
+      Subject: activates upon failure
+      Object : Rule
+    Range                      ⊤ ⊑ ∀activates upon failure.Rule
+      Subject: activates upon failure
+      Object : Rule
+
+  Term: consequence of  [ObjectProperty]
+    Declaration                Declaration: consequence of (ObjectProperty)
+      Subject: consequence of
+      Object : ObjectProperty
+    InverseOf                  consequence of ≡ has consequence⁻
+      Subject: consequence of
+      Object : has consequence
+    Domain                     ∃consequence of.⊤ ⊑ Duty
+      Subject: consequence of
+      Object : Duty
+    Range                      ⊤ ⊑ ∀consequence of.Duty
+      Subject: consequence of
+      Object : Duty
+
+  Term: has asset  [ObjectProperty]
+    Declaration                Declaration: has asset (ObjectProperty)
+      Subject: has asset
+      Object : ObjectProperty
+    InverseOf                  has asset ≡ is asset of⁻
+      Subject: has asset
+      Object : is asset of
+    Domain                     ∃has asset.⊤ ⊑ Policy
+      Subject: has asset
+      Object : Policy
+    Range                      ⊤ ⊑ ∀has asset.Asset
+      Subject: has asset
+      Object : Asset
+
+  Term: has conflict resolution strategy  [ObjectProperty]
+    Declaration                Declaration: has conflict resolution strategy (ObjectProperty)
+      Subject: has conflict resolution strategy
+      Object : ObjectProperty
+    InverseOf                  has conflict resolution strategy ≡ is strategy of⁻
+      Subject: has conflict resolution strategy
+      Object : is strategy of
+    Domain                     ∃has conflict resolution strategy.⊤ ⊑ Policy
+      Subject: has conflict resolution strategy
+      Object : Policy
+    Range                      ⊤ ⊑ ∀has conflict resolution strategy.Conflict Resolution Strategy
+      Subject: has conflict resolution strategy
+      Object : Conflict Resolution Strategy
+    Characteristics            Functional(has conflict resolution strategy)
+      Subject: has conflict resolution strategy
+      Object : Functional
+
+  Term: has consequence  [ObjectProperty]
+    Declaration                Declaration: has consequence (ObjectProperty)
+      Subject: has consequence
+      Object : ObjectProperty
+    InverseOf                  has consequence ≡ consequence of⁻
+      Subject: has consequence
+      Object : consequence of
+    Domain                     ∃has consequence.⊤ ⊑ Duty
+      Subject: has consequence
+      Object : Duty
+    Range                      ⊤ ⊑ ∀has consequence.Duty
+      Subject: has consequence
+      Object : Duty
+
+  Term: has constraint  [ObjectProperty]
+    Declaration                Declaration: has constraint (ObjectProperty)
+      Subject: has constraint
+      Object : ObjectProperty
+    InverseOf                  has constraint ≡ is constraint of⁻
+      Subject: has constraint
+      Object : is constraint of
+    Domain                     ∃has constraint.⊤ ⊑ Rule
+      Subject: has constraint
+      Object : Rule
+    Range                      ⊤ ⊑ ∀has constraint.Constraint
+      Subject: has constraint
+      Object : Constraint
+
+  Term: has operator  [ObjectProperty]
+    Declaration                Declaration: has operator (ObjectProperty)
+      Subject: has operator
+      Object : ObjectProperty
+    InverseOf                  has operator ≡ is operator of⁻
+      Subject: has operator
+      Object : is operator of
+    Domain                     ∃has operator.⊤ ⊑ Constraint
+      Subject: has operator
+      Object : Constraint
+    Range                      ⊤ ⊑ ∀has operator.Operator
+      Subject: has operator
+      Object : Operator
+    Characteristics            Functional(has operator)
+      Subject: has operator
+      Object : Functional
+
+  Term: has remedy  [ObjectProperty]
+    Declaration                Declaration: has remedy (ObjectProperty)
+      Subject: has remedy
+      Object : ObjectProperty
+    InverseOf                  has remedy ≡ is remedy for⁻
+      Subject: has remedy
+      Object : is remedy for
+    Domain                     ∃has remedy.⊤ ⊑ Prohibition
+      Subject: has remedy
+      Object : Prohibition
+    Range                      ⊤ ⊑ ∀has remedy.Duty
+      Subject: has remedy
+      Object : Duty
+
+  Term: involved party  [ObjectProperty]
+    Declaration                Declaration: involved party (ObjectProperty)
+      Subject: involved party
+      Object : ObjectProperty
+    InverseOf                  involved party ≡ is involved in rule⁻
+      Subject: involved party
+      Object : is involved in rule
+    Domain                     ∃involved party.⊤ ⊑ Rule
+      Subject: involved party
+      Object : Rule
+    Range                      ⊤ ⊑ ∀involved party.Party
+      Subject: involved party
+      Object : Party
+
+  Term: is activated by failure  [ObjectProperty]
+    Declaration                Declaration: is activated by failure (ObjectProperty)
+      Subject: is activated by failure
+      Object : ObjectProperty
+    InverseOf                  is activated by failure ≡ activates upon failure⁻
+      Subject: is activated by failure
+      Object : activates upon failure
+    Domain                     ∃is activated by failure.⊤ ⊑ Rule
+      Subject: is activated by failure
+      Object : Rule
+    Range                      ⊤ ⊑ ∀is activated by failure.Rule
+      Subject: is activated by failure
+      Object : Rule
+
+  Term: is asset of  [ObjectProperty]
+    Declaration                Declaration: is asset of (ObjectProperty)
+      Subject: is asset of
+      Object : ObjectProperty
+    InverseOf                  is asset of ≡ has asset⁻
+      Subject: is asset of
+      Object : has asset
+    Domain                     ∃is asset of.⊤ ⊑ Asset
+      Subject: is asset of
+      Object : Asset
+    Range                      ⊤ ⊑ ∀is asset of.Policy
+      Subject: is asset of
+      Object : Policy
+
+  Term: is constraint of  [ObjectProperty]
+    Declaration                Declaration: is constraint of (ObjectProperty)
+      Subject: is constraint of
+      Object : ObjectProperty
+    InverseOf                  is constraint of ≡ has constraint⁻
+      Subject: is constraint of
+      Object : has constraint
+    Domain                     ∃is constraint of.⊤ ⊑ Constraint
+      Subject: is constraint of
+      Object : Constraint
+    Range                      ⊤ ⊑ ∀is constraint of.Rule
+      Subject: is constraint of
+      Object : Rule
+
+  Term: is involved in rule  [ObjectProperty]
+    Declaration                Declaration: is involved in rule (ObjectProperty)
+      Subject: is involved in rule
+      Object : ObjectProperty
+    InverseOf                  is involved in rule ≡ involved party⁻
+      Subject: is involved in rule
+      Object : involved party
+    Domain                     ∃is involved in rule.⊤ ⊑ Party
+      Subject: is involved in rule
+      Object : Party
+    Range                      ⊤ ⊑ ∀is involved in rule.Rule
+      Subject: is involved in rule
+      Object : Rule
+
+  Term: is operator of  [ObjectProperty]
+    Declaration                Declaration: is operator of (ObjectProperty)
+      Subject: is operator of
+      Object : ObjectProperty
+    InverseOf                  is operator of ≡ has operator⁻
+      Subject: is operator of
+      Object : has operator
+    Domain                     ∃is operator of.⊤ ⊑ Operator
+      Subject: is operator of
+      Object : Operator
+    Range                      ⊤ ⊑ ∀is operator of.Constraint
+      Subject: is operator of
+      Object : Constraint
+
+  Term: is remedy for  [ObjectProperty]
+    Declaration                Declaration: is remedy for (ObjectProperty)
+      Subject: is remedy for
+      Object : ObjectProperty
+    InverseOf                  is remedy for ≡ has remedy⁻
+      Subject: is remedy for
+      Object : has remedy
+    Domain                     ∃is remedy for.⊤ ⊑ Duty
+      Subject: is remedy for
+      Object : Duty
+    Range                      ⊤ ⊑ ∀is remedy for.Prohibition
+      Subject: is remedy for
+      Object : Prohibition
+
+  Term: is strategy of  [ObjectProperty]
+    Declaration                Declaration: is strategy of (ObjectProperty)
+      Subject: is strategy of
+      Object : ObjectProperty
+    InverseOf                  is strategy of ≡ has conflict resolution strategy⁻
+      Subject: is strategy of
+      Object : has conflict resolution strategy
+    Domain                     ∃is strategy of.⊤ ⊑ Conflict Resolution Strategy
+      Subject: is strategy of
+      Object : Conflict Resolution Strategy
+    Range                      ⊤ ⊑ ∀is strategy of.Policy
+      Subject: is strategy of
+      Object : Policy
+
+
+── DatatypeProperty ──
+
+  Term: has transfer right  [DatatypeProperty]
+    Declaration                Declaration: has transfer right (DatatypeProperty)
+      Subject: has transfer right
+      Object : DatatypeProperty
+    Domain                     ∃has transfer right.⊤ ⊑ Permission
+      Subject: has transfer right
+      Object : Permission
+    Range                      has transfer right maps-to xsd:boolean
+      Subject: has transfer right
+      Object : xsd:boolean
+    Characteristics            Functional(has transfer right)
+      Subject: has transfer right
+      Object : Functional
+
+
+====================================================================================================
+STATISTICS
+====================================================================================================
+
+  Classes:               10  (defined: 0, primitive: 10)
+  ObjectProperties:      16
+  DatatypeProperties:    1
+
+  Axiom Breakdown:
+    Characteristics           3
+    Declaration               27
+    DisjointClasses           3
+    Domain                    17
+    InverseOf                 16
+    Range                     17
+    SubClassOf                3
+    ------------------------------
+    Total TBox Axioms         86
+
+====================================================================================================

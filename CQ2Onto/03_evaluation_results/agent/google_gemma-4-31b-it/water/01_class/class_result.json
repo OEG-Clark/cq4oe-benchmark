@@ -1,0 +1,55 @@
+{
+    "config": {
+        "class_counts": {
+            "gold_class_count": 20,
+            "pred_class_count": 10
+        },
+        "matching_rule": {
+            "type": "normalized one-to-one global greedy matching",
+            "description": "All matching methods use normalized terms internally. Hard and lexical methods use normalize_key, where spaces are removed. Semantic and synonym methods use normalize_text, where word spaces are preserved. Each gold can match at most one pred. Each pred can match at most one gold. Pred terms are removed from the pool once matched. Only pairs above the method-specific threshold are considered."
+        },
+        "thresholds": {
+            "hard_match": 1.0,
+            "lexical": 0.8,
+            "semantic": 0.6,
+            "synonym": 1.0
+        }
+    },
+    "results": [
+        {
+            "id": "hard_match",
+            "coverage": 0.3,
+            "precision": 0.6,
+            "recall": 0.3,
+            "f1": 0.4
+        },
+        {
+            "id": "sequence_match",
+            "coverage": 0.35,
+            "precision": 0.7,
+            "recall": 0.35,
+            "f1": 0.4666666666666667
+        },
+        {
+            "id": "levenshtein",
+            "coverage": 0.3,
+            "precision": 0.6,
+            "recall": 0.3,
+            "f1": 0.4
+        },
+        {
+            "id": "jaro_winkler",
+            "coverage": 0.4,
+            "precision": 0.8,
+            "recall": 0.4,
+            "f1": 0.5333333333333333
+        },
+        {
+            "id": "semantic_embeddinggemma",
+            "coverage": 0.45,
+            "precision": 0.9,
+            "recall": 0.45,
+            "f1": 0.6
+        }
+    ]
+}

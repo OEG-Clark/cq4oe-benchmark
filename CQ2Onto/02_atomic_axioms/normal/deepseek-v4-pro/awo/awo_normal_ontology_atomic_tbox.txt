@@ -1,0 +1,96 @@
+====================================================================================================
+ATOMIC TBOX AXIOMS
+====================================================================================================
+
+── Class ──
+
+  Term: Animal  [Class]
+    Declaration                Declaration: Animal (Class)
+      Subject: Animal
+      Object : Class
+    DisjointClasses            DisjointClasses(Animal, Plant)
+      Subject: Animal
+      Object : Plant
+    DisjointClasses            DisjointClasses(Animal, Plant Part)
+      Subject: Animal
+      Object : Plant Part
+
+  Term: Carnivore  [Class]
+    Declaration                Declaration: Carnivore (Class)
+      Subject: Carnivore
+      Object : Class
+    EquivalentClasses          Carnivore ≡ (Animal ⊓ ∀eats.Animal ⊓ ∃eats.Animal)
+      Subject: Carnivore
+      Object : (Animal ⊓ ∀eats.Animal ⊓ ∃eats.Animal)
+    DisjointClasses            DisjointClasses(Carnivore, Herbivore)
+      Subject: Carnivore
+      Object : Herbivore
+    DisjointClasses            DisjointClasses(Carnivore, Omnivore)
+      Subject: Carnivore
+      Object : Omnivore
+
+  Term: Carnivorous Plant  [Class]
+    Declaration                Declaration: Carnivorous Plant (Class)
+      Subject: Carnivorous Plant
+      Object : Class
+    EquivalentClasses          Carnivorous Plant ≡ (Plant ⊓ ∃eats.Animal)
+      Subject: Carnivorous Plant
+      Object : (Plant ⊓ ∃eats.Animal)
+
+  Term: Herbivore  [Class]
+    Declaration                Declaration: Herbivore (Class)
+      Subject: Herbivore
+      Object : Class
+    EquivalentClasses          Herbivore ≡ (Animal ⊓ ∀eats.(Plant ⊔ Plant Part) ⊓ ∃eats.(Plant ⊔ Plant Part))
+      Subject: Herbivore
+      Object : (Animal ⊓ ∀eats.(Plant ⊔ Plant Part) ⊓ ∃eats.(Plant ⊔ Plant Part))
+    DisjointClasses            DisjointClasses(Herbivore, Omnivore)
+      Subject: Herbivore
+      Object : Omnivore
+
+  Term: Omnivore  [Class]
+    Declaration                Declaration: Omnivore (Class)
+      Subject: Omnivore
+      Object : Class
+    EquivalentClasses          Omnivore ≡ (Animal ⊓ ∃eats.Animal ⊓ ∃eats.(Plant ⊔ Plant Part))
+      Subject: Omnivore
+      Object : (Animal ⊓ ∃eats.Animal ⊓ ∃eats.(Plant ⊔ Plant Part))
+
+  Term: Plant  [Class]
+    Declaration                Declaration: Plant (Class)
+      Subject: Plant
+      Object : Class
+    DisjointClasses            DisjointClasses(Plant, Plant Part)
+      Subject: Plant
+      Object : Plant Part
+
+  Term: Plant Part  [Class]
+    Declaration                Declaration: Plant Part (Class)
+      Subject: Plant Part
+      Object : Class
+
+
+── ObjectProperty ──
+
+  Term: eats  [ObjectProperty]
+    Declaration                Declaration: eats (ObjectProperty)
+      Subject: eats
+      Object : ObjectProperty
+
+
+====================================================================================================
+STATISTICS
+====================================================================================================
+
+  Classes:               7  (defined: 4, primitive: 3)
+  ObjectProperties:      1
+  DatatypeProperties:    0
+
+  Axiom Breakdown:
+    Declaration               8
+    DisjointClasses           6
+    EquivalentClasses         4
+    ------------------------------
+    Total TBox Axioms         18
+
+====================================================================================================

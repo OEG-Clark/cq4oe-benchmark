@@ -1,0 +1,362 @@
+====================================================================================================
+ATOMIC TBOX AXIOMS
+====================================================================================================
+
+── Class ──
+
+  Term: Aggregation  [Class]
+    Declaration                Declaration: Aggregation (Class)
+      Subject: Aggregation
+      Object : Class
+    SubClassOf                 Aggregation ⊑ Transfer Right
+      Subject: Aggregation
+      Object : Transfer Right
+
+  Term: Asset  [Class]
+    Declaration                Declaration: Asset (Class)
+      Subject: Asset
+      Object : Class
+
+  Term: Condition  [Class]
+    Declaration                Declaration: Condition (Class)
+      Subject: Condition
+      Object : Class
+    SubClassOf                 Condition ⊑ Constraint
+      Subject: Condition
+      Object : Constraint
+
+  Term: Conflict Resolution Strategy  [Class]
+    Declaration                Declaration: Conflict Resolution Strategy (Class)
+      Subject: Conflict Resolution Strategy
+      Object : Class
+
+  Term: Constraint  [Class]
+    Declaration                Declaration: Constraint (Class)
+      Subject: Constraint
+      Object : Class
+
+  Term: Container  [Class]
+    Declaration                Declaration: Container (Class)
+      Subject: Container
+      Object : Class
+
+  Term: Container Membership  [Class]
+    Declaration                Declaration: Container Membership (Class)
+      Subject: Container Membership
+      Object : Class
+
+  Term: Contract Party  [Class]
+    Declaration                Declaration: Contract Party (Class)
+      Subject: Contract Party
+      Object : Class
+
+  Term: Disaggregation  [Class]
+    Declaration                Declaration: Disaggregation (Class)
+      Subject: Disaggregation
+      Object : Class
+    SubClassOf                 Disaggregation ⊑ Transfer Right
+      Subject: Disaggregation
+      Object : Transfer Right
+
+  Term: Exclusive Permission  [Class]
+    Declaration                Declaration: Exclusive Permission (Class)
+      Subject: Exclusive Permission
+      Object : Class
+    SubClassOf                 Exclusive Permission ⊑ Permission/Duty
+      Subject: Exclusive Permission
+      Object : Permission/Duty
+
+  Term: Logical Constraint  [Class]
+    Declaration                Declaration: Logical Constraint (Class)
+      Subject: Logical Constraint
+      Object : Class
+    SubClassOf                 Logical Constraint ⊑ Constraint
+      Subject: Logical Constraint
+      Object : Constraint
+
+  Term: Logical Constraint Operand  [Class]
+    Declaration                Declaration: Logical Constraint Operand (Class)
+      Subject: Logical Constraint Operand
+      Object : Class
+
+  Term: Negation  [Class]
+    Declaration                Declaration: Negation (Class)
+      Subject: Negation
+      Object : Class
+
+  Term: Permission Duty Assignment  [Class]
+    Declaration                Declaration: Permission Duty Assignment (Class)
+      Subject: Permission Duty Assignment
+      Object : Class
+
+  Term: Permission/Duty  [Class]
+    Declaration                Declaration: Permission/Duty (Class)
+      Subject: Permission/Duty
+      Object : Class
+    SubClassOf                 Permission/Duty ⊑ Requirement
+      Subject: Permission/Duty
+      Object : Requirement
+
+  Term: Policy  [Class]
+    Declaration                Declaration: Policy (Class)
+      Subject: Policy
+      Object : Class
+
+  Term: Prohibition  [Class]
+    Declaration                Declaration: Prohibition (Class)
+      Subject: Prohibition
+      Object : Class
+    SubClassOf                 Prohibition ⊑ Permission/Duty
+      Subject: Prohibition
+      Object : Permission/Duty
+
+  Term: Remedy  [Class]
+    Declaration                Declaration: Remedy (Class)
+      Subject: Remedy
+      Object : Class
+    SubClassOf                 Remedy ⊑ Permission/Duty
+      Subject: Remedy
+      Object : Permission/Duty
+
+  Term: Requirement  [Class]
+    Declaration                Declaration: Requirement (Class)
+      Subject: Requirement
+      Object : Class
+
+  Term: Sequence  [Class]
+    Declaration                Declaration: Sequence (Class)
+      Subject: Sequence
+      Object : Class
+
+  Term: Sequence Step  [Class]
+    Declaration                Declaration: Sequence Step (Class)
+      Subject: Sequence Step
+      Object : Class
+
+  Term: Transfer Right  [Class]
+    Declaration                Declaration: Transfer Right (Class)
+      Subject: Transfer Right
+      Object : Class
+
+
+── ObjectProperty ──
+
+  Term: assigned Party  [ObjectProperty]
+    Declaration                Declaration: assigned Party (ObjectProperty)
+      Subject: assigned Party
+      Object : ObjectProperty
+    Domain                     ∃assigned Party.⊤ ⊑ Permission Duty Assignment
+      Subject: assigned Party
+      Object : Permission Duty Assignment
+    Range                      ⊤ ⊑ ∀assigned Party.Contract Party
+      Subject: assigned Party
+      Object : Contract Party
+
+  Term: contained Item  [ObjectProperty]
+    Declaration                Declaration: contained Item (ObjectProperty)
+      Subject: contained Item
+      Object : ObjectProperty
+    Domain                     ∃contained Item.⊤ ⊑ Container Membership
+      Subject: contained Item
+      Object : Container Membership
+    Range                      ⊤ ⊑ ∀contained Item.Requirement
+      Subject: contained Item
+      Object : Requirement
+
+  Term: has Assignment  [ObjectProperty]
+    Declaration                Declaration: has Assignment (ObjectProperty)
+      Subject: has Assignment
+      Object : ObjectProperty
+    Domain                     ∃has Assignment.⊤ ⊑ Permission/Duty
+      Subject: has Assignment
+      Object : Permission/Duty
+    Range                      ⊤ ⊑ ∀has Assignment.Permission Duty Assignment
+      Subject: has Assignment
+      Object : Permission Duty Assignment
+
+  Term: has Conflict Resolution Strategy  [ObjectProperty]
+    Declaration                Declaration: has Conflict Resolution Strategy (ObjectProperty)
+      Subject: has Conflict Resolution Strategy
+      Object : ObjectProperty
+    Domain                     ∃has Conflict Resolution Strategy.⊤ ⊑ Policy
+      Subject: has Conflict Resolution Strategy
+      Object : Policy
+    Range                      ⊤ ⊑ ∀has Conflict Resolution Strategy.Conflict Resolution Strategy
+      Subject: has Conflict Resolution Strategy
+      Object : Conflict Resolution Strategy
+
+  Term: has Constraint  [ObjectProperty]
+    Declaration                Declaration: has Constraint (ObjectProperty)
+      Subject: has Constraint
+      Object : ObjectProperty
+    Domain                     ∃has Constraint.⊤ ⊑ Constraint
+      Subject: has Constraint
+      Object : Constraint
+    Range                      ⊤ ⊑ ∀has Constraint.Constraint
+      Subject: has Constraint
+      Object : Constraint
+
+  Term: has Membership  [ObjectProperty]
+    Declaration                Declaration: has Membership (ObjectProperty)
+      Subject: has Membership
+      Object : ObjectProperty
+    Domain                     ∃has Membership.⊤ ⊑ Container
+      Subject: has Membership
+      Object : Container
+    Range                      ⊤ ⊑ ∀has Membership.Container Membership
+      Subject: has Membership
+      Object : Container Membership
+
+  Term: has Operand  [ObjectProperty]
+    Declaration                Declaration: has Operand (ObjectProperty)
+      Subject: has Operand
+      Object : ObjectProperty
+    Domain                     ∃has Operand.⊤ ⊑ Logical Constraint
+      Subject: has Operand
+      Object : Logical Constraint
+    Range                      ⊤ ⊑ ∀has Operand.Logical Constraint Operand
+      Subject: has Operand
+      Object : Logical Constraint Operand
+
+  Term: has Sequence Step  [ObjectProperty]
+    Declaration                Declaration: has Sequence Step (ObjectProperty)
+      Subject: has Sequence Step
+      Object : ObjectProperty
+    Domain                     ∃has Sequence Step.⊤ ⊑ Sequence
+      Subject: has Sequence Step
+      Object : Sequence
+    Range                      ⊤ ⊑ ∀has Sequence Step.Sequence Step
+      Subject: has Sequence Step
+      Object : Sequence Step
+
+  Term: is Constrained By  [ObjectProperty]
+    Declaration                Declaration: is Constrained By (ObjectProperty)
+      Subject: is Constrained By
+      Object : ObjectProperty
+    Domain                     ∃is Constrained By.⊤ ⊑ Requirement
+      Subject: is Constrained By
+      Object : Requirement
+    Range                      ⊤ ⊑ ∀is Constrained By.Constraint
+      Subject: is Constrained By
+      Object : Constraint
+
+  Term: is Linked To Policy  [ObjectProperty]
+    Declaration                Declaration: is Linked To Policy (ObjectProperty)
+      Subject: is Linked To Policy
+      Object : ObjectProperty
+    Domain                     ∃is Linked To Policy.⊤ ⊑ Asset
+      Subject: is Linked To Policy
+      Object : Asset
+    Range                      ⊤ ⊑ ∀is Linked To Policy.Policy
+      Subject: is Linked To Policy
+      Object : Policy
+
+  Term: is Remedy For  [ObjectProperty]
+    Declaration                Declaration: is Remedy For (ObjectProperty)
+      Subject: is Remedy For
+      Object : ObjectProperty
+    Domain                     ∃is Remedy For.⊤ ⊑ Remedy
+      Subject: is Remedy For
+      Object : Remedy
+    Range                      ⊤ ⊑ ∀is Remedy For.Requirement
+      Subject: is Remedy For
+      Object : Requirement
+
+  Term: negates  [ObjectProperty]
+    Declaration                Declaration: negates (ObjectProperty)
+      Subject: negates
+      Object : ObjectProperty
+    Domain                     ∃negates.⊤ ⊑ Negation
+      Subject: negates
+      Object : Negation
+    Range                      ⊤ ⊑ ∀negates.Permission/Duty
+      Subject: negates
+      Object : Permission/Duty
+
+  Term: operand Constraint  [ObjectProperty]
+    Declaration                Declaration: operand Constraint (ObjectProperty)
+      Subject: operand Constraint
+      Object : ObjectProperty
+    Domain                     ∃operand Constraint.⊤ ⊑ Logical Constraint Operand
+      Subject: operand Constraint
+      Object : Logical Constraint Operand
+    Range                      ⊤ ⊑ ∀operand Constraint.Constraint
+      Subject: operand Constraint
+      Object : Constraint
+
+  Term: sequenced Requirement  [ObjectProperty]
+    Declaration                Declaration: sequenced Requirement (ObjectProperty)
+      Subject: sequenced Requirement
+      Object : ObjectProperty
+    Domain                     ∃sequenced Requirement.⊤ ⊑ Sequence Step
+      Subject: sequenced Requirement
+      Object : Sequence Step
+    Range                      ⊤ ⊑ ∀sequenced Requirement.Requirement
+      Subject: sequenced Requirement
+      Object : Requirement
+
+
+── DatatypeProperty ──
+
+  Term: has Role  [DatatypeProperty]
+    Declaration                Declaration: has Role (DatatypeProperty)
+      Subject: has Role
+      Object : DatatypeProperty
+    Domain                     ∃has Role.⊤ ⊑ Permission Duty Assignment
+      Subject: has Role
+      Object : Permission Duty Assignment
+    Range                      has Role maps-to xsd:string
+      Subject: has Role
+      Object : xsd:string
+
+  Term: is Exclusive  [DatatypeProperty]
+    Declaration                Declaration: is Exclusive (DatatypeProperty)
+      Subject: is Exclusive
+      Object : DatatypeProperty
+    Domain                     ∃is Exclusive.⊤ ⊑ Permission/Duty
+      Subject: is Exclusive
+      Object : Permission/Duty
+    Range                      is Exclusive maps-to xsd:boolean
+      Subject: is Exclusive
+      Object : xsd:boolean
+
+  Term: logical Operator  [DatatypeProperty]
+    Declaration                Declaration: logical Operator (DatatypeProperty)
+      Subject: logical Operator
+      Object : DatatypeProperty
+    Domain                     ∃logical Operator.⊤ ⊑ Logical Constraint
+      Subject: logical Operator
+      Object : Logical Constraint
+    Range                      logical Operator maps-to xsd:string
+      Subject: logical Operator
+      Object : xsd:string
+
+  Term: step Order  [DatatypeProperty]
+    Declaration                Declaration: step Order (DatatypeProperty)
+      Subject: step Order
+      Object : DatatypeProperty
+    Domain                     ∃step Order.⊤ ⊑ Sequence Step
+      Subject: step Order
+      Object : Sequence Step
+    Range                      step Order maps-to xsd:integer
+      Subject: step Order
+      Object : xsd:integer
+
+
+====================================================================================================
+STATISTICS
+====================================================================================================
+
+  Classes:               22  (defined: 0, primitive: 22)
+  ObjectProperties:      14
+  DatatypeProperties:    4
+
+  Axiom Breakdown:
+    Declaration               40
+    Domain                    18
+    Range                     18
+    SubClassOf                8
+    ------------------------------
+    Total TBox Axioms         84
+
+====================================================================================================

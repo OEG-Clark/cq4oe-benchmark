@@ -1,0 +1,3054 @@
+{
+  "config": {
+    "gold_file": "00_gold_standard/odrl/axioms/odrl_axiom_gold.json",
+    "pred_file": "02_atomic_axioms/cqbycq/qwen_qwen3.6-plus/odrl/odrl_cq2onto_cqbycq_ontology_atomic_tbox.json",
+    "class_csv": "03_evaluation_results/cqbycq/qwen_qwen3.6-plus/odrl/01_class/class_best_matching.csv",
+    "property_csv": "03_evaluation_results/cqbycq/qwen_qwen3.6-plus/odrl/02_property/property_best_matching.csv",
+    "layer2_threshold": 0.6,
+    "layer2_model": "embeddinggemma",
+    "layer2_skipped": true
+  },
+  "results": {
+    "layer1_stats_gold": {
+      "total": 60,
+      "by_term_type": {
+        "Class": 7,
+        "ObjectProperty": 53
+      },
+      "by_term_axiom": {
+        "Class": {
+          "SubClassOf": 4,
+          "DisjointClasses": 3
+        },
+        "ObjectProperty": {
+          "Domain": 22,
+          "Range": 21,
+          "SubPropertyOf": 10
+        }
+      }
+    },
+    "layer1_stats_pred": {
+      "total": 110,
+      "by_term_type": {
+        "Class": 37,
+        "ObjectProperty": 67,
+        "DatatypeProperty": 6
+      },
+      "by_term_axiom": {
+        "Class": {
+          "Declaration": 27,
+          "SubClassOf": 10
+        },
+        "ObjectProperty": {
+          "Declaration": 23,
+          "Domain": 21,
+          "Range": 21,
+          "InverseOf": 2
+        },
+        "DatatypeProperty": {
+          "Declaration": 2,
+          "Domain": 2,
+          "Range": 2
+        }
+      }
+    },
+    "layer3": {
+      "evaluation": [
+        {
+          "side": "gold",
+          "axiom_id": "AX1",
+          "term": "AssetCollection",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "AssetCollection ⊑ Asset",
+          "status": "skip",
+          "reason": "subject 'AssetCollection' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX2",
+          "term": "Duty",
+          "term_type": "Class",
+          "axiom_type": "DisjointClasses",
+          "dl": "DisjointClasses(Duty, Permission)",
+          "status": "fn",
+          "reason": "pred has no DisjointClasses axiom on 'Duty'",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX3",
+          "term": "Duty",
+          "term_type": "Class",
+          "axiom_type": "DisjointClasses",
+          "dl": "DisjointClasses(Duty, Prohibition)",
+          "status": "fn",
+          "reason": "pred has no DisjointClasses axiom on 'Duty'",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX4",
+          "term": "Duty",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "Duty ⊑ Rule",
+          "status": "fn",
+          "reason": "pred has no SubClassOf axiom on 'Duty'",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX5",
+          "term": "Permission",
+          "term_type": "Class",
+          "axiom_type": "DisjointClasses",
+          "dl": "DisjointClasses(Permission, Prohibition)",
+          "status": "fn",
+          "reason": "pred has no DisjointClasses axiom on 'Permission'",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX6",
+          "term": "Permission",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "Permission ⊑ Rule",
+          "status": "tp",
+          "reason": "matched pred AX25",
+          "pred_match": {
+            "id": "AX25",
+            "dl": "Permission ⊑ Rule",
+            "axiom_type": "SubClassOf",
+            "term": "Permission"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX7",
+          "term": "Prohibition",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "Prohibition ⊑ Rule",
+          "status": "tp",
+          "reason": "matched pred AX28",
+          "pred_match": {
+            "id": "AX28",
+            "dl": "Prohibition ⊑ Rule",
+            "axiom_type": "SubClassOf",
+            "term": "Prohibition"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX8",
+          "term": "action",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃action.⊤ ⊑ (Policy ⊔ Rule)",
+          "status": "skip",
+          "reason": "subject 'action' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX9",
+          "term": "action",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀action.Action",
+          "status": "skip",
+          "reason": "subject 'action' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX10",
+          "term": "and",
+          "term_type": "ObjectProperty",
+          "axiom_type": "SubPropertyOf",
+          "dl": "and ⊑ operand",
+          "status": "skip",
+          "reason": "subject 'and' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX11",
+          "term": "andSequence",
+          "term_type": "ObjectProperty",
+          "axiom_type": "SubPropertyOf",
+          "dl": "andSequence ⊑ operand",
+          "status": "fn",
+          "reason": "pred has no SubPropertyOf axiom on 'has sequence step'",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX12",
+          "term": "assignee",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃assignee.⊤ ⊑ (Policy ⊔ Rule)",
+          "status": "skip",
+          "reason": "subject 'assignee' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX13",
+          "term": "assignee",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀assignee.Party",
+          "status": "skip",
+          "reason": "subject 'assignee' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX14",
+          "term": "assignee",
+          "term_type": "ObjectProperty",
+          "axiom_type": "SubPropertyOf",
+          "dl": "assignee ⊑ function",
+          "status": "skip",
+          "reason": "subject 'assignee' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX15",
+          "term": "assigner",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃assigner.⊤ ⊑ (Policy ⊔ Rule)",
+          "status": "skip",
+          "reason": "subject 'assigner' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX16",
+          "term": "assigner",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀assigner.Party",
+          "status": "skip",
+          "reason": "subject 'assigner' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX17",
+          "term": "assigner",
+          "term_type": "ObjectProperty",
+          "axiom_type": "SubPropertyOf",
+          "dl": "assigner ⊑ function",
+          "status": "skip",
+          "reason": "subject 'assigner' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX18",
+          "term": "conflict",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃conflict.⊤ ⊑ Policy",
+          "status": "skip",
+          "reason": "subject 'conflict' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX19",
+          "term": "conflict",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀conflict.ConflictTerm",
+          "status": "skip",
+          "reason": "subject 'conflict' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX20",
+          "term": "consequence",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃consequence.⊤ ⊑ Duty",
+          "status": "tp",
+          "reason": "matched pred AX66",
+          "pred_match": {
+            "id": "AX66",
+            "dl": "∃has consequence duty.⊤ ⊑ Duty",
+            "axiom_type": "Domain",
+            "term": "has consequence duty"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX21",
+          "term": "consequence",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀consequence.Duty",
+          "status": "tp",
+          "reason": "matched pred AX67",
+          "pred_match": {
+            "id": "AX67",
+            "dl": "⊤ ⊑ ∀has consequence duty.Duty",
+            "axiom_type": "Range",
+            "term": "has consequence duty"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX22",
+          "term": "consequence",
+          "term_type": "ObjectProperty",
+          "axiom_type": "SubPropertyOf",
+          "dl": "consequence ⊑ failure",
+          "status": "fn",
+          "reason": "pred has no SubPropertyOf axiom on 'has consequence duty'",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX23",
+          "term": "constraint",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃constraint.⊤ ⊑ (Policy ⊔ Rule)",
+          "status": "mismatch",
+          "reason": "pred AX69 differs: expr_type ObjectUnionOf vs Class",
+          "pred_match": {
+            "id": "AX69",
+            "dl": "∃has constraint.⊤ ⊑ Rule",
+            "axiom_type": "Domain",
+            "term": "has constraint"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX24",
+          "term": "constraint",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀constraint.(Constraint ⊔ LogicalConstraint)",
+          "status": "mismatch",
+          "reason": "pred AX70 differs: expr_type ObjectUnionOf vs Class",
+          "pred_match": {
+            "id": "AX70",
+            "dl": "⊤ ⊑ ∀has constraint.Constraint",
+            "axiom_type": "Range",
+            "term": "has constraint"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX25",
+          "term": "contractedParty",
+          "term_type": "ObjectProperty",
+          "axiom_type": "SubPropertyOf",
+          "dl": "contractedParty ⊑ function",
+          "status": "skip",
+          "reason": "subject 'contractedParty' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX26",
+          "term": "duty",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃duty.⊤ ⊑ Permission",
+          "status": "skip",
+          "reason": "subject 'duty' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX27",
+          "term": "duty",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀duty.Duty",
+          "status": "skip",
+          "reason": "subject 'duty' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX28",
+          "term": "failure",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃failure.⊤ ⊑ Rule",
+          "status": "skip",
+          "reason": "subject 'failure' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX29",
+          "term": "failure",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀failure.Rule",
+          "status": "skip",
+          "reason": "subject 'failure' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX30",
+          "term": "function",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃function.⊤ ⊑ (Policy ⊔ Rule)",
+          "status": "skip",
+          "reason": "subject 'function' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX31",
+          "term": "function",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀function.Party",
+          "status": "skip",
+          "reason": "subject 'function' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX32",
+          "term": "hasPolicy",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃hasPolicy.⊤ ⊑ Asset",
+          "status": "skip",
+          "reason": "subject 'hasPolicy' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX33",
+          "term": "hasPolicy",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀hasPolicy.Policy",
+          "status": "skip",
+          "reason": "subject 'hasPolicy' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX34",
+          "term": "implies",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃implies.⊤ ⊑ Action",
+          "status": "skip",
+          "reason": "subject 'implies' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX35",
+          "term": "implies",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀implies.Action",
+          "status": "skip",
+          "reason": "subject 'implies' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX36",
+          "term": "inheritFrom",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃inheritFrom.⊤ ⊑ Policy",
+          "status": "fn",
+          "reason": "pred has no Domain axiom on 'inherits from'",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX37",
+          "term": "inheritFrom",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀inheritFrom.Policy",
+          "status": "fn",
+          "reason": "pred has no Range axiom on 'inherits from'",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX38",
+          "term": "leftOperand",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃leftOperand.⊤ ⊑ Constraint",
+          "status": "skip",
+          "reason": "subject 'leftOperand' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX39",
+          "term": "leftOperand",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀leftOperand.LeftOperand",
+          "status": "skip",
+          "reason": "subject 'leftOperand' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX40",
+          "term": "obligation",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃obligation.⊤ ⊑ Policy",
+          "status": "skip",
+          "reason": "subject 'obligation' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX41",
+          "term": "obligation",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀obligation.Duty",
+          "status": "skip",
+          "reason": "subject 'obligation' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX42",
+          "term": "operand",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃operand.⊤ ⊑ LogicalConstraint",
+          "status": "skip",
+          "reason": "subject 'operand' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX43",
+          "term": "operator",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃operator.⊤ ⊑ Constraint",
+          "status": "skip",
+          "reason": "subject 'operator' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX44",
+          "term": "operator",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀operator.Operator",
+          "status": "skip",
+          "reason": "subject 'operator' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX45",
+          "term": "or",
+          "term_type": "ObjectProperty",
+          "axiom_type": "SubPropertyOf",
+          "dl": "or ⊑ operand",
+          "status": "skip",
+          "reason": "subject 'or' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX46",
+          "term": "partOf",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃partOf.⊤ ⊑ (Asset ⊔ Party)",
+          "status": "skip",
+          "reason": "subject 'partOf' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX47",
+          "term": "partOf",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀partOf.(AssetCollection)",
+          "status": "skip",
+          "reason": "subject 'partOf' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX48",
+          "term": "permission",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃permission.⊤ ⊑ Policy",
+          "status": "mismatch",
+          "reason": "pred AX54 differs: class 'Policy' not aligned to 'Container'",
+          "pred_match": {
+            "id": "AX54",
+            "dl": "∃contains permission.⊤ ⊑ Container",
+            "axiom_type": "Domain",
+            "term": "contains permission"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX49",
+          "term": "permission",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀permission.Permission",
+          "status": "tp",
+          "reason": "matched pred AX55",
+          "pred_match": {
+            "id": "AX55",
+            "dl": "⊤ ⊑ ∀contains permission.Permission",
+            "axiom_type": "Range",
+            "term": "contains permission"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX50",
+          "term": "prohibition",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃prohibition.⊤ ⊑ Policy",
+          "status": "skip",
+          "reason": "subject 'prohibition' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX51",
+          "term": "prohibition",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀prohibition.Prohibition",
+          "status": "skip",
+          "reason": "subject 'prohibition' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX52",
+          "term": "relation",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃relation.⊤ ⊑ (Policy ⊔ Rule)",
+          "status": "skip",
+          "reason": "subject 'relation' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX53",
+          "term": "relation",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀relation.Asset",
+          "status": "skip",
+          "reason": "subject 'relation' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX54",
+          "term": "remedy",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃remedy.⊤ ⊑ Prohibition",
+          "status": "tp",
+          "reason": "matched pred AX75",
+          "pred_match": {
+            "id": "AX75",
+            "dl": "∃has remedy duty.⊤ ⊑ Prohibition",
+            "axiom_type": "Domain",
+            "term": "has remedy duty"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX55",
+          "term": "remedy",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀remedy.Duty",
+          "status": "tp",
+          "reason": "matched pred AX76",
+          "pred_match": {
+            "id": "AX76",
+            "dl": "⊤ ⊑ ∀has remedy duty.Duty",
+            "axiom_type": "Range",
+            "term": "has remedy duty"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX56",
+          "term": "remedy",
+          "term_type": "ObjectProperty",
+          "axiom_type": "SubPropertyOf",
+          "dl": "remedy ⊑ failure",
+          "status": "fn",
+          "reason": "pred has no SubPropertyOf axiom on 'has remedy duty'",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX57",
+          "term": "target",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃target.⊤ ⊑ (Policy ⊔ Rule)",
+          "status": "mismatch",
+          "reason": "pred AX97 differs: expr_type ObjectUnionOf vs Class",
+          "pred_match": {
+            "id": "AX97",
+            "dl": "∃step target.⊤ ⊑ Sequence Step",
+            "axiom_type": "Domain",
+            "term": "step target"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX58",
+          "term": "target",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀target.Asset",
+          "status": "mismatch",
+          "reason": "pred AX98 differs: class 'Asset' not aligned to 'Permission'",
+          "pred_match": {
+            "id": "AX98",
+            "dl": "⊤ ⊑ ∀step target.Permission",
+            "axiom_type": "Range",
+            "term": "step target"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX59",
+          "term": "target",
+          "term_type": "ObjectProperty",
+          "axiom_type": "SubPropertyOf",
+          "dl": "target ⊑ relation",
+          "status": "fn",
+          "reason": "pred has no SubPropertyOf axiom on 'step target'",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX60",
+          "term": "xone",
+          "term_type": "ObjectProperty",
+          "axiom_type": "SubPropertyOf",
+          "dl": "xone ⊑ operand",
+          "status": "skip",
+          "reason": "subject 'xone' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX5",
+          "term": "Asset",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: Asset (Class)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'Asset' not matched by any gold axiom on 'Asset'",
+          "pred_match": {
+            "id": "AX5",
+            "dl": "Declaration: Asset (Class)",
+            "axiom_type": "Declaration",
+            "term": "Asset"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX7",
+          "term": "Conflict Resolution Strategy",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: Conflict Resolution Strategy (Class)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'Conflict Resolution Strategy' not matched by any gold axiom on 'ConflictTerm'",
+          "pred_match": {
+            "id": "AX7",
+            "dl": "Declaration: Conflict Resolution Strategy (Class)",
+            "axiom_type": "Declaration",
+            "term": "Conflict Resolution Strategy"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX8",
+          "term": "Constraint",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: Constraint (Class)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'Constraint' not matched by any gold axiom on 'Constraint'",
+          "pred_match": {
+            "id": "AX8",
+            "dl": "Declaration: Constraint (Class)",
+            "axiom_type": "Declaration",
+            "term": "Constraint"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX13",
+          "term": "Duty",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: Duty (Class)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'Duty' not matched by any gold axiom on 'Duty'",
+          "pred_match": {
+            "id": "AX13",
+            "dl": "Declaration: Duty (Class)",
+            "axiom_type": "Declaration",
+            "term": "Duty"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX17",
+          "term": "Logical Constraint",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: Logical Constraint (Class)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'Logical Constraint' not matched by any gold axiom on 'LogicalConstraint'",
+          "pred_match": {
+            "id": "AX17",
+            "dl": "Declaration: Logical Constraint (Class)",
+            "axiom_type": "Declaration",
+            "term": "Logical Constraint"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX18",
+          "term": "Logical Constraint",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "Logical Constraint ⊑ Constraint",
+          "status": "fp",
+          "reason": "pred SubClassOf axiom on 'Logical Constraint' not matched by any gold axiom on 'LogicalConstraint'",
+          "pred_match": {
+            "id": "AX18",
+            "dl": "Logical Constraint ⊑ Constraint",
+            "axiom_type": "SubClassOf",
+            "term": "Logical Constraint"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX19",
+          "term": "Negation",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: Negation (Class)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'Negation' not matched by any gold axiom on 'Action'",
+          "pred_match": {
+            "id": "AX19",
+            "dl": "Declaration: Negation (Class)",
+            "axiom_type": "Declaration",
+            "term": "Negation"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX23",
+          "term": "Party Role Assignment",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: Party Role Assignment (Class)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'Party Role Assignment' not matched by any gold axiom on 'Party'",
+          "pred_match": {
+            "id": "AX23",
+            "dl": "Declaration: Party Role Assignment (Class)",
+            "axiom_type": "Declaration",
+            "term": "Party Role Assignment"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX24",
+          "term": "Permission",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: Permission (Class)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'Permission' not matched by any gold axiom on 'Permission'",
+          "pred_match": {
+            "id": "AX24",
+            "dl": "Declaration: Permission (Class)",
+            "axiom_type": "Declaration",
+            "term": "Permission"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX26",
+          "term": "Policy",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: Policy (Class)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'Policy' not matched by any gold axiom on 'Policy'",
+          "pred_match": {
+            "id": "AX26",
+            "dl": "Declaration: Policy (Class)",
+            "axiom_type": "Declaration",
+            "term": "Policy"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX27",
+          "term": "Prohibition",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: Prohibition (Class)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'Prohibition' not matched by any gold axiom on 'Prohibition'",
+          "pred_match": {
+            "id": "AX27",
+            "dl": "Declaration: Prohibition (Class)",
+            "axiom_type": "Declaration",
+            "term": "Prohibition"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX31",
+          "term": "Rule",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: Rule (Class)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'Rule' not matched by any gold axiom on 'Rule'",
+          "pred_match": {
+            "id": "AX31",
+            "dl": "Declaration: Rule (Class)",
+            "axiom_type": "Declaration",
+            "term": "Rule"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX53",
+          "term": "contains permission",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: contains permission (ObjectProperty)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'contains permission' not matched by any gold axiom on 'permission'",
+          "pred_match": {
+            "id": "AX53",
+            "dl": "Declaration: contains permission (ObjectProperty)",
+            "axiom_type": "Declaration",
+            "term": "contains permission"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX65",
+          "term": "has consequence duty",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: has consequence duty (ObjectProperty)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'has consequence duty' not matched by any gold axiom on 'consequence'",
+          "pred_match": {
+            "id": "AX65",
+            "dl": "Declaration: has consequence duty (ObjectProperty)",
+            "axiom_type": "Declaration",
+            "term": "has consequence duty"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX68",
+          "term": "has constraint",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: has constraint (ObjectProperty)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'has constraint' not matched by any gold axiom on 'constraint'",
+          "pred_match": {
+            "id": "AX68",
+            "dl": "Declaration: has constraint (ObjectProperty)",
+            "axiom_type": "Declaration",
+            "term": "has constraint"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX74",
+          "term": "has remedy duty",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: has remedy duty (ObjectProperty)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'has remedy duty' not matched by any gold axiom on 'remedy'",
+          "pred_match": {
+            "id": "AX74",
+            "dl": "Declaration: has remedy duty (ObjectProperty)",
+            "axiom_type": "Declaration",
+            "term": "has remedy duty"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX80",
+          "term": "has sequence step",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: has sequence step (ObjectProperty)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'has sequence step' not matched by any gold axiom on 'andSequence'",
+          "pred_match": {
+            "id": "AX80",
+            "dl": "Declaration: has sequence step (ObjectProperty)",
+            "axiom_type": "Declaration",
+            "term": "has sequence step"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX81",
+          "term": "has sequence step",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃has sequence step.⊤ ⊑ Sequencing",
+          "status": "fp",
+          "reason": "pred Domain axiom on 'has sequence step' not matched by any gold axiom on 'andSequence'",
+          "pred_match": {
+            "id": "AX81",
+            "dl": "∃has sequence step.⊤ ⊑ Sequencing",
+            "axiom_type": "Domain",
+            "term": "has sequence step"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX82",
+          "term": "has sequence step",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀has sequence step.Sequence Step",
+          "status": "fp",
+          "reason": "pred Range axiom on 'has sequence step' not matched by any gold axiom on 'andSequence'",
+          "pred_match": {
+            "id": "AX82",
+            "dl": "⊤ ⊑ ∀has sequence step.Sequence Step",
+            "axiom_type": "Range",
+            "term": "has sequence step"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX89",
+          "term": "inherited by",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: inherited by (ObjectProperty)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'inherited by' not matched by any gold axiom on 'inheritRelation'",
+          "pred_match": {
+            "id": "AX89",
+            "dl": "Declaration: inherited by (ObjectProperty)",
+            "axiom_type": "Declaration",
+            "term": "inherited by"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX90",
+          "term": "inherited by",
+          "term_type": "ObjectProperty",
+          "axiom_type": "InverseOf",
+          "dl": "inherited by ≡ inherits from⁻",
+          "status": "fp",
+          "reason": "pred InverseOf axiom on 'inherited by' not matched by any gold axiom on 'inheritRelation'",
+          "pred_match": {
+            "id": "AX90",
+            "dl": "inherited by ≡ inherits from⁻",
+            "axiom_type": "InverseOf",
+            "term": "inherited by"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX91",
+          "term": "inherits from",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: inherits from (ObjectProperty)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'inherits from' not matched by any gold axiom on 'inheritFrom'",
+          "pred_match": {
+            "id": "AX91",
+            "dl": "Declaration: inherits from (ObjectProperty)",
+            "axiom_type": "Declaration",
+            "term": "inherits from"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX92",
+          "term": "inherits from",
+          "term_type": "ObjectProperty",
+          "axiom_type": "InverseOf",
+          "dl": "inherits from ≡ inherited by⁻",
+          "status": "fp",
+          "reason": "pred InverseOf axiom on 'inherits from' not matched by any gold axiom on 'inheritFrom'",
+          "pred_match": {
+            "id": "AX92",
+            "dl": "inherits from ≡ inherited by⁻",
+            "axiom_type": "InverseOf",
+            "term": "inherits from"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX96",
+          "term": "step target",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: step target (ObjectProperty)",
+          "status": "fp",
+          "reason": "pred Declaration axiom on 'step target' not matched by any gold axiom on 'target'",
+          "pred_match": {
+            "id": "AX96",
+            "dl": "Declaration: step target (ObjectProperty)",
+            "axiom_type": "Declaration",
+            "term": "step target"
+          }
+        }
+      ],
+      "counts_overall": {
+        "tp": 7,
+        "fn": 10,
+        "fp": 24,
+        "mismatch": 5,
+        "skip": 38
+      },
+      "counts_by_term": {
+        "Class": {
+          "tp": 2,
+          "fn": 4,
+          "fp": 12,
+          "mismatch": 0,
+          "skip": 1
+        },
+        "ObjectProperty": {
+          "tp": 5,
+          "fn": 6,
+          "fp": 12,
+          "mismatch": 5,
+          "skip": 37
+        }
+      },
+      "counts_by_combo": {
+        "Class|SubClassOf": {
+          "tp": 2,
+          "fn": 1,
+          "fp": 1,
+          "mismatch": 0,
+          "skip": 1
+        },
+        "Class|DisjointClasses": {
+          "tp": 0,
+          "fn": 3,
+          "fp": 0,
+          "mismatch": 0,
+          "skip": 0
+        },
+        "ObjectProperty|Domain": {
+          "tp": 2,
+          "fn": 1,
+          "fp": 1,
+          "mismatch": 3,
+          "skip": 16
+        },
+        "ObjectProperty|Range": {
+          "tp": 3,
+          "fn": 1,
+          "fp": 1,
+          "mismatch": 2,
+          "skip": 15
+        },
+        "ObjectProperty|SubPropertyOf": {
+          "tp": 0,
+          "fn": 4,
+          "fp": 0,
+          "mismatch": 0,
+          "skip": 6
+        },
+        "Class|Declaration": {
+          "tp": 0,
+          "fn": 0,
+          "fp": 11,
+          "mismatch": 0,
+          "skip": 0
+        },
+        "ObjectProperty|Declaration": {
+          "tp": 0,
+          "fn": 0,
+          "fp": 8,
+          "mismatch": 0,
+          "skip": 0
+        },
+        "ObjectProperty|InverseOf": {
+          "tp": 0,
+          "fn": 0,
+          "fp": 2,
+          "mismatch": 0,
+          "skip": 0
+        }
+      }
+    },
+    "layer4": {
+      "per_term": {
+        "Class": {
+          "tp": 2,
+          "fp": 35,
+          "fp_layer3": 12,
+          "fp_unaligned": 23,
+          "fn": 5,
+          "fn_layer3": 4,
+          "fn_unaligned": 1,
+          "mismatch": 0,
+          "skip": 1,
+          "precision": 0.05405405405405406,
+          "recall": 0.2857142857142857,
+          "f1": 0.09090909090909091
+        },
+        "ObjectProperty": {
+          "tp": 5,
+          "fp": 62,
+          "fp_layer3": 17,
+          "fp_unaligned": 45,
+          "fn": 48,
+          "fn_layer3": 11,
+          "fn_unaligned": 37,
+          "mismatch": 5,
+          "skip": 37,
+          "precision": 0.07462686567164178,
+          "recall": 0.09433962264150944,
+          "f1": 0.08333333333333333
+        },
+        "DatatypeProperty": {
+          "tp": 0,
+          "fp": 6,
+          "fp_layer3": 0,
+          "fp_unaligned": 6,
+          "fn": 0,
+          "fn_layer3": 0,
+          "fn_unaligned": 0,
+          "mismatch": 0,
+          "skip": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      },
+      "grand": {
+        "tp": 7,
+        "fp": 103,
+        "fn": 53,
+        "precision": 0.06363636363636363,
+        "recall": 0.11666666666666667,
+        "f1": 0.08235294117647059
+      },
+      "unaligned_lists": {
+        "Class": {
+          "gold": [
+            {
+              "id": "AX1",
+              "term": "AssetCollection",
+              "axiom_type": "SubClassOf",
+              "dl": "AssetCollection ⊑ Asset"
+            }
+          ],
+          "pred": [
+            {
+              "id": "AX1",
+              "term": "Aggregation",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: Aggregation (Class)"
+            },
+            {
+              "id": "AX2",
+              "term": "Aggregation",
+              "axiom_type": "SubClassOf",
+              "dl": "Aggregation ⊑ Transfer Right"
+            },
+            {
+              "id": "AX3",
+              "term": "And Constraint",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: And Constraint (Class)"
+            },
+            {
+              "id": "AX4",
+              "term": "And Constraint",
+              "axiom_type": "SubClassOf",
+              "dl": "And Constraint ⊑ Logical Constraint"
+            },
+            {
+              "id": "AX6",
+              "term": "Condition",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: Condition (Class)"
+            },
+            {
+              "id": "AX9",
+              "term": "Container",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: Container (Class)"
+            },
+            {
+              "id": "AX10",
+              "term": "Contract Party",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: Contract Party (Class)"
+            },
+            {
+              "id": "AX11",
+              "term": "Disaggregation",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: Disaggregation (Class)"
+            },
+            {
+              "id": "AX12",
+              "term": "Disaggregation",
+              "axiom_type": "SubClassOf",
+              "dl": "Disaggregation ⊑ Transfer Right"
+            },
+            {
+              "id": "AX14",
+              "term": "Exclusive Permission",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: Exclusive Permission (Class)"
+            },
+            {
+              "id": "AX15",
+              "term": "Exclusive Permission",
+              "axiom_type": "SubClassOf",
+              "dl": "Exclusive Permission ⊑ Permission"
+            },
+            {
+              "id": "AX16",
+              "term": "Inheritance",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: Inheritance (Class)"
+            },
+            {
+              "id": "AX20",
+              "term": "Or Constraint",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: Or Constraint (Class)"
+            },
+            {
+              "id": "AX21",
+              "term": "Or Constraint",
+              "axiom_type": "SubClassOf",
+              "dl": "Or Constraint ⊑ Logical Constraint"
+            },
+            {
+              "id": "AX22",
+              "term": "Party Right Duty Support",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: Party Right Duty Support (Class)"
+            },
+            {
+              "id": "AX29",
+              "term": "Requirement",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: Requirement (Class)"
+            },
+            {
+              "id": "AX30",
+              "term": "Role",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: Role (Class)"
+            },
+            {
+              "id": "AX32",
+              "term": "Sequence Step",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: Sequence Step (Class)"
+            },
+            {
+              "id": "AX33",
+              "term": "Sequencing",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: Sequencing (Class)"
+            },
+            {
+              "id": "AX34",
+              "term": "Sequencing",
+              "axiom_type": "SubClassOf",
+              "dl": "Sequencing ⊑ Constraint"
+            },
+            {
+              "id": "AX35",
+              "term": "Transfer Right",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: Transfer Right (Class)"
+            },
+            {
+              "id": "AX36",
+              "term": "Xor Constraint",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: Xor Constraint (Class)"
+            },
+            {
+              "id": "AX37",
+              "term": "Xor Constraint",
+              "axiom_type": "SubClassOf",
+              "dl": "Xor Constraint ⊑ Logical Constraint"
+            }
+          ]
+        },
+        "ObjectProperty": {
+          "gold": [
+            {
+              "id": "AX8",
+              "term": "action",
+              "axiom_type": "Domain",
+              "dl": "∃action.⊤ ⊑ (Policy ⊔ Rule)"
+            },
+            {
+              "id": "AX9",
+              "term": "action",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀action.Action"
+            },
+            {
+              "id": "AX10",
+              "term": "and",
+              "axiom_type": "SubPropertyOf",
+              "dl": "and ⊑ operand"
+            },
+            {
+              "id": "AX12",
+              "term": "assignee",
+              "axiom_type": "Domain",
+              "dl": "∃assignee.⊤ ⊑ (Policy ⊔ Rule)"
+            },
+            {
+              "id": "AX13",
+              "term": "assignee",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀assignee.Party"
+            },
+            {
+              "id": "AX14",
+              "term": "assignee",
+              "axiom_type": "SubPropertyOf",
+              "dl": "assignee ⊑ function"
+            },
+            {
+              "id": "AX15",
+              "term": "assigner",
+              "axiom_type": "Domain",
+              "dl": "∃assigner.⊤ ⊑ (Policy ⊔ Rule)"
+            },
+            {
+              "id": "AX16",
+              "term": "assigner",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀assigner.Party"
+            },
+            {
+              "id": "AX17",
+              "term": "assigner",
+              "axiom_type": "SubPropertyOf",
+              "dl": "assigner ⊑ function"
+            },
+            {
+              "id": "AX18",
+              "term": "conflict",
+              "axiom_type": "Domain",
+              "dl": "∃conflict.⊤ ⊑ Policy"
+            },
+            {
+              "id": "AX19",
+              "term": "conflict",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀conflict.ConflictTerm"
+            },
+            {
+              "id": "AX25",
+              "term": "contractedParty",
+              "axiom_type": "SubPropertyOf",
+              "dl": "contractedParty ⊑ function"
+            },
+            {
+              "id": "AX26",
+              "term": "duty",
+              "axiom_type": "Domain",
+              "dl": "∃duty.⊤ ⊑ Permission"
+            },
+            {
+              "id": "AX27",
+              "term": "duty",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀duty.Duty"
+            },
+            {
+              "id": "AX28",
+              "term": "failure",
+              "axiom_type": "Domain",
+              "dl": "∃failure.⊤ ⊑ Rule"
+            },
+            {
+              "id": "AX29",
+              "term": "failure",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀failure.Rule"
+            },
+            {
+              "id": "AX30",
+              "term": "function",
+              "axiom_type": "Domain",
+              "dl": "∃function.⊤ ⊑ (Policy ⊔ Rule)"
+            },
+            {
+              "id": "AX31",
+              "term": "function",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀function.Party"
+            },
+            {
+              "id": "AX32",
+              "term": "hasPolicy",
+              "axiom_type": "Domain",
+              "dl": "∃hasPolicy.⊤ ⊑ Asset"
+            },
+            {
+              "id": "AX33",
+              "term": "hasPolicy",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀hasPolicy.Policy"
+            },
+            {
+              "id": "AX34",
+              "term": "implies",
+              "axiom_type": "Domain",
+              "dl": "∃implies.⊤ ⊑ Action"
+            },
+            {
+              "id": "AX35",
+              "term": "implies",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀implies.Action"
+            },
+            {
+              "id": "AX38",
+              "term": "leftOperand",
+              "axiom_type": "Domain",
+              "dl": "∃leftOperand.⊤ ⊑ Constraint"
+            },
+            {
+              "id": "AX39",
+              "term": "leftOperand",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀leftOperand.LeftOperand"
+            },
+            {
+              "id": "AX40",
+              "term": "obligation",
+              "axiom_type": "Domain",
+              "dl": "∃obligation.⊤ ⊑ Policy"
+            },
+            {
+              "id": "AX41",
+              "term": "obligation",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀obligation.Duty"
+            },
+            {
+              "id": "AX42",
+              "term": "operand",
+              "axiom_type": "Domain",
+              "dl": "∃operand.⊤ ⊑ LogicalConstraint"
+            },
+            {
+              "id": "AX43",
+              "term": "operator",
+              "axiom_type": "Domain",
+              "dl": "∃operator.⊤ ⊑ Constraint"
+            },
+            {
+              "id": "AX44",
+              "term": "operator",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀operator.Operator"
+            },
+            {
+              "id": "AX45",
+              "term": "or",
+              "axiom_type": "SubPropertyOf",
+              "dl": "or ⊑ operand"
+            },
+            {
+              "id": "AX46",
+              "term": "partOf",
+              "axiom_type": "Domain",
+              "dl": "∃partOf.⊤ ⊑ (Asset ⊔ Party)"
+            },
+            {
+              "id": "AX47",
+              "term": "partOf",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀partOf.(AssetCollection)"
+            },
+            {
+              "id": "AX50",
+              "term": "prohibition",
+              "axiom_type": "Domain",
+              "dl": "∃prohibition.⊤ ⊑ Policy"
+            },
+            {
+              "id": "AX51",
+              "term": "prohibition",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀prohibition.Prohibition"
+            },
+            {
+              "id": "AX52",
+              "term": "relation",
+              "axiom_type": "Domain",
+              "dl": "∃relation.⊤ ⊑ (Policy ⊔ Rule)"
+            },
+            {
+              "id": "AX53",
+              "term": "relation",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀relation.Asset"
+            },
+            {
+              "id": "AX60",
+              "term": "xone",
+              "axiom_type": "SubPropertyOf",
+              "dl": "xone ⊑ operand"
+            }
+          ],
+          "pred": [
+            {
+              "id": "AX38",
+              "term": "activates upon failure",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: activates upon failure (ObjectProperty)"
+            },
+            {
+              "id": "AX39",
+              "term": "activates upon failure",
+              "axiom_type": "Domain",
+              "dl": "∃activates upon failure.⊤ ⊑ Rule"
+            },
+            {
+              "id": "AX40",
+              "term": "activates upon failure",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀activates upon failure.Rule"
+            },
+            {
+              "id": "AX41",
+              "term": "applies to duty",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: applies to duty (ObjectProperty)"
+            },
+            {
+              "id": "AX42",
+              "term": "applies to duty",
+              "axiom_type": "Domain",
+              "dl": "∃applies to duty.⊤ ⊑ Party Role Assignment"
+            },
+            {
+              "id": "AX43",
+              "term": "applies to duty",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀applies to duty.Duty"
+            },
+            {
+              "id": "AX44",
+              "term": "applies to permission",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: applies to permission (ObjectProperty)"
+            },
+            {
+              "id": "AX45",
+              "term": "applies to permission",
+              "axiom_type": "Domain",
+              "dl": "∃applies to permission.⊤ ⊑ Party Role Assignment"
+            },
+            {
+              "id": "AX46",
+              "term": "applies to permission",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀applies to permission.Permission"
+            },
+            {
+              "id": "AX47",
+              "term": "contains asset",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: contains asset (ObjectProperty)"
+            },
+            {
+              "id": "AX48",
+              "term": "contains asset",
+              "axiom_type": "Domain",
+              "dl": "∃contains asset.⊤ ⊑ Container"
+            },
+            {
+              "id": "AX49",
+              "term": "contains asset",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀contains asset.Asset"
+            },
+            {
+              "id": "AX50",
+              "term": "contains duty",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: contains duty (ObjectProperty)"
+            },
+            {
+              "id": "AX51",
+              "term": "contains duty",
+              "axiom_type": "Domain",
+              "dl": "∃contains duty.⊤ ⊑ Container"
+            },
+            {
+              "id": "AX52",
+              "term": "contains duty",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀contains duty.Duty"
+            },
+            {
+              "id": "AX56",
+              "term": "expresses condition",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: expresses condition (ObjectProperty)"
+            },
+            {
+              "id": "AX57",
+              "term": "expresses condition",
+              "axiom_type": "Domain",
+              "dl": "∃expresses condition.⊤ ⊑ Constraint"
+            },
+            {
+              "id": "AX58",
+              "term": "expresses condition",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀expresses condition.Condition"
+            },
+            {
+              "id": "AX59",
+              "term": "has asset",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has asset (ObjectProperty)"
+            },
+            {
+              "id": "AX60",
+              "term": "has asset",
+              "axiom_type": "Domain",
+              "dl": "∃has asset.⊤ ⊑ Policy"
+            },
+            {
+              "id": "AX61",
+              "term": "has asset",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀has asset.Asset"
+            },
+            {
+              "id": "AX62",
+              "term": "has conflict resolution strategy",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has conflict resolution strategy (ObjectProperty)"
+            },
+            {
+              "id": "AX63",
+              "term": "has conflict resolution strategy",
+              "axiom_type": "Domain",
+              "dl": "∃has conflict resolution strategy.⊤ ⊑ Policy"
+            },
+            {
+              "id": "AX64",
+              "term": "has conflict resolution strategy",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀has conflict resolution strategy.Conflict Resolution Strategy"
+            },
+            {
+              "id": "AX71",
+              "term": "has party",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has party (ObjectProperty)"
+            },
+            {
+              "id": "AX72",
+              "term": "has party",
+              "axiom_type": "Domain",
+              "dl": "∃has party.⊤ ⊑ Party Role Assignment"
+            },
+            {
+              "id": "AX73",
+              "term": "has party",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀has party.Contract Party"
+            },
+            {
+              "id": "AX77",
+              "term": "has role",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has role (ObjectProperty)"
+            },
+            {
+              "id": "AX78",
+              "term": "has role",
+              "axiom_type": "Domain",
+              "dl": "∃has role.⊤ ⊑ Party Role Assignment"
+            },
+            {
+              "id": "AX79",
+              "term": "has role",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀has role.Role"
+            },
+            {
+              "id": "AX83",
+              "term": "has sub constraint",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has sub constraint (ObjectProperty)"
+            },
+            {
+              "id": "AX84",
+              "term": "has sub constraint",
+              "axiom_type": "Domain",
+              "dl": "∃has sub constraint.⊤ ⊑ Logical Constraint"
+            },
+            {
+              "id": "AX85",
+              "term": "has sub constraint",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀has sub constraint.Constraint"
+            },
+            {
+              "id": "AX86",
+              "term": "has supporting party",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has supporting party (ObjectProperty)"
+            },
+            {
+              "id": "AX87",
+              "term": "has supporting party",
+              "axiom_type": "Domain",
+              "dl": "∃has supporting party.⊤ ⊑ Party Right Duty Support"
+            },
+            {
+              "id": "AX88",
+              "term": "has supporting party",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀has supporting party.Contract Party"
+            },
+            {
+              "id": "AX93",
+              "term": "negates",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: negates (ObjectProperty)"
+            },
+            {
+              "id": "AX94",
+              "term": "negates",
+              "axiom_type": "Domain",
+              "dl": "∃negates.⊤ ⊑ Negation"
+            },
+            {
+              "id": "AX95",
+              "term": "negates",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀negates.Permission"
+            },
+            {
+              "id": "AX99",
+              "term": "supports duty",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: supports duty (ObjectProperty)"
+            },
+            {
+              "id": "AX100",
+              "term": "supports duty",
+              "axiom_type": "Domain",
+              "dl": "∃supports duty.⊤ ⊑ Party Right Duty Support"
+            },
+            {
+              "id": "AX101",
+              "term": "supports duty",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀supports duty.Duty"
+            },
+            {
+              "id": "AX102",
+              "term": "supports right",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: supports right (ObjectProperty)"
+            },
+            {
+              "id": "AX103",
+              "term": "supports right",
+              "axiom_type": "Domain",
+              "dl": "∃supports right.⊤ ⊑ Party Right Duty Support"
+            },
+            {
+              "id": "AX104",
+              "term": "supports right",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀supports right.Permission"
+            }
+          ]
+        },
+        "DatatypeProperty": {
+          "gold": [],
+          "pred": [
+            {
+              "id": "AX105",
+              "term": "constraint operator",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: constraint operator (DatatypeProperty)"
+            },
+            {
+              "id": "AX106",
+              "term": "constraint operator",
+              "axiom_type": "Domain",
+              "dl": "∃constraint operator.⊤ ⊑ Logical Constraint"
+            },
+            {
+              "id": "AX107",
+              "term": "constraint operator",
+              "axiom_type": "Range",
+              "dl": "constraint operator maps-to xsd:string"
+            },
+            {
+              "id": "AX108",
+              "term": "step index",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: step index (DatatypeProperty)"
+            },
+            {
+              "id": "AX109",
+              "term": "step index",
+              "axiom_type": "Domain",
+              "dl": "∃step index.⊤ ⊑ Sequence Step"
+            },
+            {
+              "id": "AX110",
+              "term": "step index",
+              "axiom_type": "Range",
+              "dl": "step index maps-to xsd:integer"
+            }
+          ]
+        }
+      }
+    },
+    "alignments": {
+      "class": {
+        "Action": "Negation",
+        "Asset": "Asset",
+        "ConflictTerm": "Conflict Resolution Strategy",
+        "Constraint": "Constraint",
+        "Duty": "Duty",
+        "LogicalConstraint": "Logical Constraint",
+        "Party": "Party Role Assignment",
+        "Permission": "Permission",
+        "Policy": "Policy",
+        "Prohibition": "Prohibition",
+        "Rule": "Rule"
+      },
+      "property": {
+        "andSequence": "has sequence step",
+        "consequence": "has consequence duty",
+        "constraint": "has constraint",
+        "inheritFrom": "inherits from",
+        "inheritRelation": "inherited by",
+        "permission": "contains permission",
+        "remedy": "has remedy duty",
+        "target": "step target"
+      }
+    },
+    "cq_coverage": {
+      "per_cq": {
+        "CQ03": {
+          "question": "",
+          "n_axioms": 7,
+          "n_tp": 1,
+          "rate": 0.14285714285714285,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX5",
+            "AX8",
+            "AX9",
+            "AX34",
+            "AX35",
+            "AX48",
+            "AX49"
+          ],
+          "tp_axiom_ids": [
+            "AX49"
+          ],
+          "missing_axiom_ids": [
+            "AX5",
+            "AX8",
+            "AX9",
+            "AX34",
+            "AX35",
+            "AX48"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX5",
+              "dl": "DisjointClasses(Permission, Prohibition)",
+              "status": "fn"
+            },
+            {
+              "id": "AX8",
+              "dl": "∃action.⊤ ⊑ (Policy ⊔ Rule)",
+              "status": "skip"
+            },
+            {
+              "id": "AX9",
+              "dl": "⊤ ⊑ ∀action.Action",
+              "status": "skip"
+            },
+            {
+              "id": "AX34",
+              "dl": "∃implies.⊤ ⊑ Action",
+              "status": "skip"
+            },
+            {
+              "id": "AX35",
+              "dl": "⊤ ⊑ ∀implies.Action",
+              "status": "skip"
+            },
+            {
+              "id": "AX48",
+              "dl": "∃permission.⊤ ⊑ Policy",
+              "status": "mismatch"
+            }
+          ]
+        },
+        "CQ06": {
+          "question": "",
+          "n_axioms": 11,
+          "n_tp": 0,
+          "rate": 0.0,
+          "fully_covered": false,
+          "any_covered": false,
+          "covered": false,
+          "axiom_ids": [
+            "AX2",
+            "AX3",
+            "AX5",
+            "AX12",
+            "AX13",
+            "AX14",
+            "AX15",
+            "AX16",
+            "AX17",
+            "AX30",
+            "AX31"
+          ],
+          "tp_axiom_ids": [],
+          "missing_axiom_ids": [
+            "AX2",
+            "AX3",
+            "AX5",
+            "AX12",
+            "AX13",
+            "AX14",
+            "AX15",
+            "AX16",
+            "AX17",
+            "AX30",
+            "AX31"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX2",
+              "dl": "DisjointClasses(Duty, Permission)",
+              "status": "fn"
+            },
+            {
+              "id": "AX3",
+              "dl": "DisjointClasses(Duty, Prohibition)",
+              "status": "fn"
+            },
+            {
+              "id": "AX5",
+              "dl": "DisjointClasses(Permission, Prohibition)",
+              "status": "fn"
+            },
+            {
+              "id": "AX12",
+              "dl": "∃assignee.⊤ ⊑ (Policy ⊔ Rule)",
+              "status": "skip"
+            },
+            {
+              "id": "AX13",
+              "dl": "⊤ ⊑ ∀assignee.Party",
+              "status": "skip"
+            },
+            {
+              "id": "AX14",
+              "dl": "assignee ⊑ function",
+              "status": "skip"
+            },
+            {
+              "id": "AX15",
+              "dl": "∃assigner.⊤ ⊑ (Policy ⊔ Rule)",
+              "status": "skip"
+            },
+            {
+              "id": "AX16",
+              "dl": "⊤ ⊑ ∀assigner.Party",
+              "status": "skip"
+            },
+            {
+              "id": "AX17",
+              "dl": "assigner ⊑ function",
+              "status": "skip"
+            },
+            {
+              "id": "AX30",
+              "dl": "∃function.⊤ ⊑ (Policy ⊔ Rule)",
+              "status": "skip"
+            },
+            {
+              "id": "AX31",
+              "dl": "⊤ ⊑ ∀function.Party",
+              "status": "skip"
+            }
+          ]
+        },
+        "CQ08": {
+          "question": "",
+          "n_axioms": 5,
+          "n_tp": 1,
+          "rate": 0.2,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX7",
+            "AX43",
+            "AX44",
+            "AX50",
+            "AX51"
+          ],
+          "tp_axiom_ids": [
+            "AX7"
+          ],
+          "missing_axiom_ids": [
+            "AX43",
+            "AX44",
+            "AX50",
+            "AX51"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX43",
+              "dl": "∃operator.⊤ ⊑ Constraint",
+              "status": "skip"
+            },
+            {
+              "id": "AX44",
+              "dl": "⊤ ⊑ ∀operator.Operator",
+              "status": "skip"
+            },
+            {
+              "id": "AX50",
+              "dl": "∃prohibition.⊤ ⊑ Policy",
+              "status": "skip"
+            },
+            {
+              "id": "AX51",
+              "dl": "⊤ ⊑ ∀prohibition.Prohibition",
+              "status": "skip"
+            }
+          ]
+        },
+        "CQ10": {
+          "question": "",
+          "n_axioms": 23,
+          "n_tp": 3,
+          "rate": 0.13043478260869565,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX2",
+            "AX3",
+            "AX4",
+            "AX5",
+            "AX6",
+            "AX7",
+            "AX12",
+            "AX13",
+            "AX14",
+            "AX15",
+            "AX16",
+            "AX17",
+            "AX25",
+            "AX26",
+            "AX27",
+            "AX30",
+            "AX31",
+            "AX40",
+            "AX41",
+            "AX48",
+            "AX49",
+            "AX50",
+            "AX51"
+          ],
+          "tp_axiom_ids": [
+            "AX6",
+            "AX7",
+            "AX49"
+          ],
+          "missing_axiom_ids": [
+            "AX2",
+            "AX3",
+            "AX4",
+            "AX5",
+            "AX12",
+            "AX13",
+            "AX14",
+            "AX15",
+            "AX16",
+            "AX17",
+            "AX25",
+            "AX26",
+            "AX27",
+            "AX30",
+            "AX31",
+            "AX40",
+            "AX41",
+            "AX48",
+            "AX50",
+            "AX51"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX2",
+              "dl": "DisjointClasses(Duty, Permission)",
+              "status": "fn"
+            },
+            {
+              "id": "AX3",
+              "dl": "DisjointClasses(Duty, Prohibition)",
+              "status": "fn"
+            },
+            {
+              "id": "AX4",
+              "dl": "Duty ⊑ Rule",
+              "status": "fn"
+            },
+            {
+              "id": "AX5",
+              "dl": "DisjointClasses(Permission, Prohibition)",
+              "status": "fn"
+            },
+            {
+              "id": "AX12",
+              "dl": "∃assignee.⊤ ⊑ (Policy ⊔ Rule)",
+              "status": "skip"
+            },
+            {
+              "id": "AX13",
+              "dl": "⊤ ⊑ ∀assignee.Party",
+              "status": "skip"
+            },
+            {
+              "id": "AX14",
+              "dl": "assignee ⊑ function",
+              "status": "skip"
+            },
+            {
+              "id": "AX15",
+              "dl": "∃assigner.⊤ ⊑ (Policy ⊔ Rule)",
+              "status": "skip"
+            },
+            {
+              "id": "AX16",
+              "dl": "⊤ ⊑ ∀assigner.Party",
+              "status": "skip"
+            },
+            {
+              "id": "AX17",
+              "dl": "assigner ⊑ function",
+              "status": "skip"
+            },
+            {
+              "id": "AX25",
+              "dl": "contractedParty ⊑ function",
+              "status": "skip"
+            },
+            {
+              "id": "AX26",
+              "dl": "∃duty.⊤ ⊑ Permission",
+              "status": "skip"
+            },
+            {
+              "id": "AX27",
+              "dl": "⊤ ⊑ ∀duty.Duty",
+              "status": "skip"
+            },
+            {
+              "id": "AX30",
+              "dl": "∃function.⊤ ⊑ (Policy ⊔ Rule)",
+              "status": "skip"
+            },
+            {
+              "id": "AX31",
+              "dl": "⊤ ⊑ ∀function.Party",
+              "status": "skip"
+            },
+            {
+              "id": "AX40",
+              "dl": "∃obligation.⊤ ⊑ Policy",
+              "status": "skip"
+            },
+            {
+              "id": "AX41",
+              "dl": "⊤ ⊑ ∀obligation.Duty",
+              "status": "skip"
+            },
+            {
+              "id": "AX48",
+              "dl": "∃permission.⊤ ⊑ Policy",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX50",
+              "dl": "∃prohibition.⊤ ⊑ Policy",
+              "status": "skip"
+            },
+            {
+              "id": "AX51",
+              "dl": "⊤ ⊑ ∀prohibition.Prohibition",
+              "status": "skip"
+            }
+          ]
+        },
+        "CQ13": {
+          "question": "",
+          "n_axioms": 3,
+          "n_tp": 0,
+          "rate": 0.0,
+          "fully_covered": false,
+          "any_covered": false,
+          "covered": false,
+          "axiom_ids": [
+            "AX23",
+            "AX24",
+            "AX42"
+          ],
+          "tp_axiom_ids": [],
+          "missing_axiom_ids": [
+            "AX23",
+            "AX24",
+            "AX42"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX23",
+              "dl": "∃constraint.⊤ ⊑ (Policy ⊔ Rule)",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX24",
+              "dl": "⊤ ⊑ ∀constraint.(Constraint ⊔ LogicalConstraint)",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX42",
+              "dl": "∃operand.⊤ ⊑ LogicalConstraint",
+              "status": "skip"
+            }
+          ]
+        },
+        "CQ14": {
+          "question": "",
+          "n_axioms": 6,
+          "n_tp": 0,
+          "rate": 0.0,
+          "fully_covered": false,
+          "any_covered": false,
+          "covered": false,
+          "axiom_ids": [
+            "AX10",
+            "AX23",
+            "AX24",
+            "AX42",
+            "AX45",
+            "AX60"
+          ],
+          "tp_axiom_ids": [],
+          "missing_axiom_ids": [
+            "AX10",
+            "AX23",
+            "AX24",
+            "AX42",
+            "AX45",
+            "AX60"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX10",
+              "dl": "and ⊑ operand",
+              "status": "skip"
+            },
+            {
+              "id": "AX23",
+              "dl": "∃constraint.⊤ ⊑ (Policy ⊔ Rule)",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX24",
+              "dl": "⊤ ⊑ ∀constraint.(Constraint ⊔ LogicalConstraint)",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX42",
+              "dl": "∃operand.⊤ ⊑ LogicalConstraint",
+              "status": "skip"
+            },
+            {
+              "id": "AX45",
+              "dl": "or ⊑ operand",
+              "status": "skip"
+            },
+            {
+              "id": "AX60",
+              "dl": "xone ⊑ operand",
+              "status": "skip"
+            }
+          ]
+        },
+        "CQ21": {
+          "question": "",
+          "n_axioms": 7,
+          "n_tp": 0,
+          "rate": 0.0,
+          "fully_covered": false,
+          "any_covered": false,
+          "covered": false,
+          "axiom_ids": [
+            "AX2",
+            "AX23",
+            "AX24",
+            "AX40",
+            "AX41",
+            "AX43",
+            "AX44"
+          ],
+          "tp_axiom_ids": [],
+          "missing_axiom_ids": [
+            "AX2",
+            "AX23",
+            "AX24",
+            "AX40",
+            "AX41",
+            "AX43",
+            "AX44"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX2",
+              "dl": "DisjointClasses(Duty, Permission)",
+              "status": "fn"
+            },
+            {
+              "id": "AX23",
+              "dl": "∃constraint.⊤ ⊑ (Policy ⊔ Rule)",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX24",
+              "dl": "⊤ ⊑ ∀constraint.(Constraint ⊔ LogicalConstraint)",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX40",
+              "dl": "∃obligation.⊤ ⊑ Policy",
+              "status": "skip"
+            },
+            {
+              "id": "AX41",
+              "dl": "⊤ ⊑ ∀obligation.Duty",
+              "status": "skip"
+            },
+            {
+              "id": "AX43",
+              "dl": "∃operator.⊤ ⊑ Constraint",
+              "status": "skip"
+            },
+            {
+              "id": "AX44",
+              "dl": "⊤ ⊑ ∀operator.Operator",
+              "status": "skip"
+            }
+          ]
+        },
+        "CQ24": {
+          "question": "",
+          "n_axioms": 7,
+          "n_tp": 1,
+          "rate": 0.14285714285714285,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX5",
+            "AX8",
+            "AX9",
+            "AX23",
+            "AX24",
+            "AX48",
+            "AX49"
+          ],
+          "tp_axiom_ids": [
+            "AX49"
+          ],
+          "missing_axiom_ids": [
+            "AX5",
+            "AX8",
+            "AX9",
+            "AX23",
+            "AX24",
+            "AX48"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX5",
+              "dl": "DisjointClasses(Permission, Prohibition)",
+              "status": "fn"
+            },
+            {
+              "id": "AX8",
+              "dl": "∃action.⊤ ⊑ (Policy ⊔ Rule)",
+              "status": "skip"
+            },
+            {
+              "id": "AX9",
+              "dl": "⊤ ⊑ ∀action.Action",
+              "status": "skip"
+            },
+            {
+              "id": "AX23",
+              "dl": "∃constraint.⊤ ⊑ (Policy ⊔ Rule)",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX24",
+              "dl": "⊤ ⊑ ∀constraint.(Constraint ⊔ LogicalConstraint)",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX48",
+              "dl": "∃permission.⊤ ⊑ Policy",
+              "status": "mismatch"
+            }
+          ]
+        },
+        "CQ26": {
+          "question": "",
+          "n_axioms": 7,
+          "n_tp": 0,
+          "rate": 0.0,
+          "fully_covered": false,
+          "any_covered": false,
+          "covered": false,
+          "axiom_ids": [
+            "AX23",
+            "AX24",
+            "AX38",
+            "AX39",
+            "AX42",
+            "AX43",
+            "AX44"
+          ],
+          "tp_axiom_ids": [],
+          "missing_axiom_ids": [
+            "AX23",
+            "AX24",
+            "AX38",
+            "AX39",
+            "AX42",
+            "AX43",
+            "AX44"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX23",
+              "dl": "∃constraint.⊤ ⊑ (Policy ⊔ Rule)",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX24",
+              "dl": "⊤ ⊑ ∀constraint.(Constraint ⊔ LogicalConstraint)",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX38",
+              "dl": "∃leftOperand.⊤ ⊑ Constraint",
+              "status": "skip"
+            },
+            {
+              "id": "AX39",
+              "dl": "⊤ ⊑ ∀leftOperand.LeftOperand",
+              "status": "skip"
+            },
+            {
+              "id": "AX42",
+              "dl": "∃operand.⊤ ⊑ LogicalConstraint",
+              "status": "skip"
+            },
+            {
+              "id": "AX43",
+              "dl": "∃operator.⊤ ⊑ Constraint",
+              "status": "skip"
+            },
+            {
+              "id": "AX44",
+              "dl": "⊤ ⊑ ∀operator.Operator",
+              "status": "skip"
+            }
+          ]
+        },
+        "CQ30": {
+          "question": "",
+          "n_axioms": 8,
+          "n_tp": 0,
+          "rate": 0.0,
+          "fully_covered": false,
+          "any_covered": false,
+          "covered": false,
+          "axiom_ids": [
+            "AX1",
+            "AX46",
+            "AX47",
+            "AX52",
+            "AX53",
+            "AX57",
+            "AX58",
+            "AX59"
+          ],
+          "tp_axiom_ids": [],
+          "missing_axiom_ids": [
+            "AX1",
+            "AX46",
+            "AX47",
+            "AX52",
+            "AX53",
+            "AX57",
+            "AX58",
+            "AX59"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX1",
+              "dl": "AssetCollection ⊑ Asset",
+              "status": "skip"
+            },
+            {
+              "id": "AX46",
+              "dl": "∃partOf.⊤ ⊑ (Asset ⊔ Party)",
+              "status": "skip"
+            },
+            {
+              "id": "AX47",
+              "dl": "⊤ ⊑ ∀partOf.(AssetCollection)",
+              "status": "skip"
+            },
+            {
+              "id": "AX52",
+              "dl": "∃relation.⊤ ⊑ (Policy ⊔ Rule)",
+              "status": "skip"
+            },
+            {
+              "id": "AX53",
+              "dl": "⊤ ⊑ ∀relation.Asset",
+              "status": "skip"
+            },
+            {
+              "id": "AX57",
+              "dl": "∃target.⊤ ⊑ (Policy ⊔ Rule)",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX58",
+              "dl": "⊤ ⊑ ∀target.Asset",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX59",
+              "dl": "target ⊑ relation",
+              "status": "fn"
+            }
+          ]
+        },
+        "CQ31": {
+          "question": "",
+          "n_axioms": 5,
+          "n_tp": 2,
+          "rate": 0.4,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX2",
+            "AX11",
+            "AX20",
+            "AX21",
+            "AX22"
+          ],
+          "tp_axiom_ids": [
+            "AX20",
+            "AX21"
+          ],
+          "missing_axiom_ids": [
+            "AX2",
+            "AX11",
+            "AX22"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX2",
+              "dl": "DisjointClasses(Duty, Permission)",
+              "status": "fn"
+            },
+            {
+              "id": "AX11",
+              "dl": "andSequence ⊑ operand",
+              "status": "fn"
+            },
+            {
+              "id": "AX22",
+              "dl": "consequence ⊑ failure",
+              "status": "fn"
+            }
+          ]
+        },
+        "CQ33": {
+          "question": "",
+          "n_axioms": 2,
+          "n_tp": 0,
+          "rate": 0.0,
+          "fully_covered": false,
+          "any_covered": false,
+          "covered": false,
+          "axiom_ids": [
+            "AX36",
+            "AX37"
+          ],
+          "tp_axiom_ids": [],
+          "missing_axiom_ids": [
+            "AX36",
+            "AX37"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX36",
+              "dl": "∃inheritFrom.⊤ ⊑ Policy",
+              "status": "fn"
+            },
+            {
+              "id": "AX37",
+              "dl": "⊤ ⊑ ∀inheritFrom.Policy",
+              "status": "fn"
+            }
+          ]
+        },
+        "CQNew1": {
+          "question": "",
+          "n_axioms": 2,
+          "n_tp": 0,
+          "rate": 0.0,
+          "fully_covered": false,
+          "any_covered": false,
+          "covered": false,
+          "axiom_ids": [
+            "AX32",
+            "AX33"
+          ],
+          "tp_axiom_ids": [],
+          "missing_axiom_ids": [
+            "AX32",
+            "AX33"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX32",
+              "dl": "∃hasPolicy.⊤ ⊑ Asset",
+              "status": "skip"
+            },
+            {
+              "id": "AX33",
+              "dl": "⊤ ⊑ ∀hasPolicy.Policy",
+              "status": "skip"
+            }
+          ]
+        },
+        "CQNew2": {
+          "question": "",
+          "n_axioms": 2,
+          "n_tp": 0,
+          "rate": 0.0,
+          "fully_covered": false,
+          "any_covered": false,
+          "covered": false,
+          "axiom_ids": [
+            "AX18",
+            "AX19"
+          ],
+          "tp_axiom_ids": [],
+          "missing_axiom_ids": [
+            "AX18",
+            "AX19"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX18",
+              "dl": "∃conflict.⊤ ⊑ Policy",
+              "status": "skip"
+            },
+            {
+              "id": "AX19",
+              "dl": "⊤ ⊑ ∀conflict.ConflictTerm",
+              "status": "skip"
+            }
+          ]
+        },
+        "CQNew3": {
+          "question": "",
+          "n_axioms": 6,
+          "n_tp": 3,
+          "rate": 0.5,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX2",
+            "AX4",
+            "AX7",
+            "AX54",
+            "AX55",
+            "AX56"
+          ],
+          "tp_axiom_ids": [
+            "AX7",
+            "AX54",
+            "AX55"
+          ],
+          "missing_axiom_ids": [
+            "AX2",
+            "AX4",
+            "AX56"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX2",
+              "dl": "DisjointClasses(Duty, Permission)",
+              "status": "fn"
+            },
+            {
+              "id": "AX4",
+              "dl": "Duty ⊑ Rule",
+              "status": "fn"
+            },
+            {
+              "id": "AX56",
+              "dl": "remedy ⊑ failure",
+              "status": "fn"
+            }
+          ]
+        },
+        "CQNew4": {
+          "question": "",
+          "n_axioms": 4,
+          "n_tp": 2,
+          "rate": 0.5,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX20",
+            "AX28",
+            "AX29",
+            "AX54"
+          ],
+          "tp_axiom_ids": [
+            "AX20",
+            "AX54"
+          ],
+          "missing_axiom_ids": [
+            "AX28",
+            "AX29"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX28",
+              "dl": "∃failure.⊤ ⊑ Rule",
+              "status": "skip"
+            },
+            {
+              "id": "AX29",
+              "dl": "⊤ ⊑ ∀failure.Rule",
+              "status": "skip"
+            }
+          ]
+        },
+        "CQNew5": {
+          "question": "",
+          "n_axioms": 4,
+          "n_tp": 2,
+          "rate": 0.5,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX2",
+            "AX20",
+            "AX21",
+            "AX22"
+          ],
+          "tp_axiom_ids": [
+            "AX20",
+            "AX21"
+          ],
+          "missing_axiom_ids": [
+            "AX2",
+            "AX22"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX2",
+              "dl": "DisjointClasses(Duty, Permission)",
+              "status": "fn"
+            },
+            {
+              "id": "AX22",
+              "dl": "consequence ⊑ failure",
+              "status": "fn"
+            }
+          ]
+        },
+        "CQNew6": {
+          "question": "",
+          "n_axioms": 7,
+          "n_tp": 1,
+          "rate": 0.14285714285714285,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX7",
+            "AX23",
+            "AX24",
+            "AX43",
+            "AX44",
+            "AX50",
+            "AX51"
+          ],
+          "tp_axiom_ids": [
+            "AX7"
+          ],
+          "missing_axiom_ids": [
+            "AX23",
+            "AX24",
+            "AX43",
+            "AX44",
+            "AX50",
+            "AX51"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX23",
+              "dl": "∃constraint.⊤ ⊑ (Policy ⊔ Rule)",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX24",
+              "dl": "⊤ ⊑ ∀constraint.(Constraint ⊔ LogicalConstraint)",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX43",
+              "dl": "∃operator.⊤ ⊑ Constraint",
+              "status": "skip"
+            },
+            {
+              "id": "AX44",
+              "dl": "⊤ ⊑ ∀operator.Operator",
+              "status": "skip"
+            },
+            {
+              "id": "AX50",
+              "dl": "∃prohibition.⊤ ⊑ Policy",
+              "status": "skip"
+            },
+            {
+              "id": "AX51",
+              "dl": "⊤ ⊑ ∀prohibition.Prohibition",
+              "status": "skip"
+            }
+          ]
+        }
+      },
+      "n_total": 18,
+      "n_fully_covered": 0,
+      "n_any_covered": 9,
+      "fully_coverage": 0.0,
+      "any_coverage": 0.5,
+      "average_rate": 0.14772256728778468
+    }
+  }
+}

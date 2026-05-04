@@ -1,0 +1,486 @@
+{
+  "config": {
+    "semantic_threshold": 0.6,
+    "embedding_model": "embeddinggemma",
+    "class_csv": "03_evaluation_results/normal/qwen_qwen3.6-flash/wine/01_class/class_best_matching.csv",
+    "property_csv": "03_evaluation_results/normal/qwen_qwen3.6-flash/wine/02_property/property_best_matching.csv"
+  },
+  "results": [
+    {
+      "id": "layer1_statistics",
+      "gold": {
+        "ObjectProperty": {
+          "full": 5,
+          "domain_only": 0,
+          "range_only": 3,
+          "undefined": 0
+        },
+        "DatatypeProperty": {
+          "full": 1,
+          "domain_only": 0,
+          "range_only": 0,
+          "undefined": 0
+        }
+      },
+      "pred": {
+        "ObjectProperty": {
+          "full": 7,
+          "domain_only": 0,
+          "range_only": 0,
+          "undefined": 0
+        },
+        "DatatypeProperty": {
+          "full": 0,
+          "domain_only": 0,
+          "range_only": 0,
+          "undefined": 0
+        }
+      },
+      "gold_totals": {
+        "ObjectProperty": 8,
+        "DatatypeProperty": 1
+      },
+      "pred_totals": {
+        "ObjectProperty": 7,
+        "DatatypeProperty": 0
+      },
+      "gold_grand_total": 9,
+      "pred_grand_total": 7
+    },
+    {
+      "id": "layer2_semantic",
+      "threshold": 0.6,
+      "model_id": "embeddinggemma",
+      "overall": {
+        "n_gold": 9,
+        "n_pred": 7,
+        "tp": 6,
+        "fp": 1,
+        "fn": 3,
+        "precision": 0.8571,
+        "recall": 0.6667,
+        "f1": 0.75
+      },
+      "ObjectProperty": {
+        "n_gold": 8,
+        "n_pred": 7,
+        "tp": 6,
+        "fp": 1,
+        "fn": 2,
+        "precision": 0.8571,
+        "recall": 0.75,
+        "f1": 0.8,
+        "matches": [
+          {
+            "gold_predicate": "hasBody",
+            "pred_predicate": "has body",
+            "gold_text": "has body wine body",
+            "pred_text": "wine has body body",
+            "score": 0.9238
+          },
+          {
+            "gold_predicate": "hasVintageYear",
+            "pred_predicate": "has vintage",
+            "gold_text": "vintage has vintage year vintage year",
+            "pred_text": "wine has vintage vintage year",
+            "score": 0.8437
+          },
+          {
+            "gold_predicate": "madeFromGrape",
+            "pred_predicate": "has grape",
+            "gold_text": "wine made from grape wine grape",
+            "pred_text": "wine has grape grape",
+            "score": 0.825
+          },
+          {
+            "gold_predicate": "hasWineDescriptor",
+            "pred_predicate": "has wine type",
+            "gold_text": "wine has wine descriptor wine descriptor",
+            "pred_text": "wine has wine type wine type",
+            "score": 0.7315
+          },
+          {
+            "gold_predicate": "hasColor",
+            "pred_predicate": "has characteristic",
+            "gold_text": "wine has color wine color",
+            "pred_text": "wine has characteristic wine characteristic",
+            "score": 0.7134
+          },
+          {
+            "gold_predicate": "hasFlavor",
+            "pred_predicate": "has bouquet",
+            "gold_text": "has flavor wine flavor",
+            "pred_text": "wine has bouquet bouquet",
+            "score": 0.6539
+          }
+        ]
+      },
+      "DatatypeProperty": {
+        "n_gold": 1,
+        "n_pred": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "matches": []
+      }
+    },
+    {
+      "id": "layer3_strict",
+      "n_aligned_total": 4,
+      "ObjectProperty": {
+        "n_aligned_pairs": 4,
+        "type": {
+          "tp": 4,
+          "fp": 0,
+          "fn": 0,
+          "mismatch": 0,
+          "skip": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "domain": {
+          "tp": 1,
+          "fp": 2,
+          "fn": 0,
+          "mismatch": 1,
+          "skip": 0,
+          "precision": 0.25,
+          "recall": 0.5,
+          "f1": 0.3333
+        },
+        "range": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "mismatch": 2,
+          "skip": 0,
+          "precision": 0.5,
+          "recall": 0.5,
+          "f1": 0.5
+        },
+        "overall": {
+          "tp": 3,
+          "fp": 2,
+          "fn": 0,
+          "mismatch": 3,
+          "skip": 0,
+          "precision": 0.375,
+          "recall": 0.5,
+          "f1": 0.4286
+        },
+        "fully_aligned": []
+      },
+      "DatatypeProperty": {
+        "n_aligned_pairs": 0,
+        "type": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "mismatch": 0,
+          "skip": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "domain": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "mismatch": 0,
+          "skip": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "range": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "mismatch": 0,
+          "skip": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "overall": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "mismatch": 0,
+          "skip": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "fully_aligned": []
+      },
+      "grand_overall": {
+        "tp": 3,
+        "fp": 2,
+        "fn": 0,
+        "mismatch": 3,
+        "skip": 0,
+        "precision": 0.375,
+        "recall": 0.5,
+        "f1": 0.4286
+      },
+      "grand_type": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 0,
+        "mismatch": 0,
+        "skip": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "grand_domain": {
+        "tp": 1,
+        "fp": 2,
+        "fn": 0,
+        "mismatch": 1,
+        "skip": 0,
+        "precision": 0.25,
+        "recall": 0.5,
+        "f1": 0.3333
+      },
+      "grand_range": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mismatch": 2,
+        "skip": 0,
+        "precision": 0.5,
+        "recall": 0.5,
+        "f1": 0.5
+      },
+      "type_mismatches": [],
+      "all_pairs": [
+        {
+          "predicate_type": "ObjectProperty",
+          "gold_predicate": "hasBody",
+          "pred_predicate": "has body",
+          "gold_type": "ObjectProperty",
+          "pred_type": "ObjectProperty",
+          "gold_domain": null,
+          "pred_domain": [
+            "Wine"
+          ],
+          "gold_range": [
+            "WineBody"
+          ],
+          "pred_range": [
+            "Body"
+          ],
+          "type_verdict": "tp",
+          "domain_verdict": "fp",
+          "range_verdict": "tp",
+          "is_full_match": false
+        },
+        {
+          "predicate_type": "ObjectProperty",
+          "gold_predicate": "hasSugar",
+          "pred_predicate": "has grape",
+          "gold_type": "ObjectProperty",
+          "pred_type": "ObjectProperty",
+          "gold_domain": null,
+          "pred_domain": [
+            "Wine"
+          ],
+          "gold_range": [
+            "WineSugar"
+          ],
+          "pred_range": [
+            "Grape"
+          ],
+          "type_verdict": "tp",
+          "domain_verdict": "fp",
+          "range_verdict": "mismatch",
+          "is_full_match": false
+        },
+        {
+          "predicate_type": "ObjectProperty",
+          "gold_predicate": "hasVintageYear",
+          "pred_predicate": "has vintage",
+          "gold_type": "ObjectProperty",
+          "pred_type": "ObjectProperty",
+          "gold_domain": [
+            "Vintage"
+          ],
+          "pred_domain": [
+            "Wine"
+          ],
+          "gold_range": [
+            "VintageYear"
+          ],
+          "pred_range": [
+            "Vintage Year"
+          ],
+          "type_verdict": "tp",
+          "domain_verdict": "mismatch",
+          "range_verdict": "tp",
+          "is_full_match": false
+        },
+        {
+          "predicate_type": "ObjectProperty",
+          "gold_predicate": "hasWineDescriptor",
+          "pred_predicate": "has wine type",
+          "gold_type": "ObjectProperty",
+          "pred_type": "ObjectProperty",
+          "gold_domain": [
+            "wine"
+          ],
+          "pred_domain": [
+            "Wine"
+          ],
+          "gold_range": [
+            "WineDescriptor"
+          ],
+          "pred_range": [
+            "Wine Type"
+          ],
+          "type_verdict": "tp",
+          "domain_verdict": "tp",
+          "range_verdict": "mismatch",
+          "is_full_match": false
+        }
+      ]
+    },
+    {
+      "id": "layer4_global",
+      "ObjectProperty": {
+        "matched": 3,
+        "extra": 11,
+        "extra_layer3": 5,
+        "extra_unaligned": 6,
+        "missing": 10,
+        "missing_layer3": 3,
+        "missing_unaligned": 7,
+        "precision": 0.2143,
+        "recall": 0.2308,
+        "f1": 0.2222,
+        "unaligned_gold_count": 4,
+        "unaligned_pred_count": 3,
+        "unaligned_gold_axiom_count": 7,
+        "unaligned_pred_axiom_count": 6,
+        "unaligned_gold": [
+          {
+            "predicate": "hasColor",
+            "domain": [
+              "wine"
+            ],
+            "range": [
+              "WineColor"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "hasFlavor",
+            "domain": null,
+            "range": [
+              "WineFlavor"
+            ],
+            "axiom_count": 1
+          },
+          {
+            "predicate": "locatedIn",
+            "domain": [
+              "Thing"
+            ],
+            "range": [
+              "Region"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "madeFromGrape",
+            "domain": [
+              "wine"
+            ],
+            "range": [
+              "WineGrape"
+            ],
+            "axiom_count": 2
+          }
+        ],
+        "unaligned_pred": [
+          {
+            "predicate": "has characteristic",
+            "domain": [
+              "Wine"
+            ],
+            "range": [
+              "Wine Characteristic"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "has bouquet",
+            "domain": [
+              "Wine"
+            ],
+            "range": [
+              "Bouquet"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "originates from",
+            "domain": [
+              "Wine"
+            ],
+            "range": [
+              "Region"
+            ],
+            "axiom_count": 2
+          }
+        ]
+      },
+      "DatatypeProperty": {
+        "matched": 0,
+        "extra": 0,
+        "extra_layer3": 0,
+        "extra_unaligned": 0,
+        "missing": 2,
+        "missing_layer3": 0,
+        "missing_unaligned": 2,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "unaligned_gold_count": 1,
+        "unaligned_pred_count": 0,
+        "unaligned_gold_axiom_count": 2,
+        "unaligned_pred_axiom_count": 0,
+        "unaligned_gold": [
+          {
+            "predicate": "yearValue",
+            "domain": [
+              "VintageYear"
+            ],
+            "range": [
+              "xsd:positiveInteger"
+            ],
+            "axiom_count": 2
+          }
+        ],
+        "unaligned_pred": []
+      },
+      "grand_overall": {
+        "matched": 3,
+        "extra": 11,
+        "extra_layer3": 5,
+        "extra_unaligned": 6,
+        "missing": 12,
+        "missing_layer3": 3,
+        "missing_unaligned": 9,
+        "precision": 0.2143,
+        "recall": 0.2,
+        "f1": 0.2069
+      }
+    }
+  ]
+}

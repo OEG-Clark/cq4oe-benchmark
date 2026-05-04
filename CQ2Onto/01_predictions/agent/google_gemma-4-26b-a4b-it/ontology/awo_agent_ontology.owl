@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:vaem="http://www.linkedmodel.org/schema/vaem#">
+ 
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Organism">
+  <rdfs:comment xml:lang="en">The root class for all living things in this domain.</rdfs:comment>
+  <rdfs:label xml:lang="en">Organism</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Maintained existing class structure.: Base class for the ontology.</vaem:rationale>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Animal">
+  <rdfs:comment xml:lang="en">An organism that is an animal.</rdfs:comment>
+  <rdfs:label xml:lang="en">Animal</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added disjointWith Plant: To resolve the lack of disjoint axioms pitfall; an organism cannot be both an animal and a plant.</vaem:rationale>
+  <dc:source>(pitfall) The ontology lacks disjoint axioms between classes</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Organism'/>
+<owl:disjointWith rdf:resource='http://www.semanticweb.org/myontology#Plant'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Plant">
+  <rdfs:comment xml:lang="en">An organism that is a plant.</rdfs:comment>
+  <rdfs:label xml:lang="en">Plant</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Maintained existing class structure.: Disjointness handled in Animal class.</vaem:rationale>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Organism'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Herbivore">
+  <rdfs:comment xml:lang="en">An animal that primarily eats plants or plant parts.</rdfs:comment>
+  <rdfs:label xml:lang="en">Herbivore</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added disjointWith Carnivore and Omnivore: To resolve the lack of disjoint axioms pitfall; dietary roles are mutually exclusive.</vaem:rationale>
+  <dc:source>(pitfall) The ontology lacks disjoint axioms between classes</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Animal'/>
+<owl:disjointWith rdf:resource='http://www.semanticweb.org/myontology#Carnivore'/>
+<owl:disjointWith rdf:resource='http://www.semanticweb.org/myontology#Omnivore'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Carnivore">
+  <rdfs:comment xml:lang="en">An animal that primarily eats other animals.</rdfs:comment>
+  <rdfs:label xml:lang="en">Carnivore</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added disjointWith Herbivore and Omnivore: To resolve the lack of disjoint axioms pitfall.</vaem:rationale>
+  <dc:source>(pitfall) The ontology lacks disjoint axioms between classes</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Animal'/>
+<owl:disjointWith rdf:resource='http://www.semanticweb.org/myontology#Herbivore'/>
+<owl:disjointWith rdf:resource='http://www.semanticweb.org/myontology#Omnivore'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Omnivore">
+  <rdfs:comment xml:lang="en">An animal that eats both animals and plants/plant parts.</rdfs:comment>
+  <rdfs:label xml:lang="en">Omnivore</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added disjointWith Herbivore and Carnivore: To resolve the lack of disjoint axioms pitfall.</vaem:rationale>
+  <dc:source>(pitfall) The ontology lacks disjoint axioms between classes</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Animal'/>
+<owl:disjointWith rdf:resource='http://www.semanticweb.org/myontology#Herbivore'/>
+<owl:disjointWith rdf:resource='http://www.semanticweb.org/myontology#Carnivore'/>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#eats">
+  <rdfs:comment xml:lang="en">The relationship indicating one organism consumes another or a plant part.</rdfs:comment>
+  <rdfs:label xml:lang="en">eats</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Maintained existing property.: Base property for eating relationships.</vaem:rationale>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Organism"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Organism"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isEatenBy">
+  <rdfs:comment xml:lang="en">The inverse of the eats relationship.</rdfs:comment>
+  <rdfs:label xml:lang="en">is eaten by</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added inverse property isEatenBy: To resolve the missing inverse relationship pitfall.</vaem:rationale>
+  <dc:source>(pitfall) Relationship does not have an inverse relationship defined</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Organism"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Organism"/>
+  <owl:inverseOf rdf:resource='http://www.semanticweb.org/myontology#eats'/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#eatsPlantPart">
+  <rdfs:comment xml:lang="en">A specific type of eating relationship where the consumer eats a part of a plant.</rdfs:comment>
+  <rdfs:label xml:lang="en">eats plant part</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Maintained existing property.: Sub-property of eats.</vaem:rationale>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#PlantPart"/>
+  <rdfs:subPropertyOf rdf:resource='http://www.semanticweb.org/myontology#eats'/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isEatenPlantPartBy">
+  <rdfs:comment xml:lang="en">The inverse of the eatsPlantPart relationship.</rdfs:comment>
+  <rdfs:label xml:lang="en">is eaten plant part by</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added inverse property isEatenPlantPartBy: To resolve the missing inverse relationship pitfall.</vaem:rationale>
+  <dc:source>(pitfall) Relationship does not have an inverse relationship defined</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#PlantPart"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+  <owl:inverseOf rdf:resource='http://www.semanticweb.org/myontology#eatsPlantPart'/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#preysOn">
+  <rdfs:comment xml:lang="en">A specific type of eating relationship where an animal eats another animal.</rdfs:comment>
+  <rdfs:label xml:lang="en">preys on</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Maintained existing property.: Sub-property of eats.</vaem:rationale>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+  <rdfs:subPropertyOf rdf:resource='http://www.semanticweb.org/myontology#eats'/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isPreyedOnBy">
+  <rdfs:comment xml:lang="en">The inverse of the preysOn relationship.</rdfs:comment>
+  <rdfs:label xml:lang="en">is preyed on by</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added inverse property isPreyedOnBy: To resolve the missing inverse relationship pitfall.</vaem:rationale>
+  <dc:source>(pitfall) Relationship does not have an inverse relationship defined</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+  <owl:inverseOf rdf:resource='http://www.semanticweb.org/myontology#preysOn'/>
+</owl:ObjectProperty>
+
+</rdf:RDF>

@@ -1,0 +1,429 @@
+====================================================================================================
+ATOMIC TBOX AXIOMS
+====================================================================================================
+
+── Class ──
+
+  Term: Aggregation Permission  [Class]
+    Declaration                Declaration: Aggregation Permission (Class)
+      Subject: Aggregation Permission
+      Object : Class
+    SubClassOf                 Aggregation Permission ⊑ Transfer Rights
+      Subject: Aggregation Permission
+      Object : Transfer Rights
+
+  Term: Asset  [Class]
+    Declaration                Declaration: Asset (Class)
+      Subject: Asset
+      Object : Class
+
+  Term: Conflict Resolution Strategy  [Class]
+    Declaration                Declaration: Conflict Resolution Strategy (Class)
+      Subject: Conflict Resolution Strategy
+      Object : Class
+
+  Term: Constraint  [Class]
+    Declaration                Declaration: Constraint (Class)
+      Subject: Constraint
+      Object : Class
+
+  Term: Container  [Class]
+    Declaration                Declaration: Container (Class)
+      Subject: Container
+      Object : Class
+
+  Term: Contract  [Class]
+    Declaration                Declaration: Contract (Class)
+      Subject: Contract
+      Object : Class
+
+  Term: Contract Party Role  [Class]
+    Declaration                Declaration: Contract Party Role (Class)
+      Subject: Contract Party Role
+      Object : Class
+
+  Term: Deontic Element  [Class]
+    Declaration                Declaration: Deontic Element (Class)
+      Subject: Deontic Element
+      Object : Class
+    SubClassOf                 Deontic Element ⊑ Expression
+      Subject: Deontic Element
+      Object : Expression
+
+  Term: Disaggregation Permission  [Class]
+    Declaration                Declaration: Disaggregation Permission (Class)
+      Subject: Disaggregation Permission
+      Object : Class
+    SubClassOf                 Disaggregation Permission ⊑ Transfer Rights
+      Subject: Disaggregation Permission
+      Object : Transfer Rights
+
+  Term: Duty  [Class]
+    Declaration                Declaration: Duty (Class)
+      Subject: Duty
+      Object : Class
+    SubClassOf                 Duty ⊑ Deontic Element
+      Subject: Duty
+      Object : Deontic Element
+
+  Term: Exclusive Permission  [Class]
+    Declaration                Declaration: Exclusive Permission (Class)
+      Subject: Exclusive Permission
+      Object : Class
+    SubClassOf                 Exclusive Permission ⊑ Permission
+      Subject: Exclusive Permission
+      Object : Permission
+
+  Term: Expression  [Class]
+    Declaration                Declaration: Expression (Class)
+      Subject: Expression
+      Object : Class
+
+  Term: Logical Expression  [Class]
+    Declaration                Declaration: Logical Expression (Class)
+      Subject: Logical Expression
+      Object : Class
+    SubClassOf                 Logical Expression ⊑ Expression
+      Subject: Logical Expression
+      Object : Expression
+
+  Term: Not Expression  [Class]
+    Declaration                Declaration: Not Expression (Class)
+      Subject: Not Expression
+      Object : Class
+    SubClassOf                 Not Expression ⊑ Logical Expression
+      Subject: Not Expression
+      Object : Logical Expression
+
+  Term: Party  [Class]
+    Declaration                Declaration: Party (Class)
+      Subject: Party
+      Object : Class
+
+  Term: Permission  [Class]
+    Declaration                Declaration: Permission (Class)
+      Subject: Permission
+      Object : Class
+    SubClassOf                 Permission ⊑ Deontic Element
+      Subject: Permission
+      Object : Deontic Element
+
+  Term: Policy  [Class]
+    Declaration                Declaration: Policy (Class)
+      Subject: Policy
+      Object : Class
+    SubClassOf                 Policy ⊑ Container
+      Subject: Policy
+      Object : Container
+
+  Term: Prohibition  [Class]
+    Declaration                Declaration: Prohibition (Class)
+      Subject: Prohibition
+      Object : Class
+    SubClassOf                 Prohibition ⊑ Deontic Element
+      Subject: Prohibition
+      Object : Deontic Element
+
+  Term: Role  [Class]
+    Declaration                Declaration: Role (Class)
+      Subject: Role
+      Object : Class
+
+  Term: Sequencing  [Class]
+    Declaration                Declaration: Sequencing (Class)
+      Subject: Sequencing
+      Object : Class
+    SubClassOf                 Sequencing ⊑ Logical Expression
+      Subject: Sequencing
+      Object : Logical Expression
+
+  Term: Step  [Class]
+    Declaration                Declaration: Step (Class)
+      Subject: Step
+      Object : Class
+
+  Term: Transfer Rights  [Class]
+    Declaration                Declaration: Transfer Rights (Class)
+      Subject: Transfer Rights
+      Object : Class
+    SubClassOf                 Transfer Rights ⊑ Permission
+      Subject: Transfer Rights
+      Object : Permission
+
+  Term: and constraint  [Class]
+    Declaration                Declaration: and constraint (Class)
+      Subject: and constraint
+      Object : Class
+    SubClassOf                 and constraint ⊑ Constraint
+      Subject: and constraint
+      Object : Constraint
+
+  Term: or constraint  [Class]
+    Declaration                Declaration: or constraint (Class)
+      Subject: or constraint
+      Object : Class
+    SubClassOf                 or constraint ⊑ Constraint
+      Subject: or constraint
+      Object : Constraint
+
+  Term: xor constraint  [Class]
+    Declaration                Declaration: xor constraint (Class)
+      Subject: xor constraint
+      Object : Class
+    SubClassOf                 xor constraint ⊑ Constraint
+      Subject: xor constraint
+      Object : Constraint
+
+
+── ObjectProperty ──
+
+  Term: contains  [ObjectProperty]
+    Declaration                Declaration: contains (ObjectProperty)
+      Subject: contains
+      Object : ObjectProperty
+    Domain                     ∃contains.⊤ ⊑ Container
+      Subject: contains
+      Object : Container
+    Range                      ⊤ ⊑ ∀contains.Expression
+      Subject: contains
+      Object : Expression
+
+  Term: for deontic element  [ObjectProperty]
+    Declaration                Declaration: for deontic element (ObjectProperty)
+      Subject: for deontic element
+      Object : ObjectProperty
+    Domain                     ∃for deontic element.⊤ ⊑ Contract Party Role
+      Subject: for deontic element
+      Object : Contract Party Role
+    Range                      ⊤ ⊑ ∀for deontic element.Deontic Element
+      Subject: for deontic element
+      Object : Deontic Element
+
+  Term: governed by policy  [ObjectProperty]
+    Declaration                Declaration: governed by policy (ObjectProperty)
+      Subject: governed by policy
+      Object : ObjectProperty
+    InverseOf                  governed by policy ≡ governs asset⁻
+      Subject: governed by policy
+      Object : governs asset
+    Domain                     ∃governed by policy.⊤ ⊑ Asset
+      Subject: governed by policy
+      Object : Asset
+    Range                      ⊤ ⊑ ∀governed by policy.Policy
+      Subject: governed by policy
+      Object : Policy
+
+  Term: governs asset  [ObjectProperty]
+    Declaration                Declaration: governs asset (ObjectProperty)
+      Subject: governs asset
+      Object : ObjectProperty
+    InverseOf                  governs asset ≡ governed by policy⁻
+      Subject: governs asset
+      Object : governed by policy
+    Domain                     ∃governs asset.⊤ ⊑ Policy
+      Subject: governs asset
+      Object : Policy
+    Range                      ⊤ ⊑ ∀governs asset.Asset
+      Subject: governs asset
+      Object : Asset
+
+  Term: has conflict resolution strategy  [ObjectProperty]
+    Declaration                Declaration: has conflict resolution strategy (ObjectProperty)
+      Subject: has conflict resolution strategy
+      Object : ObjectProperty
+    Domain                     ∃has conflict resolution strategy.⊤ ⊑ Policy
+      Subject: has conflict resolution strategy
+      Object : Policy
+    Range                      ⊤ ⊑ ∀has conflict resolution strategy.Conflict Resolution Strategy
+      Subject: has conflict resolution strategy
+      Object : Conflict Resolution Strategy
+    Characteristics            Functional(has conflict resolution strategy)
+      Subject: has conflict resolution strategy
+      Object : Functional
+
+  Term: has consequence duty  [ObjectProperty]
+    Declaration                Declaration: has consequence duty (ObjectProperty)
+      Subject: has consequence duty
+      Object : ObjectProperty
+    Domain                     ∃has consequence duty.⊤ ⊑ Duty
+      Subject: has consequence duty
+      Object : Duty
+    Range                      ⊤ ⊑ ∀has consequence duty.Duty
+      Subject: has consequence duty
+      Object : Duty
+
+  Term: has constraint  [ObjectProperty]
+    Declaration                Declaration: has constraint (ObjectProperty)
+      Subject: has constraint
+      Object : ObjectProperty
+    Domain                     ∃has constraint.⊤ ⊑ Deontic Element
+      Subject: has constraint
+      Object : Deontic Element
+    Range                      ⊤ ⊑ ∀has constraint.Constraint
+      Subject: has constraint
+      Object : Constraint
+
+  Term: has contract party role  [ObjectProperty]
+    Declaration                Declaration: has contract party role (ObjectProperty)
+      Subject: has contract party role
+      Object : ObjectProperty
+    InverseOf                  has contract party role ≡ in contract⁻
+      Subject: has contract party role
+      Object : in contract
+    Domain                     ∃has contract party role.⊤ ⊑ Contract
+      Subject: has contract party role
+      Object : Contract
+    Range                      ⊤ ⊑ ∀has contract party role.Contract Party Role
+      Subject: has contract party role
+      Object : Contract Party Role
+
+  Term: has exclusive option  [ObjectProperty]
+    Declaration                Declaration: has exclusive option (ObjectProperty)
+      Subject: has exclusive option
+      Object : ObjectProperty
+    Domain                     ∃has exclusive option.⊤ ⊑ Exclusive Permission
+      Subject: has exclusive option
+      Object : Exclusive Permission
+    Range                      ⊤ ⊑ ∀has exclusive option.Permission
+      Subject: has exclusive option
+      Object : Permission
+
+  Term: has nested constraint  [ObjectProperty]
+    Declaration                Declaration: has nested constraint (ObjectProperty)
+      Subject: has nested constraint
+      Object : ObjectProperty
+    Domain                     ∃has nested constraint.⊤ ⊑ Constraint
+      Subject: has nested constraint
+      Object : Constraint
+    Range                      ⊤ ⊑ ∀has nested constraint.Constraint
+      Subject: has nested constraint
+      Object : Constraint
+
+  Term: has party  [ObjectProperty]
+    Declaration                Declaration: has party (ObjectProperty)
+      Subject: has party
+      Object : ObjectProperty
+    Domain                     ∃has party.⊤ ⊑ Contract Party Role
+      Subject: has party
+      Object : Contract Party Role
+    Range                      ⊤ ⊑ ∀has party.Party
+      Subject: has party
+      Object : Party
+
+  Term: has remedy for violation  [ObjectProperty]
+    Declaration                Declaration: has remedy for violation (ObjectProperty)
+      Subject: has remedy for violation
+      Object : ObjectProperty
+    Domain                     ∃has remedy for violation.⊤ ⊑ Prohibition
+      Subject: has remedy for violation
+      Object : Prohibition
+    Range                      ⊤ ⊑ ∀has remedy for violation.Duty
+      Subject: has remedy for violation
+      Object : Duty
+
+  Term: has role  [ObjectProperty]
+    Declaration                Declaration: has role (ObjectProperty)
+      Subject: has role
+      Object : ObjectProperty
+    Domain                     ∃has role.⊤ ⊑ Contract Party Role
+      Subject: has role
+      Object : Contract Party Role
+    Range                      ⊤ ⊑ ∀has role.Role
+      Subject: has role
+      Object : Role
+
+  Term: has step  [ObjectProperty]
+    Declaration                Declaration: has step (ObjectProperty)
+      Subject: has step
+      Object : ObjectProperty
+    Domain                     ∃has step.⊤ ⊑ Sequencing
+      Subject: has step
+      Object : Sequencing
+    Range                      ⊤ ⊑ ∀has step.Step
+      Subject: has step
+      Object : Step
+
+  Term: in contract  [ObjectProperty]
+    Declaration                Declaration: in contract (ObjectProperty)
+      Subject: in contract
+      Object : ObjectProperty
+    InverseOf                  in contract ≡ has contract party role⁻
+      Subject: in contract
+      Object : has contract party role
+    Domain                     ∃in contract.⊤ ⊑ Contract Party Role
+      Subject: in contract
+      Object : Contract Party Role
+    Range                      ⊤ ⊑ ∀in contract.Contract
+      Subject: in contract
+      Object : Contract
+
+  Term: negated element  [ObjectProperty]
+    Declaration                Declaration: negated element (ObjectProperty)
+      Subject: negated element
+      Object : ObjectProperty
+    Domain                     ∃negated element.⊤ ⊑ Not Expression
+      Subject: negated element
+      Object : Not Expression
+    Range                      ⊤ ⊑ ∀negated element.Expression
+      Subject: negated element
+      Object : Expression
+    Characteristics            Functional(negated element)
+      Subject: negated element
+      Object : Functional
+
+  Term: step expression  [ObjectProperty]
+    Declaration                Declaration: step expression (ObjectProperty)
+      Subject: step expression
+      Object : ObjectProperty
+    Domain                     ∃step expression.⊤ ⊑ Step
+      Subject: step expression
+      Object : Step
+    Range                      ⊤ ⊑ ∀step expression.Expression
+      Subject: step expression
+      Object : Expression
+
+  Term: triggers on failure  [ObjectProperty]
+    Declaration                Declaration: triggers on failure (ObjectProperty)
+      Subject: triggers on failure
+      Object : ObjectProperty
+    Domain                     ∃triggers on failure.⊤ ⊑ Deontic Element
+      Subject: triggers on failure
+      Object : Deontic Element
+    Range                      ⊤ ⊑ ∀triggers on failure.Deontic Element
+      Subject: triggers on failure
+      Object : Deontic Element
+
+
+── DatatypeProperty ──
+
+  Term: step index  [DatatypeProperty]
+    Declaration                Declaration: step index (DatatypeProperty)
+      Subject: step index
+      Object : DatatypeProperty
+    Domain                     ∃step index.⊤ ⊑ Step
+      Subject: step index
+      Object : Step
+    Range                      step index maps-to xsd:integer
+      Subject: step index
+      Object : xsd:integer
+
+
+====================================================================================================
+STATISTICS
+====================================================================================================
+
+  Classes:               25  (defined: 0, primitive: 25)
+  ObjectProperties:      18
+  DatatypeProperties:    1
+
+  Axiom Breakdown:
+    Characteristics           2
+    Declaration               44
+    Domain                    19
+    InverseOf                 4
+    Range                     19
+    SubClassOf                15
+    ------------------------------
+    Total TBox Axioms         103
+
+====================================================================================================

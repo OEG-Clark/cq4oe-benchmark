@@ -1,0 +1,296 @@
+====================================================================================================
+ATOMIC TBOX AXIOMS
+====================================================================================================
+
+── Class ──
+
+  Term: Actuator  [Class]
+    Declaration                Declaration: Actuator (Class)
+      Subject: Actuator
+      Object : Class
+    SubClassOf                 Actuator ⊑ Infrastructure Asset
+      Subject: Actuator
+      Object : Infrastructure Asset
+
+  Term: Chemical Property  [Class]
+    Declaration                Declaration: Chemical Property (Class)
+      Subject: Chemical Property
+      Object : Class
+    SubClassOf                 Chemical Property ⊑ Water Property
+      Subject: Chemical Property
+      Object : Water Property
+    DisjointClasses            DisjointClasses(Chemical Property, Physical Property)
+      Subject: Chemical Property
+      Object : Physical Property
+
+  Term: Infrastructure Asset  [Class]
+    Declaration                Declaration: Infrastructure Asset (Class)
+      Subject: Infrastructure Asset
+      Object : Class
+
+  Term: Physical Property  [Class]
+    Declaration                Declaration: Physical Property (Class)
+      Subject: Physical Property
+      Object : Class
+    SubClassOf                 Physical Property ⊑ Water Property
+      Subject: Physical Property
+      Object : Water Property
+
+  Term: Sensor  [Class]
+    Declaration                Declaration: Sensor (Class)
+      Subject: Sensor
+      Object : Class
+    SubClassOf                 Sensor ⊑ Infrastructure Asset
+      Subject: Sensor
+      Object : Infrastructure Asset
+
+  Term: Tariff  [Class]
+    Declaration                Declaration: Tariff (Class)
+      Subject: Tariff
+      Object : Class
+
+  Term: Water Infrastructure  [Class]
+    Declaration                Declaration: Water Infrastructure (Class)
+      Subject: Water Infrastructure
+      Object : Class
+    SubClassOf                 Water Infrastructure ⊑ Infrastructure Asset
+      Subject: Water Infrastructure
+      Object : Infrastructure Asset
+
+  Term: Water Meter  [Class]
+    Declaration                Declaration: Water Meter (Class)
+      Subject: Water Meter
+      Object : Class
+    SubClassOf                 Water Meter ⊑ Infrastructure Asset
+      Subject: Water Meter
+      Object : Infrastructure Asset
+
+  Term: Water Property  [Class]
+    Declaration                Declaration: Water Property (Class)
+      Subject: Water Property
+      Object : Class
+
+
+── ObjectProperty ──
+
+  Term: composes  [ObjectProperty]
+    Declaration                Declaration: composes (ObjectProperty)
+      Subject: composes
+      Object : ObjectProperty
+    InverseOf                  composes ≡ is composed of⁻
+      Subject: composes
+      Object : is composed of
+    Domain                     ∃composes.⊤ ⊑ Water Infrastructure
+      Subject: composes
+      Object : Water Infrastructure
+    Range                      ⊤ ⊑ ∀composes.Infrastructure Asset
+      Subject: composes
+      Object : Infrastructure Asset
+
+  Term: has tariff  [ObjectProperty]
+    Declaration                Declaration: has tariff (ObjectProperty)
+      Subject: has tariff
+      Object : ObjectProperty
+    InverseOf                  has tariff ≡ is tariff of⁻
+      Subject: has tariff
+      Object : is tariff of
+    Domain                     ∃has tariff.⊤ ⊑ Water Meter
+      Subject: has tariff
+      Object : Water Meter
+    Range                      ⊤ ⊑ ∀has tariff.Tariff
+      Subject: has tariff
+      Object : Tariff
+
+  Term: is composed of  [ObjectProperty]
+    Declaration                Declaration: is composed of (ObjectProperty)
+      Subject: is composed of
+      Object : ObjectProperty
+    InverseOf                  is composed of ≡ composes⁻
+      Subject: is composed of
+      Object : composes
+
+  Term: is tariff of  [ObjectProperty]
+    Declaration                Declaration: is tariff of (ObjectProperty)
+      Subject: is tariff of
+      Object : ObjectProperty
+    InverseOf                  is tariff of ≡ has tariff⁻
+      Subject: is tariff of
+      Object : has tariff
+
+
+── DatatypeProperty ──
+
+  Term: billing date  [DatatypeProperty]
+    Declaration                Declaration: billing date (DatatypeProperty)
+      Subject: billing date
+      Object : DatatypeProperty
+    Domain                     ∃billing date.⊤ ⊑ Tariff
+      Subject: billing date
+      Object : Tariff
+    Range                      billing date maps-to ⊤
+      Subject: billing date
+      Object : ⊤
+
+  Term: billing date period  [DatatypeProperty]
+    Declaration                Declaration: billing date period (DatatypeProperty)
+      Subject: billing date period
+      Object : DatatypeProperty
+    Domain                     ∃billing date period.⊤ ⊑ Tariff
+      Subject: billing date period
+      Object : Tariff
+    Range                      billing date period maps-to ⊤
+      Subject: billing date period
+      Object : ⊤
+
+  Term: duration  [DatatypeProperty]
+    Declaration                Declaration: duration (DatatypeProperty)
+      Subject: duration
+      Object : DatatypeProperty
+    Domain                     ∃duration.⊤ ⊑ Tariff
+      Subject: duration
+      Object : Tariff
+    Range                      duration maps-to ⊤
+      Subject: duration
+      Object : ⊤
+
+  Term: fabrication number  [DatatypeProperty]
+    Declaration                Declaration: fabrication number (DatatypeProperty)
+      Subject: fabrication number
+      Object : DatatypeProperty
+    Domain                     ∃fabrication number.⊤ ⊑ Water Meter
+      Subject: fabrication number
+      Object : Water Meter
+    Range                      fabrication number maps-to ⊤
+      Subject: fabrication number
+      Object : ⊤
+
+  Term: firmware version  [DatatypeProperty]
+    Declaration                Declaration: firmware version (DatatypeProperty)
+      Subject: firmware version
+      Object : DatatypeProperty
+    Domain                     ∃firmware version.⊤ ⊑ Water Meter
+      Subject: firmware version
+      Object : Water Meter
+    Range                      firmware version maps-to ⊤
+      Subject: firmware version
+      Object : ⊤
+
+  Term: geolocation  [DatatypeProperty]
+    Declaration                Declaration: geolocation (DatatypeProperty)
+      Subject: geolocation
+      Object : DatatypeProperty
+    Domain                     ∃geolocation.⊤ ⊑ Water Meter
+      Subject: geolocation
+      Object : Water Meter
+    Range                      geolocation maps-to ⊤
+      Subject: geolocation
+      Object : ⊤
+
+  Term: hardware version  [DatatypeProperty]
+    Declaration                Declaration: hardware version (DatatypeProperty)
+      Subject: hardware version
+      Object : DatatypeProperty
+    Domain                     ∃hardware version.⊤ ⊑ Water Meter
+      Subject: hardware version
+      Object : Water Meter
+    Range                      hardware version maps-to ⊤
+      Subject: hardware version
+      Object : ⊤
+
+  Term: manufacturer  [DatatypeProperty]
+    Declaration                Declaration: manufacturer (DatatypeProperty)
+      Subject: manufacturer
+      Object : DatatypeProperty
+    Domain                     ∃manufacturer.⊤ ⊑ Water Meter
+      Subject: manufacturer
+      Object : Water Meter
+    Range                      manufacturer maps-to ⊤
+      Subject: manufacturer
+      Object : ⊤
+
+  Term: model  [DatatypeProperty]
+    Declaration                Declaration: model (DatatypeProperty)
+      Subject: model
+      Object : DatatypeProperty
+    Domain                     ∃model.⊤ ⊑ Water Meter
+      Subject: model
+      Object : Water Meter
+    Range                      model maps-to ⊤
+      Subject: model
+      Object : ⊤
+
+  Term: power  [DatatypeProperty]
+    Declaration                Declaration: power (DatatypeProperty)
+      Subject: power
+      Object : DatatypeProperty
+    Domain                     ∃power.⊤ ⊑ Water Meter
+      Subject: power
+      Object : Water Meter
+    Range                      power maps-to ⊤
+      Subject: power
+      Object : ⊤
+
+  Term: radio frequency  [DatatypeProperty]
+    Declaration                Declaration: radio frequency (DatatypeProperty)
+      Subject: radio frequency
+      Object : DatatypeProperty
+    Domain                     ∃radio frequency.⊤ ⊑ Water Meter
+      Subject: radio frequency
+      Object : Water Meter
+    Range                      radio frequency maps-to ⊤
+      Subject: radio frequency
+      Object : ⊤
+
+  Term: start date  [DatatypeProperty]
+    Declaration                Declaration: start date (DatatypeProperty)
+      Subject: start date
+      Object : DatatypeProperty
+    Domain                     ∃start date.⊤ ⊑ Tariff
+      Subject: start date
+      Object : Tariff
+    Range                      start date maps-to ⊤
+      Subject: start date
+      Object : ⊤
+
+  Term: tariff period  [DatatypeProperty]
+    Declaration                Declaration: tariff period (DatatypeProperty)
+      Subject: tariff period
+      Object : DatatypeProperty
+    Domain                     ∃tariff period.⊤ ⊑ Tariff
+      Subject: tariff period
+      Object : Tariff
+    Range                      tariff period maps-to ⊤
+      Subject: tariff period
+      Object : ⊤
+
+  Term: version  [DatatypeProperty]
+    Declaration                Declaration: version (DatatypeProperty)
+      Subject: version
+      Object : DatatypeProperty
+    Domain                     ∃version.⊤ ⊑ Water Meter
+      Subject: version
+      Object : Water Meter
+    Range                      version maps-to ⊤
+      Subject: version
+      Object : ⊤
+
+
+====================================================================================================
+STATISTICS
+====================================================================================================
+
+  Classes:               9  (defined: 0, primitive: 9)
+  ObjectProperties:      4
+  DatatypeProperties:    14
+
+  Axiom Breakdown:
+    Declaration               27
+    DisjointClasses           1
+    Domain                    16
+    InverseOf                 4
+    Range                     16
+    SubClassOf                6
+    ------------------------------
+    Total TBox Axioms         70
+
+====================================================================================================

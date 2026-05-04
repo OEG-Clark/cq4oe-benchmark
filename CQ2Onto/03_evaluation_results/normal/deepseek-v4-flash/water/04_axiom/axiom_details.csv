@@ -1,0 +1,155 @@
+id,source,term_type,axiom_type,term,dl,status,note
+AX1-gold,gold,Class,SubClassOf,AcceptabilityProperty,AcceptabilityProperty ⊑ WaterProperty,Skip,subject 'AcceptabilityProperty' not in alignment table
+AX1-pred,pred,-,-,-,(subject not in alignment table),-,-
+AX2-gold,gold,Class,DisjointClasses,Actuator,"DisjointClasses(Actuator, Sensor)",FN,pred has no DisjointClasses axiom on 'actuator'
+AX2-pred,pred,-,-,-,(no pred axiom on aligned subject),-,-
+AX3-gold,gold,Class,SubClassOf,Actuator,Actuator ⊑ Device,FN,pred has no SubClassOf axiom on 'actuator'
+AX3-pred,pred,-,-,-,(no pred axiom on aligned subject),-,-
+AX4-gold,gold,Class,SubClassOf,ChemicalProperty,ChemicalProperty ⊑ WaterProperty,FN,pred has no SubClassOf axiom on 'chemical property'
+AX4-pred,pred,-,-,-,(no pred axiom on aligned subject),-,-
+AX5-gold,gold,Class,SubClassOf,Device,Device ⊑ ∀makesMeasurement.Measurement,FN,pred has no SubClassOf axiom on 'device'
+AX5-pred,pred,-,-,-,(no pred axiom on aligned subject),-,-
+AX6-gold,gold,Class,SubClassOf,FeatureOfInterest,FeatureOfInterest ⊑ ∀hasMeasurement.Measurement,Skip,subject 'FeatureOfInterest' not in alignment table
+AX6-pred,pred,-,-,-,(subject not in alignment table),-,-
+AX7-gold,gold,Class,SubClassOf,Measurement,Measurement ⊑ ∀hasTimestamp.datetime'>,FN,pred has no SubClassOf axiom on 'measurement'
+AX7-pred,pred,-,-,-,(no pred axiom on aligned subject),-,-
+AX8-gold,gold,Class,SubClassOf,Meter,Meter ⊑ Sensor,Skip,subject 'Meter' not in alignment table
+AX8-pred,pred,-,-,-,(subject not in alignment table),-,-
+AX9-gold,gold,Class,SubClassOf,Point,Point ⊑ Geometry,Skip,subject 'Point' not in alignment table
+AX9-pred,pred,-,-,-,(subject not in alignment table),-,-
+AX10-gold,gold,Class,SubClassOf,Sensor,Sensor ⊑ Device,FN,pred has no SubClassOf axiom on 'sensor'
+AX10-pred,pred,-,-,-,(no pred axiom on aligned subject),-,-
+AX11-gold,gold,Class,SubClassOf,TimeBasedTariff,TimeBasedTariff ⊑ Tariff,Skip,subject 'TimeBasedTariff' not in alignment table
+AX11-pred,pred,-,-,-,(subject not in alignment table),-,-
+AX12-gold,gold,Class,SubClassOf,Water,Water ⊑ FeatureOfInterest,FN,pred has no SubClassOf axiom on 'water'
+AX12-pred,pred,-,-,-,(no pred axiom on aligned subject),-,-
+AX13-gold,gold,Class,SubClassOf,Water,Water ⊑ ∀hasProperty.WaterProperty,FN,pred has no SubClassOf axiom on 'water'
+AX13-pred,pred,-,-,-,(no pred axiom on aligned subject),-,-
+AX14-gold,gold,Class,SubClassOf,WaterAsset,WaterAsset ⊑ FeatureOfInterest,FN,pred has no SubClassOf axiom on 'asset'
+AX14-pred,pred,-,-,-,(no pred axiom on aligned subject),-,-
+AX15-gold,gold,Class,SubClassOf,WaterMeter,WaterMeter ⊑ Meter,Mismatch,pred AX20 differs: class 'Meter' not aligned to 'device'
+AX15-pred,pred,Class,SubClassOf,water meter,water meter ⊑ device,-,-
+AX16-gold,gold,Class,SubClassOf,WaterMeter,WaterMeter ⊑ ≤1 hasFabricationNumber.⊤,FN,pred has no SubClassOf axiom on 'water meter'
+AX16-pred,pred,-,-,-,(no pred axiom on aligned subject),-,-
+AX17-gold,gold,Class,SubClassOf,WaterMeter,WaterMeter ⊑ ≤1 hasFirmwareVersion.⊤,FN,pred has no SubClassOf axiom on 'water meter'
+AX17-pred,pred,-,-,-,(no pred axiom on aligned subject),-,-
+AX18-gold,gold,Class,SubClassOf,WaterMeter,WaterMeter ⊑ ≤1 hasHardwareVersion.⊤,FN,pred has no SubClassOf axiom on 'water meter'
+AX18-pred,pred,-,-,-,(no pred axiom on aligned subject),-,-
+AX19-gold,gold,Class,SubClassOf,WaterMeter,WaterMeter ⊑ ≤1 hasVersion.⊤,FN,pred has no SubClassOf axiom on 'water meter'
+AX19-pred,pred,-,-,-,(no pred axiom on aligned subject),-,-
+AX20-gold,gold,ObjectProperty,Domain,appliesTo,∃appliesTo.⊤ ⊑ Tariff,Skip,subject 'appliesTo' not in alignment table
+AX20-pred,pred,-,-,-,(subject not in alignment table),-,-
+AX21-gold,gold,ObjectProperty,Range,appliesTo,⊤ ⊑ ∀appliesTo.WaterMeter,Skip,subject 'appliesTo' not in alignment table
+AX21-pred,pred,-,-,-,(subject not in alignment table),-,-
+AX22-gold,gold,ObjectProperty,Domain,featureIsMeasuredByDevice,∃featureIsMeasuredByDevice.⊤ ⊑ FeatureOfInterest,Skip,subject 'featureIsMeasuredByDevice' not in alignment table
+AX22-pred,pred,-,-,-,(subject not in alignment table),-,-
+AX23-gold,gold,ObjectProperty,Range,featureIsMeasuredByDevice,⊤ ⊑ ∀featureIsMeasuredByDevice.Device,Skip,subject 'featureIsMeasuredByDevice' not in alignment table
+AX23-pred,pred,-,-,-,(subject not in alignment table),-,-
+AX24-gold,gold,ObjectProperty,Domain,hasBillingPeriod,∃hasBillingPeriod.⊤ ⊑ Tariff,Mismatch,pred AX31 differs: class 'Tariff' not aligned to 'water meter'
+AX24-pred,pred,ObjectProperty,Domain,has billing,∃has billing.⊤ ⊑ water meter,-,-
+AX25-gold,gold,ObjectProperty,Range,hasBillingPeriod,⊤ ⊑ ∀hasBillingPeriod.TemporalDuration,Mismatch,pred AX32 differs: class 'TemporalDuration' not aligned to 'billing'
+AX25-pred,pred,ObjectProperty,Range,has billing,⊤ ⊑ ∀has billing.billing,-,-
+AX26-gold,gold,ObjectProperty,Domain,hasDuration,∃hasDuration.⊤ ⊑ Tariff,Skip,subject 'hasDuration' not in alignment table
+AX26-pred,pred,-,-,-,(subject not in alignment table),-,-
+AX27-gold,gold,ObjectProperty,Range,hasDuration,⊤ ⊑ ∀hasDuration.TemporalDuration,Skip,subject 'hasDuration' not in alignment table
+AX27-pred,pred,-,-,-,(subject not in alignment table),-,-
+AX28-gold,gold,ObjectProperty,InverseOf,hasKPI,hasKPI ≡ isKPIOf⁻,Skip,subject 'hasKPI' not in alignment table
+AX28-pred,pred,-,-,-,(subject not in alignment table),-,-
+AX29-gold,gold,ObjectProperty,Domain,hasPeriod,∃hasPeriod.⊤ ⊑ Tariff,Skip,subject 'hasPeriod' not in alignment table
+AX29-pred,pred,-,-,-,(subject not in alignment table),-,-
+AX30-gold,gold,ObjectProperty,Range,hasPeriod,⊤ ⊑ ∀hasPeriod.TemporalDuration,Skip,subject 'hasPeriod' not in alignment table
+AX30-pred,pred,-,-,-,(subject not in alignment table),-,-
+AX31-gold,gold,ObjectProperty,Domain,hasPhenomenonTime,∃hasPhenomenonTime.⊤ ⊑ Measurement,Skip,subject 'hasPhenomenonTime' not in alignment table
+AX31-pred,pred,-,-,-,(subject not in alignment table),-,-
+AX32-gold,gold,ObjectProperty,Range,hasPhenomenonTime,⊤ ⊑ ∀hasPhenomenonTime.TemporalEntity,Skip,subject 'hasPhenomenonTime' not in alignment table
+AX32-pred,pred,-,-,-,(subject not in alignment table),-,-
+AX33-gold,gold,ObjectProperty,InverseOf,isKPIOf,isKPIOf ≡ hasKPI⁻,Skip,subject 'isKPIOf' not in alignment table
+AX33-pred,pred,-,-,-,(subject not in alignment table),-,-
+AX34-gold,gold,ObjectProperty,InverseOf,makesMeasurement,makesMeasurement ≡ measurementMadeBy⁻,Skip,subject 'makesMeasurement' not in alignment table
+AX34-pred,pred,-,-,-,(subject not in alignment table),-,-
+AX35-gold,gold,ObjectProperty,InverseOf,measurementMadeBy,measurementMadeBy ≡ makesMeasurement⁻,Skip,subject 'measurementMadeBy' not in alignment table
+AX35-pred,pred,-,-,-,(subject not in alignment table),-,-
+AX36-gold,gold,DatatypeProperty,Domain,hasBillingDate,∃hasBillingDate.⊤ ⊑ Tariff,Skip,subject 'hasBillingDate' not in alignment table
+AX36-pred,pred,-,-,-,(subject not in alignment table),-,-
+AX37-gold,gold,DatatypeProperty,Range,hasBillingDate,hasBillingDate maps-to datetime'>,Skip,subject 'hasBillingDate' not in alignment table
+AX37-pred,pred,-,-,-,(subject not in alignment table),-,-
+AX38-gold,gold,DatatypeProperty,Range,hasFabricationNumber,hasFabricationNumber maps-to ⊤,TP,matched pred AX65
+AX38-pred,pred,DatatypeProperty,Range,fabrication number,fabrication number maps-to ⊤,-,-
+AX39-gold,gold,DatatypeProperty,Range,hasFirmwareVersion,hasFirmwareVersion maps-to ⊤,TP,matched pred AX68
+AX39-pred,pred,DatatypeProperty,Range,firmware version,firmware version maps-to ⊤,-,-
+AX40-gold,gold,DatatypeProperty,Range,hasHardwareVersion,hasHardwareVersion maps-to ⊤,TP,matched pred AX71
+AX40-pred,pred,DatatypeProperty,Range,hardware version,hardware version maps-to ⊤,-,-
+AX41-gold,gold,DatatypeProperty,Domain,hasStartTimestamp,∃hasStartTimestamp.⊤ ⊑ Tariff,Skip,subject 'hasStartTimestamp' not in alignment table
+AX41-pred,pred,-,-,-,(subject not in alignment table),-,-
+AX42-gold,gold,DatatypeProperty,Range,hasStartTimestamp,hasStartTimestamp maps-to datetime'>,Skip,subject 'hasStartTimestamp' not in alignment table
+AX42-pred,pred,-,-,-,(subject not in alignment table),-,-
+AX43-gold,gold,DatatypeProperty,Range,hasVersion,hasVersion maps-to ⊤,TP,matched pred AX89
+AX43-pred,pred,DatatypeProperty,Range,version,version maps-to ⊤,-,-
+AX1-pred,pred,Class,Declaration,actuator,Declaration: actuator (Class),FP,pred Declaration axiom on 'actuator' not matched by any gold axiom on 'Actuator'
+AX1-gold,gold,-,-,-,(no gold counterpart),-,-
+AX2-pred,pred,Class,Declaration,asset,Declaration: asset (Class),FP,pred Declaration axiom on 'asset' not matched by any gold axiom on 'Water asset'
+AX2-gold,gold,-,-,-,(no gold counterpart),-,-
+AX4-pred,pred,Class,Declaration,chemical property,Declaration: chemical property (Class),FP,pred Declaration axiom on 'chemical property' not matched by any gold axiom on 'ChemicalProperty'
+AX4-gold,gold,-,-,-,(no gold counterpart),-,-
+AX5-pred,pred,Class,Declaration,device,Declaration: device (Class),FP,pred Declaration axiom on 'device' not matched by any gold axiom on 'Device'
+AX5-gold,gold,-,-,-,(no gold counterpart),-,-
+AX7-pred,pred,Class,Declaration,measurement,Declaration: measurement (Class),FP,pred Declaration axiom on 'measurement' not matched by any gold axiom on 'Measurement'
+AX7-gold,gold,-,-,-,(no gold counterpart),-,-
+AX8-pred,pred,Class,Declaration,physical property,Declaration: physical property (Class),FP,pred Declaration axiom on 'physical property' not matched by any gold axiom on 'Water property'
+AX8-gold,gold,-,-,-,(no gold counterpart),-,-
+AX9-pred,pred,Class,Declaration,sensor,Declaration: sensor (Class),FP,pred Declaration axiom on 'sensor' not matched by any gold axiom on 'Sensor'
+AX9-gold,gold,-,-,-,(no gold counterpart),-,-
+AX10-pred,pred,Class,Declaration,tariff,Declaration: tariff (Class),FP,pred Declaration axiom on 'tariff' not matched by any gold axiom on 'Tariff'
+AX10-gold,gold,-,-,-,(no gold counterpart),-,-
+AX15-pred,pred,Class,Declaration,temporal setting,Declaration: temporal setting (Class),FP,pred Declaration axiom on 'temporal setting' not matched by any gold axiom on 'Temporal entity'
+AX15-gold,gold,-,-,-,(no gold counterpart),-,-
+AX16-pred,pred,Class,Declaration,water,Declaration: water (Class),FP,pred Declaration axiom on 'water' not matched by any gold axiom on 'Water'
+AX16-gold,gold,-,-,-,(no gold counterpart),-,-
+AX17-pred,pred,Class,Declaration,water distribution infrastructure,Declaration: water distribution infrastructure (Class),FP,pred Declaration axiom on 'water distribution infrastructure' not matched by any gold axiom on 'Water infrastructure'
+AX17-gold,gold,-,-,-,(no gold counterpart),-,-
+AX18-pred,pred,Class,Declaration,water indicator,Declaration: water indicator (Class),FP,pred Declaration axiom on 'water indicator' not matched by any gold axiom on 'Key Performance Indicator'
+AX18-gold,gold,-,-,-,(no gold counterpart),-,-
+AX19-pred,pred,Class,Declaration,water meter,Declaration: water meter (Class),FP,pred Declaration axiom on 'water meter' not matched by any gold axiom on 'Water meter'
+AX19-gold,gold,-,-,-,(no gold counterpart),-,-
+AX30-pred,pred,ObjectProperty,Declaration,has billing,Declaration: has billing (ObjectProperty),FP,pred Declaration axiom on 'has billing' not matched by any gold axiom on 'has billing period'
+AX30-gold,gold,-,-,-,(no gold counterpart),-,-
+AX39-pred,pred,ObjectProperty,Declaration,has measurement,Declaration: has measurement (ObjectProperty),FP,pred Declaration axiom on 'has measurement' not matched by any gold axiom on 'has measurement'
+AX39-gold,gold,-,-,-,(no gold counterpart),-,-
+AX40-pred,pred,ObjectProperty,Domain,has measurement,∃has measurement.⊤ ⊑ water meter,FP,pred Domain axiom on 'has measurement' not matched by any gold axiom on 'has measurement'
+AX40-gold,gold,-,-,-,(no gold counterpart),-,-
+AX41-pred,pred,ObjectProperty,Range,has measurement,⊤ ⊑ ∀has measurement.measurement,FP,pred Range axiom on 'has measurement' not matched by any gold axiom on 'has measurement'
+AX41-gold,gold,-,-,-,(no gold counterpart),-,-
+AX42-pred,pred,ObjectProperty,Declaration,has physical property,Declaration: has physical property (ObjectProperty),FP,pred Declaration axiom on 'has physical property' not matched by any gold axiom on 'has property'
+AX42-gold,gold,-,-,-,(no gold counterpart),-,-
+AX43-pred,pred,ObjectProperty,Domain,has physical property,∃has physical property.⊤ ⊑ water,FP,pred Domain axiom on 'has physical property' not matched by any gold axiom on 'has property'
+AX43-gold,gold,-,-,-,(no gold counterpart),-,-
+AX44-pred,pred,ObjectProperty,Range,has physical property,⊤ ⊑ ∀has physical property.physical property,FP,pred Range axiom on 'has physical property' not matched by any gold axiom on 'has property'
+AX44-gold,gold,-,-,-,(no gold counterpart),-,-
+AX63-pred,pred,DatatypeProperty,Declaration,fabrication number,Declaration: fabrication number (DatatypeProperty),FP,pred Declaration axiom on 'fabrication number' not matched by any gold axiom on 'has fabrication number'
+AX63-gold,gold,-,-,-,(no gold counterpart),-,-
+AX64-pred,pred,DatatypeProperty,Domain,fabrication number,∃fabrication number.⊤ ⊑ water meter,FP,pred Domain axiom on 'fabrication number' not matched by any gold axiom on 'has fabrication number'
+AX64-gold,gold,-,-,-,(no gold counterpart),-,-
+AX66-pred,pred,DatatypeProperty,Declaration,firmware version,Declaration: firmware version (DatatypeProperty),FP,pred Declaration axiom on 'firmware version' not matched by any gold axiom on 'has firmware version'
+AX66-gold,gold,-,-,-,(no gold counterpart),-,-
+AX67-pred,pred,DatatypeProperty,Domain,firmware version,∃firmware version.⊤ ⊑ water meter,FP,pred Domain axiom on 'firmware version' not matched by any gold axiom on 'has firmware version'
+AX67-gold,gold,-,-,-,(no gold counterpart),-,-
+AX69-pred,pred,DatatypeProperty,Declaration,hardware version,Declaration: hardware version (DatatypeProperty),FP,pred Declaration axiom on 'hardware version' not matched by any gold axiom on 'has hardware version'
+AX69-gold,gold,-,-,-,(no gold counterpart),-,-
+AX70-pred,pred,DatatypeProperty,Domain,hardware version,∃hardware version.⊤ ⊑ water meter,FP,pred Domain axiom on 'hardware version' not matched by any gold axiom on 'has hardware version'
+AX70-gold,gold,-,-,-,(no gold counterpart),-,-
+AX72-pred,pred,DatatypeProperty,Declaration,manufacturer,Declaration: manufacturer (DatatypeProperty),FP,pred Declaration axiom on 'manufacturer' not matched by any gold axiom on 'has manufacturer'
+AX72-gold,gold,-,-,-,(no gold counterpart),-,-
+AX73-pred,pred,DatatypeProperty,Domain,manufacturer,∃manufacturer.⊤ ⊑ water meter,FP,pred Domain axiom on 'manufacturer' not matched by any gold axiom on 'has manufacturer'
+AX73-gold,gold,-,-,-,(no gold counterpart),-,-
+AX74-pred,pred,DatatypeProperty,Range,manufacturer,manufacturer maps-to ⊤,FP,pred Range axiom on 'manufacturer' not matched by any gold axiom on 'has manufacturer'
+AX74-gold,gold,-,-,-,(no gold counterpart),-,-
+AX75-pred,pred,DatatypeProperty,Declaration,model,Declaration: model (DatatypeProperty),FP,pred Declaration axiom on 'model' not matched by any gold axiom on 'has model'
+AX75-gold,gold,-,-,-,(no gold counterpart),-,-
+AX76-pred,pred,DatatypeProperty,Domain,model,∃model.⊤ ⊑ water meter,FP,pred Domain axiom on 'model' not matched by any gold axiom on 'has model'
+AX76-gold,gold,-,-,-,(no gold counterpart),-,-
+AX77-pred,pred,DatatypeProperty,Range,model,model maps-to ⊤,FP,pred Range axiom on 'model' not matched by any gold axiom on 'has model'
+AX77-gold,gold,-,-,-,(no gold counterpart),-,-
+AX87-pred,pred,DatatypeProperty,Declaration,version,Declaration: version (DatatypeProperty),FP,pred Declaration axiom on 'version' not matched by any gold axiom on 'has version'
+AX87-gold,gold,-,-,-,(no gold counterpart),-,-
+AX88-pred,pred,DatatypeProperty,Domain,version,∃version.⊤ ⊑ water meter,FP,pred Domain axiom on 'version' not matched by any gold axiom on 'has version'
+AX88-gold,gold,-,-,-,(no gold counterpart),-,-

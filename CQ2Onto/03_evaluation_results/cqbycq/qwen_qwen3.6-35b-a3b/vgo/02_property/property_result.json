@@ -1,0 +1,576 @@
+{
+  "config": {
+    "top_n": 3,
+    "final_threshold": 0.7,
+    "model_id": "embeddinggemma",
+    "methods": [
+      "hard_match",
+      "sequence_match",
+      "levenshtein",
+      "jaro_winkler",
+      "semantic"
+    ],
+    "summary": {
+      "n_gold": 28,
+      "n_pred": 38
+    }
+  },
+  "results": [
+    {
+      "id": "type_distribution",
+      "DatatypeProperty": {
+        "gold_count": 5,
+        "pred_count": 8,
+        "diff": 3,
+        "note": "pred has 3 extra"
+      },
+      "ObjectProperty": {
+        "gold_count": 23,
+        "pred_count": 30,
+        "diff": 7,
+        "note": "pred has 7 extra"
+      }
+    },
+    {
+      "id": "label_matching",
+      "ObjectProperty": {
+        "n_gold_labels": 23,
+        "n_pred_labels": 30,
+        "gold_to_pred": {
+          "has achievement": [
+            {
+              "pred": "has achievement",
+              "score": 1.0,
+              "method": "hard_match"
+            }
+          ],
+          "has character": [],
+          "has feature": [],
+          "has game genre": [
+            {
+              "pred": "has genre",
+              "score": 0.8484,
+              "method": "top3_avg(jaro_winkler+semantic+sequence_match)"
+            }
+          ],
+          "has item": [
+            {
+              "pred": "has item",
+              "score": 1.0,
+              "method": "hard_match"
+            }
+          ],
+          "has leaderboard": [],
+          "has playing area": [
+            {
+              "pred": "has playing area",
+              "score": 1.0,
+              "method": "hard_match"
+            }
+          ],
+          "involves character": [],
+          "involves player": [
+            {
+              "pred": "uses player",
+              "score": 0.7236,
+              "method": "top3_avg(jaro_winkler+semantic+sequence_match)"
+            }
+          ],
+          "is achievement in game": [
+            {
+              "pred": "game has achievement",
+              "score": 0.7489,
+              "method": "top3_avg(jaro_winkler+semantic+sequence_match)"
+            }
+          ],
+          "is character in game": [],
+          "is character in session": [],
+          "is event associated to player": [],
+          "is friend with player": [],
+          "is leaderboard in game": [],
+          "is player in session": [],
+          "is session in game": [
+            {
+              "pred": "session for game",
+              "score": 0.7938,
+              "method": "top3_avg(jaro_winkler+semantic+sequence_match)"
+            }
+          ],
+          "lives in": [],
+          "owns achievement": [],
+          "owns character": [],
+          "owns item": [
+            {
+              "pred": "owns item",
+              "score": 1.0,
+              "method": "hard_match"
+            }
+          ],
+          "plays game": [
+            {
+              "pred": "plays game",
+              "score": 1.0,
+              "method": "hard_match"
+            }
+          ],
+          "purchases game offering": [
+            {
+              "pred": "purchases game",
+              "score": 0.8415,
+              "method": "top3_avg(jaro_winkler+semantic+sequence_match)"
+            }
+          ]
+        },
+        "pred_to_gold": {
+          "game has achievement": [
+            {
+              "gold": "is achievement in game",
+              "score": 0.7489,
+              "method": "top3_avg(jaro_winkler+semantic+sequence_match)"
+            }
+          ],
+          "has ability": [],
+          "has achievement": [
+            {
+              "gold": "has achievement",
+              "score": 1.0,
+              "method": "hard_match"
+            }
+          ],
+          "has friend": [],
+          "has game": [],
+          "has genre": [
+            {
+              "gold": "has game genre",
+              "score": 0.8484,
+              "method": "top3_avg(jaro_winkler+semantic+sequence_match)"
+            }
+          ],
+          "has item": [
+            {
+              "gold": "has item",
+              "score": 1.0,
+              "method": "hard_match"
+            }
+          ],
+          "has location": [],
+          "has player": [],
+          "has playing area": [
+            {
+              "gold": "has playing area",
+              "score": 1.0,
+              "method": "hard_match"
+            }
+          ],
+          "has purchase": [],
+          "has session": [],
+          "has type": [],
+          "links game": [],
+          "links item": [],
+          "links player": [],
+          "links player to IAP": [],
+          "links purchase to IAP": [],
+          "links session to IAP": [],
+          "owns item": [
+            {
+              "gold": "owns item",
+              "score": 1.0,
+              "method": "hard_match"
+            }
+          ],
+          "plays game": [
+            {
+              "gold": "plays game",
+              "score": 1.0,
+              "method": "hard_match"
+            }
+          ],
+          "purchases game": [
+            {
+              "gold": "purchases game offering",
+              "score": 0.8415,
+              "method": "top3_avg(jaro_winkler+semantic+sequence_match)"
+            }
+          ],
+          "purchases item": [],
+          "purchases player": [],
+          "records game": [],
+          "records player": [],
+          "session for game": [
+            {
+              "gold": "is session in game",
+              "score": 0.7938,
+              "method": "top3_avg(jaro_winkler+semantic+sequence_match)"
+            }
+          ],
+          "uses game": [],
+          "uses item": [],
+          "uses player": [
+            {
+              "gold": "involves player",
+              "score": 0.7236,
+              "method": "top3_avg(jaro_winkler+semantic+sequence_match)"
+            }
+          ]
+        },
+        "metrics_per_method": {
+          "hard_match": {
+            "coverage": 0.2174,
+            "precision": 0.1667,
+            "recall": 0.2174,
+            "f1": 0.1887,
+            "gold_covered": 5,
+            "pred_supported": 5
+          },
+          "sequence_match": {
+            "coverage": 0.2609,
+            "precision": 0.2,
+            "recall": 0.2609,
+            "f1": 0.2264,
+            "gold_covered": 6,
+            "pred_supported": 6
+          },
+          "levenshtein": {
+            "coverage": 0.2174,
+            "precision": 0.1667,
+            "recall": 0.2174,
+            "f1": 0.1887,
+            "gold_covered": 5,
+            "pred_supported": 5
+          },
+          "jaro_winkler": {
+            "coverage": 0.3913,
+            "precision": 0.3,
+            "recall": 0.3913,
+            "f1": 0.3396,
+            "gold_covered": 9,
+            "pred_supported": 9
+          },
+          "semantic": {
+            "coverage": 0.7391,
+            "precision": 0.5667,
+            "recall": 0.7391,
+            "f1": 0.6415,
+            "gold_covered": 17,
+            "pred_supported": 17
+          }
+        },
+        "metrics_best": {
+          "coverage": 0.4348,
+          "precision": 0.3333,
+          "recall": 0.4348,
+          "f1": 0.3774,
+          "gold_covered": 10,
+          "pred_supported": 10
+        }
+      },
+      "DatatypeProperty": {
+        "n_gold_labels": 5,
+        "n_pred_labels": 8,
+        "gold_to_pred": {
+          "end time": [],
+          "event time": [],
+          "release date": [
+            {
+              "pred": "has release date",
+              "score": 0.8759,
+              "method": "top3_avg(jaro_winkler+semantic+sequence_match)"
+            }
+          ],
+          "start time": [],
+          "username": [
+            {
+              "pred": "has username",
+              "score": 0.8593,
+              "method": "top3_avg(jaro_winkler+semantic+sequence_match)"
+            }
+          ]
+        },
+        "pred_to_gold": {
+          "has all achievements": [],
+          "has kill count": [],
+          "has playtime before purchase": [],
+          "has playtime hours": [],
+          "has purchase time": [],
+          "has release date": [
+            {
+              "gold": "release date",
+              "score": 0.8759,
+              "method": "top3_avg(jaro_winkler+semantic+sequence_match)"
+            }
+          ],
+          "has session date": [],
+          "has username": [
+            {
+              "gold": "username",
+              "score": 0.8593,
+              "method": "top3_avg(jaro_winkler+semantic+sequence_match)"
+            }
+          ]
+        },
+        "metrics_per_method": {
+          "hard_match": {
+            "coverage": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "gold_covered": 0,
+            "pred_supported": 0
+          },
+          "sequence_match": {
+            "coverage": 0.4,
+            "precision": 0.25,
+            "recall": 0.4,
+            "f1": 0.3077,
+            "gold_covered": 2,
+            "pred_supported": 2
+          },
+          "levenshtein": {
+            "coverage": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "gold_covered": 0,
+            "pred_supported": 0
+          },
+          "jaro_winkler": {
+            "coverage": 0.4,
+            "precision": 0.25,
+            "recall": 0.4,
+            "f1": 0.3077,
+            "gold_covered": 2,
+            "pred_supported": 2
+          },
+          "semantic": {
+            "coverage": 0.4,
+            "precision": 0.25,
+            "recall": 0.4,
+            "f1": 0.3077,
+            "gold_covered": 2,
+            "pred_supported": 2
+          }
+        },
+        "metrics_best": {
+          "coverage": 0.4,
+          "precision": 0.25,
+          "recall": 0.4,
+          "f1": 0.3077,
+          "gold_covered": 2,
+          "pred_supported": 2
+        }
+      },
+      "AnnotationProperty": null,
+      "overall": {
+        "coverage": 0.4286,
+        "precision": 0.3158,
+        "recall": 0.4286,
+        "f1": 0.3636,
+        "gold_covered": 12,
+        "pred_supported": 12
+      }
+    },
+    {
+      "id": "functional_check",
+      "Functional": {
+        "precision": null,
+        "recall": null,
+        "f1": null,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "fn_from_pairs": 0,
+        "fn_from_unaligned": 0
+      },
+      "InverseFunctional": {
+        "precision": null,
+        "recall": null,
+        "f1": null,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "fn_from_pairs": 0,
+        "fn_from_unaligned": 0
+      }
+    },
+    {
+      "id": "characteristics_check",
+      "n_pairs_evaluated": 0,
+      "n_pairs_skipped": 10,
+      "per_characteristic": {
+        "Functional": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "mutex_partner": null,
+          "details": []
+        },
+        "InverseFunctional": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "mutex_partner": null,
+          "details": []
+        },
+        "Transitive": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "mutex_partner": null,
+          "details": []
+        },
+        "Symmetric": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "mutex_partner": "Asymmetric",
+          "details": []
+        },
+        "Asymmetric": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "mutex_partner": "Symmetric",
+          "details": []
+        },
+        "Reflexive": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "mutex_partner": "Irreflexive",
+          "details": []
+        },
+        "Irreflexive": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "mutex_partner": "Reflexive",
+          "details": []
+        }
+      },
+      "overall": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "precision": null,
+        "recall": null,
+        "f1": null
+      },
+      "unaligned_gold_with_chars": [
+        {
+          "label": "is friend with player",
+          "characteristics": [
+            "Symmetric"
+          ]
+        }
+      ],
+      "per_characteristic_ontology": {
+        "Functional": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "fn_from_pairs": 0,
+          "fn_from_unaligned": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "mutex_partner": null
+        },
+        "InverseFunctional": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "fn_from_pairs": 0,
+          "fn_from_unaligned": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "mutex_partner": null
+        },
+        "Transitive": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "fn_from_pairs": 0,
+          "fn_from_unaligned": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "mutex_partner": null
+        },
+        "Symmetric": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "fn_from_pairs": 0,
+          "fn_from_unaligned": 1,
+          "precision": null,
+          "recall": 0.0,
+          "f1": null,
+          "mutex_partner": "Asymmetric"
+        },
+        "Asymmetric": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "fn_from_pairs": 0,
+          "fn_from_unaligned": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "mutex_partner": "Symmetric"
+        },
+        "Reflexive": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "fn_from_pairs": 0,
+          "fn_from_unaligned": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "mutex_partner": "Irreflexive"
+        },
+        "Irreflexive": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "fn_from_pairs": 0,
+          "fn_from_unaligned": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "mutex_partner": "Reflexive"
+        }
+      },
+      "overall_ontology": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 1,
+        "precision": null,
+        "recall": 0.0,
+        "f1": null
+      }
+    }
+  ]
+}

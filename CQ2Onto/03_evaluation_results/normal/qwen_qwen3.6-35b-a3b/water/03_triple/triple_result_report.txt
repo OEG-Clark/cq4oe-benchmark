@@ -1,0 +1,197 @@
+========================================================================
+THREE-LAYER PROPERTY-AXIOM EVALUATION REPORT
+========================================================================
+
+LAYER 1 — Triple Statistics
+────────────────────────────────────────────────────────────────────────
+  Property counts by axiom shape, per property type.
+    full         = both rdfs:domain and rdfs:range declared
+    domain_only  = only rdfs:domain declared
+    range_only   = only rdfs:range declared
+    undefined    = neither declared
+
+                        Full   Dom-only   Rng-only   Undef   Total
+  Gold:
+    ObjectProperty         6          0          0       8      14
+    DatatypeProperty       1          0          4       5      10
+    TOTAL                  ─          ─          ─       ─      24
+
+  Pred:
+    ObjectProperty         8          0          0       0       8
+    DatatypeProperty      14          0          0       0      14
+    TOTAL                  ─          ─          ─       ─      22
+
+LAYER 2 — Semantic Overview
+────────────────────────────────────────────────────────────────────────
+  Each property is represented as a normalized text string derived from its axioms.
+  string and embedded; one-to-one greedy match by cosine.
+  Threshold: 0.6    Model: embeddinggemma
+
+  Standard precision/recall definitions are used.
+                               P       R      F1      TP      FP      FN   gold   pred
+  Overall                  0.318   0.292   0.304       7      15      17     24     22
+  ObjectProperty           0.250   0.143   0.182       2       6      12     14      8
+  DatatypeProperty         0.357   0.500   0.417       5       9       5     10     14
+
+  ObjectProperty aligned pairs (showing up to 10):
+    [0.765]  gold:'makes measurement'
+            pred:'water meter measures water'
+    [0.655]  gold:'tariff has duration temporal duration'
+            pred:'water meter has temporal setting temporal setting'
+
+  DatatypeProperty aligned pairs (showing up to 10):
+    [0.805]  gold:'tariff has start timestamp xsd date time'
+            pred:'water meter has tariff start date xsd date time'
+    [0.656]  gold:'has firmware version xsd http www w3 org 2000 01 rdf schema literal'
+            pred:'water meter has firmware version xsd string'
+    [0.646]  gold:'has hardware version xsd http www w3 org 2000 01 rdf schema literal'
+            pred:'water meter has hardware version xsd string'
+    [0.644]  gold:'has model'
+            pred:'water meter has model xsd string'
+    [0.642]  gold:'has fabrication number xsd http www w3 org 2000 01 rdf schema literal'
+            pred:'water meter has fabrication number xsd string'
+
+LAYER 3 — Strict Alignment (via best-matching tables)
+────────────────────────────────────────────────────────────────────────
+  8 property pairs from property_best_matching.csv.
+  Domain evaluated via class_best_matching.csv;
+  Range evaluated via class_best_matching.csv (ObjectProperty)
+  or normalized XSD equality (DatatypeProperty).
+
+  Evaluation criteria:
+    skip      — gold None and pred None (nothing declared on either side)
+    TP        — both declared and set-equal under the alignment table
+    FP        — pred declared but gold did not
+    FN        — gold declared but pred did not
+    mismatch  — both declared but they disagree under the alignment table
+                (mismatch contributes to both FP and FN)
+
+  Metric formula (mismatch counts as both FP and FN):
+    FP_total = fp + mismatch       (pred-side errors)
+    FN_total = fn + mismatch       (gold-side gaps)
+    P  = TP / (TP + FP_total)
+    R  = TP / (TP + FN_total)
+
+  [ObjectProperty]  2 aligned pair(s)
+    Type     P=1.000  R=1.000  F1=1.000  (TP=2, FP=0, FN=0; FP and FN include mismatch=0; skip=0)
+    Domain   P=0.000  R=0.000  F1=0.000  (TP=0, FP=2, FN=0; FP and FN include mismatch=0; skip=0)
+    Range    P=0.000  R=0.000  F1=0.000  (TP=0, FP=2, FN=0; FP and FN include mismatch=0; skip=0)
+    Overall  P=0.000  R=0.000  F1=0.000  (TP=0, FP=4, FN=0; type + domain + range judgments combined)
+
+    Per-pair detail:
+      gold:has property  ↔  pred:has physical property
+        type    gold=ObjectProperty  pred=ObjectProperty  → TP
+        domain  gold=None  pred=['Water']  → FP
+        range   gold=None   pred=['Physical Property']   → FP
+      gold:measurement made by  ↔  pred:measures
+        type    gold=ObjectProperty  pred=ObjectProperty  → TP
+        domain  gold=None  pred=['Water Meter']  → FP
+        range   gold=None   pred=['Water']   → FP
+
+    No fully aligned triples.
+
+  [DatatypeProperty]  6 aligned pair(s)
+    Type     P=1.000  R=1.000  F1=1.000  (TP=6, FP=0, FN=0; FP and FN include mismatch=0; skip=0)
+    Domain   P=0.000  R=0.000  F1=0.000  (TP=0, FP=6, FN=0; FP and FN include mismatch=0; skip=0)
+    Range    P=0.000  R=0.000  F1=0.000  (TP=0, FP=6, FN=4; FP and FN include mismatch=4; skip=0)
+    Overall  P=0.000  R=0.000  F1=0.000  (TP=0, FP=12, FN=4; type + domain + range judgments combined)
+
+    Per-pair detail:
+      gold:has fabrication number  ↔  pred:has fabrication number
+        type    gold=DatatypeProperty  pred=DatatypeProperty  → TP
+        domain  gold=None  pred=['Water Meter']  → FP
+        range   gold=['xsd:http://www.w3.org/2000/01/rdf-schema#literal']   pred=['xsd:string']   → MISMATCH
+      gold:has firmware version  ↔  pred:has firmware version
+        type    gold=DatatypeProperty  pred=DatatypeProperty  → TP
+        domain  gold=None  pred=['Water Meter']  → FP
+        range   gold=['xsd:http://www.w3.org/2000/01/rdf-schema#literal']   pred=['xsd:string']   → MISMATCH
+      gold:has hardware version  ↔  pred:has hardware version
+        type    gold=DatatypeProperty  pred=DatatypeProperty  → TP
+        domain  gold=None  pred=['Water Meter']  → FP
+        range   gold=['xsd:http://www.w3.org/2000/01/rdf-schema#literal']   pred=['xsd:string']   → MISMATCH
+      gold:has manufacturer  ↔  pred:has manufacturer
+        type    gold=DatatypeProperty  pred=DatatypeProperty  → TP
+        domain  gold=None  pred=['Water Meter']  → FP
+        range   gold=None   pred=['xsd:string']   → FP
+      gold:has model  ↔  pred:has model
+        type    gold=DatatypeProperty  pred=DatatypeProperty  → TP
+        domain  gold=None  pred=['Water Meter']  → FP
+        range   gold=None   pred=['xsd:string']   → FP
+      gold:has version  ↔  pred:has version
+        type    gold=DatatypeProperty  pred=DatatypeProperty  → TP
+        domain  gold=None  pred=['Water Meter']  → FP
+        range   gold=['xsd:http://www.w3.org/2000/01/rdf-schema#literal']   pred=['xsd:string']   → MISMATCH
+
+    No fully aligned triples.
+
+  [Grand Overall — all property types, domain + range combined]
+    P=0.000  R=0.000  F1=0.000  (TP=0, FP=16, FN=4; FP and FN include mismatch=4)
+
+LAYER 4 — Global Overview
+────────────────────────────────────────────────────────────────────────
+  Layer 3 evaluates only properties already aligned by the upstream
+  step. Layer 4 extends the evaluation to the full ontology:
+    FP_global = Layer-3 FP + every domain/range axiom of every
+                              UNALIGNED pred property
+    FN_global = Layer-3 FN + every domain/range axiom of every
+                              UNALIGNED gold property
+  TP is unchanged. P / R / F1 reflect the whole ontology.
+  (Layer-3 FP/FN already include mismatch — see Layer 3 above.)
+
+  [ObjectProperty]
+    P=0.000  R=0.000  F1=0.000
+    TP = 0
+    FP = 16   (Layer-3 FP: 4  +  unaligned pred axioms: 12)
+    FN = 12   (Layer-3 FN: 0  +  unaligned gold axioms: 12)
+    Unaligned gold properties: 12 (contributing 12 axioms to FN)
+    Unaligned pred properties: 6 (contributing 12 axioms to FP)
+    Gold properties with no aligned pred (full axioms count as FN):
+      - hasGeometry: domain=None  range=None  (0 axioms)
+      - has measurement: domain=None  range=None  (0 axioms)
+      - is measured by device: domain=None  range=None  (0 axioms)
+      - makes measurement: domain=None  range=None  (0 axioms)
+      - has key performance indicator: domain=None  range=None  (0 axioms)
+      - isKPIOf: domain=None  range=None  (0 axioms)
+      - applies to: domain=['Tariff']  range=['Water meter']  (2 axioms)
+      - feature is measured by device: domain=['FeatureOfInterest']  range=['Device']  (2 axioms)
+      - has billing period: domain=['Tariff']  range=['Temporal duration']  (2 axioms)
+      - has duration: domain=['Tariff']  range=['Temporal duration']  (2 axioms)
+      - has period: domain=['Tariff']  range=['Temporal duration']  (2 axioms)
+      - has phenomenon time: domain=['Measurement']  range=['Temporal entity']  (2 axioms)
+    Pred properties with no aligned gold (full axioms count as FP):
+      - has asset: domain=['Water Distribution Infrastructure']  range=['Asset']  (2 axioms)
+      - has sensor: domain=['Water Distribution Infrastructure']  range=['Sensor']  (2 axioms)
+      - has actuator: domain=['Water Distribution Infrastructure']  range=['Actuator']  (2 axioms)
+      - has temporal setting: domain=['Water Meter']  range=['Temporal Setting']  (2 axioms)
+      - has chemical property: domain=['Water']  range=['Chemical Property']  (2 axioms)
+      - has water indicator: domain=['Location']  range=['Water Indicator']  (2 axioms)
+
+  [DatatypeProperty]
+    P=0.000  R=0.000  F1=0.000
+    TP = 0
+    FP = 28   (Layer-3 FP: 12  +  unaligned pred axioms: 16)
+    FN = 6    (Layer-3 FN: 4  +  unaligned gold axioms: 2)
+    Unaligned gold properties: 4 (contributing 2 axioms to FN)
+    Unaligned pred properties: 8 (contributing 16 axioms to FP)
+    Gold properties with no aligned pred (full axioms count as FN):
+      - has timestamp: domain=None  range=None  (0 axioms)
+      - has start timestamp: domain=['Tariff']  range=['xsd:dateTime']  (2 axioms)
+      - operates at radio frequency: domain=None  range=None  (0 axioms)
+      - requires power: domain=None  range=None  (0 axioms)
+    Pred properties with no aligned gold (full axioms count as FP):
+      - has power: domain=['Water Meter']  range=['xsd:string']  (2 axioms)
+      - has radio frequency level: domain=['Water Meter']  range=['xsd:string']  (2 axioms)
+      - has geolocation: domain=['Water Meter']  range=['xsd:string']  (2 axioms)
+      - has tariff start date: domain=['Water Meter']  range=['xsd:dateTime']  (2 axioms)
+      - has tariff duration: domain=['Water Meter']  range=['xsd:string']  (2 axioms)
+      - has tariff period: domain=['Water Meter']  range=['xsd:string']  (2 axioms)
+      - has billing date: domain=['Water Meter']  range=['xsd:dateTime']  (2 axioms)
+      - has billing date period: domain=['Water Meter']  range=['xsd:string']  (2 axioms)
+
+  [Grand Overall — global, all property types]
+    P=0.000  R=0.000  F1=0.000
+    TP = 0
+    FP = 44   (Layer-3 FP: 16  +  unaligned pred axioms: 28)
+    FN = 18   (Layer-3 FN: 4  +  unaligned gold axioms: 14)
+
+========================================================================

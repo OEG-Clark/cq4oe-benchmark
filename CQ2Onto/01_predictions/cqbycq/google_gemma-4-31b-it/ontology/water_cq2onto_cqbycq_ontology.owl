@@ -1,0 +1,384 @@
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#WaterDistributionInfrastructure">
+  <rdfs:comment xml:lang="en">The overall system of components used to distribute water from a source to consumers.</rdfs:comment>
+  <rdfs:label xml:lang="en">Water Distribution Infrastructure</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#InfrastructureAsset">
+  <rdfs:comment xml:lang="en">A physical component or asset that forms part of a water distribution infrastructure.</rdfs:comment>
+  <rdfs:label xml:lang="en">Infrastructure Asset</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Sensor">
+  <rdfs:comment xml:lang="en">A device used to detect or measure a physical property in the water infrastructure.</rdfs:comment>
+  <rdfs:label xml:lang="en">Sensor</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#InfrastructureAsset'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#SensorType">
+  <rdfs:comment xml:lang="en">A category or classification of sensors based on their function or technology.</rdfs:comment>
+  <rdfs:label xml:lang="en">Sensor Type</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Actuator">
+  <rdfs:comment xml:lang="en">A device used to move or control a mechanism or system in the water infrastructure.</rdfs:comment>
+  <rdfs:label xml:lang="en">Actuator</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#InfrastructureAsset'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#ActuatorType">
+  <rdfs:comment xml:lang="en">A category or classification of actuators based on their function or technology.</rdfs:comment>
+  <rdfs:label xml:lang="en">Actuator Type</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#WaterMeter">
+  <rdfs:comment xml:lang="en">A specific type of sensor used to measure the flow or volume of water.</rdfs:comment>
+  <rdfs:label xml:lang="en">Water Meter</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Sensor'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#MeasurementAspect">
+  <rdfs:comment xml:lang="en">A specific physical property or aspect of the water infrastructure that can be measured (e.g., flow rate, pressure, volume).</rdfs:comment>
+  <rdfs:label xml:lang="en">Measurement Aspect</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Geolocation">
+  <rdfs:comment xml:lang="en">A representation of a physical location on Earth using geographic coordinates.</rdfs:comment>
+  <rdfs:label xml:lang="en">Geolocation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#TemporalSetting">
+  <rdfs:comment xml:lang="en">A configuration defining the time interval or frequency at which measurements are taken.</rdfs:comment>
+  <rdfs:label xml:lang="en">Temporal Setting</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#WaterMeterMeasurement">
+  <rdfs:comment xml:lang="en">A pivot class representing a specific measurement event performed by a water meter under a specific temporal setting.</rdfs:comment>
+  <rdfs:label xml:lang="en">Water Meter Measurement</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#WaterProperty">
+  <rdfs:comment xml:lang="en">A physical or chemical property of the water itself, such as pH, turbidity, or temperature.</rdfs:comment>
+  <rdfs:label xml:lang="en">Water Property</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#ChemicalProperty">
+  <rdfs:comment xml:lang="en">A property of water related to its chemical composition or reactivity.</rdfs:comment>
+  <rdfs:label xml:lang="en">Chemical Property</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#WaterProperty'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#WaterPropertyMeasurement">
+  <rdfs:comment xml:lang="en">A pivot class representing the measurement of a specific water property at a given time and location.</rdfs:comment>
+  <rdfs:label xml:lang="en">Water Property Measurement</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#WaterIndicator">
+  <rdfs:comment xml:lang="en">A defined metric or parameter used to monitor the quality or status of water in a specific context.</rdfs:comment>
+  <rdfs:label xml:lang="en">Water Indicator</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#City">
+  <rdfs:comment xml:lang="en">A named urban settlement or administrative area.</rdfs:comment>
+  <rdfs:label xml:lang="en">City</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#CityWaterIndicator">
+  <rdfs:comment xml:lang="en">A pivot class that defines which water indicator is applicable or monitored for a specific city.</rdfs:comment>
+  <rdfs:label xml:lang="en">City Water Indicator</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Tariff">
+  <rdfs:comment xml:lang="en">A pricing structure or set of rates applied to water consumption.</rdfs:comment>
+  <rdfs:label xml:lang="en">Tariff</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#WaterMeterTariffAssignment">
+  <rdfs:comment xml:lang="en">A pivot class representing the assignment of a specific tariff to a water meter, including the start date and time.</rdfs:comment>
+  <rdfs:label xml:lang="en">Water Meter Tariff Assignment</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#WaterMeterBilling">
+  <rdfs:comment xml:lang="en">A pivot class representing a billing event for a specific water meter on a specific date.</rdfs:comment>
+  <rdfs:label xml:lang="en">Water Meter Billing</rdfs:label>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#composedOf">
+  <rdfs:comment xml:lang="en">Relates a water distribution infrastructure to the assets that comprise it.</rdfs:comment>
+  <rdfs:label xml:lang="en">composed of</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterDistributionInfrastructure"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#InfrastructureAsset"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasSensorType">
+  <rdfs:comment xml:lang="en">Relates a sensor to the type of sensor it is.</rdfs:comment>
+  <rdfs:label xml:lang="en">has sensor type</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Sensor"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#SensorType"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasActuatorType">
+  <rdfs:comment xml:lang="en">Relates an actuator to the type of actuator it is.</rdfs:comment>
+  <rdfs:label xml:lang="en">has actuator type</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Actuator"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#ActuatorType"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#measuresAspect">
+  <rdfs:comment xml:lang="en">Relates a water meter to the specific aspect of the infrastructure it measures.</rdfs:comment>
+  <rdfs:label xml:lang="en">measures aspect</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterMeter"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#MeasurementAspect"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasGeolocation">
+  <rdfs:comment xml:lang="en">Relates a water meter to its geographic location.</rdfs:comment>
+  <rdfs:label xml:lang="en">has geolocation</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterMeter"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Geolocation"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasMeasurement">
+  <rdfs:comment xml:lang="en">Relates a water meter to the measurements it provides.</rdfs:comment>
+  <rdfs:label xml:lang="en">has measurement</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterMeter"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#WaterMeterMeasurement"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#measuredAspect">
+  <rdfs:comment xml:lang="en">Relates a measurement event to the aspect being measured.</rdfs:comment>
+  <rdfs:label xml:lang="en">measured aspect</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterMeterMeasurement"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#MeasurementAspect"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasTemporalSetting">
+  <rdfs:comment xml:lang="en">Relates a measurement event to the temporal setting under which it was taken.</rdfs:comment>
+  <rdfs:label xml:lang="en">has temporal setting</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterMeterMeasurement"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#TemporalSetting"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#measuresWaterProperty">
+  <rdfs:comment xml:lang="en">Relates a sensor to the water property it is designed to measure.</rdfs:comment>
+  <rdfs:label xml:lang="en">measures water property</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Sensor"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#WaterProperty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasWaterPropertyMeasurement">
+  <rdfs:comment xml:lang="en">Relates a sensor to the specific property measurements it has recorded.</rdfs:comment>
+  <rdfs:label xml:lang="en">has water property measurement</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Sensor"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#WaterPropertyMeasurement"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#measuredWaterProperty">
+  <rdfs:comment xml:lang="en">Relates a water property measurement event to the specific property being measured.</rdfs:comment>
+  <rdfs:label xml:lang="en">measured water property</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterPropertyMeasurement"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#WaterProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#definedForCity">
+  <rdfs:comment xml:lang="en">Relates a city water indicator definition to the city it applies to.</rdfs:comment>
+  <rdfs:label xml:lang="en">defined for city</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#CityWaterIndicator"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#City"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasIndicator">
+  <rdfs:comment xml:lang="en">Relates a city water indicator definition to the specific water indicator being defined.</rdfs:comment>
+  <rdfs:label xml:lang="en">has indicator</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#CityWaterIndicator"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#WaterIndicator"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasTariffAssignment">
+  <rdfs:comment xml:lang="en">Relates a water meter to its tariff assignment history.</rdfs:comment>
+  <rdfs:label xml:lang="en">has tariff assignment</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterMeter"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#WaterMeterTariffAssignment"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#assignedTariff">
+  <rdfs:comment xml:lang="en">Relates a tariff assignment to the specific tariff being applied.</rdfs:comment>
+  <rdfs:label xml:lang="en">assigned tariff</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterMeterTariffAssignment"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Tariff"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasBillingEvent">
+  <rdfs:comment xml:lang="en">Relates a water meter to its billing events.</rdfs:comment>
+  <rdfs:label xml:lang="en">has billing event</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterMeter"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#WaterMeterBilling"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#billedWaterMeter">
+  <rdfs:comment xml:lang="en">Relates a billing event back to the water meter being billed.</rdfs:comment>
+  <rdfs:label xml:lang="en">billed water meter</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterMeterBilling"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#WaterMeter"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:ObjectProperty>
+
+  <!-- owl:DatatypeProperty declarations -->
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasFabricationNumber">
+  <rdfs:comment xml:lang="en">The unique identification number assigned to a water meter during its fabrication.</rdfs:comment>
+  <rdfs:label xml:lang="en">has fabrication number</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterMeter"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasManufacturer">
+  <rdfs:comment xml:lang="en">The company or entity that manufactured the water meter.</rdfs:comment>
+  <rdfs:label xml:lang="en">has manufacturer</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterMeter"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasModel">
+  <rdfs:comment xml:lang="en">The specific model identifier or name of the water meter.</rdfs:comment>
+  <rdfs:label xml:lang="en">has model</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterMeter"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasVersion">
+  <rdfs:comment xml:lang="en">The version identifier of the water meter.</rdfs:comment>
+  <rdfs:label xml:lang="en">has version</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterMeter"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasFirmwareVersion">
+  <rdfs:comment xml:lang="en">The version of the firmware currently installed and running on the water meter.</rdfs:comment>
+  <rdfs:label xml:lang="en">has firmware version</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterMeter"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasPowerRating">
+  <rdfs:comment xml:lang="en">The electrical power requirement or rating of the water meter.</rdfs:comment>
+  <rdfs:label xml:lang="en">has power rating</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterMeter"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasRadioFrequencyLevel">
+  <rdfs:comment xml:lang="en">The radio frequency level used by the water meter for communication.</rdfs:comment>
+  <rdfs:label xml:lang="en">has radio frequency level</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterMeter"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#latitude">
+  <rdfs:comment xml:lang="en">The latitude coordinate of the geolocation.</rdfs:comment>
+  <rdfs:label xml:lang="en">latitude</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Geolocation"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#longitude">
+  <rdfs:comment xml:lang="en">The longitude coordinate of the geolocation.</rdfs:comment>
+  <rdfs:label xml:lang="en">longitude</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Geolocation"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasMeasurementValue">
+  <rdfs:comment xml:lang="en">The numerical value recorded during a water meter measurement.</rdfs:comment>
+  <rdfs:label xml:lang="en">has measurement value</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterMeterMeasurement"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasWaterPropertyValue">
+  <rdfs:comment xml:lang="en">The numerical value of the water property recorded during a measurement event.</rdfs:comment>
+  <rdfs:label xml:lang="en">has water property value</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterPropertyMeasurement"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#cityName">
+  <rdfs:comment xml:lang="en">The name of the city.</rdfs:comment>
+  <rdfs:label xml:lang="en">city name</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#City"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasTariffStartDate">
+  <rdfs:comment xml:lang="en">The date and time when the tariff assignment became active.</rdfs:comment>
+  <rdfs:label xml:lang="en">has tariff start date</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterMeterTariffAssignment"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasTariffEndDate">
+  <rdfs:comment xml:lang="en">The date and time when the tariff assignment ended or is scheduled to end.</rdfs:comment>
+  <rdfs:label xml:lang="en">has tariff end date</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterMeterTariffAssignment"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasBillingDate">
+  <rdfs:comment xml:lang="en">The date on which the billing for the water meter was generated.</rdfs:comment>
+  <rdfs:label xml:lang="en">has billing date</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterMeterBilling"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasBillingPeriodStartDate">
+  <rdfs:comment xml:lang="en">The start date of the consumption period covered by the billing event.</rdfs:comment>
+  <rdfs:label xml:lang="en">has billing period start date</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterMeterBilling"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasBillingPeriodEndDate">
+  <rdfs:comment xml:lang="en">The end date of the consumption period covered by the billing event.</rdfs:comment>
+  <rdfs:label xml:lang="en">has billing period end date</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterMeterBilling"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+</rdf:RDF>

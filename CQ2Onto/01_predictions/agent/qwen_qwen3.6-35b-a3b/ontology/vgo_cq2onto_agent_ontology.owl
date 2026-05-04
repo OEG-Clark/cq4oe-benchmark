@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:vaem="http://www.linkedmodel.org/schema/vaem#">
+ 
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Player">
+  <rdfs:comment xml:lang="en">Represents a player in the game system.</rdfs:comment>
+  <rdfs:label xml:lang="en">Player</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Declared as owl:Class: OOPS pitfall: element used as a class without explicit declaration.</vaem:rationale>
+  <dc:source>(pitfall) An ontology element is used as a class without having been explicitly declared as such using the primitives owl:Class or rdfs:Class.</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#dateTime">
+  <rdfs:comment xml:lang="en">Represents a date and time value, semantically mapped to xsd:dateTime for datatype property compatibility.</rdfs:comment>
+  <rdfs:label xml:lang="en">dateTime</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Declared as owl:Class: OOPS pitfall: element used as a class without explicit declaration.</vaem:rationale>
+  <dc:source>(pitfall) An ontology element is used as a class without having been explicitly declared as such using the primitives owl:Class or rdfs:Class.</dc:source>
+</owl:Class>
+
+  <!-- owl:DatatypeProperty declarations -->
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasPurchaseTime">
+  <rdfs:comment xml:lang="en">The time of day when an in-app purchase was made.</rdfs:comment>
+  <rdfs:label xml:lang="en">hasPurchaseTime</rdfs:label>
+  <vaem:rationale>[Logical Consistency Agent] Changed range from xsd:time to xsd:dateTime: HermiT reasoner does not support xsd:time in its datatype map. Replacing with xsd:dateTime ensures compatibility while preserving temporal semantics.
+    [Pitfall Resolution Agent] Removed duplicate rdfs:domain, rdfs:range, and owl:FunctionalProperty statements. Consolidated into single axioms. Corrected range to xsd:dateTime for datatype compatibility.: OOPS pitfall: multiple rdfs:domain/rdfs:range statements. Also fixed datatype compatibility issue with HermiT reasoner.</vaem:rationale>
+  <dc:source>(competency_question) CQ62
+    (error_message) HermiT supports all and only the datatypes of the OWL 2 datatype map... The datatype 'http://www.w3.org/2001/XMLSchema#time' is not part of the OWL 2 datatype map
+    (pitfall) The domain or range (or both) of a property (relationships and attributes) is defined by stating more than one rdfs:domain or rdfs:range statements.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#dateTime"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+</rdf:RDF>

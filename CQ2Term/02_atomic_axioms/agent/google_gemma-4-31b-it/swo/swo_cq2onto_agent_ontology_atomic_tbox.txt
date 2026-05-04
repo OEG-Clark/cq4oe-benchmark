@@ -1,0 +1,402 @@
+====================================================================================================
+ATOMIC TBOX AXIOMS
+====================================================================================================
+
+── Class ──
+
+  Term: Algorithm  [Class]
+    Declaration                Declaration: Algorithm (Class)
+      Subject: Algorithm
+      Object : Class
+    DisjointClasses            DisjointClasses(Algorithm, Software Tool)
+      Subject: Algorithm
+      Object : Software Tool
+
+  Term: Data Format  [Class]
+    Declaration                Declaration: Data Format (Class)
+      Subject: Data Format
+      Object : Class
+    DisjointClasses            DisjointClasses(Data Format, Software Tool)
+      Subject: Data Format
+      Object : Software Tool
+
+  Term: Developer  [Class]
+    Declaration                Declaration: Developer (Class)
+      Subject: Developer
+      Object : Class
+    DisjointClasses            DisjointClasses(Developer, Software Tool)
+      Subject: Developer
+      Object : Software Tool
+
+  Term: License  [Class]
+    Declaration                Declaration: License (Class)
+      Subject: License
+      Object : Class
+    DisjointClasses            DisjointClasses(License, Software Tool)
+      Subject: License
+      Object : Software Tool
+
+  Term: Open Format  [Class]
+    Declaration                Declaration: Open Format (Class)
+      Subject: Open Format
+      Object : Class
+    SubClassOf                 Open Format ⊑ Data Format
+      Subject: Open Format
+      Object : Data Format
+
+  Term: Platform  [Class]
+    Declaration                Declaration: Platform (Class)
+      Subject: Platform
+      Object : Class
+    DisjointClasses            DisjointClasses(Platform, Software Tool)
+      Subject: Platform
+      Object : Software Tool
+
+  Term: Software Tool  [Class]
+    Declaration                Declaration: Software Tool (Class)
+      Subject: Software Tool
+      Object : Class
+    DisjointClasses            DisjointClasses(Software Tool, Software Type)
+      Subject: Software Tool
+      Object : Software Type
+    DisjointClasses            DisjointClasses(Software Tool, Software Version)
+      Subject: Software Tool
+      Object : Software Version
+
+  Term: Software Type  [Class]
+    Declaration                Declaration: Software Type (Class)
+      Subject: Software Type
+      Object : Class
+
+  Term: Software Version  [Class]
+    Declaration                Declaration: Software Version (Class)
+      Subject: Software Version
+      Object : Class
+
+
+── ObjectProperty ──
+
+  Term: developed  [ObjectProperty]
+    Declaration                Declaration: developed (ObjectProperty)
+      Subject: developed
+      Object : ObjectProperty
+    InverseOf                  developed ≡ developed by⁻
+      Subject: developed
+      Object : developed by
+    Domain                     ∃developed.⊤ ⊑ Developer
+      Subject: developed
+      Object : Developer
+    Range                      ⊤ ⊑ ∀developed.Software Tool
+      Subject: developed
+      Object : Software Tool
+
+  Term: developed by  [ObjectProperty]
+    Declaration                Declaration: developed by (ObjectProperty)
+      Subject: developed by
+      Object : ObjectProperty
+    InverseOf                  developed by ≡ developed⁻
+      Subject: developed by
+      Object : developed
+    Domain                     ∃developed by.⊤ ⊑ Software Tool
+      Subject: developed by
+      Object : Software Tool
+    Range                      ⊤ ⊑ ∀developed by.Developer
+      Subject: developed by
+      Object : Developer
+
+  Term: has license  [ObjectProperty]
+    Declaration                Declaration: has license (ObjectProperty)
+      Subject: has license
+      Object : ObjectProperty
+    InverseOf                  has license ≡ is license of⁻
+      Subject: has license
+      Object : is license of
+    Domain                     ∃has license.⊤ ⊑ Software Tool
+      Subject: has license
+      Object : Software Tool
+    Range                      ⊤ ⊑ ∀has license.License
+      Subject: has license
+      Object : License
+
+  Term: has type  [ObjectProperty]
+    Declaration                Declaration: has type (ObjectProperty)
+      Subject: has type
+      Object : ObjectProperty
+    InverseOf                  has type ≡ is type of⁻
+      Subject: has type
+      Object : is type of
+    Domain                     ∃has type.⊤ ⊑ Software Tool
+      Subject: has type
+      Object : Software Tool
+    Range                      ⊤ ⊑ ∀has type.Software Type
+      Subject: has type
+      Object : Software Type
+
+  Term: has version  [ObjectProperty]
+    Declaration                Declaration: has version (ObjectProperty)
+      Subject: has version
+      Object : ObjectProperty
+    InverseOf                  has version ≡ is version of⁻
+      Subject: has version
+      Object : is version of
+    Domain                     ∃has version.⊤ ⊑ Software Tool
+      Subject: has version
+      Object : Software Tool
+    Range                      ⊤ ⊑ ∀has version.Software Version
+      Subject: has version
+      Object : Software Version
+
+  Term: is input format of  [ObjectProperty]
+    Declaration                Declaration: is input format of (ObjectProperty)
+      Subject: is input format of
+      Object : ObjectProperty
+    InverseOf                  is input format of ≡ supports input format⁻
+      Subject: is input format of
+      Object : supports input format
+    Domain                     ∃is input format of.⊤ ⊑ Data Format
+      Subject: is input format of
+      Object : Data Format
+    Range                      ⊤ ⊑ ∀is input format of.Software Tool
+      Subject: is input format of
+      Object : Software Tool
+
+  Term: is license of  [ObjectProperty]
+    Declaration                Declaration: is license of (ObjectProperty)
+      Subject: is license of
+      Object : ObjectProperty
+    InverseOf                  is license of ≡ has license⁻
+      Subject: is license of
+      Object : has license
+    Domain                     ∃is license of.⊤ ⊑ License
+      Subject: is license of
+      Object : License
+    Range                      ⊤ ⊑ ∀is license of.Software Tool
+      Subject: is license of
+      Object : Software Tool
+
+  Term: is output format of  [ObjectProperty]
+    Declaration                Declaration: is output format of (ObjectProperty)
+      Subject: is output format of
+      Object : ObjectProperty
+    InverseOf                  is output format of ≡ supports output format⁻
+      Subject: is output format of
+      Object : supports output format
+    Domain                     ∃is output format of.⊤ ⊑ Data Format
+      Subject: is output format of
+      Object : Data Format
+    Range                      ⊤ ⊑ ∀is output format of.Software Tool
+      Subject: is output format of
+      Object : Software Tool
+
+  Term: is platform for  [ObjectProperty]
+    Declaration                Declaration: is platform for (ObjectProperty)
+      Subject: is platform for
+      Object : ObjectProperty
+    InverseOf                  is platform for ≡ runs on⁻
+      Subject: is platform for
+      Object : runs on
+    Domain                     ∃is platform for.⊤ ⊑ Platform
+      Subject: is platform for
+      Object : Platform
+    Range                      ⊤ ⊑ ∀is platform for.Software Tool
+      Subject: is platform for
+      Object : Software Tool
+
+  Term: is type of  [ObjectProperty]
+    Declaration                Declaration: is type of (ObjectProperty)
+      Subject: is type of
+      Object : ObjectProperty
+    InverseOf                  is type of ≡ has type⁻
+      Subject: is type of
+      Object : has type
+    Domain                     ∃is type of.⊤ ⊑ Software Type
+      Subject: is type of
+      Object : Software Type
+    Range                      ⊤ ⊑ ∀is type of.Software Tool
+      Subject: is type of
+      Object : Software Tool
+
+  Term: is used by software  [ObjectProperty]
+    Declaration                Declaration: is used by software (ObjectProperty)
+      Subject: is used by software
+      Object : ObjectProperty
+    InverseOf                  is used by software ≡ uses algorithm⁻
+      Subject: is used by software
+      Object : uses algorithm
+    Domain                     ∃is used by software.⊤ ⊑ Algorithm
+      Subject: is used by software
+      Object : Algorithm
+    Range                      ⊤ ⊑ ∀is used by software.Software Tool
+      Subject: is used by software
+      Object : Software Tool
+
+  Term: is version of  [ObjectProperty]
+    Declaration                Declaration: is version of (ObjectProperty)
+      Subject: is version of
+      Object : ObjectProperty
+    InverseOf                  is version of ≡ has version⁻
+      Subject: is version of
+      Object : has version
+    Domain                     ∃is version of.⊤ ⊑ Software Version
+      Subject: is version of
+      Object : Software Version
+    Range                      ⊤ ⊑ ∀is version of.Software Tool
+      Subject: is version of
+      Object : Software Tool
+
+  Term: runs on  [ObjectProperty]
+    Declaration                Declaration: runs on (ObjectProperty)
+      Subject: runs on
+      Object : ObjectProperty
+    InverseOf                  runs on ≡ is platform for⁻
+      Subject: runs on
+      Object : is platform for
+    Domain                     ∃runs on.⊤ ⊑ Software Tool
+      Subject: runs on
+      Object : Software Tool
+    Range                      ⊤ ⊑ ∀runs on.Platform
+      Subject: runs on
+      Object : Platform
+
+  Term: supports input format  [ObjectProperty]
+    Declaration                Declaration: supports input format (ObjectProperty)
+      Subject: supports input format
+      Object : ObjectProperty
+    InverseOf                  supports input format ≡ is input format of⁻
+      Subject: supports input format
+      Object : is input format of
+    Domain                     ∃supports input format.⊤ ⊑ Software Tool
+      Subject: supports input format
+      Object : Software Tool
+    Range                      ⊤ ⊑ ∀supports input format.Data Format
+      Subject: supports input format
+      Object : Data Format
+
+  Term: supports output format  [ObjectProperty]
+    Declaration                Declaration: supports output format (ObjectProperty)
+      Subject: supports output format
+      Object : ObjectProperty
+    InverseOf                  supports output format ≡ is output format of⁻
+      Subject: supports output format
+      Object : is output format of
+    Domain                     ∃supports output format.⊤ ⊑ Software Tool
+      Subject: supports output format
+      Object : Software Tool
+    Range                      ⊤ ⊑ ∀supports output format.Data Format
+      Subject: supports output format
+      Object : Data Format
+
+  Term: uses algorithm  [ObjectProperty]
+    Declaration                Declaration: uses algorithm (ObjectProperty)
+      Subject: uses algorithm
+      Object : ObjectProperty
+    InverseOf                  uses algorithm ≡ is used by software⁻
+      Subject: uses algorithm
+      Object : is used by software
+    Domain                     ∃uses algorithm.⊤ ⊑ Software Tool
+      Subject: uses algorithm
+      Object : Software Tool
+    Range                      ⊤ ⊑ ∀uses algorithm.Algorithm
+      Subject: uses algorithm
+      Object : Algorithm
+
+
+── DatatypeProperty ──
+
+  Term: documentation URL  [DatatypeProperty]
+    Declaration                Declaration: documentation URL (DatatypeProperty)
+      Subject: documentation URL
+      Object : DatatypeProperty
+    Domain                     ∃documentation URL.⊤ ⊑ Software Tool
+      Subject: documentation URL
+      Object : Software Tool
+    Range                      documentation URL maps-to normstr'>
+      Subject: documentation URL
+      Object : normstr'>
+
+  Term: has modification  [DatatypeProperty]
+    Declaration                Declaration: has modification (DatatypeProperty)
+      Subject: has modification
+      Object : DatatypeProperty
+    Domain                     ∃has modification.⊤ ⊑ Software Tool
+      Subject: has modification
+      Object : Software Tool
+    Range                      has modification maps-to xsd:string
+      Subject: has modification
+      Object : xsd:string
+
+  Term: homepage  [DatatypeProperty]
+    Declaration                Declaration: homepage (DatatypeProperty)
+      Subject: homepage
+      Object : DatatypeProperty
+    Domain                     ∃homepage.⊤ ⊑ Software Tool
+      Subject: homepage
+      Object : Software Tool
+    Range                      homepage maps-to normstr'>
+      Subject: homepage
+      Object : normstr'>
+
+  Term: implemented in  [DatatypeProperty]
+    Declaration                Declaration: implemented in (DatatypeProperty)
+      Subject: implemented in
+      Object : DatatypeProperty
+    Domain                     ∃implemented in.⊤ ⊑ Software Tool
+      Subject: implemented in
+      Object : Software Tool
+    Range                      implemented in maps-to xsd:string
+      Subject: implemented in
+      Object : xsd:string
+
+  Term: is open source  [DatatypeProperty]
+    Declaration                Declaration: is open source (DatatypeProperty)
+      Subject: is open source
+      Object : DatatypeProperty
+    Domain                     ∃is open source.⊤ ⊑ Software Tool
+      Subject: is open source
+      Object : Software Tool
+    Range                      is open source maps-to xsd:boolean
+      Subject: is open source
+      Object : xsd:boolean
+
+  Term: release date  [DatatypeProperty]
+    Declaration                Declaration: release date (DatatypeProperty)
+      Subject: release date
+      Object : DatatypeProperty
+    Domain                     ∃release date.⊤ ⊑ Software Version
+      Subject: release date
+      Object : Software Version
+    Range                      release date maps-to datetime'>
+      Subject: release date
+      Object : datetime'>
+
+  Term: version number  [DatatypeProperty]
+    Declaration                Declaration: version number (DatatypeProperty)
+      Subject: version number
+      Object : DatatypeProperty
+    Domain                     ∃version number.⊤ ⊑ Software Version
+      Subject: version number
+      Object : Software Version
+    Range                      version number maps-to xsd:string
+      Subject: version number
+      Object : xsd:string
+
+
+====================================================================================================
+STATISTICS
+====================================================================================================
+
+  Classes:               9  (defined: 0, primitive: 9)
+  ObjectProperties:      16
+  DatatypeProperties:    7
+
+  Axiom Breakdown:
+    Declaration               32
+    DisjointClasses           7
+    Domain                    23
+    InverseOf                 16
+    Range                     23
+    SubClassOf                1
+    ------------------------------
+    Total TBox Axioms         102
+
+====================================================================================================

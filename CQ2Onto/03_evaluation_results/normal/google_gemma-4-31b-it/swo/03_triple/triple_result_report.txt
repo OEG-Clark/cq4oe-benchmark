@@ -1,0 +1,190 @@
+========================================================================
+THREE-LAYER PROPERTY-AXIOM EVALUATION REPORT
+========================================================================
+
+LAYER 1 — Triple Statistics
+────────────────────────────────────────────────────────────────────────
+  Property counts by axiom shape, per property type.
+    full         = both rdfs:domain and rdfs:range declared
+    domain_only  = only rdfs:domain declared
+    range_only   = only rdfs:range declared
+    undefined    = neither declared
+
+                        Full   Dom-only   Rng-only   Undef   Total
+  Gold:
+    ObjectProperty         3          0          7       8      18
+    DatatypeProperty       0          0          5       0       5
+    TOTAL                  ─          ─          ─       ─      23
+
+  Pred:
+    ObjectProperty         7          0          0       0       7
+    DatatypeProperty       7          0          0       0       7
+    TOTAL                  ─          ─          ─       ─      14
+
+LAYER 2 — Semantic Overview
+────────────────────────────────────────────────────────────────────────
+  Each property is represented as a normalized text string derived from its axioms.
+  string and embedded; one-to-one greedy match by cosine.
+  Threshold: 0.6    Model: embeddinggemma
+
+  Standard precision/recall definitions are used.
+                               P       R      F1      TP      FP      FN   gold   pred
+  Overall                  0.714   0.435   0.540      10       4      13     23     14
+  ObjectProperty           1.000   0.389   0.560       7       0      11     18      7
+  DatatypeProperty         0.429   0.600   0.500       3       4       2      5      7
+
+  ObjectProperty aligned pairs (showing up to 10):
+    [0.736]  gold:'has license'
+            pred:'software tool has license license'
+    [0.730]  gold:'uses platform'
+            pred:'software tool runs on platform'
+    [0.685]  gold:'is developed by'
+            pred:'software tool developed by developer'
+    [0.656]  gold:'has interface software interface'
+            pred:'software tool has type software type'
+    [0.648]  gold:'implements algorithm'
+            pred:'software tool uses algorithm algorithm'
+    [0.615]  gold:'has input'
+            pred:'software tool supports input format data format'
+    [0.613]  gold:'data item has format specification data format specification'
+            pred:'software tool supports output format data format'
+
+  DatatypeProperty aligned pairs (showing up to 10):
+    [0.770]  gold:'has release date xsd string'
+            pred:'software tool release date xsd date time'
+    [0.728]  gold:'has documentation xsd string'
+            pred:'software tool has documentation url xsd anyuri'
+    [0.646]  gold:'has download location xsd string'
+            pred:'software tool has version xsd string'
+
+LAYER 3 — Strict Alignment (via best-matching tables)
+────────────────────────────────────────────────────────────────────────
+  6 property pairs from property_best_matching.csv.
+  Domain evaluated via class_best_matching.csv;
+  Range evaluated via class_best_matching.csv (ObjectProperty)
+  or normalized XSD equality (DatatypeProperty).
+
+  Evaluation criteria:
+    skip      — gold None and pred None (nothing declared on either side)
+    TP        — both declared and set-equal under the alignment table
+    FP        — pred declared but gold did not
+    FN        — gold declared but pred did not
+    mismatch  — both declared but they disagree under the alignment table
+                (mismatch contributes to both FP and FN)
+
+  Metric formula (mismatch counts as both FP and FN):
+    FP_total = fp + mismatch       (pred-side errors)
+    FN_total = fn + mismatch       (gold-side gaps)
+    P  = TP / (TP + FP_total)
+    R  = TP / (TP + FN_total)
+
+  [ObjectProperty]  3 aligned pair(s)
+    Type     P=1.000  R=1.000  F1=1.000  (TP=3, FP=0, FN=0; FP and FN include mismatch=0; skip=0)
+    Domain   P=0.000  R=0.000  F1=0.000  (TP=0, FP=3, FN=0; FP and FN include mismatch=0; skip=0)
+    Range    P=0.000  R=0.000  F1=0.000  (TP=0, FP=3, FN=0; FP and FN include mismatch=0; skip=0)
+    Overall  P=0.000  R=0.000  F1=0.000  (TP=0, FP=6, FN=0; type + domain + range judgments combined)
+
+    Per-pair detail:
+      gold:has license  ↔  pred:has license
+        type    gold=ObjectProperty  pred=ObjectProperty  → TP
+        domain  gold=None  pred=['Software Tool']  → FP
+        range   gold=None   pred=['License']   → FP
+      gold:is developed by  ↔  pred:developed by
+        type    gold=ObjectProperty  pred=ObjectProperty  → TP
+        domain  gold=None  pred=['Software Tool']  → FP
+        range   gold=None   pred=['Developer']   → FP
+      gold:uses platform  ↔  pred:uses algorithm
+        type    gold=ObjectProperty  pred=ObjectProperty  → TP
+        domain  gold=None  pred=['Software Tool']  → FP
+        range   gold=None   pred=['Algorithm']   → FP
+
+    No fully aligned triples.
+
+  [DatatypeProperty]  3 aligned pair(s)
+    Type     P=1.000  R=1.000  F1=1.000  (TP=3, FP=0, FN=0; FP and FN include mismatch=0; skip=0)
+    Domain   P=0.000  R=0.000  F1=0.000  (TP=0, FP=3, FN=0; FP and FN include mismatch=0; skip=0)
+    Range    P=0.000  R=0.000  F1=0.000  (TP=0, FP=3, FN=3; FP and FN include mismatch=3; skip=0)
+    Overall  P=0.000  R=0.000  F1=0.000  (TP=0, FP=6, FN=3; type + domain + range judgments combined)
+
+    Per-pair detail:
+      gold:has documentation  ↔  pred:has documentation URL
+        type    gold=DatatypeProperty  pred=DatatypeProperty  → TP
+        domain  gold=None  pred=['Software Tool']  → FP
+        range   gold=['xsd:string']   pred=['xsd:anyuri']   → MISMATCH
+      gold:has release date  ↔  pred:release date
+        type    gold=DatatypeProperty  pred=DatatypeProperty  → TP
+        domain  gold=None  pred=['Software Tool']  → FP
+        range   gold=['xsd:string']   pred=['xsd:dateTime']   → MISMATCH
+      gold:has website homepage  ↔  pred:has homepage
+        type    gold=DatatypeProperty  pred=DatatypeProperty  → TP
+        domain  gold=None  pred=['Software Tool']  → FP
+        range   gold=['xsd:http://www.w3.org/2000/01/rdf-schema#literal']   pred=['xsd:anyuri']   → MISMATCH
+
+    No fully aligned triples.
+
+  [Grand Overall — all property types, domain + range combined]
+    P=0.000  R=0.000  F1=0.000  (TP=0, FP=12, FN=3; FP and FN include mismatch=3)
+
+LAYER 4 — Global Overview
+────────────────────────────────────────────────────────────────────────
+  Layer 3 evaluates only properties already aligned by the upstream
+  step. Layer 4 extends the evaluation to the full ontology:
+    FP_global = Layer-3 FP + every domain/range axiom of every
+                              UNALIGNED pred property
+    FN_global = Layer-3 FN + every domain/range axiom of every
+                              UNALIGNED gold property
+  TP is unchanged. P / R / F1 reflect the whole ontology.
+  (Layer-3 FP/FN already include mismatch — see Layer 3 above.)
+
+  [ObjectProperty]
+    P=0.000  R=0.000  F1=0.000
+    TP = 0
+    FP = 14   (Layer-3 FP: 6  +  unaligned pred axioms: 8)
+    FN = 13   (Layer-3 FN: 0  +  unaligned gold axioms: 13)
+    Unaligned gold properties: 15 (contributing 13 axioms to FN)
+    Unaligned pred properties: 4 (contributing 8 axioms to FP)
+    Gold properties with no aligned pred (full axioms count as FN):
+      - has function: domain=None  range=['function']  (1 axiom)
+      - has input: domain=None  range=None  (0 axioms)
+      - has output: domain=None  range=None  (0 axioms)
+      - has specified data input: domain=None  range=['data item']  (1 axiom)
+      - has specified data output: domain=None  range=['data item']  (1 axiom)
+      - uses software: domain=['SWO_0000001']  range=['SWO_0000001']  (2 axioms)
+      - is software for: domain=None  range=None  (0 axioms)
+      - implements: domain=None  range=['algorithm']  (1 axiom)
+      - is encoded in: domain=None  range=None  (0 axioms)
+      - has version: domain=None  range=['version number']  (1 axiom)
+      - has interface: domain=None  range=['software interface']  (1 axiom)
+      - has format specification: domain=['data item']  range=['data format specification']  (2 axioms)
+      - has clause: domain=None  range=None  (0 axioms)
+      - is alternative format of: domain=['data format specification']  range=['data format specification']  (2 axioms)
+      - has declared status: domain=None  range=['Development status']  (1 axiom)
+    Pred properties with no aligned gold (full axioms count as FP):
+      - has type: domain=['Software Tool']  range=['Software Type']  (2 axioms)
+      - supports input format: domain=['Software Tool']  range=['Data Format']  (2 axioms)
+      - supports output format: domain=['Software Tool']  range=['Data Format']  (2 axioms)
+      - runs on: domain=['Software Tool']  range=['Platform']  (2 axioms)
+
+  [DatatypeProperty]
+    P=0.000  R=0.000  F1=0.000
+    TP = 0
+    FP = 14   (Layer-3 FP: 6  +  unaligned pred axioms: 8)
+    FN = 5    (Layer-3 FN: 3  +  unaligned gold axioms: 2)
+    Unaligned gold properties: 2 (contributing 2 axioms to FN)
+    Unaligned pred properties: 4 (contributing 8 axioms to FP)
+    Gold properties with no aligned pred (full axioms count as FN):
+      - has download location: domain=None  range=['xsd:string']  (1 axiom)
+      - has support URL: domain=None  range=['xsd:http://www.w3.org/2000/01/rdf-schema#literal']  (1 axiom)
+    Pred properties with no aligned gold (full axioms count as FP):
+      - has version: domain=['Software Tool']  range=['xsd:string']  (2 axioms)
+      - implemented in: domain=['Software Tool']  range=['xsd:string']  (2 axioms)
+      - is open source: domain=['Software Tool']  range=['xsd:boolean']  (2 axioms)
+      - algorithm modification: domain=['Software Tool']  range=['xsd:string']  (2 axioms)
+
+  [Grand Overall — global, all property types]
+    P=0.000  R=0.000  F1=0.000
+    TP = 0
+    FP = 28   (Layer-3 FP: 12  +  unaligned pred axioms: 16)
+    FN = 18   (Layer-3 FN: 3  +  unaligned gold axioms: 15)
+
+========================================================================

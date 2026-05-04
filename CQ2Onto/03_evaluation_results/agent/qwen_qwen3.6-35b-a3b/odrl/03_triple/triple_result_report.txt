@@ -1,0 +1,236 @@
+========================================================================
+THREE-LAYER PROPERTY-AXIOM EVALUATION REPORT
+========================================================================
+
+LAYER 1 — Triple Statistics
+────────────────────────────────────────────────────────────────────────
+  Property counts by axiom shape, per property type.
+    full         = both rdfs:domain and rdfs:range declared
+    domain_only  = only rdfs:domain declared
+    range_only   = only rdfs:range declared
+    undefined    = neither declared
+
+                        Full   Dom-only   Rng-only   Undef   Total
+  Gold:
+    ObjectProperty        13          1          6       8      28
+    DatatypeProperty       0          0          0       0       0
+    TOTAL                  ─          ─          ─       ─      28
+
+  Pred:
+    ObjectProperty        44          0          0       0      44
+    DatatypeProperty       0          0          0       0       0
+    TOTAL                  ─          ─          ─       ─      44
+
+LAYER 2 — Semantic Overview
+────────────────────────────────────────────────────────────────────────
+  Each property is represented as a normalized text string derived from its axioms.
+  string and embedded; one-to-one greedy match by cosine.
+  Threshold: 0.6    Model: embeddinggemma
+
+  Standard precision/recall definitions are used.
+                               P       R      F1      TP      FP      FN   gold   pred
+  Overall                  0.432   0.679   0.528      19      25       9     28     44
+  ObjectProperty           0.432   0.679   0.528      19      25       9     28     44
+  DatatypeProperty         0.000   0.000   0.000       0       0       0      0      0
+
+  ObjectProperty aligned pairs (showing up to 10):
+    [1.000]  gold:'asset has policy policy'
+            pred:'asset has policy policy'
+    [0.956]  gold:'rule failure rule'
+            pred:'rule has failure rule rule'
+    [0.933]  gold:'duty consequence duty'
+            pred:'duty has consequence duty duty'
+    [0.928]  gold:'constraint operator operator'
+            pred:'operator is operator of constraint'
+    [0.927]  gold:'prohibition remedy duty'
+            pred:'prohibition has remedy duty'
+    [0.853]  gold:'policy permission permission'
+            pred:'exclusive permission is exclusive permission of policy'
+    [0.830]  gold:'logical constraint operand'
+            pred:'constraint has logical constraint logical constraint'
+    [0.819]  gold:'constraint'
+            pred:'constraint has requirement requirement'
+    [0.782]  gold:'constraint left operand left operand'
+            pred:'constraint has operator operator'
+    [0.762]  gold:'permission duty duty'
+            pred:'rule has duty duty'
+    ... 9 more
+
+LAYER 3 — Strict Alignment (via best-matching tables)
+────────────────────────────────────────────────────────────────────────
+  12 property pairs from property_best_matching.csv.
+  Domain evaluated via class_best_matching.csv;
+  Range evaluated via class_best_matching.csv (ObjectProperty)
+  or normalized XSD equality (DatatypeProperty).
+
+  Evaluation criteria:
+    skip      — gold None and pred None (nothing declared on either side)
+    TP        — both declared and set-equal under the alignment table
+    FP        — pred declared but gold did not
+    FN        — gold declared but pred did not
+    mismatch  — both declared but they disagree under the alignment table
+                (mismatch contributes to both FP and FN)
+
+  Metric formula (mismatch counts as both FP and FN):
+    FP_total = fp + mismatch       (pred-side errors)
+    FN_total = fn + mismatch       (gold-side gaps)
+    P  = TP / (TP + FP_total)
+    R  = TP / (TP + FN_total)
+
+  [ObjectProperty]  12 aligned pair(s)
+    Type     P=1.000  R=1.000  F1=1.000  (TP=12, FP=0, FN=0; FP and FN include mismatch=0; skip=0)
+    Domain   P=0.417  R=0.556  F1=0.476  (TP=5, FP=7, FN=4; FP and FN include mismatch=4; skip=0)
+    Range    P=0.583  R=0.778  F1=0.667  (TP=7, FP=5, FN=2; FP and FN include mismatch=2; skip=0)
+    Overall  P=0.500  R=0.667  F1=0.571  (TP=12, FP=12, FN=6; type + domain + range judgments combined)
+
+    Per-pair detail:
+      gold:andSequence  ↔  pred:has sequence
+        type    gold=ObjectProperty  pred=ObjectProperty  → TP
+        domain  gold=None  pred=['Rule']  → FP
+        range   gold=None   pred=['Sequence']   → FP
+      gold:consequence  ↔  pred:has consequence duty
+        type    gold=ObjectProperty  pred=ObjectProperty  → TP
+        domain  gold=['Duty']  pred=['Duty']  → TP
+        range   gold=['Duty']   pred=['Duty']   → TP
+      gold:constraint  ↔  pred:has constraint
+        type    gold=ObjectProperty  pred=ObjectProperty  → TP
+        domain  gold=None  pred=['Rule']  → FP
+        range   gold=None   pred=['Constraint']   → FP
+      gold:duty  ↔  pred:is duty of
+        type    gold=ObjectProperty  pred=ObjectProperty  → TP
+        domain  gold=['Permission']  pred=['Duty']  → MISMATCH
+        range   gold=['Duty']   pred=['Rule']   → MISMATCH
+      gold:failure  ↔  pred:has failure rule
+        type    gold=ObjectProperty  pred=ObjectProperty  → TP
+        domain  gold=['Rule']  pred=['Rule']  → TP
+        range   gold=['Rule']   pred=['Rule']   → TP
+      gold:hasPolicy  ↔  pred:has policy
+        type    gold=ObjectProperty  pred=ObjectProperty  → TP
+        domain  gold=['Asset']  pred=['Asset']  → TP
+        range   gold=['Policy']   pred=['Policy']   → TP
+      gold:obligation  ↔  pred:has obligation
+        type    gold=ObjectProperty  pred=ObjectProperty  → TP
+        domain  gold=['Policy']  pred=['Rule']  → MISMATCH
+        range   gold=['Duty']   pred=['Obligation']   → MISMATCH
+      gold:operator  ↔  pred:has operator
+        type    gold=ObjectProperty  pred=ObjectProperty  → TP
+        domain  gold=['Constraint']  pred=['Constraint']  → TP
+        range   gold=['Operator']   pred=['Operator']   → TP
+      gold:partOf  ↔  pred:is party of
+        type    gold=ObjectProperty  pred=ObjectProperty  → TP
+        domain  gold=None  pred=['Party']  → FP
+        range   gold=None   pred=['Policy']   → FP
+      gold:permission  ↔  pred:has permission
+        type    gold=ObjectProperty  pred=ObjectProperty  → TP
+        domain  gold=['Policy']  pred=['Rule']  → MISMATCH
+        range   gold=['Permission']   pred=['Permission']   → TP
+      gold:prohibition  ↔  pred:has prohibition
+        type    gold=ObjectProperty  pred=ObjectProperty  → TP
+        domain  gold=['Policy']  pred=['Rule']  → MISMATCH
+        range   gold=['Prohibition']   pred=['Prohibition']   → TP
+      gold:remedy  ↔  pred:has remedy
+        type    gold=ObjectProperty  pred=ObjectProperty  → TP
+        domain  gold=['Prohibition']  pred=['Prohibition']  → TP
+        range   gold=['Duty']   pred=['Duty']   → TP
+
+    Fully aligned triples (domain TP and range TP) — 5:
+      gold: ['Duty'] -[consequence]-> ['Duty']
+      pred: ['Duty'] -[has consequence duty]-> ['Duty']
+      gold: ['Rule'] -[failure]-> ['Rule']
+      pred: ['Rule'] -[has failure rule]-> ['Rule']
+      gold: ['Asset'] -[hasPolicy]-> ['Policy']
+      pred: ['Asset'] -[has policy]-> ['Policy']
+      gold: ['Constraint'] -[operator]-> ['Operator']
+      pred: ['Constraint'] -[has operator]-> ['Operator']
+      gold: ['Prohibition'] -[remedy]-> ['Duty']
+      pred: ['Prohibition'] -[has remedy]-> ['Duty']
+
+  [DatatypeProperty]  no aligned pairs.
+
+  [Grand Overall — all property types, domain + range combined]
+    P=0.500  R=0.667  F1=0.571  (TP=12, FP=12, FN=6; FP and FN include mismatch=6)
+
+LAYER 4 — Global Overview
+────────────────────────────────────────────────────────────────────────
+  Layer 3 evaluates only properties already aligned by the upstream
+  step. Layer 4 extends the evaluation to the full ontology:
+    FP_global = Layer-3 FP + every domain/range axiom of every
+                              UNALIGNED pred property
+    FN_global = Layer-3 FN + every domain/range axiom of every
+                              UNALIGNED gold property
+  TP is unchanged. P / R / F1 reflect the whole ontology.
+  (Layer-3 FP/FN already include mismatch — see Layer 3 above.)
+
+  [ObjectProperty]
+    P=0.136  R=0.364  F1=0.198
+    TP = 12
+    FP = 76   (Layer-3 FP: 12  +  unaligned pred axioms: 64)
+    FN = 21   (Layer-3 FN: 6  +  unaligned gold axioms: 15)
+    Unaligned gold properties: 16 (contributing 15 axioms to FN)
+    Unaligned pred properties: 32 (contributing 64 axioms to FP)
+    Gold properties with no aligned pred (full axioms count as FN):
+      - action: domain=None  range=['Action']  (1 axiom)
+      - and: domain=None  range=None  (0 axioms)
+      - assignee: domain=None  range=['Party']  (1 axiom)
+      - assigner: domain=None  range=['Party']  (1 axiom)
+      - conflict: domain=['Policy']  range=['ConflictTerm']  (2 axioms)
+      - function: domain=None  range=['Party']  (1 axiom)
+      - implies: domain=['Action']  range=['Action']  (2 axioms)
+      - inheritFrom: domain=['Policy']  range=['Policy']  (2 axioms)
+      - inheritRelation: domain=None  range=None  (0 axioms)
+      - leftOperand: domain=['Constraint']  range=['LeftOperand']  (2 axioms)
+      - operand: domain=['LogicalConstraint']  range=None  (1 axiom)
+      - or: domain=None  range=None  (0 axioms)
+      - relation: domain=None  range=['Asset']  (1 axiom)
+      - scope: domain=None  range=None  (0 axioms)
+      - Only One: domain=None  range=None  (0 axioms)
+      - target: domain=None  range=['Asset']  (1 axiom)
+    Pred properties with no aligned gold (full axioms count as FP):
+      - is policy of: domain=['Policy']  range=['Asset']  (2 axioms)
+      - has rule: domain=['Policy']  range=['Rule']  (2 axioms)
+      - is rule of: domain=['Rule']  range=['Policy']  (2 axioms)
+      - is permission of: domain=['Permission']  range=['Rule']  (2 axioms)
+      - is prohibition of: domain=['Prohibition']  range=['Rule']  (2 axioms)
+      - has duty: domain=['Rule']  range=['Duty']  (2 axioms)
+      - is obligation of: domain=['Obligation']  range=['Rule']  (2 axioms)
+      - has party: domain=['Policy']  range=['Party']  (2 axioms)
+      - has role: domain=['Party']  range=['Role']  (2 axioms)
+      - is role of: domain=['Role']  range=['Party']  (2 axioms)
+      - is constraint of: domain=['Constraint']  range=['Rule']  (2 axioms)
+      - has logical constraint: domain=['Constraint']  range=['LogicalConstraint']  (2 axioms)
+      - is logical constraint of: domain=['LogicalConstraint']  range=['Constraint']  (2 axioms)
+      - has constraint set: domain=['Constraint']  range=['ConstraintSet']  (2 axioms)
+      - is constraint set of: domain=['ConstraintSet']  range=['Constraint']  (2 axioms)
+      - has conflict resolution strategy: domain=['Policy']  range=['ConflictResolutionStrategy']  (2 axioms)
+      - is conflict resolution strategy of: domain=['ConflictResolutionStrategy']  range=['Policy']  (2 axioms)
+      - is remedy of: domain=['Duty']  range=['Prohibition']  (2 axioms)
+      - is consequence duty of: domain=['Duty']  range=['Duty']  (2 axioms)
+      - is failure rule of: domain=['Rule']  range=['Rule']  (2 axioms)
+      - is sequence of: domain=['Sequence']  range=['Rule']  (2 axioms)
+      - has inheritance: domain=['Rule']  range=['Inheritance']  (2 axioms)
+      - is inherited by: domain=['Inheritance']  range=['Rule']  (2 axioms)
+      - has condition: domain=['Rule']  range=['Condition']  (2 axioms)
+      - is condition of: domain=['Condition']  range=['Rule']  (2 axioms)
+      - has container: domain=['Policy']  range=['Container']  (2 axioms)
+      - is container of: domain=['Container']  range=['Policy']  (2 axioms)
+      - has exclusive permission: domain=['Policy']  range=['ExclusivePermission']  (2 axioms)
+      - is exclusive permission of: domain=['ExclusivePermission']  range=['Policy']  (2 axioms)
+      - is operator of: domain=['Operator']  range=['Constraint']  (2 axioms)
+      - has requirement: domain=['Constraint']  range=['Requirement']  (2 axioms)
+      - is requirement of: domain=['Requirement']  range=['Constraint']  (2 axioms)
+
+  [DatatypeProperty]
+    P=0.000  R=0.000  F1=0.000
+    TP = 0
+    FP = 0    (Layer-3 FP: 0  +  unaligned pred axioms: 0)
+    FN = 0    (Layer-3 FN: 0  +  unaligned gold axioms: 0)
+    Unaligned gold properties: 0 (contributing 0 axioms to FN)
+    Unaligned pred properties: 0 (contributing 0 axioms to FP)
+
+  [Grand Overall — global, all property types]
+    P=0.136  R=0.364  F1=0.198
+    TP = 12
+    FP = 76   (Layer-3 FP: 12  +  unaligned pred axioms: 64)
+    FN = 21   (Layer-3 FN: 6  +  unaligned gold axioms: 15)
+
+========================================================================

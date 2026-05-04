@@ -1,0 +1,303 @@
+====================================================================================================
+ATOMIC TBOX AXIOMS
+====================================================================================================
+
+── Class ──
+
+  Term: Action  [Class]
+    Declaration                Declaration: Action (Class)
+      Subject: Action
+      Object : Class
+
+  Term: Asset  [Class]
+    Declaration                Declaration: Asset (Class)
+      Subject: Asset
+      Object : Class
+
+  Term: Conflict Resolution Strategy  [Class]
+    Declaration                Declaration: Conflict Resolution Strategy (Class)
+      Subject: Conflict Resolution Strategy
+      Object : Class
+
+  Term: Constraint  [Class]
+    Declaration                Declaration: Constraint (Class)
+      Subject: Constraint
+      Object : Class
+
+  Term: Duty  [Class]
+    Declaration                Declaration: Duty (Class)
+      Subject: Duty
+      Object : Class
+    SubClassOf                 Duty ⊑ Rule
+      Subject: Duty
+      Object : Rule
+
+  Term: Exclusive Permission  [Class]
+    Declaration                Declaration: Exclusive Permission (Class)
+      Subject: Exclusive Permission
+      Object : Class
+    SubClassOf                 Exclusive Permission ⊑ Permission
+      Subject: Exclusive Permission
+      Object : Permission
+
+  Term: Logical Constraint  [Class]
+    Declaration                Declaration: Logical Constraint (Class)
+      Subject: Logical Constraint
+      Object : Class
+    SubClassOf                 Logical Constraint ⊑ Constraint
+      Subject: Logical Constraint
+      Object : Constraint
+
+  Term: Logical Operator  [Class]
+    Declaration                Declaration: Logical Operator (Class)
+      Subject: Logical Operator
+      Object : Class
+
+  Term: Operator  [Class]
+    Declaration                Declaration: Operator (Class)
+      Subject: Operator
+      Object : Class
+
+  Term: Party  [Class]
+    Declaration                Declaration: Party (Class)
+      Subject: Party
+      Object : Class
+
+  Term: Permission  [Class]
+    Declaration                Declaration: Permission (Class)
+      Subject: Permission
+      Object : Class
+    SubClassOf                 Permission ⊑ Rule
+      Subject: Permission
+      Object : Rule
+
+  Term: Policy  [Class]
+    Declaration                Declaration: Policy (Class)
+      Subject: Policy
+      Object : Class
+
+  Term: Prohibition  [Class]
+    Declaration                Declaration: Prohibition (Class)
+      Subject: Prohibition
+      Object : Class
+    SubClassOf                 Prohibition ⊑ Rule
+      Subject: Prohibition
+      Object : Rule
+
+  Term: Rule  [Class]
+    Declaration                Declaration: Rule (Class)
+      Subject: Rule
+      Object : Class
+
+  Term: Transfer Action  [Class]
+    Declaration                Declaration: Transfer Action (Class)
+      Subject: Transfer Action
+      Object : Class
+    SubClassOf                 Transfer Action ⊑ Action
+      Subject: Transfer Action
+      Object : Action
+
+  Term: Transfer Right  [Class]
+    Declaration                Declaration: Transfer Right (Class)
+      Subject: Transfer Right
+      Object : Class
+    SubClassOf                 Transfer Right ⊑ Permission
+      Subject: Transfer Right
+      Object : Permission
+    SubClassOf                 Transfer Right ⊑ ∀action.Transfer Action
+      Subject: Transfer Right
+      Object : ∀action.Transfer Action
+
+
+── ObjectProperty ──
+
+  Term: action  [ObjectProperty]
+    Declaration                Declaration: action (ObjectProperty)
+      Subject: action
+      Object : ObjectProperty
+    Domain                     ∃action.⊤ ⊑ Rule
+      Subject: action
+      Object : Rule
+    Range                      ⊤ ⊑ ∀action.Action
+      Subject: action
+      Object : Action
+
+  Term: activated on failure  [ObjectProperty]
+    Declaration                Declaration: activated on failure (ObjectProperty)
+      Subject: activated on failure
+      Object : ObjectProperty
+    Domain                     ∃activated on failure.⊤ ⊑ Rule
+      Subject: activated on failure
+      Object : Rule
+    Range                      ⊤ ⊑ ∀activated on failure.Rule
+      Subject: activated on failure
+      Object : Rule
+
+  Term: asset  [ObjectProperty]
+    Declaration                Declaration: asset (ObjectProperty)
+      Subject: asset
+      Object : ObjectProperty
+    InverseOf                  asset ≡ policy⁻
+      Subject: asset
+      Object : policy
+    Domain                     ∃asset.⊤ ⊑ Policy
+      Subject: asset
+      Object : Policy
+    Range                      ⊤ ⊑ ∀asset.Asset
+      Subject: asset
+      Object : Asset
+
+  Term: assignee  [ObjectProperty]
+    Declaration                Declaration: assignee (ObjectProperty)
+      Subject: assignee
+      Object : ObjectProperty
+    Domain                     ∃assignee.⊤ ⊑ Rule
+      Subject: assignee
+      Object : Rule
+    Range                      ⊤ ⊑ ∀assignee.Party
+      Subject: assignee
+      Object : Party
+
+  Term: assigner  [ObjectProperty]
+    Declaration                Declaration: assigner (ObjectProperty)
+      Subject: assigner
+      Object : ObjectProperty
+    Domain                     ∃assigner.⊤ ⊑ Rule
+      Subject: assigner
+      Object : Rule
+    Range                      ⊤ ⊑ ∀assigner.Party
+      Subject: assigner
+      Object : Party
+
+  Term: conflict resolution  [ObjectProperty]
+    Declaration                Declaration: conflict resolution (ObjectProperty)
+      Subject: conflict resolution
+      Object : ObjectProperty
+    Domain                     ∃conflict resolution.⊤ ⊑ Policy
+      Subject: conflict resolution
+      Object : Policy
+    Range                      ⊤ ⊑ ∀conflict resolution.Conflict Resolution Strategy
+      Subject: conflict resolution
+      Object : Conflict Resolution Strategy
+
+  Term: consequence  [ObjectProperty]
+    Declaration                Declaration: consequence (ObjectProperty)
+      Subject: consequence
+      Object : ObjectProperty
+    Domain                     ∃consequence.⊤ ⊑ Duty
+      Subject: consequence
+      Object : Duty
+    Range                      ⊤ ⊑ ∀consequence.Duty
+      Subject: consequence
+      Object : Duty
+
+  Term: contains constraint  [ObjectProperty]
+    Declaration                Declaration: contains constraint (ObjectProperty)
+      Subject: contains constraint
+      Object : ObjectProperty
+    Domain                     ∃contains constraint.⊤ ⊑ Constraint
+      Subject: contains constraint
+      Object : Constraint
+    Range                      ⊤ ⊑ ∀contains constraint.Constraint
+      Subject: contains constraint
+      Object : Constraint
+
+  Term: has constraint  [ObjectProperty]
+    Declaration                Declaration: has constraint (ObjectProperty)
+      Subject: has constraint
+      Object : ObjectProperty
+    Domain                     ∃has constraint.⊤ ⊑ Rule
+      Subject: has constraint
+      Object : Rule
+    Range                      ⊤ ⊑ ∀has constraint.Constraint
+      Subject: has constraint
+      Object : Constraint
+
+  Term: has rule  [ObjectProperty]
+    Declaration                Declaration: has rule (ObjectProperty)
+      Subject: has rule
+      Object : ObjectProperty
+    Domain                     ∃has rule.⊤ ⊑ Policy
+      Subject: has rule
+      Object : Policy
+    Range                      ⊤ ⊑ ∀has rule.Rule
+      Subject: has rule
+      Object : Rule
+
+  Term: logical operator  [ObjectProperty]
+    Declaration                Declaration: logical operator (ObjectProperty)
+      Subject: logical operator
+      Object : ObjectProperty
+    Domain                     ∃logical operator.⊤ ⊑ Logical Constraint
+      Subject: logical operator
+      Object : Logical Constraint
+    Range                      ⊤ ⊑ ∀logical operator.Logical Operator
+      Subject: logical operator
+      Object : Logical Operator
+
+  Term: next rule  [ObjectProperty]
+    Declaration                Declaration: next rule (ObjectProperty)
+      Subject: next rule
+      Object : ObjectProperty
+    Domain                     ∃next rule.⊤ ⊑ Rule
+      Subject: next rule
+      Object : Rule
+    Range                      ⊤ ⊑ ∀next rule.Rule
+      Subject: next rule
+      Object : Rule
+
+  Term: operator  [ObjectProperty]
+    Declaration                Declaration: operator (ObjectProperty)
+      Subject: operator
+      Object : ObjectProperty
+    Domain                     ∃operator.⊤ ⊑ Constraint
+      Subject: operator
+      Object : Constraint
+    Range                      ⊤ ⊑ ∀operator.Operator
+      Subject: operator
+      Object : Operator
+
+  Term: policy  [ObjectProperty]
+    Declaration                Declaration: policy (ObjectProperty)
+      Subject: policy
+      Object : ObjectProperty
+    InverseOf                  policy ≡ asset⁻
+      Subject: policy
+      Object : asset
+    Domain                     ∃policy.⊤ ⊑ Asset
+      Subject: policy
+      Object : Asset
+    Range                      ⊤ ⊑ ∀policy.Policy
+      Subject: policy
+      Object : Policy
+
+  Term: remedy  [ObjectProperty]
+    Declaration                Declaration: remedy (ObjectProperty)
+      Subject: remedy
+      Object : ObjectProperty
+    Domain                     ∃remedy.⊤ ⊑ Prohibition
+      Subject: remedy
+      Object : Prohibition
+    Range                      ⊤ ⊑ ∀remedy.Duty
+      Subject: remedy
+      Object : Duty
+
+
+====================================================================================================
+STATISTICS
+====================================================================================================
+
+  Classes:               16  (defined: 0, primitive: 16)
+  ObjectProperties:      15
+  DatatypeProperties:    0
+
+  Axiom Breakdown:
+    Declaration               31
+    Domain                    15
+    InverseOf                 2
+    Range                     15
+    SubClassOf                8
+    ------------------------------
+    Total TBox Axioms         71
+
+====================================================================================================

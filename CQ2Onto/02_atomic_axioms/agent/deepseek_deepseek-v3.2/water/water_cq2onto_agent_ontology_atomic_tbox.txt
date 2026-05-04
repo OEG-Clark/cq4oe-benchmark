@@ -1,0 +1,397 @@
+====================================================================================================
+ATOMIC TBOX AXIOMS
+====================================================================================================
+
+── Class ──
+
+  Term: Actuator  [Class]
+    Declaration                Declaration: Actuator (Class)
+      Subject: Actuator
+      Object : Class
+    SubClassOf                 Actuator ⊑ Device
+      Subject: Actuator
+      Object : Device
+    DisjointClasses            DisjointClasses(Actuator, Sensor)
+      Subject: Actuator
+      Object : Sensor
+    DisjointClasses            DisjointClasses(Actuator, Water Meter)
+      Subject: Actuator
+      Object : Water Meter
+
+  Term: Asset  [Class]
+    Declaration                Declaration: Asset (Class)
+      Subject: Asset
+      Object : Class
+
+  Term: Billing Information  [Class]
+    Declaration                Declaration: Billing Information (Class)
+      Subject: Billing Information
+      Object : Class
+    DisjointClasses            DisjointClasses(Billing Information, Tariff)
+      Subject: Billing Information
+      Object : Tariff
+
+  Term: Chemical Property  [Class]
+    Declaration                Declaration: Chemical Property (Class)
+      Subject: Chemical Property
+      Object : Class
+    SubClassOf                 Chemical Property ⊑ Water Property
+      Subject: Chemical Property
+      Object : Water Property
+    DisjointClasses            DisjointClasses(Chemical Property, Physical Property)
+      Subject: Chemical Property
+      Object : Physical Property
+
+  Term: Device  [Class]
+    Declaration                Declaration: Device (Class)
+      Subject: Device
+      Object : Class
+    SubClassOf                 Device ⊑ Asset
+      Subject: Device
+      Object : Asset
+    DisjointClasses            DisjointClasses(Device, Water Distribution Infrastructure)
+      Subject: Device
+      Object : Water Distribution Infrastructure
+
+  Term: Physical Property  [Class]
+    Declaration                Declaration: Physical Property (Class)
+      Subject: Physical Property
+      Object : Class
+    SubClassOf                 Physical Property ⊑ Water Property
+      Subject: Physical Property
+      Object : Water Property
+
+  Term: Sensor  [Class]
+    Declaration                Declaration: Sensor (Class)
+      Subject: Sensor
+      Object : Class
+    SubClassOf                 Sensor ⊑ Device
+      Subject: Sensor
+      Object : Device
+    DisjointClasses            DisjointClasses(Sensor, Water Meter)
+      Subject: Sensor
+      Object : Water Meter
+
+  Term: Tariff  [Class]
+    Declaration                Declaration: Tariff (Class)
+      Subject: Tariff
+      Object : Class
+
+  Term: Water Distribution Infrastructure  [Class]
+    Declaration                Declaration: Water Distribution Infrastructure (Class)
+      Subject: Water Distribution Infrastructure
+      Object : Class
+    SubClassOf                 Water Distribution Infrastructure ⊑ Asset
+      Subject: Water Distribution Infrastructure
+      Object : Asset
+
+  Term: Water Indicator  [Class]
+    Declaration                Declaration: Water Indicator (Class)
+      Subject: Water Indicator
+      Object : Class
+
+  Term: Water Meter  [Class]
+    Declaration                Declaration: Water Meter (Class)
+      Subject: Water Meter
+      Object : Class
+    SubClassOf                 Water Meter ⊑ Device
+      Subject: Water Meter
+      Object : Device
+
+  Term: Water Property  [Class]
+    Declaration                Declaration: Water Property (Class)
+      Subject: Water Property
+      Object : Class
+
+
+── ObjectProperty ──
+
+  Term: actuator of  [ObjectProperty]
+    Declaration                Declaration: actuator of (ObjectProperty)
+      Subject: actuator of
+      Object : ObjectProperty
+    InverseOf                  actuator of ≡ has actuator⁻
+      Subject: actuator of
+      Object : has actuator
+    Domain                     ∃actuator of.⊤ ⊑ Actuator
+      Subject: actuator of
+      Object : Actuator
+    Range                      ⊤ ⊑ ∀actuator of.Asset
+      Subject: actuator of
+      Object : Asset
+
+  Term: billing info of  [ObjectProperty]
+    Declaration                Declaration: billing info of (ObjectProperty)
+      Subject: billing info of
+      Object : ObjectProperty
+    InverseOf                  billing info of ≡ has billing info⁻
+      Subject: billing info of
+      Object : has billing info
+    Domain                     ∃billing info of.⊤ ⊑ Billing Information
+      Subject: billing info of
+      Object : Billing Information
+    Range                      ⊤ ⊑ ∀billing info of.Water Meter
+      Subject: billing info of
+      Object : Water Meter
+
+  Term: composed by  [ObjectProperty]
+    Declaration                Declaration: composed by (ObjectProperty)
+      Subject: composed by
+      Object : ObjectProperty
+    InverseOf                  composed by ≡ composes⁻
+      Subject: composed by
+      Object : composes
+    Domain                     ∃composed by.⊤ ⊑ Asset
+      Subject: composed by
+      Object : Asset
+    Range                      ⊤ ⊑ ∀composed by.Water Distribution Infrastructure
+      Subject: composed by
+      Object : Water Distribution Infrastructure
+
+  Term: composes  [ObjectProperty]
+    Declaration                Declaration: composes (ObjectProperty)
+      Subject: composes
+      Object : ObjectProperty
+    InverseOf                  composes ≡ composed by⁻
+      Subject: composes
+      Object : composed by
+    Domain                     ∃composes.⊤ ⊑ Water Distribution Infrastructure
+      Subject: composes
+      Object : Water Distribution Infrastructure
+    Range                      ⊤ ⊑ ∀composes.Asset
+      Subject: composes
+      Object : Asset
+
+  Term: defined for  [ObjectProperty]
+    Declaration                Declaration: defined for (ObjectProperty)
+      Subject: defined for
+      Object : ObjectProperty
+    InverseOf                  defined for ≡ defines⁻
+      Subject: defined for
+      Object : defines
+    Domain                     ∃defined for.⊤ ⊑ Water Indicator
+      Subject: defined for
+      Object : Water Indicator
+    Range                      ⊤ ⊑ ∀defined for.⊤
+      Subject: defined for
+      Object : ⊤
+
+  Term: defines  [ObjectProperty]
+    Declaration                Declaration: defines (ObjectProperty)
+      Subject: defines
+      Object : ObjectProperty
+    InverseOf                  defines ≡ defined for⁻
+      Subject: defines
+      Object : defined for
+    Domain                     ∃defines.⊤ ⊑ ⊤
+      Subject: defines
+      Object : ⊤
+    Range                      ⊤ ⊑ ∀defines.Water Indicator
+      Subject: defines
+      Object : Water Indicator
+
+  Term: device of  [ObjectProperty]
+    Declaration                Declaration: device of (ObjectProperty)
+      Subject: device of
+      Object : ObjectProperty
+    InverseOf                  device of ≡ has device⁻
+      Subject: device of
+      Object : has device
+    Domain                     ∃device of.⊤ ⊑ Device
+      Subject: device of
+      Object : Device
+    Range                      ⊤ ⊑ ∀device of.Asset
+      Subject: device of
+      Object : Asset
+
+  Term: has actuator  [ObjectProperty]
+    Declaration                Declaration: has actuator (ObjectProperty)
+      Subject: has actuator
+      Object : ObjectProperty
+    SubPropertyOf              has actuator ⊑ has device
+      Subject: has actuator
+      Object : has device
+    InverseOf                  has actuator ≡ actuator of⁻
+      Subject: has actuator
+      Object : actuator of
+    Domain                     ∃has actuator.⊤ ⊑ Asset
+      Subject: has actuator
+      Object : Asset
+    Range                      ⊤ ⊑ ∀has actuator.Actuator
+      Subject: has actuator
+      Object : Actuator
+
+  Term: has billing info  [ObjectProperty]
+    Declaration                Declaration: has billing info (ObjectProperty)
+      Subject: has billing info
+      Object : ObjectProperty
+    InverseOf                  has billing info ≡ billing info of⁻
+      Subject: has billing info
+      Object : billing info of
+    Domain                     ∃has billing info.⊤ ⊑ Water Meter
+      Subject: has billing info
+      Object : Water Meter
+    Range                      ⊤ ⊑ ∀has billing info.Billing Information
+      Subject: has billing info
+      Object : Billing Information
+    Characteristics            Functional(has billing info)
+      Subject: has billing info
+      Object : Functional
+
+  Term: has device  [ObjectProperty]
+    Declaration                Declaration: has device (ObjectProperty)
+      Subject: has device
+      Object : ObjectProperty
+    InverseOf                  has device ≡ device of⁻
+      Subject: has device
+      Object : device of
+    Domain                     ∃has device.⊤ ⊑ Asset
+      Subject: has device
+      Object : Asset
+    Range                      ⊤ ⊑ ∀has device.Device
+      Subject: has device
+      Object : Device
+
+  Term: has sensor  [ObjectProperty]
+    Declaration                Declaration: has sensor (ObjectProperty)
+      Subject: has sensor
+      Object : ObjectProperty
+    SubPropertyOf              has sensor ⊑ has device
+      Subject: has sensor
+      Object : has device
+    InverseOf                  has sensor ≡ sensor of⁻
+      Subject: has sensor
+      Object : sensor of
+    Domain                     ∃has sensor.⊤ ⊑ Asset
+      Subject: has sensor
+      Object : Asset
+    Range                      ⊤ ⊑ ∀has sensor.Sensor
+      Subject: has sensor
+      Object : Sensor
+
+  Term: has tariff  [ObjectProperty]
+    Declaration                Declaration: has tariff (ObjectProperty)
+      Subject: has tariff
+      Object : ObjectProperty
+    InverseOf                  has tariff ≡ tariff of⁻
+      Subject: has tariff
+      Object : tariff of
+    Domain                     ∃has tariff.⊤ ⊑ Water Meter
+      Subject: has tariff
+      Object : Water Meter
+    Range                      ⊤ ⊑ ∀has tariff.Tariff
+      Subject: has tariff
+      Object : Tariff
+    Characteristics            Functional(has tariff)
+      Subject: has tariff
+      Object : Functional
+
+  Term: has water meter  [ObjectProperty]
+    Declaration                Declaration: has water meter (ObjectProperty)
+      Subject: has water meter
+      Object : ObjectProperty
+    SubPropertyOf              has water meter ⊑ has device
+      Subject: has water meter
+      Object : has device
+    InverseOf                  has water meter ≡ water meter of⁻
+      Subject: has water meter
+      Object : water meter of
+    Domain                     ∃has water meter.⊤ ⊑ Asset
+      Subject: has water meter
+      Object : Asset
+    Range                      ⊤ ⊑ ∀has water meter.Water Meter
+      Subject: has water meter
+      Object : Water Meter
+
+  Term: measured by  [ObjectProperty]
+    Declaration                Declaration: measured by (ObjectProperty)
+      Subject: measured by
+      Object : ObjectProperty
+    InverseOf                  measured by ≡ measures⁻
+      Subject: measured by
+      Object : measures
+    Domain                     ∃measured by.⊤ ⊑ Water Property
+      Subject: measured by
+      Object : Water Property
+    Range                      ⊤ ⊑ ∀measured by.Device
+      Subject: measured by
+      Object : Device
+
+  Term: measures  [ObjectProperty]
+    Declaration                Declaration: measures (ObjectProperty)
+      Subject: measures
+      Object : ObjectProperty
+    InverseOf                  measures ≡ measured by⁻
+      Subject: measures
+      Object : measured by
+    Domain                     ∃measures.⊤ ⊑ Device
+      Subject: measures
+      Object : Device
+    Range                      ⊤ ⊑ ∀measures.Water Property
+      Subject: measures
+      Object : Water Property
+
+  Term: sensor of  [ObjectProperty]
+    Declaration                Declaration: sensor of (ObjectProperty)
+      Subject: sensor of
+      Object : ObjectProperty
+    InverseOf                  sensor of ≡ has sensor⁻
+      Subject: sensor of
+      Object : has sensor
+    Domain                     ∃sensor of.⊤ ⊑ Sensor
+      Subject: sensor of
+      Object : Sensor
+    Range                      ⊤ ⊑ ∀sensor of.Asset
+      Subject: sensor of
+      Object : Asset
+
+  Term: tariff of  [ObjectProperty]
+    Declaration                Declaration: tariff of (ObjectProperty)
+      Subject: tariff of
+      Object : ObjectProperty
+    InverseOf                  tariff of ≡ has tariff⁻
+      Subject: tariff of
+      Object : has tariff
+    Domain                     ∃tariff of.⊤ ⊑ Tariff
+      Subject: tariff of
+      Object : Tariff
+    Range                      ⊤ ⊑ ∀tariff of.Water Meter
+      Subject: tariff of
+      Object : Water Meter
+
+  Term: water meter of  [ObjectProperty]
+    Declaration                Declaration: water meter of (ObjectProperty)
+      Subject: water meter of
+      Object : ObjectProperty
+    InverseOf                  water meter of ≡ has water meter⁻
+      Subject: water meter of
+      Object : has water meter
+    Domain                     ∃water meter of.⊤ ⊑ Water Meter
+      Subject: water meter of
+      Object : Water Meter
+    Range                      ⊤ ⊑ ∀water meter of.Asset
+      Subject: water meter of
+      Object : Asset
+
+
+====================================================================================================
+STATISTICS
+====================================================================================================
+
+  Classes:               12  (defined: 0, primitive: 12)
+  ObjectProperties:      18
+  DatatypeProperties:    0
+
+  Axiom Breakdown:
+    Characteristics           2
+    Declaration               30
+    DisjointClasses           6
+    Domain                    18
+    InverseOf                 18
+    Range                     18
+    SubClassOf                7
+    SubPropertyOf             3
+    ------------------------------
+    Total TBox Axioms         102
+
+====================================================================================================

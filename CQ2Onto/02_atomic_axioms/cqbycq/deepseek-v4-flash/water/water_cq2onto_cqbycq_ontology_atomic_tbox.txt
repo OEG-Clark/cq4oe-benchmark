@@ -1,0 +1,590 @@
+====================================================================================================
+ATOMIC TBOX AXIOMS
+====================================================================================================
+
+── Class ──
+
+  Term: Actuator  [Class]
+    Declaration                Declaration: Actuator (Class)
+      Subject: Actuator
+      Object : Class
+    SubClassOf                 Actuator ⊑ Asset
+      Subject: Actuator
+      Object : Asset
+
+  Term: Asset  [Class]
+    Declaration                Declaration: Asset (Class)
+      Subject: Asset
+      Object : Class
+
+  Term: Billing Period  [Class]
+    Declaration                Declaration: Billing Period (Class)
+      Subject: Billing Period
+      Object : Class
+
+  Term: Boiling Point  [Class]
+    Declaration                Declaration: Boiling Point (Class)
+      Subject: Boiling Point
+      Object : Class
+    SubClassOf                 Boiling Point ⊑ Physical Property
+      Subject: Boiling Point
+      Object : Physical Property
+
+  Term: Chemical Property  [Class]
+    Declaration                Declaration: Chemical Property (Class)
+      Subject: Chemical Property
+      Object : Class
+
+  Term: City  [Class]
+    Declaration                Declaration: City (Class)
+      Subject: City
+      Object : Class
+
+  Term: Density  [Class]
+    Declaration                Declaration: Density (Class)
+      Subject: Density
+      Object : Class
+    SubClassOf                 Density ⊑ Physical Property
+      Subject: Density
+      Object : Physical Property
+
+  Term: Flow Sensor  [Class]
+    Declaration                Declaration: Flow Sensor (Class)
+      Subject: Flow Sensor
+      Object : Class
+    SubClassOf                 Flow Sensor ⊑ Sensor
+      Subject: Flow Sensor
+      Object : Sensor
+
+  Term: Geolocation  [Class]
+    Declaration                Declaration: Geolocation (Class)
+      Subject: Geolocation
+      Object : Class
+
+  Term: Measurement  [Class]
+    Declaration                Declaration: Measurement (Class)
+      Subject: Measurement
+      Object : Class
+
+  Term: Melting Point  [Class]
+    Declaration                Declaration: Melting Point (Class)
+      Subject: Melting Point
+      Object : Class
+    SubClassOf                 Melting Point ⊑ Physical Property
+      Subject: Melting Point
+      Object : Physical Property
+
+  Term: Physical Property  [Class]
+    Declaration                Declaration: Physical Property (Class)
+      Subject: Physical Property
+      Object : Class
+
+  Term: Pressure Sensor  [Class]
+    Declaration                Declaration: Pressure Sensor (Class)
+      Subject: Pressure Sensor
+      Object : Class
+    SubClassOf                 Pressure Sensor ⊑ Sensor
+      Subject: Pressure Sensor
+      Object : Sensor
+
+  Term: Pump Actuator  [Class]
+    Declaration                Declaration: Pump Actuator (Class)
+      Subject: Pump Actuator
+      Object : Class
+    SubClassOf                 Pump Actuator ⊑ Actuator
+      Subject: Pump Actuator
+      Object : Actuator
+
+  Term: Sensor  [Class]
+    Declaration                Declaration: Sensor (Class)
+      Subject: Sensor
+      Object : Class
+    SubClassOf                 Sensor ⊑ Asset
+      Subject: Sensor
+      Object : Asset
+
+  Term: Tariff  [Class]
+    Declaration                Declaration: Tariff (Class)
+      Subject: Tariff
+      Object : Class
+
+  Term: Tariff Period  [Class]
+    Declaration                Declaration: Tariff Period (Class)
+      Subject: Tariff Period
+      Object : Class
+
+  Term: Temporal Setting  [Class]
+    Declaration                Declaration: Temporal Setting (Class)
+      Subject: Temporal Setting
+      Object : Class
+
+  Term: Valve Actuator  [Class]
+    Declaration                Declaration: Valve Actuator (Class)
+      Subject: Valve Actuator
+      Object : Class
+    SubClassOf                 Valve Actuator ⊑ Actuator
+      Subject: Valve Actuator
+      Object : Actuator
+
+  Term: Viscosity  [Class]
+    Declaration                Declaration: Viscosity (Class)
+      Subject: Viscosity
+      Object : Class
+    SubClassOf                 Viscosity ⊑ Physical Property
+      Subject: Viscosity
+      Object : Physical Property
+
+  Term: Water  [Class]
+    Declaration                Declaration: Water (Class)
+      Subject: Water
+      Object : Class
+
+  Term: Water Distribution Infrastructure  [Class]
+    Declaration                Declaration: Water Distribution Infrastructure (Class)
+      Subject: Water Distribution Infrastructure
+      Object : Class
+
+  Term: Water Indicator  [Class]
+    Declaration                Declaration: Water Indicator (Class)
+      Subject: Water Indicator
+      Object : Class
+
+  Term: Water Meter  [Class]
+    Declaration                Declaration: Water Meter (Class)
+      Subject: Water Meter
+      Object : Class
+    SubClassOf                 Water Meter ⊑ Sensor
+      Subject: Water Meter
+      Object : Sensor
+
+  Term: Water Quality Sensor  [Class]
+    Declaration                Declaration: Water Quality Sensor (Class)
+      Subject: Water Quality Sensor
+      Object : Class
+    SubClassOf                 Water Quality Sensor ⊑ Sensor
+      Subject: Water Quality Sensor
+      Object : Sensor
+
+
+── ObjectProperty ──
+
+  Term: current tariff  [ObjectProperty]
+    Declaration                Declaration: current tariff (ObjectProperty)
+      Subject: current tariff
+      Object : ObjectProperty
+    Domain                     ∃current tariff.⊤ ⊑ Water Meter
+      Subject: current tariff
+      Object : Water Meter
+    Range                      ⊤ ⊑ ∀current tariff.Tariff
+      Subject: current tariff
+      Object : Tariff
+    Characteristics            Functional(current tariff)
+      Subject: current tariff
+      Object : Functional
+
+  Term: has billing period  [ObjectProperty]
+    Declaration                Declaration: has billing period (ObjectProperty)
+      Subject: has billing period
+      Object : ObjectProperty
+    Domain                     ∃has billing period.⊤ ⊑ Water Meter
+      Subject: has billing period
+      Object : Water Meter
+    Range                      ⊤ ⊑ ∀has billing period.Billing Period
+      Subject: has billing period
+      Object : Billing Period
+
+  Term: has chemical property  [ObjectProperty]
+    Declaration                Declaration: has chemical property (ObjectProperty)
+      Subject: has chemical property
+      Object : ObjectProperty
+    Domain                     ∃has chemical property.⊤ ⊑ Water
+      Subject: has chemical property
+      Object : Water
+    Range                      ⊤ ⊑ ∀has chemical property.Chemical Property
+      Subject: has chemical property
+      Object : Chemical Property
+
+  Term: has component  [ObjectProperty]
+    Declaration                Declaration: has component (ObjectProperty)
+      Subject: has component
+      Object : ObjectProperty
+    Domain                     ∃has component.⊤ ⊑ Water Distribution Infrastructure
+      Subject: has component
+      Object : Water Distribution Infrastructure
+    Range                      ⊤ ⊑ ∀has component.Asset
+      Subject: has component
+      Object : Asset
+
+  Term: has geolocation  [ObjectProperty]
+    Declaration                Declaration: has geolocation (ObjectProperty)
+      Subject: has geolocation
+      Object : ObjectProperty
+    Domain                     ∃has geolocation.⊤ ⊑ Water Meter
+      Subject: has geolocation
+      Object : Water Meter
+    Range                      ⊤ ⊑ ∀has geolocation.Geolocation
+      Subject: has geolocation
+      Object : Geolocation
+
+  Term: has period  [ObjectProperty]
+    Declaration                Declaration: has period (ObjectProperty)
+      Subject: has period
+      Object : ObjectProperty
+    Domain                     ∃has period.⊤ ⊑ Tariff
+      Subject: has period
+      Object : Tariff
+    Range                      ⊤ ⊑ ∀has period.Tariff Period
+      Subject: has period
+      Object : Tariff Period
+    Characteristics            Functional(has period)
+      Subject: has period
+      Object : Functional
+
+  Term: has physical property  [ObjectProperty]
+    Declaration                Declaration: has physical property (ObjectProperty)
+      Subject: has physical property
+      Object : ObjectProperty
+    Domain                     ∃has physical property.⊤ ⊑ Water
+      Subject: has physical property
+      Object : Water
+    Range                      ⊤ ⊑ ∀has physical property.Physical Property
+      Subject: has physical property
+      Object : Physical Property
+
+  Term: has tariff  [ObjectProperty]
+    Declaration                Declaration: has tariff (ObjectProperty)
+      Subject: has tariff
+      Object : ObjectProperty
+    Domain                     ∃has tariff.⊤ ⊑ Water Meter
+      Subject: has tariff
+      Object : Water Meter
+    Range                      ⊤ ⊑ ∀has tariff.Tariff
+      Subject: has tariff
+      Object : Tariff
+
+  Term: has temporal setting  [ObjectProperty]
+    Declaration                Declaration: has temporal setting (ObjectProperty)
+      Subject: has temporal setting
+      Object : ObjectProperty
+    Domain                     ∃has temporal setting.⊤ ⊑ Measurement
+      Subject: has temporal setting
+      Object : Measurement
+    Range                      ⊤ ⊑ ∀has temporal setting.Temporal Setting
+      Subject: has temporal setting
+      Object : Temporal Setting
+
+  Term: is defined for  [ObjectProperty]
+    Declaration                Declaration: is defined for (ObjectProperty)
+      Subject: is defined for
+      Object : ObjectProperty
+    Domain                     ∃is defined for.⊤ ⊑ Water Indicator
+      Subject: is defined for
+      Object : Water Indicator
+    Range                      ⊤ ⊑ ∀is defined for.City
+      Subject: is defined for
+      Object : City
+
+  Term: provides measurement  [ObjectProperty]
+    Declaration                Declaration: provides measurement (ObjectProperty)
+      Subject: provides measurement
+      Object : ObjectProperty
+    Domain                     ∃provides measurement.⊤ ⊑ Water Meter
+      Subject: provides measurement
+      Object : Water Meter
+    Range                      ⊤ ⊑ ∀provides measurement.Measurement
+      Subject: provides measurement
+      Object : Measurement
+
+
+── DatatypeProperty ──
+
+  Term: altitude  [DatatypeProperty]
+    Declaration                Declaration: altitude (DatatypeProperty)
+      Subject: altitude
+      Object : DatatypeProperty
+    Domain                     ∃altitude.⊤ ⊑ Geolocation
+      Subject: altitude
+      Object : Geolocation
+    Range                      altitude maps-to ⊤
+      Subject: altitude
+      Object : ⊤
+    Characteristics            Functional(altitude)
+      Subject: altitude
+      Object : Functional
+
+  Term: billing date  [DatatypeProperty]
+    Declaration                Declaration: billing date (DatatypeProperty)
+      Subject: billing date
+      Object : DatatypeProperty
+    Domain                     ∃billing date.⊤ ⊑ Water Meter
+      Subject: billing date
+      Object : Water Meter
+    Range                      billing date maps-to ⊤
+      Subject: billing date
+      Object : ⊤
+    Characteristics            Functional(billing date)
+      Subject: billing date
+      Object : Functional
+
+  Term: billing period end  [DatatypeProperty]
+    Declaration                Declaration: billing period end (DatatypeProperty)
+      Subject: billing period end
+      Object : DatatypeProperty
+    Domain                     ∃billing period end.⊤ ⊑ Billing Period
+      Subject: billing period end
+      Object : Billing Period
+    Range                      billing period end maps-to ⊤
+      Subject: billing period end
+      Object : ⊤
+    Characteristics            Functional(billing period end)
+      Subject: billing period end
+      Object : Functional
+
+  Term: billing period start  [DatatypeProperty]
+    Declaration                Declaration: billing period start (DatatypeProperty)
+      Subject: billing period start
+      Object : DatatypeProperty
+    Domain                     ∃billing period start.⊤ ⊑ Billing Period
+      Subject: billing period start
+      Object : Billing Period
+    Range                      billing period start maps-to ⊤
+      Subject: billing period start
+      Object : ⊤
+    Characteristics            Functional(billing period start)
+      Subject: billing period start
+      Object : Functional
+
+  Term: duration  [DatatypeProperty]
+    Declaration                Declaration: duration (DatatypeProperty)
+      Subject: duration
+      Object : DatatypeProperty
+    Domain                     ∃duration.⊤ ⊑ Tariff
+      Subject: duration
+      Object : Tariff
+    Range                      duration maps-to duration
+      Subject: duration
+      Object : duration
+
+  Term: fabrication number  [DatatypeProperty]
+    Declaration                Declaration: fabrication number (DatatypeProperty)
+      Subject: fabrication number
+      Object : DatatypeProperty
+    Domain                     ∃fabrication number.⊤ ⊑ Water Meter
+      Subject: fabrication number
+      Object : Water Meter
+    Range                      fabrication number maps-to ⊤
+      Subject: fabrication number
+      Object : ⊤
+    Characteristics            Functional(fabrication number)
+      Subject: fabrication number
+      Object : Functional
+
+  Term: firmware version  [DatatypeProperty]
+    Declaration                Declaration: firmware version (DatatypeProperty)
+      Subject: firmware version
+      Object : DatatypeProperty
+    Domain                     ∃firmware version.⊤ ⊑ Water Meter
+      Subject: firmware version
+      Object : Water Meter
+    Range                      firmware version maps-to ⊤
+      Subject: firmware version
+      Object : ⊤
+    Characteristics            Functional(firmware version)
+      Subject: firmware version
+      Object : Functional
+
+  Term: hardware version  [DatatypeProperty]
+    Declaration                Declaration: hardware version (DatatypeProperty)
+      Subject: hardware version
+      Object : DatatypeProperty
+    Domain                     ∃hardware version.⊤ ⊑ Water Meter
+      Subject: hardware version
+      Object : Water Meter
+    Range                      hardware version maps-to ⊤
+      Subject: hardware version
+      Object : ⊤
+    Characteristics            Functional(hardware version)
+      Subject: hardware version
+      Object : Functional
+
+  Term: latitude  [DatatypeProperty]
+    Declaration                Declaration: latitude (DatatypeProperty)
+      Subject: latitude
+      Object : DatatypeProperty
+    Domain                     ∃latitude.⊤ ⊑ Geolocation
+      Subject: latitude
+      Object : Geolocation
+    Range                      latitude maps-to ⊤
+      Subject: latitude
+      Object : ⊤
+    Characteristics            Functional(latitude)
+      Subject: latitude
+      Object : Functional
+
+  Term: longitude  [DatatypeProperty]
+    Declaration                Declaration: longitude (DatatypeProperty)
+      Subject: longitude
+      Object : DatatypeProperty
+    Domain                     ∃longitude.⊤ ⊑ Geolocation
+      Subject: longitude
+      Object : Geolocation
+    Range                      longitude maps-to ⊤
+      Subject: longitude
+      Object : ⊤
+    Characteristics            Functional(longitude)
+      Subject: longitude
+      Object : Functional
+
+  Term: manufacturer  [DatatypeProperty]
+    Declaration                Declaration: manufacturer (DatatypeProperty)
+      Subject: manufacturer
+      Object : DatatypeProperty
+    Domain                     ∃manufacturer.⊤ ⊑ Water Meter
+      Subject: manufacturer
+      Object : Water Meter
+    Range                      manufacturer maps-to ⊤
+      Subject: manufacturer
+      Object : ⊤
+    Characteristics            Functional(manufacturer)
+      Subject: manufacturer
+      Object : Functional
+
+  Term: model  [DatatypeProperty]
+    Declaration                Declaration: model (DatatypeProperty)
+      Subject: model
+      Object : DatatypeProperty
+    Domain                     ∃model.⊤ ⊑ Water Meter
+      Subject: model
+      Object : Water Meter
+    Range                      model maps-to ⊤
+      Subject: model
+      Object : ⊤
+    Characteristics            Functional(model)
+      Subject: model
+      Object : Functional
+
+  Term: period end  [DatatypeProperty]
+    Declaration                Declaration: period end (DatatypeProperty)
+      Subject: period end
+      Object : DatatypeProperty
+    Domain                     ∃period end.⊤ ⊑ Tariff Period
+      Subject: period end
+      Object : Tariff Period
+    Range                      period end maps-to ⊤
+      Subject: period end
+      Object : ⊤
+    Characteristics            Functional(period end)
+      Subject: period end
+      Object : Functional
+
+  Term: period start  [DatatypeProperty]
+    Declaration                Declaration: period start (DatatypeProperty)
+      Subject: period start
+      Object : DatatypeProperty
+    Domain                     ∃period start.⊤ ⊑ Tariff Period
+      Subject: period start
+      Object : Tariff Period
+    Range                      period start maps-to ⊤
+      Subject: period start
+      Object : ⊤
+    Characteristics            Functional(period start)
+      Subject: period start
+      Object : Functional
+
+  Term: power  [DatatypeProperty]
+    Declaration                Declaration: power (DatatypeProperty)
+      Subject: power
+      Object : DatatypeProperty
+    Domain                     ∃power.⊤ ⊑ Water Meter
+      Subject: power
+      Object : Water Meter
+    Range                      power maps-to ⊤
+      Subject: power
+      Object : ⊤
+    Characteristics            Functional(power)
+      Subject: power
+      Object : Functional
+
+  Term: property unit  [DatatypeProperty]
+    Declaration                Declaration: property unit (DatatypeProperty)
+      Subject: property unit
+      Object : DatatypeProperty
+    Domain                     ∃property unit.⊤ ⊑ Physical Property
+      Subject: property unit
+      Object : Physical Property
+    Range                      property unit maps-to ⊤
+      Subject: property unit
+      Object : ⊤
+
+  Term: property value  [DatatypeProperty]
+    Declaration                Declaration: property value (DatatypeProperty)
+      Subject: property value
+      Object : DatatypeProperty
+    Domain                     ∃property value.⊤ ⊑ Physical Property
+      Subject: property value
+      Object : Physical Property
+    Range                      property value maps-to ⊤
+      Subject: property value
+      Object : ⊤
+
+  Term: radio frequency level  [DatatypeProperty]
+    Declaration                Declaration: radio frequency level (DatatypeProperty)
+      Subject: radio frequency level
+      Object : DatatypeProperty
+    Domain                     ∃radio frequency level.⊤ ⊑ Water Meter
+      Subject: radio frequency level
+      Object : Water Meter
+    Range                      radio frequency level maps-to ⊤
+      Subject: radio frequency level
+      Object : ⊤
+    Characteristics            Functional(radio frequency level)
+      Subject: radio frequency level
+      Object : Functional
+
+  Term: start date time  [DatatypeProperty]
+    Declaration                Declaration: start date time (DatatypeProperty)
+      Subject: start date time
+      Object : DatatypeProperty
+    Domain                     ∃start date time.⊤ ⊑ Tariff
+      Subject: start date time
+      Object : Tariff
+    Range                      start date time maps-to ⊤
+      Subject: start date time
+      Object : ⊤
+    Characteristics            Functional(start date time)
+      Subject: start date time
+      Object : Functional
+
+  Term: version  [DatatypeProperty]
+    Declaration                Declaration: version (DatatypeProperty)
+      Subject: version
+      Object : DatatypeProperty
+    Domain                     ∃version.⊤ ⊑ Water Meter
+      Subject: version
+      Object : Water Meter
+    Range                      version maps-to ⊤
+      Subject: version
+      Object : ⊤
+    Characteristics            Functional(version)
+      Subject: version
+      Object : Functional
+
+
+====================================================================================================
+STATISTICS
+====================================================================================================
+
+  Classes:               25  (defined: 0, primitive: 25)
+  ObjectProperties:      11
+  DatatypeProperties:    20
+
+  Axiom Breakdown:
+    Characteristics           19
+    Declaration               56
+    Domain                    31
+    Range                     31
+    SubClassOf                12
+    ------------------------------
+    Total TBox Axioms         149
+
+====================================================================================================

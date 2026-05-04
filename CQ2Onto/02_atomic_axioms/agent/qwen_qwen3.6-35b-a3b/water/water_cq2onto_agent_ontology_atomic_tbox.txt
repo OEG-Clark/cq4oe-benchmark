@@ -1,0 +1,513 @@
+====================================================================================================
+ATOMIC TBOX AXIOMS
+====================================================================================================
+
+── Class ──
+
+  Term: Actuator  [Class]
+    Declaration                Declaration: Actuator (Class)
+      Subject: Actuator
+      Object : Class
+
+  Term: Asset  [Class]
+    Declaration                Declaration: Asset (Class)
+      Subject: Asset
+      Object : Class
+
+  Term: Billing Period  [Class]
+    Declaration                Declaration: Billing Period (Class)
+      Subject: Billing Period
+      Object : Class
+    SubClassOf                 Billing Period ⊑ Temporal Setting
+      Subject: Billing Period
+      Object : Temporal Setting
+
+  Term: Chemical Property  [Class]
+    Declaration                Declaration: Chemical Property (Class)
+      Subject: Chemical Property
+      Object : Class
+    DisjointClasses            DisjointClasses(Chemical Property, Physical Property)
+      Subject: Chemical Property
+      Object : Physical Property
+
+  Term: City  [Class]
+    Declaration                Declaration: City (Class)
+      Subject: City
+      Object : Class
+    SubClassOf                 City ⊑ Location
+      Subject: City
+      Object : Location
+
+  Term: Device  [Class]
+    Declaration                Declaration: Device (Class)
+      Subject: Device
+      Object : Class
+    SubClassOf                 Device ⊑ Asset
+      Subject: Device
+      Object : Asset
+
+  Term: Location  [Class]
+    Declaration                Declaration: Location (Class)
+      Subject: Location
+      Object : Class
+
+  Term: Physical Property  [Class]
+    Declaration                Declaration: Physical Property (Class)
+      Subject: Physical Property
+      Object : Class
+
+  Term: Sensor  [Class]
+    Declaration                Declaration: Sensor (Class)
+      Subject: Sensor
+      Object : Class
+
+  Term: Tariff  [Class]
+    Declaration                Declaration: Tariff (Class)
+      Subject: Tariff
+      Object : Class
+    SubClassOf                 Tariff ⊑ Asset
+      Subject: Tariff
+      Object : Asset
+
+  Term: Temporal Setting  [Class]
+    Declaration                Declaration: Temporal Setting (Class)
+      Subject: Temporal Setting
+      Object : Class
+
+  Term: Water  [Class]
+    Declaration                Declaration: Water (Class)
+      Subject: Water
+      Object : Class
+
+  Term: Water Distribution Infrastructure  [Class]
+    Declaration                Declaration: Water Distribution Infrastructure (Class)
+      Subject: Water Distribution Infrastructure
+      Object : Class
+
+  Term: Water Indicator  [Class]
+    Declaration                Declaration: Water Indicator (Class)
+      Subject: Water Indicator
+      Object : Class
+
+  Term: Water Meter  [Class]
+    Declaration                Declaration: Water Meter (Class)
+      Subject: Water Meter
+      Object : Class
+    SubClassOf                 Water Meter ⊑ Device
+      Subject: Water Meter
+      Object : Device
+
+  Term: dateTime  [Class]
+    Declaration                Declaration: dateTime (Class)
+      Subject: dateTime
+      Object : Class
+
+  Term: string  [Class]
+    Declaration                Declaration: string (Class)
+      Subject: string
+      Object : Class
+
+
+── ObjectProperty ──
+
+  Term: has actuator  [ObjectProperty]
+    Declaration                Declaration: has actuator (ObjectProperty)
+      Subject: has actuator
+      Object : ObjectProperty
+    InverseOf                  has actuator ≡ is actuator of⁻
+      Subject: has actuator
+      Object : is actuator of
+    Domain                     ∃has actuator.⊤ ⊑ Water Distribution Infrastructure
+      Subject: has actuator
+      Object : Water Distribution Infrastructure
+    Range                      ⊤ ⊑ ∀has actuator.Actuator
+      Subject: has actuator
+      Object : Actuator
+
+  Term: has asset  [ObjectProperty]
+    Declaration                Declaration: has asset (ObjectProperty)
+      Subject: has asset
+      Object : ObjectProperty
+    InverseOf                  has asset ≡ is asset of⁻
+      Subject: has asset
+      Object : is asset of
+    Domain                     ∃has asset.⊤ ⊑ Water Distribution Infrastructure
+      Subject: has asset
+      Object : Water Distribution Infrastructure
+    Range                      ⊤ ⊑ ∀has asset.Asset
+      Subject: has asset
+      Object : Asset
+
+  Term: has chemical property  [ObjectProperty]
+    Declaration                Declaration: has chemical property (ObjectProperty)
+      Subject: has chemical property
+      Object : ObjectProperty
+    InverseOf                  has chemical property ≡ has chemical property of⁻
+      Subject: has chemical property
+      Object : has chemical property of
+    Domain                     ∃has chemical property.⊤ ⊑ Water
+      Subject: has chemical property
+      Object : Water
+    Range                      ⊤ ⊑ ∀has chemical property.Chemical Property
+      Subject: has chemical property
+      Object : Chemical Property
+
+  Term: has chemical property of  [ObjectProperty]
+    Declaration                Declaration: has chemical property of (ObjectProperty)
+      Subject: has chemical property of
+      Object : ObjectProperty
+    InverseOf                  has chemical property of ≡ has chemical property⁻
+      Subject: has chemical property of
+      Object : has chemical property
+    Domain                     ∃has chemical property of.⊤ ⊑ Chemical Property
+      Subject: has chemical property of
+      Object : Chemical Property
+    Range                      ⊤ ⊑ ∀has chemical property of.Water
+      Subject: has chemical property of
+      Object : Water
+
+  Term: has measurement setting  [ObjectProperty]
+    Declaration                Declaration: has measurement setting (ObjectProperty)
+      Subject: has measurement setting
+      Object : ObjectProperty
+    InverseOf                  has measurement setting ≡ has temporal setting⁻
+      Subject: has measurement setting
+      Object : has temporal setting
+    Domain                     ∃has measurement setting.⊤ ⊑ Temporal Setting
+      Subject: has measurement setting
+      Object : Temporal Setting
+    Range                      ⊤ ⊑ ∀has measurement setting.Water Meter
+      Subject: has measurement setting
+      Object : Water Meter
+
+  Term: has physical property  [ObjectProperty]
+    Declaration                Declaration: has physical property (ObjectProperty)
+      Subject: has physical property
+      Object : ObjectProperty
+    InverseOf                  has physical property ≡ has physical property of⁻
+      Subject: has physical property
+      Object : has physical property of
+    Domain                     ∃has physical property.⊤ ⊑ Water
+      Subject: has physical property
+      Object : Water
+    Range                      ⊤ ⊑ ∀has physical property.Physical Property
+      Subject: has physical property
+      Object : Physical Property
+
+  Term: has physical property of  [ObjectProperty]
+    Declaration                Declaration: has physical property of (ObjectProperty)
+      Subject: has physical property of
+      Object : ObjectProperty
+    InverseOf                  has physical property of ≡ has physical property⁻
+      Subject: has physical property of
+      Object : has physical property
+    Domain                     ∃has physical property of.⊤ ⊑ Physical Property
+      Subject: has physical property of
+      Object : Physical Property
+    Range                      ⊤ ⊑ ∀has physical property of.Water
+      Subject: has physical property of
+      Object : Water
+
+  Term: has sensor  [ObjectProperty]
+    Declaration                Declaration: has sensor (ObjectProperty)
+      Subject: has sensor
+      Object : ObjectProperty
+    InverseOf                  has sensor ≡ is sensor of⁻
+      Subject: has sensor
+      Object : is sensor of
+    Domain                     ∃has sensor.⊤ ⊑ Water Distribution Infrastructure
+      Subject: has sensor
+      Object : Water Distribution Infrastructure
+    Range                      ⊤ ⊑ ∀has sensor.Sensor
+      Subject: has sensor
+      Object : Sensor
+
+  Term: has temporal setting  [ObjectProperty]
+    Declaration                Declaration: has temporal setting (ObjectProperty)
+      Subject: has temporal setting
+      Object : ObjectProperty
+    InverseOf                  has temporal setting ≡ has measurement setting⁻
+      Subject: has temporal setting
+      Object : has measurement setting
+    Domain                     ∃has temporal setting.⊤ ⊑ Water Meter
+      Subject: has temporal setting
+      Object : Water Meter
+    Range                      ⊤ ⊑ ∀has temporal setting.Temporal Setting
+      Subject: has temporal setting
+      Object : Temporal Setting
+
+  Term: has water indicator  [ObjectProperty]
+    Declaration                Declaration: has water indicator (ObjectProperty)
+      Subject: has water indicator
+      Object : ObjectProperty
+    InverseOf                  has water indicator ≡ has water indicator of⁻
+      Subject: has water indicator
+      Object : has water indicator of
+    Domain                     ∃has water indicator.⊤ ⊑ Location
+      Subject: has water indicator
+      Object : Location
+    Range                      ⊤ ⊑ ∀has water indicator.Water Indicator
+      Subject: has water indicator
+      Object : Water Indicator
+
+  Term: has water indicator of  [ObjectProperty]
+    Declaration                Declaration: has water indicator of (ObjectProperty)
+      Subject: has water indicator of
+      Object : ObjectProperty
+    InverseOf                  has water indicator of ≡ has water indicator⁻
+      Subject: has water indicator of
+      Object : has water indicator
+    Domain                     ∃has water indicator of.⊤ ⊑ Water Indicator
+      Subject: has water indicator of
+      Object : Water Indicator
+    Range                      ⊤ ⊑ ∀has water indicator of.Location
+      Subject: has water indicator of
+      Object : Location
+
+  Term: is actuator of  [ObjectProperty]
+    Declaration                Declaration: is actuator of (ObjectProperty)
+      Subject: is actuator of
+      Object : ObjectProperty
+    InverseOf                  is actuator of ≡ has actuator⁻
+      Subject: is actuator of
+      Object : has actuator
+    Domain                     ∃is actuator of.⊤ ⊑ Actuator
+      Subject: is actuator of
+      Object : Actuator
+    Range                      ⊤ ⊑ ∀is actuator of.Water Distribution Infrastructure
+      Subject: is actuator of
+      Object : Water Distribution Infrastructure
+
+  Term: is asset of  [ObjectProperty]
+    Declaration                Declaration: is asset of (ObjectProperty)
+      Subject: is asset of
+      Object : ObjectProperty
+    InverseOf                  is asset of ≡ has asset⁻
+      Subject: is asset of
+      Object : has asset
+    Domain                     ∃is asset of.⊤ ⊑ Asset
+      Subject: is asset of
+      Object : Asset
+    Range                      ⊤ ⊑ ∀is asset of.Water Distribution Infrastructure
+      Subject: is asset of
+      Object : Water Distribution Infrastructure
+
+  Term: is measured by  [ObjectProperty]
+    Declaration                Declaration: is measured by (ObjectProperty)
+      Subject: is measured by
+      Object : ObjectProperty
+    InverseOf                  is measured by ≡ measures⁻
+      Subject: is measured by
+      Object : measures
+    Domain                     ∃is measured by.⊤ ⊑ Water
+      Subject: is measured by
+      Object : Water
+    Range                      ⊤ ⊑ ∀is measured by.Water Meter
+      Subject: is measured by
+      Object : Water Meter
+
+  Term: is sensor of  [ObjectProperty]
+    Declaration                Declaration: is sensor of (ObjectProperty)
+      Subject: is sensor of
+      Object : ObjectProperty
+    InverseOf                  is sensor of ≡ has sensor⁻
+      Subject: is sensor of
+      Object : has sensor
+    Domain                     ∃is sensor of.⊤ ⊑ Sensor
+      Subject: is sensor of
+      Object : Sensor
+    Range                      ⊤ ⊑ ∀is sensor of.Water Distribution Infrastructure
+      Subject: is sensor of
+      Object : Water Distribution Infrastructure
+
+  Term: measures  [ObjectProperty]
+    Declaration                Declaration: measures (ObjectProperty)
+      Subject: measures
+      Object : ObjectProperty
+    InverseOf                  measures ≡ is measured by⁻
+      Subject: measures
+      Object : is measured by
+    Domain                     ∃measures.⊤ ⊑ Water Meter
+      Subject: measures
+      Object : Water Meter
+    Range                      ⊤ ⊑ ∀measures.Water
+      Subject: measures
+      Object : Water
+
+
+── DatatypeProperty ──
+
+  Term: has billing date  [DatatypeProperty]
+    Declaration                Declaration: has billing date (DatatypeProperty)
+      Subject: has billing date
+      Object : DatatypeProperty
+    Domain                     ∃has billing date.⊤ ⊑ Water Meter
+      Subject: has billing date
+      Object : Water Meter
+    Range                      has billing date maps-to dateTime
+      Subject: has billing date
+      Object : dateTime
+
+  Term: has billing date period  [DatatypeProperty]
+    Declaration                Declaration: has billing date period (DatatypeProperty)
+      Subject: has billing date period
+      Object : DatatypeProperty
+    Domain                     ∃has billing date period.⊤ ⊑ Water Meter
+      Subject: has billing date period
+      Object : Water Meter
+    Range                      has billing date period maps-to string
+      Subject: has billing date period
+      Object : string
+
+  Term: has fabrication number  [DatatypeProperty]
+    Declaration                Declaration: has fabrication number (DatatypeProperty)
+      Subject: has fabrication number
+      Object : DatatypeProperty
+    Domain                     ∃has fabrication number.⊤ ⊑ Water Meter
+      Subject: has fabrication number
+      Object : Water Meter
+    Range                      has fabrication number maps-to string
+      Subject: has fabrication number
+      Object : string
+
+  Term: has firmware version  [DatatypeProperty]
+    Declaration                Declaration: has firmware version (DatatypeProperty)
+      Subject: has firmware version
+      Object : DatatypeProperty
+    Domain                     ∃has firmware version.⊤ ⊑ Water Meter
+      Subject: has firmware version
+      Object : Water Meter
+    Range                      has firmware version maps-to string
+      Subject: has firmware version
+      Object : string
+
+  Term: has geolocation  [DatatypeProperty]
+    Declaration                Declaration: has geolocation (DatatypeProperty)
+      Subject: has geolocation
+      Object : DatatypeProperty
+    Domain                     ∃has geolocation.⊤ ⊑ Water Meter
+      Subject: has geolocation
+      Object : Water Meter
+    Range                      has geolocation maps-to string
+      Subject: has geolocation
+      Object : string
+
+  Term: has hardware version  [DatatypeProperty]
+    Declaration                Declaration: has hardware version (DatatypeProperty)
+      Subject: has hardware version
+      Object : DatatypeProperty
+    Domain                     ∃has hardware version.⊤ ⊑ Water Meter
+      Subject: has hardware version
+      Object : Water Meter
+    Range                      has hardware version maps-to string
+      Subject: has hardware version
+      Object : string
+
+  Term: has manufacturer  [DatatypeProperty]
+    Declaration                Declaration: has manufacturer (DatatypeProperty)
+      Subject: has manufacturer
+      Object : DatatypeProperty
+    Domain                     ∃has manufacturer.⊤ ⊑ Water Meter
+      Subject: has manufacturer
+      Object : Water Meter
+    Range                      has manufacturer maps-to string
+      Subject: has manufacturer
+      Object : string
+
+  Term: has model  [DatatypeProperty]
+    Declaration                Declaration: has model (DatatypeProperty)
+      Subject: has model
+      Object : DatatypeProperty
+    Domain                     ∃has model.⊤ ⊑ Water Meter
+      Subject: has model
+      Object : Water Meter
+    Range                      has model maps-to string
+      Subject: has model
+      Object : string
+
+  Term: has power  [DatatypeProperty]
+    Declaration                Declaration: has power (DatatypeProperty)
+      Subject: has power
+      Object : DatatypeProperty
+    Domain                     ∃has power.⊤ ⊑ Water Meter
+      Subject: has power
+      Object : Water Meter
+    Range                      has power maps-to string
+      Subject: has power
+      Object : string
+
+  Term: has radio frequency level  [DatatypeProperty]
+    Declaration                Declaration: has radio frequency level (DatatypeProperty)
+      Subject: has radio frequency level
+      Object : DatatypeProperty
+    Domain                     ∃has radio frequency level.⊤ ⊑ Water Meter
+      Subject: has radio frequency level
+      Object : Water Meter
+    Range                      has radio frequency level maps-to string
+      Subject: has radio frequency level
+      Object : string
+
+  Term: has tariff duration  [DatatypeProperty]
+    Declaration                Declaration: has tariff duration (DatatypeProperty)
+      Subject: has tariff duration
+      Object : DatatypeProperty
+    Domain                     ∃has tariff duration.⊤ ⊑ Water Meter
+      Subject: has tariff duration
+      Object : Water Meter
+    Range                      has tariff duration maps-to string
+      Subject: has tariff duration
+      Object : string
+
+  Term: has tariff period  [DatatypeProperty]
+    Declaration                Declaration: has tariff period (DatatypeProperty)
+      Subject: has tariff period
+      Object : DatatypeProperty
+    Domain                     ∃has tariff period.⊤ ⊑ Water Meter
+      Subject: has tariff period
+      Object : Water Meter
+    Range                      has tariff period maps-to string
+      Subject: has tariff period
+      Object : string
+
+  Term: has tariff start date  [DatatypeProperty]
+    Declaration                Declaration: has tariff start date (DatatypeProperty)
+      Subject: has tariff start date
+      Object : DatatypeProperty
+    Domain                     ∃has tariff start date.⊤ ⊑ Water Meter
+      Subject: has tariff start date
+      Object : Water Meter
+    Range                      has tariff start date maps-to dateTime
+      Subject: has tariff start date
+      Object : dateTime
+
+  Term: has version  [DatatypeProperty]
+    Declaration                Declaration: has version (DatatypeProperty)
+      Subject: has version
+      Object : DatatypeProperty
+    Domain                     ∃has version.⊤ ⊑ Water Meter
+      Subject: has version
+      Object : Water Meter
+    Range                      has version maps-to string
+      Subject: has version
+      Object : string
+
+
+====================================================================================================
+STATISTICS
+====================================================================================================
+
+  Classes:               17  (defined: 0, primitive: 17)
+  ObjectProperties:      16
+  DatatypeProperties:    14
+
+  Axiom Breakdown:
+    Declaration               47
+    DisjointClasses           1
+    Domain                    30
+    InverseOf                 16
+    Range                     30
+    SubClassOf                5
+    ------------------------------
+    Total TBox Axioms         129
+
+====================================================================================================
