@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>JaroWinklerDistance: String similarity metric emphasizing common prefixes</title>
+        <title>CQCoverage: Closure-based fraction of gold competency questions covered by the predicted ontology</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     </head>
     <body>
@@ -37,33 +37,40 @@
                     <button type="button" class="btn btn-primary"
                             onclick="window.location.href='catalog.html'"
                             style="position: absolute; top: 10px; right: 10px;">Back</button>
-                    <h1 class="miClase text-center">JaroWinklerDistance: String similarity metric emphasizing common prefixes</h1>
+                    <h1 class="miClase text-center">CQCoverage: Closure-based fraction of gold competency questions covered by the predicted ontology</h1>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-12 well" style="font-size: 16px;">
-                    <p>This metric computes the Jaro-Winkler similarity between a generated label and each gold-standard label, returning a score in [0, 1]. The Jaro-Winkler variant boosts matches that share a common prefix, which is useful for terminology that follows shared roots.</p>
+                    <p>This metric measures how completely a predicted ontology answers the gold-standard competency questions (CQs). It is computed in the <strong>hierarchy step</strong> (the fifth and final evaluation stage) and strictly inherits all true positives from the preceding axiom step — a gold axiom can only be upgraded to TP here, never demoted.</p>
+<p>The strict axiom step requires gold and predicted axioms to match exactly. The closure step adds the missing reasoning: it expands <code>subClassOf</code> / <code>subPropertyOf</code> transitively in the prediction and rescues gold axioms that hold under that closure.</p>
 <p><strong>Calculation Process:</strong></p>
 <ol>
-<li>Compute the Jaro similarity between the generated label and each gold label, accounting for matching characters and transpositions within a sliding window.</li>
-<li>Apply the Winkler boost: scale up the score for pairs sharing a prefix of up to four characters.</li>
-<li>Take the maximum similarity across all gold labels.</li>
-<li>A pair is considered a match if the score is greater than or equal to 0.8 (default lexical threshold).</li>
+<li><strong>Decompose each gold axiom into atomic hierarchy pairs.</strong> <code>SubClassOf</code> / <code>SubPropertyOf</code> produce one pair <code>(sub, sup)</code>. Complex axioms expand to several — for example <code>EquivalentClasses(A, B ⊓ C ⊓ D)</code> produces three pairs <code>(A ⊑ B), (A ⊑ C), (A ⊑ D)</code>.</li>
+<li><strong>Compute the predicted ontology's transitive closure</strong> over the asserted subclass and subproperty edges.</li>
+<li><strong>Match each atomic pair</strong> against the closure (or against the asserted edges directly).</li>
+<li><strong>Rescue rule (all-or-nothing).</strong> A gold axiom is rescued only if <em>every</em> one of its atomic pairs is matched. Partial coverage counts as a failure, because the semantics of the gold axiom are incomplete.</li>
+<li><strong>Mark TP</strong> if the gold axiom was already TP at the strict axiom step <em>or</em> is fully rescued here.</li>
+<li><strong>Aggregate per CQ.</strong> A CQ is fully covered when every gold axiom tagged with it is TP. The CQ-level rate is <code>n_tp / n_axioms</code>. Dataset-level metrics: strict fully-covered ratio, at-least-one-match ratio, and mean per-CQ rate.</li>
 </ol>
 <p><strong>Example:</strong></p>
-<p>Generate_Label: WineColor</p>
-<p>Gold_Standard_Label: WineColour</p>
-<p>JaroWinklerDistance(Generate_Label, Gold_Standard_Label) = 0.96</p>
+<p>Gold axiom for CQ7: <code>EquivalentClasses(SeafoodWine, WhiteWine ⊓ DryWine ⊓ pairsWith.Seafood)</code> → 3 atomic pairs.</p>
+<ul>
+<li>The prediction asserts <code>SeafoodWine ⊑ WhiteWine</code> directly → matched.</li>
+<li>The prediction asserts <code>SeafoodWine ⊑ DryWhiteWine</code> and <code>DryWhiteWine ⊑ DryWine</code>, so <code>SeafoodWine ⊑ DryWine</code> is in the closure → matched.</li>
+<li>The prediction does not mention <code>pairsWith</code> → unmatched.</li>
+</ul>
+<p>Two of three pairs match. The gold axiom is <strong>not rescued</strong> and contributes 0 to CQ7's TP count under this step. If CQ7 was already TP at the strict axiom step, that earlier status is preserved.</p>
 <p><strong>What is being measured?</strong></p>
-<p>This metric tolerates small character-level differences, especially in suffixes (e.g. British vs American spelling, plural forms, minor typos), while penalizing changes early in the string.</p>
+<p>Where label-matching metrics ask "do the right concepts appear?", CQCoverage asks the ontology-engineering question: "does the generated ontology, after reasoning, actually answer the competency questions it was asked to support?". By limiting closure to the subsumption hierarchy and requiring all atomic pairs to match, the metric credits ontologies that have correctly arranged the taxonomy without crediting partial or incidental overlaps.</p>
                 </div>
             </div>
 
             <div class="row flex-space-between">
                 <div class="col-md-12 align-items-center">
                     <h4 class="miClase text-left text-separation">Metric information</h4>
-                    <a href="../KG/JaroWinklerDistance.ttl" title="RDF Resource Description Framework">
+                    <a href="../KG/CQCoverage.ttl" title="RDF Resource Description Framework">
                         <img border="0" src="http://www.w3.org/RDF/icons/rdf_flyer.24"
                              alt="RDF Resource Description Framework Flyer Icon"/>
                     </a>
@@ -72,17 +79,17 @@
 
             <div class="row row-equal">
                 <div class="col-md-3 well tag_div"><strong>Title</strong></div>
-                <div class="col-md-9 well">String similarity metric emphasizing common prefixes</div>
+                <div class="col-md-9 well">Closure-based fraction of gold competency questions covered by the predicted ontology</div>
             </div>
             <div class="row row-equal">
                 <div class="col-md-3 well tag_div"><strong>Identifier</strong></div>
                 <div class="col-md-9 well">
-                    <a href="https://w3id.org/cq2onto/metric/JaroWinklerDistance" target="_blank">https://w3id.org/cq2onto/metric/JaroWinklerDistance</a>
+                    <a href="https://w3id.org/cq2onto/metric/CQCoverage" target="_blank">https://w3id.org/cq2onto/metric/CQCoverage</a>
                 </div>
             </div>
             <div class="row row-equal">
                 <div class="col-md-3 well tag_div"><strong>Keywords</strong></div>
-                <div class="col-md-9 well">Ontology Concept Matching, Metric, Classes</div>
+                <div class="col-md-9 well">Ontology Engineering, Metric, Competency Questions, CQ Coverage, Hierarchy Closure</div>
             </div>
             <div class="row row-equal">
                 <div class="col-md-3 well tag_div"><strong>Contact Point</strong></div>
