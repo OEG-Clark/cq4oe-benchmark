@@ -1,0 +1,702 @@
+====================================================================================================
+ATOMIC TBOX AXIOMS
+====================================================================================================
+
+── Class ──
+
+  Term: Achievement  [Class]
+    Declaration                Declaration: Achievement (Class)
+      Subject: Achievement
+      Object : Class
+    DisjointClasses            DisjointClasses(Achievement, Player)
+      Subject: Achievement
+      Object : Player
+    DisjointClasses            DisjointClasses(Achievement, Game)
+      Subject: Achievement
+      Object : Game
+    DisjointClasses            DisjointClasses(Achievement, Achievement Type)
+      Subject: Achievement
+      Object : Achievement Type
+    DisjointClasses            DisjointClasses(Achievement, Item)
+      Subject: Achievement
+      Object : Item
+    DisjointClasses            DisjointClasses(Achievement, Genre)
+      Subject: Achievement
+      Object : Genre
+    DisjointClasses            DisjointClasses(Achievement, In-App Purchase)
+      Subject: Achievement
+      Object : In-App Purchase
+    DisjointClasses            DisjointClasses(Achievement, Location)
+      Subject: Achievement
+      Object : Location
+    DisjointClasses            DisjointClasses(Achievement, Playing Area)
+      Subject: Achievement
+      Object : Playing Area
+
+  Term: Achievement Type  [Class]
+    Declaration                Declaration: Achievement Type (Class)
+      Subject: Achievement Type
+      Object : Class
+    DisjointClasses            DisjointClasses(Achievement Type, Player)
+      Subject: Achievement Type
+      Object : Player
+    DisjointClasses            DisjointClasses(Achievement Type, Game)
+      Subject: Achievement Type
+      Object : Game
+    DisjointClasses            DisjointClasses(Achievement Type, Item)
+      Subject: Achievement Type
+      Object : Item
+    DisjointClasses            DisjointClasses(Achievement Type, Genre)
+      Subject: Achievement Type
+      Object : Genre
+    DisjointClasses            DisjointClasses(Achievement Type, In-App Purchase)
+      Subject: Achievement Type
+      Object : In-App Purchase
+    DisjointClasses            DisjointClasses(Achievement Type, Location)
+      Subject: Achievement Type
+      Object : Location
+    DisjointClasses            DisjointClasses(Achievement Type, Playing Area)
+      Subject: Achievement Type
+      Object : Playing Area
+
+  Term: Equipment  [Class]
+    Declaration                Declaration: Equipment (Class)
+      Subject: Equipment
+      Object : Class
+    SubClassOf                 Equipment ⊑ Item
+      Subject: Equipment
+      Object : Item
+
+  Term: Game  [Class]
+    Declaration                Declaration: Game (Class)
+      Subject: Game
+      Object : Class
+    DisjointClasses            DisjointClasses(Game, Player)
+      Subject: Game
+      Object : Player
+    DisjointClasses            DisjointClasses(Game, Item)
+      Subject: Game
+      Object : Item
+    DisjointClasses            DisjointClasses(Game, Genre)
+      Subject: Game
+      Object : Genre
+    DisjointClasses            DisjointClasses(Game, In-App Purchase)
+      Subject: Game
+      Object : In-App Purchase
+    DisjointClasses            DisjointClasses(Game, Location)
+      Subject: Game
+      Object : Location
+    DisjointClasses            DisjointClasses(Game, Playing Area)
+      Subject: Game
+      Object : Playing Area
+
+  Term: Genre  [Class]
+    Declaration                Declaration: Genre (Class)
+      Subject: Genre
+      Object : Class
+    DisjointClasses            DisjointClasses(Genre, Player)
+      Subject: Genre
+      Object : Player
+    DisjointClasses            DisjointClasses(Genre, Item)
+      Subject: Genre
+      Object : Item
+    DisjointClasses            DisjointClasses(Genre, In-App Purchase)
+      Subject: Genre
+      Object : In-App Purchase
+    DisjointClasses            DisjointClasses(Genre, Location)
+      Subject: Genre
+      Object : Location
+    DisjointClasses            DisjointClasses(Genre, Playing Area)
+      Subject: Genre
+      Object : Playing Area
+
+  Term: In-App Purchase  [Class]
+    Declaration                Declaration: In-App Purchase (Class)
+      Subject: In-App Purchase
+      Object : Class
+    DisjointClasses            DisjointClasses(In-App Purchase, Player)
+      Subject: In-App Purchase
+      Object : Player
+    DisjointClasses            DisjointClasses(In-App Purchase, Item)
+      Subject: In-App Purchase
+      Object : Item
+    DisjointClasses            DisjointClasses(In-App Purchase, Location)
+      Subject: In-App Purchase
+      Object : Location
+    DisjointClasses            DisjointClasses(In-App Purchase, Playing Area)
+      Subject: In-App Purchase
+      Object : Playing Area
+
+  Term: Item  [Class]
+    Declaration                Declaration: Item (Class)
+      Subject: Item
+      Object : Class
+    DisjointClasses            DisjointClasses(Item, Player)
+      Subject: Item
+      Object : Player
+    DisjointClasses            DisjointClasses(Item, Location)
+      Subject: Item
+      Object : Location
+    DisjointClasses            DisjointClasses(Item, Playing Area)
+      Subject: Item
+      Object : Playing Area
+
+  Term: Location  [Class]
+    Declaration                Declaration: Location (Class)
+      Subject: Location
+      Object : Class
+    DisjointClasses            DisjointClasses(Location, Player)
+      Subject: Location
+      Object : Player
+    DisjointClasses            DisjointClasses(Location, Playing Area)
+      Subject: Location
+      Object : Playing Area
+
+  Term: Player  [Class]
+    Declaration                Declaration: Player (Class)
+      Subject: Player
+      Object : Class
+    DisjointClasses            DisjointClasses(Player, Playing Area)
+      Subject: Player
+      Object : Playing Area
+
+  Term: Playing Area  [Class]
+    Declaration                Declaration: Playing Area (Class)
+      Subject: Playing Area
+      Object : Class
+
+
+── ObjectProperty ──
+
+  Term: achieved by  [ObjectProperty]
+    Declaration                Declaration: achieved by (ObjectProperty)
+      Subject: achieved by
+      Object : ObjectProperty
+    InverseOf                  achieved by ≡ has achievement⁻
+      Subject: achieved by
+      Object : has achievement
+    Domain                     ∃achieved by.⊤ ⊑ Achievement
+      Subject: achieved by
+      Object : Achievement
+    Range                      ⊤ ⊑ ∀achieved by.Player
+      Subject: achieved by
+      Object : Player
+
+  Term: contained in game  [ObjectProperty]
+    Declaration                Declaration: contained in game (ObjectProperty)
+      Subject: contained in game
+      Object : ObjectProperty
+    InverseOf                  contained in game ≡ has item⁻
+      Subject: contained in game
+      Object : has item
+    Domain                     ∃contained in game.⊤ ⊑ Item
+      Subject: contained in game
+      Object : Item
+    Range                      ⊤ ⊑ ∀contained in game.Game
+      Subject: contained in game
+      Object : Game
+
+  Term: equipped by  [ObjectProperty]
+    Declaration                Declaration: equipped by (ObjectProperty)
+      Subject: equipped by
+      Object : ObjectProperty
+    InverseOf                  equipped by ≡ has equipment⁻
+      Subject: equipped by
+      Object : has equipment
+    Domain                     ∃equipped by.⊤ ⊑ Equipment
+      Subject: equipped by
+      Object : Equipment
+    Range                      ⊤ ⊑ ∀equipped by.Player
+      Subject: equipped by
+      Object : Player
+
+  Term: genre of  [ObjectProperty]
+    Declaration                Declaration: genre of (ObjectProperty)
+      Subject: genre of
+      Object : ObjectProperty
+    InverseOf                  genre of ≡ has genre⁻
+      Subject: genre of
+      Object : has genre
+    Domain                     ∃genre of.⊤ ⊑ Genre
+      Subject: genre of
+      Object : Genre
+    Range                      ⊤ ⊑ ∀genre of.Game
+      Subject: genre of
+      Object : Game
+
+  Term: has achievement  [ObjectProperty]
+    Declaration                Declaration: has achievement (ObjectProperty)
+      Subject: has achievement
+      Object : ObjectProperty
+    InverseOf                  has achievement ≡ achieved by⁻
+      Subject: has achievement
+      Object : achieved by
+    Domain                     ∃has achievement.⊤ ⊑ Player
+      Subject: has achievement
+      Object : Player
+    Range                      ⊤ ⊑ ∀has achievement.Achievement
+      Subject: has achievement
+      Object : Achievement
+
+  Term: has equipment  [ObjectProperty]
+    Declaration                Declaration: has equipment (ObjectProperty)
+      Subject: has equipment
+      Object : ObjectProperty
+    InverseOf                  has equipment ≡ equipped by⁻
+      Subject: has equipment
+      Object : equipped by
+    Domain                     ∃has equipment.⊤ ⊑ Player
+      Subject: has equipment
+      Object : Player
+    Range                      ⊤ ⊑ ∀has equipment.Equipment
+      Subject: has equipment
+      Object : Equipment
+
+  Term: has friend  [ObjectProperty]
+    Declaration                Declaration: has friend (ObjectProperty)
+      Subject: has friend
+      Object : ObjectProperty
+    InverseOf                  has friend ≡ is friend of⁻
+      Subject: has friend
+      Object : is friend of
+    Domain                     ∃has friend.⊤ ⊑ Player
+      Subject: has friend
+      Object : Player
+    Range                      ⊤ ⊑ ∀has friend.Player
+      Subject: has friend
+      Object : Player
+
+  Term: has genre  [ObjectProperty]
+    Declaration                Declaration: has genre (ObjectProperty)
+      Subject: has genre
+      Object : ObjectProperty
+    InverseOf                  has genre ≡ genre of⁻
+      Subject: has genre
+      Object : genre of
+    Domain                     ∃has genre.⊤ ⊑ Game
+      Subject: has genre
+      Object : Game
+    Range                      ⊤ ⊑ ∀has genre.Genre
+      Subject: has genre
+      Object : Genre
+
+  Term: has item  [ObjectProperty]
+    Declaration                Declaration: has item (ObjectProperty)
+      Subject: has item
+      Object : ObjectProperty
+    InverseOf                  has item ≡ contained in game⁻
+      Subject: has item
+      Object : contained in game
+    Domain                     ∃has item.⊤ ⊑ Game
+      Subject: has item
+      Object : Game
+    Range                      ⊤ ⊑ ∀has item.Item
+      Subject: has item
+      Object : Item
+
+  Term: has made IAP  [ObjectProperty]
+    Declaration                Declaration: has made IAP (ObjectProperty)
+      Subject: has made IAP
+      Object : ObjectProperty
+    InverseOf                  has made IAP ≡ made by player⁻
+      Subject: has made IAP
+      Object : made by player
+    Domain                     ∃has made IAP.⊤ ⊑ Player
+      Subject: has made IAP
+      Object : Player
+    Range                      ⊤ ⊑ ∀has made IAP.In-App Purchase
+      Subject: has made IAP
+      Object : In-App Purchase
+
+  Term: has playing area  [ObjectProperty]
+    Declaration                Declaration: has playing area (ObjectProperty)
+      Subject: has playing area
+      Object : ObjectProperty
+    InverseOf                  has playing area ≡ playing area of⁻
+      Subject: has playing area
+      Object : playing area of
+    Domain                     ∃has playing area.⊤ ⊑ Game
+      Subject: has playing area
+      Object : Game
+    Range                      ⊤ ⊑ ∀has playing area.Playing Area
+      Subject: has playing area
+      Object : Playing Area
+
+  Term: has resident  [ObjectProperty]
+    Declaration                Declaration: has resident (ObjectProperty)
+      Subject: has resident
+      Object : ObjectProperty
+    InverseOf                  has resident ≡ lives in⁻
+      Subject: has resident
+      Object : lives in
+    Domain                     ∃has resident.⊤ ⊑ Location
+      Subject: has resident
+      Object : Location
+    Range                      ⊤ ⊑ ∀has resident.Player
+      Subject: has resident
+      Object : Player
+
+  Term: has type  [ObjectProperty]
+    Declaration                Declaration: has type (ObjectProperty)
+      Subject: has type
+      Object : ObjectProperty
+    InverseOf                  has type ≡ type of achievement⁻
+      Subject: has type
+      Object : type of achievement
+    Domain                     ∃has type.⊤ ⊑ Achievement
+      Subject: has type
+      Object : Achievement
+    Range                      ⊤ ⊑ ∀has type.Achievement Type
+      Subject: has type
+      Object : Achievement Type
+
+  Term: is friend of  [ObjectProperty]
+    Declaration                Declaration: is friend of (ObjectProperty)
+      Subject: is friend of
+      Object : ObjectProperty
+    InverseOf                  is friend of ≡ has friend⁻
+      Subject: is friend of
+      Object : has friend
+    Domain                     ∃is friend of.⊤ ⊑ Player
+      Subject: is friend of
+      Object : Player
+    Range                      ⊤ ⊑ ∀is friend of.Player
+      Subject: is friend of
+      Object : Player
+
+  Term: last played by  [ObjectProperty]
+    Declaration                Declaration: last played by (ObjectProperty)
+      Subject: last played by
+      Object : ObjectProperty
+    InverseOf                  last played by ≡ last played game⁻
+      Subject: last played by
+      Object : last played game
+    Domain                     ∃last played by.⊤ ⊑ Game
+      Subject: last played by
+      Object : Game
+    Range                      ⊤ ⊑ ∀last played by.Player
+      Subject: last played by
+      Object : Player
+
+  Term: last played game  [ObjectProperty]
+    Declaration                Declaration: last played game (ObjectProperty)
+      Subject: last played game
+      Object : ObjectProperty
+    InverseOf                  last played game ≡ last played by⁻
+      Subject: last played game
+      Object : last played by
+    Domain                     ∃last played game.⊤ ⊑ Player
+      Subject: last played game
+      Object : Player
+    Range                      ⊤ ⊑ ∀last played game.Game
+      Subject: last played game
+      Object : Game
+    Characteristics            Functional(last played game)
+      Subject: last played game
+      Object : Functional
+
+  Term: lives in  [ObjectProperty]
+    Declaration                Declaration: lives in (ObjectProperty)
+      Subject: lives in
+      Object : ObjectProperty
+    InverseOf                  lives in ≡ has resident⁻
+      Subject: lives in
+      Object : has resident
+    Domain                     ∃lives in.⊤ ⊑ Player
+      Subject: lives in
+      Object : Player
+    Range                      ⊤ ⊑ ∀lives in.Location
+      Subject: lives in
+      Object : Location
+
+  Term: made by player  [ObjectProperty]
+    Declaration                Declaration: made by player (ObjectProperty)
+      Subject: made by player
+      Object : ObjectProperty
+    InverseOf                  made by player ≡ has made IAP⁻
+      Subject: made by player
+      Object : has made IAP
+    Domain                     ∃made by player.⊤ ⊑ In-App Purchase
+      Subject: made by player
+      Object : In-App Purchase
+    Range                      ⊤ ⊑ ∀made by player.Player
+      Subject: made by player
+      Object : Player
+
+  Term: offered by game  [ObjectProperty]
+    Declaration                Declaration: offered by game (ObjectProperty)
+      Subject: offered by game
+      Object : ObjectProperty
+    InverseOf                  offered by game ≡ offers achievement⁻
+      Subject: offered by game
+      Object : offers achievement
+    Domain                     ∃offered by game.⊤ ⊑ Achievement
+      Subject: offered by game
+      Object : Achievement
+    Range                      ⊤ ⊑ ∀offered by game.Game
+      Subject: offered by game
+      Object : Game
+
+  Term: offers achievement  [ObjectProperty]
+    Declaration                Declaration: offers achievement (ObjectProperty)
+      Subject: offers achievement
+      Object : ObjectProperty
+    InverseOf                  offers achievement ≡ offered by game⁻
+      Subject: offers achievement
+      Object : offered by game
+    Domain                     ∃offers achievement.⊤ ⊑ Game
+      Subject: offers achievement
+      Object : Game
+    Range                      ⊤ ⊑ ∀offers achievement.Achievement
+      Subject: offers achievement
+      Object : Achievement
+
+  Term: owned by  [ObjectProperty]
+    Declaration                Declaration: owned by (ObjectProperty)
+      Subject: owned by
+      Object : ObjectProperty
+    InverseOf                  owned by ≡ owns item⁻
+      Subject: owned by
+      Object : owns item
+    Domain                     ∃owned by.⊤ ⊑ Item
+      Subject: owned by
+      Object : Item
+    Range                      ⊤ ⊑ ∀owned by.Player
+      Subject: owned by
+      Object : Player
+
+  Term: owns item  [ObjectProperty]
+    Declaration                Declaration: owns item (ObjectProperty)
+      Subject: owns item
+      Object : ObjectProperty
+    InverseOf                  owns item ≡ owned by⁻
+      Subject: owns item
+      Object : owned by
+    Domain                     ∃owns item.⊤ ⊑ Player
+      Subject: owns item
+      Object : Player
+    Range                      ⊤ ⊑ ∀owns item.Item
+      Subject: owns item
+      Object : Item
+
+  Term: played by  [ObjectProperty]
+    Declaration                Declaration: played by (ObjectProperty)
+      Subject: played by
+      Object : ObjectProperty
+    InverseOf                  played by ≡ plays game⁻
+      Subject: played by
+      Object : plays game
+    Domain                     ∃played by.⊤ ⊑ Game
+      Subject: played by
+      Object : Game
+    Range                      ⊤ ⊑ ∀played by.Player
+      Subject: played by
+      Object : Player
+
+  Term: playing area of  [ObjectProperty]
+    Declaration                Declaration: playing area of (ObjectProperty)
+      Subject: playing area of
+      Object : ObjectProperty
+    InverseOf                  playing area of ≡ has playing area⁻
+      Subject: playing area of
+      Object : has playing area
+    Domain                     ∃playing area of.⊤ ⊑ Playing Area
+      Subject: playing area of
+      Object : Playing Area
+    Range                      ⊤ ⊑ ∀playing area of.Game
+      Subject: playing area of
+      Object : Game
+
+  Term: plays game  [ObjectProperty]
+    Declaration                Declaration: plays game (ObjectProperty)
+      Subject: plays game
+      Object : ObjectProperty
+    InverseOf                  plays game ≡ played by⁻
+      Subject: plays game
+      Object : played by
+    Domain                     ∃plays game.⊤ ⊑ Player
+      Subject: plays game
+      Object : Player
+    Range                      ⊤ ⊑ ∀plays game.Game
+      Subject: plays game
+      Object : Game
+
+  Term: type of achievement  [ObjectProperty]
+    Declaration                Declaration: type of achievement (ObjectProperty)
+      Subject: type of achievement
+      Object : ObjectProperty
+    InverseOf                  type of achievement ≡ has type⁻
+      Subject: type of achievement
+      Object : has type
+    Domain                     ∃type of achievement.⊤ ⊑ Achievement Type
+      Subject: type of achievement
+      Object : Achievement Type
+    Range                      ⊤ ⊑ ∀type of achievement.Achievement
+      Subject: type of achievement
+      Object : Achievement
+
+  Term: usable in game  [ObjectProperty]
+    Declaration                Declaration: usable in game (ObjectProperty)
+      Subject: usable in game
+      Object : ObjectProperty
+    InverseOf                  usable in game ≡ usable item⁻
+      Subject: usable in game
+      Object : usable item
+    Domain                     ∃usable in game.⊤ ⊑ Item
+      Subject: usable in game
+      Object : Item
+    Range                      ⊤ ⊑ ∀usable in game.Game
+      Subject: usable in game
+      Object : Game
+
+  Term: usable item  [ObjectProperty]
+    Declaration                Declaration: usable item (ObjectProperty)
+      Subject: usable item
+      Object : ObjectProperty
+    InverseOf                  usable item ≡ usable in game⁻
+      Subject: usable item
+      Object : usable in game
+    Domain                     ∃usable item.⊤ ⊑ Game
+      Subject: usable item
+      Object : Game
+    Range                      ⊤ ⊑ ∀usable item.Item
+      Subject: usable item
+      Object : Item
+
+
+── DatatypeProperty ──
+
+  Term: has ability  [DatatypeProperty]
+    Declaration                Declaration: has ability (DatatypeProperty)
+      Subject: has ability
+      Object : DatatypeProperty
+    Domain                     ∃has ability.⊤ ⊑ Item
+      Subject: has ability
+      Object : Item
+    Range                      has ability maps-to xsd:string
+      Subject: has ability
+      Object : xsd:string
+
+  Term: has username  [DatatypeProperty]
+    Declaration                Declaration: has username (DatatypeProperty)
+      Subject: has username
+      Object : DatatypeProperty
+    Domain                     ∃has username.⊤ ⊑ Player
+      Subject: has username
+      Object : Player
+    Range                      has username maps-to xsd:string
+      Subject: has username
+      Object : xsd:string
+    Characteristics            Functional(has username)
+      Subject: has username
+      Object : Functional
+
+  Term: is paying customer  [DatatypeProperty]
+    Declaration                Declaration: is paying customer (DatatypeProperty)
+      Subject: is paying customer
+      Object : DatatypeProperty
+    Domain                     ∃is paying customer.⊤ ⊑ Player
+      Subject: is paying customer
+      Object : Player
+    Range                      is paying customer maps-to xsd:boolean
+      Subject: is paying customer
+      Object : xsd:boolean
+
+  Term: kill count  [DatatypeProperty]
+    Declaration                Declaration: kill count (DatatypeProperty)
+      Subject: kill count
+      Object : DatatypeProperty
+    Domain                     ∃kill count.⊤ ⊑ Player
+      Subject: kill count
+      Object : Player
+    Range                      kill count maps-to xsd:integer
+      Subject: kill count
+      Object : xsd:integer
+
+  Term: purchase amount  [DatatypeProperty]
+    Declaration                Declaration: purchase amount (DatatypeProperty)
+      Subject: purchase amount
+      Object : DatatypeProperty
+    Domain                     ∃purchase amount.⊤ ⊑ In-App Purchase
+      Subject: purchase amount
+      Object : In-App Purchase
+    Range                      purchase amount maps-to xsd:float
+      Subject: purchase amount
+      Object : xsd:float
+
+  Term: purchase timestamp  [DatatypeProperty]
+    Declaration                Declaration: purchase timestamp (DatatypeProperty)
+      Subject: purchase timestamp
+      Object : DatatypeProperty
+    Domain                     ∃purchase timestamp.⊤ ⊑ In-App Purchase
+      Subject: purchase timestamp
+      Object : In-App Purchase
+    Range                      purchase timestamp maps-to datetime'>
+      Subject: purchase timestamp
+      Object : datetime'>
+
+  Term: release date  [DatatypeProperty]
+    Declaration                Declaration: release date (DatatypeProperty)
+      Subject: release date
+      Object : DatatypeProperty
+    Domain                     ∃release date.⊤ ⊑ Game
+      Subject: release date
+      Object : Game
+    Range                      release date maps-to date'>
+      Subject: release date
+      Object : date'>
+
+  Term: time before first IAP  [DatatypeProperty]
+    Declaration                Declaration: time before first IAP (DatatypeProperty)
+      Subject: time before first IAP
+      Object : DatatypeProperty
+    Domain                     ∃time before first IAP.⊤ ⊑ Player
+      Subject: time before first IAP
+      Object : Player
+    Range                      time before first IAP maps-to timedelta'>
+      Subject: time before first IAP
+      Object : timedelta'>
+
+  Term: total play time  [DatatypeProperty]
+    Declaration                Declaration: total play time (DatatypeProperty)
+      Subject: total play time
+      Object : DatatypeProperty
+    Domain                     ∃total play time.⊤ ⊑ Game
+      Subject: total play time
+      Object : Game
+    Range                      total play time maps-to xsd:float
+      Subject: total play time
+      Object : xsd:float
+
+  Term: total spent  [DatatypeProperty]
+    Declaration                Declaration: total spent (DatatypeProperty)
+      Subject: total spent
+      Object : DatatypeProperty
+    Domain                     ∃total spent.⊤ ⊑ Player
+      Subject: total spent
+      Object : Player
+    Range                      total spent maps-to xsd:float
+      Subject: total spent
+      Object : xsd:float
+
+
+====================================================================================================
+STATISTICS
+====================================================================================================
+
+  Classes:               10  (defined: 0, primitive: 10)
+  ObjectProperties:      28
+  DatatypeProperties:    10
+
+  Axiom Breakdown:
+    Characteristics           2
+    Declaration               48
+    DisjointClasses           36
+    Domain                    38
+    InverseOf                 28
+    Range                     38
+    SubClassOf                1
+    ------------------------------
+    Total TBox Axioms         191
+
+====================================================================================================

@@ -1,0 +1,944 @@
+{
+  "config": {
+    "semantic_threshold": 0.6,
+    "embedding_model": "embeddinggemma",
+    "class_csv": "03_evaluation_results/cqbycq/deepseek-v4-flash/swo/01_class/class_best_matching.csv",
+    "property_csv": "03_evaluation_results/cqbycq/deepseek-v4-flash/swo/02_property/property_best_matching.csv"
+  },
+  "results": [
+    {
+      "id": "layer1_statistics",
+      "gold": {
+        "ObjectProperty": {
+          "full": 3,
+          "domain_only": 0,
+          "range_only": 7,
+          "undefined": 8
+        },
+        "DatatypeProperty": {
+          "full": 0,
+          "domain_only": 0,
+          "range_only": 5,
+          "undefined": 0
+        }
+      },
+      "pred": {
+        "ObjectProperty": {
+          "full": 21,
+          "domain_only": 0,
+          "range_only": 0,
+          "undefined": 0
+        },
+        "DatatypeProperty": {
+          "full": 16,
+          "domain_only": 0,
+          "range_only": 0,
+          "undefined": 0
+        }
+      },
+      "gold_totals": {
+        "ObjectProperty": 18,
+        "DatatypeProperty": 5
+      },
+      "pred_totals": {
+        "ObjectProperty": 21,
+        "DatatypeProperty": 16
+      },
+      "gold_grand_total": 23,
+      "pred_grand_total": 37
+    },
+    {
+      "id": "layer2_semantic",
+      "threshold": 0.6,
+      "model_id": "embeddinggemma",
+      "overall": {
+        "n_gold": 23,
+        "n_pred": 37,
+        "tp": 12,
+        "fp": 25,
+        "fn": 11,
+        "precision": 0.3243,
+        "recall": 0.5217,
+        "f1": 0.4
+      },
+      "ObjectProperty": {
+        "n_gold": 18,
+        "n_pred": 21,
+        "tp": 9,
+        "fp": 12,
+        "fn": 9,
+        "precision": 0.4286,
+        "recall": 0.5,
+        "f1": 0.4615,
+        "matches": [
+          {
+            "gold_predicate": "has version",
+            "pred_predicate": "has version",
+            "gold_text": "has version version number",
+            "pred_text": "tool has version version",
+            "score": 0.8336
+          },
+          {
+            "gold_predicate": "has license",
+            "pred_predicate": "has license",
+            "gold_text": "has license",
+            "pred_text": "tool has license license",
+            "score": 0.7628
+          },
+          {
+            "gold_predicate": "uses platform",
+            "pred_predicate": "runs on",
+            "gold_text": "uses platform",
+            "pred_text": "tool runs on platform",
+            "score": 0.7492
+          },
+          {
+            "gold_predicate": "is developed by",
+            "pred_predicate": "has developer",
+            "gold_text": "is developed by",
+            "pred_text": "tool has developer developer",
+            "score": 0.6983
+          },
+          {
+            "gold_predicate": "implements",
+            "pred_predicate": "uses algorithm",
+            "gold_text": "implements algorithm",
+            "pred_text": "tool uses algorithm algorithm",
+            "score": 0.6839
+          },
+          {
+            "gold_predicate": "has input",
+            "pred_predicate": "has input format",
+            "gold_text": "has input",
+            "pred_text": "tool has input format data format",
+            "score": 0.6555
+          },
+          {
+            "gold_predicate": "has output",
+            "pred_predicate": "has output format",
+            "gold_text": "has output",
+            "pred_text": "tool has output format data format",
+            "score": 0.653
+          },
+          {
+            "gold_predicate": "has format specification",
+            "pred_predicate": "exports to format",
+            "gold_text": "data item has format specification data format specification",
+            "pred_text": "export capability exports to format data format",
+            "score": 0.6382
+          },
+          {
+            "gold_predicate": "has interface",
+            "pred_predicate": "has source",
+            "gold_text": "has interface software interface",
+            "pred_text": "tool has source software source",
+            "score": 0.6135
+          }
+        ]
+      },
+      "DatatypeProperty": {
+        "n_gold": 5,
+        "n_pred": 16,
+        "tp": 3,
+        "fp": 13,
+        "fn": 2,
+        "precision": 0.1875,
+        "recall": 0.6,
+        "f1": 0.2857,
+        "matches": [
+          {
+            "gold_predicate": "has documentation",
+            "pred_predicate": "has URL",
+            "gold_text": "has documentation xsd string",
+            "pred_text": "documentation has url xsd anyuri",
+            "score": 0.8266
+          },
+          {
+            "gold_predicate": "has release date",
+            "pred_predicate": "version release date",
+            "gold_text": "has release date xsd string",
+            "pred_text": "version version release date xsd date time",
+            "score": 0.7824
+          },
+          {
+            "gold_predicate": "has download location",
+            "pred_predicate": "version string",
+            "gold_text": "has download location xsd string",
+            "pred_text": "version version string xsd string",
+            "score": 0.6076
+          }
+        ]
+      }
+    },
+    {
+      "id": "layer3_strict",
+      "n_aligned_total": 12,
+      "ObjectProperty": {
+        "n_aligned_pairs": 9,
+        "type": {
+          "tp": 9,
+          "fp": 0,
+          "fn": 0,
+          "mismatch": 0,
+          "skip": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "domain": {
+          "tp": 0,
+          "fp": 8,
+          "fn": 0,
+          "mismatch": 1,
+          "skip": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "range": {
+          "tp": 2,
+          "fp": 5,
+          "fn": 0,
+          "mismatch": 2,
+          "skip": 0,
+          "precision": 0.2222,
+          "recall": 0.5,
+          "f1": 0.3077
+        },
+        "overall": {
+          "tp": 2,
+          "fp": 13,
+          "fn": 0,
+          "mismatch": 3,
+          "skip": 0,
+          "precision": 0.1111,
+          "recall": 0.4,
+          "f1": 0.1739
+        },
+        "fully_aligned": []
+      },
+      "DatatypeProperty": {
+        "n_aligned_pairs": 3,
+        "type": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "mismatch": 0,
+          "skip": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "domain": {
+          "tp": 0,
+          "fp": 3,
+          "fn": 0,
+          "mismatch": 0,
+          "skip": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "range": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "mismatch": 3,
+          "skip": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "overall": {
+          "tp": 0,
+          "fp": 3,
+          "fn": 0,
+          "mismatch": 3,
+          "skip": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "fully_aligned": []
+      },
+      "grand_overall": {
+        "tp": 2,
+        "fp": 16,
+        "fn": 0,
+        "mismatch": 6,
+        "skip": 0,
+        "precision": 0.0833,
+        "recall": 0.25,
+        "f1": 0.125
+      },
+      "grand_type": {
+        "tp": 12,
+        "fp": 0,
+        "fn": 0,
+        "mismatch": 0,
+        "skip": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "grand_domain": {
+        "tp": 0,
+        "fp": 11,
+        "fn": 0,
+        "mismatch": 1,
+        "skip": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "grand_range": {
+        "tp": 2,
+        "fp": 5,
+        "fn": 0,
+        "mismatch": 5,
+        "skip": 0,
+        "precision": 0.1667,
+        "recall": 0.2857,
+        "f1": 0.2105
+      },
+      "type_mismatches": [],
+      "all_pairs": [
+        {
+          "predicate_type": "DatatypeProperty",
+          "gold_predicate": "has release date",
+          "pred_predicate": "has release date",
+          "gold_type": "DatatypeProperty",
+          "pred_type": "DatatypeProperty",
+          "gold_domain": null,
+          "pred_domain": [
+            "Tool"
+          ],
+          "gold_range": [
+            "xsd:string"
+          ],
+          "pred_range": [
+            "xsd:dateTime"
+          ],
+          "type_verdict": "tp",
+          "domain_verdict": "fp",
+          "range_verdict": "mismatch",
+          "is_full_match": false
+        },
+        {
+          "predicate_type": "DatatypeProperty",
+          "gold_predicate": "has support URL",
+          "pred_predicate": "has URL",
+          "gold_type": "DatatypeProperty",
+          "pred_type": "DatatypeProperty",
+          "gold_domain": null,
+          "pred_domain": [
+            "Documentation"
+          ],
+          "gold_range": [
+            "xsd:http://www.w3.org/2000/01/rdf-schema#literal"
+          ],
+          "pred_range": [
+            "xsd:anyuri"
+          ],
+          "type_verdict": "tp",
+          "domain_verdict": "fp",
+          "range_verdict": "mismatch",
+          "is_full_match": false
+        },
+        {
+          "predicate_type": "DatatypeProperty",
+          "gold_predicate": "has website homepage",
+          "pred_predicate": "has homepage",
+          "gold_type": "DatatypeProperty",
+          "pred_type": "DatatypeProperty",
+          "gold_domain": null,
+          "pred_domain": [
+            "Tool"
+          ],
+          "gold_range": [
+            "xsd:http://www.w3.org/2000/01/rdf-schema#literal"
+          ],
+          "pred_range": [
+            "xsd:anyuri"
+          ],
+          "type_verdict": "tp",
+          "domain_verdict": "fp",
+          "range_verdict": "mismatch",
+          "is_full_match": false
+        },
+        {
+          "predicate_type": "ObjectProperty",
+          "gold_predicate": "has format specification",
+          "pred_predicate": "has modification",
+          "gold_type": "ObjectProperty",
+          "pred_type": "ObjectProperty",
+          "gold_domain": [
+            "data item"
+          ],
+          "pred_domain": [
+            "Algorithm"
+          ],
+          "gold_range": [
+            "data format specification"
+          ],
+          "pred_range": [
+            "Modification"
+          ],
+          "type_verdict": "tp",
+          "domain_verdict": "mismatch",
+          "range_verdict": "mismatch",
+          "is_full_match": false
+        },
+        {
+          "predicate_type": "ObjectProperty",
+          "gold_predicate": "has function",
+          "pred_predicate": "has documentation",
+          "gold_type": "ObjectProperty",
+          "pred_type": "ObjectProperty",
+          "gold_domain": null,
+          "pred_domain": [
+            "Tool"
+          ],
+          "gold_range": [
+            "function"
+          ],
+          "pred_range": [
+            "Documentation"
+          ],
+          "type_verdict": "tp",
+          "domain_verdict": "fp",
+          "range_verdict": "tp",
+          "is_full_match": false
+        },
+        {
+          "predicate_type": "ObjectProperty",
+          "gold_predicate": "has input",
+          "pred_predicate": "has input format",
+          "gold_type": "ObjectProperty",
+          "pred_type": "ObjectProperty",
+          "gold_domain": null,
+          "pred_domain": [
+            "Tool"
+          ],
+          "gold_range": null,
+          "pred_range": [
+            "Data Format"
+          ],
+          "type_verdict": "tp",
+          "domain_verdict": "fp",
+          "range_verdict": "fp",
+          "is_full_match": false
+        },
+        {
+          "predicate_type": "ObjectProperty",
+          "gold_predicate": "has license",
+          "pred_predicate": "has license",
+          "gold_type": "ObjectProperty",
+          "pred_type": "ObjectProperty",
+          "gold_domain": null,
+          "pred_domain": [
+            "Tool"
+          ],
+          "gold_range": null,
+          "pred_range": [
+            "License"
+          ],
+          "type_verdict": "tp",
+          "domain_verdict": "fp",
+          "range_verdict": "fp",
+          "is_full_match": false
+        },
+        {
+          "predicate_type": "ObjectProperty",
+          "gold_predicate": "has output",
+          "pred_predicate": "has output format",
+          "gold_type": "ObjectProperty",
+          "pred_type": "ObjectProperty",
+          "gold_domain": null,
+          "pred_domain": [
+            "Tool"
+          ],
+          "gold_range": null,
+          "pred_range": [
+            "Data Format"
+          ],
+          "type_verdict": "tp",
+          "domain_verdict": "fp",
+          "range_verdict": "fp",
+          "is_full_match": false
+        },
+        {
+          "predicate_type": "ObjectProperty",
+          "gold_predicate": "has version",
+          "pred_predicate": "has version",
+          "gold_type": "ObjectProperty",
+          "pred_type": "ObjectProperty",
+          "gold_domain": null,
+          "pred_domain": [
+            "Tool"
+          ],
+          "gold_range": [
+            "version number"
+          ],
+          "pred_range": [
+            "Version"
+          ],
+          "type_verdict": "tp",
+          "domain_verdict": "fp",
+          "range_verdict": "tp",
+          "is_full_match": false
+        },
+        {
+          "predicate_type": "ObjectProperty",
+          "gold_predicate": "implements",
+          "pred_predicate": "implemented in language",
+          "gold_type": "ObjectProperty",
+          "pred_type": "ObjectProperty",
+          "gold_domain": null,
+          "pred_domain": [
+            "Tool"
+          ],
+          "gold_range": [
+            "algorithm"
+          ],
+          "pred_range": [
+            "Programming Language"
+          ],
+          "type_verdict": "tp",
+          "domain_verdict": "fp",
+          "range_verdict": "mismatch",
+          "is_full_match": false
+        },
+        {
+          "predicate_type": "ObjectProperty",
+          "gold_predicate": "is developed by",
+          "pred_predicate": "has developer",
+          "gold_type": "ObjectProperty",
+          "pred_type": "ObjectProperty",
+          "gold_domain": null,
+          "pred_domain": [
+            "Tool"
+          ],
+          "gold_range": null,
+          "pred_range": [
+            "Developer"
+          ],
+          "type_verdict": "tp",
+          "domain_verdict": "fp",
+          "range_verdict": "fp",
+          "is_full_match": false
+        },
+        {
+          "predicate_type": "ObjectProperty",
+          "gold_predicate": "uses platform",
+          "pred_predicate": "uses algorithm",
+          "gold_type": "ObjectProperty",
+          "pred_type": "ObjectProperty",
+          "gold_domain": null,
+          "pred_domain": [
+            "Tool"
+          ],
+          "gold_range": null,
+          "pred_range": [
+            "Algorithm"
+          ],
+          "type_verdict": "tp",
+          "domain_verdict": "fp",
+          "range_verdict": "fp",
+          "is_full_match": false
+        }
+      ]
+    },
+    {
+      "id": "layer4_global",
+      "ObjectProperty": {
+        "matched": 2,
+        "extra": 40,
+        "extra_layer3": 16,
+        "extra_unaligned": 24,
+        "missing": 11,
+        "missing_layer3": 3,
+        "missing_unaligned": 8,
+        "precision": 0.0476,
+        "recall": 0.1538,
+        "f1": 0.0727,
+        "unaligned_gold_count": 9,
+        "unaligned_pred_count": 12,
+        "unaligned_gold_axiom_count": 8,
+        "unaligned_pred_axiom_count": 24,
+        "unaligned_gold": [
+          {
+            "predicate": "has specified data input",
+            "domain": null,
+            "range": [
+              "data item"
+            ],
+            "axiom_count": 1
+          },
+          {
+            "predicate": "has specified data output",
+            "domain": null,
+            "range": [
+              "data item"
+            ],
+            "axiom_count": 1
+          },
+          {
+            "predicate": "uses software",
+            "domain": [
+              "SWO_0000001"
+            ],
+            "range": [
+              "SWO_0000001"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "is software for",
+            "domain": null,
+            "range": null,
+            "axiom_count": 0
+          },
+          {
+            "predicate": "is encoded in",
+            "domain": null,
+            "range": null,
+            "axiom_count": 0
+          },
+          {
+            "predicate": "has interface",
+            "domain": null,
+            "range": [
+              "software interface"
+            ],
+            "axiom_count": 1
+          },
+          {
+            "predicate": "has clause",
+            "domain": null,
+            "range": null,
+            "axiom_count": 0
+          },
+          {
+            "predicate": "is alternative format of",
+            "domain": [
+              "data format specification"
+            ],
+            "range": [
+              "data format specification"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "has declared status",
+            "domain": null,
+            "range": [
+              "Development status"
+            ],
+            "axiom_count": 1
+          }
+        ],
+        "unaligned_pred": [
+          {
+            "predicate": "provides feature",
+            "domain": [
+              "Tool"
+            ],
+            "range": [
+              "Feature"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "performs task",
+            "domain": [
+              "Tool"
+            ],
+            "range": [
+              "Task"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "created by",
+            "domain": [
+              "Data"
+            ],
+            "range": [
+              "Tool"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "handles data",
+            "domain": [
+              "Tool"
+            ],
+            "range": [
+              "Data"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "has export capability",
+            "domain": [
+              "Tool"
+            ],
+            "range": [
+              "Export Capability"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "exports from format",
+            "domain": [
+              "Export Capability"
+            ],
+            "range": [
+              "Data Format"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "exports to format",
+            "domain": [
+              "Export Capability"
+            ],
+            "range": [
+              "Data Format"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "is available in version",
+            "domain": [
+              "Export Capability"
+            ],
+            "range": [
+              "Version"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "has source",
+            "domain": [
+              "Tool"
+            ],
+            "range": [
+              "Software Source"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "has help resource",
+            "domain": [
+              "Tool"
+            ],
+            "range": [
+              "Help Resource"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "introduced in version",
+            "domain": [
+              "Feature"
+            ],
+            "range": [
+              "Version"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "runs on",
+            "domain": [
+              "Tool"
+            ],
+            "range": [
+              "Platform"
+            ],
+            "axiom_count": 2
+          }
+        ]
+      },
+      "DatatypeProperty": {
+        "matched": 0,
+        "extra": 32,
+        "extra_layer3": 6,
+        "extra_unaligned": 26,
+        "missing": 5,
+        "missing_layer3": 3,
+        "missing_unaligned": 2,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "unaligned_gold_count": 2,
+        "unaligned_pred_count": 13,
+        "unaligned_gold_axiom_count": 2,
+        "unaligned_pred_axiom_count": 26,
+        "unaligned_gold": [
+          {
+            "predicate": "has documentation",
+            "domain": null,
+            "range": [
+              "xsd:string"
+            ],
+            "axiom_count": 1
+          },
+          {
+            "predicate": "has download location",
+            "domain": null,
+            "range": [
+              "xsd:string"
+            ],
+            "axiom_count": 1
+          }
+        ],
+        "unaligned_pred": [
+          {
+            "predicate": "has name",
+            "domain": [
+              "Algorithm"
+            ],
+            "range": [
+              "xsd:string"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "is published",
+            "domain": [
+              "Algorithm"
+            ],
+            "range": [
+              "xsd:boolean"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "available as web service",
+            "domain": [
+              "Tool"
+            ],
+            "range": [
+              "xsd:boolean"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "is open source",
+            "domain": [
+              "Tool"
+            ],
+            "range": [
+              "xsd:boolean"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "is maintained",
+            "domain": [
+              "Tool"
+            ],
+            "range": [
+              "xsd:boolean"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "is open to collaboration",
+            "domain": [
+              "Developer"
+            ],
+            "range": [
+              "xsd:boolean"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "active development score",
+            "domain": [
+              "Tool"
+            ],
+            "range": [
+              "xsd:integer"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "version string",
+            "domain": [
+              "Version"
+            ],
+            "range": [
+              "xsd:string"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "version release date",
+            "domain": [
+              "Version"
+            ],
+            "range": [
+              "xsd:dateTime"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "is open source development",
+            "domain": [
+              "Tool"
+            ],
+            "range": [
+              "xsd:boolean"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "has community development",
+            "domain": [
+              "Tool"
+            ],
+            "range": [
+              "xsd:boolean"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "is permissive",
+            "domain": [
+              "License"
+            ],
+            "range": [
+              "xsd:boolean"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "is free",
+            "domain": [
+              "Tool"
+            ],
+            "range": [
+              "xsd:boolean"
+            ],
+            "axiom_count": 2
+          }
+        ]
+      },
+      "grand_overall": {
+        "matched": 2,
+        "extra": 72,
+        "extra_layer3": 22,
+        "extra_unaligned": 50,
+        "missing": 16,
+        "missing_layer3": 6,
+        "missing_unaligned": 10,
+        "precision": 0.027,
+        "recall": 0.1111,
+        "f1": 0.0435
+      }
+    }
+  ]
+}

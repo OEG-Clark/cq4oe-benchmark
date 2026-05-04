@@ -1,0 +1,119 @@
+====================================================================================================
+ATOMIC TBOX AXIOMS
+====================================================================================================
+
+── Class ──
+
+  Term: Animal  [Class]
+    Declaration                Declaration: Animal (Class)
+      Subject: Animal
+      Object : Class
+    DisjointClasses            DisjointClasses(Animal, Plant)
+      Subject: Animal
+      Object : Plant
+
+  Term: Carnivore  [Class]
+    Declaration                Declaration: Carnivore (Class)
+      Subject: Carnivore
+      Object : Class
+    DisjointClasses            DisjointClasses(Carnivore, Herbivore)
+      Subject: Carnivore
+      Object : Herbivore
+    DisjointClasses            DisjointClasses(Carnivore, Omnivore)
+      Subject: Carnivore
+      Object : Omnivore
+
+  Term: Herbivore  [Class]
+    Declaration                Declaration: Herbivore (Class)
+      Subject: Herbivore
+      Object : Class
+    DisjointClasses            DisjointClasses(Herbivore, Omnivore)
+      Subject: Herbivore
+      Object : Omnivore
+
+  Term: Omnivore  [Class]
+    Declaration                Declaration: Omnivore (Class)
+      Subject: Omnivore
+      Object : Class
+
+  Term: Plant  [Class]
+    Declaration                Declaration: Plant (Class)
+      Subject: Plant
+      Object : Class
+
+
+── ObjectProperty ──
+
+  Term: is eaten by  [ObjectProperty]
+    Declaration                Declaration: is eaten by (ObjectProperty)
+      Subject: is eaten by
+      Object : ObjectProperty
+    Domain                     ∃is eaten by.⊤ ⊑ Animal
+      Subject: is eaten by
+      Object : Animal
+    Range                      ⊤ ⊑ ∀is eaten by.Animal
+      Subject: is eaten by
+      Object : Animal
+
+  Term: is eaten by animal  [ObjectProperty]
+    Declaration                Declaration: is eaten by animal (ObjectProperty)
+      Subject: is eaten by animal
+      Object : ObjectProperty
+    Domain                     ∃is eaten by animal.⊤ ⊑ Animal
+      Subject: is eaten by animal
+      Object : Animal
+    Range                      ⊤ ⊑ ∀is eaten by animal.Plant
+      Subject: is eaten by animal
+      Object : Plant
+
+  Term: is eaten by plant  [ObjectProperty]
+    Declaration                Declaration: is eaten by plant (ObjectProperty)
+      Subject: is eaten by plant
+      Object : ObjectProperty
+    Domain                     ∃is eaten by plant.⊤ ⊑ Plant
+      Subject: is eaten by plant
+      Object : Plant
+    Range                      ⊤ ⊑ ∀is eaten by plant.Animal
+      Subject: is eaten by plant
+      Object : Animal
+
+  Term: is eaten by plant part  [ObjectProperty]
+    Declaration                Declaration: is eaten by plant part (ObjectProperty)
+      Subject: is eaten by plant part
+      Object : ObjectProperty
+    Domain                     ∃is eaten by plant part.⊤ ⊑ ⊤
+      Subject: is eaten by plant part
+      Object : ⊤
+    Range                      ⊤ ⊑ ∀is eaten by plant part.Animal
+      Subject: is eaten by plant part
+      Object : Animal
+
+  Term: is part of plant  [ObjectProperty]
+    Declaration                Declaration: is part of plant (ObjectProperty)
+      Subject: is part of plant
+      Object : ObjectProperty
+    Domain                     ∃is part of plant.⊤ ⊑ ⊤
+      Subject: is part of plant
+      Object : ⊤
+    Range                      ⊤ ⊑ ∀is part of plant.Plant
+      Subject: is part of plant
+      Object : Plant
+
+
+====================================================================================================
+STATISTICS
+====================================================================================================
+
+  Classes:               5  (defined: 0, primitive: 5)
+  ObjectProperties:      5
+  DatatypeProperties:    0
+
+  Axiom Breakdown:
+    Declaration               10
+    DisjointClasses           4
+    Domain                    5
+    Range                     5
+    ------------------------------
+    Total TBox Axioms         24
+
+====================================================================================================

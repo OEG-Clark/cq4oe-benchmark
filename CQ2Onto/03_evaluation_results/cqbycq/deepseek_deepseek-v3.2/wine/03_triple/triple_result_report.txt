@@ -1,0 +1,161 @@
+========================================================================
+THREE-LAYER PROPERTY-AXIOM EVALUATION REPORT
+========================================================================
+
+LAYER 1 — Triple Statistics
+────────────────────────────────────────────────────────────────────────
+  Property counts by axiom shape, per property type.
+    full         = both rdfs:domain and rdfs:range declared
+    domain_only  = only rdfs:domain declared
+    range_only   = only rdfs:range declared
+    undefined    = neither declared
+
+                        Full   Dom-only   Rng-only   Undef   Total
+  Gold:
+    ObjectProperty         5          0          3       0       8
+    DatatypeProperty       1          0          0       0       1
+    TOTAL                  ─          ─          ─       ─       9
+
+  Pred:
+    ObjectProperty         7          0          0       0       7
+    DatatypeProperty       3          0          0       0       3
+    TOTAL                  ─          ─          ─       ─      10
+
+LAYER 2 — Semantic Overview
+────────────────────────────────────────────────────────────────────────
+  Each property is represented as a normalized text string derived from its axioms.
+  string and embedded; one-to-one greedy match by cosine.
+  Threshold: 0.6    Model: embeddinggemma
+
+  Standard precision/recall definitions are used.
+                               P       R      F1      TP      FP      FN   gold   pred
+  Overall                  0.600   0.667   0.632       6       4       3      9     10
+  ObjectProperty           0.714   0.625   0.667       5       2       3      8      7
+  DatatypeProperty         0.333   1.000   0.500       1       2       0      1      3
+
+  ObjectProperty aligned pairs (showing up to 10):
+    [0.900]  gold:'wine made from grape wine grape'
+            pred:'wine made from grape grape variety'
+    [0.758]  gold:'vintage has vintage year vintage year'
+            pred:'vintage assessment for vintage year vintage characteristic'
+    [0.713]  gold:'wine has color wine color'
+            pred:'wine has characteristic wine characteristic'
+    [0.670]  gold:'wine has wine descriptor wine descriptor'
+            pred:'wine has vintage characteristic vintage characteristic'
+    [0.604]  gold:'has flavor wine flavor'
+            pred:'vintage characteristic for wine wine'
+
+  DatatypeProperty aligned pairs (showing up to 10):
+    [0.836]  gold:'vintage year year value xsd positive integer'
+            pred:'vintage characteristic vintage year xsd g year'
+
+LAYER 3 — Strict Alignment (via best-matching tables)
+────────────────────────────────────────────────────────────────────────
+  3 property pairs from property_best_matching.csv.
+  Domain evaluated via class_best_matching.csv;
+  Range evaluated via class_best_matching.csv (ObjectProperty)
+  or normalized XSD equality (DatatypeProperty).
+
+  Evaluation criteria:
+    skip      — gold None and pred None (nothing declared on either side)
+    TP        — both declared and set-equal under the alignment table
+    FP        — pred declared but gold did not
+    FN        — gold declared but pred did not
+    mismatch  — both declared but they disagree under the alignment table
+                (mismatch contributes to both FP and FN)
+
+  Metric formula (mismatch counts as both FP and FN):
+    FP_total = fp + mismatch       (pred-side errors)
+    FN_total = fn + mismatch       (gold-side gaps)
+    P  = TP / (TP + FP_total)
+    R  = TP / (TP + FN_total)
+
+  [ObjectProperty]  2 aligned pair(s)
+    Type     P=1.000  R=1.000  F1=1.000  (TP=2, FP=0, FN=0; FP and FN include mismatch=0; skip=0)
+    Domain   P=1.000  R=1.000  F1=1.000  (TP=2, FP=0, FN=0; FP and FN include mismatch=0; skip=0)
+    Range    P=1.000  R=1.000  F1=1.000  (TP=2, FP=0, FN=0; FP and FN include mismatch=0; skip=0)
+    Overall  P=1.000  R=1.000  F1=1.000  (TP=4, FP=0, FN=0; type + domain + range judgments combined)
+
+    Per-pair detail:
+      gold:hasVintageYear  ↔  pred:for vintage year
+        type    gold=ObjectProperty  pred=ObjectProperty  → TP
+        domain  gold=['Vintage']  pred=['Vintage Assessment']  → TP
+        range   gold=['VintageYear']   pred=['Vintage Characteristic']   → TP
+      gold:madeFromGrape  ↔  pred:made from grape
+        type    gold=ObjectProperty  pred=ObjectProperty  → TP
+        domain  gold=['wine']  pred=['Wine']  → TP
+        range   gold=['WineGrape']   pred=['Grape Variety']   → TP
+
+    Fully aligned triples (domain TP and range TP) — 2:
+      gold: ['Vintage'] -[hasVintageYear]-> ['VintageYear']
+      pred: ['Vintage Assessment'] -[for vintage year]-> ['Vintage Characteristic']
+      gold: ['wine'] -[madeFromGrape]-> ['WineGrape']
+      pred: ['Wine'] -[made from grape]-> ['Grape Variety']
+
+  [DatatypeProperty]  1 aligned pair(s)
+    Type     P=1.000  R=1.000  F1=1.000  (TP=1, FP=0, FN=0; FP and FN include mismatch=0; skip=0)
+    Domain   P=1.000  R=1.000  F1=1.000  (TP=1, FP=0, FN=0; FP and FN include mismatch=0; skip=0)
+    Range    P=0.000  R=0.000  F1=0.000  (TP=0, FP=1, FN=1; FP and FN include mismatch=1; skip=0)
+    Overall  P=0.500  R=0.500  F1=0.500  (TP=1, FP=1, FN=1; type + domain + range judgments combined)
+
+    Per-pair detail:
+      gold:yearValue  ↔  pred:has value
+        type    gold=DatatypeProperty  pred=DatatypeProperty  → TP
+        domain  gold=['VintageYear']  pred=['Vintage Characteristic']  → TP
+        range   gold=['xsd:positiveInteger']   pred=['xsd:string']   → MISMATCH
+
+    No fully aligned triples.
+
+  [Grand Overall — all property types, domain + range combined]
+    P=0.833  R=0.833  F1=0.833  (TP=5, FP=1, FN=1; FP and FN include mismatch=1)
+
+LAYER 4 — Global Overview
+────────────────────────────────────────────────────────────────────────
+  Layer 3 evaluates only properties already aligned by the upstream
+  step. Layer 4 extends the evaluation to the full ontology:
+    FP_global = Layer-3 FP + every domain/range axiom of every
+                              UNALIGNED pred property
+    FN_global = Layer-3 FN + every domain/range axiom of every
+                              UNALIGNED gold property
+  TP is unchanged. P / R / F1 reflect the whole ontology.
+  (Layer-3 FP/FN already include mismatch — see Layer 3 above.)
+
+  [ObjectProperty]
+    P=0.286  R=0.308  F1=0.296
+    TP = 4
+    FP = 10   (Layer-3 FP: 0  +  unaligned pred axioms: 10)
+    FN = 9    (Layer-3 FN: 0  +  unaligned gold axioms: 9)
+    Unaligned gold properties: 6 (contributing 9 axioms to FN)
+    Unaligned pred properties: 5 (contributing 10 axioms to FP)
+    Gold properties with no aligned pred (full axioms count as FN):
+      - hasBody: domain=None  range=['WineBody']  (1 axiom)
+      - hasColor: domain=['wine']  range=['WineColor']  (2 axioms)
+      - hasFlavor: domain=None  range=['WineFlavor']  (1 axiom)
+      - hasSugar: domain=None  range=['WineSugar']  (1 axiom)
+      - hasWineDescriptor: domain=['wine']  range=['WineDescriptor']  (2 axioms)
+      - locatedIn: domain=['Thing']  range=['Region']  (2 axioms)
+    Pred properties with no aligned gold (full axioms count as FP):
+      - has characteristic: domain=['Wine']  range=['Wine Characteristic']  (2 axioms)
+      - has vintage characteristic: domain=['Wine']  range=['Vintage Characteristic']  (2 axioms)
+      - characteristic of: domain=['Vintage Characteristic']  range=['Wine Characteristic']  (2 axioms)
+      - for wine: domain=['Vintage Characteristic']  range=['Wine']  (2 axioms)
+      - assesses vintage of: domain=['Vintage Assessment']  range=['Wine']  (2 axioms)
+
+  [DatatypeProperty]
+    P=0.167  R=0.500  F1=0.250
+    TP = 1
+    FP = 5    (Layer-3 FP: 1  +  unaligned pred axioms: 4)
+    FN = 1    (Layer-3 FN: 1  +  unaligned gold axioms: 0)
+    Unaligned gold properties: 0 (contributing 0 axioms to FN)
+    Unaligned pred properties: 2 (contributing 4 axioms to FP)
+    Pred properties with no aligned gold (full axioms count as FP):
+      - vintage year: domain=['Vintage Characteristic']  range=['xsd:gYear']  (2 axioms)
+      - assessment value: domain=['Vintage Assessment']  range=['xsd:string']  (2 axioms)
+
+  [Grand Overall — global, all property types]
+    P=0.250  R=0.333  F1=0.286
+    TP = 5
+    FP = 15   (Layer-3 FP: 1  +  unaligned pred axioms: 14)
+    FN = 10   (Layer-3 FN: 1  +  unaligned gold axioms: 9)
+
+========================================================================

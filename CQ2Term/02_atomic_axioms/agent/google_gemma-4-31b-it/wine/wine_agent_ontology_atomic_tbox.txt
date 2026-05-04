@@ -1,0 +1,198 @@
+====================================================================================================
+ATOMIC TBOX AXIOMS
+====================================================================================================
+
+── Class ──
+
+  Term: Body  [Class]
+    Declaration                Declaration: Body (Class)
+      Subject: Body
+      Object : Class
+    SubClassOf                 Body ⊑ Wine Characteristic
+      Subject: Body
+      Object : Wine Characteristic
+
+  Term: Bordeaux Wine  [Class]
+    Declaration                Declaration: Bordeaux Wine (Class)
+      Subject: Bordeaux Wine
+      Object : Class
+    SubClassOf                 Bordeaux Wine ⊑ Wine
+      Subject: Bordeaux Wine
+      Object : Wine
+
+  Term: Bouquet  [Class]
+    Declaration                Declaration: Bouquet (Class)
+      Subject: Bouquet
+      Object : Class
+    SubClassOf                 Bouquet ⊑ Wine Characteristic
+      Subject: Bouquet
+      Object : Wine Characteristic
+
+  Term: Grape  [Class]
+    Declaration                Declaration: Grape (Class)
+      Subject: Grape
+      Object : Class
+
+  Term: Napa Zinfandel  [Class]
+    Declaration                Declaration: Napa Zinfandel (Class)
+      Subject: Napa Zinfandel
+      Object : Class
+    SubClassOf                 Napa Zinfandel ⊑ Wine
+      Subject: Napa Zinfandel
+      Object : Wine
+
+  Term: Red Wine  [Class]
+    Declaration                Declaration: Red Wine (Class)
+      Subject: Red Wine
+      Object : Class
+    SubClassOf                 Red Wine ⊑ Wine
+      Subject: Red Wine
+      Object : Wine
+    DisjointClasses            DisjointClasses(Red Wine, White Wine)
+      Subject: Red Wine
+      Object : White Wine
+
+  Term: Vintage Year  [Class]
+    Declaration                Declaration: Vintage Year (Class)
+      Subject: Vintage Year
+      Object : Class
+
+  Term: White Wine  [Class]
+    Declaration                Declaration: White Wine (Class)
+      Subject: White Wine
+      Object : Class
+    SubClassOf                 White Wine ⊑ Wine
+      Subject: White Wine
+      Object : Wine
+
+  Term: Wine  [Class]
+    Declaration                Declaration: Wine (Class)
+      Subject: Wine
+      Object : Class
+
+  Term: Wine Characteristic  [Class]
+    Declaration                Declaration: Wine Characteristic (Class)
+      Subject: Wine Characteristic
+      Object : Class
+
+
+── ObjectProperty ──
+
+  Term: has characteristic  [ObjectProperty]
+    Declaration                Declaration: has characteristic (ObjectProperty)
+      Subject: has characteristic
+      Object : ObjectProperty
+    InverseOf                  has characteristic ≡ is characteristic of⁻
+      Subject: has characteristic
+      Object : is characteristic of
+    Domain                     ∃has characteristic.⊤ ⊑ Wine
+      Subject: has characteristic
+      Object : Wine
+    Range                      ⊤ ⊑ ∀has characteristic.Wine Characteristic
+      Subject: has characteristic
+      Object : Wine Characteristic
+
+  Term: has vintage year  [ObjectProperty]
+    Declaration                Declaration: has vintage year (ObjectProperty)
+      Subject: has vintage year
+      Object : ObjectProperty
+    InverseOf                  has vintage year ≡ is vintage year of⁻
+      Subject: has vintage year
+      Object : is vintage year of
+    Domain                     ∃has vintage year.⊤ ⊑ Wine
+      Subject: has vintage year
+      Object : Wine
+    Range                      ⊤ ⊑ ∀has vintage year.Vintage Year
+      Subject: has vintage year
+      Object : Vintage Year
+
+  Term: is characteristic of  [ObjectProperty]
+    Declaration                Declaration: is characteristic of (ObjectProperty)
+      Subject: is characteristic of
+      Object : ObjectProperty
+    InverseOf                  is characteristic of ≡ has characteristic⁻
+      Subject: is characteristic of
+      Object : has characteristic
+    Domain                     ∃is characteristic of.⊤ ⊑ Wine Characteristic
+      Subject: is characteristic of
+      Object : Wine Characteristic
+    Range                      ⊤ ⊑ ∀is characteristic of.Wine
+      Subject: is characteristic of
+      Object : Wine
+
+  Term: is grape of  [ObjectProperty]
+    Declaration                Declaration: is grape of (ObjectProperty)
+      Subject: is grape of
+      Object : ObjectProperty
+    InverseOf                  is grape of ≡ made from grape⁻
+      Subject: is grape of
+      Object : made from grape
+    Domain                     ∃is grape of.⊤ ⊑ Grape
+      Subject: is grape of
+      Object : Grape
+    Range                      ⊤ ⊑ ∀is grape of.Wine
+      Subject: is grape of
+      Object : Wine
+
+  Term: is vintage year of  [ObjectProperty]
+    Declaration                Declaration: is vintage year of (ObjectProperty)
+      Subject: is vintage year of
+      Object : ObjectProperty
+    InverseOf                  is vintage year of ≡ has vintage year⁻
+      Subject: is vintage year of
+      Object : has vintage year
+    Domain                     ∃is vintage year of.⊤ ⊑ Vintage Year
+      Subject: is vintage year of
+      Object : Vintage Year
+    Range                      ⊤ ⊑ ∀is vintage year of.Wine
+      Subject: is vintage year of
+      Object : Wine
+
+  Term: made from grape  [ObjectProperty]
+    Declaration                Declaration: made from grape (ObjectProperty)
+      Subject: made from grape
+      Object : ObjectProperty
+    InverseOf                  made from grape ≡ is grape of⁻
+      Subject: made from grape
+      Object : is grape of
+    Domain                     ∃made from grape.⊤ ⊑ Wine
+      Subject: made from grape
+      Object : Wine
+    Range                      ⊤ ⊑ ∀made from grape.Grape
+      Subject: made from grape
+      Object : Grape
+
+
+── DatatypeProperty ──
+
+  Term: vintage quality  [DatatypeProperty]
+    Declaration                Declaration: vintage quality (DatatypeProperty)
+      Subject: vintage quality
+      Object : DatatypeProperty
+    Domain                     ∃vintage quality.⊤ ⊑ Vintage Year
+      Subject: vintage quality
+      Object : Vintage Year
+    Range                      vintage quality maps-to xsd:string
+      Subject: vintage quality
+      Object : xsd:string
+
+
+====================================================================================================
+STATISTICS
+====================================================================================================
+
+  Classes:               10  (defined: 0, primitive: 10)
+  ObjectProperties:      6
+  DatatypeProperties:    1
+
+  Axiom Breakdown:
+    Declaration               17
+    DisjointClasses           1
+    Domain                    7
+    InverseOf                 6
+    Range                     7
+    SubClassOf                6
+    ------------------------------
+    Total TBox Axioms         44
+
+====================================================================================================

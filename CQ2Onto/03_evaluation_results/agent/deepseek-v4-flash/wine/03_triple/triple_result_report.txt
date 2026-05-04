@@ -1,0 +1,152 @@
+========================================================================
+THREE-LAYER PROPERTY-AXIOM EVALUATION REPORT
+========================================================================
+
+LAYER 1 — Triple Statistics
+────────────────────────────────────────────────────────────────────────
+  Property counts by axiom shape, per property type.
+    full         = both rdfs:domain and rdfs:range declared
+    domain_only  = only rdfs:domain declared
+    range_only   = only rdfs:range declared
+    undefined    = neither declared
+
+                        Full   Dom-only   Rng-only   Undef   Total
+  Gold:
+    ObjectProperty         5          0          3       0       8
+    DatatypeProperty       1          0          0       0       1
+    TOTAL                  ─          ─          ─       ─       9
+
+  Pred:
+    ObjectProperty         6          0          0       0       6
+    DatatypeProperty       4          0          0       0       4
+    TOTAL                  ─          ─          ─       ─      10
+
+LAYER 2 — Semantic Overview
+────────────────────────────────────────────────────────────────────────
+  Each property is represented as a normalized text string derived from its axioms.
+  string and embedded; one-to-one greedy match by cosine.
+  Threshold: 0.6    Model: embeddinggemma
+
+  Standard precision/recall definitions are used.
+                               P       R      F1      TP      FP      FN   gold   pred
+  Overall                  0.600   0.667   0.632       6       4       3      9     10
+  ObjectProperty           0.833   0.625   0.714       5       1       3      8      6
+  DatatypeProperty         0.250   1.000   0.400       1       3       0      1      4
+
+  ObjectProperty aligned pairs (showing up to 10):
+    [0.985]  gold:'wine has color wine color'
+            pred:'wine has color color'
+    [0.983]  gold:'wine made from grape wine grape'
+            pred:'wine made from grape grape'
+    [0.663]  gold:'thing located in region'
+            pred:'region produces wine'
+    [0.662]  gold:'has flavor wine flavor'
+            pred:'color is color of wine'
+    [0.618]  gold:'wine has wine descriptor wine descriptor'
+            pred:'grape is grape of wine'
+
+  DatatypeProperty aligned pairs (showing up to 10):
+    [0.801]  gold:'vintage year year value xsd positive integer'
+            pred:'wine has vintage year xsd g year'
+
+LAYER 3 — Strict Alignment (via best-matching tables)
+────────────────────────────────────────────────────────────────────────
+  2 property pairs from property_best_matching.csv.
+  Domain evaluated via class_best_matching.csv;
+  Range evaluated via class_best_matching.csv (ObjectProperty)
+  or normalized XSD equality (DatatypeProperty).
+
+  Evaluation criteria:
+    skip      — gold None and pred None (nothing declared on either side)
+    TP        — both declared and set-equal under the alignment table
+    FP        — pred declared but gold did not
+    FN        — gold declared but pred did not
+    mismatch  — both declared but they disagree under the alignment table
+                (mismatch contributes to both FP and FN)
+
+  Metric formula (mismatch counts as both FP and FN):
+    FP_total = fp + mismatch       (pred-side errors)
+    FN_total = fn + mismatch       (gold-side gaps)
+    P  = TP / (TP + FP_total)
+    R  = TP / (TP + FN_total)
+
+  [ObjectProperty]  2 aligned pair(s)
+    Type     P=1.000  R=1.000  F1=1.000  (TP=2, FP=0, FN=0; FP and FN include mismatch=0; skip=0)
+    Domain   P=1.000  R=1.000  F1=1.000  (TP=2, FP=0, FN=0; FP and FN include mismatch=0; skip=0)
+    Range    P=1.000  R=1.000  F1=1.000  (TP=2, FP=0, FN=0; FP and FN include mismatch=0; skip=0)
+    Overall  P=1.000  R=1.000  F1=1.000  (TP=4, FP=0, FN=0; type + domain + range judgments combined)
+
+    Per-pair detail:
+      gold:hasColor  ↔  pred:has color
+        type    gold=ObjectProperty  pred=ObjectProperty  → TP
+        domain  gold=['wine']  pred=['Wine']  → TP
+        range   gold=['WineColor']   pred=['Color']   → TP
+      gold:madeFromGrape  ↔  pred:made from grape
+        type    gold=ObjectProperty  pred=ObjectProperty  → TP
+        domain  gold=['wine']  pred=['Wine']  → TP
+        range   gold=['WineGrape']   pred=['Grape']   → TP
+
+    Fully aligned triples (domain TP and range TP) — 2:
+      gold: ['wine'] -[hasColor]-> ['WineColor']
+      pred: ['Wine'] -[has color]-> ['Color']
+      gold: ['wine'] -[madeFromGrape]-> ['WineGrape']
+      pred: ['Wine'] -[made from grape]-> ['Grape']
+
+  [DatatypeProperty]  no aligned pairs.
+
+  [Grand Overall — all property types, domain + range combined]
+    P=1.000  R=1.000  F1=1.000  (TP=4, FP=0, FN=0; FP and FN include mismatch=0)
+
+LAYER 4 — Global Overview
+────────────────────────────────────────────────────────────────────────
+  Layer 3 evaluates only properties already aligned by the upstream
+  step. Layer 4 extends the evaluation to the full ontology:
+    FP_global = Layer-3 FP + every domain/range axiom of every
+                              UNALIGNED pred property
+    FN_global = Layer-3 FN + every domain/range axiom of every
+                              UNALIGNED gold property
+  TP is unchanged. P / R / F1 reflect the whole ontology.
+  (Layer-3 FP/FN already include mismatch — see Layer 3 above.)
+
+  [ObjectProperty]
+    P=0.333  R=0.308  F1=0.320
+    TP = 4
+    FP = 8    (Layer-3 FP: 0  +  unaligned pred axioms: 8)
+    FN = 9    (Layer-3 FN: 0  +  unaligned gold axioms: 9)
+    Unaligned gold properties: 6 (contributing 9 axioms to FN)
+    Unaligned pred properties: 4 (contributing 8 axioms to FP)
+    Gold properties with no aligned pred (full axioms count as FN):
+      - hasBody: domain=None  range=['WineBody']  (1 axiom)
+      - hasFlavor: domain=None  range=['WineFlavor']  (1 axiom)
+      - hasSugar: domain=None  range=['WineSugar']  (1 axiom)
+      - hasVintageYear: domain=['Vintage']  range=['VintageYear']  (2 axioms)
+      - hasWineDescriptor: domain=['wine']  range=['WineDescriptor']  (2 axioms)
+      - locatedIn: domain=['Thing']  range=['Region']  (2 axioms)
+    Pred properties with no aligned gold (full axioms count as FP):
+      - produced in: domain=['Wine']  range=['Region']  (2 axioms)
+      - is color of: domain=['Color']  range=['Wine']  (2 axioms)
+      - produces: domain=['Region']  range=['Wine']  (2 axioms)
+      - is grape of: domain=['Grape']  range=['Wine']  (2 axioms)
+
+  [DatatypeProperty]
+    P=0.000  R=0.000  F1=0.000
+    TP = 0
+    FP = 8    (Layer-3 FP: 0  +  unaligned pred axioms: 8)
+    FN = 2    (Layer-3 FN: 0  +  unaligned gold axioms: 2)
+    Unaligned gold properties: 1 (contributing 2 axioms to FN)
+    Unaligned pred properties: 4 (contributing 8 axioms to FP)
+    Gold properties with no aligned pred (full axioms count as FN):
+      - yearValue: domain=['VintageYear']  range=['xsd:positiveInteger']  (2 axioms)
+    Pred properties with no aligned gold (full axioms count as FP):
+      - has bouquet: domain=['Wine']  range=['xsd:string']  (2 axioms)
+      - has body: domain=['Wine']  range=['xsd:string']  (2 axioms)
+      - has vintage year: domain=['Wine']  range=['xsd:gYear']  (2 axioms)
+      - is good vintage: domain=['Wine']  range=['xsd:boolean']  (2 axioms)
+
+  [Grand Overall — global, all property types]
+    P=0.200  R=0.267  F1=0.229
+    TP = 4
+    FP = 16   (Layer-3 FP: 0  +  unaligned pred axioms: 16)
+    FN = 11   (Layer-3 FN: 0  +  unaligned gold axioms: 11)
+
+========================================================================

@@ -1,0 +1,206 @@
+====================================================================================================
+ATOMIC TBOX AXIOMS
+====================================================================================================
+
+── Class ──
+
+  Term: Asset  [Class]
+    Declaration                Declaration: Asset (Class)
+      Subject: Asset
+      Object : Class
+
+  Term: Constraint  [Class]
+    Declaration                Declaration: Constraint (Class)
+      Subject: Constraint
+      Object : Class
+
+  Term: Duty  [Class]
+    Declaration                Declaration: Duty (Class)
+      Subject: Duty
+      Object : Class
+    SubClassOf                 Duty ⊑ Rule
+      Subject: Duty
+      Object : Rule
+
+  Term: Logical Operator  [Class]
+    Declaration                Declaration: Logical Operator (Class)
+      Subject: Logical Operator
+      Object : Class
+
+  Term: Party  [Class]
+    Declaration                Declaration: Party (Class)
+      Subject: Party
+      Object : Class
+
+  Term: Permission  [Class]
+    Declaration                Declaration: Permission (Class)
+      Subject: Permission
+      Object : Class
+    SubClassOf                 Permission ⊑ Rule
+      Subject: Permission
+      Object : Rule
+
+  Term: Policy  [Class]
+    Declaration                Declaration: Policy (Class)
+      Subject: Policy
+      Object : Class
+
+  Term: Prohibition  [Class]
+    Declaration                Declaration: Prohibition (Class)
+      Subject: Prohibition
+      Object : Class
+    SubClassOf                 Prohibition ⊑ Rule
+      Subject: Prohibition
+      Object : Rule
+
+  Term: Rule  [Class]
+    Declaration                Declaration: Rule (Class)
+      Subject: Rule
+      Object : Class
+
+  Term: Transfer Right  [Class]
+    Declaration                Declaration: Transfer Right (Class)
+      Subject: Transfer Right
+      Object : Class
+    SubClassOf                 Transfer Right ⊑ Permission
+      Subject: Transfer Right
+      Object : Permission
+
+
+── ObjectProperty ──
+
+  Term: activates rule  [ObjectProperty]
+    Declaration                Declaration: activates rule (ObjectProperty)
+      Subject: activates rule
+      Object : ObjectProperty
+    Domain                     ∃activates rule.⊤ ⊑ Rule
+      Subject: activates rule
+      Object : Rule
+    Range                      ⊤ ⊑ ∀activates rule.Rule
+      Subject: activates rule
+      Object : Rule
+
+  Term: applies to asset  [ObjectProperty]
+    Declaration                Declaration: applies to asset (ObjectProperty)
+      Subject: applies to asset
+      Object : ObjectProperty
+    Domain                     ∃applies to asset.⊤ ⊑ Policy
+      Subject: applies to asset
+      Object : Policy
+    Range                      ⊤ ⊑ ∀applies to asset.Asset
+      Subject: applies to asset
+      Object : Asset
+
+  Term: assigned to party  [ObjectProperty]
+    Declaration                Declaration: assigned to party (ObjectProperty)
+      Subject: assigned to party
+      Object : ObjectProperty
+    Domain                     ∃assigned to party.⊤ ⊑ Rule
+      Subject: assigned to party
+      Object : Rule
+    Range                      ⊤ ⊑ ∀assigned to party.Party
+      Subject: assigned to party
+      Object : Party
+
+  Term: has consequence  [ObjectProperty]
+    Declaration                Declaration: has consequence (ObjectProperty)
+      Subject: has consequence
+      Object : ObjectProperty
+    Domain                     ∃has consequence.⊤ ⊑ Duty
+      Subject: has consequence
+      Object : Duty
+    Range                      ⊤ ⊑ ∀has consequence.Duty
+      Subject: has consequence
+      Object : Duty
+
+  Term: has constraint  [ObjectProperty]
+    Declaration                Declaration: has constraint (ObjectProperty)
+      Subject: has constraint
+      Object : ObjectProperty
+    Domain                     ∃has constraint.⊤ ⊑ Rule
+      Subject: has constraint
+      Object : Rule
+    Range                      ⊤ ⊑ ∀has constraint.Constraint
+      Subject: has constraint
+      Object : Constraint
+
+  Term: has nested constraint  [ObjectProperty]
+    Declaration                Declaration: has nested constraint (ObjectProperty)
+      Subject: has nested constraint
+      Object : ObjectProperty
+    Domain                     ∃has nested constraint.⊤ ⊑ Constraint
+      Subject: has nested constraint
+      Object : Constraint
+    Range                      ⊤ ⊑ ∀has nested constraint.Constraint
+      Subject: has nested constraint
+      Object : Constraint
+
+  Term: has operator  [ObjectProperty]
+    Declaration                Declaration: has operator (ObjectProperty)
+      Subject: has operator
+      Object : ObjectProperty
+    Domain                     ∃has operator.⊤ ⊑ Constraint
+      Subject: has operator
+      Object : Constraint
+    Range                      ⊤ ⊑ ∀has operator.Logical Operator
+      Subject: has operator
+      Object : Logical Operator
+
+  Term: has remedy  [ObjectProperty]
+    Declaration                Declaration: has remedy (ObjectProperty)
+      Subject: has remedy
+      Object : ObjectProperty
+    Domain                     ∃has remedy.⊤ ⊑ Prohibition
+      Subject: has remedy
+      Object : Prohibition
+    Range                      ⊤ ⊑ ∀has remedy.Duty
+      Subject: has remedy
+      Object : Duty
+
+
+── DatatypeProperty ──
+
+  Term: conflict resolution strategy  [DatatypeProperty]
+    Declaration                Declaration: conflict resolution strategy (DatatypeProperty)
+      Subject: conflict resolution strategy
+      Object : DatatypeProperty
+    Domain                     ∃conflict resolution strategy.⊤ ⊑ Policy
+      Subject: conflict resolution strategy
+      Object : Policy
+    Range                      conflict resolution strategy maps-to xsd:string
+      Subject: conflict resolution strategy
+      Object : xsd:string
+
+  Term: is exclusive  [DatatypeProperty]
+    Declaration                Declaration: is exclusive (DatatypeProperty)
+      Subject: is exclusive
+      Object : DatatypeProperty
+    Domain                     ∃is exclusive.⊤ ⊑ Permission
+      Subject: is exclusive
+      Object : Permission
+    Range                      is exclusive maps-to xsd:boolean
+      Subject: is exclusive
+      Object : xsd:boolean
+    Characteristics            Functional(is exclusive)
+      Subject: is exclusive
+      Object : Functional
+
+
+====================================================================================================
+STATISTICS
+====================================================================================================
+
+  Classes:               10  (defined: 0, primitive: 10)
+  ObjectProperties:      8
+  DatatypeProperties:    2
+
+  Axiom Breakdown:
+    Characteristics           1
+    Declaration               20
+    Domain                    10
+    Range                     10
+    SubClassOf                4
+    ------------------------------
+    Total TBox Axioms         45
+
+====================================================================================================

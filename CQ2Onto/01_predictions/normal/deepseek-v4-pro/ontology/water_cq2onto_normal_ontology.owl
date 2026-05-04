@@ -1,0 +1,382 @@
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:vaem="http://www.linkedmodel.org/schema/vaem#">
+ 
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#WaterDistributionInfrastructure">
+  <rdfs:comment xml:lang="en">A system of assets that distributes water.</rdfs:comment>
+  <rdfs:label xml:lang="en">Water Distribution Infrastructure</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class: To model the main infrastructure concept from CQ01.</vaem:rationale>
+  <dc:source>(competency_question) CQ01</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Asset">
+  <rdfs:comment xml:lang="en">Any component of a water distribution infrastructure.</rdfs:comment>
+  <rdfs:label xml:lang="en">Asset</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class: Superclass for infrastructure components from CQ01.</vaem:rationale>
+  <dc:source>(competency_question) CQ01</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Device">
+  <rdfs:comment xml:lang="en">A manufactured physical component with specific capabilities.</rdfs:comment>
+  <rdfs:label xml:lang="en">Device</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class: Superclass for water meter and similar devices.</vaem:rationale>
+  <dc:source>(competency_question) CQ06</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#WaterMeter">
+  <rdfs:comment xml:lang="en">A device that measures different aspects of a water infrastructure.</rdfs:comment>
+  <rdfs:label xml:lang="en">Water Meter</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class: Central entity for water metering from CQ06, CQ08-CQ20, CQ25, CQ38-CQ43.</vaem:rationale>
+  <dc:source>(competency_question) CQ06, CQ08-CQ20, CQ25, CQ38-CQ43</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Asset'/>
+<rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Device'/>
+<rdfs:subClassOf>
+  <owl:Restriction>
+    <owl:onProperty rdf:resource='http://www.semanticweb.org/myontology#measures'/>
+    <owl:someValuesFrom rdf:resource='http://www.semanticweb.org/myontology#Measurement'/>
+  </owl:Restriction>
+</rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Sensor">
+  <rdfs:comment xml:lang="en">An asset that detects or measures physical properties.</rdfs:comment>
+  <rdfs:label xml:lang="en">Sensor</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class: Model sensors from CQ04.</vaem:rationale>
+  <dc:source>(competency_question) CQ04</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Asset'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Actuator">
+  <rdfs:comment xml:lang="en">An asset that controls or moves a system component.</rdfs:comment>
+  <rdfs:label xml:lang="en">Actuator</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class: Model actuators from CQ05.</vaem:rationale>
+  <dc:source>(competency_question) CQ05</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Asset'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Measurement">
+  <rdfs:comment xml:lang="en">A quantified observation obtained from a water meter.</rdfs:comment>
+  <rdfs:label xml:lang="en">Measurement</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class: Represent meter readings from CQ06 and CQ25.</vaem:rationale>
+  <dc:source>(competency_question) CQ06, CQ25</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#TemporalSetting">
+  <rdfs:comment xml:lang="en">A time specification (start, duration, frequency) for measurements, tariffs, or billing.</rdfs:comment>
+  <rdfs:label xml:lang="en">Temporal Setting</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class: Model temporal aspects from CQ25, CQ38-CQ43.</vaem:rationale>
+  <dc:source>(competency_question) CQ25, CQ38-CQ43</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Tariff">
+  <rdfs:comment xml:lang="en">A pricing plan for water usage, with a start time and duration.</rdfs:comment>
+  <rdfs:label xml:lang="en">Tariff</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class: Specific temporal setting for tariff from CQ38-CQ40.</vaem:rationale>
+  <dc:source>(competency_question) CQ38, CQ39, CQ40</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#TemporalSetting'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#BillingPeriod">
+  <rdfs:comment xml:lang="en">A temporal window for billing calculations.</rdfs:comment>
+  <rdfs:label xml:lang="en">Billing Period</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class: Specific temporal setting for billing from CQ42, CQ43.</vaem:rationale>
+  <dc:source>(competency_question) CQ42, CQ43</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#TemporalSetting'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Water">
+  <rdfs:comment xml:lang="en">The substance H2O, whose physical and chemical properties are of interest.</rdfs:comment>
+  <rdfs:label xml:lang="en">Water</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class: Model water properties from CQ33, CQ34.</vaem:rationale>
+  <dc:source>(competency_question) CQ33, CQ34</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#WaterIndicator">
+  <rdfs:comment xml:lang="en">A metric or index that characterizes water quality or performance, defined for a specific location.</rdfs:comment>
+  <rdfs:label xml:lang="en">Water Indicator</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class: Model indicators from CQ37.</vaem:rationale>
+  <dc:source>(competency_question) CQ37</dc:source>
+  <rdfs:subClassOf>
+  <owl:Restriction>
+    <owl:onProperty rdf:resource='http://www.semanticweb.org/myontology#definedForLocation'/>
+    <owl:someValuesFrom rdf:resource='http://www.semanticweb.org/myontology#Location'/>
+  </owl:Restriction>
+</rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Location">
+  <rdfs:comment xml:lang="en">A geographical place.</rdfs:comment>
+  <rdfs:label xml:lang="en">Location</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class: Model locations for indicators and asset geolocation from CQ20, CQ37.</vaem:rationale>
+  <dc:source>(competency_question) CQ20, CQ37</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#PhysicalProperty">
+  <rdfs:comment xml:lang="en">A physical characteristic of water (e.g., temperature, turbidity).</rdfs:comment>
+  <rdfs:label xml:lang="en">Physical Property</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class: Enumerate physical properties of water from CQ33.</vaem:rationale>
+  <dc:source>(competency_question) CQ33</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#ChemicalProperty">
+  <rdfs:comment xml:lang="en">A chemical characteristic of water (e.g., pH, dissolved oxygen).</rdfs:comment>
+  <rdfs:label xml:lang="en">Chemical Property</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class: Enumerate chemical properties of water from CQ34.</vaem:rationale>
+  <dc:source>(competency_question) CQ34</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#SensorType">
+  <rdfs:comment xml:lang="en">A category of sensor (e.g., flow sensor, pressure sensor).</rdfs:comment>
+  <rdfs:label xml:lang="en">Sensor Type</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class: To list types of sensors from CQ04.</vaem:rationale>
+  <dc:source>(competency_question) CQ04</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#ActuatorType">
+  <rdfs:comment xml:lang="en">A category of actuator (e.g., valve, pump).</rdfs:comment>
+  <rdfs:label xml:lang="en">Actuator Type</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class: To list types of actuators from CQ05.</vaem:rationale>
+  <dc:source>(competency_question) CQ05</dc:source>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasAsset">
+  <rdfs:comment xml:lang="en">Relates a water distribution infrastructure to its constituent assets.</rdfs:comment>
+  <rdfs:label xml:lang="en">has asset</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: To link infrastructure to assets per CQ01.</vaem:rationale>
+  <dc:source>(competency_question) CQ01</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterDistributionInfrastructure"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Asset"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#measures">
+  <rdfs:comment xml:lang="en">Links a water meter to the measurements it takes.</rdfs:comment>
+  <rdfs:label xml:lang="en">measures</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Represent meter readings from CQ06 and CQ25.</vaem:rationale>
+  <dc:source>(competency_question) CQ06, CQ25</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterMeter"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Measurement"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasTemporalSetting">
+  <rdfs:comment xml:lang="en">Associates a measurement with its temporal context.</rdfs:comment>
+  <rdfs:label xml:lang="en">has temporal setting</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Temporal aspects for measurements from CQ25.</vaem:rationale>
+  <dc:source>(competency_question) CQ25</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Measurement"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#TemporalSetting"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasPhysicalProperty">
+  <rdfs:comment xml:lang="en">Relates water to its physical properties.</rdfs:comment>
+  <rdfs:label xml:lang="en">has physical property</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: List physical properties from CQ33.</vaem:rationale>
+  <dc:source>(competency_question) CQ33</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Water"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#PhysicalProperty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasChemicalProperty">
+  <rdfs:comment xml:lang="en">Relates water to its chemical properties.</rdfs:comment>
+  <rdfs:label xml:lang="en">has chemical property</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: List chemical properties from CQ34.</vaem:rationale>
+  <dc:source>(competency_question) CQ34</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Water"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#ChemicalProperty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#definedForLocation">
+  <rdfs:comment xml:lang="en">Specifies the location for which a water indicator is defined.</rdfs:comment>
+  <rdfs:label xml:lang="en">defined for location</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Link indicator to location per CQ37.</vaem:rationale>
+  <dc:source>(competency_question) CQ37</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterIndicator"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Location"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#usesTariff">
+  <rdfs:comment xml:lang="en">Indicates the tariff currently applied to a water meter.</rdfs:comment>
+  <rdfs:label xml:lang="en">uses tariff</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Tariff association from CQ38.</vaem:rationale>
+  <dc:source>(competency_question) CQ38</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterMeter"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Tariff"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasBillingPeriod">
+  <rdfs:comment xml:lang="en">Indicates the billing period assigned to a water meter.</rdfs:comment>
+  <rdfs:label xml:lang="en">has billing period</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Billing period association from CQ42, CQ43.</vaem:rationale>
+  <dc:source>(competency_question) CQ42, CQ43</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterMeter"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#BillingPeriod"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasSensorType">
+  <rdfs:comment xml:lang="en">Categorizes a sensor into a specific type.</rdfs:comment>
+  <rdfs:label xml:lang="en">has sensor type</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: To enumerate sensor types per CQ04.</vaem:rationale>
+  <dc:source>(competency_question) CQ04</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Sensor"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#SensorType"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasActuatorType">
+  <rdfs:comment xml:lang="en">Categorizes an actuator into a specific type.</rdfs:comment>
+  <rdfs:label xml:lang="en">has actuator type</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: To enumerate actuator types per CQ05.</vaem:rationale>
+  <dc:source>(competency_question) CQ05</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Actuator"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#ActuatorType"/>
+</owl:ObjectProperty>
+
+  <!-- owl:DatatypeProperty declarations -->
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#fabricationNumber">
+  <rdfs:comment xml:lang="en">The unique fabrication or serial number of the water meter.</rdfs:comment>
+  <rdfs:label xml:lang="en">fabrication number</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Fabrication number from CQ08.</vaem:rationale>
+  <dc:source>(competency_question) CQ08</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterMeter"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#manufacturer">
+  <rdfs:comment xml:lang="en">The company that manufactured the device.</rdfs:comment>
+  <rdfs:label xml:lang="en">manufacturer</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Manufacturer information from CQ09.</vaem:rationale>
+  <dc:source>(competency_question) CQ09</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Device"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#model">
+  <rdfs:comment xml:lang="en">The model identifier of the device.</rdfs:comment>
+  <rdfs:label xml:lang="en">model</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Model information from CQ09.</vaem:rationale>
+  <dc:source>(competency_question) CQ09</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Device"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#version">
+  <rdfs:comment xml:lang="en">The version identifier of the device.</rdfs:comment>
+  <rdfs:label xml:lang="en">version</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Version from CQ10.</vaem:rationale>
+  <dc:source>(competency_question) CQ10</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Device"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hardwareVersion">
+  <rdfs:comment xml:lang="en">The hardware version number of the water meter.</rdfs:comment>
+  <rdfs:label xml:lang="en">hardware version</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Hardware version from CQ11.</vaem:rationale>
+  <dc:source>(competency_question) CQ11</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterMeter"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#firmwareVersion">
+  <rdfs:comment xml:lang="en">The firmware version running on the water meter.</rdfs:comment>
+  <rdfs:label xml:lang="en">firmware version</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Firmware version from CQ12.</vaem:rationale>
+  <dc:source>(competency_question) CQ12</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterMeter"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#power">
+  <rdfs:comment xml:lang="en">The power consumption or rating of the water meter.</rdfs:comment>
+  <rdfs:label xml:lang="en">power</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Power information from CQ18.</vaem:rationale>
+  <dc:source>(competency_question) CQ18</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterMeter"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#radioFrequencyLevel">
+  <rdfs:comment xml:lang="en">The radio frequency level used by the water meter.</rdfs:comment>
+  <rdfs:label xml:lang="en">radio frequency level</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Radio frequency level from CQ19.</vaem:rationale>
+  <dc:source>(competency_question) CQ19</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterMeter"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#geolocation">
+  <rdfs:comment xml:lang="en">The geographical location of the water meter, e.g., latitude and longitude.</rdfs:comment>
+  <rdfs:label xml:lang="en">geolocation</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Geolocation from CQ20.</vaem:rationale>
+  <dc:source>(competency_question) CQ20</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterMeter"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#startDateTime">
+  <rdfs:comment xml:lang="en">The start date and time of a temporal setting.</rdfs:comment>
+  <rdfs:label xml:lang="en">start date time</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Start time for tariff from CQ38.</vaem:rationale>
+  <dc:source>(competency_question) CQ38</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#TemporalSetting"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#duration">
+  <rdfs:comment xml:lang="en">The duration of a temporal setting.</rdfs:comment>
+  <rdfs:label xml:lang="en">duration</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Duration for tariff from CQ39.</vaem:rationale>
+  <dc:source>(competency_question) CQ39</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#TemporalSetting"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#tariffPeriod">
+  <rdfs:comment xml:lang="en">The period (e.g., 'peak', 'off-peak') applicable to the tariff.</rdfs:comment>
+  <rdfs:label xml:lang="en">tariff period</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Tariff period from CQ40.</vaem:rationale>
+  <dc:source>(competency_question) CQ40</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Tariff"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#billingDate">
+  <rdfs:comment xml:lang="en">The date when billing occurs for the water meter.</rdfs:comment>
+  <rdfs:label xml:lang="en">billing date</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Billing date from CQ42.</vaem:rationale>
+  <dc:source>(competency_question) CQ42</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterMeter"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#periodName">
+  <rdfs:comment xml:lang="en">The name or description of a billing period (e.g., 'monthly').</rdfs:comment>
+  <rdfs:label xml:lang="en">period name</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: Billing period description from CQ43.</vaem:rationale>
+  <dc:source>(competency_question) CQ43</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#BillingPeriod"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#indicatorName">
+  <rdfs:comment xml:lang="en">The name or label of a water indicator.</rdfs:comment>
+  <rdfs:label xml:lang="en">indicator name</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created property: To name indicators for CQ37.</vaem:rationale>
+  <dc:source>(competency_question) CQ37</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterIndicator"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+</rdf:RDF>

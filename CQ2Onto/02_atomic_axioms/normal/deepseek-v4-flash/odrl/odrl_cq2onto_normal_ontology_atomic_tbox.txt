@@ -1,0 +1,411 @@
+====================================================================================================
+ATOMIC TBOX AXIOMS
+====================================================================================================
+
+── Class ──
+
+  Term: Action  [Class]
+    Declaration                Declaration: Action (Class)
+      Subject: Action
+      Object : Class
+
+  Term: AggregationRight  [Class]
+    Declaration                Declaration: AggregationRight (Class)
+      Subject: AggregationRight
+      Object : Class
+    SubClassOf                 AggregationRight ⊑ TransferRight
+      Subject: AggregationRight
+      Object : TransferRight
+
+  Term: Asset  [Class]
+    Declaration                Declaration: Asset (Class)
+      Subject: Asset
+      Object : Class
+
+  Term: Condition  [Class]
+    Declaration                Declaration: Condition (Class)
+      Subject: Condition
+      Object : Class
+    SubClassOf                 Condition ⊑ Constraint
+      Subject: Condition
+      Object : Constraint
+
+  Term: ConflictStrategy  [Class]
+    Declaration                Declaration: ConflictStrategy (Class)
+      Subject: ConflictStrategy
+      Object : Class
+
+  Term: Constraint  [Class]
+    Declaration                Declaration: Constraint (Class)
+      Subject: Constraint
+      Object : Class
+
+  Term: DisaggregationRight  [Class]
+    Declaration                Declaration: DisaggregationRight (Class)
+      Subject: DisaggregationRight
+      Object : Class
+    SubClassOf                 DisaggregationRight ⊑ TransferRight
+      Subject: DisaggregationRight
+      Object : TransferRight
+
+  Term: Duty  [Class]
+    Declaration                Declaration: Duty (Class)
+      Subject: Duty
+      Object : Class
+    SubClassOf                 Duty ⊑ Rule
+      Subject: Duty
+      Object : Rule
+    DisjointClasses            DisjointClasses(Duty, Permission)
+      Subject: Duty
+      Object : Permission
+    DisjointClasses            DisjointClasses(Duty, Prohibition)
+      Subject: Duty
+      Object : Prohibition
+
+  Term: ExclusivePermission  [Class]
+    Declaration                Declaration: ExclusivePermission (Class)
+      Subject: ExclusivePermission
+      Object : Class
+    SubClassOf                 ExclusivePermission ⊑ Permission
+      Subject: ExclusivePermission
+      Object : Permission
+
+  Term: LogicalConstraint  [Class]
+    Declaration                Declaration: LogicalConstraint (Class)
+      Subject: LogicalConstraint
+      Object : Class
+    SubClassOf                 LogicalConstraint ⊑ Constraint
+      Subject: LogicalConstraint
+      Object : Constraint
+
+  Term: LogicalOperator  [Class]
+    Declaration                Declaration: LogicalOperator (Class)
+      Subject: LogicalOperator
+      Object : Class
+    SubClassOf                 LogicalOperator ⊑ Operator
+      Subject: LogicalOperator
+      Object : Operator
+
+  Term: NegationConstraint  [Class]
+    Declaration                Declaration: NegationConstraint (Class)
+      Subject: NegationConstraint
+      Object : Class
+    SubClassOf                 NegationConstraint ⊑ Constraint
+      Subject: NegationConstraint
+      Object : Constraint
+
+  Term: Operator  [Class]
+    Declaration                Declaration: Operator (Class)
+      Subject: Operator
+      Object : Class
+
+  Term: Party  [Class]
+    Declaration                Declaration: Party (Class)
+      Subject: Party
+      Object : Class
+
+  Term: Permission  [Class]
+    Declaration                Declaration: Permission (Class)
+      Subject: Permission
+      Object : Class
+    SubClassOf                 Permission ⊑ Rule
+      Subject: Permission
+      Object : Rule
+    DisjointClasses            DisjointClasses(Permission, Prohibition)
+      Subject: Permission
+      Object : Prohibition
+
+  Term: Policy  [Class]
+    Declaration                Declaration: Policy (Class)
+      Subject: Policy
+      Object : Class
+
+  Term: Prohibition  [Class]
+    Declaration                Declaration: Prohibition (Class)
+      Subject: Prohibition
+      Object : Class
+    SubClassOf                 Prohibition ⊑ Rule
+      Subject: Prohibition
+      Object : Rule
+
+  Term: Rule  [Class]
+    Declaration                Declaration: Rule (Class)
+      Subject: Rule
+      Object : Class
+
+  Term: Sequence  [Class]
+    Declaration                Declaration: Sequence (Class)
+      Subject: Sequence
+      Object : Class
+
+  Term: TransferRight  [Class]
+    Declaration                Declaration: TransferRight (Class)
+      Subject: TransferRight
+      Object : Class
+    SubClassOf                 TransferRight ⊑ Permission
+      Subject: TransferRight
+      Object : Permission
+
+
+── ObjectProperty ──
+
+  Term: hasAction  [ObjectProperty]
+    Declaration                Declaration: hasAction (ObjectProperty)
+      Subject: hasAction
+      Object : ObjectProperty
+    Domain                     ∃hasAction.⊤ ⊑ Rule
+      Subject: hasAction
+      Object : Rule
+    Range                      ⊤ ⊑ ∀hasAction.Action
+      Subject: hasAction
+      Object : Action
+
+  Term: hasAssignee  [ObjectProperty]
+    Declaration                Declaration: hasAssignee (ObjectProperty)
+      Subject: hasAssignee
+      Object : ObjectProperty
+    Domain                     ∃hasAssignee.⊤ ⊑ Rule
+      Subject: hasAssignee
+      Object : Rule
+    Range                      ⊤ ⊑ ∀hasAssignee.Party
+      Subject: hasAssignee
+      Object : Party
+
+  Term: hasAssigner  [ObjectProperty]
+    Declaration                Declaration: hasAssigner (ObjectProperty)
+      Subject: hasAssigner
+      Object : ObjectProperty
+    Domain                     ∃hasAssigner.⊤ ⊑ Rule
+      Subject: hasAssigner
+      Object : Rule
+    Range                      ⊤ ⊑ ∀hasAssigner.Party
+      Subject: hasAssigner
+      Object : Party
+
+  Term: hasConflictStrategy  [ObjectProperty]
+    Declaration                Declaration: hasConflictStrategy (ObjectProperty)
+      Subject: hasConflictStrategy
+      Object : ObjectProperty
+    Domain                     ∃hasConflictStrategy.⊤ ⊑ Policy
+      Subject: hasConflictStrategy
+      Object : Policy
+    Range                      ⊤ ⊑ ∀hasConflictStrategy.ConflictStrategy
+      Subject: hasConflictStrategy
+      Object : ConflictStrategy
+
+  Term: hasConsequence  [ObjectProperty]
+    Declaration                Declaration: hasConsequence (ObjectProperty)
+      Subject: hasConsequence
+      Object : ObjectProperty
+    Domain                     ∃hasConsequence.⊤ ⊑ Duty
+      Subject: hasConsequence
+      Object : Duty
+    Range                      ⊤ ⊑ ∀hasConsequence.Duty
+      Subject: hasConsequence
+      Object : Duty
+
+  Term: hasConstraint  [ObjectProperty]
+    Declaration                Declaration: hasConstraint (ObjectProperty)
+      Subject: hasConstraint
+      Object : ObjectProperty
+    Domain                     ∃hasConstraint.⊤ ⊑ Rule
+      Subject: hasConstraint
+      Object : Rule
+    Range                      ⊤ ⊑ ∀hasConstraint.Constraint
+      Subject: hasConstraint
+      Object : Constraint
+
+  Term: hasDuty  [ObjectProperty]
+    Declaration                Declaration: hasDuty (ObjectProperty)
+      Subject: hasDuty
+      Object : ObjectProperty
+    SubPropertyOf              hasDuty ⊑ hasRule
+      Subject: hasDuty
+      Object : hasRule
+    Domain                     ∃hasDuty.⊤ ⊑ Policy
+      Subject: hasDuty
+      Object : Policy
+    Range                      ⊤ ⊑ ∀hasDuty.Duty
+      Subject: hasDuty
+      Object : Duty
+
+  Term: hasFailureRule  [ObjectProperty]
+    Declaration                Declaration: hasFailureRule (ObjectProperty)
+      Subject: hasFailureRule
+      Object : ObjectProperty
+    Domain                     ∃hasFailureRule.⊤ ⊑ Rule
+      Subject: hasFailureRule
+      Object : Rule
+    Range                      ⊤ ⊑ ∀hasFailureRule.Rule
+      Subject: hasFailureRule
+      Object : Rule
+
+  Term: hasLeftOperand  [ObjectProperty]
+    Declaration                Declaration: hasLeftOperand (ObjectProperty)
+      Subject: hasLeftOperand
+      Object : ObjectProperty
+    Domain                     ∃hasLeftOperand.⊤ ⊑ LogicalConstraint
+      Subject: hasLeftOperand
+      Object : LogicalConstraint
+    Range                      ⊤ ⊑ ∀hasLeftOperand.Constraint
+      Subject: hasLeftOperand
+      Object : Constraint
+
+  Term: hasLogicalOperator  [ObjectProperty]
+    Declaration                Declaration: hasLogicalOperator (ObjectProperty)
+      Subject: hasLogicalOperator
+      Object : ObjectProperty
+    Domain                     ∃hasLogicalOperator.⊤ ⊑ LogicalConstraint
+      Subject: hasLogicalOperator
+      Object : LogicalConstraint
+    Range                      ⊤ ⊑ ∀hasLogicalOperator.LogicalOperator
+      Subject: hasLogicalOperator
+      Object : LogicalOperator
+
+  Term: hasNegatedConstraint  [ObjectProperty]
+    Declaration                Declaration: hasNegatedConstraint (ObjectProperty)
+      Subject: hasNegatedConstraint
+      Object : ObjectProperty
+    Domain                     ∃hasNegatedConstraint.⊤ ⊑ NegationConstraint
+      Subject: hasNegatedConstraint
+      Object : NegationConstraint
+    Range                      ⊤ ⊑ ∀hasNegatedConstraint.Constraint
+      Subject: hasNegatedConstraint
+      Object : Constraint
+
+  Term: hasNextAction  [ObjectProperty]
+    Declaration                Declaration: hasNextAction (ObjectProperty)
+      Subject: hasNextAction
+      Object : ObjectProperty
+    Domain                     ∃hasNextAction.⊤ ⊑ Action
+      Subject: hasNextAction
+      Object : Action
+    Range                      ⊤ ⊑ ∀hasNextAction.Action
+      Subject: hasNextAction
+      Object : Action
+
+  Term: hasOperator  [ObjectProperty]
+    Declaration                Declaration: hasOperator (ObjectProperty)
+      Subject: hasOperator
+      Object : ObjectProperty
+    Domain                     ∃hasOperator.⊤ ⊑ Constraint
+      Subject: hasOperator
+      Object : Constraint
+    Range                      ⊤ ⊑ ∀hasOperator.Operator
+      Subject: hasOperator
+      Object : Operator
+
+  Term: hasParty  [ObjectProperty]
+    Declaration                Declaration: hasParty (ObjectProperty)
+      Subject: hasParty
+      Object : ObjectProperty
+    Domain                     ∃hasParty.⊤ ⊑ Policy
+      Subject: hasParty
+      Object : Policy
+    Range                      ⊤ ⊑ ∀hasParty.Party
+      Subject: hasParty
+      Object : Party
+
+  Term: hasPermission  [ObjectProperty]
+    Declaration                Declaration: hasPermission (ObjectProperty)
+      Subject: hasPermission
+      Object : ObjectProperty
+    SubPropertyOf              hasPermission ⊑ hasRule
+      Subject: hasPermission
+      Object : hasRule
+    Domain                     ∃hasPermission.⊤ ⊑ Policy
+      Subject: hasPermission
+      Object : Policy
+    Range                      ⊤ ⊑ ∀hasPermission.Permission
+      Subject: hasPermission
+      Object : Permission
+
+  Term: hasProhibition  [ObjectProperty]
+    Declaration                Declaration: hasProhibition (ObjectProperty)
+      Subject: hasProhibition
+      Object : ObjectProperty
+    SubPropertyOf              hasProhibition ⊑ hasRule
+      Subject: hasProhibition
+      Object : hasRule
+    Domain                     ∃hasProhibition.⊤ ⊑ Policy
+      Subject: hasProhibition
+      Object : Policy
+    Range                      ⊤ ⊑ ∀hasProhibition.Prohibition
+      Subject: hasProhibition
+      Object : Prohibition
+
+  Term: hasRemedy  [ObjectProperty]
+    Declaration                Declaration: hasRemedy (ObjectProperty)
+      Subject: hasRemedy
+      Object : ObjectProperty
+    Domain                     ∃hasRemedy.⊤ ⊑ Prohibition
+      Subject: hasRemedy
+      Object : Prohibition
+    Range                      ⊤ ⊑ ∀hasRemedy.Duty
+      Subject: hasRemedy
+      Object : Duty
+
+  Term: hasRightOperand  [ObjectProperty]
+    Declaration                Declaration: hasRightOperand (ObjectProperty)
+      Subject: hasRightOperand
+      Object : ObjectProperty
+    Domain                     ∃hasRightOperand.⊤ ⊑ LogicalConstraint
+      Subject: hasRightOperand
+      Object : LogicalConstraint
+    Range                      ⊤ ⊑ ∀hasRightOperand.Constraint
+      Subject: hasRightOperand
+      Object : Constraint
+
+  Term: hasRule  [ObjectProperty]
+    Declaration                Declaration: hasRule (ObjectProperty)
+      Subject: hasRule
+      Object : ObjectProperty
+    Domain                     ∃hasRule.⊤ ⊑ Policy
+      Subject: hasRule
+      Object : Policy
+    Range                      ⊤ ⊑ ∀hasRule.Rule
+      Subject: hasRule
+      Object : Rule
+
+  Term: relatesToPolicy  [ObjectProperty]
+    Declaration                Declaration: relatesToPolicy (ObjectProperty)
+      Subject: relatesToPolicy
+      Object : ObjectProperty
+    Domain                     ∃relatesToPolicy.⊤ ⊑ Asset
+      Subject: relatesToPolicy
+      Object : Asset
+    Range                      ⊤ ⊑ ∀relatesToPolicy.Policy
+      Subject: relatesToPolicy
+      Object : Policy
+
+  Term: subPolicyOf  [ObjectProperty]
+    Declaration                Declaration: subPolicyOf (ObjectProperty)
+      Subject: subPolicyOf
+      Object : ObjectProperty
+    Domain                     ∃subPolicyOf.⊤ ⊑ Policy
+      Subject: subPolicyOf
+      Object : Policy
+    Range                      ⊤ ⊑ ∀subPolicyOf.Policy
+      Subject: subPolicyOf
+      Object : Policy
+
+
+====================================================================================================
+STATISTICS
+====================================================================================================
+
+  Classes:               20  (defined: 0, primitive: 20)
+  ObjectProperties:      21
+  DatatypeProperties:    0
+
+  Axiom Breakdown:
+    Declaration               41
+    DisjointClasses           3
+    Domain                    21
+    Range                     21
+    SubClassOf                11
+    SubPropertyOf             3
+    ------------------------------
+    Total TBox Axioms         100
+
+====================================================================================================

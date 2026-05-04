@@ -1,0 +1,209 @@
+====================================================================================================
+ATOMIC TBOX AXIOMS
+====================================================================================================
+
+── Class ──
+
+  Term: Bordeaux  [Class]
+    Declaration                Declaration: Bordeaux (Class)
+      Subject: Bordeaux
+      Object : Class
+    SubClassOf                 Bordeaux ⊑ Wine
+      Subject: Bordeaux
+      Object : Wine
+
+  Term: Grape  [Class]
+    Declaration                Declaration: Grape (Class)
+      Subject: Grape
+      Object : Class
+
+  Term: Napa Zinfandel  [Class]
+    Declaration                Declaration: Napa Zinfandel (Class)
+      Subject: Napa Zinfandel
+      Object : Class
+    SubClassOf                 Napa Zinfandel ⊑ Wine
+      Subject: Napa Zinfandel
+      Object : Wine
+
+  Term: Red Wine  [Class]
+    Declaration                Declaration: Red Wine (Class)
+      Subject: Red Wine
+      Object : Class
+    DisjointClasses            DisjointClasses(Red Wine, White Wine)
+      Subject: Red Wine
+      Object : White Wine
+
+  Term: Vintage  [Class]
+    Declaration                Declaration: Vintage (Class)
+      Subject: Vintage
+      Object : Class
+
+  Term: White Wine  [Class]
+    Declaration                Declaration: White Wine (Class)
+      Subject: White Wine
+      Object : Class
+
+  Term: Wine  [Class]
+    Declaration                Declaration: Wine (Class)
+      Subject: Wine
+      Object : Class
+
+  Term: Wine Color  [Class]
+    Declaration                Declaration: Wine Color (Class)
+      Subject: Wine Color
+      Object : Class
+
+
+── ObjectProperty ──
+
+  Term: has color  [ObjectProperty]
+    Declaration                Declaration: has color (ObjectProperty)
+      Subject: has color
+      Object : ObjectProperty
+    InverseOf                  has color ≡ is color of⁻
+      Subject: has color
+      Object : is color of
+    Domain                     ∃has color.⊤ ⊑ Wine
+      Subject: has color
+      Object : Wine
+    Range                      ⊤ ⊑ ∀has color.Wine Color
+      Subject: has color
+      Object : Wine Color
+
+  Term: has grape  [ObjectProperty]
+    Declaration                Declaration: has grape (ObjectProperty)
+      Subject: has grape
+      Object : ObjectProperty
+    InverseOf                  has grape ≡ is grape of⁻
+      Subject: has grape
+      Object : is grape of
+    Domain                     ∃has grape.⊤ ⊑ Wine
+      Subject: has grape
+      Object : Wine
+    Range                      ⊤ ⊑ ∀has grape.Grape
+      Subject: has grape
+      Object : Grape
+
+  Term: has vintage  [ObjectProperty]
+    Declaration                Declaration: has vintage (ObjectProperty)
+      Subject: has vintage
+      Object : ObjectProperty
+    InverseOf                  has vintage ≡ is vintage of⁻
+      Subject: has vintage
+      Object : is vintage of
+    Domain                     ∃has vintage.⊤ ⊑ Wine
+      Subject: has vintage
+      Object : Wine
+    Range                      ⊤ ⊑ ∀has vintage.Vintage
+      Subject: has vintage
+      Object : Vintage
+
+  Term: is color of  [ObjectProperty]
+    Declaration                Declaration: is color of (ObjectProperty)
+      Subject: is color of
+      Object : ObjectProperty
+    InverseOf                  is color of ≡ has color⁻
+      Subject: is color of
+      Object : has color
+    Domain                     ∃is color of.⊤ ⊑ Wine Color
+      Subject: is color of
+      Object : Wine Color
+    Range                      ⊤ ⊑ ∀is color of.Wine
+      Subject: is color of
+      Object : Wine
+
+  Term: is grape of  [ObjectProperty]
+    Declaration                Declaration: is grape of (ObjectProperty)
+      Subject: is grape of
+      Object : ObjectProperty
+    InverseOf                  is grape of ≡ has grape⁻
+      Subject: is grape of
+      Object : has grape
+    Domain                     ∃is grape of.⊤ ⊑ Grape
+      Subject: is grape of
+      Object : Grape
+    Range                      ⊤ ⊑ ∀is grape of.Wine
+      Subject: is grape of
+      Object : Wine
+
+  Term: is vintage of  [ObjectProperty]
+    Declaration                Declaration: is vintage of (ObjectProperty)
+      Subject: is vintage of
+      Object : ObjectProperty
+    InverseOf                  is vintage of ≡ has vintage⁻
+      Subject: is vintage of
+      Object : has vintage
+    Domain                     ∃is vintage of.⊤ ⊑ Vintage
+      Subject: is vintage of
+      Object : Vintage
+    Range                      ⊤ ⊑ ∀is vintage of.Wine
+      Subject: is vintage of
+      Object : Wine
+
+
+── DatatypeProperty ──
+
+  Term: has body  [DatatypeProperty]
+    Declaration                Declaration: has body (DatatypeProperty)
+      Subject: has body
+      Object : DatatypeProperty
+    Domain                     ∃has body.⊤ ⊑ Vintage
+      Subject: has body
+      Object : Vintage
+    Range                      has body maps-to xsd:string
+      Subject: has body
+      Object : xsd:string
+
+  Term: has bouquet  [DatatypeProperty]
+    Declaration                Declaration: has bouquet (DatatypeProperty)
+      Subject: has bouquet
+      Object : DatatypeProperty
+    Domain                     ∃has bouquet.⊤ ⊑ Vintage
+      Subject: has bouquet
+      Object : Vintage
+    Range                      has bouquet maps-to xsd:string
+      Subject: has bouquet
+      Object : xsd:string
+
+  Term: has year  [DatatypeProperty]
+    Declaration                Declaration: has year (DatatypeProperty)
+      Subject: has year
+      Object : DatatypeProperty
+    Domain                     ∃has year.⊤ ⊑ Vintage
+      Subject: has year
+      Object : Vintage
+    Range                      has year maps-to xsd:integer
+      Subject: has year
+      Object : xsd:integer
+
+  Term: is good vintage  [DatatypeProperty]
+    Declaration                Declaration: is good vintage (DatatypeProperty)
+      Subject: is good vintage
+      Object : DatatypeProperty
+    Domain                     ∃is good vintage.⊤ ⊑ Vintage
+      Subject: is good vintage
+      Object : Vintage
+    Range                      is good vintage maps-to xsd:boolean
+      Subject: is good vintage
+      Object : xsd:boolean
+
+
+====================================================================================================
+STATISTICS
+====================================================================================================
+
+  Classes:               8  (defined: 0, primitive: 8)
+  ObjectProperties:      6
+  DatatypeProperties:    4
+
+  Axiom Breakdown:
+    Declaration               18
+    DisjointClasses           1
+    Domain                    10
+    InverseOf                 6
+    Range                     10
+    SubClassOf                2
+    ------------------------------
+    Total TBox Axioms         47
+
+====================================================================================================

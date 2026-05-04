@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:vaem="http://www.linkedmodel.org/schema/vaem#">
+ 
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Wine">
+  <rdfs:comment xml:lang="en">A wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">Wine</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added owl:Class declaration for 'Wine': Pitfall: class used but not declared. Explicitly declared it as an owl:Class.</vaem:rationale>
+  <dc:source>(pitfall) http://www.semanticweb.org/myontology#Wine is used as a class without being declared as owl:Class or rdfs:Class.</dc:source>
+</owl:Class>
+
+  <!-- owl:DatatypeProperty declarations -->
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasVintageYear">
+  <rdfs:comment xml:lang="en">The vintage year of the wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">has vintage year</rdfs:label>
+  <vaem:rationale>[Logical Consistency Agent] Changed range from xsd:gYear to xsd:integer: HermiT reasoner threw UnsupportedDatatypeException for xsd:gYear. Replaced with xsd:integer to ensure compatibility.
+    [Pitfall Resolution Agent] Changed range from xsd:gYear to xsd:integer: HermiT reasoner threw UnsupportedDatatypeException for xsd:gYear. Replaced with xsd:integer to ensure compatibility.: HermiT error: UnsupportedDatatypeException for http://www.w3.org/2001/XMLSchema#gYear</vaem:rationale>
+  <dc:source>(competency_question) CQ6
+    (competency_question) CQ7
+    (error_message) HermiT error: UnsupportedDatatypeException for http://www.w3.org/2001/XMLSchema#gYear</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+</rdf:RDF>

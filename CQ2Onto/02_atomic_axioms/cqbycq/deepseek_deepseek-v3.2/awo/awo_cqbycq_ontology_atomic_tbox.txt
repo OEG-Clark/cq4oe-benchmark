@@ -1,0 +1,122 @@
+====================================================================================================
+ATOMIC TBOX AXIOMS
+====================================================================================================
+
+── Class ──
+
+  Term: Animal  [Class]
+    Declaration                Declaration: Animal (Class)
+      Subject: Animal
+      Object : Class
+
+  Term: Carnivore  [Class]
+    Declaration                Declaration: Carnivore (Class)
+      Subject: Carnivore
+      Object : Class
+    SubClassOf                 Carnivore ⊑ Animal
+      Subject: Carnivore
+      Object : Animal
+    SubClassOf                 Carnivore ⊑ ∃eats.Animal
+      Subject: Carnivore
+      Object : ∃eats.Animal
+
+  Term: Carnivorous Plant  [Class]
+    Declaration                Declaration: Carnivorous Plant (Class)
+      Subject: Carnivorous Plant
+      Object : Class
+    SubClassOf                 Carnivorous Plant ⊑ Plant
+      Subject: Carnivorous Plant
+      Object : Plant
+    SubClassOf                 Carnivorous Plant ⊑ ∃consumes.Animal
+      Subject: Carnivorous Plant
+      Object : ∃consumes.Animal
+
+  Term: Herbivore  [Class]
+    Declaration                Declaration: Herbivore (Class)
+      Subject: Herbivore
+      Object : Class
+    SubClassOf                 Herbivore ⊑ Animal
+      Subject: Herbivore
+      Object : Animal
+    SubClassOf                 Herbivore ⊑ ∀eats.Plant
+      Subject: Herbivore
+      Object : ∀eats.Plant
+
+  Term: Lion  [Class]
+    Declaration                Declaration: Lion (Class)
+      Subject: Lion
+      Object : Class
+    SubClassOf                 Lion ⊑ Carnivore
+      Subject: Lion
+      Object : Carnivore
+
+  Term: Omnivore  [Class]
+    Declaration                Declaration: Omnivore (Class)
+      Subject: Omnivore
+      Object : Class
+    SubClassOf                 Omnivore ⊑ Animal
+      Subject: Omnivore
+      Object : Animal
+    SubClassOf                 Omnivore ⊑ ∃eats.Plant
+      Subject: Omnivore
+      Object : ∃eats.Plant
+    SubClassOf                 Omnivore ⊑ ∃eats.Animal
+      Subject: Omnivore
+      Object : ∃eats.Animal
+
+  Term: Plant  [Class]
+    Declaration                Declaration: Plant (Class)
+      Subject: Plant
+      Object : Class
+
+  Term: Plant Part  [Class]
+    Declaration                Declaration: Plant Part (Class)
+      Subject: Plant Part
+      Object : Class
+    SubClassOf                 Plant Part ⊑ Plant
+      Subject: Plant Part
+      Object : Plant
+
+
+── ObjectProperty ──
+
+  Term: consumes  [ObjectProperty]
+    Declaration                Declaration: consumes (ObjectProperty)
+      Subject: consumes
+      Object : ObjectProperty
+    Domain                     ∃consumes.⊤ ⊑ Plant
+      Subject: consumes
+      Object : Plant
+    Range                      ⊤ ⊑ ∀consumes.Animal
+      Subject: consumes
+      Object : Animal
+
+  Term: eats  [ObjectProperty]
+    Declaration                Declaration: eats (ObjectProperty)
+      Subject: eats
+      Object : ObjectProperty
+    Domain                     ∃eats.⊤ ⊑ Animal
+      Subject: eats
+      Object : Animal
+    Range                      ⊤ ⊑ ∀eats.(Animal ⊔ Plant)
+      Subject: eats
+      Object : (Animal ⊔ Plant)
+
+
+====================================================================================================
+STATISTICS
+====================================================================================================
+
+  Classes:               8  (defined: 0, primitive: 8)
+  ObjectProperties:      2
+  DatatypeProperties:    0
+
+  Axiom Breakdown:
+    Declaration               10
+    Domain                    2
+    Range                     2
+    SubClassOf                11
+    ------------------------------
+    Total TBox Axioms         25
+
+====================================================================================================

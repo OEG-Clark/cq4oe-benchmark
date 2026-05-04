@@ -1,0 +1,460 @@
+====================================================================================================
+ATOMIC TBOX AXIOMS
+====================================================================================================
+
+── Class ──
+
+  Term: ActivityStatus  [Class]
+    Declaration                Declaration: ActivityStatus (Class)
+      Subject: ActivityStatus
+      Object : Class
+
+  Term: Agent  [Class]
+    Declaration                Declaration: Agent (Class)
+      Subject: Agent
+      Object : Class
+
+  Term: Algorithm  [Class]
+    Declaration                Declaration: Algorithm (Class)
+      Subject: Algorithm
+      Object : Class
+
+  Term: Data  [Class]
+    Declaration                Declaration: Data (Class)
+      Subject: Data
+      Object : Class
+
+  Term: DataFormat  [Class]
+    Declaration                Declaration: DataFormat (Class)
+      Subject: DataFormat
+      Object : Class
+
+  Term: Documentation  [Class]
+    Declaration                Declaration: Documentation (Class)
+      Subject: Documentation
+      Object : Class
+
+  Term: FileFormat  [Class]
+    Declaration                Declaration: FileFormat (Class)
+      Subject: FileFormat
+      Object : Class
+    SubClassOf                 FileFormat ⊑ DataFormat
+      Subject: FileFormat
+      Object : DataFormat
+
+  Term: License  [Class]
+    Declaration                Declaration: License (Class)
+      Subject: License
+      Object : Class
+
+  Term: Organization  [Class]
+    Declaration                Declaration: Organization (Class)
+      Subject: Organization
+      Object : Class
+    SubClassOf                 Organization ⊑ Agent
+      Subject: Organization
+      Object : Agent
+
+  Term: Person  [Class]
+    Declaration                Declaration: Person (Class)
+      Subject: Person
+      Object : Class
+    SubClassOf                 Person ⊑ Agent
+      Subject: Person
+      Object : Agent
+
+  Term: Platform  [Class]
+    Declaration                Declaration: Platform (Class)
+      Subject: Platform
+      Object : Class
+
+  Term: ProgrammingLanguage  [Class]
+    Declaration                Declaration: ProgrammingLanguage (Class)
+      Subject: ProgrammingLanguage
+      Object : Class
+
+  Term: Software  [Class]
+    Declaration                Declaration: Software (Class)
+      Subject: Software
+      Object : Class
+
+  Term: SoftwareType  [Class]
+    Declaration                Declaration: SoftwareType (Class)
+      Subject: SoftwareType
+      Object : Class
+
+  Term: Task  [Class]
+    Declaration                Declaration: Task (Class)
+      Subject: Task
+      Object : Class
+
+  Term: Version  [Class]
+    Declaration                Declaration: Version (Class)
+      Subject: Version
+      Object : Class
+
+
+── ObjectProperty ──
+
+  Term: can export to format  [ObjectProperty]
+    Declaration                Declaration: can export to format (ObjectProperty)
+      Subject: can export to format
+      Object : ObjectProperty
+    Domain                     ∃can export to format.⊤ ⊑ Software
+      Subject: can export to format
+      Object : Software
+    Range                      ⊤ ⊑ ∀can export to format.DataFormat
+      Subject: can export to format
+      Object : DataFormat
+
+  Term: can perform task  [ObjectProperty]
+    Declaration                Declaration: can perform task (ObjectProperty)
+      Subject: can perform task
+      Object : ObjectProperty
+    Domain                     ∃can perform task.⊤ ⊑ Software
+      Subject: can perform task
+      Object : Software
+    Range                      ⊤ ⊑ ∀can perform task.Task
+      Subject: can perform task
+      Object : Task
+
+  Term: can read format  [ObjectProperty]
+    Declaration                Declaration: can read format (ObjectProperty)
+      Subject: can read format
+      Object : ObjectProperty
+    Domain                     ∃can read format.⊤ ⊑ Software
+      Subject: can read format
+      Object : Software
+    Range                      ⊤ ⊑ ∀can read format.DataFormat
+      Subject: can read format
+      Object : DataFormat
+
+  Term: can write format  [ObjectProperty]
+    Declaration                Declaration: can write format (ObjectProperty)
+      Subject: can write format
+      Object : ObjectProperty
+    Domain                     ∃can write format.⊤ ⊑ Software
+      Subject: can write format
+      Object : Software
+    Range                      ⊤ ⊑ ∀can write format.DataFormat
+      Subject: can write format
+      Object : DataFormat
+
+  Term: created data  [ObjectProperty]
+    Declaration                Declaration: created data (ObjectProperty)
+      Subject: created data
+      Object : ObjectProperty
+    Domain                     ∃created data.⊤ ⊑ Software
+      Subject: created data
+      Object : Software
+    Range                      ⊤ ⊑ ∀created data.Data
+      Subject: created data
+      Object : Data
+
+  Term: has activity status  [ObjectProperty]
+    Declaration                Declaration: has activity status (ObjectProperty)
+      Subject: has activity status
+      Object : ObjectProperty
+    Domain                     ∃has activity status.⊤ ⊑ Software
+      Subject: has activity status
+      Object : Software
+    Range                      ⊤ ⊑ ∀has activity status.ActivityStatus
+      Subject: has activity status
+      Object : ActivityStatus
+
+  Term: has developer  [ObjectProperty]
+    Declaration                Declaration: has developer (ObjectProperty)
+      Subject: has developer
+      Object : ObjectProperty
+    Domain                     ∃has developer.⊤ ⊑ Software
+      Subject: has developer
+      Object : Software
+    Range                      ⊤ ⊑ ∀has developer.Agent
+      Subject: has developer
+      Object : Agent
+
+  Term: has documentation  [ObjectProperty]
+    Declaration                Declaration: has documentation (ObjectProperty)
+      Subject: has documentation
+      Object : ObjectProperty
+    Domain                     ∃has documentation.⊤ ⊑ Software
+      Subject: has documentation
+      Object : Software
+    Range                      ⊤ ⊑ ∀has documentation.Documentation
+      Subject: has documentation
+      Object : Documentation
+
+  Term: has software type  [ObjectProperty]
+    Declaration                Declaration: has software type (ObjectProperty)
+      Subject: has software type
+      Object : ObjectProperty
+    Domain                     ∃has software type.⊤ ⊑ Software
+      Subject: has software type
+      Object : Software
+    Range                      ⊤ ⊑ ∀has software type.SoftwareType
+      Subject: has software type
+      Object : SoftwareType
+
+  Term: has valid input  [ObjectProperty]
+    Declaration                Declaration: has valid input (ObjectProperty)
+      Subject: has valid input
+      Object : ObjectProperty
+    Domain                     ∃has valid input.⊤ ⊑ Software
+      Subject: has valid input
+      Object : Software
+    Range                      ⊤ ⊑ ∀has valid input.DataFormat
+      Subject: has valid input
+      Object : DataFormat
+
+  Term: has version  [ObjectProperty]
+    Declaration                Declaration: has version (ObjectProperty)
+      Subject: has version
+      Object : ObjectProperty
+    Domain                     ∃has version.⊤ ⊑ Software
+      Subject: has version
+      Object : Software
+    Range                      ⊤ ⊑ ∀has version.Version
+      Subject: has version
+      Object : Version
+
+  Term: implementation language  [ObjectProperty]
+    Declaration                Declaration: implementation language (ObjectProperty)
+      Subject: implementation language
+      Object : ObjectProperty
+    Domain                     ∃implementation language.⊤ ⊑ Software
+      Subject: implementation language
+      Object : Software
+    Range                      ⊤ ⊑ ∀implementation language.ProgrammingLanguage
+      Subject: implementation language
+      Object : ProgrammingLanguage
+
+  Term: is compatible with  [ObjectProperty]
+    Declaration                Declaration: is compatible with (ObjectProperty)
+      Subject: is compatible with
+      Object : ObjectProperty
+    Domain                     ∃is compatible with.⊤ ⊑ Software
+      Subject: is compatible with
+      Object : Software
+    Range                      ⊤ ⊑ ∀is compatible with.Software
+      Subject: is compatible with
+      Object : Software
+
+  Term: license  [ObjectProperty]
+    Declaration                Declaration: license (ObjectProperty)
+      Subject: license
+      Object : ObjectProperty
+    Domain                     ∃license.⊤ ⊑ Software
+      Subject: license
+      Object : Software
+    Range                      ⊤ ⊑ ∀license.License
+      Subject: license
+      Object : License
+
+  Term: runs on platform  [ObjectProperty]
+    Declaration                Declaration: runs on platform (ObjectProperty)
+      Subject: runs on platform
+      Object : ObjectProperty
+    Domain                     ∃runs on platform.⊤ ⊑ Software
+      Subject: runs on platform
+      Object : Software
+    Range                      ⊤ ⊑ ∀runs on platform.Platform
+      Subject: runs on platform
+      Object : Platform
+
+  Term: uses algorithm  [ObjectProperty]
+    Declaration                Declaration: uses algorithm (ObjectProperty)
+      Subject: uses algorithm
+      Object : ObjectProperty
+    Domain                     ∃uses algorithm.⊤ ⊑ Software
+      Subject: uses algorithm
+      Object : Software
+    Range                      ⊤ ⊑ ∀uses algorithm.Algorithm
+      Subject: uses algorithm
+      Object : Algorithm
+
+
+── DatatypeProperty ──
+
+  Term: algorithm modification  [DatatypeProperty]
+    Declaration                Declaration: algorithm modification (DatatypeProperty)
+      Subject: algorithm modification
+      Object : DatatypeProperty
+    Domain                     ∃algorithm modification.⊤ ⊑ Algorithm
+      Subject: algorithm modification
+      Object : Algorithm
+    Range                      algorithm modification maps-to ⊤
+      Subject: algorithm modification
+      Object : ⊤
+
+  Term: download URL  [DatatypeProperty]
+    Declaration                Declaration: download URL (DatatypeProperty)
+      Subject: download URL
+      Object : DatatypeProperty
+    Domain                     ∃download URL.⊤ ⊑ Software
+      Subject: download URL
+      Object : Software
+    Range                      download URL maps-to ⊤
+      Subject: download URL
+      Object : ⊤
+
+  Term: has release date  [DatatypeProperty]
+    Declaration                Declaration: has release date (DatatypeProperty)
+      Subject: has release date
+      Object : DatatypeProperty
+    Domain                     ∃has release date.⊤ ⊑ Software
+      Subject: has release date
+      Object : Software
+    Range                      has release date maps-to ⊤
+      Subject: has release date
+      Object : ⊤
+
+  Term: help URL  [DatatypeProperty]
+    Declaration                Declaration: help URL (DatatypeProperty)
+      Subject: help URL
+      Object : DatatypeProperty
+    Domain                     ∃help URL.⊤ ⊑ Software
+      Subject: help URL
+      Object : Software
+    Range                      help URL maps-to ⊤
+      Subject: help URL
+      Object : ⊤
+
+  Term: homepage  [DatatypeProperty]
+    Declaration                Declaration: homepage (DatatypeProperty)
+      Subject: homepage
+      Object : DatatypeProperty
+    Domain                     ∃homepage.⊤ ⊑ Software
+      Subject: homepage
+      Object : Software
+    Range                      homepage maps-to ⊤
+      Subject: homepage
+      Object : ⊤
+
+  Term: is FOSS  [DatatypeProperty]
+    Declaration                Declaration: is FOSS (DatatypeProperty)
+      Subject: is FOSS
+      Object : DatatypeProperty
+    Domain                     ∃is FOSS.⊤ ⊑ Software
+      Subject: is FOSS
+      Object : Software
+    Range                      is FOSS maps-to ⊤
+      Subject: is FOSS
+      Object : ⊤
+
+  Term: is available as web service  [DatatypeProperty]
+    Declaration                Declaration: is available as web service (DatatypeProperty)
+      Subject: is available as web service
+      Object : DatatypeProperty
+    Domain                     ∃is available as web service.⊤ ⊑ Software
+      Subject: is available as web service
+      Object : Software
+    Range                      is available as web service maps-to ⊤
+      Subject: is available as web service
+      Object : ⊤
+
+  Term: is free  [DatatypeProperty]
+    Declaration                Declaration: is free (DatatypeProperty)
+      Subject: is free
+      Object : DatatypeProperty
+    Domain                     ∃is free.⊤ ⊑ Software
+      Subject: is free
+      Object : Software
+    Range                      is free maps-to ⊤
+      Subject: is free
+      Object : ⊤
+
+  Term: is maintained  [DatatypeProperty]
+    Declaration                Declaration: is maintained (DatatypeProperty)
+      Subject: is maintained
+      Object : DatatypeProperty
+    Domain                     ∃is maintained.⊤ ⊑ Software
+      Subject: is maintained
+      Object : Software
+    Range                      is maintained maps-to ⊤
+      Subject: is maintained
+      Object : ⊤
+
+  Term: is open source  [DatatypeProperty]
+    Declaration                Declaration: is open source (DatatypeProperty)
+      Subject: is open source
+      Object : DatatypeProperty
+    Domain                     ∃is open source.⊤ ⊑ Software
+      Subject: is open source
+      Object : Software
+    Range                      is open source maps-to ⊤
+      Subject: is open source
+      Object : ⊤
+
+  Term: new features  [DatatypeProperty]
+    Declaration                Declaration: new features (DatatypeProperty)
+      Subject: new features
+      Object : DatatypeProperty
+    Domain                     ∃new features.⊤ ⊑ Version
+      Subject: new features
+      Object : Version
+    Range                      new features maps-to ⊤
+      Subject: new features
+      Object : ⊤
+
+  Term: permissiveness level  [DatatypeProperty]
+    Declaration                Declaration: permissiveness level (DatatypeProperty)
+      Subject: permissiveness level
+      Object : DatatypeProperty
+    Domain                     ∃permissiveness level.⊤ ⊑ License
+      Subject: permissiveness level
+      Object : License
+    Range                      permissiveness level maps-to ⊤
+      Subject: permissiveness level
+      Object : ⊤
+
+  Term: provides XML editing  [DatatypeProperty]
+    Declaration                Declaration: provides XML editing (DatatypeProperty)
+      Subject: provides XML editing
+      Object : DatatypeProperty
+    Domain                     ∃provides XML editing.⊤ ⊑ Software
+      Subject: provides XML editing
+      Object : Software
+    Range                      provides XML editing maps-to ⊤
+      Subject: provides XML editing
+      Object : ⊤
+
+  Term: supports collaboration  [DatatypeProperty]
+    Declaration                Declaration: supports collaboration (DatatypeProperty)
+      Subject: supports collaboration
+      Object : DatatypeProperty
+    Domain                     ∃supports collaboration.⊤ ⊑ Software
+      Subject: supports collaboration
+      Object : Software
+    Range                      supports collaboration maps-to ⊤
+      Subject: supports collaboration
+      Object : ⊤
+
+  Term: version number  [DatatypeProperty]
+    Declaration                Declaration: version number (DatatypeProperty)
+      Subject: version number
+      Object : DatatypeProperty
+    Domain                     ∃version number.⊤ ⊑ Version
+      Subject: version number
+      Object : Version
+    Range                      version number maps-to ⊤
+      Subject: version number
+      Object : ⊤
+
+
+====================================================================================================
+STATISTICS
+====================================================================================================
+
+  Classes:               16  (defined: 0, primitive: 16)
+  ObjectProperties:      16
+  DatatypeProperties:    15
+
+  Axiom Breakdown:
+    Declaration               47
+    Domain                    31
+    Range                     31
+    SubClassOf                3
+    ------------------------------
+    Total TBox Axioms         112
+
+====================================================================================================

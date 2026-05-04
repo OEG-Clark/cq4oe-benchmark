@@ -1,0 +1,2696 @@
+{
+  "config": {
+    "gold_cq_to_terms": "00_gold_standard/wine/cq_to_terms_wine.json",
+    "pred_cq_to_terms": "01_predictions/deepseek-v4-flash/terms/wine_cq2terms_terms.json",
+    "methods": [
+      "hard_match",
+      "jaro_winkler",
+      "levenshtein",
+      "semantic",
+      "sequence_match"
+    ],
+    "top_n": 3,
+    "final_threshold": 0.6,
+    "semantic_model": "embeddinggemma:latest"
+  },
+  "results": {
+    "metrics_overall": {
+      "class_only": {
+        "tp": 8,
+        "fp": 0,
+        "fn": 3,
+        "precision": 1.0,
+        "recall": 0.7272727272727273,
+        "f1": 0.8421052631578948,
+        "n_gold": 11,
+        "n_pred": 8,
+        "tp_pairs": [
+          {
+            "gold": "winegrape",
+            "pred": "grape"
+          },
+          {
+            "gold": "redwine",
+            "pred": "redwine"
+          },
+          {
+            "gold": "vintageyear",
+            "pred": "vintageyear"
+          },
+          {
+            "gold": "whitewine",
+            "pred": "whitewine"
+          },
+          {
+            "gold": "vintage",
+            "pred": "vintage"
+          },
+          {
+            "gold": "wine",
+            "pred": "wine"
+          },
+          {
+            "gold": "winedescriptor",
+            "pred": "winecharacteristic"
+          },
+          {
+            "gold": "bordeaux",
+            "pred": "bordeaux"
+          }
+        ],
+        "fn_terms": [
+          "redbordeaux",
+          "whitebordeaux",
+          "zinfandel"
+        ],
+        "fp_terms": []
+      },
+      "property_only": {
+        "tp": 2,
+        "fp": 5,
+        "fn": 3,
+        "precision": 0.2857142857142857,
+        "recall": 0.4,
+        "f1": 0.3333333333333333,
+        "n_gold": 5,
+        "n_pred": 7,
+        "tp_pairs": [
+          {
+            "gold": "hasvintageyear",
+            "pred": "hasvintageyear"
+          },
+          {
+            "gold": "hasbody",
+            "pred": "hasbody"
+          }
+        ],
+        "fn_terms": [
+          "madefromgrape",
+          "yearvalue",
+          "haswinedescriptor"
+        ],
+        "fp_terms": [
+          "hascolor",
+          "hascharacteristic",
+          "usedtoproduce",
+          "hasbouquet",
+          "hasvintage"
+        ]
+      },
+      "combined": {
+        "tp": 10,
+        "fp": 5,
+        "fn": 6,
+        "precision": 0.6666666666666666,
+        "recall": 0.625,
+        "f1": 0.6451612903225806,
+        "n_gold": 16,
+        "n_pred": 15
+      }
+    },
+    "alignments": {
+      "class": [
+        {
+          "gold_term": "wine",
+          "pred_term": "wine",
+          "top_methods_used": "hard_match",
+          "scores_by_method": "hard_match=1.0000; jaro_winkler=1.0000; levenshtein=1.0000; semantic=1.0000; sequence_match=1.0000",
+          "per_method_scores": {
+            "hard_match": 1.0,
+            "jaro_winkler": 1.0,
+            "levenshtein": 1.0,
+            "semantic": 1.0,
+            "sequence_match": 1.0
+          },
+          "is_hard_match": true,
+          "avg_score": 1.0,
+          "agg_score": 1.0,
+          "accepted": true,
+          "selected": true,
+          "reason": "selected"
+        },
+        {
+          "gold_term": "bordeaux",
+          "pred_term": "bordeaux",
+          "top_methods_used": "hard_match",
+          "scores_by_method": "hard_match=1.0000; jaro_winkler=1.0000; levenshtein=1.0000; semantic=1.0000; sequence_match=1.0000",
+          "per_method_scores": {
+            "hard_match": 1.0,
+            "jaro_winkler": 1.0,
+            "levenshtein": 1.0,
+            "semantic": 1.0,
+            "sequence_match": 1.0
+          },
+          "is_hard_match": true,
+          "avg_score": 1.0,
+          "agg_score": 1.0,
+          "accepted": true,
+          "selected": true,
+          "reason": "selected"
+        },
+        {
+          "gold_term": "redwine",
+          "pred_term": "redwine",
+          "top_methods_used": "hard_match",
+          "scores_by_method": "hard_match=1.0000; jaro_winkler=1.0000; levenshtein=1.0000; semantic=1.0000; sequence_match=1.0000",
+          "per_method_scores": {
+            "hard_match": 1.0,
+            "jaro_winkler": 1.0,
+            "levenshtein": 1.0,
+            "semantic": 1.0,
+            "sequence_match": 1.0
+          },
+          "is_hard_match": true,
+          "avg_score": 1.0,
+          "agg_score": 1.0,
+          "accepted": true,
+          "selected": true,
+          "reason": "selected"
+        },
+        {
+          "gold_term": "whitewine",
+          "pred_term": "whitewine",
+          "top_methods_used": "hard_match",
+          "scores_by_method": "hard_match=1.0000; jaro_winkler=1.0000; levenshtein=1.0000; semantic=1.0000; sequence_match=1.0000",
+          "per_method_scores": {
+            "hard_match": 1.0,
+            "jaro_winkler": 1.0,
+            "levenshtein": 1.0,
+            "semantic": 1.0,
+            "sequence_match": 1.0
+          },
+          "is_hard_match": true,
+          "avg_score": 1.0,
+          "agg_score": 1.0,
+          "accepted": true,
+          "selected": true,
+          "reason": "selected"
+        },
+        {
+          "gold_term": "vintage",
+          "pred_term": "vintage",
+          "top_methods_used": "hard_match",
+          "scores_by_method": "hard_match=1.0000; jaro_winkler=1.0000; levenshtein=1.0000; semantic=1.0000; sequence_match=1.0000",
+          "per_method_scores": {
+            "hard_match": 1.0,
+            "jaro_winkler": 1.0,
+            "levenshtein": 1.0,
+            "semantic": 1.0,
+            "sequence_match": 1.0
+          },
+          "is_hard_match": true,
+          "avg_score": 1.0,
+          "agg_score": 1.0,
+          "accepted": true,
+          "selected": true,
+          "reason": "selected"
+        },
+        {
+          "gold_term": "vintageyear",
+          "pred_term": "vintageyear",
+          "top_methods_used": "hard_match",
+          "scores_by_method": "hard_match=1.0000; jaro_winkler=1.0000; levenshtein=1.0000; semantic=1.0000; sequence_match=1.0000",
+          "per_method_scores": {
+            "hard_match": 1.0,
+            "jaro_winkler": 1.0,
+            "levenshtein": 1.0,
+            "semantic": 1.0,
+            "sequence_match": 1.0
+          },
+          "is_hard_match": true,
+          "avg_score": 1.0,
+          "agg_score": 1.0,
+          "accepted": true,
+          "selected": true,
+          "reason": "selected"
+        },
+        {
+          "gold_term": "winegrape",
+          "pred_term": "grape",
+          "top_methods_used": "semantic+sequence_match+levenshtein",
+          "scores_by_method": "jaro_winkler=0.4370; levenshtein=0.5556; semantic=0.9216; sequence_match=0.7143",
+          "per_method_scores": {
+            "jaro_winkler": 0.437,
+            "levenshtein": 0.5556,
+            "semantic": 0.9216,
+            "sequence_match": 0.7143
+          },
+          "is_hard_match": false,
+          "avg_score": 0.7305,
+          "agg_score": 0.7305,
+          "accepted": true,
+          "selected": true,
+          "reason": "selected"
+        },
+        {
+          "gold_term": "winedescriptor",
+          "pred_term": "winecharacteristic",
+          "top_methods_used": "jaro_winkler+semantic+sequence_match",
+          "scores_by_method": "jaro_winkler=0.8248; levenshtein=0.4444; semantic=0.6960; sequence_match=0.5000",
+          "per_method_scores": {
+            "jaro_winkler": 0.8248,
+            "levenshtein": 0.4444,
+            "semantic": 0.696,
+            "sequence_match": 0.5
+          },
+          "is_hard_match": false,
+          "avg_score": 0.6736,
+          "agg_score": 0.6736,
+          "accepted": true,
+          "selected": true,
+          "reason": "selected"
+        },
+        {
+          "gold_term": "vintage",
+          "pred_term": "vintageyear",
+          "top_methods_used": "jaro_winkler+semantic+sequence_match",
+          "scores_by_method": "jaro_winkler=0.9273; levenshtein=0.6364; semantic=0.8827; sequence_match=0.7778",
+          "per_method_scores": {
+            "jaro_winkler": 0.9273,
+            "levenshtein": 0.6364,
+            "semantic": 0.8827,
+            "sequence_match": 0.7778
+          },
+          "is_hard_match": false,
+          "avg_score": 0.8626,
+          "agg_score": 0.8626,
+          "accepted": false,
+          "selected": false,
+          "reason": "gold already mapped to 'vintage'"
+        },
+        {
+          "gold_term": "vintageyear",
+          "pred_term": "vintage",
+          "top_methods_used": "jaro_winkler+semantic+sequence_match",
+          "scores_by_method": "jaro_winkler=0.9273; levenshtein=0.6364; semantic=0.8827; sequence_match=0.7778",
+          "per_method_scores": {
+            "jaro_winkler": 0.9273,
+            "levenshtein": 0.6364,
+            "semantic": 0.8827,
+            "sequence_match": 0.7778
+          },
+          "is_hard_match": false,
+          "avg_score": 0.8626,
+          "agg_score": 0.8626,
+          "accepted": false,
+          "selected": false,
+          "reason": "gold already mapped to 'vintageyear'"
+        },
+        {
+          "gold_term": "redbordeaux",
+          "pred_term": "bordeaux",
+          "top_methods_used": "semantic+sequence_match+jaro_winkler",
+          "scores_by_method": "jaro_winkler=0.8258; levenshtein=0.7273; semantic=0.8628; sequence_match=0.8421",
+          "per_method_scores": {
+            "jaro_winkler": 0.8258,
+            "levenshtein": 0.7273,
+            "semantic": 0.8628,
+            "sequence_match": 0.8421
+          },
+          "is_hard_match": false,
+          "avg_score": 0.8436,
+          "agg_score": 0.8436,
+          "accepted": false,
+          "selected": false,
+          "reason": "pred already taken by 'bordeaux' (higher averaged score)"
+        },
+        {
+          "gold_term": "winegrape",
+          "pred_term": "wine",
+          "top_methods_used": "jaro_winkler+semantic+sequence_match",
+          "scores_by_method": "jaro_winkler=0.8889; levenshtein=0.4444; semantic=0.8630; sequence_match=0.6154",
+          "per_method_scores": {
+            "jaro_winkler": 0.8889,
+            "levenshtein": 0.4444,
+            "semantic": 0.863,
+            "sequence_match": 0.6154
+          },
+          "is_hard_match": false,
+          "avg_score": 0.7891,
+          "agg_score": 0.7891,
+          "accepted": false,
+          "selected": false,
+          "reason": "pred already taken by 'wine' (higher averaged score)"
+        },
+        {
+          "gold_term": "whitebordeaux",
+          "pred_term": "bordeaux",
+          "top_methods_used": "jaro_winkler+sequence_match+semantic",
+          "scores_by_method": "jaro_winkler=0.7885; levenshtein=0.6154; semantic=0.7494; sequence_match=0.7619",
+          "per_method_scores": {
+            "jaro_winkler": 0.7885,
+            "levenshtein": 0.6154,
+            "semantic": 0.7494,
+            "sequence_match": 0.7619
+          },
+          "is_hard_match": false,
+          "avg_score": 0.7666,
+          "agg_score": 0.7666,
+          "accepted": false,
+          "selected": false,
+          "reason": "pred already taken by 'bordeaux' (higher averaged score)"
+        },
+        {
+          "gold_term": "whitebordeaux",
+          "pred_term": "whitewine",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.8256; levenshtein=0.4615; semantic=0.8525; sequence_match=0.5455",
+          "per_method_scores": {
+            "jaro_winkler": 0.8256,
+            "levenshtein": 0.4615,
+            "semantic": 0.8525,
+            "sequence_match": 0.5455
+          },
+          "is_hard_match": false,
+          "avg_score": 0.7412,
+          "agg_score": 0.7412,
+          "accepted": false,
+          "selected": false,
+          "reason": "pred already taken by 'whitewine' (higher averaged score)"
+        },
+        {
+          "gold_term": "wine",
+          "pred_term": "redwine",
+          "top_methods_used": "semantic+sequence_match+levenshtein",
+          "scores_by_method": "jaro_winkler=0.4643; levenshtein=0.5714; semantic=0.8363; sequence_match=0.7273",
+          "per_method_scores": {
+            "jaro_winkler": 0.4643,
+            "levenshtein": 0.5714,
+            "semantic": 0.8363,
+            "sequence_match": 0.7273
+          },
+          "is_hard_match": false,
+          "avg_score": 0.7117,
+          "agg_score": 0.7117,
+          "accepted": false,
+          "selected": false,
+          "reason": "gold already mapped to 'wine'"
+        },
+        {
+          "gold_term": "redwine",
+          "pred_term": "wine",
+          "top_methods_used": "semantic+sequence_match+levenshtein",
+          "scores_by_method": "jaro_winkler=0.4643; levenshtein=0.5714; semantic=0.8363; sequence_match=0.7273",
+          "per_method_scores": {
+            "jaro_winkler": 0.4643,
+            "levenshtein": 0.5714,
+            "semantic": 0.8363,
+            "sequence_match": 0.7273
+          },
+          "is_hard_match": false,
+          "avg_score": 0.7117,
+          "agg_score": 0.7117,
+          "accepted": false,
+          "selected": false,
+          "reason": "gold already mapped to 'redwine'"
+        },
+        {
+          "gold_term": "wine",
+          "pred_term": "whitewine",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.6944; levenshtein=0.4444; semantic=0.7709; sequence_match=0.6154",
+          "per_method_scores": {
+            "jaro_winkler": 0.6944,
+            "levenshtein": 0.4444,
+            "semantic": 0.7709,
+            "sequence_match": 0.6154
+          },
+          "is_hard_match": false,
+          "avg_score": 0.6936,
+          "agg_score": 0.6936,
+          "accepted": false,
+          "selected": false,
+          "reason": "gold already mapped to 'wine'"
+        },
+        {
+          "gold_term": "whitewine",
+          "pred_term": "wine",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.6944; levenshtein=0.4444; semantic=0.7709; sequence_match=0.6154",
+          "per_method_scores": {
+            "jaro_winkler": 0.6944,
+            "levenshtein": 0.4444,
+            "semantic": 0.7709,
+            "sequence_match": 0.6154
+          },
+          "is_hard_match": false,
+          "avg_score": 0.6936,
+          "agg_score": 0.6936,
+          "accepted": false,
+          "selected": false,
+          "reason": "gold already mapped to 'whitewine'"
+        },
+        {
+          "gold_term": "redwine",
+          "pred_term": "whitewine",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.6899; levenshtein=0.4444; semantic=0.7557; sequence_match=0.6250",
+          "per_method_scores": {
+            "jaro_winkler": 0.6899,
+            "levenshtein": 0.4444,
+            "semantic": 0.7557,
+            "sequence_match": 0.625
+          },
+          "is_hard_match": false,
+          "avg_score": 0.6902,
+          "agg_score": 0.6902,
+          "accepted": false,
+          "selected": false,
+          "reason": "gold already mapped to 'redwine'"
+        },
+        {
+          "gold_term": "whitewine",
+          "pred_term": "redwine",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.6899; levenshtein=0.4444; semantic=0.7557; sequence_match=0.6250",
+          "per_method_scores": {
+            "jaro_winkler": 0.6899,
+            "levenshtein": 0.4444,
+            "semantic": 0.7557,
+            "sequence_match": 0.625
+          },
+          "is_hard_match": false,
+          "avg_score": 0.6902,
+          "agg_score": 0.6902,
+          "accepted": false,
+          "selected": false,
+          "reason": "gold already mapped to 'whitewine'"
+        },
+        {
+          "gold_term": "winedescriptor",
+          "pred_term": "wine",
+          "top_methods_used": "jaro_winkler+semantic+sequence_match",
+          "scores_by_method": "jaro_winkler=0.8571; levenshtein=0.2857; semantic=0.7451; sequence_match=0.4444",
+          "per_method_scores": {
+            "jaro_winkler": 0.8571,
+            "levenshtein": 0.2857,
+            "semantic": 0.7451,
+            "sequence_match": 0.4444
+          },
+          "is_hard_match": false,
+          "avg_score": 0.6822,
+          "agg_score": 0.6822,
+          "accepted": false,
+          "selected": false,
+          "reason": "pred already taken by 'wine' (higher averaged score)"
+        },
+        {
+          "gold_term": "wine",
+          "pred_term": "winecharacteristic",
+          "top_methods_used": "jaro_winkler+semantic+sequence_match",
+          "scores_by_method": "jaro_winkler=0.8444; levenshtein=0.2222; semantic=0.7778; sequence_match=0.3636",
+          "per_method_scores": {
+            "jaro_winkler": 0.8444,
+            "levenshtein": 0.2222,
+            "semantic": 0.7778,
+            "sequence_match": 0.3636
+          },
+          "is_hard_match": false,
+          "avg_score": 0.662,
+          "agg_score": 0.662,
+          "accepted": false,
+          "selected": false,
+          "reason": "gold already mapped to 'wine'"
+        },
+        {
+          "gold_term": "redbordeaux",
+          "pred_term": "redwine",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.6450; levenshtein=0.3636; semantic=0.8410; sequence_match=0.4444",
+          "per_method_scores": {
+            "jaro_winkler": 0.645,
+            "levenshtein": 0.3636,
+            "semantic": 0.841,
+            "sequence_match": 0.4444
+          },
+          "is_hard_match": false,
+          "avg_score": 0.6435,
+          "agg_score": 0.6435,
+          "accepted": false,
+          "selected": false,
+          "reason": "pred already taken by 'redwine' (higher averaged score)"
+        },
+        {
+          "gold_term": "winegrape",
+          "pred_term": "redwine",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.6233; levenshtein=0.2222; semantic=0.8048; sequence_match=0.5000",
+          "per_method_scores": {
+            "jaro_winkler": 0.6233,
+            "levenshtein": 0.2222,
+            "semantic": 0.8048,
+            "sequence_match": 0.5
+          },
+          "is_hard_match": false,
+          "avg_score": 0.6427,
+          "agg_score": 0.6427,
+          "accepted": false,
+          "selected": false,
+          "reason": "gold already mapped to 'grape'"
+        },
+        {
+          "gold_term": "winegrape",
+          "pred_term": "winecharacteristic",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.6746; levenshtein=0.3889; semantic=0.7224; sequence_match=0.5185",
+          "per_method_scores": {
+            "jaro_winkler": 0.6746,
+            "levenshtein": 0.3889,
+            "semantic": 0.7224,
+            "sequence_match": 0.5185
+          },
+          "is_hard_match": false,
+          "avg_score": 0.6385,
+          "agg_score": 0.6385,
+          "accepted": false,
+          "selected": false,
+          "reason": "gold already mapped to 'grape'"
+        },
+        {
+          "gold_term": "winegrape",
+          "pred_term": "whitewine",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.6296; levenshtein=0.3333; semantic=0.7625; sequence_match=0.4444",
+          "per_method_scores": {
+            "jaro_winkler": 0.6296,
+            "levenshtein": 0.3333,
+            "semantic": 0.7625,
+            "sequence_match": 0.4444
+          },
+          "is_hard_match": false,
+          "avg_score": 0.6122,
+          "agg_score": 0.6122,
+          "accepted": false,
+          "selected": false,
+          "reason": "gold already mapped to 'grape'"
+        },
+        {
+          "gold_term": "wine",
+          "pred_term": "vintageyear",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.6742; levenshtein=0.2727; semantic=0.7019; sequence_match=0.4000",
+          "per_method_scores": {
+            "jaro_winkler": 0.6742,
+            "levenshtein": 0.2727,
+            "semantic": 0.7019,
+            "sequence_match": 0.4
+          },
+          "is_hard_match": false,
+          "avg_score": 0.592,
+          "agg_score": 0.592,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5920 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "vintageyear",
+          "pred_term": "wine",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.6742; levenshtein=0.2727; semantic=0.7019; sequence_match=0.4000",
+          "per_method_scores": {
+            "jaro_winkler": 0.6742,
+            "levenshtein": 0.2727,
+            "semantic": 0.7019,
+            "sequence_match": 0.4
+          },
+          "is_hard_match": false,
+          "avg_score": 0.592,
+          "agg_score": 0.592,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5920 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "wine",
+          "pred_term": "vintage",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.5952; levenshtein=0.4286; semantic=0.6225; sequence_match=0.5455",
+          "per_method_scores": {
+            "jaro_winkler": 0.5952,
+            "levenshtein": 0.4286,
+            "semantic": 0.6225,
+            "sequence_match": 0.5455
+          },
+          "is_hard_match": false,
+          "avg_score": 0.5877,
+          "agg_score": 0.5877,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5877 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "vintage",
+          "pred_term": "wine",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.5952; levenshtein=0.4286; semantic=0.6225; sequence_match=0.5455",
+          "per_method_scores": {
+            "jaro_winkler": 0.5952,
+            "levenshtein": 0.4286,
+            "semantic": 0.6225,
+            "sequence_match": 0.5455
+          },
+          "is_hard_match": false,
+          "avg_score": 0.5877,
+          "agg_score": 0.5877,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5877 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "winegrape",
+          "pred_term": "vintageyear",
+          "top_methods_used": "jaro_winkler+semantic+sequence_match",
+          "scores_by_method": "jaro_winkler=0.6818; levenshtein=0.2727; semantic=0.6736; sequence_match=0.4000",
+          "per_method_scores": {
+            "jaro_winkler": 0.6818,
+            "levenshtein": 0.2727,
+            "semantic": 0.6736,
+            "sequence_match": 0.4
+          },
+          "is_hard_match": false,
+          "avg_score": 0.5851,
+          "agg_score": 0.5851,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5851 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "zinfandel",
+          "pred_term": "wine",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.5741; levenshtein=0.3333; semantic=0.6978; sequence_match=0.4615",
+          "per_method_scores": {
+            "jaro_winkler": 0.5741,
+            "levenshtein": 0.3333,
+            "semantic": 0.6978,
+            "sequence_match": 0.4615
+          },
+          "is_hard_match": false,
+          "avg_score": 0.5778,
+          "agg_score": 0.5778,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5778 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "winegrape",
+          "pred_term": "vintage",
+          "top_methods_used": "jaro_winkler+semantic+levenshtein",
+          "scores_by_method": "jaro_winkler=0.6899; levenshtein=0.4444; semantic=0.5941; sequence_match=0.3750",
+          "per_method_scores": {
+            "jaro_winkler": 0.6899,
+            "levenshtein": 0.4444,
+            "semantic": 0.5941,
+            "sequence_match": 0.375
+          },
+          "is_hard_match": false,
+          "avg_score": 0.5762,
+          "agg_score": 0.5762,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5762 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "winedescriptor",
+          "pred_term": "redwine",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.6508; levenshtein=0.2143; semantic=0.6952; sequence_match=0.3810",
+          "per_method_scores": {
+            "jaro_winkler": 0.6508,
+            "levenshtein": 0.2143,
+            "semantic": 0.6952,
+            "sequence_match": 0.381
+          },
+          "is_hard_match": false,
+          "avg_score": 0.5757,
+          "agg_score": 0.5757,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5757 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "zinfandel",
+          "pred_term": "vintage",
+          "top_methods_used": "jaro_winkler+semantic+sequence_match",
+          "scores_by_method": "jaro_winkler=0.6720; levenshtein=0.4444; semantic=0.5410; sequence_match=0.5000",
+          "per_method_scores": {
+            "jaro_winkler": 0.672,
+            "levenshtein": 0.4444,
+            "semantic": 0.541,
+            "sequence_match": 0.5
+          },
+          "is_hard_match": false,
+          "avg_score": 0.571,
+          "agg_score": 0.571,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5710 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "whitebordeaux",
+          "pred_term": "wine",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.6603; levenshtein=0.2308; semantic=0.6743; sequence_match=0.3529",
+          "per_method_scores": {
+            "jaro_winkler": 0.6603,
+            "levenshtein": 0.2308,
+            "semantic": 0.6743,
+            "sequence_match": 0.3529
+          },
+          "is_hard_match": false,
+          "avg_score": 0.5625,
+          "agg_score": 0.5625,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5625 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "zinfandel",
+          "pred_term": "redwine",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.5873; levenshtein=0.2222; semantic=0.6889; sequence_match=0.3750",
+          "per_method_scores": {
+            "jaro_winkler": 0.5873,
+            "levenshtein": 0.2222,
+            "semantic": 0.6889,
+            "sequence_match": 0.375
+          },
+          "is_hard_match": false,
+          "avg_score": 0.5504,
+          "agg_score": 0.5504,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5504 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "redwine",
+          "pred_term": "winecharacteristic",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.6190; levenshtein=0.1111; semantic=0.7002; sequence_match=0.3200",
+          "per_method_scores": {
+            "jaro_winkler": 0.619,
+            "levenshtein": 0.1111,
+            "semantic": 0.7002,
+            "sequence_match": 0.32
+          },
+          "is_hard_match": false,
+          "avg_score": 0.5464,
+          "agg_score": 0.5464,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5464 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "winedescriptor",
+          "pred_term": "vintageyear",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.6039; levenshtein=0.2143; semantic=0.6326; sequence_match=0.4000",
+          "per_method_scores": {
+            "jaro_winkler": 0.6039,
+            "levenshtein": 0.2143,
+            "semantic": 0.6326,
+            "sequence_match": 0.4
+          },
+          "is_hard_match": false,
+          "avg_score": 0.5455,
+          "agg_score": 0.5455,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5455 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "whitebordeaux",
+          "pred_term": "vintageyear",
+          "top_methods_used": "jaro_winkler+semantic+sequence_match",
+          "scores_by_method": "jaro_winkler=0.6134; levenshtein=0.2308; semantic=0.6014; sequence_match=0.4167",
+          "per_method_scores": {
+            "jaro_winkler": 0.6134,
+            "levenshtein": 0.2308,
+            "semantic": 0.6014,
+            "sequence_match": 0.4167
+          },
+          "is_hard_match": false,
+          "avg_score": 0.5438,
+          "agg_score": 0.5438,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5438 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "winedescriptor",
+          "pred_term": "whitewine",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.5873; levenshtein=0.2143; semantic=0.6956; sequence_match=0.3478",
+          "per_method_scores": {
+            "jaro_winkler": 0.5873,
+            "levenshtein": 0.2143,
+            "semantic": 0.6956,
+            "sequence_match": 0.3478
+          },
+          "is_hard_match": false,
+          "avg_score": 0.5436,
+          "agg_score": 0.5436,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5436 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "redwine",
+          "pred_term": "grape",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.5619; levenshtein=0.1429; semantic=0.7256; sequence_match=0.3333",
+          "per_method_scores": {
+            "jaro_winkler": 0.5619,
+            "levenshtein": 0.1429,
+            "semantic": 0.7256,
+            "sequence_match": 0.3333
+          },
+          "is_hard_match": false,
+          "avg_score": 0.5403,
+          "agg_score": 0.5403,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5403 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "vintageyear",
+          "pred_term": "winecharacteristic",
+          "top_methods_used": "jaro_winkler+semantic+sequence_match",
+          "scores_by_method": "jaro_winkler=0.6406; levenshtein=0.2222; semantic=0.6196; sequence_match=0.3448",
+          "per_method_scores": {
+            "jaro_winkler": 0.6406,
+            "levenshtein": 0.2222,
+            "semantic": 0.6196,
+            "sequence_match": 0.3448
+          },
+          "is_hard_match": false,
+          "avg_score": 0.535,
+          "agg_score": 0.535,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5350 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "zinfandel",
+          "pred_term": "vintageyear",
+          "top_methods_used": "jaro_winkler+semantic+sequence_match",
+          "scores_by_method": "jaro_winkler=0.6027; levenshtein=0.3636; semantic=0.5951; sequence_match=0.4000",
+          "per_method_scores": {
+            "jaro_winkler": 0.6027,
+            "levenshtein": 0.3636,
+            "semantic": 0.5951,
+            "sequence_match": 0.4
+          },
+          "is_hard_match": false,
+          "avg_score": 0.5326,
+          "agg_score": 0.5326,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5326 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "whitewine",
+          "pred_term": "winecharacteristic",
+          "top_methods_used": "jaro_winkler+semantic+sequence_match",
+          "scores_by_method": "jaro_winkler=0.6528; levenshtein=0.2778; semantic=0.6487; sequence_match=0.2963",
+          "per_method_scores": {
+            "jaro_winkler": 0.6528,
+            "levenshtein": 0.2778,
+            "semantic": 0.6487,
+            "sequence_match": 0.2963
+          },
+          "is_hard_match": false,
+          "avg_score": 0.5326,
+          "agg_score": 0.5326,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5326 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "bordeaux",
+          "pred_term": "redwine",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.4901; levenshtein=0.1250; semantic=0.6970; sequence_match=0.4000",
+          "per_method_scores": {
+            "jaro_winkler": 0.4901,
+            "levenshtein": 0.125,
+            "semantic": 0.697,
+            "sequence_match": 0.4
+          },
+          "is_hard_match": false,
+          "avg_score": 0.529,
+          "agg_score": 0.529,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5290 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "redwine",
+          "pred_term": "vintageyear",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.5671; levenshtein=0.0909; semantic=0.6683; sequence_match=0.3333",
+          "per_method_scores": {
+            "jaro_winkler": 0.5671,
+            "levenshtein": 0.0909,
+            "semantic": 0.6683,
+            "sequence_match": 0.3333
+          },
+          "is_hard_match": false,
+          "avg_score": 0.5229,
+          "agg_score": 0.5229,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5229 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "vintageyear",
+          "pred_term": "redwine",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.5671; levenshtein=0.0909; semantic=0.6683; sequence_match=0.3333",
+          "per_method_scores": {
+            "jaro_winkler": 0.5671,
+            "levenshtein": 0.0909,
+            "semantic": 0.6683,
+            "sequence_match": 0.3333
+          },
+          "is_hard_match": false,
+          "avg_score": 0.5229,
+          "agg_score": 0.5229,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5229 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "whitebordeaux",
+          "pred_term": "redwine",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.5430; levenshtein=0.1538; semantic=0.7157; sequence_match=0.3000",
+          "per_method_scores": {
+            "jaro_winkler": 0.543,
+            "levenshtein": 0.1538,
+            "semantic": 0.7157,
+            "sequence_match": 0.3
+          },
+          "is_hard_match": false,
+          "avg_score": 0.5196,
+          "agg_score": 0.5196,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5196 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "whitewine",
+          "pred_term": "vintage",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.5873; levenshtein=0.2222; semantic=0.5960; sequence_match=0.3750",
+          "per_method_scores": {
+            "jaro_winkler": 0.5873,
+            "levenshtein": 0.2222,
+            "semantic": 0.596,
+            "sequence_match": 0.375
+          },
+          "is_hard_match": false,
+          "avg_score": 0.5194,
+          "agg_score": 0.5194,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5194 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "vintage",
+          "pred_term": "whitewine",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.5873; levenshtein=0.2222; semantic=0.5960; sequence_match=0.3750",
+          "per_method_scores": {
+            "jaro_winkler": 0.5873,
+            "levenshtein": 0.2222,
+            "semantic": 0.596,
+            "sequence_match": 0.375
+          },
+          "is_hard_match": false,
+          "avg_score": 0.5194,
+          "agg_score": 0.5194,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5194 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "whitewine",
+          "pred_term": "vintageyear",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.6027; levenshtein=0.1818; semantic=0.6439; sequence_match=0.3000",
+          "per_method_scores": {
+            "jaro_winkler": 0.6027,
+            "levenshtein": 0.1818,
+            "semantic": 0.6439,
+            "sequence_match": 0.3
+          },
+          "is_hard_match": false,
+          "avg_score": 0.5155,
+          "agg_score": 0.5155,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5155 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "vintageyear",
+          "pred_term": "whitewine",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.6027; levenshtein=0.1818; semantic=0.6439; sequence_match=0.3000",
+          "per_method_scores": {
+            "jaro_winkler": 0.6027,
+            "levenshtein": 0.1818,
+            "semantic": 0.6439,
+            "sequence_match": 0.3
+          },
+          "is_hard_match": false,
+          "avg_score": 0.5155,
+          "agg_score": 0.5155,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5155 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "vintage",
+          "pred_term": "grape",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.5619; levenshtein=0.2857; semantic=0.6333; sequence_match=0.3333",
+          "per_method_scores": {
+            "jaro_winkler": 0.5619,
+            "levenshtein": 0.2857,
+            "semantic": 0.6333,
+            "sequence_match": 0.3333
+          },
+          "is_hard_match": false,
+          "avg_score": 0.5095,
+          "agg_score": 0.5095,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5095 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "bordeaux",
+          "pred_term": "grape",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.5472; levenshtein=0.2500; semantic=0.6734; sequence_match=0.3077",
+          "per_method_scores": {
+            "jaro_winkler": 0.5472,
+            "levenshtein": 0.25,
+            "semantic": 0.6734,
+            "sequence_match": 0.3077
+          },
+          "is_hard_match": false,
+          "avg_score": 0.5094,
+          "agg_score": 0.5094,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5094 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "zinfandel",
+          "pred_term": "grape",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.5407; levenshtein=0.2222; semantic=0.6499; sequence_match=0.2857",
+          "per_method_scores": {
+            "jaro_winkler": 0.5407,
+            "levenshtein": 0.2222,
+            "semantic": 0.6499,
+            "sequence_match": 0.2857
+          },
+          "is_hard_match": false,
+          "avg_score": 0.4921,
+          "agg_score": 0.4921,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.4921 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "wine",
+          "pred_term": "grape",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.4833; levenshtein=0.2000; semantic=0.7611; sequence_match=0.2222",
+          "per_method_scores": {
+            "jaro_winkler": 0.4833,
+            "levenshtein": 0.2,
+            "semantic": 0.7611,
+            "sequence_match": 0.2222
+          },
+          "is_hard_match": false,
+          "avg_score": 0.4889,
+          "agg_score": 0.4889,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.4889 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "whitebordeaux",
+          "pred_term": "winecharacteristic",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.5616; levenshtein=0.2222; semantic=0.5814; sequence_match=0.3226",
+          "per_method_scores": {
+            "jaro_winkler": 0.5616,
+            "levenshtein": 0.2222,
+            "semantic": 0.5814,
+            "sequence_match": 0.3226
+          },
+          "is_hard_match": false,
+          "avg_score": 0.4885,
+          "agg_score": 0.4885,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.4885 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "redwine",
+          "pred_term": "vintage",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.4286; levenshtein=0.1429; semantic=0.6081; sequence_match=0.4286",
+          "per_method_scores": {
+            "jaro_winkler": 0.4286,
+            "levenshtein": 0.1429,
+            "semantic": 0.6081,
+            "sequence_match": 0.4286
+          },
+          "is_hard_match": false,
+          "avg_score": 0.4884,
+          "agg_score": 0.4884,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.4884 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "vintage",
+          "pred_term": "redwine",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.4286; levenshtein=0.1429; semantic=0.6081; sequence_match=0.4286",
+          "per_method_scores": {
+            "jaro_winkler": 0.4286,
+            "levenshtein": 0.1429,
+            "semantic": 0.6081,
+            "sequence_match": 0.4286
+          },
+          "is_hard_match": false,
+          "avg_score": 0.4884,
+          "agg_score": 0.4884,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.4884 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "redwine",
+          "pred_term": "bordeaux",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.4901; levenshtein=0.1250; semantic=0.6970; sequence_match=0.2667",
+          "per_method_scores": {
+            "jaro_winkler": 0.4901,
+            "levenshtein": 0.125,
+            "semantic": 0.697,
+            "sequence_match": 0.2667
+          },
+          "is_hard_match": false,
+          "avg_score": 0.4846,
+          "agg_score": 0.4846,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.4846 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "redbordeaux",
+          "pred_term": "grape",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.5273; levenshtein=0.1818; semantic=0.6667; sequence_match=0.2500",
+          "per_method_scores": {
+            "jaro_winkler": 0.5273,
+            "levenshtein": 0.1818,
+            "semantic": 0.6667,
+            "sequence_match": 0.25
+          },
+          "is_hard_match": false,
+          "avg_score": 0.4813,
+          "agg_score": 0.4813,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.4813 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "vintageyear",
+          "pred_term": "grape",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.5273; levenshtein=0.1818; semantic=0.6555; sequence_match=0.2500",
+          "per_method_scores": {
+            "jaro_winkler": 0.5273,
+            "levenshtein": 0.1818,
+            "semantic": 0.6555,
+            "sequence_match": 0.25
+          },
+          "is_hard_match": false,
+          "avg_score": 0.4776,
+          "agg_score": 0.4776,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.4776 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "whitebordeaux",
+          "pred_term": "vintage",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.5531; levenshtein=0.1538; semantic=0.5791; sequence_match=0.3000",
+          "per_method_scores": {
+            "jaro_winkler": 0.5531,
+            "levenshtein": 0.1538,
+            "semantic": 0.5791,
+            "sequence_match": 0.3
+          },
+          "is_hard_match": false,
+          "avg_score": 0.4774,
+          "agg_score": 0.4774,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.4774 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "vintage",
+          "pred_term": "winecharacteristic",
+          "top_methods_used": "jaro_winkler+semantic+sequence_match",
+          "scores_by_method": "jaro_winkler=0.5974; levenshtein=0.2222; semantic=0.5148; sequence_match=0.3200",
+          "per_method_scores": {
+            "jaro_winkler": 0.5974,
+            "levenshtein": 0.2222,
+            "semantic": 0.5148,
+            "sequence_match": 0.32
+          },
+          "is_hard_match": false,
+          "avg_score": 0.4774,
+          "agg_score": 0.4774,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.4774 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "winedescriptor",
+          "pred_term": "vintage",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.5476; levenshtein=0.1429; semantic=0.5654; sequence_match=0.2857",
+          "per_method_scores": {
+            "jaro_winkler": 0.5476,
+            "levenshtein": 0.1429,
+            "semantic": 0.5654,
+            "sequence_match": 0.2857
+          },
+          "is_hard_match": false,
+          "avg_score": 0.4662,
+          "agg_score": 0.4662,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.4662 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "zinfandel",
+          "pred_term": "whitewine",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.4444; levenshtein=0.1111; semantic=0.6174; sequence_match=0.3333",
+          "per_method_scores": {
+            "jaro_winkler": 0.4444,
+            "levenshtein": 0.1111,
+            "semantic": 0.6174,
+            "sequence_match": 0.3333
+          },
+          "is_hard_match": false,
+          "avg_score": 0.465,
+          "agg_score": 0.465,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.4650 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "winegrape",
+          "pred_term": "bordeaux",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.4583; levenshtein=0.1111; semantic=0.6579; sequence_match=0.2353",
+          "per_method_scores": {
+            "jaro_winkler": 0.4583,
+            "levenshtein": 0.1111,
+            "semantic": 0.6579,
+            "sequence_match": 0.2353
+          },
+          "is_hard_match": false,
+          "avg_score": 0.4505,
+          "agg_score": 0.4505,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.4505 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "zinfandel",
+          "pred_term": "winecharacteristic",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.4722; levenshtein=0.2222; semantic=0.5808; sequence_match=0.2963",
+          "per_method_scores": {
+            "jaro_winkler": 0.4722,
+            "levenshtein": 0.2222,
+            "semantic": 0.5808,
+            "sequence_match": 0.2963
+          },
+          "is_hard_match": false,
+          "avg_score": 0.4498,
+          "agg_score": 0.4498,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.4498 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "wine",
+          "pred_term": "bordeaux",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.4583; levenshtein=0.1250; semantic=0.6715; sequence_match=0.1667",
+          "per_method_scores": {
+            "jaro_winkler": 0.4583,
+            "levenshtein": 0.125,
+            "semantic": 0.6715,
+            "sequence_match": 0.1667
+          },
+          "is_hard_match": false,
+          "avg_score": 0.4322,
+          "agg_score": 0.4322,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.4322 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "bordeaux",
+          "pred_term": "wine",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.4583; levenshtein=0.1250; semantic=0.6715; sequence_match=0.1667",
+          "per_method_scores": {
+            "jaro_winkler": 0.4583,
+            "levenshtein": 0.125,
+            "semantic": 0.6715,
+            "sequence_match": 0.1667
+          },
+          "is_hard_match": false,
+          "avg_score": 0.4322,
+          "agg_score": 0.4322,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.4322 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "whitewine",
+          "pred_term": "grape",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.4370; levenshtein=0.1111; semantic=0.7009; sequence_match=0.1429",
+          "per_method_scores": {
+            "jaro_winkler": 0.437,
+            "levenshtein": 0.1111,
+            "semantic": 0.7009,
+            "sequence_match": 0.1429
+          },
+          "is_hard_match": false,
+          "avg_score": 0.4269,
+          "agg_score": 0.4269,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.4269 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "redbordeaux",
+          "pred_term": "whitewine",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.4680; levenshtein=0.0000; semantic=0.6066; sequence_match=0.2000",
+          "per_method_scores": {
+            "jaro_winkler": 0.468,
+            "levenshtein": 0.0,
+            "semantic": 0.6066,
+            "sequence_match": 0.2
+          },
+          "is_hard_match": false,
+          "avg_score": 0.4249,
+          "agg_score": 0.4249,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.4249 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "redbordeaux",
+          "pred_term": "winecharacteristic",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.5108; levenshtein=0.1667; semantic=0.5538; sequence_match=0.2069",
+          "per_method_scores": {
+            "jaro_winkler": 0.5108,
+            "levenshtein": 0.1667,
+            "semantic": 0.5538,
+            "sequence_match": 0.2069
+          },
+          "is_hard_match": false,
+          "avg_score": 0.4238,
+          "agg_score": 0.4238,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.4238 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "zinfandel",
+          "pred_term": "bordeaux",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.4583; levenshtein=0.0000; semantic=0.5765; sequence_match=0.2353",
+          "per_method_scores": {
+            "jaro_winkler": 0.4583,
+            "levenshtein": 0.0,
+            "semantic": 0.5765,
+            "sequence_match": 0.2353
+          },
+          "is_hard_match": false,
+          "avg_score": 0.4234,
+          "agg_score": 0.4234,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.4234 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "whitebordeaux",
+          "pred_term": "grape",
+          "top_methods_used": "semantic+jaro_winkler+levenshtein",
+          "scores_by_method": "jaro_winkler=0.4256; levenshtein=0.1538; semantic=0.6660; sequence_match=0.1111",
+          "per_method_scores": {
+            "jaro_winkler": 0.4256,
+            "levenshtein": 0.1538,
+            "semantic": 0.666,
+            "sequence_match": 0.1111
+          },
+          "is_hard_match": false,
+          "avg_score": 0.4152,
+          "agg_score": 0.4152,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.4152 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "redbordeaux",
+          "pred_term": "wine",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.4470; levenshtein=0.0909; semantic=0.6598; sequence_match=0.1333",
+          "per_method_scores": {
+            "jaro_winkler": 0.447,
+            "levenshtein": 0.0909,
+            "semantic": 0.6598,
+            "sequence_match": 0.1333
+          },
+          "is_hard_match": false,
+          "avg_score": 0.4134,
+          "agg_score": 0.4134,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.4134 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "winedescriptor",
+          "pred_term": "grape",
+          "top_methods_used": "semantic+jaro_winkler+levenshtein",
+          "scores_by_method": "jaro_winkler=0.4238; levenshtein=0.1429; semantic=0.6297; sequence_match=0.1053",
+          "per_method_scores": {
+            "jaro_winkler": 0.4238,
+            "levenshtein": 0.1429,
+            "semantic": 0.6297,
+            "sequence_match": 0.1053
+          },
+          "is_hard_match": false,
+          "avg_score": 0.3988,
+          "agg_score": 0.3988,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.3988 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "winedescriptor",
+          "pred_term": "bordeaux",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.4187; levenshtein=0.1429; semantic=0.5615; sequence_match=0.1818",
+          "per_method_scores": {
+            "jaro_winkler": 0.4187,
+            "levenshtein": 0.1429,
+            "semantic": 0.5615,
+            "sequence_match": 0.1818
+          },
+          "is_hard_match": false,
+          "avg_score": 0.3873,
+          "agg_score": 0.3873,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.3873 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "redbordeaux",
+          "pred_term": "vintageyear",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.2879; levenshtein=0.0909; semantic=0.5976; sequence_match=0.2727",
+          "per_method_scores": {
+            "jaro_winkler": 0.2879,
+            "levenshtein": 0.0909,
+            "semantic": 0.5976,
+            "sequence_match": 0.2727
+          },
+          "is_hard_match": false,
+          "avg_score": 0.3861,
+          "agg_score": 0.3861,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.3861 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "bordeaux",
+          "pred_term": "whitewine",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.4120; levenshtein=0.1111; semantic=0.5887; sequence_match=0.1176",
+          "per_method_scores": {
+            "jaro_winkler": 0.412,
+            "levenshtein": 0.1111,
+            "semantic": 0.5887,
+            "sequence_match": 0.1176
+          },
+          "is_hard_match": false,
+          "avg_score": 0.3728,
+          "agg_score": 0.3728,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.3728 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "whitewine",
+          "pred_term": "bordeaux",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.4120; levenshtein=0.1111; semantic=0.5887; sequence_match=0.1176",
+          "per_method_scores": {
+            "jaro_winkler": 0.412,
+            "levenshtein": 0.1111,
+            "semantic": 0.5887,
+            "sequence_match": 0.1176
+          },
+          "is_hard_match": false,
+          "avg_score": 0.3728,
+          "agg_score": 0.3728,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.3728 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "bordeaux",
+          "pred_term": "winecharacteristic",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.4028; levenshtein=0.1111; semantic=0.5560; sequence_match=0.1538",
+          "per_method_scores": {
+            "jaro_winkler": 0.4028,
+            "levenshtein": 0.1111,
+            "semantic": 0.556,
+            "sequence_match": 0.1538
+          },
+          "is_hard_match": false,
+          "avg_score": 0.3709,
+          "agg_score": 0.3709,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.3709 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "bordeaux",
+          "pred_term": "vintageyear",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.3106; levenshtein=0.0909; semantic=0.5898; sequence_match=0.2105",
+          "per_method_scores": {
+            "jaro_winkler": 0.3106,
+            "levenshtein": 0.0909,
+            "semantic": 0.5898,
+            "sequence_match": 0.2105
+          },
+          "is_hard_match": false,
+          "avg_score": 0.3703,
+          "agg_score": 0.3703,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.3703 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "vintageyear",
+          "pred_term": "bordeaux",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.3106; levenshtein=0.0909; semantic=0.5898; sequence_match=0.2105",
+          "per_method_scores": {
+            "jaro_winkler": 0.3106,
+            "levenshtein": 0.0909,
+            "semantic": 0.5898,
+            "sequence_match": 0.2105
+          },
+          "is_hard_match": false,
+          "avg_score": 0.3703,
+          "agg_score": 0.3703,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.3703 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "bordeaux",
+          "pred_term": "vintage",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.3452; levenshtein=0.1250; semantic=0.6070; sequence_match=0.1333",
+          "per_method_scores": {
+            "jaro_winkler": 0.3452,
+            "levenshtein": 0.125,
+            "semantic": 0.607,
+            "sequence_match": 0.1333
+          },
+          "is_hard_match": false,
+          "avg_score": 0.3619,
+          "agg_score": 0.3619,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.3619 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "vintage",
+          "pred_term": "bordeaux",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.3452; levenshtein=0.1250; semantic=0.6070; sequence_match=0.1333",
+          "per_method_scores": {
+            "jaro_winkler": 0.3452,
+            "levenshtein": 0.125,
+            "semantic": 0.607,
+            "sequence_match": 0.1333
+          },
+          "is_hard_match": false,
+          "avg_score": 0.3619,
+          "agg_score": 0.3619,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.3619 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "redbordeaux",
+          "pred_term": "vintage",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.3225; levenshtein=0.0909; semantic=0.6004; sequence_match=0.1111",
+          "per_method_scores": {
+            "jaro_winkler": 0.3225,
+            "levenshtein": 0.0909,
+            "semantic": 0.6004,
+            "sequence_match": 0.1111
+          },
+          "is_hard_match": false,
+          "avg_score": 0.3447,
+          "agg_score": 0.3447,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.3447 < final_threshold 0.6"
+        }
+      ],
+      "property": [
+        {
+          "gold_term": "hasbody",
+          "pred_term": "hasbody",
+          "top_methods_used": "hard_match",
+          "scores_by_method": "hard_match=1.0000; jaro_winkler=1.0000; levenshtein=1.0000; semantic=1.0000; sequence_match=1.0000",
+          "per_method_scores": {
+            "hard_match": 1.0,
+            "jaro_winkler": 1.0,
+            "levenshtein": 1.0,
+            "semantic": 1.0,
+            "sequence_match": 1.0
+          },
+          "is_hard_match": true,
+          "avg_score": 1.0,
+          "agg_score": 1.0,
+          "accepted": true,
+          "selected": true,
+          "reason": "selected"
+        },
+        {
+          "gold_term": "hasvintageyear",
+          "pred_term": "hasvintageyear",
+          "top_methods_used": "hard_match",
+          "scores_by_method": "hard_match=1.0000; jaro_winkler=1.0000; levenshtein=1.0000; semantic=1.0000; sequence_match=1.0000",
+          "per_method_scores": {
+            "hard_match": 1.0,
+            "jaro_winkler": 1.0,
+            "levenshtein": 1.0,
+            "semantic": 1.0,
+            "sequence_match": 1.0
+          },
+          "is_hard_match": true,
+          "avg_score": 1.0,
+          "agg_score": 1.0,
+          "accepted": true,
+          "selected": true,
+          "reason": "selected"
+        },
+        {
+          "gold_term": "hasvintageyear",
+          "pred_term": "hasvintage",
+          "top_methods_used": "jaro_winkler+semantic+sequence_match",
+          "scores_by_method": "jaro_winkler=0.9429; levenshtein=0.7143; semantic=0.8555; sequence_match=0.8333",
+          "per_method_scores": {
+            "jaro_winkler": 0.9429,
+            "levenshtein": 0.7143,
+            "semantic": 0.8555,
+            "sequence_match": 0.8333
+          },
+          "is_hard_match": false,
+          "avg_score": 0.8772,
+          "agg_score": 0.8772,
+          "accepted": false,
+          "selected": false,
+          "reason": "gold already mapped to 'hasvintageyear'"
+        },
+        {
+          "gold_term": "hasbody",
+          "pred_term": "hasbouquet",
+          "top_methods_used": "jaro_winkler+semantic+sequence_match",
+          "scores_by_method": "jaro_winkler=0.8429; levenshtein=0.5000; semantic=0.6621; sequence_match=0.5882",
+          "per_method_scores": {
+            "jaro_winkler": 0.8429,
+            "levenshtein": 0.5,
+            "semantic": 0.6621,
+            "sequence_match": 0.5882
+          },
+          "is_hard_match": false,
+          "avg_score": 0.6977,
+          "agg_score": 0.6977,
+          "accepted": false,
+          "selected": false,
+          "reason": "gold already mapped to 'hasbody'"
+        },
+        {
+          "gold_term": "hasbody",
+          "pred_term": "hascolor",
+          "top_methods_used": "jaro_winkler+semantic+sequence_match",
+          "scores_by_method": "jaro_winkler=0.6905; levenshtein=0.5000; semantic=0.6310; sequence_match=0.5333",
+          "per_method_scores": {
+            "jaro_winkler": 0.6905,
+            "levenshtein": 0.5,
+            "semantic": 0.631,
+            "sequence_match": 0.5333
+          },
+          "is_hard_match": false,
+          "avg_score": 0.6183,
+          "agg_score": 0.6183,
+          "accepted": false,
+          "selected": false,
+          "reason": "gold already mapped to 'hasbody'"
+        },
+        {
+          "gold_term": "haswinedescriptor",
+          "pred_term": "hasvintageyear",
+          "top_methods_used": "jaro_winkler+semantic+sequence_match",
+          "scores_by_method": "jaro_winkler=0.6807; levenshtein=0.3529; semantic=0.5728; sequence_match=0.5161",
+          "per_method_scores": {
+            "jaro_winkler": 0.6807,
+            "levenshtein": 0.3529,
+            "semantic": 0.5728,
+            "sequence_match": 0.5161
+          },
+          "is_hard_match": false,
+          "avg_score": 0.5899,
+          "agg_score": 0.5899,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5899 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "haswinedescriptor",
+          "pred_term": "hasvintage",
+          "top_methods_used": "jaro_winkler+semantic+sequence_match",
+          "scores_by_method": "jaro_winkler=0.6510; levenshtein=0.2941; semantic=0.5967; sequence_match=0.4444",
+          "per_method_scores": {
+            "jaro_winkler": 0.651,
+            "levenshtein": 0.2941,
+            "semantic": 0.5967,
+            "sequence_match": 0.4444
+          },
+          "is_hard_match": false,
+          "avg_score": 0.564,
+          "agg_score": 0.564,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5640 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "haswinedescriptor",
+          "pred_term": "hascolor",
+          "top_methods_used": "jaro_winkler+semantic+sequence_match",
+          "scores_by_method": "jaro_winkler=0.6397; levenshtein=0.3529; semantic=0.5089; sequence_match=0.4800",
+          "per_method_scores": {
+            "jaro_winkler": 0.6397,
+            "levenshtein": 0.3529,
+            "semantic": 0.5089,
+            "sequence_match": 0.48
+          },
+          "is_hard_match": false,
+          "avg_score": 0.5429,
+          "agg_score": 0.5429,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5429 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "yearvalue",
+          "pred_term": "hasvintageyear",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.5767; levenshtein=0.2143; semantic=0.7023; sequence_match=0.3478",
+          "per_method_scores": {
+            "jaro_winkler": 0.5767,
+            "levenshtein": 0.2143,
+            "semantic": 0.7023,
+            "sequence_match": 0.3478
+          },
+          "is_hard_match": false,
+          "avg_score": 0.5423,
+          "agg_score": 0.5423,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5423 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "haswinedescriptor",
+          "pred_term": "hascharacteristic",
+          "top_methods_used": "jaro_winkler+semantic+sequence_match",
+          "scores_by_method": "jaro_winkler=0.6255; levenshtein=0.3529; semantic=0.5692; sequence_match=0.4118",
+          "per_method_scores": {
+            "jaro_winkler": 0.6255,
+            "levenshtein": 0.3529,
+            "semantic": 0.5692,
+            "sequence_match": 0.4118
+          },
+          "is_hard_match": false,
+          "avg_score": 0.5355,
+          "agg_score": 0.5355,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5355 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "hasbody",
+          "pred_term": "hasvintageyear",
+          "top_methods_used": "jaro_winkler+semantic+sequence_match",
+          "scores_by_method": "jaro_winkler=0.6190; levenshtein=0.2857; semantic=0.5930; sequence_match=0.3810",
+          "per_method_scores": {
+            "jaro_winkler": 0.619,
+            "levenshtein": 0.2857,
+            "semantic": 0.593,
+            "sequence_match": 0.381
+          },
+          "is_hard_match": false,
+          "avg_score": 0.531,
+          "agg_score": 0.531,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5310 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "hasvintageyear",
+          "pred_term": "hasbody",
+          "top_methods_used": "jaro_winkler+semantic+sequence_match",
+          "scores_by_method": "jaro_winkler=0.6190; levenshtein=0.2857; semantic=0.5930; sequence_match=0.3810",
+          "per_method_scores": {
+            "jaro_winkler": 0.619,
+            "levenshtein": 0.2857,
+            "semantic": 0.593,
+            "sequence_match": 0.381
+          },
+          "is_hard_match": false,
+          "avg_score": 0.531,
+          "agg_score": 0.531,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5310 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "hasbody",
+          "pred_term": "hasvintage",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.5762; levenshtein=0.3000; semantic=0.6332; sequence_match=0.3529",
+          "per_method_scores": {
+            "jaro_winkler": 0.5762,
+            "levenshtein": 0.3,
+            "semantic": 0.6332,
+            "sequence_match": 0.3529
+          },
+          "is_hard_match": false,
+          "avg_score": 0.5208,
+          "agg_score": 0.5208,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5208 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "hasvintageyear",
+          "pred_term": "hascolor",
+          "top_methods_used": "jaro_winkler+semantic+sequence_match",
+          "scores_by_method": "jaro_winkler=0.5952; levenshtein=0.2857; semantic=0.5924; sequence_match=0.3636",
+          "per_method_scores": {
+            "jaro_winkler": 0.5952,
+            "levenshtein": 0.2857,
+            "semantic": 0.5924,
+            "sequence_match": 0.3636
+          },
+          "is_hard_match": false,
+          "avg_score": 0.5171,
+          "agg_score": 0.5171,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5171 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "haswinedescriptor",
+          "pred_term": "hasbody",
+          "top_methods_used": "jaro_winkler+semantic+sequence_match",
+          "scores_by_method": "jaro_winkler=0.6022; levenshtein=0.2353; semantic=0.5920; sequence_match=0.3333",
+          "per_method_scores": {
+            "jaro_winkler": 0.6022,
+            "levenshtein": 0.2353,
+            "semantic": 0.592,
+            "sequence_match": 0.3333
+          },
+          "is_hard_match": false,
+          "avg_score": 0.5092,
+          "agg_score": 0.5092,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5092 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "hasvintageyear",
+          "pred_term": "hascharacteristic",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.5973; levenshtein=0.2941; semantic=0.6064; sequence_match=0.3226",
+          "per_method_scores": {
+            "jaro_winkler": 0.5973,
+            "levenshtein": 0.2941,
+            "semantic": 0.6064,
+            "sequence_match": 0.3226
+          },
+          "is_hard_match": false,
+          "avg_score": 0.5088,
+          "agg_score": 0.5088,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5088 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "haswinedescriptor",
+          "pred_term": "hasbouquet",
+          "top_methods_used": "jaro_winkler+semantic+sequence_match",
+          "scores_by_method": "jaro_winkler=0.5980; levenshtein=0.2941; semantic=0.5474; sequence_match=0.3704",
+          "per_method_scores": {
+            "jaro_winkler": 0.598,
+            "levenshtein": 0.2941,
+            "semantic": 0.5474,
+            "sequence_match": 0.3704
+          },
+          "is_hard_match": false,
+          "avg_score": 0.5053,
+          "agg_score": 0.5053,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.5053 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "hasvintageyear",
+          "pred_term": "hasbouquet",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.5524; levenshtein=0.2857; semantic=0.5868; sequence_match=0.3333",
+          "per_method_scores": {
+            "jaro_winkler": 0.5524,
+            "levenshtein": 0.2857,
+            "semantic": 0.5868,
+            "sequence_match": 0.3333
+          },
+          "is_hard_match": false,
+          "avg_score": 0.4908,
+          "agg_score": 0.4908,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.4908 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "haswinedescriptor",
+          "pred_term": "usedtoproduce",
+          "top_methods_used": "jaro_winkler+semantic+sequence_match",
+          "scores_by_method": "jaro_winkler=0.6120; levenshtein=0.2353; semantic=0.4537; sequence_match=0.4000",
+          "per_method_scores": {
+            "jaro_winkler": 0.612,
+            "levenshtein": 0.2353,
+            "semantic": 0.4537,
+            "sequence_match": 0.4
+          },
+          "is_hard_match": false,
+          "avg_score": 0.4885,
+          "agg_score": 0.4885,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.4885 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "hasbody",
+          "pred_term": "hascharacteristic",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.5350; levenshtein=0.1765; semantic=0.6494; sequence_match=0.2500",
+          "per_method_scores": {
+            "jaro_winkler": 0.535,
+            "levenshtein": 0.1765,
+            "semantic": 0.6494,
+            "sequence_match": 0.25
+          },
+          "is_hard_match": false,
+          "avg_score": 0.4781,
+          "agg_score": 0.4781,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.4781 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "yearvalue",
+          "pred_term": "usedtoproduce",
+          "top_methods_used": "jaro_winkler+semantic+sequence_match",
+          "scores_by_method": "jaro_winkler=0.5840; levenshtein=0.2308; semantic=0.4783; sequence_match=0.3636",
+          "per_method_scores": {
+            "jaro_winkler": 0.584,
+            "levenshtein": 0.2308,
+            "semantic": 0.4783,
+            "sequence_match": 0.3636
+          },
+          "is_hard_match": false,
+          "avg_score": 0.4753,
+          "agg_score": 0.4753,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.4753 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "yearvalue",
+          "pred_term": "hasvintage",
+          "top_methods_used": "jaro_winkler+semantic+levenshtein",
+          "scores_by_method": "jaro_winkler=0.6148; levenshtein=0.2000; semantic=0.5776; sequence_match=0.1053",
+          "per_method_scores": {
+            "jaro_winkler": 0.6148,
+            "levenshtein": 0.2,
+            "semantic": 0.5776,
+            "sequence_match": 0.1053
+          },
+          "is_hard_match": false,
+          "avg_score": 0.4642,
+          "agg_score": 0.4642,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.4642 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "yearvalue",
+          "pred_term": "hasbouquet",
+          "top_methods_used": "jaro_winkler+semantic+sequence_match",
+          "scores_by_method": "jaro_winkler=0.5444; levenshtein=0.2000; semantic=0.5169; sequence_match=0.3158",
+          "per_method_scores": {
+            "jaro_winkler": 0.5444,
+            "levenshtein": 0.2,
+            "semantic": 0.5169,
+            "sequence_match": 0.3158
+          },
+          "is_hard_match": false,
+          "avg_score": 0.459,
+          "agg_score": 0.459,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.4590 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "madefromgrape",
+          "pred_term": "usedtoproduce",
+          "top_methods_used": "jaro_winkler+semantic+sequence_match",
+          "scores_by_method": "jaro_winkler=0.5299; levenshtein=0.1538; semantic=0.4801; sequence_match=0.3077",
+          "per_method_scores": {
+            "jaro_winkler": 0.5299,
+            "levenshtein": 0.1538,
+            "semantic": 0.4801,
+            "sequence_match": 0.3077
+          },
+          "is_hard_match": false,
+          "avg_score": 0.4393,
+          "agg_score": 0.4393,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.4393 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "yearvalue",
+          "pred_term": "hascharacteristic",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.4766; levenshtein=0.1765; semantic=0.5133; sequence_match=0.3077",
+          "per_method_scores": {
+            "jaro_winkler": 0.4766,
+            "levenshtein": 0.1765,
+            "semantic": 0.5133,
+            "sequence_match": 0.3077
+          },
+          "is_hard_match": false,
+          "avg_score": 0.4325,
+          "agg_score": 0.4325,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.4325 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "madefromgrape",
+          "pred_term": "hasvintageyear",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.5189; levenshtein=0.1429; semantic=0.5224; sequence_match=0.2222",
+          "per_method_scores": {
+            "jaro_winkler": 0.5189,
+            "levenshtein": 0.1429,
+            "semantic": 0.5224,
+            "sequence_match": 0.2222
+          },
+          "is_hard_match": false,
+          "avg_score": 0.4212,
+          "agg_score": 0.4212,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.4212 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "hasvintageyear",
+          "pred_term": "usedtoproduce",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.4478; levenshtein=0.0714; semantic=0.5750; sequence_match=0.2222",
+          "per_method_scores": {
+            "jaro_winkler": 0.4478,
+            "levenshtein": 0.0714,
+            "semantic": 0.575,
+            "sequence_match": 0.2222
+          },
+          "is_hard_match": false,
+          "avg_score": 0.415,
+          "agg_score": 0.415,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.4150 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "madefromgrape",
+          "pred_term": "hasvintage",
+          "top_methods_used": "semantic+jaro_winkler+levenshtein",
+          "scores_by_method": "jaro_winkler=0.4859; levenshtein=0.2308; semantic=0.5194; sequence_match=0.1739",
+          "per_method_scores": {
+            "jaro_winkler": 0.4859,
+            "levenshtein": 0.2308,
+            "semantic": 0.5194,
+            "sequence_match": 0.1739
+          },
+          "is_hard_match": false,
+          "avg_score": 0.412,
+          "agg_score": 0.412,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.4120 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "madefromgrape",
+          "pred_term": "hascharacteristic",
+          "top_methods_used": "jaro_winkler+semantic+sequence_match",
+          "scores_by_method": "jaro_winkler=0.4929; levenshtein=0.1765; semantic=0.4680; sequence_match=0.2667",
+          "per_method_scores": {
+            "jaro_winkler": 0.4929,
+            "levenshtein": 0.1765,
+            "semantic": 0.468,
+            "sequence_match": 0.2667
+          },
+          "is_hard_match": false,
+          "avg_score": 0.4092,
+          "agg_score": 0.4092,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.4092 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "yearvalue",
+          "pred_term": "hascolor",
+          "top_methods_used": "jaro_winkler+semantic+sequence_match",
+          "scores_by_method": "jaro_winkler=0.4907; levenshtein=0.2222; semantic=0.4874; sequence_match=0.2353",
+          "per_method_scores": {
+            "jaro_winkler": 0.4907,
+            "levenshtein": 0.2222,
+            "semantic": 0.4874,
+            "sequence_match": 0.2353
+          },
+          "is_hard_match": false,
+          "avg_score": 0.4045,
+          "agg_score": 0.4045,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.4045 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "madefromgrape",
+          "pred_term": "hascolor",
+          "top_methods_used": "semantic+jaro_winkler+levenshtein",
+          "scores_by_method": "jaro_winkler=0.4241; levenshtein=0.2308; semantic=0.5167; sequence_match=0.1905",
+          "per_method_scores": {
+            "jaro_winkler": 0.4241,
+            "levenshtein": 0.2308,
+            "semantic": 0.5167,
+            "sequence_match": 0.1905
+          },
+          "is_hard_match": false,
+          "avg_score": 0.3906,
+          "agg_score": 0.3906,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.3906 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "hasbody",
+          "pred_term": "usedtoproduce",
+          "top_methods_used": "jaro_winkler+semantic+sequence_match",
+          "scores_by_method": "jaro_winkler=0.4420; levenshtein=0.1538; semantic=0.4269; sequence_match=0.3000",
+          "per_method_scores": {
+            "jaro_winkler": 0.442,
+            "levenshtein": 0.1538,
+            "semantic": 0.4269,
+            "sequence_match": 0.3
+          },
+          "is_hard_match": false,
+          "avg_score": 0.3896,
+          "agg_score": 0.3896,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.3896 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "madefromgrape",
+          "pred_term": "hasbody",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.4420; levenshtein=0.1538; semantic=0.5089; sequence_match=0.2000",
+          "per_method_scores": {
+            "jaro_winkler": 0.442,
+            "levenshtein": 0.1538,
+            "semantic": 0.5089,
+            "sequence_match": 0.2
+          },
+          "is_hard_match": false,
+          "avg_score": 0.3836,
+          "agg_score": 0.3836,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.3836 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "madefromgrape",
+          "pred_term": "hasbouquet",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.3991; levenshtein=0.1538; semantic=0.5551; sequence_match=0.1739",
+          "per_method_scores": {
+            "jaro_winkler": 0.3991,
+            "levenshtein": 0.1538,
+            "semantic": 0.5551,
+            "sequence_match": 0.1739
+          },
+          "is_hard_match": false,
+          "avg_score": 0.3761,
+          "agg_score": 0.3761,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.3761 < final_threshold 0.6"
+        },
+        {
+          "gold_term": "yearvalue",
+          "pred_term": "hasbody",
+          "top_methods_used": "semantic+jaro_winkler+sequence_match",
+          "scores_by_method": "jaro_winkler=0.4180; levenshtein=0.1111; semantic=0.4626; sequence_match=0.1250",
+          "per_method_scores": {
+            "jaro_winkler": 0.418,
+            "levenshtein": 0.1111,
+            "semantic": 0.4626,
+            "sequence_match": 0.125
+          },
+          "is_hard_match": false,
+          "avg_score": 0.3352,
+          "agg_score": 0.3352,
+          "accepted": false,
+          "selected": false,
+          "reason": "top-3 avg score 0.3352 < final_threshold 0.6"
+        }
+      ]
+    },
+    "per_cq_coverage": [
+      {
+        "cq_id": "CQ1",
+        "question": "Which wine characteristics should I consider when choosing a wine?",
+        "n_gold_classes": 2,
+        "n_gold_properties": 1,
+        "n_covered_classes": 2,
+        "n_covered_properties": 0,
+        "coverage": 0.6666666666666666,
+        "covered_classes": [
+          {
+            "gold": "wine",
+            "pred": "wine",
+            "pred_in_cqs": [
+              "CQ1",
+              "CQ2",
+              "CQ6",
+              "CQ7",
+              "CQnew1"
+            ]
+          },
+          {
+            "gold": "winedescriptor",
+            "pred": "winecharacteristic",
+            "pred_in_cqs": [
+              "CQ1"
+            ]
+          }
+        ],
+        "covered_properties": [],
+        "missing_classes": [],
+        "missing_properties": [
+          "haswinedescriptor"
+        ],
+        "mode": "cq_local"
+      },
+      {
+        "cq_id": "CQ2",
+        "question": "Is Bordeaux a red or white wine?",
+        "n_gold_classes": 6,
+        "n_gold_properties": 0,
+        "n_covered_classes": 4,
+        "n_covered_properties": 0,
+        "coverage": 0.6666666666666666,
+        "covered_classes": [
+          {
+            "gold": "bordeaux",
+            "pred": "bordeaux",
+            "pred_in_cqs": [
+              "CQ2"
+            ]
+          },
+          {
+            "gold": "redwine",
+            "pred": "redwine",
+            "pred_in_cqs": [
+              "CQ2"
+            ]
+          },
+          {
+            "gold": "whitewine",
+            "pred": "whitewine",
+            "pred_in_cqs": [
+              "CQ2"
+            ]
+          },
+          {
+            "gold": "wine",
+            "pred": "wine",
+            "pred_in_cqs": [
+              "CQ1",
+              "CQ2",
+              "CQ6",
+              "CQ7",
+              "CQnew1"
+            ]
+          }
+        ],
+        "covered_properties": [],
+        "missing_classes": [
+          "redbordeaux",
+          "whitebordeaux"
+        ],
+        "missing_properties": [],
+        "mode": "cq_local"
+      },
+      {
+        "cq_id": "CQ6",
+        "question": "Does a bouquet or body of a specific wine change with vintage year?",
+        "n_gold_classes": 3,
+        "n_gold_properties": 3,
+        "n_covered_classes": 2,
+        "n_covered_properties": 2,
+        "coverage": 0.6666666666666666,
+        "covered_classes": [
+          {
+            "gold": "vintageyear",
+            "pred": "vintageyear",
+            "pred_in_cqs": [
+              "CQ6"
+            ]
+          },
+          {
+            "gold": "wine",
+            "pred": "wine",
+            "pred_in_cqs": [
+              "CQ1",
+              "CQ2",
+              "CQ6",
+              "CQ7",
+              "CQnew1"
+            ]
+          }
+        ],
+        "covered_properties": [
+          {
+            "gold": "hasbody",
+            "pred": "hasbody",
+            "pred_in_cqs": [
+              "CQ6"
+            ]
+          },
+          {
+            "gold": "hasvintageyear",
+            "pred": "hasvintageyear",
+            "pred_in_cqs": [
+              "CQ6"
+            ]
+          }
+        ],
+        "missing_classes": [
+          "vintage"
+        ],
+        "missing_properties": [
+          "yearvalue"
+        ],
+        "mode": "cq_local"
+      },
+      {
+        "cq_id": "CQ7",
+        "question": "What were good vintages for Napa Zinfandel?",
+        "n_gold_classes": 2,
+        "n_gold_properties": 2,
+        "n_covered_classes": 1,
+        "n_covered_properties": 0,
+        "coverage": 0.25,
+        "covered_classes": [
+          {
+            "gold": "vintage",
+            "pred": "vintage",
+            "pred_in_cqs": [
+              "CQ7"
+            ]
+          }
+        ],
+        "covered_properties": [],
+        "missing_classes": [
+          "zinfandel"
+        ],
+        "missing_properties": [
+          "yearvalue",
+          "hasvintageyear"
+        ],
+        "mode": "cq_local"
+      },
+      {
+        "cq_id": "CQnew1",
+        "question": "What grapes are used to make Bordeaux wine?",
+        "n_gold_classes": 3,
+        "n_gold_properties": 1,
+        "n_covered_classes": 2,
+        "n_covered_properties": 0,
+        "coverage": 0.5,
+        "covered_classes": [
+          {
+            "gold": "wine",
+            "pred": "wine",
+            "pred_in_cqs": [
+              "CQ1",
+              "CQ2",
+              "CQ6",
+              "CQ7",
+              "CQnew1"
+            ]
+          },
+          {
+            "gold": "winegrape",
+            "pred": "grape",
+            "pred_in_cqs": [
+              "CQnew1"
+            ]
+          }
+        ],
+        "covered_properties": [],
+        "missing_classes": [
+          "bordeaux"
+        ],
+        "missing_properties": [
+          "madefromgrape"
+        ],
+        "mode": "cq_local"
+      }
+    ],
+    "per_term_coverage": [
+      {
+        "term": "bordeaux",
+        "role": "class",
+        "cq_ids": [
+          "CQ2",
+          "CQnew1"
+        ],
+        "aligned": true,
+        "aligned_to": "bordeaux"
+      },
+      {
+        "term": "redbordeaux",
+        "role": "class",
+        "cq_ids": [
+          "CQ2"
+        ],
+        "aligned": false,
+        "aligned_to": ""
+      },
+      {
+        "term": "redwine",
+        "role": "class",
+        "cq_ids": [
+          "CQ2"
+        ],
+        "aligned": true,
+        "aligned_to": "redwine"
+      },
+      {
+        "term": "vintage",
+        "role": "class",
+        "cq_ids": [
+          "CQ6",
+          "CQ7"
+        ],
+        "aligned": true,
+        "aligned_to": "vintage"
+      },
+      {
+        "term": "vintageyear",
+        "role": "class",
+        "cq_ids": [
+          "CQ6"
+        ],
+        "aligned": true,
+        "aligned_to": "vintageyear"
+      },
+      {
+        "term": "whitebordeaux",
+        "role": "class",
+        "cq_ids": [
+          "CQ2"
+        ],
+        "aligned": false,
+        "aligned_to": ""
+      },
+      {
+        "term": "whitewine",
+        "role": "class",
+        "cq_ids": [
+          "CQ2"
+        ],
+        "aligned": true,
+        "aligned_to": "whitewine"
+      },
+      {
+        "term": "wine",
+        "role": "class",
+        "cq_ids": [
+          "CQ1",
+          "CQ2",
+          "CQ6",
+          "CQnew1"
+        ],
+        "aligned": true,
+        "aligned_to": "wine"
+      },
+      {
+        "term": "winedescriptor",
+        "role": "class",
+        "cq_ids": [
+          "CQ1"
+        ],
+        "aligned": true,
+        "aligned_to": "winecharacteristic"
+      },
+      {
+        "term": "winegrape",
+        "role": "class",
+        "cq_ids": [
+          "CQnew1"
+        ],
+        "aligned": true,
+        "aligned_to": "grape"
+      },
+      {
+        "term": "zinfandel",
+        "role": "class",
+        "cq_ids": [
+          "CQ7"
+        ],
+        "aligned": false,
+        "aligned_to": ""
+      },
+      {
+        "term": "hasbody",
+        "role": "property",
+        "cq_ids": [
+          "CQ6"
+        ],
+        "aligned": true,
+        "aligned_to": "hasbody"
+      },
+      {
+        "term": "hasvintageyear",
+        "role": "property",
+        "cq_ids": [
+          "CQ6",
+          "CQ7"
+        ],
+        "aligned": true,
+        "aligned_to": "hasvintageyear"
+      },
+      {
+        "term": "haswinedescriptor",
+        "role": "property",
+        "cq_ids": [
+          "CQ1"
+        ],
+        "aligned": false,
+        "aligned_to": ""
+      },
+      {
+        "term": "madefromgrape",
+        "role": "property",
+        "cq_ids": [
+          "CQnew1"
+        ],
+        "aligned": false,
+        "aligned_to": ""
+      },
+      {
+        "term": "yearvalue",
+        "role": "property",
+        "cq_ids": [
+          "CQ6",
+          "CQ7"
+        ],
+        "aligned": false,
+        "aligned_to": ""
+      }
+    ]
+  }
+}

@@ -1,0 +1,836 @@
+{
+  "config": {
+    "semantic_threshold": 0.6,
+    "embedding_model": "embeddinggemma",
+    "class_csv": "03_evaluation_results/cqbycq/qwen_qwen3.6-plus/water/01_class/class_best_matching.csv",
+    "property_csv": "03_evaluation_results/cqbycq/qwen_qwen3.6-plus/water/02_property/property_best_matching.csv"
+  },
+  "results": [
+    {
+      "id": "layer1_statistics",
+      "gold": {
+        "ObjectProperty": {
+          "full": 6,
+          "domain_only": 0,
+          "range_only": 0,
+          "undefined": 8
+        },
+        "DatatypeProperty": {
+          "full": 1,
+          "domain_only": 0,
+          "range_only": 4,
+          "undefined": 5
+        }
+      },
+      "pred": {
+        "ObjectProperty": {
+          "full": 10,
+          "domain_only": 0,
+          "range_only": 0,
+          "undefined": 0
+        },
+        "DatatypeProperty": {
+          "full": 18,
+          "domain_only": 0,
+          "range_only": 0,
+          "undefined": 0
+        }
+      },
+      "gold_totals": {
+        "ObjectProperty": 14,
+        "DatatypeProperty": 10
+      },
+      "pred_totals": {
+        "ObjectProperty": 10,
+        "DatatypeProperty": 18
+      },
+      "gold_grand_total": 24,
+      "pred_grand_total": 28
+    },
+    {
+      "id": "layer2_semantic",
+      "threshold": 0.6,
+      "model_id": "embeddinggemma",
+      "overall": {
+        "n_gold": 24,
+        "n_pred": 28,
+        "tp": 9,
+        "fp": 19,
+        "fn": 15,
+        "precision": 0.3214,
+        "recall": 0.375,
+        "f1": 0.3462
+      },
+      "ObjectProperty": {
+        "n_gold": 14,
+        "n_pred": 10,
+        "tp": 4,
+        "fp": 6,
+        "fn": 10,
+        "precision": 0.4,
+        "recall": 0.2857,
+        "f1": 0.3333,
+        "matches": [
+          {
+            "gold_predicate": "applies to",
+            "pred_predicate": "applies to meter",
+            "gold_text": "tariff applies to water meter",
+            "pred_text": "tariff usage applies to meter water meter",
+            "score": 0.9251
+          },
+          {
+            "gold_predicate": "has phenomenon time",
+            "pred_predicate": "has temporal setting",
+            "gold_text": "measurement has phenomenon time temporal entity",
+            "pred_text": "measurement has temporal setting temporal setting",
+            "score": 0.8288
+          },
+          {
+            "gold_predicate": "has billing period",
+            "pred_predicate": "has tariff period",
+            "gold_text": "tariff has billing period temporal duration",
+            "pred_text": "tariff usage has tariff period tariff period",
+            "score": 0.8021
+          },
+          {
+            "gold_predicate": "makes measurement",
+            "pred_predicate": "provides measurement",
+            "gold_text": "makes measurement",
+            "pred_text": "water meter provides measurement measurement",
+            "score": 0.7958
+          }
+        ]
+      },
+      "DatatypeProperty": {
+        "n_gold": 10,
+        "n_pred": 18,
+        "tp": 5,
+        "fp": 13,
+        "fn": 5,
+        "precision": 0.2778,
+        "recall": 0.5,
+        "f1": 0.3571,
+        "matches": [
+          {
+            "gold_predicate": "has start timestamp",
+            "pred_predicate": "tariff start date",
+            "gold_text": "tariff has start timestamp xsd date time",
+            "pred_text": "tariff usage tariff start date xsd date time",
+            "score": 0.8487
+          },
+          {
+            "gold_predicate": "has timestamp",
+            "pred_predicate": "recording timestamp",
+            "gold_text": "has timestamp",
+            "pred_text": "measurement recording timestamp xsd date time",
+            "score": 0.7027
+          },
+          {
+            "gold_predicate": "has firmware version",
+            "pred_predicate": "firmware version",
+            "gold_text": "has firmware version xsd http www w3 org 2000 01 rdf schema literal",
+            "pred_text": "water meter firmware version xsd string",
+            "score": 0.6578
+          },
+          {
+            "gold_predicate": "has fabrication number",
+            "pred_predicate": "fabrication number",
+            "gold_text": "has fabrication number xsd http www w3 org 2000 01 rdf schema literal",
+            "pred_text": "water meter fabrication number xsd string",
+            "score": 0.6304
+          },
+          {
+            "gold_predicate": "has model",
+            "pred_predicate": "model",
+            "gold_text": "has model",
+            "pred_text": "water meter model xsd string",
+            "score": 0.6006
+          }
+        ]
+      }
+    },
+    {
+      "id": "layer3_strict",
+      "n_aligned_total": 11,
+      "ObjectProperty": {
+        "n_aligned_pairs": 5,
+        "type": {
+          "tp": 5,
+          "fp": 0,
+          "fn": 0,
+          "mismatch": 0,
+          "skip": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "domain": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 0,
+          "mismatch": 3,
+          "skip": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "range": {
+          "tp": 1,
+          "fp": 2,
+          "fn": 0,
+          "mismatch": 2,
+          "skip": 0,
+          "precision": 0.2,
+          "recall": 0.3333,
+          "f1": 0.25
+        },
+        "overall": {
+          "tp": 1,
+          "fp": 4,
+          "fn": 0,
+          "mismatch": 5,
+          "skip": 0,
+          "precision": 0.1,
+          "recall": 0.1667,
+          "f1": 0.125
+        },
+        "fully_aligned": []
+      },
+      "DatatypeProperty": {
+        "n_aligned_pairs": 6,
+        "type": {
+          "tp": 6,
+          "fp": 0,
+          "fn": 0,
+          "mismatch": 0,
+          "skip": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "domain": {
+          "tp": 0,
+          "fp": 6,
+          "fn": 0,
+          "mismatch": 0,
+          "skip": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "range": {
+          "tp": 0,
+          "fp": 3,
+          "fn": 0,
+          "mismatch": 3,
+          "skip": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "overall": {
+          "tp": 0,
+          "fp": 9,
+          "fn": 0,
+          "mismatch": 3,
+          "skip": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "fully_aligned": []
+      },
+      "grand_overall": {
+        "tp": 1,
+        "fp": 13,
+        "fn": 0,
+        "mismatch": 8,
+        "skip": 0,
+        "precision": 0.0455,
+        "recall": 0.1111,
+        "f1": 0.0645
+      },
+      "grand_type": {
+        "tp": 11,
+        "fp": 0,
+        "fn": 0,
+        "mismatch": 0,
+        "skip": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "grand_domain": {
+        "tp": 0,
+        "fp": 8,
+        "fn": 0,
+        "mismatch": 3,
+        "skip": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "grand_range": {
+        "tp": 1,
+        "fp": 5,
+        "fn": 0,
+        "mismatch": 5,
+        "skip": 0,
+        "precision": 0.0909,
+        "recall": 0.1667,
+        "f1": 0.1176
+      },
+      "type_mismatches": [],
+      "all_pairs": [
+        {
+          "predicate_type": "DatatypeProperty",
+          "gold_predicate": "has fabrication number",
+          "pred_predicate": "fabrication number",
+          "gold_type": "DatatypeProperty",
+          "pred_type": "DatatypeProperty",
+          "gold_domain": null,
+          "pred_domain": [
+            "Water Meter"
+          ],
+          "gold_range": [
+            "xsd:http://www.w3.org/2000/01/rdf-schema#literal"
+          ],
+          "pred_range": [
+            "xsd:string"
+          ],
+          "type_verdict": "tp",
+          "domain_verdict": "fp",
+          "range_verdict": "mismatch",
+          "is_full_match": false
+        },
+        {
+          "predicate_type": "DatatypeProperty",
+          "gold_predicate": "has firmware version",
+          "pred_predicate": "firmware version",
+          "gold_type": "DatatypeProperty",
+          "pred_type": "DatatypeProperty",
+          "gold_domain": null,
+          "pred_domain": [
+            "Water Meter"
+          ],
+          "gold_range": [
+            "xsd:http://www.w3.org/2000/01/rdf-schema#literal"
+          ],
+          "pred_range": [
+            "xsd:string"
+          ],
+          "type_verdict": "tp",
+          "domain_verdict": "fp",
+          "range_verdict": "mismatch",
+          "is_full_match": false
+        },
+        {
+          "predicate_type": "DatatypeProperty",
+          "gold_predicate": "has manufacturer",
+          "pred_predicate": "manufacturer",
+          "gold_type": "DatatypeProperty",
+          "pred_type": "DatatypeProperty",
+          "gold_domain": null,
+          "pred_domain": [
+            "Water Meter"
+          ],
+          "gold_range": null,
+          "pred_range": [
+            "xsd:string"
+          ],
+          "type_verdict": "tp",
+          "domain_verdict": "fp",
+          "range_verdict": "fp",
+          "is_full_match": false
+        },
+        {
+          "predicate_type": "DatatypeProperty",
+          "gold_predicate": "has model",
+          "pred_predicate": "model",
+          "gold_type": "DatatypeProperty",
+          "pred_type": "DatatypeProperty",
+          "gold_domain": null,
+          "pred_domain": [
+            "Water Meter"
+          ],
+          "gold_range": null,
+          "pred_range": [
+            "xsd:string"
+          ],
+          "type_verdict": "tp",
+          "domain_verdict": "fp",
+          "range_verdict": "fp",
+          "is_full_match": false
+        },
+        {
+          "predicate_type": "DatatypeProperty",
+          "gold_predicate": "has timestamp",
+          "pred_predicate": "recording timestamp",
+          "gold_type": "DatatypeProperty",
+          "pred_type": "DatatypeProperty",
+          "gold_domain": null,
+          "pred_domain": [
+            "Measurement"
+          ],
+          "gold_range": null,
+          "pred_range": [
+            "xsd:dateTime"
+          ],
+          "type_verdict": "tp",
+          "domain_verdict": "fp",
+          "range_verdict": "fp",
+          "is_full_match": false
+        },
+        {
+          "predicate_type": "DatatypeProperty",
+          "gold_predicate": "has version",
+          "pred_predicate": "version",
+          "gold_type": "DatatypeProperty",
+          "pred_type": "DatatypeProperty",
+          "gold_domain": null,
+          "pred_domain": [
+            "Water Meter"
+          ],
+          "gold_range": [
+            "xsd:http://www.w3.org/2000/01/rdf-schema#literal"
+          ],
+          "pred_range": [
+            "xsd:string"
+          ],
+          "type_verdict": "tp",
+          "domain_verdict": "fp",
+          "range_verdict": "mismatch",
+          "is_full_match": false
+        },
+        {
+          "predicate_type": "ObjectProperty",
+          "gold_predicate": "applies to",
+          "pred_predicate": "applies to meter",
+          "gold_type": "ObjectProperty",
+          "pred_type": "ObjectProperty",
+          "gold_domain": [
+            "Tariff"
+          ],
+          "pred_domain": [
+            "Tariff Usage"
+          ],
+          "gold_range": [
+            "Water meter"
+          ],
+          "pred_range": [
+            "Water Meter"
+          ],
+          "type_verdict": "tp",
+          "domain_verdict": "mismatch",
+          "range_verdict": "tp",
+          "is_full_match": false
+        },
+        {
+          "predicate_type": "ObjectProperty",
+          "gold_predicate": "has billing period",
+          "pred_predicate": "has billing period",
+          "gold_type": "ObjectProperty",
+          "pred_type": "ObjectProperty",
+          "gold_domain": [
+            "Tariff"
+          ],
+          "pred_domain": [
+            "Water Meter"
+          ],
+          "gold_range": [
+            "Temporal duration"
+          ],
+          "pred_range": [
+            "Billing Period"
+          ],
+          "type_verdict": "tp",
+          "domain_verdict": "mismatch",
+          "range_verdict": "mismatch",
+          "is_full_match": false
+        },
+        {
+          "predicate_type": "ObjectProperty",
+          "gold_predicate": "has period",
+          "pred_predicate": "has tariff period",
+          "gold_type": "ObjectProperty",
+          "pred_type": "ObjectProperty",
+          "gold_domain": [
+            "Tariff"
+          ],
+          "pred_domain": [
+            "Tariff Usage"
+          ],
+          "gold_range": [
+            "Temporal duration"
+          ],
+          "pred_range": [
+            "Tariff Period"
+          ],
+          "type_verdict": "tp",
+          "domain_verdict": "mismatch",
+          "range_verdict": "mismatch",
+          "is_full_match": false
+        },
+        {
+          "predicate_type": "ObjectProperty",
+          "gold_predicate": "has property",
+          "pred_predicate": "has physical property",
+          "gold_type": "ObjectProperty",
+          "pred_type": "ObjectProperty",
+          "gold_domain": null,
+          "pred_domain": [
+            "Water"
+          ],
+          "gold_range": null,
+          "pred_range": [
+            "Water Physical Property"
+          ],
+          "type_verdict": "tp",
+          "domain_verdict": "fp",
+          "range_verdict": "fp",
+          "is_full_match": false
+        },
+        {
+          "predicate_type": "ObjectProperty",
+          "gold_predicate": "makes measurement",
+          "pred_predicate": "provides measurement",
+          "gold_type": "ObjectProperty",
+          "pred_type": "ObjectProperty",
+          "gold_domain": null,
+          "pred_domain": [
+            "Water Meter"
+          ],
+          "gold_range": null,
+          "pred_range": [
+            "Measurement"
+          ],
+          "type_verdict": "tp",
+          "domain_verdict": "fp",
+          "range_verdict": "fp",
+          "is_full_match": false
+        }
+      ]
+    },
+    {
+      "id": "layer4_global",
+      "ObjectProperty": {
+        "matched": 1,
+        "extra": 19,
+        "extra_layer3": 9,
+        "extra_unaligned": 10,
+        "missing": 11,
+        "missing_layer3": 5,
+        "missing_unaligned": 6,
+        "precision": 0.05,
+        "recall": 0.0833,
+        "f1": 0.0625,
+        "unaligned_gold_count": 9,
+        "unaligned_pred_count": 5,
+        "unaligned_gold_axiom_count": 6,
+        "unaligned_pred_axiom_count": 10,
+        "unaligned_gold": [
+          {
+            "predicate": "hasGeometry",
+            "domain": null,
+            "range": null,
+            "axiom_count": 0
+          },
+          {
+            "predicate": "has measurement",
+            "domain": null,
+            "range": null,
+            "axiom_count": 0
+          },
+          {
+            "predicate": "is measured by device",
+            "domain": null,
+            "range": null,
+            "axiom_count": 0
+          },
+          {
+            "predicate": "measurement made by",
+            "domain": null,
+            "range": null,
+            "axiom_count": 0
+          },
+          {
+            "predicate": "has key performance indicator",
+            "domain": null,
+            "range": null,
+            "axiom_count": 0
+          },
+          {
+            "predicate": "isKPIOf",
+            "domain": null,
+            "range": null,
+            "axiom_count": 0
+          },
+          {
+            "predicate": "feature is measured by device",
+            "domain": [
+              "FeatureOfInterest"
+            ],
+            "range": [
+              "Device"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "has duration",
+            "domain": [
+              "Tariff"
+            ],
+            "range": [
+              "Temporal duration"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "has phenomenon time",
+            "domain": [
+              "Measurement"
+            ],
+            "range": [
+              "Temporal entity"
+            ],
+            "axiom_count": 2
+          }
+        ],
+        "unaligned_pred": [
+          {
+            "predicate": "composed of",
+            "domain": [
+              "Water Distribution Infrastructure"
+            ],
+            "range": [
+              "Asset"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "has temporal setting",
+            "domain": [
+              "Measurement"
+            ],
+            "range": [
+              "Temporal Setting"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "has chemical property",
+            "domain": [
+              "Water"
+            ],
+            "range": [
+              "Water Chemical Property"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "defined for location",
+            "domain": [
+              "Water Indicator"
+            ],
+            "range": [
+              "Location"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "uses tariff",
+            "domain": [
+              "Tariff Usage"
+            ],
+            "range": [
+              "Tariff"
+            ],
+            "axiom_count": 2
+          }
+        ]
+      },
+      "DatatypeProperty": {
+        "matched": 0,
+        "extra": 36,
+        "extra_layer3": 12,
+        "extra_unaligned": 24,
+        "missing": 6,
+        "missing_layer3": 3,
+        "missing_unaligned": 3,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "unaligned_gold_count": 4,
+        "unaligned_pred_count": 12,
+        "unaligned_gold_axiom_count": 3,
+        "unaligned_pred_axiom_count": 24,
+        "unaligned_gold": [
+          {
+            "predicate": "has hardware version",
+            "domain": null,
+            "range": [
+              "xsd:http://www.w3.org/2000/01/rdf-schema#literal"
+            ],
+            "axiom_count": 1
+          },
+          {
+            "predicate": "has start timestamp",
+            "domain": [
+              "Tariff"
+            ],
+            "range": [
+              "xsd:dateTime"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "operates at radio frequency",
+            "domain": null,
+            "range": null,
+            "axiom_count": 0
+          },
+          {
+            "predicate": "requires power",
+            "domain": null,
+            "range": null,
+            "axiom_count": 0
+          }
+        ],
+        "unaligned_pred": [
+          {
+            "predicate": "power",
+            "domain": [
+              "Water Meter"
+            ],
+            "range": [
+              "xsd:float"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "radio frequency level",
+            "domain": [
+              "Water Meter"
+            ],
+            "range": [
+              "xsd:float"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "geolocation",
+            "domain": [
+              "Water Meter"
+            ],
+            "range": [
+              "xsd:string"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "measured value",
+            "domain": [
+              "Measurement"
+            ],
+            "range": [
+              "xsd:float"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "interval duration",
+            "domain": [
+              "Temporal Setting"
+            ],
+            "range": [
+              "xsd:string"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "tariff start date",
+            "domain": [
+              "Tariff Usage"
+            ],
+            "range": [
+              "xsd:dateTime"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "tariff duration",
+            "domain": [
+              "Tariff Usage"
+            ],
+            "range": [
+              "xsd:string"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "period start",
+            "domain": [
+              "Tariff Period"
+            ],
+            "range": [
+              "xsd:dateTime"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "period end",
+            "domain": [
+              "Tariff Period"
+            ],
+            "range": [
+              "xsd:dateTime"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "billing date",
+            "domain": [
+              "Water Meter"
+            ],
+            "range": [
+              "xsd:dateTime"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "billing period start",
+            "domain": [
+              "Billing Period"
+            ],
+            "range": [
+              "xsd:dateTime"
+            ],
+            "axiom_count": 2
+          },
+          {
+            "predicate": "billing period end",
+            "domain": [
+              "Billing Period"
+            ],
+            "range": [
+              "xsd:dateTime"
+            ],
+            "axiom_count": 2
+          }
+        ]
+      },
+      "grand_overall": {
+        "matched": 1,
+        "extra": 55,
+        "extra_layer3": 21,
+        "extra_unaligned": 34,
+        "missing": 17,
+        "missing_layer3": 8,
+        "missing_unaligned": 9,
+        "precision": 0.0179,
+        "recall": 0.0556,
+        "f1": 0.027
+      }
+    }
+  ]
+}

@@ -1,0 +1,2227 @@
+{
+  "config": {
+    "gold_file": "00_gold_standard/wine/axioms/wine_axiom_gold.json",
+    "pred_file": "02_atomic_axioms/normal/qwen_qwen3.6-plus/wine/wine_normal_ontology_atomic_tbox.json",
+    "class_csv": "03_evaluation_results/normal/qwen_qwen3.6-plus/wine/01_class/class_best_matching.csv",
+    "property_csv": "03_evaluation_results/normal/qwen_qwen3.6-plus/wine/02_property/property_best_matching.csv",
+    "layer2_threshold": 0.6,
+    "layer2_model": "embeddinggemma",
+    "layer2_skipped": true
+  },
+  "results": {
+    "layer1_stats_gold": {
+      "total": 68,
+      "by_term_type": {
+        "Class": 34,
+        "ObjectProperty": 31,
+        "DatatypeProperty": 3
+      },
+      "by_term_axiom": {
+        "Class": {
+          "Declaration": 17,
+          "EquivalentClasses": 5,
+          "SubClassOf": 12
+        },
+        "ObjectProperty": {
+          "Characteristics": 6,
+          "Declaration": 8,
+          "Range": 8,
+          "SubPropertyOf": 4,
+          "Domain": 5
+        },
+        "DatatypeProperty": {
+          "Declaration": 1,
+          "Domain": 1,
+          "Range": 1
+        }
+      }
+    },
+    "layer1_stats_pred": {
+      "total": 33,
+      "by_term_type": {
+        "Class": 8,
+        "ObjectProperty": 9,
+        "DatatypeProperty": 16
+      },
+      "by_term_axiom": {
+        "Class": {
+          "Declaration": 6,
+          "SubClassOf": 2
+        },
+        "ObjectProperty": {
+          "Declaration": 3,
+          "Domain": 3,
+          "Range": 3
+        },
+        "DatatypeProperty": {
+          "Declaration": 5,
+          "Domain": 5,
+          "Range": 5,
+          "Characteristics": 1
+        }
+      }
+    },
+    "layer3": {
+      "evaluation": [
+        {
+          "side": "gold",
+          "axiom_id": "AX1",
+          "term": "Bordeaux",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: Bordeaux (Class)",
+          "status": "tp",
+          "reason": "matched pred AX1",
+          "pred_match": {
+            "id": "AX1",
+            "dl": "Declaration: Bordeaux Wine (Class)",
+            "axiom_type": "Declaration",
+            "term": "Bordeaux Wine"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX3",
+          "term": "RedBordeaux",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: RedBordeaux (Class)",
+          "status": "skip",
+          "reason": "subject 'RedBordeaux' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX4",
+          "term": "RedBordeaux",
+          "term_type": "Class",
+          "axiom_type": "EquivalentClasses",
+          "dl": "RedBordeaux ≡ (Bordeaux ⊓ RedWine)",
+          "status": "skip",
+          "reason": "subject 'RedBordeaux' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX6",
+          "term": "RedWine",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: RedWine (Class)",
+          "status": "skip",
+          "reason": "subject 'RedWine' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX7",
+          "term": "RedWine",
+          "term_type": "Class",
+          "axiom_type": "EquivalentClasses",
+          "dl": "RedWine ≡ (wine ⊓ ∃hasColor.{Red})",
+          "status": "skip",
+          "reason": "subject 'RedWine' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX8",
+          "term": "Region",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: Region (Class)",
+          "status": "tp",
+          "reason": "matched pred AX8",
+          "pred_match": {
+            "id": "AX8",
+            "dl": "Declaration: Wine Region (Class)",
+            "axiom_type": "Declaration",
+            "term": "Wine Region"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX9",
+          "term": "Vintage",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: Vintage (Class)",
+          "status": "tp",
+          "reason": "matched pred AX6",
+          "pred_match": {
+            "id": "AX6",
+            "dl": "Declaration: Vintage (Class)",
+            "axiom_type": "Declaration",
+            "term": "Vintage"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX10",
+          "term": "Vintage",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "Vintage ⊑ =1 hasVintageYear.⊤",
+          "status": "fn",
+          "reason": "pred has no SubClassOf axiom on 'Vintage'",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX11",
+          "term": "VintageYear",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: VintageYear (Class)",
+          "status": "skip",
+          "reason": "subject 'VintageYear' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX12",
+          "term": "WhiteBordeaux",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: WhiteBordeaux (Class)",
+          "status": "skip",
+          "reason": "subject 'WhiteBordeaux' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX13",
+          "term": "WhiteBordeaux",
+          "term_type": "Class",
+          "axiom_type": "EquivalentClasses",
+          "dl": "WhiteBordeaux ≡ (Bordeaux ⊓ WhiteWine)",
+          "status": "skip",
+          "reason": "subject 'WhiteBordeaux' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX15",
+          "term": "WhiteWine",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: WhiteWine (Class)",
+          "status": "skip",
+          "reason": "subject 'WhiteWine' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX16",
+          "term": "WhiteWine",
+          "term_type": "Class",
+          "axiom_type": "EquivalentClasses",
+          "dl": "WhiteWine ≡ (wine ⊓ ∃hasColor.{White})",
+          "status": "skip",
+          "reason": "subject 'WhiteWine' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX17",
+          "term": "WineBody",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: WineBody (Class)",
+          "status": "skip",
+          "reason": "subject 'WineBody' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX19",
+          "term": "WineBody",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "WineBody ⊑ WineTaste",
+          "status": "skip",
+          "reason": "subject 'WineBody' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX20",
+          "term": "WineColor",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: WineColor (Class)",
+          "status": "skip",
+          "reason": "subject 'WineColor' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX22",
+          "term": "WineColor",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "WineColor ⊑ WineDescriptor",
+          "status": "skip",
+          "reason": "subject 'WineColor' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX23",
+          "term": "WineDescriptor",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: WineDescriptor (Class)",
+          "status": "skip",
+          "reason": "subject 'WineDescriptor' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX24",
+          "term": "WineDescriptor",
+          "term_type": "Class",
+          "axiom_type": "EquivalentClasses",
+          "dl": "WineDescriptor ≡ (WineColor ⊔ WineTaste)",
+          "status": "skip",
+          "reason": "subject 'WineDescriptor' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX25",
+          "term": "WineFlavor",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: WineFlavor (Class)",
+          "status": "skip",
+          "reason": "subject 'WineFlavor' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX27",
+          "term": "WineFlavor",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "WineFlavor ⊑ WineTaste",
+          "status": "skip",
+          "reason": "subject 'WineFlavor' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX28",
+          "term": "WineGrape",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: WineGrape (Class)",
+          "status": "tp",
+          "reason": "matched pred AX3",
+          "pred_match": {
+            "id": "AX3",
+            "dl": "Declaration: Grape (Class)",
+            "axiom_type": "Declaration",
+            "term": "Grape"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX29",
+          "term": "WineSugar",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: WineSugar (Class)",
+          "status": "skip",
+          "reason": "subject 'WineSugar' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX31",
+          "term": "WineSugar",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "WineSugar ⊑ WineTaste",
+          "status": "skip",
+          "reason": "subject 'WineSugar' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX32",
+          "term": "WineTaste",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: WineTaste (Class)",
+          "status": "skip",
+          "reason": "subject 'WineTaste' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX33",
+          "term": "WineTaste",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "WineTaste ⊑ WineDescriptor",
+          "status": "skip",
+          "reason": "subject 'WineTaste' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX34",
+          "term": "Zinfandel",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: Zinfandel (Class)",
+          "status": "tp",
+          "reason": "matched pred AX4",
+          "pred_match": {
+            "id": "AX4",
+            "dl": "Declaration: Napa Zinfandel (Class)",
+            "axiom_type": "Declaration",
+            "term": "Napa Zinfandel"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX40",
+          "term": "wine",
+          "term_type": "Class",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: wine (Class)",
+          "status": "tp",
+          "reason": "matched pred AX7",
+          "pred_match": {
+            "id": "AX7",
+            "dl": "Declaration: Wine (Class)",
+            "axiom_type": "Declaration",
+            "term": "Wine"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX41",
+          "term": "wine",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "wine ⊑ ∃locatedIn.Region",
+          "status": "fn",
+          "reason": "pred has no SubClassOf axiom on 'Wine'",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX42",
+          "term": "wine",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "wine ⊑ ≥1 madeFromGrape.⊤",
+          "status": "fn",
+          "reason": "pred has no SubClassOf axiom on 'Wine'",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX43",
+          "term": "wine",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "wine ⊑ =1 hasBody.⊤",
+          "status": "fn",
+          "reason": "pred has no SubClassOf axiom on 'Wine'",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX44",
+          "term": "wine",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "wine ⊑ =1 hasColor.⊤",
+          "status": "fn",
+          "reason": "pred has no SubClassOf axiom on 'Wine'",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX45",
+          "term": "wine",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "wine ⊑ =1 hasFlavor.⊤",
+          "status": "fn",
+          "reason": "pred has no SubClassOf axiom on 'Wine'",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX46",
+          "term": "wine",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "wine ⊑ =1 hasSugar.⊤",
+          "status": "fn",
+          "reason": "pred has no SubClassOf axiom on 'Wine'",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX47",
+          "term": "hasBody",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Characteristics",
+          "dl": "Functional(hasBody)",
+          "status": "skip",
+          "reason": "subject 'hasBody' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX48",
+          "term": "hasBody",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: hasBody (ObjectProperty)",
+          "status": "skip",
+          "reason": "subject 'hasBody' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX49",
+          "term": "hasBody",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀hasBody.WineBody",
+          "status": "skip",
+          "reason": "subject 'hasBody' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX50",
+          "term": "hasBody",
+          "term_type": "ObjectProperty",
+          "axiom_type": "SubPropertyOf",
+          "dl": "hasBody ⊑ hasWineDescriptor",
+          "status": "skip",
+          "reason": "subject 'hasBody' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX51",
+          "term": "hasColor",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Characteristics",
+          "dl": "Functional(hasColor)",
+          "status": "skip",
+          "reason": "subject 'hasColor' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX52",
+          "term": "hasColor",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: hasColor (ObjectProperty)",
+          "status": "skip",
+          "reason": "subject 'hasColor' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX53",
+          "term": "hasColor",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃hasColor.⊤ ⊑ wine",
+          "status": "skip",
+          "reason": "subject 'hasColor' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX54",
+          "term": "hasColor",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀hasColor.WineColor",
+          "status": "skip",
+          "reason": "subject 'hasColor' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX55",
+          "term": "hasColor",
+          "term_type": "ObjectProperty",
+          "axiom_type": "SubPropertyOf",
+          "dl": "hasColor ⊑ hasWineDescriptor",
+          "status": "skip",
+          "reason": "subject 'hasColor' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX56",
+          "term": "hasFlavor",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Characteristics",
+          "dl": "Functional(hasFlavor)",
+          "status": "skip",
+          "reason": "subject 'hasFlavor' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX57",
+          "term": "hasFlavor",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: hasFlavor (ObjectProperty)",
+          "status": "skip",
+          "reason": "subject 'hasFlavor' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX58",
+          "term": "hasFlavor",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀hasFlavor.WineFlavor",
+          "status": "skip",
+          "reason": "subject 'hasFlavor' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX59",
+          "term": "hasFlavor",
+          "term_type": "ObjectProperty",
+          "axiom_type": "SubPropertyOf",
+          "dl": "hasFlavor ⊑ hasWineDescriptor",
+          "status": "skip",
+          "reason": "subject 'hasFlavor' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX60",
+          "term": "hasSugar",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Characteristics",
+          "dl": "Functional(hasSugar)",
+          "status": "skip",
+          "reason": "subject 'hasSugar' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX61",
+          "term": "hasSugar",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: hasSugar (ObjectProperty)",
+          "status": "skip",
+          "reason": "subject 'hasSugar' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX62",
+          "term": "hasSugar",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀hasSugar.WineSugar",
+          "status": "skip",
+          "reason": "subject 'hasSugar' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX63",
+          "term": "hasSugar",
+          "term_type": "ObjectProperty",
+          "axiom_type": "SubPropertyOf",
+          "dl": "hasSugar ⊑ hasWineDescriptor",
+          "status": "skip",
+          "reason": "subject 'hasSugar' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX64",
+          "term": "hasVintageYear",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Characteristics",
+          "dl": "Functional(hasVintageYear)",
+          "status": "fn",
+          "reason": "pred has no Characteristics axiom on 'has vintage'",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX65",
+          "term": "hasVintageYear",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: hasVintageYear (ObjectProperty)",
+          "status": "tp",
+          "reason": "matched pred AX9",
+          "pred_match": {
+            "id": "AX9",
+            "dl": "Declaration: has vintage (ObjectProperty)",
+            "axiom_type": "Declaration",
+            "term": "has vintage"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX66",
+          "term": "hasVintageYear",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃hasVintageYear.⊤ ⊑ Vintage",
+          "status": "mismatch",
+          "reason": "pred AX10 differs: class 'Vintage' not aligned to 'Wine'",
+          "pred_match": {
+            "id": "AX10",
+            "dl": "∃has vintage.⊤ ⊑ Wine",
+            "axiom_type": "Domain",
+            "term": "has vintage"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX67",
+          "term": "hasVintageYear",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀hasVintageYear.VintageYear",
+          "status": "mismatch",
+          "reason": "pred AX11 differs: class 'VintageYear' not aligned to 'Vintage'",
+          "pred_match": {
+            "id": "AX11",
+            "dl": "⊤ ⊑ ∀has vintage.Vintage",
+            "axiom_type": "Range",
+            "term": "has vintage"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX68",
+          "term": "hasWineDescriptor",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: hasWineDescriptor (ObjectProperty)",
+          "status": "skip",
+          "reason": "subject 'hasWineDescriptor' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX69",
+          "term": "hasWineDescriptor",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃hasWineDescriptor.⊤ ⊑ wine",
+          "status": "skip",
+          "reason": "subject 'hasWineDescriptor' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX70",
+          "term": "hasWineDescriptor",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀hasWineDescriptor.WineDescriptor",
+          "status": "skip",
+          "reason": "subject 'hasWineDescriptor' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX71",
+          "term": "locatedIn",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Characteristics",
+          "dl": "Transitive(locatedIn)",
+          "status": "skip",
+          "reason": "subject 'locatedIn' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX72",
+          "term": "locatedIn",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: locatedIn (ObjectProperty)",
+          "status": "skip",
+          "reason": "subject 'locatedIn' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX73",
+          "term": "locatedIn",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃locatedIn.⊤ ⊑ ⊤",
+          "status": "skip",
+          "reason": "subject 'locatedIn' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX74",
+          "term": "locatedIn",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀locatedIn.Region",
+          "status": "skip",
+          "reason": "subject 'locatedIn' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX75",
+          "term": "madeFromGrape",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: madeFromGrape (ObjectProperty)",
+          "status": "tp",
+          "reason": "matched pred AX12",
+          "pred_match": {
+            "id": "AX12",
+            "dl": "Declaration: made from grape (ObjectProperty)",
+            "axiom_type": "Declaration",
+            "term": "made from grape"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX76",
+          "term": "madeFromGrape",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Domain",
+          "dl": "∃madeFromGrape.⊤ ⊑ wine",
+          "status": "tp",
+          "reason": "matched pred AX13",
+          "pred_match": {
+            "id": "AX13",
+            "dl": "∃made from grape.⊤ ⊑ Wine",
+            "axiom_type": "Domain",
+            "term": "made from grape"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX77",
+          "term": "madeFromGrape",
+          "term_type": "ObjectProperty",
+          "axiom_type": "Range",
+          "dl": "⊤ ⊑ ∀madeFromGrape.WineGrape",
+          "status": "tp",
+          "reason": "matched pred AX14",
+          "pred_match": {
+            "id": "AX14",
+            "dl": "⊤ ⊑ ∀made from grape.Grape",
+            "axiom_type": "Range",
+            "term": "made from grape"
+          }
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX78",
+          "term": "yearValue",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Declaration",
+          "dl": "Declaration: yearValue (DatatypeProperty)",
+          "status": "skip",
+          "reason": "subject 'yearValue' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX79",
+          "term": "yearValue",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Domain",
+          "dl": "∃yearValue.⊤ ⊑ VintageYear",
+          "status": "skip",
+          "reason": "subject 'yearValue' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "gold",
+          "axiom_id": "AX80",
+          "term": "yearValue",
+          "term_type": "DatatypeProperty",
+          "axiom_type": "Range",
+          "dl": "yearValue maps-to xsd:integer",
+          "status": "skip",
+          "reason": "subject 'yearValue' not in alignment table",
+          "pred_match": null
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX2",
+          "term": "Bordeaux Wine",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "Bordeaux Wine ⊑ Wine",
+          "status": "fp",
+          "reason": "pred SubClassOf axiom on 'Bordeaux Wine' not matched by any gold axiom on 'Bordeaux'",
+          "pred_match": {
+            "id": "AX2",
+            "dl": "Bordeaux Wine ⊑ Wine",
+            "axiom_type": "SubClassOf",
+            "term": "Bordeaux Wine"
+          }
+        },
+        {
+          "side": "pred",
+          "axiom_id": "AX5",
+          "term": "Napa Zinfandel",
+          "term_type": "Class",
+          "axiom_type": "SubClassOf",
+          "dl": "Napa Zinfandel ⊑ Wine",
+          "status": "fp",
+          "reason": "pred SubClassOf axiom on 'Napa Zinfandel' not matched by any gold axiom on 'Zinfandel'",
+          "pred_match": {
+            "id": "AX5",
+            "dl": "Napa Zinfandel ⊑ Wine",
+            "axiom_type": "SubClassOf",
+            "term": "Napa Zinfandel"
+          }
+        }
+      ],
+      "counts_overall": {
+        "tp": 10,
+        "fn": 8,
+        "fp": 2,
+        "mismatch": 2,
+        "skip": 48
+      },
+      "counts_by_term": {
+        "Class": {
+          "tp": 6,
+          "fn": 7,
+          "fp": 2,
+          "mismatch": 0,
+          "skip": 21
+        },
+        "ObjectProperty": {
+          "tp": 4,
+          "fn": 1,
+          "fp": 0,
+          "mismatch": 2,
+          "skip": 24
+        },
+        "DatatypeProperty": {
+          "tp": 0,
+          "fn": 0,
+          "fp": 0,
+          "mismatch": 0,
+          "skip": 3
+        }
+      },
+      "counts_by_combo": {
+        "Class|Declaration": {
+          "tp": 6,
+          "fn": 0,
+          "fp": 0,
+          "mismatch": 0,
+          "skip": 11
+        },
+        "Class|EquivalentClasses": {
+          "tp": 0,
+          "fn": 0,
+          "fp": 0,
+          "mismatch": 0,
+          "skip": 5
+        },
+        "Class|SubClassOf": {
+          "tp": 0,
+          "fn": 7,
+          "fp": 2,
+          "mismatch": 0,
+          "skip": 5
+        },
+        "ObjectProperty|Characteristics": {
+          "tp": 0,
+          "fn": 1,
+          "fp": 0,
+          "mismatch": 0,
+          "skip": 5
+        },
+        "ObjectProperty|Declaration": {
+          "tp": 2,
+          "fn": 0,
+          "fp": 0,
+          "mismatch": 0,
+          "skip": 6
+        },
+        "ObjectProperty|Range": {
+          "tp": 1,
+          "fn": 0,
+          "fp": 0,
+          "mismatch": 1,
+          "skip": 6
+        },
+        "ObjectProperty|SubPropertyOf": {
+          "tp": 0,
+          "fn": 0,
+          "fp": 0,
+          "mismatch": 0,
+          "skip": 4
+        },
+        "ObjectProperty|Domain": {
+          "tp": 1,
+          "fn": 0,
+          "fp": 0,
+          "mismatch": 1,
+          "skip": 3
+        },
+        "DatatypeProperty|Declaration": {
+          "tp": 0,
+          "fn": 0,
+          "fp": 0,
+          "mismatch": 0,
+          "skip": 1
+        },
+        "DatatypeProperty|Domain": {
+          "tp": 0,
+          "fn": 0,
+          "fp": 0,
+          "mismatch": 0,
+          "skip": 1
+        },
+        "DatatypeProperty|Range": {
+          "tp": 0,
+          "fn": 0,
+          "fp": 0,
+          "mismatch": 0,
+          "skip": 1
+        }
+      }
+    },
+    "layer4": {
+      "per_term": {
+        "Class": {
+          "tp": 6,
+          "fp": 2,
+          "fp_layer3": 2,
+          "fp_unaligned": 0,
+          "fn": 28,
+          "fn_layer3": 7,
+          "fn_unaligned": 21,
+          "mismatch": 0,
+          "skip": 21,
+          "precision": 0.75,
+          "recall": 0.17647058823529413,
+          "f1": 0.2857142857142857
+        },
+        "ObjectProperty": {
+          "tp": 4,
+          "fp": 5,
+          "fp_layer3": 2,
+          "fp_unaligned": 3,
+          "fn": 27,
+          "fn_layer3": 3,
+          "fn_unaligned": 24,
+          "mismatch": 2,
+          "skip": 24,
+          "precision": 0.4444444444444444,
+          "recall": 0.12903225806451613,
+          "f1": 0.19999999999999998
+        },
+        "DatatypeProperty": {
+          "tp": 0,
+          "fp": 16,
+          "fp_layer3": 0,
+          "fp_unaligned": 16,
+          "fn": 3,
+          "fn_layer3": 0,
+          "fn_unaligned": 3,
+          "mismatch": 0,
+          "skip": 3,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      },
+      "grand": {
+        "tp": 10,
+        "fp": 23,
+        "fn": 58,
+        "precision": 0.30303030303030304,
+        "recall": 0.14705882352941177,
+        "f1": 0.19801980198019803
+      },
+      "unaligned_lists": {
+        "Class": {
+          "gold": [
+            {
+              "id": "AX3",
+              "term": "RedBordeaux",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: RedBordeaux (Class)"
+            },
+            {
+              "id": "AX4",
+              "term": "RedBordeaux",
+              "axiom_type": "EquivalentClasses",
+              "dl": "RedBordeaux ≡ (Bordeaux ⊓ RedWine)"
+            },
+            {
+              "id": "AX6",
+              "term": "RedWine",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: RedWine (Class)"
+            },
+            {
+              "id": "AX7",
+              "term": "RedWine",
+              "axiom_type": "EquivalentClasses",
+              "dl": "RedWine ≡ (wine ⊓ ∃hasColor.{Red})"
+            },
+            {
+              "id": "AX11",
+              "term": "VintageYear",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: VintageYear (Class)"
+            },
+            {
+              "id": "AX12",
+              "term": "WhiteBordeaux",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: WhiteBordeaux (Class)"
+            },
+            {
+              "id": "AX13",
+              "term": "WhiteBordeaux",
+              "axiom_type": "EquivalentClasses",
+              "dl": "WhiteBordeaux ≡ (Bordeaux ⊓ WhiteWine)"
+            },
+            {
+              "id": "AX15",
+              "term": "WhiteWine",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: WhiteWine (Class)"
+            },
+            {
+              "id": "AX16",
+              "term": "WhiteWine",
+              "axiom_type": "EquivalentClasses",
+              "dl": "WhiteWine ≡ (wine ⊓ ∃hasColor.{White})"
+            },
+            {
+              "id": "AX17",
+              "term": "WineBody",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: WineBody (Class)"
+            },
+            {
+              "id": "AX19",
+              "term": "WineBody",
+              "axiom_type": "SubClassOf",
+              "dl": "WineBody ⊑ WineTaste"
+            },
+            {
+              "id": "AX20",
+              "term": "WineColor",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: WineColor (Class)"
+            },
+            {
+              "id": "AX22",
+              "term": "WineColor",
+              "axiom_type": "SubClassOf",
+              "dl": "WineColor ⊑ WineDescriptor"
+            },
+            {
+              "id": "AX23",
+              "term": "WineDescriptor",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: WineDescriptor (Class)"
+            },
+            {
+              "id": "AX24",
+              "term": "WineDescriptor",
+              "axiom_type": "EquivalentClasses",
+              "dl": "WineDescriptor ≡ (WineColor ⊔ WineTaste)"
+            },
+            {
+              "id": "AX25",
+              "term": "WineFlavor",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: WineFlavor (Class)"
+            },
+            {
+              "id": "AX27",
+              "term": "WineFlavor",
+              "axiom_type": "SubClassOf",
+              "dl": "WineFlavor ⊑ WineTaste"
+            },
+            {
+              "id": "AX29",
+              "term": "WineSugar",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: WineSugar (Class)"
+            },
+            {
+              "id": "AX31",
+              "term": "WineSugar",
+              "axiom_type": "SubClassOf",
+              "dl": "WineSugar ⊑ WineTaste"
+            },
+            {
+              "id": "AX32",
+              "term": "WineTaste",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: WineTaste (Class)"
+            },
+            {
+              "id": "AX33",
+              "term": "WineTaste",
+              "axiom_type": "SubClassOf",
+              "dl": "WineTaste ⊑ WineDescriptor"
+            }
+          ],
+          "pred": []
+        },
+        "ObjectProperty": {
+          "gold": [
+            {
+              "id": "AX47",
+              "term": "hasBody",
+              "axiom_type": "Characteristics",
+              "dl": "Functional(hasBody)"
+            },
+            {
+              "id": "AX48",
+              "term": "hasBody",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: hasBody (ObjectProperty)"
+            },
+            {
+              "id": "AX49",
+              "term": "hasBody",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀hasBody.WineBody"
+            },
+            {
+              "id": "AX50",
+              "term": "hasBody",
+              "axiom_type": "SubPropertyOf",
+              "dl": "hasBody ⊑ hasWineDescriptor"
+            },
+            {
+              "id": "AX51",
+              "term": "hasColor",
+              "axiom_type": "Characteristics",
+              "dl": "Functional(hasColor)"
+            },
+            {
+              "id": "AX52",
+              "term": "hasColor",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: hasColor (ObjectProperty)"
+            },
+            {
+              "id": "AX53",
+              "term": "hasColor",
+              "axiom_type": "Domain",
+              "dl": "∃hasColor.⊤ ⊑ wine"
+            },
+            {
+              "id": "AX54",
+              "term": "hasColor",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀hasColor.WineColor"
+            },
+            {
+              "id": "AX55",
+              "term": "hasColor",
+              "axiom_type": "SubPropertyOf",
+              "dl": "hasColor ⊑ hasWineDescriptor"
+            },
+            {
+              "id": "AX56",
+              "term": "hasFlavor",
+              "axiom_type": "Characteristics",
+              "dl": "Functional(hasFlavor)"
+            },
+            {
+              "id": "AX57",
+              "term": "hasFlavor",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: hasFlavor (ObjectProperty)"
+            },
+            {
+              "id": "AX58",
+              "term": "hasFlavor",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀hasFlavor.WineFlavor"
+            },
+            {
+              "id": "AX59",
+              "term": "hasFlavor",
+              "axiom_type": "SubPropertyOf",
+              "dl": "hasFlavor ⊑ hasWineDescriptor"
+            },
+            {
+              "id": "AX60",
+              "term": "hasSugar",
+              "axiom_type": "Characteristics",
+              "dl": "Functional(hasSugar)"
+            },
+            {
+              "id": "AX61",
+              "term": "hasSugar",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: hasSugar (ObjectProperty)"
+            },
+            {
+              "id": "AX62",
+              "term": "hasSugar",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀hasSugar.WineSugar"
+            },
+            {
+              "id": "AX63",
+              "term": "hasSugar",
+              "axiom_type": "SubPropertyOf",
+              "dl": "hasSugar ⊑ hasWineDescriptor"
+            },
+            {
+              "id": "AX68",
+              "term": "hasWineDescriptor",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: hasWineDescriptor (ObjectProperty)"
+            },
+            {
+              "id": "AX69",
+              "term": "hasWineDescriptor",
+              "axiom_type": "Domain",
+              "dl": "∃hasWineDescriptor.⊤ ⊑ wine"
+            },
+            {
+              "id": "AX70",
+              "term": "hasWineDescriptor",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀hasWineDescriptor.WineDescriptor"
+            },
+            {
+              "id": "AX71",
+              "term": "locatedIn",
+              "axiom_type": "Characteristics",
+              "dl": "Transitive(locatedIn)"
+            },
+            {
+              "id": "AX72",
+              "term": "locatedIn",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: locatedIn (ObjectProperty)"
+            },
+            {
+              "id": "AX73",
+              "term": "locatedIn",
+              "axiom_type": "Domain",
+              "dl": "∃locatedIn.⊤ ⊑ ⊤"
+            },
+            {
+              "id": "AX74",
+              "term": "locatedIn",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀locatedIn.Region"
+            }
+          ],
+          "pred": [
+            {
+              "id": "AX15",
+              "term": "produced in region",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: produced in region (ObjectProperty)"
+            },
+            {
+              "id": "AX16",
+              "term": "produced in region",
+              "axiom_type": "Domain",
+              "dl": "∃produced in region.⊤ ⊑ Wine"
+            },
+            {
+              "id": "AX17",
+              "term": "produced in region",
+              "axiom_type": "Range",
+              "dl": "⊤ ⊑ ∀produced in region.Wine Region"
+            }
+          ]
+        },
+        "DatatypeProperty": {
+          "gold": [
+            {
+              "id": "AX78",
+              "term": "yearValue",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: yearValue (DatatypeProperty)"
+            },
+            {
+              "id": "AX79",
+              "term": "yearValue",
+              "axiom_type": "Domain",
+              "dl": "∃yearValue.⊤ ⊑ VintageYear"
+            },
+            {
+              "id": "AX80",
+              "term": "yearValue",
+              "axiom_type": "Range",
+              "dl": "yearValue maps-to xsd:integer"
+            }
+          ],
+          "pred": [
+            {
+              "id": "AX18",
+              "term": "has body",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has body (DatatypeProperty)"
+            },
+            {
+              "id": "AX19",
+              "term": "has body",
+              "axiom_type": "Domain",
+              "dl": "∃has body.⊤ ⊑ Vintage"
+            },
+            {
+              "id": "AX20",
+              "term": "has body",
+              "axiom_type": "Range",
+              "dl": "has body maps-to ⊤"
+            },
+            {
+              "id": "AX21",
+              "term": "has bouquet",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has bouquet (DatatypeProperty)"
+            },
+            {
+              "id": "AX22",
+              "term": "has bouquet",
+              "axiom_type": "Domain",
+              "dl": "∃has bouquet.⊤ ⊑ Vintage"
+            },
+            {
+              "id": "AX23",
+              "term": "has bouquet",
+              "axiom_type": "Range",
+              "dl": "has bouquet maps-to ⊤"
+            },
+            {
+              "id": "AX24",
+              "term": "has color",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has color (DatatypeProperty)"
+            },
+            {
+              "id": "AX25",
+              "term": "has color",
+              "axiom_type": "Domain",
+              "dl": "∃has color.⊤ ⊑ Wine"
+            },
+            {
+              "id": "AX26",
+              "term": "has color",
+              "axiom_type": "Range",
+              "dl": "has color maps-to ⊤"
+            },
+            {
+              "id": "AX27",
+              "term": "has year",
+              "axiom_type": "Characteristics",
+              "dl": "Functional(has year)"
+            },
+            {
+              "id": "AX28",
+              "term": "has year",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: has year (DatatypeProperty)"
+            },
+            {
+              "id": "AX29",
+              "term": "has year",
+              "axiom_type": "Domain",
+              "dl": "∃has year.⊤ ⊑ Vintage"
+            },
+            {
+              "id": "AX30",
+              "term": "has year",
+              "axiom_type": "Range",
+              "dl": "has year maps-to ⊤"
+            },
+            {
+              "id": "AX31",
+              "term": "is good vintage",
+              "axiom_type": "Declaration",
+              "dl": "Declaration: is good vintage (DatatypeProperty)"
+            },
+            {
+              "id": "AX32",
+              "term": "is good vintage",
+              "axiom_type": "Domain",
+              "dl": "∃is good vintage.⊤ ⊑ Vintage"
+            },
+            {
+              "id": "AX33",
+              "term": "is good vintage",
+              "axiom_type": "Range",
+              "dl": "is good vintage maps-to ⊤"
+            }
+          ]
+        }
+      }
+    },
+    "alignments": {
+      "class": {
+        "Bordeaux": "Bordeaux Wine",
+        "Region": "Wine Region",
+        "Vintage": "Vintage",
+        "WineGrape": "Grape",
+        "Zinfandel": "Napa Zinfandel",
+        "wine": "Wine"
+      },
+      "property": {
+        "hasVintageYear": "has vintage",
+        "madeFromGrape": "made from grape"
+      }
+    },
+    "cq_coverage": {
+      "per_cq": {
+        "CQ1": {
+          "question": "",
+          "n_axioms": 37,
+          "n_tp": 4,
+          "rate": 0.10810810810810811,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX17",
+            "AX19",
+            "AX20",
+            "AX22",
+            "AX23",
+            "AX24",
+            "AX25",
+            "AX27",
+            "AX29",
+            "AX31",
+            "AX32",
+            "AX33",
+            "AX40",
+            "AX41",
+            "AX42",
+            "AX43",
+            "AX44",
+            "AX45",
+            "AX46",
+            "AX47",
+            "AX48",
+            "AX49",
+            "AX50",
+            "AX51",
+            "AX52",
+            "AX53",
+            "AX54",
+            "AX55",
+            "AX56",
+            "AX61",
+            "AX62",
+            "AX63",
+            "AX71",
+            "AX74",
+            "AX75",
+            "AX76",
+            "AX77"
+          ],
+          "tp_axiom_ids": [
+            "AX40",
+            "AX75",
+            "AX76",
+            "AX77"
+          ],
+          "missing_axiom_ids": [
+            "AX17",
+            "AX19",
+            "AX20",
+            "AX22",
+            "AX23",
+            "AX24",
+            "AX25",
+            "AX27",
+            "AX29",
+            "AX31",
+            "AX32",
+            "AX33",
+            "AX41",
+            "AX42",
+            "AX43",
+            "AX44",
+            "AX45",
+            "AX46",
+            "AX47",
+            "AX48",
+            "AX49",
+            "AX50",
+            "AX51",
+            "AX52",
+            "AX53",
+            "AX54",
+            "AX55",
+            "AX56",
+            "AX61",
+            "AX62",
+            "AX63",
+            "AX71",
+            "AX74"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX17",
+              "dl": "Declaration: WineBody (Class)",
+              "status": "skip"
+            },
+            {
+              "id": "AX19",
+              "dl": "WineBody ⊑ WineTaste",
+              "status": "skip"
+            },
+            {
+              "id": "AX20",
+              "dl": "Declaration: WineColor (Class)",
+              "status": "skip"
+            },
+            {
+              "id": "AX22",
+              "dl": "WineColor ⊑ WineDescriptor",
+              "status": "skip"
+            },
+            {
+              "id": "AX23",
+              "dl": "Declaration: WineDescriptor (Class)",
+              "status": "skip"
+            },
+            {
+              "id": "AX24",
+              "dl": "WineDescriptor ≡ (WineColor ⊔ WineTaste)",
+              "status": "skip"
+            },
+            {
+              "id": "AX25",
+              "dl": "Declaration: WineFlavor (Class)",
+              "status": "skip"
+            },
+            {
+              "id": "AX27",
+              "dl": "WineFlavor ⊑ WineTaste",
+              "status": "skip"
+            },
+            {
+              "id": "AX29",
+              "dl": "Declaration: WineSugar (Class)",
+              "status": "skip"
+            },
+            {
+              "id": "AX31",
+              "dl": "WineSugar ⊑ WineTaste",
+              "status": "skip"
+            },
+            {
+              "id": "AX32",
+              "dl": "Declaration: WineTaste (Class)",
+              "status": "skip"
+            },
+            {
+              "id": "AX33",
+              "dl": "WineTaste ⊑ WineDescriptor",
+              "status": "skip"
+            },
+            {
+              "id": "AX41",
+              "dl": "wine ⊑ ∃locatedIn.Region",
+              "status": "fn"
+            },
+            {
+              "id": "AX42",
+              "dl": "wine ⊑ ≥1 madeFromGrape.⊤",
+              "status": "fn"
+            },
+            {
+              "id": "AX43",
+              "dl": "wine ⊑ =1 hasBody.⊤",
+              "status": "fn"
+            },
+            {
+              "id": "AX44",
+              "dl": "wine ⊑ =1 hasColor.⊤",
+              "status": "fn"
+            },
+            {
+              "id": "AX45",
+              "dl": "wine ⊑ =1 hasFlavor.⊤",
+              "status": "fn"
+            },
+            {
+              "id": "AX46",
+              "dl": "wine ⊑ =1 hasSugar.⊤",
+              "status": "fn"
+            },
+            {
+              "id": "AX47",
+              "dl": "Functional(hasBody)",
+              "status": "skip"
+            },
+            {
+              "id": "AX48",
+              "dl": "Declaration: hasBody (ObjectProperty)",
+              "status": "skip"
+            },
+            {
+              "id": "AX49",
+              "dl": "⊤ ⊑ ∀hasBody.WineBody",
+              "status": "skip"
+            },
+            {
+              "id": "AX50",
+              "dl": "hasBody ⊑ hasWineDescriptor",
+              "status": "skip"
+            },
+            {
+              "id": "AX51",
+              "dl": "Functional(hasColor)",
+              "status": "skip"
+            },
+            {
+              "id": "AX52",
+              "dl": "Declaration: hasColor (ObjectProperty)",
+              "status": "skip"
+            },
+            {
+              "id": "AX53",
+              "dl": "∃hasColor.⊤ ⊑ wine",
+              "status": "skip"
+            },
+            {
+              "id": "AX54",
+              "dl": "⊤ ⊑ ∀hasColor.WineColor",
+              "status": "skip"
+            },
+            {
+              "id": "AX55",
+              "dl": "hasColor ⊑ hasWineDescriptor",
+              "status": "skip"
+            },
+            {
+              "id": "AX56",
+              "dl": "Functional(hasFlavor)",
+              "status": "skip"
+            },
+            {
+              "id": "AX61",
+              "dl": "Declaration: hasSugar (ObjectProperty)",
+              "status": "skip"
+            },
+            {
+              "id": "AX62",
+              "dl": "⊤ ⊑ ∀hasSugar.WineSugar",
+              "status": "skip"
+            },
+            {
+              "id": "AX63",
+              "dl": "hasSugar ⊑ hasWineDescriptor",
+              "status": "skip"
+            },
+            {
+              "id": "AX71",
+              "dl": "Transitive(locatedIn)",
+              "status": "skip"
+            },
+            {
+              "id": "AX74",
+              "dl": "⊤ ⊑ ∀locatedIn.Region",
+              "status": "skip"
+            }
+          ]
+        },
+        "CQ2": {
+          "question": "",
+          "n_axioms": 15,
+          "n_tp": 2,
+          "rate": 0.13333333333333333,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX1",
+            "AX3",
+            "AX4",
+            "AX6",
+            "AX7",
+            "AX12",
+            "AX13",
+            "AX15",
+            "AX16",
+            "AX44",
+            "AX46",
+            "AX47",
+            "AX48",
+            "AX71",
+            "AX75"
+          ],
+          "tp_axiom_ids": [
+            "AX1",
+            "AX75"
+          ],
+          "missing_axiom_ids": [
+            "AX3",
+            "AX4",
+            "AX6",
+            "AX7",
+            "AX12",
+            "AX13",
+            "AX15",
+            "AX16",
+            "AX44",
+            "AX46",
+            "AX47",
+            "AX48",
+            "AX71"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX3",
+              "dl": "Declaration: RedBordeaux (Class)",
+              "status": "skip"
+            },
+            {
+              "id": "AX4",
+              "dl": "RedBordeaux ≡ (Bordeaux ⊓ RedWine)",
+              "status": "skip"
+            },
+            {
+              "id": "AX6",
+              "dl": "Declaration: RedWine (Class)",
+              "status": "skip"
+            },
+            {
+              "id": "AX7",
+              "dl": "RedWine ≡ (wine ⊓ ∃hasColor.{Red})",
+              "status": "skip"
+            },
+            {
+              "id": "AX12",
+              "dl": "Declaration: WhiteBordeaux (Class)",
+              "status": "skip"
+            },
+            {
+              "id": "AX13",
+              "dl": "WhiteBordeaux ≡ (Bordeaux ⊓ WhiteWine)",
+              "status": "skip"
+            },
+            {
+              "id": "AX15",
+              "dl": "Declaration: WhiteWine (Class)",
+              "status": "skip"
+            },
+            {
+              "id": "AX16",
+              "dl": "WhiteWine ≡ (wine ⊓ ∃hasColor.{White})",
+              "status": "skip"
+            },
+            {
+              "id": "AX44",
+              "dl": "wine ⊑ =1 hasColor.⊤",
+              "status": "fn"
+            },
+            {
+              "id": "AX46",
+              "dl": "wine ⊑ =1 hasSugar.⊤",
+              "status": "fn"
+            },
+            {
+              "id": "AX47",
+              "dl": "Functional(hasBody)",
+              "status": "skip"
+            },
+            {
+              "id": "AX48",
+              "dl": "Declaration: hasBody (ObjectProperty)",
+              "status": "skip"
+            },
+            {
+              "id": "AX71",
+              "dl": "Transitive(locatedIn)",
+              "status": "skip"
+            }
+          ]
+        },
+        "CQ6": {
+          "question": "",
+          "n_axioms": 23,
+          "n_tp": 3,
+          "rate": 0.13043478260869565,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX9",
+            "AX10",
+            "AX11",
+            "AX25",
+            "AX27",
+            "AX40",
+            "AX41",
+            "AX42",
+            "AX43",
+            "AX49",
+            "AX50",
+            "AX51",
+            "AX52",
+            "AX57",
+            "AX58",
+            "AX59",
+            "AX60",
+            "AX71",
+            "AX74",
+            "AX76",
+            "AX78",
+            "AX79",
+            "AX80"
+          ],
+          "tp_axiom_ids": [
+            "AX9",
+            "AX40",
+            "AX76"
+          ],
+          "missing_axiom_ids": [
+            "AX10",
+            "AX11",
+            "AX25",
+            "AX27",
+            "AX41",
+            "AX42",
+            "AX43",
+            "AX49",
+            "AX50",
+            "AX51",
+            "AX52",
+            "AX57",
+            "AX58",
+            "AX59",
+            "AX60",
+            "AX71",
+            "AX74",
+            "AX78",
+            "AX79",
+            "AX80"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX10",
+              "dl": "Vintage ⊑ =1 hasVintageYear.⊤",
+              "status": "fn"
+            },
+            {
+              "id": "AX11",
+              "dl": "Declaration: VintageYear (Class)",
+              "status": "skip"
+            },
+            {
+              "id": "AX25",
+              "dl": "Declaration: WineFlavor (Class)",
+              "status": "skip"
+            },
+            {
+              "id": "AX27",
+              "dl": "WineFlavor ⊑ WineTaste",
+              "status": "skip"
+            },
+            {
+              "id": "AX41",
+              "dl": "wine ⊑ ∃locatedIn.Region",
+              "status": "fn"
+            },
+            {
+              "id": "AX42",
+              "dl": "wine ⊑ ≥1 madeFromGrape.⊤",
+              "status": "fn"
+            },
+            {
+              "id": "AX43",
+              "dl": "wine ⊑ =1 hasBody.⊤",
+              "status": "fn"
+            },
+            {
+              "id": "AX49",
+              "dl": "⊤ ⊑ ∀hasBody.WineBody",
+              "status": "skip"
+            },
+            {
+              "id": "AX50",
+              "dl": "hasBody ⊑ hasWineDescriptor",
+              "status": "skip"
+            },
+            {
+              "id": "AX51",
+              "dl": "Functional(hasColor)",
+              "status": "skip"
+            },
+            {
+              "id": "AX52",
+              "dl": "Declaration: hasColor (ObjectProperty)",
+              "status": "skip"
+            },
+            {
+              "id": "AX57",
+              "dl": "Declaration: hasFlavor (ObjectProperty)",
+              "status": "skip"
+            },
+            {
+              "id": "AX58",
+              "dl": "⊤ ⊑ ∀hasFlavor.WineFlavor",
+              "status": "skip"
+            },
+            {
+              "id": "AX59",
+              "dl": "hasFlavor ⊑ hasWineDescriptor",
+              "status": "skip"
+            },
+            {
+              "id": "AX60",
+              "dl": "Functional(hasSugar)",
+              "status": "skip"
+            },
+            {
+              "id": "AX71",
+              "dl": "Transitive(locatedIn)",
+              "status": "skip"
+            },
+            {
+              "id": "AX74",
+              "dl": "⊤ ⊑ ∀locatedIn.Region",
+              "status": "skip"
+            },
+            {
+              "id": "AX78",
+              "dl": "Declaration: yearValue (DatatypeProperty)",
+              "status": "skip"
+            },
+            {
+              "id": "AX79",
+              "dl": "∃yearValue.⊤ ⊑ VintageYear",
+              "status": "skip"
+            },
+            {
+              "id": "AX80",
+              "dl": "yearValue maps-to xsd:integer",
+              "status": "skip"
+            }
+          ]
+        },
+        "CQ7": {
+          "question": "",
+          "n_axioms": 18,
+          "n_tp": 4,
+          "rate": 0.2222222222222222,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX8",
+            "AX9",
+            "AX10",
+            "AX11",
+            "AX34",
+            "AX57",
+            "AX58",
+            "AX59",
+            "AX60",
+            "AX64",
+            "AX65",
+            "AX66",
+            "AX67",
+            "AX71",
+            "AX72",
+            "AX78",
+            "AX79",
+            "AX80"
+          ],
+          "tp_axiom_ids": [
+            "AX8",
+            "AX9",
+            "AX34",
+            "AX65"
+          ],
+          "missing_axiom_ids": [
+            "AX10",
+            "AX11",
+            "AX57",
+            "AX58",
+            "AX59",
+            "AX60",
+            "AX64",
+            "AX66",
+            "AX67",
+            "AX71",
+            "AX72",
+            "AX78",
+            "AX79",
+            "AX80"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX10",
+              "dl": "Vintage ⊑ =1 hasVintageYear.⊤",
+              "status": "fn"
+            },
+            {
+              "id": "AX11",
+              "dl": "Declaration: VintageYear (Class)",
+              "status": "skip"
+            },
+            {
+              "id": "AX57",
+              "dl": "Declaration: hasFlavor (ObjectProperty)",
+              "status": "skip"
+            },
+            {
+              "id": "AX58",
+              "dl": "⊤ ⊑ ∀hasFlavor.WineFlavor",
+              "status": "skip"
+            },
+            {
+              "id": "AX59",
+              "dl": "hasFlavor ⊑ hasWineDescriptor",
+              "status": "skip"
+            },
+            {
+              "id": "AX60",
+              "dl": "Functional(hasSugar)",
+              "status": "skip"
+            },
+            {
+              "id": "AX64",
+              "dl": "Functional(hasVintageYear)",
+              "status": "fn"
+            },
+            {
+              "id": "AX66",
+              "dl": "∃hasVintageYear.⊤ ⊑ Vintage",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX67",
+              "dl": "⊤ ⊑ ∀hasVintageYear.VintageYear",
+              "status": "mismatch"
+            },
+            {
+              "id": "AX71",
+              "dl": "Transitive(locatedIn)",
+              "status": "skip"
+            },
+            {
+              "id": "AX72",
+              "dl": "Declaration: locatedIn (ObjectProperty)",
+              "status": "skip"
+            },
+            {
+              "id": "AX78",
+              "dl": "Declaration: yearValue (DatatypeProperty)",
+              "status": "skip"
+            },
+            {
+              "id": "AX79",
+              "dl": "∃yearValue.⊤ ⊑ VintageYear",
+              "status": "skip"
+            },
+            {
+              "id": "AX80",
+              "dl": "yearValue maps-to xsd:integer",
+              "status": "skip"
+            }
+          ]
+        },
+        "CQnew1": {
+          "question": "",
+          "n_axioms": 7,
+          "n_tp": 2,
+          "rate": 0.2857142857142857,
+          "fully_covered": false,
+          "any_covered": true,
+          "covered": true,
+          "axiom_ids": [
+            "AX1",
+            "AX28",
+            "AX68",
+            "AX69",
+            "AX70",
+            "AX71",
+            "AX73"
+          ],
+          "tp_axiom_ids": [
+            "AX1",
+            "AX28"
+          ],
+          "missing_axiom_ids": [
+            "AX68",
+            "AX69",
+            "AX70",
+            "AX71",
+            "AX73"
+          ],
+          "missing_axioms": [
+            {
+              "id": "AX68",
+              "dl": "Declaration: hasWineDescriptor (ObjectProperty)",
+              "status": "skip"
+            },
+            {
+              "id": "AX69",
+              "dl": "∃hasWineDescriptor.⊤ ⊑ wine",
+              "status": "skip"
+            },
+            {
+              "id": "AX70",
+              "dl": "⊤ ⊑ ∀hasWineDescriptor.WineDescriptor",
+              "status": "skip"
+            },
+            {
+              "id": "AX71",
+              "dl": "Transitive(locatedIn)",
+              "status": "skip"
+            },
+            {
+              "id": "AX73",
+              "dl": "∃locatedIn.⊤ ⊑ ⊤",
+              "status": "skip"
+            }
+          ]
+        }
+      },
+      "n_total": 5,
+      "n_fully_covered": 0,
+      "n_any_covered": 5,
+      "fully_coverage": 0.0,
+      "any_coverage": 1.0,
+      "average_rate": 0.175962546397329
+    }
+  }
+}

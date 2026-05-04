@@ -1,0 +1,148 @@
+====================================================================================================
+ATOMIC TBOX AXIOMS
+====================================================================================================
+
+── Class ──
+
+  Term: Animal  [Class]
+    Declaration                Declaration: Animal (Class)
+      Subject: Animal
+      Object : Class
+
+  Term: Carnivore  [Class]
+    Declaration                Declaration: Carnivore (Class)
+      Subject: Carnivore
+      Object : Class
+    SubClassOf                 Carnivore ⊑ Animal
+      Subject: Carnivore
+      Object : Animal
+
+  Term: Herbivore  [Class]
+    Declaration                Declaration: Herbivore (Class)
+      Subject: Herbivore
+      Object : Class
+    SubClassOf                 Herbivore ⊑ Animal
+      Subject: Herbivore
+      Object : Animal
+
+  Term: Lion  [Class]
+    Declaration                Declaration: Lion (Class)
+      Subject: Lion
+      Object : Class
+    SubClassOf                 Lion ⊑ Carnivore
+      Subject: Lion
+      Object : Carnivore
+
+  Term: Plant  [Class]
+    Declaration                Declaration: Plant (Class)
+      Subject: Plant
+      Object : Class
+
+  Term: Plant Consumption  [Class]
+    Declaration                Declaration: Plant Consumption (Class)
+      Subject: Plant Consumption
+      Object : Class
+
+  Term: Plant Part  [Class]
+    Declaration                Declaration: Plant Part (Class)
+      Subject: Plant Part
+      Object : Class
+
+
+── ObjectProperty ──
+
+  Term: consumes part  [ObjectProperty]
+    Declaration                Declaration: consumes part (ObjectProperty)
+      Subject: consumes part
+      Object : ObjectProperty
+    Domain                     ∃consumes part.⊤ ⊑ Plant Consumption
+      Subject: consumes part
+      Object : Plant Consumption
+    Range                      ⊤ ⊑ ∀consumes part.Plant Part
+      Subject: consumes part
+      Object : Plant Part
+
+  Term: eats  [ObjectProperty]
+    Declaration                Declaration: eats (ObjectProperty)
+      Subject: eats
+      Object : ObjectProperty
+    Domain                     ∃eats.⊤ ⊑ Animal
+      Subject: eats
+      Object : Animal
+    Range                      ⊤ ⊑ ∀eats.Animal
+      Subject: eats
+      Object : Animal
+
+  Term: eats animal  [ObjectProperty]
+    Declaration                Declaration: eats animal (ObjectProperty)
+      Subject: eats animal
+      Object : ObjectProperty
+    Domain                     ∃eats animal.⊤ ⊑ Plant
+      Subject: eats animal
+      Object : Plant
+    Range                      ⊤ ⊑ ∀eats animal.Animal
+      Subject: eats animal
+      Object : Animal
+
+  Term: eatsPlant  [ObjectProperty]
+    Declaration                Declaration: eatsPlant (ObjectProperty)
+      Subject: eatsPlant
+      Object : ObjectProperty
+    Domain                     ∃eatsPlant.⊤ ⊑ Animal
+      Subject: eatsPlant
+      Object : Animal
+    Range                      ⊤ ⊑ ∀eatsPlant.Plant
+      Subject: eatsPlant
+      Object : Plant
+
+  Term: is part of  [ObjectProperty]
+    Declaration                Declaration: is part of (ObjectProperty)
+      Subject: is part of
+      Object : ObjectProperty
+    Domain                     ∃is part of.⊤ ⊑ Plant Part
+      Subject: is part of
+      Object : Plant Part
+    Range                      ⊤ ⊑ ∀is part of.Plant
+      Subject: is part of
+      Object : Plant
+
+  Term: performed by  [ObjectProperty]
+    Declaration                Declaration: performed by (ObjectProperty)
+      Subject: performed by
+      Object : ObjectProperty
+    Domain                     ∃performed by.⊤ ⊑ Plant Consumption
+      Subject: performed by
+      Object : Plant Consumption
+    Range                      ⊤ ⊑ ∀performed by.Animal
+      Subject: performed by
+      Object : Animal
+
+  Term: targets plant  [ObjectProperty]
+    Declaration                Declaration: targets plant (ObjectProperty)
+      Subject: targets plant
+      Object : ObjectProperty
+    Domain                     ∃targets plant.⊤ ⊑ Plant Consumption
+      Subject: targets plant
+      Object : Plant Consumption
+    Range                      ⊤ ⊑ ∀targets plant.Plant
+      Subject: targets plant
+      Object : Plant
+
+
+====================================================================================================
+STATISTICS
+====================================================================================================
+
+  Classes:               7  (defined: 0, primitive: 7)
+  ObjectProperties:      7
+  DatatypeProperties:    0
+
+  Axiom Breakdown:
+    Declaration               14
+    Domain                    7
+    Range                     7
+    SubClassOf                3
+    ------------------------------
+    Total TBox Axioms         31
+
+====================================================================================================

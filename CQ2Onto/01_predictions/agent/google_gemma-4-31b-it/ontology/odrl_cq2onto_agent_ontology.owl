@@ -1,0 +1,298 @@
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:vaem="http://www.linkedmodel.org/schema/vaem#">
+ 
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Policy">
+  <rdfs:comment xml:lang="en">A set of rules that define the permissions, prohibitions, and duties associated with an asset.</rdfs:comment>
+  <rdfs:label xml:lang="en">Policy</rdfs:label>
+  <dc:source>(competency_question) New CQ1: Which policy is directly linked to a given asset?
+    (competency_question) New CQ2: What conflict resolution strategy is specified by a policy?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Asset">
+  <rdfs:comment xml:lang="en">The digital or physical resource to which a policy applies.</rdfs:comment>
+  <rdfs:label xml:lang="en">Asset</rdfs:label>
+  <dc:source>(competency_question) New CQ1: Which policy is directly linked to a given asset?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Rule">
+  <rdfs:comment xml:lang="en">A general statement of a right or obligation.</rdfs:comment>
+  <rdfs:label xml:lang="en">Rule</rdfs:label>
+  <dc:source>(competency_question) New CQ4: Which rule is activated upon the failure of another rule?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Permission">
+  <rdfs:comment xml:lang="en">A rule that allows a party to perform an action.</rdfs:comment>
+  <rdfs:label xml:lang="en">Permission</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added disjointness with Prohibition and Duty: A rule cannot be both a permission and a prohibition/duty simultaneously.</vaem:rationale>
+  <dc:source>(competency_question) CQ03: Shall the permissions 'Aggregation' and 'Disaggregation' be of the type Transfer Rights?
+    (pitfall) Missing disjoint axioms</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#Rule"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Prohibition"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Duty"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Prohibition">
+  <rdfs:comment xml:lang="en">A rule that forbids a party from performing an action.</rdfs:comment>
+  <rdfs:label xml:lang="en">Prohibition</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added disjointness with Permission and Duty: A rule cannot be both a prohibition and a permission/duty simultaneously.</vaem:rationale>
+  <dc:source>(competency_question) New CQ3: What duty is specified as a remedy for the violation of a prohibition?
+    (pitfall) Missing disjoint axioms</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#Rule"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Permission"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Duty"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Duty">
+  <rdfs:comment xml:lang="en">A rule that obligates a party to perform an action.</rdfs:comment>
+  <rdfs:label xml:lang="en">Duty</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added disjointness with Permission and Prohibition: A rule cannot be both a duty and a permission/prohibition simultaneously.</vaem:rationale>
+  <dc:source>(competency_question) New CQ5: What duty is specified as a consequence of another duty?
+    (pitfall) Missing disjoint axioms</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#Rule"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Permission"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Prohibition"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#TransferRight">
+  <rdfs:comment xml:lang="en">A specific type of permission related to the transfer of rights.</rdfs:comment>
+  <rdfs:label xml:lang="en">Transfer Right</rdfs:label>
+  <dc:source>(competency_question) CQ03: Shall the permissions 'Aggregation' and 'Disaggregation' be of the type Transfer Rights?</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#Permission"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Aggregation">
+  <rdfs:comment xml:lang="en">Permission to aggregate assets.</rdfs:comment>
+  <rdfs:label xml:lang="en">Aggregation</rdfs:label>
+  <dc:source>(competency_question) CQ03: Shall the permissions 'Aggregation' and 'Disaggregation' be of the type Transfer Rights?</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#TransferRight"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Disaggregation">
+  <rdfs:comment xml:lang="en">Permission to disaggregate assets.</rdfs:comment>
+  <rdfs:label xml:lang="en">Disaggregation</rdfs:label>
+  <dc:source>(competency_question) CQ03: Shall the permissions 'Aggregation' and 'Disaggregation' be of the type Transfer Rights?</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#TransferRight"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Party">
+  <rdfs:comment xml:lang="en">An entity (person or organization) involved in a contract or policy.</rdfs:comment>
+  <rdfs:label xml:lang="en">Party</rdfs:label>
+  <dc:source>(competency_question) CQ06: Expressing the various roles of contract parties within the Permission/Duty element.</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Constraint">
+  <rdfs:comment xml:lang="en">A condition that must be met for a rule to be applicable.</rdfs:comment>
+  <rdfs:label xml:lang="en">Constraint</rdfs:label>
+  <dc:source>(competency_question) CQ13: Shall ODRLv2 allow for nested constraints?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#LogicalOperator">
+  <rdfs:comment xml:lang="en">Operators used to combine constraints (AND, OR, XOR, NOT).</rdfs:comment>
+  <rdfs:label xml:lang="en">Logical Operator</rdfs:label>
+  <dc:source>(competency_question) CQ14: How do we express 'and', 'or', 'xor' constraints?
+    (competency_question) CQ08: How to provide a 'NOT' expression?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#ConflictResolutionStrategy">
+  <rdfs:comment xml:lang="en">The strategy used to resolve conflicts between overlapping rules.</rdfs:comment>
+  <rdfs:label xml:lang="en">Conflict Resolution Strategy</rdfs:label>
+  <dc:source>(competency_question) New CQ2: What conflict resolution strategy is specified by a policy?</dc:source>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#appliesToAsset">
+  <rdfs:comment xml:lang="en">Links a policy to the asset it governs.</rdfs:comment>
+  <rdfs:label xml:lang="en">applies to asset</rdfs:label>
+  <dc:source>(competency_question) New CQ1: Which policy is directly linked to a given asset?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Policy"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Asset"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#isAssetOf"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isAssetOf">
+  <rdfs:comment xml:lang="en">Inverse of appliesToAsset: Links an asset to the policy that governs it.</rdfs:comment>
+  <rdfs:label xml:lang="en">is asset of</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property: To resolve the pitfall of missing inverse relationships.</vaem:rationale>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Asset"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Policy"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#appliesToAsset"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasConflictStrategy">
+  <rdfs:comment xml:lang="en">Links a policy to its conflict resolution strategy.</rdfs:comment>
+  <rdfs:label xml:lang="en">has conflict strategy</rdfs:label>
+  <dc:source>(competency_question) New CQ2: What conflict resolution strategy is specified by a policy?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Policy"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#ConflictResolutionStrategy"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#isConflictStrategyOf"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isConflictStrategyOf">
+  <rdfs:comment xml:lang="en">Inverse of hasConflictStrategy: Links a strategy to the policy that uses it.</rdfs:comment>
+  <rdfs:label xml:lang="en">is conflict strategy of</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property: To resolve the pitfall of missing inverse relationships.</vaem:rationale>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#ConflictResolutionStrategy"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Policy"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasConflictStrategy"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasRule">
+  <rdfs:comment xml:lang="en">Links a policy to the rules it contains.</rdfs:comment>
+  <rdfs:label xml:lang="en">has rule</rdfs:label>
+  <dc:source>(competency_question) CQ10: How are rights and duties supported for all contract parties?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Policy"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#isRuleOf"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isRuleOf">
+  <rdfs:comment xml:lang="en">Inverse of hasRule: Links a rule to the policy it belongs to.</rdfs:comment>
+  <rdfs:label xml:lang="en">is rule of</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property: To resolve the pitfall of missing inverse relationships.</vaem:rationale>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Policy"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasRule"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasConstraint">
+  <rdfs:comment xml:lang="en">Links a rule to its constraints.</rdfs:comment>
+  <rdfs:label xml:lang="en">has constraint</rdfs:label>
+  <dc:source>(competency_question) CQ21: How to express constraints on requirements?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Constraint"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#isConstraintOf"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isConstraintOf">
+  <rdfs:comment xml:lang="en">Inverse of hasConstraint: Links a constraint to the rule it restricts.</rdfs:comment>
+  <rdfs:label xml:lang="en">is constraint of</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property: To resolve the pitfall of missing inverse relationships.</vaem:rationale>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Constraint"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasConstraint"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasNestedConstraint">
+  <rdfs:comment xml:lang="en">Allows constraints to be nested within other constraints.</rdfs:comment>
+  <rdfs:label xml:lang="en">has nested constraint</rdfs:label>
+  <dc:source>(competency_question) CQ13: Shall ODRLv2 allow for nested constraints?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Constraint"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Constraint"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#isNestedIn"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isNestedIn">
+  <rdfs:comment xml:lang="en">Inverse of hasNestedConstraint: Links a nested constraint to its parent constraint.</rdfs:comment>
+  <rdfs:label xml:lang="en">is nested in</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property: To resolve the pitfall of missing inverse relationships.</vaem:rationale>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Constraint"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Constraint"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasNestedConstraint"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#usesOperator">
+  <rdfs:comment xml:lang="en">Links a constraint to a logical operator.</rdfs:comment>
+  <rdfs:label xml:lang="en">uses operator</rdfs:label>
+  <dc:source>(competency_question) New CQ6: What operator is used in the constraints of a prohibition?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Constraint"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#LogicalOperator"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#isOperatorOf"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isOperatorOf">
+  <rdfs:comment xml:lang="en">Inverse of usesOperator: Links a logical operator to the constraint that uses it.</rdfs:comment>
+  <rdfs:label xml:lang="en">is operator of</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property: To resolve the pitfall of missing inverse relationships.</vaem:rationale>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#LogicalOperator"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Constraint"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#usesOperator"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasRemedy">
+  <rdfs:comment xml:lang="en">Links a prohibition to a duty that acts as a remedy for its violation.</rdfs:comment>
+  <rdfs:label xml:lang="en">has remedy</rdfs:label>
+  <dc:source>(competency_question) New CQ3: What duty is specified as a remedy for the violation of a prohibition?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Prohibition"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Duty"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#isRemedyFor"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isRemedyFor">
+  <rdfs:comment xml:lang="en">Inverse of hasRemedy: Links a duty to the prohibition it remedies.</rdfs:comment>
+  <rdfs:label xml:lang="en">is remedy for</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property: To resolve the pitfall of missing inverse relationships.</vaem:rationale>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Duty"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Prohibition"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasRemedy"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#activatesOnFailure">
+  <rdfs:comment xml:lang="en">Links a rule to another rule that is activated if the first one fails.</rdfs:comment>
+  <rdfs:label xml:lang="en">activates on failure</rdfs:label>
+  <dc:source>(competency_question) New CQ4: Which rule is activated upon the failure of another rule?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#isActivatedByFailureOf"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isActivatedByFailureOf">
+  <rdfs:comment xml:lang="en">Inverse of activatesOnFailure: Links a rule to the rule whose failure triggers it.</rdfs:comment>
+  <rdfs:label xml:lang="en">is activated by failure of</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property: To resolve the pitfall of missing inverse relationships.</vaem:rationale>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#activatesOnFailure"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasConsequence">
+  <rdfs:comment xml:lang="en">Links a duty to another duty that is a consequence of it.</rdfs:comment>
+  <rdfs:label xml:lang="en">has consequence</rdfs:label>
+  <dc:source>(competency_question) New CQ5: What duty is specified as a consequence of another duty?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Duty"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Duty"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#isConsequenceOf"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isConsequenceOf">
+  <rdfs:comment xml:lang="en">Inverse of hasConsequence: Links a duty to the duty that triggered it.</rdfs:comment>
+  <rdfs:label xml:lang="en">is consequence of</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property: To resolve the pitfall of missing inverse relationships.</vaem:rationale>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Duty"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Duty"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasConsequence"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#assignedToParty">
+  <rdfs:comment xml:lang="en">Links a rule to the party responsible for it.</rdfs:comment>
+  <rdfs:label xml:lang="en">assigned to party</rdfs:label>
+  <dc:source>(competency_question) CQ06: Expressing the various roles of contract parties within the Permission/Duty element.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Party"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#isPartyAssignedTo"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isPartyAssignedTo">
+  <rdfs:comment xml:lang="en">Inverse of assignedToParty: Links a party to the rule they are responsible for.</rdfs:comment>
+  <rdfs:label xml:lang="en">is party assigned to</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property: To resolve the pitfall of missing inverse relationships.</vaem:rationale>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Party"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#assignedToParty"/>
+</owl:ObjectProperty>
+
+  <!-- owl:DatatypeProperty declarations -->
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasRole">
+  <rdfs:comment xml:lang="en">The specific role of a party in a rule (e.g., Grantee, Obligor).</rdfs:comment>
+  <rdfs:label xml:lang="en">has role</rdfs:label>
+  <dc:source>(competency_question) CQ06: Expressing the various roles of contract parties within the Permission/Duty element.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Party"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:string"/>
+</owl:DatatypeProperty>
+
+</rdf:RDF>

@@ -1,0 +1,235 @@
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Permission">
+  <rdfs:comment xml:lang="en">A right to perform an action on a resource.</rdfs:comment>
+  <rdfs:label xml:lang="en">Permission</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Policy'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#TransferRights">
+  <rdfs:comment xml:lang="en">Rights that allow the transfer of ownership or control of resources.</rdfs:comment>
+  <rdfs:label xml:lang="en">Transfer Rights</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Permission'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Aggregation">
+  <rdfs:comment xml:lang="en">Permission to combine multiple resources into a single entity.</rdfs:comment>
+  <rdfs:label xml:lang="en">Aggregation</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#TransferRights'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Disaggregation">
+  <rdfs:comment xml:lang="en">Permission to separate a resource into its constituent parts.</rdfs:comment>
+  <rdfs:label xml:lang="en">Disaggregation</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#TransferRights'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Duty">
+  <rdfs:comment xml:lang="en">An obligation to perform an action or refrain from an action.</rdfs:comment>
+  <rdfs:label xml:lang="en">Duty</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Policy'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#ContractParty">
+  <rdfs:comment xml:lang="en">A person or organization that is a party to a contract.</rdfs:comment>
+  <rdfs:label xml:lang="en">Contract Party</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Prohibition">
+  <rdfs:comment xml:lang="en">An obligation to refrain from performing an action; a negative duty.</rdfs:comment>
+  <rdfs:label xml:lang="en">Prohibition</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Duty'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Constraint">
+  <rdfs:comment xml:lang="en">A condition or restriction that must be satisfied.</rdfs:comment>
+  <rdfs:label xml:lang="en">Constraint</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#AndConstraint">
+  <rdfs:comment xml:lang="en">A logical AND combination of multiple constraints; all sub-constraints must be satisfied.</rdfs:comment>
+  <rdfs:label xml:lang="en">AND Constraint</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Constraint'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#OrConstraint">
+  <rdfs:comment xml:lang="en">A logical OR combination of multiple constraints; at least one sub-constraint must be satisfied.</rdfs:comment>
+  <rdfs:label xml:lang="en">OR Constraint</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Constraint'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#XorConstraint">
+  <rdfs:comment xml:lang="en">A logical XOR (exclusive or) combination of multiple constraints; exactly one sub-constraint must be satisfied.</rdfs:comment>
+  <rdfs:label xml:lang="en">XOR Constraint</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Constraint'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Requirement">
+  <rdfs:comment xml:lang="en">A requirement that must be met; a condition that should be satisfied.</rdfs:comment>
+  <rdfs:label xml:lang="en">Requirement</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#ExclusivePermission">
+  <rdfs:comment xml:lang="en">A permission that is exclusive to a single grantee; typically implies that no other party can hold the same permission concurrently.</rdfs:comment>
+  <rdfs:label xml:lang="en">Exclusive Permission</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Permission'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Condition">
+  <rdfs:comment xml:lang="en">A condition that must be satisfied, often expressed as a combination of constraints.</rdfs:comment>
+  <rdfs:label xml:lang="en">Condition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Resource">
+  <rdfs:comment xml:lang="en">An asset or entity that can be subject to rights.</rdfs:comment>
+  <rdfs:label xml:lang="en">Resource</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Container">
+  <rdfs:comment xml:lang="en">A resource that can contain other resources.</rdfs:comment>
+  <rdfs:label xml:lang="en">Container</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Resource'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Sequencing">
+  <rdfs:comment xml:lang="en">Permission to order or sequence resources in a specific arrangement.</rdfs:comment>
+  <rdfs:label xml:lang="en">Sequencing</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Permission'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Policy">
+  <rdfs:comment xml:lang="en">A rule or set of rules that governs rights and obligations.</rdfs:comment>
+  <rdfs:label xml:lang="en">Policy</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#ConflictResolutionStrategy">
+  <rdfs:comment xml:lang="en">A strategy for resolving conflicts that arise between policies or between policy elements.</rdfs:comment>
+  <rdfs:label xml:lang="en">Conflict Resolution Strategy</rdfs:label>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasGrantor">
+  <rdfs:comment xml:lang="en">Relates a Permission to the party granting the permission.</rdfs:comment>
+  <rdfs:label xml:lang="en">has grantor</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Permission"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#ContractParty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasGrantee">
+  <rdfs:comment xml:lang="en">Relates a Permission to the party receiving the permission.</rdfs:comment>
+  <rdfs:label xml:lang="en">has grantee</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Permission"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#ContractParty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasObligor">
+  <rdfs:comment xml:lang="en">Relates a Duty to the party who must fulfill the obligation.</rdfs:comment>
+  <rdfs:label xml:lang="en">has obligor</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Duty"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#ContractParty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasObligee">
+  <rdfs:comment xml:lang="en">Relates a Duty to the party to whom the obligation is owed.</rdfs:comment>
+  <rdfs:label xml:lang="en">has obligee</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Duty"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#ContractParty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasSubConstraint">
+  <rdfs:comment xml:lang="en">Relates a Constraint to a nested sub-constraint.</rdfs:comment>
+  <rdfs:label xml:lang="en">has sub-constraint</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Constraint"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Constraint"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasConstraint">
+  <rdfs:comment xml:lang="en">Relates a Requirement to a Constraint that must be satisfied.</rdfs:comment>
+  <rdfs:label xml:lang="en">has constraint</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Requirement"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Constraint"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasConditionConstraint">
+  <rdfs:comment xml:lang="en">Relates a Condition to a Constraint that expresses the condition.</rdfs:comment>
+  <rdfs:label xml:lang="en">has condition constraint</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Condition"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Constraint"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasAsset">
+  <rdfs:comment xml:lang="en">Relates a Permission to the resource it applies to.</rdfs:comment>
+  <rdfs:label xml:lang="en">has asset</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Permission"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Resource"/>
+  <rdfs:subPropertyOf rdf:resource='http://www.semanticweb.org/myontology#hasPolicyAsset'/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#contains">
+  <rdfs:comment xml:lang="en">Relates a Container to a resource it contains.</rdfs:comment>
+  <rdfs:label xml:lang="en">contains</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Container"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Resource"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasPolicyAsset">
+  <rdfs:comment xml:lang="en">Relates a policy to the resource it directly applies to.</rdfs:comment>
+  <rdfs:label xml:lang="en">has policy asset</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Policy"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Resource"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasDutyAsset">
+  <rdfs:comment xml:lang="en">Relates a duty to the resource it applies to.</rdfs:comment>
+  <rdfs:label xml:lang="en">has duty asset</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Duty"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Resource"/>
+  <rdfs:subPropertyOf rdf:resource='http://www.semanticweb.org/myontology#hasPolicyAsset'/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasConflictResolutionStrategy">
+  <rdfs:comment xml:lang="en">Relates a Policy to the conflict resolution strategy it specifies.</rdfs:comment>
+  <rdfs:label xml:lang="en">has conflict resolution strategy</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Policy"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#ConflictResolutionStrategy"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasRemedy">
+  <rdfs:comment xml:lang="en">Relates a Prohibition to a Duty that serves as a remedy for its violation.</rdfs:comment>
+  <rdfs:label xml:lang="en">has remedy</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Prohibition"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Duty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isActivatedOnFailureOf">
+  <rdfs:comment xml:lang="en">Relates a policy to another policy; the first is activated when the second fails.</rdfs:comment>
+  <rdfs:label xml:lang="en">is activated on failure of</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Policy"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Policy"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasConsequenceDuty">
+  <rdfs:comment xml:lang="en">Relates a Duty to another Duty that is specified as a consequence of the first.</rdfs:comment>
+  <rdfs:label xml:lang="en">has consequence duty</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Duty"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Duty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasProhibitionConstraint">
+  <rdfs:comment xml:lang="en">Relates a Prohibition to a Constraint that defines the conditions under which the prohibition applies.</rdfs:comment>
+  <rdfs:label xml:lang="en">has prohibition constraint</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Prohibition"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Constraint"/>
+</owl:ObjectProperty>
+
+</rdf:RDF>

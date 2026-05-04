@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:vaem="http://www.linkedmodel.org/schema/vaem#">
+ 
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#BiologicalEntity">
+  <rdfs:comment xml:lang="en">The class of all living entities and their parts, serving as the most general concept in the diet ontology.</rdfs:comment>
+  <rdfs:label xml:lang="en">Biological Entity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Organism">
+  <rdfs:comment xml:lang="en">A living individual, such as an animal or a plant.</rdfs:comment>
+  <rdfs:label xml:lang="en">Organism</rdfs:label>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#BiologicalEntity"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#PlantPart"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Animal">
+  <rdfs:comment xml:lang="en">An animal organism.</rdfs:comment>
+  <rdfs:label xml:lang="en">Animal</rdfs:label>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#Organism"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Plant"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Plant">
+  <rdfs:comment xml:lang="en">A plant organism.</rdfs:comment>
+  <rdfs:label xml:lang="en">Plant</rdfs:label>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#Organism"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#PlantPart">
+  <rdfs:comment xml:lang="en">A part of a plant, such as a leaf, root, or fruit.</rdfs:comment>
+  <rdfs:label xml:lang="en">Plant Part</rdfs:label>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#BiologicalEntity"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Organism"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Herbivore">
+  <rdfs:comment xml:lang="en">An animal that primarily eats plants and plant parts.</rdfs:comment>
+  <rdfs:label xml:lang="en">Herbivore</rdfs:label>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#Animal"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Carnivore"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Omnivore"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Carnivore">
+  <rdfs:comment xml:lang="en">An animal that primarily eats other animals.</rdfs:comment>
+  <rdfs:label xml:lang="en">Carnivore</rdfs:label>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#Animal"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Herbivore"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Omnivore"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Omnivore">
+  <rdfs:comment xml:lang="en">An animal that eats both plant material and animal matter.</rdfs:comment>
+  <rdfs:label xml:lang="en">Omnivore</rdfs:label>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#Animal"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Herbivore"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Carnivore"/>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#eats">
+  <rdfs:comment xml:lang="en">Relates an organism to the biological entity it consumes as food.</rdfs:comment>
+  <rdfs:label xml:lang="en">eats</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added owl:inverseOf axiom linking to 'eatenBy'.: To satisfy the OOPS pitfall requirement of having inverse relationships for non-symmetric properties.</vaem:rationale>
+  <dc:source>(pitfall) Pitfall: Missing inverse relationship for property eats</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Organism"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#BiologicalEntity"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#eatenBy"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#eatenBy">
+  <rdfs:comment xml:lang="en">Relates a biological entity to the organism that eats it.</rdfs:comment>
+  <rdfs:label xml:lang="en">eaten by</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added inverse property 'eatenBy' with domain BiologicalEntity and range Organism, and linked it as owl:inverseOf eats.: To provide an inverse relationship for the 'eats' property, improving the ontology's navigability and completeness.</vaem:rationale>
+  <dc:source>(pitfall) Pitfall: Missing inverse relationship for property eats</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#BiologicalEntity"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Organism"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#eats"/>
+</owl:ObjectProperty>
+
+</rdf:RDF>

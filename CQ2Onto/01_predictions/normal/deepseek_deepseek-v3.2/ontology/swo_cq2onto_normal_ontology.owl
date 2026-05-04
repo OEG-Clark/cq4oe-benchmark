@@ -1,0 +1,279 @@
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:vaem="http://www.linkedmodel.org/schema/vaem#">
+ 
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Software">
+  <rdfs:comment xml:lang="en">A software tool or application.</rdfs:comment>
+  <rdfs:label xml:lang="en">Software</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class Software as the central entity representing any software tool.: Most competency questions refer to software tools, their properties, and functionalities.</vaem:rationale>
+  <dc:source>(competency_question) CQ07: What type of software (API, Desktop application etc) is it?
+    (competency_question) CQ15: Which software tool created this data?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Algorithm">
+  <rdfs:comment xml:lang="en">A named and published computational procedure or method.</rdfs:comment>
+  <rdfs:label xml:lang="en">Algorithm</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class Algorithm to represent algorithms used by software.: CQ04 and CQ05 ask about algorithms used by tools and their modifications.</vaem:rationale>
+  <dc:source>(competency_question) CQ04: Which of the named and published algorithms does this tool use?
+    (competency_question) CQ05: Are there any modifications to the algorithm the tool uses?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Task">
+  <rdfs:comment xml:lang="en">A specific function or operation that software can perform.</rdfs:comment>
+  <rdfs:label xml:lang="en">Task</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class Task to represent what software can do.: CQ08, CQ14, and CQ16 refer to tasks that software supports or performs.</vaem:rationale>
+  <dc:source>(competency_question) CQ08: What software can perform task x?
+    (competency_question) CQ14: Does it do what I want or need it to do e.g. render a gif?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Format">
+  <rdfs:comment xml:lang="en">A data format for input or output.</rdfs:comment>
+  <rdfs:label xml:lang="en">Format</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class Format to represent data formats like .cel, csv, txt.: CQ17, CQ19, CQ21, CQ22, and CQ23 involve input/output formats.</vaem:rationale>
+  <dc:source>(competency_question) CQ17: What are the input and output formats for this software?
+    (competency_question) CQ19: What software can read a .cel file?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#License">
+  <rdfs:comment xml:lang="en">A software license defining terms of use.</rdfs:comment>
+  <rdfs:label xml:lang="en">License</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class License to represent software licensing.: CQ59, CQ60, and CQ65 ask about open source, FOSS, and license permissiveness.</vaem:rationale>
+  <dc:source>(competency_question) CQ59: What license and what is permissiveness?
+    (competency_question) CQ65: Is it FOSS?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Developer">
+  <rdfs:comment xml:lang="en">An individual or organization that develops software.</rdfs:comment>
+  <rdfs:label xml:lang="en">Developer</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class Developer to represent software creators.: CQ36 and CQ38 refer to developers and collaboration.</vaem:rationale>
+  <dc:source>(competency_question) CQ36: Who developed it?
+    (competency_question) CQ38: Can we collaborate with developers of software x?</dc:source>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#usesAlgorithm">
+  <rdfs:comment xml:lang="en">Links software to an algorithm it uses.</rdfs:comment>
+  <rdfs:label xml:lang="en">uses algorithm</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created object property usesAlgorithm.: CQ04 asks which algorithms a tool uses.</vaem:rationale>
+  <dc:source>(competency_question) CQ04: Which of the named and published algorithms does this tool use?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Algorithm"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasModification">
+  <rdfs:comment xml:lang="en">Links an algorithm to modifications made to it.</rdfs:comment>
+  <rdfs:label xml:lang="en">has modification</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created object property hasModification.: CQ05 asks about modifications to algorithms used by software.</vaem:rationale>
+  <dc:source>(competency_question) CQ05: Are there any modifications to the algorithm the tool uses?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Algorithm"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#performsTask">
+  <rdfs:comment xml:lang="en">Links software to a task it can perform.</rdfs:comment>
+  <rdfs:label xml:lang="en">performs task</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created object property performsTask.: CQ08 and CQ14 refer to software performing tasks.</vaem:rationale>
+  <dc:source>(competency_question) CQ08: What software can perform task x?
+    (competency_question) CQ14: Does it do what I want or need it to do e.g. render a gif?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Task"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasInputFormat">
+  <rdfs:comment xml:lang="en">Links software to an input data format it accepts.</rdfs:comment>
+  <rdfs:label xml:lang="en">has input format</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created object property hasInputFormat.: CQ17, CQ19, and CQ21 ask about input formats.</vaem:rationale>
+  <dc:source>(competency_question) CQ17: What are the input and output formats for this software?
+    (competency_question) CQ21: What is the valid input for this software?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Format"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasOutputFormat">
+  <rdfs:comment xml:lang="en">Links software to an output data format it produces.</rdfs:comment>
+  <rdfs:label xml:lang="en">has output format</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created object property hasOutputFormat.: CQ17, CQ22, and CQ29 involve output formats.</vaem:rationale>
+  <dc:source>(competency_question) CQ17: What are the input and output formats for this software?
+    (competency_question) CQ29: Given input x, what are the data exports for this version?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Format"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasLicense">
+  <rdfs:comment xml:lang="en">Links software to its license.</rdfs:comment>
+  <rdfs:label xml:lang="en">has license</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created object property hasLicense.: CQ59 and CQ60 ask about software licensing.</vaem:rationale>
+  <dc:source>(competency_question) CQ59: What license and what is permissiveness?
+    (competency_question) CQ60: Is it open source or not?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#License"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#developedBy">
+  <rdfs:comment xml:lang="en">Links software to its developer.</rdfs:comment>
+  <rdfs:label xml:lang="en">developed by</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created object property developedBy.: CQ36 asks who developed the software.</vaem:rationale>
+  <dc:source>(competency_question) CQ36: Who developed it?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Developer"/>
+</owl:ObjectProperty>
+
+  <!-- owl:DatatypeProperty declarations -->
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasSoftwareType">
+  <rdfs:comment xml:lang="en">The type of software (e.g., API, Desktop application, web service).</rdfs:comment>
+  <rdfs:label xml:lang="en">has software type</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created datatype property hasSoftwareType.: CQ07 and CQ11 ask about software type and web service availability.</vaem:rationale>
+  <dc:source>(competency_question) CQ07: What type of software (API, Desktop application etc) is it?
+    (competency_question) CQ11: Is this software available as a web service?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasVersion">
+  <rdfs:comment xml:lang="en">The version number of the software.</rdfs:comment>
+  <rdfs:label xml:lang="en">has version</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created datatype property hasVersion.: CQ54 asks about software version.</vaem:rationale>
+  <dc:source>(competency_question) CQ54: What is the version of this software?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasReleaseDate">
+  <rdfs:comment xml:lang="en">The release date of a software version.</rdfs:comment>
+  <rdfs:label xml:lang="en">has release date</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created datatype property hasReleaseDate.: CQ57 asks when a version was released.</vaem:rationale>
+  <dc:source>(competency_question) CQ57: When was the 1.0 version released?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasHomepage">
+  <rdfs:comment xml:lang="en">The homepage URL of the software.</rdfs:comment>
+  <rdfs:label xml:lang="en">has homepage</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created datatype property hasHomepage.: CQ37 asks for the software homepage.</vaem:rationale>
+  <dc:source>(competency_question) CQ37: What is the homepage of the software?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasDocumentation">
+  <rdfs:comment xml:lang="en">The URL or location of software documentation.</rdfs:comment>
+  <rdfs:label xml:lang="en">has documentation</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created datatype property hasDocumentation.: CQ73 asks where the documentation is.</vaem:rationale>
+  <dc:source>(competency_question) CQ73: Where is the documentation?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasImplementationLanguage">
+  <rdfs:comment xml:lang="en">The programming language in which the software is implemented.</rdfs:comment>
+  <rdfs:label xml:lang="en">has implementation language</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created datatype property hasImplementationLanguage.: CQ84 asks about the implementation language.</vaem:rationale>
+  <dc:source>(competency_question) CQ84: In what language was it implemented?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasPlatform">
+  <rdfs:comment xml:lang="en">The platform on which the software runs (e.g., Windows, Linux).</rdfs:comment>
+  <rdfs:label xml:lang="en">has platform</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created datatype property hasPlatform.: CQ85 asks what platform the software runs on.</vaem:rationale>
+  <dc:source>(competency_question) CQ85: What platform does the software run on?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasAvailability">
+  <rdfs:comment xml:lang="en">How the software can be obtained (e.g., download URL, web service).</rdfs:comment>
+  <rdfs:label xml:lang="en">has availability</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created datatype property hasAvailability.: CQ30 and CQ40 ask where to get the software or its URL.</vaem:rationale>
+  <dc:source>(competency_question) CQ30: Where can I get the software?
+    (competency_question) CQ40: Which URL can I get it from?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasHelp">
+  <rdfs:comment xml:lang="en">How to get help for the software (e.g., support forum, contact).</rdfs:comment>
+  <rdfs:label xml:lang="en">has help</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created datatype property hasHelp.: CQ32 asks how to get help.</vaem:rationale>
+  <dc:source>(competency_question) CQ32: How do I get help?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasAge">
+  <rdfs:comment xml:lang="en">How long the software has been around (e.g., in years).</rdfs:comment>
+  <rdfs:label xml:lang="en">has age</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created datatype property hasAge.: CQ45 asks how long the software has been around.</vaem:rationale>
+  <dc:source>(competency_question) CQ45: How long has this software been around?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasDevelopmentActivity">
+  <rdfs:comment xml:lang="en">How actively the software is developed (e.g., active, maintenance).</rdfs:comment>
+  <rdfs:label xml:lang="en">has development activity</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created datatype property hasDevelopmentActivity.: CQ46 asks how actively developed the software is.</vaem:rationale>
+  <dc:source>(competency_question) CQ46: How actively developed is it?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasFeature">
+  <rdfs:comment xml:lang="en">A new feature in a software version.</rdfs:comment>
+  <rdfs:label xml:lang="en">has feature</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created datatype property hasFeature.: CQ55 asks what new features are in a version.</vaem:rationale>
+  <dc:source>(competency_question) CQ55: What new features are in this version?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#isOpenSource">
+  <rdfs:comment xml:lang="en">Whether the software is open source (true/false).</rdfs:comment>
+  <rdfs:label xml:lang="en">is open source</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created datatype property isOpenSource.: CQ58, CQ60, and CQ65 ask about open source, FOSS, and community development.</vaem:rationale>
+  <dc:source>(competency_question) CQ58: Is the software open source development? Is there a community development?
+    (competency_question) CQ65: Is it FOSS?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#isFree">
+  <rdfs:comment xml:lang="en">Whether the software is free (true/false).</rdfs:comment>
+  <rdfs:label xml:lang="en">is free</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created datatype property isFree.: CQ68 asks if the software is free or not.</vaem:rationale>
+  <dc:source>(competency_question) CQ68: Is it free or not?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#providesXMLEditing">
+  <rdfs:comment xml:lang="en">Whether the software provides XML editing (true/false).</rdfs:comment>
+  <rdfs:label xml:lang="en">provides XML editing</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created datatype property providesXMLEditing.: CQ06 asks if the software provides XML editing.</vaem:rationale>
+  <dc:source>(competency_question) CQ06: Does this software provide XML editing?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Software"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+</rdf:RDF>

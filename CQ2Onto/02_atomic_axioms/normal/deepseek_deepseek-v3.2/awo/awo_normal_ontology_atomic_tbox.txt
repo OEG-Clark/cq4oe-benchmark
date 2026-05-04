@@ -1,0 +1,164 @@
+====================================================================================================
+ATOMIC TBOX AXIOMS
+====================================================================================================
+
+── Class ──
+
+  Term: Animal  [Class]
+    Declaration                Declaration: Animal (Class)
+      Subject: Animal
+      Object : Class
+
+  Term: Carnivore  [Class]
+    Declaration                Declaration: Carnivore (Class)
+      Subject: Carnivore
+      Object : Class
+    SubClassOf                 Carnivore ⊑ Animal
+      Subject: Carnivore
+      Object : Animal
+
+  Term: Carnivorous Plant  [Class]
+    Declaration                Declaration: Carnivorous Plant (Class)
+      Subject: Carnivorous Plant
+      Object : Class
+    SubClassOf                 Carnivorous Plant ⊑ Plant
+      Subject: Carnivorous Plant
+      Object : Plant
+
+  Term: Herbivore  [Class]
+    Declaration                Declaration: Herbivore (Class)
+      Subject: Herbivore
+      Object : Class
+    SubClassOf                 Herbivore ⊑ Animal
+      Subject: Herbivore
+      Object : Animal
+
+  Term: Omnivore  [Class]
+    Declaration                Declaration: Omnivore (Class)
+      Subject: Omnivore
+      Object : Class
+    SubClassOf                 Omnivore ⊑ Animal
+      Subject: Omnivore
+      Object : Animal
+
+  Term: Plant  [Class]
+    Declaration                Declaration: Plant (Class)
+      Subject: Plant
+      Object : Class
+
+  Term: Plant Part  [Class]
+    Declaration                Declaration: Plant Part (Class)
+      Subject: Plant Part
+      Object : Class
+    SubClassOf                 Plant Part ⊑ Plant
+      Subject: Plant Part
+      Object : Plant
+
+
+── ObjectProperty ──
+
+  Term: eaten by  [ObjectProperty]
+    Declaration                Declaration: eaten by (ObjectProperty)
+      Subject: eaten by
+      Object : ObjectProperty
+    InverseOf                  eaten by ≡ eats⁻
+      Subject: eaten by
+      Object : eats
+    Domain                     ∃eaten by.⊤ ⊑ Animal
+      Subject: eaten by
+      Object : Animal
+    Range                      ⊤ ⊑ ∀eaten by.Animal
+      Subject: eaten by
+      Object : Animal
+
+  Term: eaten by animal  [ObjectProperty]
+    Declaration                Declaration: eaten by animal (ObjectProperty)
+      Subject: eaten by animal
+      Object : ObjectProperty
+    InverseOf                  eaten by animal ≡ eats plant⁻
+      Subject: eaten by animal
+      Object : eats plant
+    Domain                     ∃eaten by animal.⊤ ⊑ Plant
+      Subject: eaten by animal
+      Object : Plant
+    Range                      ⊤ ⊑ ∀eaten by animal.Animal
+      Subject: eaten by animal
+      Object : Animal
+
+  Term: eats  [ObjectProperty]
+    Declaration                Declaration: eats (ObjectProperty)
+      Subject: eats
+      Object : ObjectProperty
+    InverseOf                  eats ≡ eaten by⁻
+      Subject: eats
+      Object : eaten by
+    Domain                     ∃eats.⊤ ⊑ Animal
+      Subject: eats
+      Object : Animal
+    Range                      ⊤ ⊑ ∀eats.Animal
+      Subject: eats
+      Object : Animal
+
+  Term: eats plant  [ObjectProperty]
+    Declaration                Declaration: eats plant (ObjectProperty)
+      Subject: eats plant
+      Object : ObjectProperty
+    InverseOf                  eats plant ≡ eaten by animal⁻
+      Subject: eats plant
+      Object : eaten by animal
+    Domain                     ∃eats plant.⊤ ⊑ Animal
+      Subject: eats plant
+      Object : Animal
+    Range                      ⊤ ⊑ ∀eats plant.Plant
+      Subject: eats plant
+      Object : Plant
+
+  Term: plant eats  [ObjectProperty]
+    Declaration                Declaration: plant eats (ObjectProperty)
+      Subject: plant eats
+      Object : ObjectProperty
+    Domain                     ∃plant eats.⊤ ⊑ Carnivorous Plant
+      Subject: plant eats
+      Object : Carnivorous Plant
+    Range                      ⊤ ⊑ ∀plant eats.Animal
+      Subject: plant eats
+      Object : Animal
+
+
+── DatatypeProperty ──
+
+  Term: common name  [DatatypeProperty]
+    Declaration                Declaration: common name (DatatypeProperty)
+      Subject: common name
+      Object : DatatypeProperty
+    Range                      common name maps-to xsd:string
+      Subject: common name
+      Object : xsd:string
+
+  Term: scientific name  [DatatypeProperty]
+    Declaration                Declaration: scientific name (DatatypeProperty)
+      Subject: scientific name
+      Object : DatatypeProperty
+    Range                      scientific name maps-to xsd:string
+      Subject: scientific name
+      Object : xsd:string
+
+
+====================================================================================================
+STATISTICS
+====================================================================================================
+
+  Classes:               7  (defined: 0, primitive: 7)
+  ObjectProperties:      5
+  DatatypeProperties:    2
+
+  Axiom Breakdown:
+    Declaration               14
+    Domain                    5
+    InverseOf                 4
+    Range                     7
+    SubClassOf                5
+    ------------------------------
+    Total TBox Axioms         35
+
+====================================================================================================

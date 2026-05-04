@@ -1,0 +1,180 @@
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:vaem="http://www.linkedmodel.org/schema/vaem#">
+ 
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Animal">
+  <rdfs:comment xml:lang="en">An organism of the kingdom Animalia.</rdfs:comment>
+  <rdfs:label xml:lang="en">Animal</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Initial creation: Needed for all competency questions referencing animals.</vaem:rationale>
+  <dc:source>(competency_question) CQ1: Which animal eats which other animal?
+    (competency_question) CQ2: Is [this animal] a herbivore?
+    (competency_question) CQ3: Which plant parts does [this omnivorous or herbivorourus animal] eat?
+    (competency_question) CQ4: Does a lion eat plants or plant parts?
+    (competency_question) CQ6: Which plants eat animals?
+    (competency_question) CQ7: Which animals eat [these animals]?
+    (competency_question) CQ14: Are there animals that are carnivore but still eat some plants or parts of plants?</dc:source>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Plant"/>
+<owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#PlantPart"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Plant">
+  <rdfs:comment xml:lang="en">An organism of the kingdom Plantae.</rdfs:comment>
+  <rdfs:label xml:lang="en">Plant</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Initial creation: Needed for competency questions involving plants or plant eating.</vaem:rationale>
+  <dc:source>(competency_question) CQ3: Which plant parts does [this omnivorous or herbivorourus animal] eat?
+    (competency_question) CQ4: Does a lion eat plants or plant parts?
+    (competency_question) CQ6: Which plants eat animals?
+    (competency_question) CQ14: Are there animals that are carnivore but still eat some plants or parts of plants?</dc:source>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+<owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#PlantPart"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#PlantPart">
+  <rdfs:comment xml:lang="en">A part of a plant, such as leaf, fruit, or root.</rdfs:comment>
+  <rdfs:label xml:lang="en">Plant Part</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Initial creation: Needed for questions about animals eating specific plant parts (CQ3, CQ4, CQ14).</vaem:rationale>
+  <dc:source>(competency_question) CQ3: Which plant parts does [this omnivorous or herbivorourus animal] eat?
+    (competency_question) CQ4: Does a lion eat plants or plant parts?
+    (competency_question) CQ14: Are there animals that are carnivore but still eat some plants or parts of plants?</dc:source>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+<owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Plant"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Herbivore">
+  <rdfs:comment xml:lang="en">An animal that eats only plants or plant parts, and eats at least one plant or plant part.</rdfs:comment>
+  <rdfs:label xml:lang="en">Herbivore</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Initial creation: To answer CQ2 and CQ3 about herbivory.</vaem:rationale>
+  <dc:source>(competency_question) CQ2: Is [this animal] a herbivore?
+    (competency_question) CQ3: Which plant parts does [this omnivorous or herbivorourus animal] eat?</dc:source>
+  <owl:equivalentClass>
+  <owl:Class>
+    <owl:intersectionOf rdf:parseType="Collection">
+      <rdf:Description rdf:about="http://www.semanticweb.org/myontology#Animal"/>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.semanticweb.org/myontology#eats"/>
+        <owl:allValuesFrom>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <rdf:Description rdf:about="http://www.semanticweb.org/myontology#Plant"/>
+              <rdf:Description rdf:about="http://www.semanticweb.org/myontology#PlantPart"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.semanticweb.org/myontology#eats"/>
+        <owl:someValuesFrom>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <rdf:Description rdf:about="http://www.semanticweb.org/myontology#Plant"/>
+              <rdf:Description rdf:about="http://www.semanticweb.org/myontology#PlantPart"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </owl:intersectionOf>
+  </owl:Class>
+</owl:equivalentClass>
+<owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Carnivore"/>
+<owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Omnivore"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Carnivore">
+  <rdfs:comment xml:lang="en">An animal that eats only other animals, and eats at least one animal.</rdfs:comment>
+  <rdfs:label xml:lang="en">Carnivore</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Initial creation: To answer CQ4 and CQ14 about carnivory.</vaem:rationale>
+  <dc:source>(competency_question) CQ4: Does a lion eat plants or plant parts?
+    (competency_question) CQ14: Are there animals that are carnivore but still eat some plants or parts of plants?</dc:source>
+  <owl:equivalentClass>
+  <owl:Class>
+    <owl:intersectionOf rdf:parseType="Collection">
+      <rdf:Description rdf:about="http://www.semanticweb.org/myontology#Animal"/>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.semanticweb.org/myontology#eats"/>
+        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+      </owl:Restriction>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.semanticweb.org/myontology#eats"/>
+        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+      </owl:Restriction>
+    </owl:intersectionOf>
+  </owl:Class>
+</owl:equivalentClass>
+<owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Herbivore"/>
+<owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Omnivore"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Omnivore">
+  <rdfs:comment xml:lang="en">An animal that eats both animals and plants or plant parts.</rdfs:comment>
+  <rdfs:label xml:lang="en">Omnivore</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Initial creation: To answer CQ3 about omnivorous animals.</vaem:rationale>
+  <dc:source>(competency_question) CQ3: Which plant parts does [this omnivorous or herbivorourus animal] eat?</dc:source>
+  <owl:equivalentClass>
+  <owl:Class>
+    <owl:intersectionOf rdf:parseType="Collection">
+      <rdf:Description rdf:about="http://www.semanticweb.org/myontology#Animal"/>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.semanticweb.org/myontology#eats"/>
+        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+      </owl:Restriction>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.semanticweb.org/myontology#eats"/>
+        <owl:someValuesFrom>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <rdf:Description rdf:about="http://www.semanticweb.org/myontology#Plant"/>
+              <rdf:Description rdf:about="http://www.semanticweb.org/myontology#PlantPart"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </owl:intersectionOf>
+  </owl:Class>
+</owl:equivalentClass>
+<owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Herbivore"/>
+<owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Carnivore"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#CarnivorousPlant">
+  <rdfs:comment xml:lang="en">A plant that eats animals.</rdfs:comment>
+  <rdfs:label xml:lang="en">Carnivorous Plant</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Initial creation: To answer CQ6 about plants that eat animals.</vaem:rationale>
+  <dc:source>(competency_question) CQ6: Which plants eat animals?</dc:source>
+  <owl:equivalentClass>
+  <owl:Class>
+    <owl:intersectionOf rdf:parseType="Collection">
+      <rdf:Description rdf:about="http://www.semanticweb.org/myontology#Plant"/>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.semanticweb.org/myontology#eats"/>
+        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+      </owl:Restriction>
+    </owl:intersectionOf>
+  </owl:Class>
+</owl:equivalentClass>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#eats">
+  <rdfs:comment xml:lang="en">The act of consuming another organism or part of an organism for nutrition.</rdfs:comment>
+  <rdfs:label xml:lang="en">eats</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Initial creation: Needed for all competency questions involving eating relationships.</vaem:rationale>
+  <dc:source>(competency_question) CQ1: Which animal eats which other animal?
+    (competency_question) CQ3: Which plant parts does [this omnivorous or herbivorourus animal] eat?
+    (competency_question) CQ4: Does a lion eat plants or plant parts?
+    (competency_question) CQ6: Which plants eat animals?
+    (competency_question) CQ7: Which animals eat [these animals]?
+    (competency_question) CQ14: Are there animals that are carnivore but still eat some plants or parts of plants?</dc:source>
+  <!-- No additional axioms needed -->
+</owl:ObjectProperty>
+
+</rdf:RDF>

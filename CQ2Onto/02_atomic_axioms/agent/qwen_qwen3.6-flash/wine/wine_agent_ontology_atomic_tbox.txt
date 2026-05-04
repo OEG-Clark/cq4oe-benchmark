@@ -1,0 +1,374 @@
+====================================================================================================
+ATOMIC TBOX AXIOMS
+====================================================================================================
+
+── Class ──
+
+  Term: Body  [Class]
+    Declaration                Declaration: Body (Class)
+      Subject: Body
+      Object : Class
+    SubClassOf                 Body ⊑ Wine Characteristic
+      Subject: Body
+      Object : Wine Characteristic
+
+  Term: Bouquet  [Class]
+    Declaration                Declaration: Bouquet (Class)
+      Subject: Bouquet
+      Object : Class
+    SubClassOf                 Bouquet ⊑ Wine Characteristic
+      Subject: Bouquet
+      Object : Wine Characteristic
+
+  Term: Grape Variety  [Class]
+    Declaration                Declaration: Grape Variety (Class)
+      Subject: Grape Variety
+      Object : Class
+
+  Term: Red Wine  [Class]
+    Declaration                Declaration: Red Wine (Class)
+      Subject: Red Wine
+      Object : Class
+    SubClassOf                 Red Wine ⊑ Wine
+      Subject: Red Wine
+      Object : Wine
+    DisjointClasses            DisjointClasses(Red Wine, White Wine)
+      Subject: Red Wine
+      Object : White Wine
+
+  Term: Vintage Year  [Class]
+    Declaration                Declaration: Vintage Year (Class)
+      Subject: Vintage Year
+      Object : Class
+
+  Term: White Wine  [Class]
+    Declaration                Declaration: White Wine (Class)
+      Subject: White Wine
+      Object : Class
+    SubClassOf                 White Wine ⊑ Wine
+      Subject: White Wine
+      Object : Wine
+
+  Term: Wine  [Class]
+    Declaration                Declaration: Wine (Class)
+      Subject: Wine
+      Object : Class
+
+  Term: Wine Characteristic  [Class]
+    Declaration                Declaration: Wine Characteristic (Class)
+      Subject: Wine Characteristic
+      Object : Class
+
+  Term: Wine Color  [Class]
+    Declaration                Declaration: Wine Color (Class)
+      Subject: Wine Color
+      Object : Class
+
+  Term: Wine Region  [Class]
+    Declaration                Declaration: Wine Region (Class)
+      Subject: Wine Region
+      Object : Class
+
+
+── ObjectProperty ──
+
+  Term: body of  [ObjectProperty]
+    Declaration                Declaration: body of (ObjectProperty)
+      Subject: body of
+      Object : ObjectProperty
+    InverseOf                  body of ≡ has body⁻
+      Subject: body of
+      Object : has body
+    Domain                     ∃body of.⊤ ⊑ Body
+      Subject: body of
+      Object : Body
+    Range                      ⊤ ⊑ ∀body of.Wine
+      Subject: body of
+      Object : Wine
+
+  Term: bouquet of  [ObjectProperty]
+    Declaration                Declaration: bouquet of (ObjectProperty)
+      Subject: bouquet of
+      Object : ObjectProperty
+    InverseOf                  bouquet of ≡ has bouquet⁻
+      Subject: bouquet of
+      Object : has bouquet
+    Domain                     ∃bouquet of.⊤ ⊑ Bouquet
+      Subject: bouquet of
+      Object : Bouquet
+    Range                      ⊤ ⊑ ∀bouquet of.Wine
+      Subject: bouquet of
+      Object : Wine
+
+  Term: characteristic of  [ObjectProperty]
+    Declaration                Declaration: characteristic of (ObjectProperty)
+      Subject: characteristic of
+      Object : ObjectProperty
+    InverseOf                  characteristic of ≡ has characteristic⁻
+      Subject: characteristic of
+      Object : has characteristic
+    Domain                     ∃characteristic of.⊤ ⊑ Wine Characteristic
+      Subject: characteristic of
+      Object : Wine Characteristic
+    Range                      ⊤ ⊑ ∀characteristic of.Wine
+      Subject: characteristic of
+      Object : Wine
+
+  Term: color of  [ObjectProperty]
+    Declaration                Declaration: color of (ObjectProperty)
+      Subject: color of
+      Object : ObjectProperty
+    InverseOf                  color of ≡ has color⁻
+      Subject: color of
+      Object : has color
+    Domain                     ∃color of.⊤ ⊑ Wine Color
+      Subject: color of
+      Object : Wine Color
+    Range                      ⊤ ⊑ ∀color of.Wine
+      Subject: color of
+      Object : Wine
+
+  Term: good vintage for  [ObjectProperty]
+    Declaration                Declaration: good vintage for (ObjectProperty)
+      Subject: good vintage for
+      Object : ObjectProperty
+    InverseOf                  good vintage for ≡ has good vintage⁻
+      Subject: good vintage for
+      Object : has good vintage
+    Domain                     ∃good vintage for.⊤ ⊑ Vintage Year
+      Subject: good vintage for
+      Object : Vintage Year
+    Range                      ⊤ ⊑ ∀good vintage for.Wine Region
+      Subject: good vintage for
+      Object : Wine Region
+
+  Term: grown in region  [ObjectProperty]
+    Declaration                Declaration: grown in region (ObjectProperty)
+      Subject: grown in region
+      Object : ObjectProperty
+    InverseOf                  grown in region ≡ produces grape⁻
+      Subject: grown in region
+      Object : produces grape
+    Domain                     ∃grown in region.⊤ ⊑ Grape Variety
+      Subject: grown in region
+      Object : Grape Variety
+    Range                      ⊤ ⊑ ∀grown in region.Wine Region
+      Subject: grown in region
+      Object : Wine Region
+
+  Term: has body  [ObjectProperty]
+    Declaration                Declaration: has body (ObjectProperty)
+      Subject: has body
+      Object : ObjectProperty
+    InverseOf                  has body ≡ body of⁻
+      Subject: has body
+      Object : body of
+    Domain                     ∃has body.⊤ ⊑ Wine
+      Subject: has body
+      Object : Wine
+    Range                      ⊤ ⊑ ∀has body.Body
+      Subject: has body
+      Object : Body
+
+  Term: has bouquet  [ObjectProperty]
+    Declaration                Declaration: has bouquet (ObjectProperty)
+      Subject: has bouquet
+      Object : ObjectProperty
+    InverseOf                  has bouquet ≡ bouquet of⁻
+      Subject: has bouquet
+      Object : bouquet of
+    Domain                     ∃has bouquet.⊤ ⊑ Wine
+      Subject: has bouquet
+      Object : Wine
+    Range                      ⊤ ⊑ ∀has bouquet.Bouquet
+      Subject: has bouquet
+      Object : Bouquet
+
+  Term: has characteristic  [ObjectProperty]
+    Declaration                Declaration: has characteristic (ObjectProperty)
+      Subject: has characteristic
+      Object : ObjectProperty
+    InverseOf                  has characteristic ≡ characteristic of⁻
+      Subject: has characteristic
+      Object : characteristic of
+    Domain                     ∃has characteristic.⊤ ⊑ Wine
+      Subject: has characteristic
+      Object : Wine
+    Range                      ⊤ ⊑ ∀has characteristic.Wine Characteristic
+      Subject: has characteristic
+      Object : Wine Characteristic
+
+  Term: has color  [ObjectProperty]
+    Declaration                Declaration: has color (ObjectProperty)
+      Subject: has color
+      Object : ObjectProperty
+    InverseOf                  has color ≡ color of⁻
+      Subject: has color
+      Object : color of
+    Domain                     ∃has color.⊤ ⊑ Wine
+      Subject: has color
+      Object : Wine
+    Range                      ⊤ ⊑ ∀has color.Wine Color
+      Subject: has color
+      Object : Wine Color
+
+  Term: has good vintage  [ObjectProperty]
+    Declaration                Declaration: has good vintage (ObjectProperty)
+      Subject: has good vintage
+      Object : ObjectProperty
+    InverseOf                  has good vintage ≡ good vintage for⁻
+      Subject: has good vintage
+      Object : good vintage for
+    Domain                     ∃has good vintage.⊤ ⊑ Wine Region
+      Subject: has good vintage
+      Object : Wine Region
+    Range                      ⊤ ⊑ ∀has good vintage.Vintage Year
+      Subject: has good vintage
+      Object : Vintage Year
+
+  Term: has grape variety  [ObjectProperty]
+    Declaration                Declaration: has grape variety (ObjectProperty)
+      Subject: has grape variety
+      Object : ObjectProperty
+    InverseOf                  has grape variety ≡ used in wine⁻
+      Subject: has grape variety
+      Object : used in wine
+    Domain                     ∃has grape variety.⊤ ⊑ Wine
+      Subject: has grape variety
+      Object : Wine
+    Range                      ⊤ ⊑ ∀has grape variety.Grape Variety
+      Subject: has grape variety
+      Object : Grape Variety
+
+  Term: has region  [ObjectProperty]
+    Declaration                Declaration: has region (ObjectProperty)
+      Subject: has region
+      Object : ObjectProperty
+    InverseOf                  has region ≡ has wine⁻
+      Subject: has region
+      Object : has wine
+    Domain                     ∃has region.⊤ ⊑ Wine
+      Subject: has region
+      Object : Wine
+    Range                      ⊤ ⊑ ∀has region.Wine Region
+      Subject: has region
+      Object : Wine Region
+
+  Term: has typical color  [ObjectProperty]
+    Declaration                Declaration: has typical color (ObjectProperty)
+      Subject: has typical color
+      Object : ObjectProperty
+    InverseOf                  has typical color ≡ typical color of⁻
+      Subject: has typical color
+      Object : typical color of
+    Domain                     ∃has typical color.⊤ ⊑ Wine Region
+      Subject: has typical color
+      Object : Wine Region
+    Range                      ⊤ ⊑ ∀has typical color.Wine Color
+      Subject: has typical color
+      Object : Wine Color
+
+  Term: has vintage year  [ObjectProperty]
+    Declaration                Declaration: has vintage year (ObjectProperty)
+      Subject: has vintage year
+      Object : ObjectProperty
+    InverseOf                  has vintage year ≡ vintage of⁻
+      Subject: has vintage year
+      Object : vintage of
+    Domain                     ∃has vintage year.⊤ ⊑ Wine
+      Subject: has vintage year
+      Object : Wine
+    Range                      ⊤ ⊑ ∀has vintage year.Vintage Year
+      Subject: has vintage year
+      Object : Vintage Year
+
+  Term: has wine  [ObjectProperty]
+    Declaration                Declaration: has wine (ObjectProperty)
+      Subject: has wine
+      Object : ObjectProperty
+    InverseOf                  has wine ≡ has region⁻
+      Subject: has wine
+      Object : has region
+    Domain                     ∃has wine.⊤ ⊑ Wine Region
+      Subject: has wine
+      Object : Wine Region
+    Range                      ⊤ ⊑ ∀has wine.Wine
+      Subject: has wine
+      Object : Wine
+
+  Term: produces grape  [ObjectProperty]
+    Declaration                Declaration: produces grape (ObjectProperty)
+      Subject: produces grape
+      Object : ObjectProperty
+    InverseOf                  produces grape ≡ grown in region⁻
+      Subject: produces grape
+      Object : grown in region
+    Domain                     ∃produces grape.⊤ ⊑ Wine Region
+      Subject: produces grape
+      Object : Wine Region
+    Range                      ⊤ ⊑ ∀produces grape.Grape Variety
+      Subject: produces grape
+      Object : Grape Variety
+
+  Term: typical color of  [ObjectProperty]
+    Declaration                Declaration: typical color of (ObjectProperty)
+      Subject: typical color of
+      Object : ObjectProperty
+    InverseOf                  typical color of ≡ has typical color⁻
+      Subject: typical color of
+      Object : has typical color
+    Domain                     ∃typical color of.⊤ ⊑ Wine Color
+      Subject: typical color of
+      Object : Wine Color
+    Range                      ⊤ ⊑ ∀typical color of.Wine Region
+      Subject: typical color of
+      Object : Wine Region
+
+  Term: used in wine  [ObjectProperty]
+    Declaration                Declaration: used in wine (ObjectProperty)
+      Subject: used in wine
+      Object : ObjectProperty
+    InverseOf                  used in wine ≡ has grape variety⁻
+      Subject: used in wine
+      Object : has grape variety
+    Domain                     ∃used in wine.⊤ ⊑ Grape Variety
+      Subject: used in wine
+      Object : Grape Variety
+    Range                      ⊤ ⊑ ∀used in wine.Wine
+      Subject: used in wine
+      Object : Wine
+
+  Term: vintage of  [ObjectProperty]
+    Declaration                Declaration: vintage of (ObjectProperty)
+      Subject: vintage of
+      Object : ObjectProperty
+    InverseOf                  vintage of ≡ has vintage year⁻
+      Subject: vintage of
+      Object : has vintage year
+    Domain                     ∃vintage of.⊤ ⊑ Vintage Year
+      Subject: vintage of
+      Object : Vintage Year
+    Range                      ⊤ ⊑ ∀vintage of.Wine
+      Subject: vintage of
+      Object : Wine
+
+
+====================================================================================================
+STATISTICS
+====================================================================================================
+
+  Classes:               10  (defined: 0, primitive: 10)
+  ObjectProperties:      20
+  DatatypeProperties:    0
+
+  Axiom Breakdown:
+    Declaration               30
+    DisjointClasses           1
+    Domain                    20
+    InverseOf                 20
+    Range                     20
+    SubClassOf                4
+    ------------------------------
+    Total TBox Axioms         95
+
+====================================================================================================

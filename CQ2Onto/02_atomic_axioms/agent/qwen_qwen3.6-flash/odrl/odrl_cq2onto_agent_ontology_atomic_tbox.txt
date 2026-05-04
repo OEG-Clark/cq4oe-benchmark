@@ -1,0 +1,825 @@
+====================================================================================================
+ATOMIC TBOX AXIOMS
+====================================================================================================
+
+── Class ──
+
+  Term: AND  [Class]
+    Declaration                Declaration: AND (Class)
+      Subject: AND
+      Object : Class
+    SubClassOf                 AND ⊑ Operator
+      Subject: AND
+      Object : Operator
+
+  Term: Action  [Class]
+    Declaration                Declaration: Action (Class)
+      Subject: Action
+      Object : Class
+
+  Term: Aggregation  [Class]
+    Declaration                Declaration: Aggregation (Class)
+      Subject: Aggregation
+      Object : Class
+    SubClassOf                 Aggregation ⊑ Action
+      Subject: Aggregation
+      Object : Action
+
+  Term: Asset  [Class]
+    Declaration                Declaration: Asset (Class)
+      Subject: Asset
+      Object : Class
+
+  Term: Condition  [Class]
+    Declaration                Declaration: Condition (Class)
+      Subject: Condition
+      Object : Class
+
+  Term: Conflict  [Class]
+    Declaration                Declaration: Conflict (Class)
+      Subject: Conflict
+      Object : Class
+
+  Term: Consequence  [Class]
+    Declaration                Declaration: Consequence (Class)
+      Subject: Consequence
+      Object : Class
+
+  Term: Constraint  [Class]
+    Declaration                Declaration: Constraint (Class)
+      Subject: Constraint
+      Object : Class
+
+  Term: Container  [Class]
+    Declaration                Declaration: Container (Class)
+      Subject: Container
+      Object : Class
+
+  Term: Disaggregation  [Class]
+    Declaration                Declaration: Disaggregation (Class)
+      Subject: Disaggregation
+      Object : Class
+    SubClassOf                 Disaggregation ⊑ Action
+      Subject: Disaggregation
+      Object : Action
+
+  Term: Duty  [Class]
+    Declaration                Declaration: Duty (Class)
+      Subject: Duty
+      Object : Class
+    DisjointClasses            DisjointClasses(Duty, Permission)
+      Subject: Duty
+      Object : Permission
+    DisjointClasses            DisjointClasses(Duty, Prohibition)
+      Subject: Duty
+      Object : Prohibition
+
+  Term: ExclusivePermission  [Class]
+    Declaration                Declaration: ExclusivePermission (Class)
+      Subject: ExclusivePermission
+      Object : Class
+
+  Term: Function  [Class]
+    Declaration                Declaration: Function (Class)
+      Subject: Function
+      Object : Class
+    EquivalentClasses          Function ≡ Role
+      Subject: Function
+      Object : Role
+
+  Term: Inheritance  [Class]
+    Declaration                Declaration: Inheritance (Class)
+      Subject: Inheritance
+      Object : Class
+
+  Term: LogicalConstraint  [Class]
+    Declaration                Declaration: LogicalConstraint (Class)
+      Subject: LogicalConstraint
+      Object : Class
+    SubClassOf                 LogicalConstraint ⊑ Constraint
+      Subject: LogicalConstraint
+      Object : Constraint
+
+  Term: NOT  [Class]
+    Declaration                Declaration: NOT (Class)
+      Subject: NOT
+      Object : Class
+    SubClassOf                 NOT ⊑ Operator
+      Subject: NOT
+      Object : Operator
+
+  Term: OR  [Class]
+    Declaration                Declaration: OR (Class)
+      Subject: OR
+      Object : Class
+    SubClassOf                 OR ⊑ Operator
+      Subject: OR
+      Object : Operator
+
+  Term: Operator  [Class]
+    Declaration                Declaration: Operator (Class)
+      Subject: Operator
+      Object : Class
+
+  Term: Party  [Class]
+    Declaration                Declaration: Party (Class)
+      Subject: Party
+      Object : Class
+
+  Term: Permission  [Class]
+    Declaration                Declaration: Permission (Class)
+      Subject: Permission
+      Object : Class
+    DisjointClasses            DisjointClasses(Permission, Prohibition)
+      Subject: Permission
+      Object : Prohibition
+
+  Term: Policy  [Class]
+    Declaration                Declaration: Policy (Class)
+      Subject: Policy
+      Object : Class
+
+  Term: Prohibition  [Class]
+    Declaration                Declaration: Prohibition (Class)
+      Subject: Prohibition
+      Object : Class
+
+  Term: Remedy  [Class]
+    Declaration                Declaration: Remedy (Class)
+      Subject: Remedy
+      Object : Class
+
+  Term: Requirement  [Class]
+    Declaration                Declaration: Requirement (Class)
+      Subject: Requirement
+      Object : Class
+    SubClassOf                 Requirement ⊑ Constraint
+      Subject: Requirement
+      Object : Constraint
+
+  Term: Role  [Class]
+    Declaration                Declaration: Role (Class)
+      Subject: Role
+      Object : Class
+
+  Term: Rule  [Class]
+    Declaration                Declaration: Rule (Class)
+      Subject: Rule
+      Object : Class
+
+  Term: Sequencing Policy  [Class]
+    Declaration                Declaration: Sequencing Policy (Class)
+      Subject: Sequencing Policy
+      Object : Class
+
+  Term: TransferRight  [Class]
+    Declaration                Declaration: TransferRight (Class)
+      Subject: TransferRight
+      Object : Class
+    SubClassOf                 TransferRight ⊑ Permission
+      Subject: TransferRight
+      Object : Permission
+
+  Term: Trigger  [Class]
+    Declaration                Declaration: Trigger (Class)
+      Subject: Trigger
+      Object : Class
+
+  Term: XOR  [Class]
+    Declaration                Declaration: XOR (Class)
+      Subject: XOR
+      Object : Class
+    SubClassOf                 XOR ⊑ Operator
+      Subject: XOR
+      Object : Operator
+
+
+── ObjectProperty ──
+
+  Term: has action  [ObjectProperty]
+    Declaration                Declaration: has action (ObjectProperty)
+      Subject: has action
+      Object : ObjectProperty
+    InverseOf                  has action ≡ is action of⁻
+      Subject: has action
+      Object : is action of
+    Domain                     ∃has action.⊤ ⊑ Permission
+      Subject: has action
+      Object : Permission
+    Range                      ⊤ ⊑ ∀has action.Action
+      Subject: has action
+      Object : Action
+
+  Term: has asset  [ObjectProperty]
+    Declaration                Declaration: has asset (ObjectProperty)
+      Subject: has asset
+      Object : ObjectProperty
+    InverseOf                  has asset ≡ is asset of⁻
+      Subject: has asset
+      Object : is asset of
+    Domain                     ∃has asset.⊤ ⊑ Policy
+      Subject: has asset
+      Object : Policy
+    Range                      ⊤ ⊑ ∀has asset.Asset
+      Subject: has asset
+      Object : Asset
+
+  Term: has condition  [ObjectProperty]
+    Declaration                Declaration: has condition (ObjectProperty)
+      Subject: has condition
+      Object : ObjectProperty
+    InverseOf                  has condition ≡ is condition of⁻
+      Subject: has condition
+      Object : is condition of
+    Domain                     ∃has condition.⊤ ⊑ Rule
+      Subject: has condition
+      Object : Rule
+    Range                      ⊤ ⊑ ∀has condition.Condition
+      Subject: has condition
+      Object : Condition
+
+  Term: has conflict resolution  [ObjectProperty]
+    Declaration                Declaration: has conflict resolution (ObjectProperty)
+      Subject: has conflict resolution
+      Object : ObjectProperty
+    InverseOf                  has conflict resolution ≡ is conflict resolution of⁻
+      Subject: has conflict resolution
+      Object : is conflict resolution of
+    Domain                     ∃has conflict resolution.⊤ ⊑ Policy
+      Subject: has conflict resolution
+      Object : Policy
+    Range                      ⊤ ⊑ ∀has conflict resolution.Conflict
+      Subject: has conflict resolution
+      Object : Conflict
+
+  Term: has consequence  [ObjectProperty]
+    Declaration                Declaration: has consequence (ObjectProperty)
+      Subject: has consequence
+      Object : ObjectProperty
+    InverseOf                  has consequence ≡ is consequence of⁻
+      Subject: has consequence
+      Object : is consequence of
+    Domain                     ∃has consequence.⊤ ⊑ Duty
+      Subject: has consequence
+      Object : Duty
+    Range                      ⊤ ⊑ ∀has consequence.Consequence
+      Subject: has consequence
+      Object : Consequence
+
+  Term: has constraint  [ObjectProperty]
+    Declaration                Declaration: has constraint (ObjectProperty)
+      Subject: has constraint
+      Object : ObjectProperty
+    InverseOf                  has constraint ≡ is constraint of⁻
+      Subject: has constraint
+      Object : is constraint of
+    Domain                     ∃has constraint.⊤ ⊑ Rule
+      Subject: has constraint
+      Object : Rule
+    Range                      ⊤ ⊑ ∀has constraint.Constraint
+      Subject: has constraint
+      Object : Constraint
+
+  Term: has container  [ObjectProperty]
+    Declaration                Declaration: has container (ObjectProperty)
+      Subject: has container
+      Object : ObjectProperty
+    InverseOf                  has container ≡ is container of⁻
+      Subject: has container
+      Object : is container of
+    Domain                     ∃has container.⊤ ⊑ Policy
+      Subject: has container
+      Object : Policy
+    Range                      ⊤ ⊑ ∀has container.Container
+      Subject: has container
+      Object : Container
+
+  Term: has duty  [ObjectProperty]
+    Declaration                Declaration: has duty (ObjectProperty)
+      Subject: has duty
+      Object : ObjectProperty
+    InverseOf                  has duty ≡ is duty of⁻
+      Subject: has duty
+      Object : is duty of
+    Domain                     ∃has duty.⊤ ⊑ Rule
+      Subject: has duty
+      Object : Rule
+    Range                      ⊤ ⊑ ∀has duty.Duty
+      Subject: has duty
+      Object : Duty
+
+  Term: has function  [ObjectProperty]
+    Declaration                Declaration: has function (ObjectProperty)
+      Subject: has function
+      Object : ObjectProperty
+    InverseOf                  has function ≡ is function of⁻
+      Subject: has function
+      Object : is function of
+    Domain                     ∃has function.⊤ ⊑ Party
+      Subject: has function
+      Object : Party
+    Range                      ⊤ ⊑ ∀has function.Function
+      Subject: has function
+      Object : Function
+
+  Term: has inheritance  [ObjectProperty]
+    Declaration                Declaration: has inheritance (ObjectProperty)
+      Subject: has inheritance
+      Object : ObjectProperty
+    InverseOf                  has inheritance ≡ is inheritance of⁻
+      Subject: has inheritance
+      Object : is inheritance of
+    Domain                     ∃has inheritance.⊤ ⊑ Policy
+      Subject: has inheritance
+      Object : Policy
+    Range                      ⊤ ⊑ ∀has inheritance.Inheritance
+      Subject: has inheritance
+      Object : Inheritance
+
+  Term: has nested constraint  [ObjectProperty]
+    Declaration                Declaration: has nested constraint (ObjectProperty)
+      Subject: has nested constraint
+      Object : ObjectProperty
+    InverseOf                  has nested constraint ≡ is nested constraint of⁻
+      Subject: has nested constraint
+      Object : is nested constraint of
+    Domain                     ∃has nested constraint.⊤ ⊑ Constraint
+      Subject: has nested constraint
+      Object : Constraint
+    Range                      ⊤ ⊑ ∀has nested constraint.Constraint
+      Subject: has nested constraint
+      Object : Constraint
+
+  Term: has operator  [ObjectProperty]
+    Declaration                Declaration: has operator (ObjectProperty)
+      Subject: has operator
+      Object : ObjectProperty
+    InverseOf                  has operator ≡ is operator of⁻
+      Subject: has operator
+      Object : is operator of
+    Domain                     ∃has operator.⊤ ⊑ Constraint
+      Subject: has operator
+      Object : Constraint
+    Range                      ⊤ ⊑ ∀has operator.Operator
+      Subject: has operator
+      Object : Operator
+
+  Term: has party  [ObjectProperty]
+    Declaration                Declaration: has party (ObjectProperty)
+      Subject: has party
+      Object : ObjectProperty
+    InverseOf                  has party ≡ is party of⁻
+      Subject: has party
+      Object : is party of
+    Domain                     ∃has party.⊤ ⊑ Policy
+      Subject: has party
+      Object : Policy
+    Range                      ⊤ ⊑ ∀has party.Party
+      Subject: has party
+      Object : Party
+
+  Term: has permission  [ObjectProperty]
+    Declaration                Declaration: has permission (ObjectProperty)
+      Subject: has permission
+      Object : ObjectProperty
+    InverseOf                  has permission ≡ is permission of⁻
+      Subject: has permission
+      Object : is permission of
+    Domain                     ∃has permission.⊤ ⊑ Rule
+      Subject: has permission
+      Object : Rule
+    Range                      ⊤ ⊑ ∀has permission.Permission
+      Subject: has permission
+      Object : Permission
+
+  Term: has prohibition  [ObjectProperty]
+    Declaration                Declaration: has prohibition (ObjectProperty)
+      Subject: has prohibition
+      Object : ObjectProperty
+    InverseOf                  has prohibition ≡ is prohibition of⁻
+      Subject: has prohibition
+      Object : is prohibition of
+    Domain                     ∃has prohibition.⊤ ⊑ Rule
+      Subject: has prohibition
+      Object : Rule
+    Range                      ⊤ ⊑ ∀has prohibition.Prohibition
+      Subject: has prohibition
+      Object : Prohibition
+
+  Term: has remedy  [ObjectProperty]
+    Declaration                Declaration: has remedy (ObjectProperty)
+      Subject: has remedy
+      Object : ObjectProperty
+    InverseOf                  has remedy ≡ is remedy of⁻
+      Subject: has remedy
+      Object : is remedy of
+    Domain                     ∃has remedy.⊤ ⊑ Prohibition
+      Subject: has remedy
+      Object : Prohibition
+    Range                      ⊤ ⊑ ∀has remedy.Remedy
+      Subject: has remedy
+      Object : Remedy
+
+  Term: has role  [ObjectProperty]
+    Declaration                Declaration: has role (ObjectProperty)
+      Subject: has role
+      Object : ObjectProperty
+    InverseOf                  has role ≡ is role of⁻
+      Subject: has role
+      Object : is role of
+    Domain                     ∃has role.⊤ ⊑ Party
+      Subject: has role
+      Object : Party
+    Range                      ⊤ ⊑ ∀has role.Role
+      Subject: has role
+      Object : Role
+
+  Term: has rule  [ObjectProperty]
+    Declaration                Declaration: has rule (ObjectProperty)
+      Subject: has rule
+      Object : ObjectProperty
+    InverseOf                  has rule ≡ is rule of⁻
+      Subject: has rule
+      Object : is rule of
+    Domain                     ∃has rule.⊤ ⊑ Policy
+      Subject: has rule
+      Object : Policy
+    Range                      ⊤ ⊑ ∀has rule.Rule
+      Subject: has rule
+      Object : Rule
+
+  Term: has sequencing  [ObjectProperty]
+    Declaration                Declaration: has sequencing (ObjectProperty)
+      Subject: has sequencing
+      Object : ObjectProperty
+    InverseOf                  has sequencing ≡ is sequencing of⁻
+      Subject: has sequencing
+      Object : is sequencing of
+    Domain                     ∃has sequencing.⊤ ⊑ Policy
+      Subject: has sequencing
+      Object : Policy
+    Range                      ⊤ ⊑ ∀has sequencing.Sequencing Policy
+      Subject: has sequencing
+      Object : Sequencing Policy
+
+  Term: has target  [ObjectProperty]
+    Declaration                Declaration: has target (ObjectProperty)
+      Subject: has target
+      Object : ObjectProperty
+    InverseOf                  has target ≡ is target of⁻
+      Subject: has target
+      Object : is target of
+    Domain                     ∃has target.⊤ ⊑ Permission
+      Subject: has target
+      Object : Permission
+    Range                      ⊤ ⊑ ∀has target.Asset
+      Subject: has target
+      Object : Asset
+
+  Term: has trigger  [ObjectProperty]
+    Declaration                Declaration: has trigger (ObjectProperty)
+      Subject: has trigger
+      Object : ObjectProperty
+    InverseOf                  has trigger ≡ is trigger of⁻
+      Subject: has trigger
+      Object : is trigger of
+    Domain                     ∃has trigger.⊤ ⊑ Rule
+      Subject: has trigger
+      Object : Rule
+    Range                      ⊤ ⊑ ∀has trigger.Trigger
+      Subject: has trigger
+      Object : Trigger
+
+  Term: is action of  [ObjectProperty]
+    Declaration                Declaration: is action of (ObjectProperty)
+      Subject: is action of
+      Object : ObjectProperty
+    InverseOf                  is action of ≡ has action⁻
+      Subject: is action of
+      Object : has action
+    Domain                     ∃is action of.⊤ ⊑ Action
+      Subject: is action of
+      Object : Action
+    Range                      ⊤ ⊑ ∀is action of.Permission
+      Subject: is action of
+      Object : Permission
+
+  Term: is asset of  [ObjectProperty]
+    Declaration                Declaration: is asset of (ObjectProperty)
+      Subject: is asset of
+      Object : ObjectProperty
+    InverseOf                  is asset of ≡ has asset⁻
+      Subject: is asset of
+      Object : has asset
+    Domain                     ∃is asset of.⊤ ⊑ Asset
+      Subject: is asset of
+      Object : Asset
+    Range                      ⊤ ⊑ ∀is asset of.Policy
+      Subject: is asset of
+      Object : Policy
+
+  Term: is condition of  [ObjectProperty]
+    Declaration                Declaration: is condition of (ObjectProperty)
+      Subject: is condition of
+      Object : ObjectProperty
+    InverseOf                  is condition of ≡ has condition⁻
+      Subject: is condition of
+      Object : has condition
+    Domain                     ∃is condition of.⊤ ⊑ Condition
+      Subject: is condition of
+      Object : Condition
+    Range                      ⊤ ⊑ ∀is condition of.Rule
+      Subject: is condition of
+      Object : Rule
+
+  Term: is conflict resolution of  [ObjectProperty]
+    Declaration                Declaration: is conflict resolution of (ObjectProperty)
+      Subject: is conflict resolution of
+      Object : ObjectProperty
+    InverseOf                  is conflict resolution of ≡ has conflict resolution⁻
+      Subject: is conflict resolution of
+      Object : has conflict resolution
+    Domain                     ∃is conflict resolution of.⊤ ⊑ Conflict
+      Subject: is conflict resolution of
+      Object : Conflict
+    Range                      ⊤ ⊑ ∀is conflict resolution of.Policy
+      Subject: is conflict resolution of
+      Object : Policy
+
+  Term: is consequence of  [ObjectProperty]
+    Declaration                Declaration: is consequence of (ObjectProperty)
+      Subject: is consequence of
+      Object : ObjectProperty
+    InverseOf                  is consequence of ≡ has consequence⁻
+      Subject: is consequence of
+      Object : has consequence
+    Domain                     ∃is consequence of.⊤ ⊑ Consequence
+      Subject: is consequence of
+      Object : Consequence
+    Range                      ⊤ ⊑ ∀is consequence of.Duty
+      Subject: is consequence of
+      Object : Duty
+
+  Term: is constraint of  [ObjectProperty]
+    Declaration                Declaration: is constraint of (ObjectProperty)
+      Subject: is constraint of
+      Object : ObjectProperty
+    InverseOf                  is constraint of ≡ has constraint⁻
+      Subject: is constraint of
+      Object : has constraint
+    Domain                     ∃is constraint of.⊤ ⊑ Constraint
+      Subject: is constraint of
+      Object : Constraint
+    Range                      ⊤ ⊑ ∀is constraint of.Rule
+      Subject: is constraint of
+      Object : Rule
+
+  Term: is container of  [ObjectProperty]
+    Declaration                Declaration: is container of (ObjectProperty)
+      Subject: is container of
+      Object : ObjectProperty
+    InverseOf                  is container of ≡ has container⁻
+      Subject: is container of
+      Object : has container
+    Domain                     ∃is container of.⊤ ⊑ Container
+      Subject: is container of
+      Object : Container
+    Range                      ⊤ ⊑ ∀is container of.Policy
+      Subject: is container of
+      Object : Policy
+
+  Term: is duty of  [ObjectProperty]
+    Declaration                Declaration: is duty of (ObjectProperty)
+      Subject: is duty of
+      Object : ObjectProperty
+    InverseOf                  is duty of ≡ has duty⁻
+      Subject: is duty of
+      Object : has duty
+    Domain                     ∃is duty of.⊤ ⊑ Duty
+      Subject: is duty of
+      Object : Duty
+    Range                      ⊤ ⊑ ∀is duty of.Rule
+      Subject: is duty of
+      Object : Rule
+
+  Term: is function of  [ObjectProperty]
+    Declaration                Declaration: is function of (ObjectProperty)
+      Subject: is function of
+      Object : ObjectProperty
+    InverseOf                  is function of ≡ has function⁻
+      Subject: is function of
+      Object : has function
+    Domain                     ∃is function of.⊤ ⊑ Function
+      Subject: is function of
+      Object : Function
+    Range                      ⊤ ⊑ ∀is function of.Party
+      Subject: is function of
+      Object : Party
+
+  Term: is inheritance of  [ObjectProperty]
+    Declaration                Declaration: is inheritance of (ObjectProperty)
+      Subject: is inheritance of
+      Object : ObjectProperty
+    InverseOf                  is inheritance of ≡ has inheritance⁻
+      Subject: is inheritance of
+      Object : has inheritance
+    Domain                     ∃is inheritance of.⊤ ⊑ Inheritance
+      Subject: is inheritance of
+      Object : Inheritance
+    Range                      ⊤ ⊑ ∀is inheritance of.Policy
+      Subject: is inheritance of
+      Object : Policy
+
+  Term: is nested constraint of  [ObjectProperty]
+    Declaration                Declaration: is nested constraint of (ObjectProperty)
+      Subject: is nested constraint of
+      Object : ObjectProperty
+    InverseOf                  is nested constraint of ≡ has nested constraint⁻
+      Subject: is nested constraint of
+      Object : has nested constraint
+    Domain                     ∃is nested constraint of.⊤ ⊑ Constraint
+      Subject: is nested constraint of
+      Object : Constraint
+    Range                      ⊤ ⊑ ∀is nested constraint of.Constraint
+      Subject: is nested constraint of
+      Object : Constraint
+
+  Term: is operator of  [ObjectProperty]
+    Declaration                Declaration: is operator of (ObjectProperty)
+      Subject: is operator of
+      Object : ObjectProperty
+    InverseOf                  is operator of ≡ has operator⁻
+      Subject: is operator of
+      Object : has operator
+    Domain                     ∃is operator of.⊤ ⊑ Operator
+      Subject: is operator of
+      Object : Operator
+    Range                      ⊤ ⊑ ∀is operator of.Constraint
+      Subject: is operator of
+      Object : Constraint
+
+  Term: is party of  [ObjectProperty]
+    Declaration                Declaration: is party of (ObjectProperty)
+      Subject: is party of
+      Object : ObjectProperty
+    InverseOf                  is party of ≡ has party⁻
+      Subject: is party of
+      Object : has party
+    Domain                     ∃is party of.⊤ ⊑ Party
+      Subject: is party of
+      Object : Party
+    Range                      ⊤ ⊑ ∀is party of.Policy
+      Subject: is party of
+      Object : Policy
+
+  Term: is permission of  [ObjectProperty]
+    Declaration                Declaration: is permission of (ObjectProperty)
+      Subject: is permission of
+      Object : ObjectProperty
+    InverseOf                  is permission of ≡ has permission⁻
+      Subject: is permission of
+      Object : has permission
+    Domain                     ∃is permission of.⊤ ⊑ Permission
+      Subject: is permission of
+      Object : Permission
+    Range                      ⊤ ⊑ ∀is permission of.Rule
+      Subject: is permission of
+      Object : Rule
+
+  Term: is prohibition of  [ObjectProperty]
+    Declaration                Declaration: is prohibition of (ObjectProperty)
+      Subject: is prohibition of
+      Object : ObjectProperty
+    InverseOf                  is prohibition of ≡ has prohibition⁻
+      Subject: is prohibition of
+      Object : has prohibition
+    Domain                     ∃is prohibition of.⊤ ⊑ Prohibition
+      Subject: is prohibition of
+      Object : Prohibition
+    Range                      ⊤ ⊑ ∀is prohibition of.Rule
+      Subject: is prohibition of
+      Object : Rule
+
+  Term: is remedy of  [ObjectProperty]
+    Declaration                Declaration: is remedy of (ObjectProperty)
+      Subject: is remedy of
+      Object : ObjectProperty
+    InverseOf                  is remedy of ≡ has remedy⁻
+      Subject: is remedy of
+      Object : has remedy
+    Domain                     ∃is remedy of.⊤ ⊑ Remedy
+      Subject: is remedy of
+      Object : Remedy
+    Range                      ⊤ ⊑ ∀is remedy of.Prohibition
+      Subject: is remedy of
+      Object : Prohibition
+
+  Term: is role of  [ObjectProperty]
+    Declaration                Declaration: is role of (ObjectProperty)
+      Subject: is role of
+      Object : ObjectProperty
+    InverseOf                  is role of ≡ has role⁻
+      Subject: is role of
+      Object : has role
+    Domain                     ∃is role of.⊤ ⊑ Role
+      Subject: is role of
+      Object : Role
+    Range                      ⊤ ⊑ ∀is role of.Party
+      Subject: is role of
+      Object : Party
+
+  Term: is rule of  [ObjectProperty]
+    Declaration                Declaration: is rule of (ObjectProperty)
+      Subject: is rule of
+      Object : ObjectProperty
+    InverseOf                  is rule of ≡ has rule⁻
+      Subject: is rule of
+      Object : has rule
+    Domain                     ∃is rule of.⊤ ⊑ Rule
+      Subject: is rule of
+      Object : Rule
+    Range                      ⊤ ⊑ ∀is rule of.Policy
+      Subject: is rule of
+      Object : Policy
+
+  Term: is sequencing of  [ObjectProperty]
+    Declaration                Declaration: is sequencing of (ObjectProperty)
+      Subject: is sequencing of
+      Object : ObjectProperty
+    InverseOf                  is sequencing of ≡ has sequencing⁻
+      Subject: is sequencing of
+      Object : has sequencing
+    Domain                     ∃is sequencing of.⊤ ⊑ Sequencing Policy
+      Subject: is sequencing of
+      Object : Sequencing Policy
+    Range                      ⊤ ⊑ ∀is sequencing of.Policy
+      Subject: is sequencing of
+      Object : Policy
+
+  Term: is target of  [ObjectProperty]
+    Declaration                Declaration: is target of (ObjectProperty)
+      Subject: is target of
+      Object : ObjectProperty
+    InverseOf                  is target of ≡ has target⁻
+      Subject: is target of
+      Object : has target
+    Domain                     ∃is target of.⊤ ⊑ Asset
+      Subject: is target of
+      Object : Asset
+    Range                      ⊤ ⊑ ∀is target of.Permission
+      Subject: is target of
+      Object : Permission
+
+  Term: is trigger of  [ObjectProperty]
+    Declaration                Declaration: is trigger of (ObjectProperty)
+      Subject: is trigger of
+      Object : ObjectProperty
+    InverseOf                  is trigger of ≡ has trigger⁻
+      Subject: is trigger of
+      Object : has trigger
+    Domain                     ∃is trigger of.⊤ ⊑ Trigger
+      Subject: is trigger of
+      Object : Trigger
+    Range                      ⊤ ⊑ ∀is trigger of.Rule
+      Subject: is trigger of
+      Object : Rule
+
+
+── DatatypeProperty ──
+
+  Term: is exclusive  [DatatypeProperty]
+    Declaration                Declaration: is exclusive (DatatypeProperty)
+      Subject: is exclusive
+      Object : DatatypeProperty
+    Domain                     ∃is exclusive.⊤ ⊑ ExclusivePermission
+      Subject: is exclusive
+      Object : ExclusivePermission
+    Range                      is exclusive maps-to ⊤
+      Subject: is exclusive
+      Object : ⊤
+    Characteristics            Functional(is exclusive)
+      Subject: is exclusive
+      Object : Functional
+
+
+====================================================================================================
+STATISTICS
+====================================================================================================
+
+  Classes:               30  (defined: 1, primitive: 29)
+  ObjectProperties:      42
+  DatatypeProperties:    1
+
+  Axiom Breakdown:
+    Characteristics           1
+    Declaration               73
+    DisjointClasses           3
+    Domain                    43
+    EquivalentClasses         1
+    InverseOf                 42
+    Range                     43
+    SubClassOf                9
+    ------------------------------
+    Total TBox Axioms         215
+
+====================================================================================================

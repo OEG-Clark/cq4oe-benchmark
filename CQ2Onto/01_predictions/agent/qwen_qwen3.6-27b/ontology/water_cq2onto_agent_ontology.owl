@@ -1,0 +1,170 @@
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:vaem="http://www.linkedmodel.org/schema/vaem#">
+ 
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Device">
+  <rdfs:comment xml:lang="en">A physical apparatus or instrument used in the domain.</rdfs:comment>
+  <rdfs:label xml:lang="en">Device</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created superclass for WaterMeter.: Required by CQ06.
+    [Pitfall Resolution Agent] Created superclass for WaterMeter.: Required by CQ06.
+    [Pitfall Resolution Agent] Integrated into ontology hierarchy by making Sensor and Actuator its subclasses.: Fix isolated element pitfall.</vaem:rationale>
+  <dc:source>(competency_question) CQ06: A water meter is a device that measures different aspects of a water infrastructure.
+    (pitfall) Ontology elements are created isolated, with no relation to the rest of the ontology.</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Sensor">
+  <rdfs:comment xml:lang="en">A device used in water infrastructures to detect or measure physical parameters.</rdfs:comment>
+  <rdfs:label xml:lang="en">Sensor</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class to represent sensing devices.: Required by CQ04.
+    [Pitfall Resolution Agent] Created class to represent sensing devices.: Required by CQ04.
+    [Pitfall Resolution Agent] Added rdfs:subClassOf axiom to Device.: Fix isolated element pitfall and improve hierarchy.</vaem:rationale>
+  <dc:source>(competency_question) CQ04: Which types of sensors are used in water infrastructures?
+    (pitfall) Ontology elements are created isolated, with no relation to the rest of the ontology.</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#Device"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Actuator">
+  <rdfs:comment xml:lang="en">A device used in water infrastructures to control or manipulate mechanisms.</rdfs:comment>
+  <rdfs:label xml:lang="en">Actuator</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class to represent actuation devices.: Required by CQ05.
+    [Pitfall Resolution Agent] Created class to represent actuation devices.: Required by CQ05.
+    [Pitfall Resolution Agent] Added rdfs:subClassOf axiom to Device.: Fix isolated element pitfall and improve hierarchy.</vaem:rationale>
+  <dc:source>(competency_question) CQ05: Which types of actuators are used in water infrastructures?
+    (pitfall) Ontology elements are created isolated, with no relation to the rest of the ontology.</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#Device"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#PhysicalProperty">
+  <rdfs:comment xml:lang="en">A characteristic of water that can be observed without changing its composition.</rdfs:comment>
+  <rdfs:label xml:lang="en">Physical property</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class to represent physical attributes.: Required by CQ33.
+    [Pitfall Resolution Agent] Created class to represent physical attributes.: Required by CQ33.
+    [Pitfall Resolution Agent] Added owl:disjointWith axiom with ChemicalProperty.: Fix lack of disjoint axioms pitfall.</vaem:rationale>
+  <dc:source>(competency_question) CQ33: What are the physical properties of water?
+    (pitfall) The ontology lacks disjoint axioms between classes or between properties that should be defined as disjoint.</dc:source>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#ChemicalProperty"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#ChemicalProperty">
+  <rdfs:comment xml:lang="en">A characteristic of water describing its chemical behavior.</rdfs:comment>
+  <rdfs:label xml:lang="en">Chemical property</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Created class to represent chemical attributes.: Required by CQ34.
+    [Pitfall Resolution Agent] Created class to represent chemical attributes.: Required by CQ34.
+    [Pitfall Resolution Agent] Added owl:disjointWith axiom with PhysicalProperty.: Fix lack of disjoint axioms pitfall.</vaem:rationale>
+  <dc:source>(competency_question) CQ34: What are the chemical properties of water?
+    (pitfall) The ontology lacks disjoint axioms between classes or between properties that should be defined as disjoint.</dc:source>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#PhysicalProperty"/>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isAssetOf">
+  <rdfs:comment xml:lang="en">Relates an asset to the water distribution infrastructure it composes.</rdfs:comment>
+  <rdfs:label xml:lang="en">is asset of</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property for hasAsset.: Fix missing inverse relationship pitfall.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationship for http://www.semanticweb.org/myontology#hasAsset</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Asset"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#WaterDistributionInfrastructure"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasAsset"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isSensorFor">
+  <rdfs:comment xml:lang="en">Relates a sensor to the water infrastructure that uses it.</rdfs:comment>
+  <rdfs:label xml:lang="en">is sensor for</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property for usesSensor.: Fix missing inverse relationship pitfall.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationship for http://www.semanticweb.org/myontology#usesSensor</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Sensor"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#WaterInfrastructure"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#usesSensor"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isActuatorFor">
+  <rdfs:comment xml:lang="en">Relates an actuator to the water infrastructure that uses it.</rdfs:comment>
+  <rdfs:label xml:lang="en">is actuator for</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property for usesActuator.: Fix missing inverse relationship pitfall.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationship for http://www.semanticweb.org/myontology#usesActuator</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Actuator"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#WaterInfrastructure"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#usesActuator"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isMeasuredBy">
+  <rdfs:comment xml:lang="en">Relates a water infrastructure to the water meter that measures its aspects.</rdfs:comment>
+  <rdfs:label xml:lang="en">is measured by</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property for measuresAspectOf.: Fix missing inverse relationship pitfall.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationship for http://www.semanticweb.org/myontology#measuresAspectOf</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterInfrastructure"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#WaterMeter"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#measuresAspectOf"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isProvidedBy">
+  <rdfs:comment xml:lang="en">Relates a measurement to the water meter that provides it.</rdfs:comment>
+  <rdfs:label xml:lang="en">is provided by</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property for providesMeasurement.: Fix missing inverse relationship pitfall.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationship for http://www.semanticweb.org/myontology#providesMeasurement</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Measurement"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#WaterMeter"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#providesMeasurement"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isTemporalSettingOf">
+  <rdfs:comment xml:lang="en">Relates a temporal setting to the measurement it configures.</rdfs:comment>
+  <rdfs:label xml:lang="en">is temporal setting of</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property for hasTemporalSetting.: Fix missing inverse relationship pitfall.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationship for http://www.semanticweb.org/myontology#hasTemporalSetting</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#TemporalSetting"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Measurement"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasTemporalSetting"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isPhysicalPropertyOf">
+  <rdfs:comment xml:lang="en">Relates a physical property to the water it characterizes.</rdfs:comment>
+  <rdfs:label xml:lang="en">is physical property of</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property for hasPhysicalProperty.: Fix missing inverse relationship pitfall.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationship for http://www.semanticweb.org/myontology#hasPhysicalProperty</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#PhysicalProperty"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Water"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasPhysicalProperty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isChemicalPropertyOf">
+  <rdfs:comment xml:lang="en">Relates a chemical property to the water it characterizes.</rdfs:comment>
+  <rdfs:label xml:lang="en">is chemical property of</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property for hasChemicalProperty.: Fix missing inverse relationship pitfall.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationship for http://www.semanticweb.org/myontology#hasChemicalProperty</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#ChemicalProperty"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Water"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasChemicalProperty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasIndicator">
+  <rdfs:comment xml:lang="en">Relates a city to the water indicators defined for it.</rdfs:comment>
+  <rdfs:label xml:lang="en">has indicator</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property for definedFor.: Fix missing inverse relationship pitfall.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationship for http://www.semanticweb.org/myontology#definedFor</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#City"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#WaterIndicator"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#definedFor"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasTariff">
+  <rdfs:comment xml:lang="en">Relates a water meter to the tariff currently in use in it.</rdfs:comment>
+  <rdfs:label xml:lang="en">has tariff</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property for inUseIn.: Fix missing inverse relationship pitfall.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationship for http://www.semanticweb.org/myontology#inUseIn</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WaterMeter"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Tariff"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#inUseIn"/>
+</owl:ObjectProperty>
+
+</rdf:RDF>

@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:vaem="http://www.linkedmodel.org/schema/vaem#">
+ 
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Wine">
+  <rdfs:comment xml:lang="en">A fermented alcoholic beverage made from grapes.</rdfs:comment>
+  <rdfs:label xml:lang="en">Wine</rdfs:label>
+  <dc:source>(competency_question) CQ1: Which wine characteristics should I consider when choosing a wine?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Grape">
+  <rdfs:comment xml:lang="en">The fruit used to produce wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">Grape</rdfs:label>
+  <dc:source>(competency_question) CQnew1: What grapes are used to make Bordeaux wine?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Vintage">
+  <rdfs:comment xml:lang="en">The specific year in which the grapes were harvested.</rdfs:comment>
+  <rdfs:label xml:lang="en">Vintage</rdfs:label>
+  <dc:source>(competency_question) CQ6: Does a bouquet or body of a specific wine change with vintage year?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Characteristic">
+  <rdfs:comment xml:lang="en">An attribute of a wine such as color, body, or bouquet.</rdfs:comment>
+  <rdfs:label xml:lang="en">Characteristic</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Color">
+  <rdfs:comment xml:lang="en">The color of the wine (e.g., Red, White, Rosé).</rdfs:comment>
+  <rdfs:label xml:lang="en">Color</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Characteristic'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Body">
+  <rdfs:comment xml:lang="en">The weight or mouthfeel of the wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">Body</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Characteristic'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Bouquet">
+  <rdfs:comment xml:lang="en">The aroma profile of the wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">Bouquet</rdfs:label>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Characteristic'/>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasGrape">
+  <rdfs:comment xml:lang="en">The grape variety used to produce the wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">has grape</rdfs:label>
+  <dc:source>(competency_question) CQnew1: What grapes are used to make Bordeaux wine?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Grape"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasVintage">
+  <rdfs:comment xml:lang="en">The vintage year associated with the wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">has vintage</rdfs:label>
+  <dc:source>(competency_question) CQ6: Does a bouquet or body of a specific wine change with vintage year?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Vintage"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasCharacteristic">
+  <rdfs:comment xml:lang="en">A characteristic attribute of the wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">has characteristic</rdfs:label>
+  <dc:source>(competency_question) CQ1: Which wine characteristics should I consider when choosing a wine?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Characteristic"/>
+</owl:ObjectProperty>
+
+  <!-- owl:DatatypeProperty declarations -->
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasQualityRating">
+  <rdfs:comment xml:lang="en">A rating or indicator of the quality of a specific vintage.</rdfs:comment>
+  <rdfs:label xml:lang="en">has quality rating</rdfs:label>
+  <dc:source>(competency_question) CQ7: What were good vintages for Napa Zinfandel?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Vintage"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:string"/>
+</owl:DatatypeProperty>
+
+</rdf:RDF>

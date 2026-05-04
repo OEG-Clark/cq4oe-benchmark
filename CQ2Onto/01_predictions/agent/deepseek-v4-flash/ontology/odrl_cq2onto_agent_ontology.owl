@@ -1,0 +1,451 @@
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:vaem="http://www.linkedmodel.org/schema/vaem#">
+ 
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Policy">
+  <rdfs:comment xml:lang="en">A set of rules defining rights and duties on assets.</rdfs:comment>
+  <rdfs:label xml:lang="en">Policy</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Rule">
+  <rdfs:comment xml:lang="en">Abstract class for permissions, prohibitions, and duties.</rdfs:comment>
+  <rdfs:label xml:lang="en">Rule</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Permission">
+  <rdfs:comment xml:lang="en">An action that is allowed to be performed on an asset.</rdfs:comment>
+  <rdfs:label xml:lang="en">Permission</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added disjoint axioms: Sibling classes should be disjoint</vaem:rationale>
+  <dc:source>(pitfall) The ontology lacks disjoint axioms between classes or between properties that should be defined as disjoint.</dc:source>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Prohibition"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Duty"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Prohibition">
+  <rdfs:comment xml:lang="en">An action that is not allowed to be performed on an asset.</rdfs:comment>
+  <rdfs:label xml:lang="en">Prohibition</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added disjoint axioms: Sibling classes should be disjoint</vaem:rationale>
+  <dc:source>(pitfall) The ontology lacks disjoint axioms between classes or between properties that should be defined as disjoint.</dc:source>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Permission"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Duty"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Duty">
+  <rdfs:comment xml:lang="en">An obligation to perform an action on an asset.</rdfs:comment>
+  <rdfs:label xml:lang="en">Duty</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added disjoint axioms: Sibling classes should be disjoint</vaem:rationale>
+  <dc:source>(pitfall) The ontology lacks disjoint axioms between classes or between properties that should be defined as disjoint.</dc:source>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Permission"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Prohibition"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Asset">
+  <rdfs:comment xml:lang="en">A resource that is the subject of rights and duties.</rdfs:comment>
+  <rdfs:label xml:lang="en">Asset</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Party">
+  <rdfs:comment xml:lang="en">An entity that holds rights or duties.</rdfs:comment>
+  <rdfs:label xml:lang="en">Party</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Constraint">
+  <rdfs:comment xml:lang="en">A restriction or condition on a rule.</rdfs:comment>
+  <rdfs:label xml:lang="en">Constraint</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#LogicalConstraint">
+  <rdfs:comment xml:lang="en">A constraint that combines other constraints using logical operators.</rdfs:comment>
+  <rdfs:label xml:lang="en">Logical Constraint</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#ConjunctionConstraint">
+  <rdfs:comment xml:lang="en">A conjunction of constraints.</rdfs:comment>
+  <rdfs:label xml:lang="en">AND Constraint</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Renamed from AndConstraint to avoid ambiguous name: Class name referred to two or more different concepts</vaem:rationale>
+  <dc:source>(pitfall) A class whose name refers to two or more different concepts is created.</dc:source>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#DisjunctionConstraint"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#XorConstraint"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#NotConstraint"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#DisjunctionConstraint">
+  <rdfs:comment xml:lang="en">A disjunction of constraints.</rdfs:comment>
+  <rdfs:label xml:lang="en">OR Constraint</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Renamed from OrConstraint to avoid ambiguous name: Class name referred to two or more different concepts</vaem:rationale>
+  <dc:source>(pitfall) A class whose name refers to two or more different concepts is created.</dc:source>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#ConjunctionConstraint"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#XorConstraint"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#NotConstraint"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#XorConstraint">
+  <rdfs:comment xml:lang="en">An exclusive disjunction of constraints.</rdfs:comment>
+  <rdfs:label xml:lang="en">XOR Constraint</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added disjoint axioms: Sibling classes should be disjoint</vaem:rationale>
+  <dc:source>(pitfall) The ontology lacks disjoint axioms between classes or between properties that should be defined as disjoint.</dc:source>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#ConjunctionConstraint"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#DisjunctionConstraint"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#NotConstraint"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#NotConstraint">
+  <rdfs:comment xml:lang="en">A negation of a constraint.</rdfs:comment>
+  <rdfs:label xml:lang="en">NOT Constraint</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added disjoint axioms: Sibling classes should be disjoint</vaem:rationale>
+  <dc:source>(pitfall) The ontology lacks disjoint axioms between classes or between properties that should be defined as disjoint.</dc:source>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#ConjunctionConstraint"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#DisjunctionConstraint"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#XorConstraint"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Operator">
+  <rdfs:comment xml:lang="en">An operator used in constraints, e.g., eq, gt, not.</rdfs:comment>
+  <rdfs:label xml:lang="en">Operator</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Role">
+  <rdfs:comment xml:lang="en">A role that a party can have in a permission or duty.</rdfs:comment>
+  <rdfs:label xml:lang="en">Role</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#ConflictStrategy">
+  <rdfs:comment xml:lang="en">A strategy for resolving conflicts between rules.</rdfs:comment>
+  <rdfs:label xml:lang="en">Conflict Strategy</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#TransferRight">
+  <rdfs:comment xml:lang="en">A right to transfer an asset.</rdfs:comment>
+  <rdfs:label xml:lang="en">Transfer Right</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Aggregation">
+  <rdfs:comment xml:lang="en">A transfer right that combines multiple assets.</rdfs:comment>
+  <rdfs:label xml:lang="en">Aggregation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Disaggregation">
+  <rdfs:comment xml:lang="en">A transfer right that separates an asset into parts.</rdfs:comment>
+  <rdfs:label xml:lang="en">Disaggregation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Requirement">
+  <rdfs:comment xml:lang="en">A condition that must be satisfied.</rdfs:comment>
+  <rdfs:label xml:lang="en">Requirement</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Condition">
+  <rdfs:comment xml:lang="en">A constraint that triggers a duty or permission.</rdfs:comment>
+  <rdfs:label xml:lang="en">Condition</rdfs:label>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasRule">
+  <rdfs:comment xml:lang="en">Links a policy to a rule.</rdfs:comment>
+  <rdfs:label xml:lang="en">has rule</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added inverse property: Missing inverse relationship</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Policy"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#ruleOf"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#target">
+  <rdfs:comment xml:lang="en">Links a rule to an asset.</rdfs:comment>
+  <rdfs:label xml:lang="en">target</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added inverse property: Missing inverse relationship</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Asset"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#isTargetOf"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#assignee">
+  <rdfs:comment xml:lang="en">Links a rule to a party that is the recipient of the right or duty.</rdfs:comment>
+  <rdfs:label xml:lang="en">assignee</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added inverse property: Missing inverse relationship</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Party"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#isAssigneeOf"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#assigner">
+  <rdfs:comment xml:lang="en">Links a rule to a party that grants the right or duty.</rdfs:comment>
+  <rdfs:label xml:lang="en">assigner</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added inverse property: Missing inverse relationship</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Party"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#isAssignerOf"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#remedy">
+  <rdfs:comment xml:lang="en">Links a prohibition to a duty that is the remedy for violation.</rdfs:comment>
+  <rdfs:label xml:lang="en">remedy</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added inverse property: Missing inverse relationship</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Prohibition"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Duty"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#isRemedyOf"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#consequence">
+  <rdfs:comment xml:lang="en">Links a duty to another duty that is a consequence.</rdfs:comment>
+  <rdfs:label xml:lang="en">consequence</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added inverse property: Missing inverse relationship</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Duty"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Duty"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#isConsequenceOf"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#activatesOnFailure">
+  <rdfs:comment xml:lang="en">Links a rule to another rule that is activated upon failure of the first.</rdfs:comment>
+  <rdfs:label xml:lang="en">activates on failure</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added inverse property: Missing inverse relationship</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#isActivatedOnFailureOf"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasConstraint">
+  <rdfs:comment xml:lang="en">Links a rule to a constraint.</rdfs:comment>
+  <rdfs:label xml:lang="en">has constraint</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added inverse property: Missing inverse relationship</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Constraint"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#constraintOf"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasOperator">
+  <rdfs:comment xml:lang="en">Links a simple constraint to an operator.</rdfs:comment>
+  <rdfs:label xml:lang="en">has operator</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added inverse property: Missing inverse relationship</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Constraint"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Operator"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#operatorOf"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasPart">
+  <rdfs:comment xml:lang="en">Links a logical constraint to its sub-constraints.</rdfs:comment>
+  <rdfs:label xml:lang="en">has part</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added inverse property: Missing inverse relationship</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#LogicalConstraint"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Constraint"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#partOf"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#inheritsFrom">
+  <rdfs:comment xml:lang="en">Links a policy to another policy that it inherits from.</rdfs:comment>
+  <rdfs:label xml:lang="en">inherits from</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added inverse property: Missing inverse relationship</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Policy"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Policy"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#isInheritedBy"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#conflictStrategy">
+  <rdfs:comment xml:lang="en">Links a policy to its conflict resolution strategy.</rdfs:comment>
+  <rdfs:label xml:lang="en">conflict strategy</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added inverse property: Missing inverse relationship</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Policy"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#ConflictStrategy"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#strategyOf"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasRole">
+  <rdfs:comment xml:lang="en">Links a party to a role in the context of a rule.</rdfs:comment>
+  <rdfs:label xml:lang="en">has role</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added inverse property: Missing inverse relationship</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Party"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Role"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#isRoleOf"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#exclusiveWith">
+  <rdfs:comment xml:lang="en">Links a permission to another permission that is exclusive.</rdfs:comment>
+  <rdfs:label xml:lang="en">exclusive with</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added inverse property: Missing inverse relationship</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Permission"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Permission"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#isExclusiveWith"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#directlyLinkedPolicy">
+  <rdfs:comment xml:lang="en">Links an asset to the policy that directly governs it.</rdfs:comment>
+  <rdfs:label xml:lang="en">directly linked policy</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added inverse property: Missing inverse relationship</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Asset"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Policy"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#isDirectlyLinkedPolicyOf"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#ruleOf">
+  <rdfs:comment xml:lang="en">Inverse of hasRule. Links a rule to the policy that contains it.</rdfs:comment>
+  <rdfs:label xml:lang="en">rule of</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property for hasRule: Missing inverse relationship</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Policy"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasRule"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isTargetOf">
+  <rdfs:comment xml:lang="en">Inverse of target. Links an asset to the rule that targets it.</rdfs:comment>
+  <rdfs:label xml:lang="en">is target of</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property for target: Missing inverse relationship</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Asset"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#target"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isAssigneeOf">
+  <rdfs:comment xml:lang="en">Inverse of assignee. Links a party to the rule for which it is the assignee.</rdfs:comment>
+  <rdfs:label xml:lang="en">is assignee of</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property for assignee: Missing inverse relationship</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Party"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#assignee"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isAssignerOf">
+  <rdfs:comment xml:lang="en">Inverse of assigner. Links a party to the rule for which it is the assigner.</rdfs:comment>
+  <rdfs:label xml:lang="en">is assigner of</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property for assigner: Missing inverse relationship</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Party"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#assigner"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isRemedyOf">
+  <rdfs:comment xml:lang="en">Inverse of remedy. Links a duty to the prohibition for which it is a remedy.</rdfs:comment>
+  <rdfs:label xml:lang="en">is remedy of</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property for remedy: Missing inverse relationship</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Duty"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Prohibition"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#remedy"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isConsequenceOf">
+  <rdfs:comment xml:lang="en">Inverse of consequence. Links a duty to another duty of which it is a consequence.</rdfs:comment>
+  <rdfs:label xml:lang="en">is consequence of</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property for consequence: Missing inverse relationship</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Duty"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Duty"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#consequence"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isActivatedOnFailureOf">
+  <rdfs:comment xml:lang="en">Inverse of activatesOnFailure. Links a rule to another rule that activates it on failure.</rdfs:comment>
+  <rdfs:label xml:lang="en">is activated on failure of</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property for activatesOnFailure: Missing inverse relationship</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#activatesOnFailure"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#constraintOf">
+  <rdfs:comment xml:lang="en">Inverse of hasConstraint. Links a constraint to the rule that has it.</rdfs:comment>
+  <rdfs:label xml:lang="en">constraint of</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property for hasConstraint: Missing inverse relationship</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Constraint"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasConstraint"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#operatorOf">
+  <rdfs:comment xml:lang="en">Inverse of hasOperator. Links an operator to the constraint that uses it.</rdfs:comment>
+  <rdfs:label xml:lang="en">operator of</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property for hasOperator: Missing inverse relationship</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Operator"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Constraint"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasOperator"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#partOf">
+  <rdfs:comment xml:lang="en">Inverse of hasPart. Links a constraint to the logical constraint that has it as a part.</rdfs:comment>
+  <rdfs:label xml:lang="en">part of</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property for hasPart: Missing inverse relationship</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Constraint"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#LogicalConstraint"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasPart"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isInheritedBy">
+  <rdfs:comment xml:lang="en">Inverse of inheritsFrom. Links a policy to another policy that inherits from it.</rdfs:comment>
+  <rdfs:label xml:lang="en">is inherited by</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property for inheritsFrom: Missing inverse relationship</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Policy"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Policy"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#inheritsFrom"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#strategyOf">
+  <rdfs:comment xml:lang="en">Inverse of conflictStrategy. Links a conflict strategy to the policy that uses it.</rdfs:comment>
+  <rdfs:label xml:lang="en">strategy of</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property for conflictStrategy: Missing inverse relationship</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#ConflictStrategy"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Policy"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#conflictStrategy"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isRoleOf">
+  <rdfs:comment xml:lang="en">Inverse of hasRole. Links a role to the party that has it.</rdfs:comment>
+  <rdfs:label xml:lang="en">is role of</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property for hasRole: Missing inverse relationship</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Role"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Party"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#hasRole"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isExclusiveWith">
+  <rdfs:comment xml:lang="en">Inverse of exclusiveWith. Links a permission to another permission that is exclusive with it.</rdfs:comment>
+  <rdfs:label xml:lang="en">is exclusive with</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property for exclusiveWith: Missing inverse relationship</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Permission"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Permission"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#exclusiveWith"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isDirectlyLinkedPolicyOf">
+  <rdfs:comment xml:lang="en">Inverse of directlyLinkedPolicy. Links a policy to the asset it directly governs.</rdfs:comment>
+  <rdfs:label xml:lang="en">is directly linked policy of</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created inverse property for directlyLinkedPolicy: Missing inverse relationship</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Policy"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Asset"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#directlyLinkedPolicy"/>
+</owl:ObjectProperty>
+
+  <!-- owl:DatatypeProperty declarations -->
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#operatorValue">
+  <rdfs:comment xml:lang="en">The value of an operator, e.g., 'not', 'and', 'or', 'xor'.</rdfs:comment>
+  <rdfs:label xml:lang="en">operator value</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Operator"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+</rdf:RDF>

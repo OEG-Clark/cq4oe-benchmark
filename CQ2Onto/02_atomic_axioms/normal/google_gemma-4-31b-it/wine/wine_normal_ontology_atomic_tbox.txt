@@ -1,0 +1,156 @@
+====================================================================================================
+ATOMIC TBOX AXIOMS
+====================================================================================================
+
+── Class ──
+
+  Term: Body  [Class]
+    Declaration                Declaration: Body (Class)
+      Subject: Body
+      Object : Class
+    SubClassOf                 Body ⊑ Wine Characteristic
+      Subject: Body
+      Object : Wine Characteristic
+
+  Term: Bouquet  [Class]
+    Declaration                Declaration: Bouquet (Class)
+      Subject: Bouquet
+      Object : Class
+    SubClassOf                 Bouquet ⊑ Wine Characteristic
+      Subject: Bouquet
+      Object : Wine Characteristic
+
+  Term: Grape  [Class]
+    Declaration                Declaration: Grape (Class)
+      Subject: Grape
+      Object : Class
+
+  Term: Red Wine  [Class]
+    Declaration                Declaration: Red Wine (Class)
+      Subject: Red Wine
+      Object : Class
+    SubClassOf                 Red Wine ⊑ Wine
+      Subject: Red Wine
+      Object : Wine
+    DisjointClasses            DisjointClasses(Red Wine, White Wine)
+      Subject: Red Wine
+      Object : White Wine
+
+  Term: Vintage  [Class]
+    Declaration                Declaration: Vintage (Class)
+      Subject: Vintage
+      Object : Class
+
+  Term: White Wine  [Class]
+    Declaration                Declaration: White Wine (Class)
+      Subject: White Wine
+      Object : Class
+    SubClassOf                 White Wine ⊑ Wine
+      Subject: White Wine
+      Object : Wine
+
+  Term: Wine  [Class]
+    Declaration                Declaration: Wine (Class)
+      Subject: Wine
+      Object : Class
+
+  Term: Wine Characteristic  [Class]
+    Declaration                Declaration: Wine Characteristic (Class)
+      Subject: Wine Characteristic
+      Object : Class
+
+
+── ObjectProperty ──
+
+  Term: has characteristic  [ObjectProperty]
+    Declaration                Declaration: has characteristic (ObjectProperty)
+      Subject: has characteristic
+      Object : ObjectProperty
+    Domain                     ∃has characteristic.⊤ ⊑ Wine
+      Subject: has characteristic
+      Object : Wine
+    Range                      ⊤ ⊑ ∀has characteristic.Wine Characteristic
+      Subject: has characteristic
+      Object : Wine Characteristic
+
+  Term: has vintage  [ObjectProperty]
+    Declaration                Declaration: has vintage (ObjectProperty)
+      Subject: has vintage
+      Object : ObjectProperty
+    Domain                     ∃has vintage.⊤ ⊑ Wine
+      Subject: has vintage
+      Object : Wine
+    Range                      ⊤ ⊑ ∀has vintage.Vintage
+      Subject: has vintage
+      Object : Vintage
+
+  Term: made from  [ObjectProperty]
+    Declaration                Declaration: made from (ObjectProperty)
+      Subject: made from
+      Object : ObjectProperty
+    Domain                     ∃made from.⊤ ⊑ Wine
+      Subject: made from
+      Object : Wine
+    Range                      ⊤ ⊑ ∀made from.Grape
+      Subject: made from
+      Object : Grape
+
+  Term: vintage characteristic  [ObjectProperty]
+    Declaration                Declaration: vintage characteristic (ObjectProperty)
+      Subject: vintage characteristic
+      Object : ObjectProperty
+    Domain                     ∃vintage characteristic.⊤ ⊑ Vintage
+      Subject: vintage characteristic
+      Object : Vintage
+    Range                      ⊤ ⊑ ∀vintage characteristic.Wine Characteristic
+      Subject: vintage characteristic
+      Object : Wine Characteristic
+
+
+── DatatypeProperty ──
+
+  Term: vintage quality  [DatatypeProperty]
+    Declaration                Declaration: vintage quality (DatatypeProperty)
+      Subject: vintage quality
+      Object : DatatypeProperty
+    Domain                     ∃vintage quality.⊤ ⊑ Vintage
+      Subject: vintage quality
+      Object : Vintage
+    Range                      vintage quality maps-to xsd:string
+      Subject: vintage quality
+      Object : xsd:string
+
+  Term: vintage year  [DatatypeProperty]
+    Declaration                Declaration: vintage year (DatatypeProperty)
+      Subject: vintage year
+      Object : DatatypeProperty
+    Domain                     ∃vintage year.⊤ ⊑ Vintage
+      Subject: vintage year
+      Object : Vintage
+    Range                      vintage year maps-to xsd:integer
+      Subject: vintage year
+      Object : xsd:integer
+    Characteristics            Functional(vintage year)
+      Subject: vintage year
+      Object : Functional
+
+
+====================================================================================================
+STATISTICS
+====================================================================================================
+
+  Classes:               8  (defined: 0, primitive: 8)
+  ObjectProperties:      4
+  DatatypeProperties:    2
+
+  Axiom Breakdown:
+    Characteristics           1
+    Declaration               14
+    DisjointClasses           1
+    Domain                    6
+    Range                     6
+    SubClassOf                4
+    ------------------------------
+    Total TBox Axioms         32
+
+====================================================================================================

@@ -1,0 +1,369 @@
+====================================================================================================
+ATOMIC TBOX AXIOMS
+====================================================================================================
+
+── Class ──
+
+  Term: Ability  [Class]
+    Declaration                Declaration: Ability (Class)
+      Subject: Ability
+      Object : Class
+
+  Term: Achievement  [Class]
+    Declaration                Declaration: Achievement (Class)
+      Subject: Achievement
+      Object : Class
+
+  Term: AchievementType  [Class]
+    Declaration                Declaration: AchievementType (Class)
+      Subject: AchievementType
+      Object : Class
+
+  Term: Equipment  [Class]
+    Declaration                Declaration: Equipment (Class)
+      Subject: Equipment
+      Object : Class
+    SubClassOf                 Equipment ⊑ Item
+      Subject: Equipment
+      Object : Item
+
+  Term: Game  [Class]
+    Declaration                Declaration: Game (Class)
+      Subject: Game
+      Object : Class
+
+  Term: Genre  [Class]
+    Declaration                Declaration: Genre (Class)
+      Subject: Genre
+      Object : Class
+
+  Term: InAppPurchase  [Class]
+    Declaration                Declaration: InAppPurchase (Class)
+      Subject: InAppPurchase
+      Object : Class
+
+  Term: Item  [Class]
+    Declaration                Declaration: Item (Class)
+      Subject: Item
+      Object : Class
+
+  Term: Location  [Class]
+    Declaration                Declaration: Location (Class)
+      Subject: Location
+      Object : Class
+
+  Term: Player  [Class]
+    Declaration                Declaration: Player (Class)
+      Subject: Player
+      Object : Class
+
+  Term: PlayingArea  [Class]
+    Declaration                Declaration: PlayingArea (Class)
+      Subject: PlayingArea
+      Object : Class
+
+
+── ObjectProperty ──
+
+  Term: contains achievement  [ObjectProperty]
+    Declaration                Declaration: contains achievement (ObjectProperty)
+      Subject: contains achievement
+      Object : ObjectProperty
+    Domain                     ∃contains achievement.⊤ ⊑ Game
+      Subject: contains achievement
+      Object : Game
+    Range                      ⊤ ⊑ ∀contains achievement.Achievement
+      Subject: contains achievement
+      Object : Achievement
+
+  Term: has ability  [ObjectProperty]
+    Declaration                Declaration: has ability (ObjectProperty)
+      Subject: has ability
+      Object : ObjectProperty
+    Domain                     ∃has ability.⊤ ⊑ Item
+      Subject: has ability
+      Object : Item
+    Range                      ⊤ ⊑ ∀has ability.Ability
+      Subject: has ability
+      Object : Ability
+
+  Term: has achievement  [ObjectProperty]
+    Declaration                Declaration: has achievement (ObjectProperty)
+      Subject: has achievement
+      Object : ObjectProperty
+    Domain                     ∃has achievement.⊤ ⊑ Player
+      Subject: has achievement
+      Object : Player
+    Range                      ⊤ ⊑ ∀has achievement.Achievement
+      Subject: has achievement
+      Object : Achievement
+
+  Term: has equipment  [ObjectProperty]
+    Declaration                Declaration: has equipment (ObjectProperty)
+      Subject: has equipment
+      Object : ObjectProperty
+    Domain                     ∃has equipment.⊤ ⊑ Player
+      Subject: has equipment
+      Object : Player
+    Range                      ⊤ ⊑ ∀has equipment.Equipment
+      Subject: has equipment
+      Object : Equipment
+
+  Term: has friend  [ObjectProperty]
+    Declaration                Declaration: has friend (ObjectProperty)
+      Subject: has friend
+      Object : ObjectProperty
+    Domain                     ∃has friend.⊤ ⊑ Player
+      Subject: has friend
+      Object : Player
+    Range                      ⊤ ⊑ ∀has friend.Player
+      Subject: has friend
+      Object : Player
+
+  Term: has genre  [ObjectProperty]
+    Declaration                Declaration: has genre (ObjectProperty)
+      Subject: has genre
+      Object : ObjectProperty
+    Domain                     ∃has genre.⊤ ⊑ Game
+      Subject: has genre
+      Object : Game
+    Range                      ⊤ ⊑ ∀has genre.Genre
+      Subject: has genre
+      Object : Genre
+
+  Term: has in-app purchase  [ObjectProperty]
+    Declaration                Declaration: has in-app purchase (ObjectProperty)
+      Subject: has in-app purchase
+      Object : ObjectProperty
+    Domain                     ∃has in-app purchase.⊤ ⊑ Player
+      Subject: has in-app purchase
+      Object : Player
+    Range                      ⊤ ⊑ ∀has in-app purchase.InAppPurchase
+      Subject: has in-app purchase
+      Object : InAppPurchase
+
+  Term: has item  [ObjectProperty]
+    Declaration                Declaration: has item (ObjectProperty)
+      Subject: has item
+      Object : ObjectProperty
+    Domain                     ∃has item.⊤ ⊑ Game
+      Subject: has item
+      Object : Game
+    Range                      ⊤ ⊑ ∀has item.Item
+      Subject: has item
+      Object : Item
+
+  Term: has item for player  [ObjectProperty]
+    Declaration                Declaration: has item for player (ObjectProperty)
+      Subject: has item for player
+      Object : ObjectProperty
+    Domain                     ∃has item for player.⊤ ⊑ Player
+      Subject: has item for player
+      Object : Player
+    Range                      ⊤ ⊑ ∀has item for player.Item
+      Subject: has item for player
+      Object : Item
+
+  Term: has playing area  [ObjectProperty]
+    Declaration                Declaration: has playing area (ObjectProperty)
+      Subject: has playing area
+      Object : ObjectProperty
+    Domain                     ∃has playing area.⊤ ⊑ Game
+      Subject: has playing area
+      Object : Game
+    Range                      ⊤ ⊑ ∀has playing area.PlayingArea
+      Subject: has playing area
+      Object : PlayingArea
+
+  Term: has type  [ObjectProperty]
+    Declaration                Declaration: has type (ObjectProperty)
+      Subject: has type
+      Object : ObjectProperty
+    Domain                     ∃has type.⊤ ⊑ Achievement
+      Subject: has type
+      Object : Achievement
+    Range                      ⊤ ⊑ ∀has type.AchievementType
+      Subject: has type
+      Object : AchievementType
+
+  Term: last played game  [ObjectProperty]
+    Declaration                Declaration: last played game (ObjectProperty)
+      Subject: last played game
+      Object : ObjectProperty
+    Domain                     ∃last played game.⊤ ⊑ Player
+      Subject: last played game
+      Object : Player
+    Range                      ⊤ ⊑ ∀last played game.Game
+      Subject: last played game
+      Object : Game
+    Characteristics            Functional(last played game)
+      Subject: last played game
+      Object : Functional
+
+  Term: lives in  [ObjectProperty]
+    Declaration                Declaration: lives in (ObjectProperty)
+      Subject: lives in
+      Object : ObjectProperty
+    Domain                     ∃lives in.⊤ ⊑ Player
+      Subject: lives in
+      Object : Player
+    Range                      ⊤ ⊑ ∀lives in.Location
+      Subject: lives in
+      Object : Location
+
+  Term: plays game  [ObjectProperty]
+    Declaration                Declaration: plays game (ObjectProperty)
+      Subject: plays game
+      Object : ObjectProperty
+    Domain                     ∃plays game.⊤ ⊑ Player
+      Subject: plays game
+      Object : Player
+    Range                      ⊤ ⊑ ∀plays game.Game
+      Subject: plays game
+      Object : Game
+
+  Term: usable in game  [ObjectProperty]
+    Declaration                Declaration: usable in game (ObjectProperty)
+      Subject: usable in game
+      Object : ObjectProperty
+    Domain                     ∃usable in game.⊤ ⊑ Item
+      Subject: usable in game
+      Object : Item
+    Range                      ⊤ ⊑ ∀usable in game.Game
+      Subject: usable in game
+      Object : Game
+
+
+── DatatypeProperty ──
+
+  Term: IAP time  [DatatypeProperty]
+    Declaration                Declaration: IAP time (DatatypeProperty)
+      Subject: IAP time
+      Object : DatatypeProperty
+    Domain                     ∃IAP time.⊤ ⊑ InAppPurchase
+      Subject: IAP time
+      Object : InAppPurchase
+    Range                      IAP time maps-to ⊤
+      Subject: IAP time
+      Object : ⊤
+    Characteristics            Functional(IAP time)
+      Subject: IAP time
+      Object : Functional
+
+  Term: has kill count  [DatatypeProperty]
+    Declaration                Declaration: has kill count (DatatypeProperty)
+      Subject: has kill count
+      Object : DatatypeProperty
+    Domain                     ∃has kill count.⊤ ⊑ Player
+      Subject: has kill count
+      Object : Player
+    Range                      has kill count maps-to ⊤
+      Subject: has kill count
+      Object : ⊤
+    Characteristics            Functional(has kill count)
+      Subject: has kill count
+      Object : Functional
+
+  Term: has made in-app purchase  [DatatypeProperty]
+    Declaration                Declaration: has made in-app purchase (DatatypeProperty)
+      Subject: has made in-app purchase
+      Object : DatatypeProperty
+    Domain                     ∃has made in-app purchase.⊤ ⊑ Player
+      Subject: has made in-app purchase
+      Object : Player
+    Range                      has made in-app purchase maps-to ⊤
+      Subject: has made in-app purchase
+      Object : ⊤
+    Characteristics            Functional(has made in-app purchase)
+      Subject: has made in-app purchase
+      Object : Functional
+
+  Term: has username  [DatatypeProperty]
+    Declaration                Declaration: has username (DatatypeProperty)
+      Subject: has username
+      Object : DatatypeProperty
+    Domain                     ∃has username.⊤ ⊑ Player
+      Subject: has username
+      Object : Player
+    Range                      has username maps-to ⊤
+      Subject: has username
+      Object : ⊤
+    Characteristics            Functional(has username)
+      Subject: has username
+      Object : Functional
+
+  Term: release date  [DatatypeProperty]
+    Declaration                Declaration: release date (DatatypeProperty)
+      Subject: release date
+      Object : DatatypeProperty
+    Domain                     ∃release date.⊤ ⊑ Game
+      Subject: release date
+      Object : Game
+    Range                      release date maps-to ⊤
+      Subject: release date
+      Object : ⊤
+    Characteristics            Functional(release date)
+      Subject: release date
+      Object : Functional
+
+  Term: time before first IAP  [DatatypeProperty]
+    Declaration                Declaration: time before first IAP (DatatypeProperty)
+      Subject: time before first IAP
+      Object : DatatypeProperty
+    Domain                     ∃time before first IAP.⊤ ⊑ Player
+      Subject: time before first IAP
+      Object : Player
+    Range                      time before first IAP maps-to ⊤
+      Subject: time before first IAP
+      Object : ⊤
+    Characteristics            Functional(time before first IAP)
+      Subject: time before first IAP
+      Object : Functional
+
+  Term: total IAP amount  [DatatypeProperty]
+    Declaration                Declaration: total IAP amount (DatatypeProperty)
+      Subject: total IAP amount
+      Object : DatatypeProperty
+    Domain                     ∃total IAP amount.⊤ ⊑ Player
+      Subject: total IAP amount
+      Object : Player
+    Range                      total IAP amount maps-to ⊤
+      Subject: total IAP amount
+      Object : ⊤
+    Characteristics            Functional(total IAP amount)
+      Subject: total IAP amount
+      Object : Functional
+
+  Term: total playtime  [DatatypeProperty]
+    Declaration                Declaration: total playtime (DatatypeProperty)
+      Subject: total playtime
+      Object : DatatypeProperty
+    Domain                     ∃total playtime.⊤ ⊑ Game
+      Subject: total playtime
+      Object : Game
+    Range                      total playtime maps-to ⊤
+      Subject: total playtime
+      Object : ⊤
+    Characteristics            Functional(total playtime)
+      Subject: total playtime
+      Object : Functional
+
+
+====================================================================================================
+STATISTICS
+====================================================================================================
+
+  Classes:               11  (defined: 0, primitive: 11)
+  ObjectProperties:      15
+  DatatypeProperties:    8
+
+  Axiom Breakdown:
+    Characteristics           9
+    Declaration               34
+    Domain                    23
+    Range                     23
+    SubClassOf                1
+    ------------------------------
+    Total TBox Axioms         90
+
+====================================================================================================

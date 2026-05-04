@@ -1,0 +1,55 @@
+{
+    "config": {
+        "class_counts": {
+            "gold_class_count": 30,
+            "pred_class_count": 26
+        },
+        "matching_rule": {
+            "type": "normalized one-to-one global greedy matching",
+            "description": "All matching methods use normalized terms internally. Hard and lexical methods use normalize_key, where spaces are removed. Semantic and synonym methods use normalize_text, where word spaces are preserved. Each gold can match at most one pred. Each pred can match at most one gold. Pred terms are removed from the pool once matched. Only pairs above the method-specific threshold are considered."
+        },
+        "thresholds": {
+            "hard_match": 1.0,
+            "lexical": 0.8,
+            "semantic": 0.6,
+            "synonym": 1.0
+        }
+    },
+    "results": [
+        {
+            "id": "hard_match",
+            "coverage": 0.1,
+            "precision": 0.11538461538461539,
+            "recall": 0.1,
+            "f1": 0.10714285714285714
+        },
+        {
+            "id": "sequence_match",
+            "coverage": 0.16666666666666666,
+            "precision": 0.19230769230769232,
+            "recall": 0.16666666666666666,
+            "f1": 0.17857142857142855
+        },
+        {
+            "id": "levenshtein",
+            "coverage": 0.13333333333333333,
+            "precision": 0.15384615384615385,
+            "recall": 0.13333333333333333,
+            "f1": 0.14285714285714288
+        },
+        {
+            "id": "jaro_winkler",
+            "coverage": 0.36666666666666664,
+            "precision": 0.4230769230769231,
+            "recall": 0.36666666666666664,
+            "f1": 0.3928571428571428
+        },
+        {
+            "id": "semantic_embeddinggemma",
+            "coverage": 0.6,
+            "precision": 0.6923076923076923,
+            "recall": 0.6,
+            "f1": 0.6428571428571429
+        }
+    ]
+}

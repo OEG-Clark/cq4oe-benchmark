@@ -1,0 +1,353 @@
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:vaem="http://www.linkedmodel.org/schema/vaem#">
+ 
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Policy">
+  <rdfs:comment xml:lang="en">A set of rules governing the usage, distribution, or management of an asset.</rdfs:comment>
+  <rdfs:label xml:lang="en">Policy</rdfs:label>
+  <dc:source>(competency_question) New CQ1: Which policy is directly linked to a given asset?
+    (competency_question) New CQ2: What conflict resolution strategy is specified by a policy?
+    (competency_question) CQ33: Can the new data model express inheritance?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Asset">
+  <rdfs:comment xml:lang="en">A digital or physical resource that is subject to a policy.</rdfs:comment>
+  <rdfs:label xml:lang="en">Asset</rdfs:label>
+  <dc:source>(competency_question) New CQ1: Which policy is directly linked to a given asset?
+    (competency_question) CQ30: What do we lose if containers are no longer part of ODRL?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Container">
+  <rdfs:comment xml:lang="en">A logical grouping or collection of assets.</rdfs:comment>
+  <rdfs:label xml:lang="en">Container</rdfs:label>
+  <dc:source>(competency_question) CQ30: What do we lose if containers are no longer part of ODRL?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Rule">
+  <rdfs:comment xml:lang="en">An abstract superclass for permissions, duties, and prohibitions that define actions on assets.</rdfs:comment>
+  <rdfs:label xml:lang="en">Rule</rdfs:label>
+  <dc:source>(competency_question) New CQ4: Which rule is activated upon the failure of another rule?
+    (competency_question) CQ31: Do we need 'Sequencing' as part of the REL?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Permission">
+  <rdfs:comment xml:lang="en">A rule that grants the right to perform an action on an asset.</rdfs:comment>
+  <rdfs:label xml:lang="en">Permission</rdfs:label>
+  <dc:source>(competency_question) CQ03: Shall the permissions 'Aggregation' and 'Disaggregation' be of the type Transfer Rights?
+    (competency_question) CQ24: How to express exclusive permissions?</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Rule'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Duty">
+  <rdfs:comment xml:lang="en">A rule that specifies an obligation that must be fulfilled.</rdfs:comment>
+  <rdfs:label xml:lang="en">Duty</rdfs:label>
+  <dc:source>(competency_question) CQ06: Expressing the various roles of contract parties within the Permission/Duty element.
+    (competency_question) New CQ3: What duty is specified as a remedy for the violation of a prohibition?
+    (competency_question) New CQ5: What duty is specified as a consequence of another duty?</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Rule'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Prohibition">
+  <rdfs:comment xml:lang="en">A rule that forbids performing an action on an asset.</rdfs:comment>
+  <rdfs:label xml:lang="en">Prohibition</rdfs:label>
+  <dc:source>(competency_question) New CQ3: What duty is specified as a remedy for the violation of a prohibition?
+    (competency_question) New CQ6: What operator is used in the constraints of a prohibition?</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Rule'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#TransferRight">
+  <rdfs:comment xml:lang="en">A type of permission that allows the transfer or redistribution of rights.</rdfs:comment>
+  <rdfs:label xml:lang="en">Transfer Right</rdfs:label>
+  <dc:source>(competency_question) CQ03: Shall the permissions 'Aggregation' and 'Disaggregation' be of the type Transfer Rights?</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Permission'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Aggregation">
+  <rdfs:comment xml:lang="en">A transfer right permitting the combination of multiple assets or rights.</rdfs:comment>
+  <rdfs:label xml:lang="en">Aggregation</rdfs:label>
+  <dc:source>(competency_question) CQ03: Shall the permissions 'Aggregation' and 'Disaggregation' be of the type Transfer Rights?</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#TransferRight'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Disaggregation">
+  <rdfs:comment xml:lang="en">A transfer right permitting the separation or splitting of assets or rights.</rdfs:comment>
+  <rdfs:label xml:lang="en">Disaggregation</rdfs:label>
+  <dc:source>(competency_question) CQ03: Shall the permissions 'Aggregation' and 'Disaggregation' be of the type Transfer Rights?</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#TransferRight'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#ExclusivePermission">
+  <rdfs:comment xml:lang="en">A permission that grants exclusive rights to a single party.</rdfs:comment>
+  <rdfs:label xml:lang="en">Exclusive Permission</rdfs:label>
+  <dc:source>(competency_question) CQ24: How to express exclusive permissions?</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Permission'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#ContractParty">
+  <rdfs:comment xml:lang="en">An entity (person, organization, or system) that is a party to a contract or policy.</rdfs:comment>
+  <rdfs:label xml:lang="en">Contract Party</rdfs:label>
+  <dc:source>(competency_question) CQ06: Expressing the various roles of contract parties within the Permission/Duty element.
+    (competency_question) CQ10: How are rights and duties supported for all contract parties?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Role">
+  <rdfs:comment xml:lang="en">A specific function or capacity assigned to a contract party within a rule.</rdfs:comment>
+  <rdfs:label xml:lang="en">Role</rdfs:label>
+  <dc:source>(competency_question) CQ06: Expressing the various roles of contract parties within the Permission/Duty element.</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Constraint">
+  <rdfs:comment xml:lang="en">A condition or restriction applied to a rule, requirement, or other constraint.</rdfs:comment>
+  <rdfs:label xml:lang="en">Constraint</rdfs:label>
+  <dc:source>(competency_question) CQ13: Shall ODRLv2 allow for nested constraints?
+    (competency_question) CQ26: How to express Condition via Constraints?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#LogicalConstraint">
+  <rdfs:comment xml:lang="en">A constraint that combines other constraints using logical operators.</rdfs:comment>
+  <rdfs:label xml:lang="en">Logical Constraint</rdfs:label>
+  <dc:source>(competency_question) CQ14: How do we express 'and', 'or', 'xor' constraints?</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Constraint'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#AndConstraint">
+  <rdfs:comment xml:lang="en">A logical constraint requiring all sub-constraints to be satisfied.</rdfs:comment>
+  <rdfs:label xml:lang="en">And Constraint</rdfs:label>
+  <dc:source>(competency_question) CQ14: How do we express 'and', 'or', 'xor' constraints?</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#LogicalConstraint'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#OrConstraint">
+  <rdfs:comment xml:lang="en">A logical constraint requiring at least one sub-constraint to be satisfied.</rdfs:comment>
+  <rdfs:label xml:lang="en">Or Constraint</rdfs:label>
+  <dc:source>(competency_question) CQ14: How do we express 'and', 'or', 'xor' constraints?</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#LogicalConstraint'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#XorConstraint">
+  <rdfs:comment xml:lang="en">A logical constraint requiring exactly one sub-constraint to be satisfied.</rdfs:comment>
+  <rdfs:label xml:lang="en">Xor Constraint</rdfs:label>
+  <dc:source>(competency_question) CQ14: How do we express 'and', 'or', 'xor' constraints?</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#LogicalConstraint'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#NotConstraint">
+  <rdfs:comment xml:lang="en">A logical constraint that negates the satisfaction of a sub-constraint.</rdfs:comment>
+  <rdfs:label xml:lang="en">Not Constraint</rdfs:label>
+  <dc:source>(competency_question) CQ08: How to provide a 'NOT' expression?</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#LogicalConstraint'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Condition">
+  <rdfs:comment xml:lang="en">A specific type of constraint that defines a prerequisite for a rule to be active.</rdfs:comment>
+  <rdfs:label xml:lang="en">Condition</rdfs:label>
+  <dc:source>(competency_question) CQ26: How to express Condition via Constraints?</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Constraint'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Requirement">
+  <rdfs:comment xml:lang="en">A specification that must be met, potentially subject to constraints.</rdfs:comment>
+  <rdfs:label xml:lang="en">Requirement</rdfs:label>
+  <dc:source>(competency_question) CQ21: How to express constraints on requirements?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#ConflictResolutionStrategy">
+  <rdfs:comment xml:lang="en">A defined method for resolving conflicts between overlapping or contradictory rules.</rdfs:comment>
+  <rdfs:label xml:lang="en">Conflict Resolution Strategy</rdfs:label>
+  <dc:source>(competency_question) New CQ2: What conflict resolution strategy is specified by a policy?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Operator">
+  <rdfs:comment xml:lang="en">A logical or mathematical operator applied within a constraint.</rdfs:comment>
+  <rdfs:label xml:lang="en">Operator</rdfs:label>
+  <dc:source>(competency_question) CQ08: How to provide a 'NOT' expression?
+    (competency_question) New CQ6: What operator is used in the constraints of a prohibition?</dc:source>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#appliesToAsset">
+  <rdfs:comment xml:lang="en">Links a policy directly to the asset it governs.</rdfs:comment>
+  <rdfs:label xml:lang="en">applies to asset</rdfs:label>
+  <dc:source>(competency_question) New CQ1: Which policy is directly linked to a given asset?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Policy"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Asset"/>
+  <rdfs:domain rdf:resource='http://www.semanticweb.org/myontology#Policy'/>
+<rdfs:range rdf:resource='http://www.semanticweb.org/myontology#Asset'/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasConflictResolutionStrategy">
+  <rdfs:comment xml:lang="en">Specifies the strategy a policy uses to resolve rule conflicts.</rdfs:comment>
+  <rdfs:label xml:lang="en">has conflict resolution strategy</rdfs:label>
+  <dc:source>(competency_question) New CQ2: What conflict resolution strategy is specified by a policy?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Policy"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#ConflictResolutionStrategy"/>
+  <rdfs:domain rdf:resource='http://www.semanticweb.org/myontology#Policy'/>
+<rdfs:range rdf:resource='http://www.semanticweb.org/myontology#ConflictResolutionStrategy'/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasRule">
+  <rdfs:comment xml:lang="en">Associates a policy with its constituent rules.</rdfs:comment>
+  <rdfs:label xml:lang="en">has rule</rdfs:label>
+  <dc:source>(competency_question) CQ10: How are rights and duties supported for all contract parties?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Policy"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <rdfs:domain rdf:resource='http://www.semanticweb.org/myontology#Policy'/>
+<rdfs:range rdf:resource='http://www.semanticweb.org/myontology#Rule'/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#inheritsFrom">
+  <rdfs:comment xml:lang="en">Indicates that a policy or rule derives properties or constraints from another.</rdfs:comment>
+  <rdfs:label xml:lang="en">inherits from</rdfs:label>
+  <dc:source>(competency_question) CQ33: Can the new data model express inheritance?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Policy"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Policy"/>
+  <rdfs:domain rdf:resource='http://www.semanticweb.org/myontology#Policy'/>
+<rdfs:range rdf:resource='http://www.semanticweb.org/myontology#Policy'/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasParty">
+  <rdfs:comment xml:lang="en">Links a rule to the contract party it applies to.</rdfs:comment>
+  <rdfs:label xml:lang="en">has party</rdfs:label>
+  <dc:source>(competency_question) CQ06: Expressing the various roles of contract parties within the Permission/Duty element.
+    (competency_question) CQ10: How are rights and duties supported for all contract parties?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#ContractParty"/>
+  <rdfs:domain rdf:resource='http://www.semanticweb.org/myontology#Rule'/>
+<rdfs:range rdf:resource='http://www.semanticweb.org/myontology#ContractParty'/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasRole">
+  <rdfs:comment xml:lang="en">Specifies the role a contract party plays within a specific rule.</rdfs:comment>
+  <rdfs:label xml:lang="en">has role</rdfs:label>
+  <dc:source>(competency_question) CQ06: Expressing the various roles of contract parties within the Permission/Duty element.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Role"/>
+  <rdfs:domain rdf:resource='http://www.semanticweb.org/myontology#Rule'/>
+<rdfs:range rdf:resource='http://www.semanticweb.org/myontology#Role'/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasConstraint">
+  <rdfs:comment xml:lang="en">Associates a rule with a constraint that limits its applicability.</rdfs:comment>
+  <rdfs:label xml:lang="en">has constraint</rdfs:label>
+  <dc:source>(competency_question) CQ13: Shall ODRLv2 allow for nested constraints?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Constraint"/>
+  <rdfs:domain rdf:resource='http://www.semanticweb.org/myontology#Rule'/>
+<rdfs:range rdf:resource='http://www.semanticweb.org/myontology#Constraint'/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasNestedConstraint">
+  <rdfs:comment xml:lang="en">Allows a constraint to contain other constraints, enabling complex logical structures.</rdfs:comment>
+  <rdfs:label xml:lang="en">has nested constraint</rdfs:label>
+  <dc:source>(competency_question) CQ13: Shall ODRLv2 allow for nested constraints?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Constraint"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Constraint"/>
+  <rdfs:domain rdf:resource='http://www.semanticweb.org/myontology#Constraint'/>
+<rdfs:range rdf:resource='http://www.semanticweb.org/myontology#Constraint'/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasOperator">
+  <rdfs:comment xml:lang="en">Specifies the logical or mathematical operator used within a constraint.</rdfs:comment>
+  <rdfs:label xml:lang="en">has operator</rdfs:label>
+  <dc:source>(competency_question) CQ08: How to provide a 'NOT' expression?
+    (competency_question) New CQ6: What operator is used in the constraints of a prohibition?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Constraint"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Operator"/>
+  <rdfs:domain rdf:resource='http://www.semanticweb.org/myontology#Constraint'/>
+<rdfs:range rdf:resource='http://www.semanticweb.org/myontology#Operator'/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasCondition">
+  <rdfs:comment xml:lang="en">Links a rule to a condition that must be met for the rule to be active.</rdfs:comment>
+  <rdfs:label xml:lang="en">has condition</rdfs:label>
+  <dc:source>(competency_question) CQ26: How to express Condition via Constraints?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Condition"/>
+  <rdfs:domain rdf:resource='http://www.semanticweb.org/myontology#Rule'/>
+<rdfs:range rdf:resource='http://www.semanticweb.org/myontology#Condition'/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasRequirementConstraint">
+  <rdfs:comment xml:lang="en">Associates a requirement with a constraint that defines its boundaries.</rdfs:comment>
+  <rdfs:label xml:lang="en">has requirement constraint</rdfs:label>
+  <dc:source>(competency_question) CQ21: How to express constraints on requirements?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Requirement"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Constraint"/>
+  <rdfs:domain rdf:resource='http://www.semanticweb.org/myontology#Requirement'/>
+<rdfs:range rdf:resource='http://www.semanticweb.org/myontology#Constraint'/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#containsAsset">
+  <rdfs:comment xml:lang="en">Indicates that a container holds one or more assets.</rdfs:comment>
+  <rdfs:label xml:lang="en">contains asset</rdfs:label>
+  <dc:source>(competency_question) CQ30: What do we lose if containers are no longer part of ODRL?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Container"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Asset"/>
+  <rdfs:domain rdf:resource='http://www.semanticweb.org/myontology#Container'/>
+<rdfs:range rdf:resource='http://www.semanticweb.org/myontology#Asset'/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#precedes">
+  <rdfs:comment xml:lang="en">Defines a sequential ordering between rules, indicating execution order.</rdfs:comment>
+  <rdfs:label xml:lang="en">precedes</rdfs:label>
+  <dc:source>(competency_question) CQ31: Do we need 'Sequencing' as part of the REL?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <rdfs:domain rdf:resource='http://www.semanticweb.org/myontology#Rule'/>
+<rdfs:range rdf:resource='http://www.semanticweb.org/myontology#Rule'/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasRemedy">
+  <rdfs:comment xml:lang="en">Specifies a duty that must be performed as a remedy for violating a prohibition.</rdfs:comment>
+  <rdfs:label xml:lang="en">has remedy</rdfs:label>
+  <dc:source>(competency_question) New CQ3: What duty is specified as a remedy for the violation of a prohibition?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Prohibition"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Duty"/>
+  <rdfs:domain rdf:resource='http://www.semanticweb.org/myontology#Prohibition'/>
+<rdfs:range rdf:resource='http://www.semanticweb.org/myontology#Duty'/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#activatedOnFailureOf">
+  <rdfs:comment xml:lang="en">Indicates that a rule becomes active only if another specified rule fails.</rdfs:comment>
+  <rdfs:label xml:lang="en">activated on failure of</rdfs:label>
+  <dc:source>(competency_question) New CQ4: Which rule is activated upon the failure of another rule?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Rule"/>
+  <rdfs:domain rdf:resource='http://www.semanticweb.org/myontology#Rule'/>
+<rdfs:range rdf:resource='http://www.semanticweb.org/myontology#Rule'/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasConsequence">
+  <rdfs:comment xml:lang="en">Links a duty to another duty that must be fulfilled as a direct consequence.</rdfs:comment>
+  <rdfs:label xml:lang="en">has consequence</rdfs:label>
+  <dc:source>(competency_question) New CQ5: What duty is specified as a consequence of another duty?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Duty"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Duty"/>
+  <rdfs:domain rdf:resource='http://www.semanticweb.org/myontology#Duty'/>
+<rdfs:range rdf:resource='http://www.semanticweb.org/myontology#Duty'/>
+</owl:ObjectProperty>
+
+  <!-- owl:DatatypeProperty declarations -->
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#isExclusive">
+  <rdfs:comment xml:lang="en">A boolean flag indicating whether a permission grants exclusive rights.</rdfs:comment>
+  <rdfs:label xml:lang="en">is exclusive</rdfs:label>
+  <dc:source>(competency_question) CQ24: How to express exclusive permissions?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Permission"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource='http://www.semanticweb.org/myontology#Permission'/>
+<rdfs:range rdf:resource='http://www.w3.org/2001/XMLSchema#boolean'/>
+</owl:DatatypeProperty>
+
+</rdf:RDF>

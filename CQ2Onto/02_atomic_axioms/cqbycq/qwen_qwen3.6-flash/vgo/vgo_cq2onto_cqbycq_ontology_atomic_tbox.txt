@@ -1,0 +1,436 @@
+====================================================================================================
+ATOMIC TBOX AXIOMS
+====================================================================================================
+
+── Class ──
+
+  Term: Ability  [Class]
+    Declaration                Declaration: Ability (Class)
+      Subject: Ability
+      Object : Class
+
+  Term: Achievement  [Class]
+    Declaration                Declaration: Achievement (Class)
+      Subject: Achievement
+      Object : Class
+
+  Term: Badge  [Class]
+    Declaration                Declaration: Badge (Class)
+      Subject: Badge
+      Object : Class
+    SubClassOf                 Badge ⊑ Achievement
+      Subject: Badge
+      Object : Achievement
+
+  Term: Equipment  [Class]
+    Declaration                Declaration: Equipment (Class)
+      Subject: Equipment
+      Object : Class
+    SubClassOf                 Equipment ⊑ Item
+      Subject: Equipment
+      Object : Item
+
+  Term: Game  [Class]
+    Declaration                Declaration: Game (Class)
+      Subject: Game
+      Object : Class
+    Declaration                Declaration: Game (ObjectProperty)
+      Subject: Game
+      Object : ObjectProperty
+    Domain                     ∃Game.⊤ ⊑ Kill Count
+      Subject: Game
+      Object : Kill Count
+    Domain                     ∃Game.⊤ ⊑ Game Play Session
+      Subject: Game
+      Object : Game Play Session
+    Range                      ⊤ ⊑ ∀Game.Game
+      Subject: Game
+      Object : Game
+
+  Term: Game Play Session  [Class]
+    Declaration                Declaration: Game Play Session (Class)
+      Subject: Game Play Session
+      Object : Class
+
+  Term: Genre  [Class]
+    Declaration                Declaration: Genre (Class)
+      Subject: Genre
+      Object : Class
+
+  Term: In App Purchase  [Class]
+    Declaration                Declaration: In App Purchase (Class)
+      Subject: In App Purchase
+      Object : Class
+
+  Term: Item  [Class]
+    Declaration                Declaration: Item (Class)
+      Subject: Item
+      Object : Class
+
+  Term: Kill Count  [Class]
+    Declaration                Declaration: Kill Count (Class)
+      Subject: Kill Count
+      Object : Class
+
+  Term: Location  [Class]
+    Declaration                Declaration: Location (Class)
+      Subject: Location
+      Object : Class
+
+  Term: Milestone  [Class]
+    Declaration                Declaration: Milestone (Class)
+      Subject: Milestone
+      Object : Class
+    SubClassOf                 Milestone ⊑ Achievement
+      Subject: Milestone
+      Object : Achievement
+
+  Term: Player  [Class]
+    Declaration                Declaration: Player (Class)
+      Subject: Player
+      Object : Class
+    Declaration                Declaration: Player (ObjectProperty)
+      Subject: Player
+      Object : ObjectProperty
+    Domain                     ∃Player.⊤ ⊑ Kill Count
+      Subject: Player
+      Object : Kill Count
+    Domain                     ∃Player.⊤ ⊑ Game Play Session
+      Subject: Player
+      Object : Game Play Session
+    Range                      ⊤ ⊑ ∀Player.Player
+      Subject: Player
+      Object : Player
+
+  Term: Player Game Achievement  [Class]
+    Declaration                Declaration: Player Game Achievement (Class)
+      Subject: Player Game Achievement
+      Object : Class
+
+  Term: Player Game IAP  [Class]
+    Declaration                Declaration: Player Game IAP (Class)
+      Subject: Player Game IAP
+      Object : Class
+
+  Term: Player Game Item  [Class]
+    Declaration                Declaration: Player Game Item (Class)
+      Subject: Player Game Item
+      Object : Class
+
+  Term: Playing Area  [Class]
+    Declaration                Declaration: Playing Area (Class)
+      Subject: Playing Area
+      Object : Class
+
+  Term: Trophy  [Class]
+    Declaration                Declaration: Trophy (Class)
+      Subject: Trophy
+      Object : Class
+    SubClassOf                 Trophy ⊑ Achievement
+      Subject: Trophy
+      Object : Achievement
+
+
+── ObjectProperty ──
+
+  Term: Friend  [ObjectProperty]
+    Declaration                Declaration: Friend (ObjectProperty)
+      Subject: Friend
+      Object : ObjectProperty
+    Domain                     ∃Friend.⊤ ⊑ Player
+      Subject: Friend
+      Object : Player
+    Range                      ⊤ ⊑ ∀Friend.Player
+      Subject: Friend
+      Object : Player
+
+  Term: Has Ability  [ObjectProperty]
+    Declaration                Declaration: Has Ability (ObjectProperty)
+      Subject: Has Ability
+      Object : ObjectProperty
+    Domain                     ∃Has Ability.⊤ ⊑ Item
+      Subject: Has Ability
+      Object : Item
+    Range                      ⊤ ⊑ ∀Has Ability.Ability
+      Subject: Has Ability
+      Object : Ability
+
+  Term: Has Achievement  [ObjectProperty]
+    Declaration                Declaration: Has Achievement (ObjectProperty)
+      Subject: Has Achievement
+      Object : ObjectProperty
+    Domain                     ∃Has Achievement.⊤ ⊑ Player
+      Subject: Has Achievement
+      Object : Player
+    Range                      ⊤ ⊑ ∀Has Achievement.Achievement
+      Subject: Has Achievement
+      Object : Achievement
+
+  Term: Has Genre  [ObjectProperty]
+    Declaration                Declaration: Has Genre (ObjectProperty)
+      Subject: Has Genre
+      Object : ObjectProperty
+    Domain                     ∃Has Genre.⊤ ⊑ Game
+      Subject: Has Genre
+      Object : Game
+    Range                      ⊤ ⊑ ∀Has Genre.Genre
+      Subject: Has Genre
+      Object : Genre
+
+  Term: Has Item  [ObjectProperty]
+    Declaration                Declaration: Has Item (ObjectProperty)
+      Subject: Has Item
+      Object : ObjectProperty
+    Domain                     ∃Has Item.⊤ ⊑ Game
+      Subject: Has Item
+      Object : Game
+    Range                      ⊤ ⊑ ∀Has Item.Item
+      Subject: Has Item
+      Object : Item
+
+  Term: Has Playing Area  [ObjectProperty]
+    Declaration                Declaration: Has Playing Area (ObjectProperty)
+      Subject: Has Playing Area
+      Object : ObjectProperty
+    Domain                     ∃Has Playing Area.⊤ ⊑ Game
+      Subject: Has Playing Area
+      Object : Game
+    Range                      ⊤ ⊑ ∀Has Playing Area.Playing Area
+      Subject: Has Playing Area
+      Object : Playing Area
+
+  Term: Lives In  [ObjectProperty]
+    Declaration                Declaration: Lives In (ObjectProperty)
+      Subject: Lives In
+      Object : ObjectProperty
+    Domain                     ∃Lives In.⊤ ⊑ Player
+      Subject: Lives In
+      Object : Player
+    Range                      ⊤ ⊑ ∀Lives In.Location
+      Subject: Lives In
+      Object : Location
+
+  Term: Owns Item  [ObjectProperty]
+    Declaration                Declaration: Owns Item (ObjectProperty)
+      Subject: Owns Item
+      Object : ObjectProperty
+    Domain                     ∃Owns Item.⊤ ⊑ Player
+      Subject: Owns Item
+      Object : Player
+    Range                      ⊤ ⊑ ∀Owns Item.Item
+      Subject: Owns Item
+      Object : Item
+
+  Term: Pivot Has Achievement  [ObjectProperty]
+    Declaration                Declaration: Pivot Has Achievement (ObjectProperty)
+      Subject: Pivot Has Achievement
+      Object : ObjectProperty
+    Domain                     ∃Pivot Has Achievement.⊤ ⊑ Player Game Achievement
+      Subject: Pivot Has Achievement
+      Object : Player Game Achievement
+    Range                      ⊤ ⊑ ∀Pivot Has Achievement.Achievement
+      Subject: Pivot Has Achievement
+      Object : Achievement
+
+  Term: Pivot Has Game  [ObjectProperty]
+    Declaration                Declaration: Pivot Has Game (ObjectProperty)
+      Subject: Pivot Has Game
+      Object : ObjectProperty
+    Domain                     ∃Pivot Has Game.⊤ ⊑ Player Game Achievement
+      Subject: Pivot Has Game
+      Object : Player Game Achievement
+    Domain                     ∃Pivot Has Game.⊤ ⊑ Player Game Item
+      Subject: Pivot Has Game
+      Object : Player Game Item
+    Domain                     ∃Pivot Has Game.⊤ ⊑ Player Game IAP
+      Subject: Pivot Has Game
+      Object : Player Game IAP
+    Range                      ⊤ ⊑ ∀Pivot Has Game.Game
+      Subject: Pivot Has Game
+      Object : Game
+
+  Term: Pivot Has IAP  [ObjectProperty]
+    Declaration                Declaration: Pivot Has IAP (ObjectProperty)
+      Subject: Pivot Has IAP
+      Object : ObjectProperty
+    Domain                     ∃Pivot Has IAP.⊤ ⊑ Player Game IAP
+      Subject: Pivot Has IAP
+      Object : Player Game IAP
+    Range                      ⊤ ⊑ ∀Pivot Has IAP.In App Purchase
+      Subject: Pivot Has IAP
+      Object : In App Purchase
+
+  Term: Pivot Has Item  [ObjectProperty]
+    Declaration                Declaration: Pivot Has Item (ObjectProperty)
+      Subject: Pivot Has Item
+      Object : ObjectProperty
+    Domain                     ∃Pivot Has Item.⊤ ⊑ Player Game Item
+      Subject: Pivot Has Item
+      Object : Player Game Item
+    Range                      ⊤ ⊑ ∀Pivot Has Item.Item
+      Subject: Pivot Has Item
+      Object : Item
+
+  Term: Pivot Has Player  [ObjectProperty]
+    Declaration                Declaration: Pivot Has Player (ObjectProperty)
+      Subject: Pivot Has Player
+      Object : ObjectProperty
+    Domain                     ∃Pivot Has Player.⊤ ⊑ Player Game Achievement
+      Subject: Pivot Has Player
+      Object : Player Game Achievement
+    Domain                     ∃Pivot Has Player.⊤ ⊑ Player Game Item
+      Subject: Pivot Has Player
+      Object : Player Game Item
+    Domain                     ∃Pivot Has Player.⊤ ⊑ Player Game IAP
+      Subject: Pivot Has Player
+      Object : Player Game IAP
+    Range                      ⊤ ⊑ ∀Pivot Has Player.Player
+      Subject: Pivot Has Player
+      Object : Player
+
+  Term: Pivot Has Session  [ObjectProperty]
+    Declaration                Declaration: Pivot Has Session (ObjectProperty)
+      Subject: Pivot Has Session
+      Object : ObjectProperty
+    Domain                     ∃Pivot Has Session.⊤ ⊑ Player Game IAP
+      Subject: Pivot Has Session
+      Object : Player Game IAP
+    Range                      ⊤ ⊑ ∀Pivot Has Session.Game Play Session
+      Subject: Pivot Has Session
+      Object : Game Play Session
+
+  Term: Plays Game  [ObjectProperty]
+    Declaration                Declaration: Plays Game (ObjectProperty)
+      Subject: Plays Game
+      Object : ObjectProperty
+    Domain                     ∃Plays Game.⊤ ⊑ Player
+      Subject: Plays Game
+      Object : Player
+    Range                      ⊤ ⊑ ∀Plays Game.Game
+      Subject: Plays Game
+      Object : Game
+
+  Term: Purchase Has Game  [ObjectProperty]
+    Declaration                Declaration: Purchase Has Game (ObjectProperty)
+      Subject: Purchase Has Game
+      Object : ObjectProperty
+    Domain                     ∃Purchase Has Game.⊤ ⊑ In App Purchase
+      Subject: Purchase Has Game
+      Object : In App Purchase
+    Range                      ⊤ ⊑ ∀Purchase Has Game.Game
+      Subject: Purchase Has Game
+      Object : Game
+
+  Term: Purchase Has Item  [ObjectProperty]
+    Declaration                Declaration: Purchase Has Item (ObjectProperty)
+      Subject: Purchase Has Item
+      Object : ObjectProperty
+    Domain                     ∃Purchase Has Item.⊤ ⊑ In App Purchase
+      Subject: Purchase Has Item
+      Object : In App Purchase
+    Range                      ⊤ ⊑ ∀Purchase Has Item.Item
+      Subject: Purchase Has Item
+      Object : Item
+
+  Term: Purchase Has Player  [ObjectProperty]
+    Declaration                Declaration: Purchase Has Player (ObjectProperty)
+      Subject: Purchase Has Player
+      Object : ObjectProperty
+    Domain                     ∃Purchase Has Player.⊤ ⊑ In App Purchase
+      Subject: Purchase Has Player
+      Object : In App Purchase
+    Range                      ⊤ ⊑ ∀Purchase Has Player.Player
+      Subject: Purchase Has Player
+      Object : Player
+
+
+── DatatypeProperty ──
+
+  Term: Played On  [DatatypeProperty]
+    Declaration                Declaration: Played On (DatatypeProperty)
+      Subject: Played On
+      Object : DatatypeProperty
+    Domain                     ∃Played On.⊤ ⊑ Game Play Session
+      Subject: Played On
+      Object : Game Play Session
+    Range                      Played On maps-to ⊤
+      Subject: Played On
+      Object : ⊤
+
+  Term: Purchase Timestamp  [DatatypeProperty]
+    Declaration                Declaration: Purchase Timestamp (DatatypeProperty)
+      Subject: Purchase Timestamp
+      Object : DatatypeProperty
+    Domain                     ∃Purchase Timestamp.⊤ ⊑ In App Purchase
+      Subject: Purchase Timestamp
+      Object : In App Purchase
+    Range                      Purchase Timestamp maps-to ⊤
+      Subject: Purchase Timestamp
+      Object : ⊤
+
+  Term: Release Date  [DatatypeProperty]
+    Declaration                Declaration: Release Date (DatatypeProperty)
+      Subject: Release Date
+      Object : DatatypeProperty
+    Domain                     ∃Release Date.⊤ ⊑ Game
+      Subject: Release Date
+      Object : Game
+    Range                      Release Date maps-to ⊤
+      Subject: Release Date
+      Object : ⊤
+
+  Term: Total Play Time  [DatatypeProperty]
+    Declaration                Declaration: Total Play Time (DatatypeProperty)
+      Subject: Total Play Time
+      Object : DatatypeProperty
+    Domain                     ∃Total Play Time.⊤ ⊑ Game
+      Subject: Total Play Time
+      Object : Game
+    Range                      Total Play Time maps-to ⊤
+      Subject: Total Play Time
+      Object : ⊤
+
+  Term: Username  [DatatypeProperty]
+    Declaration                Declaration: Username (DatatypeProperty)
+      Subject: Username
+      Object : DatatypeProperty
+    Domain                     ∃Username.⊤ ⊑ Player
+      Subject: Username
+      Object : Player
+    Range                      Username maps-to ⊤
+      Subject: Username
+      Object : ⊤
+
+  Term: Value  [DatatypeProperty]
+    Declaration                Declaration: Value (DatatypeProperty)
+      Subject: Value
+      Object : DatatypeProperty
+    Domain                     ∃Value.⊤ ⊑ Kill Count
+      Subject: Value
+      Object : Kill Count
+    Range                      Value maps-to ⊤
+      Subject: Value
+      Object : ⊤
+    Characteristics            Functional(Value)
+      Subject: Value
+      Object : Functional
+
+
+====================================================================================================
+STATISTICS
+====================================================================================================
+
+  Classes:               18  (defined: 0, primitive: 18)
+  ObjectProperties:      20
+  DatatypeProperties:    6
+
+  Axiom Breakdown:
+    Characteristics           1
+    Declaration               44
+    Domain                    32
+    Range                     26
+    SubClassOf                4
+    ------------------------------
+    Total TBox Axioms         107
+
+====================================================================================================

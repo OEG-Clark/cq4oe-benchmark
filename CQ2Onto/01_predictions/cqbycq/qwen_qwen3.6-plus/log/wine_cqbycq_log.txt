@@ -1,0 +1,686 @@
+$ /opt/conda/bin/python /home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/maseo_code/maseo/cqbycq/cli.py --config /home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/maseo_code/maseo/cqbycq/dataset/.run_config.yaml --cqs_file /home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/maseo_code/maseo/cqbycq/dataset/cqs/wine_cqs.json --save_file /home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/maseo_code/maseo/cqbycq/dataset/cqbycq/qwen_qwen3.6-plus/ontology/wine_cqbycq_ontology.owl
+
+CQ-by-CQ starting with 5 competency questions.
+Base URI: http://www.semanticweb.org/myontology#
+Max attempts: 3
+
+--- Attempt 1 / 3 ---
+
+======================================================================
+[1/5] CQ1: Which wine characteristics should I consider when choosing a wine?
+======================================================================
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Wine">
+  <rdfs:comment xml:lang="en">A fermented alcoholic beverage made from grapes.</rdfs:comment>
+  <rdfs:label xml:lang="en">Wine</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#GrapeVariety">
+  <rdfs:comment xml:lang="en">A specific cultivar or clone of grape used in winemaking.</rdfs:comment>
+  <rdfs:label xml:lang="en">Grape Variety</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#WineRegion">
+  <rdfs:comment xml:lang="en">A geographical area where wine grapes are grown and wine is produced.</rdfs:comment>
+  <rdfs:label xml:lang="en">Wine Region</rdfs:label>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasGrapeVariety">
+  <rdfs:comment xml:lang="en">The grape variety or varieties used to produce the wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">has grape variety</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#GrapeVariety"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasRegion">
+  <rdfs:comment xml:lang="en">The geographical region where the wine was produced.</rdfs:comment>
+  <rdfs:label xml:lang="en">has region</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#WineRegion"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:ObjectProperty>
+
+  <!-- owl:DatatypeProperty declarations -->
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasColor">
+  <rdfs:comment xml:lang="en">The visual color characteristic of the wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">has color</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasVintageYear">
+  <rdfs:comment xml:lang="en">The year the grapes were harvested for the wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">has vintage year</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:integer"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasAlcoholContent">
+  <rdfs:comment xml:lang="en">The percentage of alcohol by volume in the wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">has alcohol content</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:decimal"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasSweetnessLevel">
+  <rdfs:comment xml:lang="en">The perceived sweetness of the wine, ranging from dry to sweet.</rdfs:comment>
+  <rdfs:label xml:lang="en">has sweetness level</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasBody">
+  <rdfs:comment xml:lang="en">The weight and fullness of the wine in the mouth.</rdfs:comment>
+  <rdfs:label xml:lang="en">has body</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasAcidity">
+  <rdfs:comment xml:lang="en">The tartness or crispness of the wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">has acidity</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasPrice">
+  <rdfs:comment xml:lang="en">The monetary cost of the wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">has price</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:decimal"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+</rdf:RDF>
+
+======================================================================
+[2/5] CQ2: Is Bordeaux a red or white wine?
+======================================================================
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Wine">
+  <rdfs:comment xml:lang="en">A fermented alcoholic beverage made from grapes.</rdfs:comment>
+  <rdfs:label xml:lang="en">Wine</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#GrapeVariety">
+  <rdfs:comment xml:lang="en">A specific cultivar or clone of grape used in winemaking.</rdfs:comment>
+  <rdfs:label xml:lang="en">Grape Variety</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#WineRegion">
+  <rdfs:comment xml:lang="en">A geographical area where wine grapes are grown and wine is produced.</rdfs:comment>
+  <rdfs:label xml:lang="en">Wine Region</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#WineColor">
+  <rdfs:comment xml:lang="en">The color classification of a wine, such as red, white, or rosé.</rdfs:comment>
+  <rdfs:label xml:lang="en">Wine Color</rdfs:label>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasGrapeVariety">
+  <rdfs:comment xml:lang="en">The grape variety or varieties used to produce the wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">has grape variety</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#GrapeVariety"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasRegion">
+  <rdfs:comment xml:lang="en">The geographical region where the wine was produced.</rdfs:comment>
+  <rdfs:label xml:lang="en">has region</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#WineRegion"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasColor">
+  <rdfs:comment xml:lang="en">The visual color characteristic of the wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">has color</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#WineColor"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:ObjectProperty>
+
+  <!-- owl:DatatypeProperty declarations -->
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasVintageYear">
+  <rdfs:comment xml:lang="en">The year the grapes were harvested for the wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">has vintage year</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:integer"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasAlcoholContent">
+  <rdfs:comment xml:lang="en">The percentage of alcohol by volume in the wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">has alcohol content</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:decimal"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasSweetnessLevel">
+  <rdfs:comment xml:lang="en">The perceived sweetness of the wine, ranging from dry to sweet.</rdfs:comment>
+  <rdfs:label xml:lang="en">has sweetness level</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasBody">
+  <rdfs:comment xml:lang="en">The weight and fullness of the wine in the mouth.</rdfs:comment>
+  <rdfs:label xml:lang="en">has body</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasAcidity">
+  <rdfs:comment xml:lang="en">The tartness or crispness of the wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">has acidity</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasPrice">
+  <rdfs:comment xml:lang="en">The monetary cost of the wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">has price</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:decimal"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+</rdf:RDF>
+
+======================================================================
+[3/5] CQ6: Does a bouquet or body of a specific wine change with vintage year?
+======================================================================
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Wine">
+  <rdfs:comment xml:lang="en">A fermented alcoholic beverage made from grapes.</rdfs:comment>
+  <rdfs:label xml:lang="en">Wine</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#GrapeVariety">
+  <rdfs:comment xml:lang="en">A specific cultivar or clone of grape used in winemaking.</rdfs:comment>
+  <rdfs:label xml:lang="en">Grape Variety</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#WineRegion">
+  <rdfs:comment xml:lang="en">A geographical area where wine grapes are grown and wine is produced.</rdfs:comment>
+  <rdfs:label xml:lang="en">Wine Region</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#WineColor">
+  <rdfs:comment xml:lang="en">The color classification of a wine, such as red, white, or rosé.</rdfs:comment>
+  <rdfs:label xml:lang="en">Wine Color</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#WineVintage">
+  <rdfs:comment xml:lang="en">A specific vintage expression of a wine, capturing characteristics that may vary by harvest year.</rdfs:comment>
+  <rdfs:label xml:lang="en">Wine Vintage</rdfs:label>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasGrapeVariety">
+  <rdfs:comment xml:lang="en">The grape variety or varieties used to produce the wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">has grape variety</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#GrapeVariety"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasRegion">
+  <rdfs:comment xml:lang="en">The geographical region where the wine was produced.</rdfs:comment>
+  <rdfs:label xml:lang="en">has region</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#WineRegion"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasColor">
+  <rdfs:comment xml:lang="en">The visual color characteristic of the wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">has color</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#WineColor"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasWine">
+  <rdfs:comment xml:lang="en">Links a wine vintage profile to its parent wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">has wine</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WineVintage"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+</owl:ObjectProperty>
+
+  <!-- owl:DatatypeProperty declarations -->
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasVintageYear">
+  <rdfs:comment xml:lang="en">The year the grapes were harvested for the wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">has vintage year</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:integer"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasAlcoholContent">
+  <rdfs:comment xml:lang="en">The percentage of alcohol by volume in the wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">has alcohol content</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:decimal"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasSweetnessLevel">
+  <rdfs:comment xml:lang="en">The perceived sweetness of the wine, ranging from dry to sweet.</rdfs:comment>
+  <rdfs:label xml:lang="en">has sweetness level</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasBody">
+  <rdfs:comment xml:lang="en">The weight and fullness of the wine in the mouth.</rdfs:comment>
+  <rdfs:label xml:lang="en">has body</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasAcidity">
+  <rdfs:comment xml:lang="en">The tartness or crispness of the wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">has acidity</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasPrice">
+  <rdfs:comment xml:lang="en">The monetary cost of the wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">has price</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:decimal"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasProfileYear">
+  <rdfs:comment xml:lang="en">The harvest year associated with a specific wine vintage profile.</rdfs:comment>
+  <rdfs:label xml:lang="en">has profile year</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WineVintage"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:integer"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasProfileBody">
+  <rdfs:comment xml:lang="en">The body characteristic of a specific wine vintage profile.</rdfs:comment>
+  <rdfs:label xml:lang="en">has profile body</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WineVintage"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasBouquet">
+  <rdfs:comment xml:lang="en">The aromatic profile or bouquet of a specific wine vintage profile.</rdfs:comment>
+  <rdfs:label xml:lang="en">has bouquet</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WineVintage"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+</rdf:RDF>
+
+======================================================================
+[4/5] CQ7: What were good vintages for Napa Zinfandel?
+======================================================================
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Wine">
+  <rdfs:comment xml:lang="en">A fermented alcoholic beverage made from grapes.</rdfs:comment>
+  <rdfs:label xml:lang="en">Wine</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#GrapeVariety">
+  <rdfs:comment xml:lang="en">A specific cultivar or clone of grape used in winemaking.</rdfs:comment>
+  <rdfs:label xml:lang="en">Grape Variety</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#WineRegion">
+  <rdfs:comment xml:lang="en">A geographical area where wine grapes are grown and wine is produced.</rdfs:comment>
+  <rdfs:label xml:lang="en">Wine Region</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#WineColor">
+  <rdfs:comment xml:lang="en">The color classification of a wine, such as red, white, or rosé.</rdfs:comment>
+  <rdfs:label xml:lang="en">Wine Color</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#WineVintage">
+  <rdfs:comment xml:lang="en">A specific vintage expression of a wine, capturing characteristics that may vary by harvest year.</rdfs:comment>
+  <rdfs:label xml:lang="en">Wine Vintage</rdfs:label>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasGrapeVariety">
+  <rdfs:comment xml:lang="en">The grape variety or varieties used to produce the wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">has grape variety</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#GrapeVariety"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasRegion">
+  <rdfs:comment xml:lang="en">The geographical region where the wine was produced.</rdfs:comment>
+  <rdfs:label xml:lang="en">has region</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#WineRegion"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasColor">
+  <rdfs:comment xml:lang="en">The visual color characteristic of the wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">has color</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#WineColor"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasWine">
+  <rdfs:comment xml:lang="en">Links a wine vintage profile to its parent wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">has wine</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WineVintage"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+</owl:ObjectProperty>
+
+  <!-- owl:DatatypeProperty declarations -->
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasVintageYear">
+  <rdfs:comment xml:lang="en">The year the grapes were harvested for the wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">has vintage year</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:integer"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasAlcoholContent">
+  <rdfs:comment xml:lang="en">The percentage of alcohol by volume in the wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">has alcohol content</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:decimal"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasSweetnessLevel">
+  <rdfs:comment xml:lang="en">The perceived sweetness of the wine, ranging from dry to sweet.</rdfs:comment>
+  <rdfs:label xml:lang="en">has sweetness level</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasBody">
+  <rdfs:comment xml:lang="en">The weight and fullness of the wine in the mouth.</rdfs:comment>
+  <rdfs:label xml:lang="en">has body</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasAcidity">
+  <rdfs:comment xml:lang="en">The tartness or crispness of the wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">has acidity</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasPrice">
+  <rdfs:comment xml:lang="en">The monetary cost of the wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">has price</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:decimal"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasProfileYear">
+  <rdfs:comment xml:lang="en">The harvest year associated with a specific wine vintage profile.</rdfs:comment>
+  <rdfs:label xml:lang="en">has profile year</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WineVintage"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:integer"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasProfileBody">
+  <rdfs:comment xml:lang="en">The body characteristic of a specific wine vintage profile.</rdfs:comment>
+  <rdfs:label xml:lang="en">has profile body</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WineVintage"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasBouquet">
+  <rdfs:comment xml:lang="en">The aromatic profile or bouquet of a specific wine vintage profile.</rdfs:comment>
+  <rdfs:label xml:lang="en">has bouquet</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WineVintage"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasQualityRating">
+  <rdfs:comment xml:lang="en">The quality rating or score assigned to a specific wine vintage, indicating its overall excellence.</rdfs:comment>
+  <rdfs:label xml:lang="en">has quality rating</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WineVintage"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:decimal"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+</rdf:RDF>
+
+======================================================================
+[5/5] CQnew1: What grapes are used to make Bordeaux wine?
+======================================================================
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Wine">
+  <rdfs:comment xml:lang="en">A fermented alcoholic beverage made from grapes.</rdfs:comment>
+  <rdfs:label xml:lang="en">Wine</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#GrapeVariety">
+  <rdfs:comment xml:lang="en">A specific cultivar or clone of grape used in winemaking.</rdfs:comment>
+  <rdfs:label xml:lang="en">Grape Variety</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#WineRegion">
+  <rdfs:comment xml:lang="en">A geographical area where wine grapes are grown and wine is produced.</rdfs:comment>
+  <rdfs:label xml:lang="en">Wine Region</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#WineColor">
+  <rdfs:comment xml:lang="en">The color classification of a wine, such as red, white, or rosé.</rdfs:comment>
+  <rdfs:label xml:lang="en">Wine Color</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#WineVintage">
+  <rdfs:comment xml:lang="en">A specific vintage expression of a wine, capturing characteristics that may vary by harvest year.</rdfs:comment>
+  <rdfs:label xml:lang="en">Wine Vintage</rdfs:label>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasGrapeVariety">
+  <rdfs:comment xml:lang="en">The grape variety or varieties used to produce the wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">has grape variety</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#GrapeVariety"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasRegion">
+  <rdfs:comment xml:lang="en">The geographical region where the wine was produced.</rdfs:comment>
+  <rdfs:label xml:lang="en">has region</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#WineRegion"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasColor">
+  <rdfs:comment xml:lang="en">The visual color characteristic of the wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">has color</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#WineColor"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasWine">
+  <rdfs:comment xml:lang="en">Links a wine vintage profile to its parent wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">has wine</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WineVintage"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+</owl:ObjectProperty>
+
+  <!-- owl:DatatypeProperty declarations -->
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasVintageYear">
+  <rdfs:comment xml:lang="en">The year the grapes were harvested for the wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">has vintage year</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:integer"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasAlcoholContent">
+  <rdfs:comment xml:lang="en">The percentage of alcohol by volume in the wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">has alcohol content</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:decimal"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasSweetnessLevel">
+  <rdfs:comment xml:lang="en">The perceived sweetness of the wine, ranging from dry to sweet.</rdfs:comment>
+  <rdfs:label xml:lang="en">has sweetness level</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasBody">
+  <rdfs:comment xml:lang="en">The weight and fullness of the wine in the mouth.</rdfs:comment>
+  <rdfs:label xml:lang="en">has body</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasAcidity">
+  <rdfs:comment xml:lang="en">The tartness or crispness of the wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">has acidity</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasPrice">
+  <rdfs:comment xml:lang="en">The monetary cost of the wine.</rdfs:comment>
+  <rdfs:label xml:lang="en">has price</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:decimal"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasProfileYear">
+  <rdfs:comment xml:lang="en">The harvest year associated with a specific wine vintage profile.</rdfs:comment>
+  <rdfs:label xml:lang="en">has profile year</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WineVintage"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:integer"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasProfileBody">
+  <rdfs:comment xml:lang="en">The body characteristic of a specific wine vintage profile.</rdfs:comment>
+  <rdfs:label xml:lang="en">has profile body</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WineVintage"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasBouquet">
+  <rdfs:comment xml:lang="en">The aromatic profile or bouquet of a specific wine vintage profile.</rdfs:comment>
+  <rdfs:label xml:lang="en">has bouquet</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WineVintage"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasQualityRating">
+  <rdfs:comment xml:lang="en">The quality rating or score assigned to a specific wine vintage, indicating its overall excellence.</rdfs:comment>
+  <rdfs:label xml:lang="en">has quality rating</rdfs:label>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#WineVintage"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#xsd:decimal"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+</rdf:RDF>
+
+==================================================
+CQ-BY-CQ COMPLETED SUCCESSFULLY!
+Ontology written to: /home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/maseo_code/maseo/cqbycq/dataset/cqbycq/qwen_qwen3.6-plus/ontology/wine_cqbycq_ontology.owl
+==================================================
