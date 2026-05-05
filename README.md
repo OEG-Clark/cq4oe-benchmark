@@ -14,12 +14,58 @@ This repository contains a benchmark for assessing the performance of different 
 - [Water](https://saref.etsi.org/saref4watr/v1.1.1/#clause-4-2-7): SAREF4WATR Ontolgy
 
 
-## Annotation Guideline
+## Annotation
 
-1. How to annotated
-2. Example of annotation
-3. Dataset description
+The annotated ontologies in this benchmark are not just snapshots of existing ontologies. Every class, property and axiom is explicitly tied back to the competency questions. This section documents how that link was built so anyone adding a new domain can do the same thing.
 
+### Annotation Guideline
+
+For each source ontology, the annotation runs in three stages.
+
+**1. Identify the core terms**: Before processing the competency question, domain experts extracts the conceptual backbone (key concepts and properties) from the source ontology by calculating the degree for each node as the relevance of the concept or property in the ontology. This can kept the backbone of the source ontology with maximum coverage.
+
+
+**2. Annotated the CQs**: We annotated each CQ with two different terms. Exclude all CQs with external or out-of-the-scope concepts from the domain of the ontology. The two categories of the terms are:
+- **Explicit:** terms that appear lexically in the CQ
+- **Implicit:** terms expressed through synonymous phrasing
+- **Missing Element**: terms are indicates in the CQ however do not mentioned in the ontology
+
+```Json
+CQ: Which animals are the predators of [these animals]?
+- Explicit Class: animal
+- Explicit Property: eaten-by
+- Implicit Class: Carnivore
+- Implicit Property: None
+- Missing Element: Predators is not in the ontology, however, carnivore indicates predators
+```
+
+**3. CQ Creation:** 
+Due to the selection of the CQs after step 2, if there is any missing core concepts, domain experts create brand new CQs based on the missing core concepts.
+
+[Jiayi]
+
+```Json
+CQ: Which animals are the predators of [these animals]?
+- Explicit Class: animal
+- Explicit Property: eaten-by
+- Implicit Class: Carnivore
+- Implicit Property: None
+- Missing Element: Predators is not in the ontology, however, carnivore indicates predators
+```
+
+
+
+### Dataset Description
+
+We have selected six ontologies in three diferent scales:
+| Ontology | Tier | Source CQs | Retained | New ⋆ | CQ2Onto set | CQ2Term set |
+|----------|------|-----------:|---------:|------:|------------:|------------:|
+| Wine     | small  | 7   | 4   | 1 | 5  | 5  |
+| AWO      | small  | 14  | 7   | 0 | 7  | 7  |
+| ODRL     | medium | 35  | 13  | 6 | 19 | 19 |
+| Water    | medium | 43  | 21  | 0 | 21 | 20 |
+| VGO      | large  | 68  | 30  | 1 | 31 | 22 |
+| SWO      | large  | 88  | 35  | 0 | 35 | 26 |
 
 ## LLM-assiat ontology generation
 
