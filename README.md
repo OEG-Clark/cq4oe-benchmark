@@ -30,14 +30,7 @@ For each source ontology, the annotation runs in three stages.
 - **Implicit:** terms expressed through synonymous phrasing
 - **Missing Element**: terms are indicates in the CQ however do not mentioned in the ontology
 
-```Json
-CQ: Which animals are the predators of [these animals]?
-- Explicit Class: animal
-- Explicit Property: eaten-by
-- Implicit Class: Carnivore
-- Implicit Property: None
-- Missing Element: Predators is not in the ontology, however, carnivore indicates predators
-```
+
 
 **3. CQ Creation:** 
 [Jiayi]
@@ -51,7 +44,7 @@ Due to the selection of the CQs after step 2, if there is any missing core conce
 
 
 Example of the annotation process
-```Json
+```
 CQ: Which animals are the predators of [these animals]?
 - Explicit Class: animal
 - Explicit Property: eaten-by
