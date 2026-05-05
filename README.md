@@ -40,10 +40,17 @@ CQ: Which animals are the predators of [these animals]?
 ```
 
 **3. CQ Creation:** 
+[Jiayi]
 Due to the selection of the CQs after step 2, if there is any missing core concepts, domain experts create brand new CQs based on the missing core concepts.
 
+**4. Axiom:**
+[JiaYi]
+
+**5. Annotating Ontology:**
 [Jiayi]
 
+
+Example of the annotation process
 ```Json
 CQ: Which animals are the predators of [these animals]?
 - Explicit Class: animal
@@ -52,7 +59,6 @@ CQ: Which animals are the predators of [these animals]?
 - Implicit Property: None
 - Missing Element: Predators is not in the ontology, however, carnivore indicates predators
 ```
-
 
 
 ### Dataset Description
