@@ -30,14 +30,7 @@ For each source ontology, the annotation runs in three stages.
 - **Implicit:** terms expressed through synonymous phrasing
 - **Missing Element**: terms are indicates in the CQ however do not mentioned in the ontology
 
-```Json
-CQ: Which animals are the predators of [these animals]?
-- Explicit Class: animal
-- Explicit Property: eaten-by
-- Implicit Class: Carnivore
-- Implicit Property: None
-- Missing Element: Predators is not in the ontology, however, carnivore indicates predators
-```
+
 
 **3. CQ Creation:** 
 [Jiayi]
@@ -51,7 +44,7 @@ Due to the selection of the CQs after step 2, if there is any missing core conce
 
 
 Example of the annotation process
-```Json
+```
 CQ: Which animals are the predators of [these animals]?
 - Explicit Class: animal
 - Explicit Property: eaten-by
@@ -77,7 +70,7 @@ We have selected six ontologies in three diferent scales:
 
 ### Generation Methods
 
-This repository evaluates three different LLM-assiat ontology generation methods. 
+This repository evaluates three different LLM-assiat ontology generation methods.
 
 - **normal**: Give the model all the CQs and ask for the OWL ontology in one shot.
 - [Cq-by-Cq Generation](https://github.com/LiUSemWeb/LLMs4OntologyDev-ESWC2024): generate a partial ontology per CQ and merge them. Slower but the model has to think about each question individually.
@@ -97,3 +90,75 @@ This repository evaluates three different LLM-assiat ontology generation methods
   - **Deepseek-V3.2-671B**: The previous-generation flagship, Mixture-of-Experts  model from Deepseek.
   - **Deepseek-V4-flash-284B**: Efficient Mixture-of-Experts model with 13B activate parameter
   - **Deepseek-V4-1.6T**: Flagship Mixture-of-Experts model with 49B activate parameter, 1M context window.
+  
+
+### Prompts
+
+The prompts that drive every model for each method is under `CQ2Onto/prompts/` and `CQ2Term/prompts/`. They are kept in plain JSON, one file per generation method. Every prompt file is a JSON array of *agent* objects. Each object has three fields:
+
+```json
+[
+  {
+    "agent": "the name of the LLM-based agent",
+    "instruction": "the system message of the given agent",
+    "prompt": "the user message designed for the task corresponding to the agent"
+  }
+]
+```
+
+## Evaluation
+
+### The metric catalogue
+ 
+`OntoCatalogue/` is the catalogue describing every metric used in this benchmark. Each metric has its own Turtle file under `KG/` and a matching HTML page under `html/`. The catalogue is browsable by opening `OntoCatalogue/html/catalog.html`. 
+
+[idealy we have a web page]
+ 
+
+### CQ2Onto Evaluation
+
+For a given generated ontology, evaluation runs in stages, each producing its own evaluation file. The script `CQ2Onto/scripts/run_all_evaluation_agent_4datsets.py` runs the whole process across all three strategies and all six ontologies.
+
+1. **Concept** (`CQ2Onto/../scripts/concept/eval_concept.py`):
+   - Target: Evaluating if the generated ontology contains the correct classes and properties
+   - Metrics:
+2. **Property** (`scripts/property/eval_property.py`): characteristics, domains, ranges of object/data properties.
+   - Target: Evaluating if the generated ontology contains the correct domains, ranges and object/data properties.
+   - Metrics:
+3. **Triple** (`scripts/triple/eval_triple.py`): RDF triples (asserted statements).
+   - Target: Evaluating if the triples in the generated ontology is correct
+   - Metrics:
+4. **Axioms** (`scripts/axioms/eval_axioms.py`): 
+   - Target: Atomic-level axioms evaluation against the gold standard ontology
+   - Metrics:
+5. **Hierarchy** (`scripts/hierarchy/eval_hierarchy.py`):
+   - Target:
+   - Metric
+
+
+### CQ2Terms Evaluation
+
+[JIayi]
+
+## Execution
+
+CQ-to-terms:
+ 
+```
+cd CQ2Term
+python scripts/run_all_cq2term.py
+```
+ 
+CQ-to-ontology, all three strategies:
+ 
+```
+cd CQ2Onto
+python scripts/run_all_evaluation_agent_4datsets.py
+```
+ 
+Both execution dive in the prediction folders, find the corresponding gold standard files, and write per-dataset and per-model evaluation results into `03_evaluation_results/` and `04_summary/`.
+
+
+## Ackownledgement
+
+This work was supported by the grant [SOEL: Supporting Ontology Engineering with Large Language Models](https://w3id.org/soel) PID2023-152703NA-I00 funded by MCIN/AEI/10.13039/501100011033 and by ERDF/UE. The authors would also like to thank the EDINT (Espacios de Datos para las Infraestructuras Urbanas Inteligentes) ontology development team for sharing the project resources for evaluation purposes.
