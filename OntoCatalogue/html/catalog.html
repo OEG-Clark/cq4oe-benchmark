@@ -2,120 +2,339 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>CQ2Onto Metric Catalogue</title>
+        <title>CQ4OE Catalogue</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        
+<style>
+    .row { margin-bottom: 10px; }
+    .well { margin: 0; padding: 10px; min-height: 40px; }
+    .tag_div { margin-right: 10px; }
+    .row-equal { display: flex; align-items: stretch; }
+    .align-items-center { display: flex; align-items: center; }
+    .flex-space-between { display: flex; justify-content: space-between; }
+    .text-separation { margin-top: 20px; }
+    .miClase { margin-bottom: 20px; }
+    .status-indicator {
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        margin-right: 6px;
+        vertical-align: middle;
+    }
+    .status-indicator.Active { background-color: #28a745; }
+    .status-indicator.Proposed { background-color: #ffc107; }
+    .status-indicator.Inactive { background-color: #6c757d; }
+    .status-indicator.Deprecated { background-color: #dc3545; }
+    .legend-inline > * { margin-right: 12px; }
+    .table td.short-name, .table th.short-name {
+        width: 240px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    pre { background: #f7f7f9; padding: 10px; border-radius: 4px; }
+    code { color: #c7254e; background: #f9f2f4; padding: 2px 4px; border-radius: 3px; }
+    pre code { color: inherit; background: transparent; padding: 0; }
+    h1.miClase { font-size: 26px; line-height: 1.3; }
+</style>
 
-        <style>
-            .row { margin-bottom: 10px; }
-            .well { margin: 0; padding: 10px 0; padding-left: 10px; }
-            .table td.short-name, .table th.short-name {
-                width: 220px;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-        </style>
     </head>
     <body>
         <div class="container">
             <div class="row" style="margin-top: 30px;">
                 <div class="col-md-12">
-                    <h2 class="text-center">CQ2Onto Metric Catalogue</h2>
+                    <h2 class="text-center">CQ4OE Catalogue</h2>
                     <p class="text-center">
                         <h4>
-                            Here you can find all metrics used in the
-                            <a href="https://github.com/oeg-upm/OntologyEngineeringBenchmark">
-                                <strong>Ontology Engineering Evaluation Benchmark</strong>
+                            Tasks, dimensions, and atomic metrics for the
+                            <a href="https://github.com/oeg-upm/cq4oe-benchmark">
+                                <strong>CQ2OE Benchmark</strong>
                             </a>
                         </h4>
                     </p>
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row" id="tasks" style="margin-top: 30px;">
                 <div class="col-md-12">
-                    <table class="table" style="margin-top: 30px;">
+                    <h3>Tasks</h3>
+                    <p>The two evaluation tracks of the benchmark.
+                       Each task takes a set of competency questions as input
+                       and produces a different artefact.</p>
+                    <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th class="short-name">Short Name</th>
                                 <th>Title</th>
-                                <th>Category</th>
+                                <th>Coverage</th>
                                 <th>Identifier</th>
                                 <th>Keywords</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="short-name"><a href="HardMatch.html"><strong>Hard Match</strong></a></td>
-                                <td class="titles">Exact lexical string comparison</td>
-                                <td>Ontology Concept Matching</td>
-                                <td><a href="https://w3id.org/cq4oe/metric/HardMatch" target="_blank">https://w3id.org/cq4oe/metric/HardMatch</a></td>
-                                <td class="keywords">Ontology Concept Matching, Metric, Classes</td>
-                            </tr>
+            <td class="short-name"><a href="CQ2Term.html"><strong>CQ2Term</strong></a></td>
+            <td>Term-level generation of classes and properties from competency questions</td>
+            <td>2 dimensions</td>
+            <td><a href="https://w3id.org/cq4oe/task/CQ2Term" target="_blank">https://w3id.org/cq4oe/task/CQ2Term</a></td>
+            <td>Term Generation, Task, Competency Questions</td>
+        </tr>
+<tr>
+            <td class="short-name"><a href="CQ2Onto.html"><strong>CQ2Onto</strong></a></td>
+            <td>Full OWL ontology generation from competency questions</td>
+            <td>6 dimensions</td>
+            <td><a href="https://w3id.org/cq4oe/task/CQ2Onto" target="_blank">https://w3id.org/cq4oe/task/CQ2Onto</a></td>
+            <td>Ontology Generation, Task, Competency Questions</td>
+        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row" id="dimensions" style="margin-top: 30px;">
+                <div class="col-md-12">
+                    <h3>Evaluation Dimensions</h3>
+                    <p>Each dimension defines a scoped target against which the
+                       atomic metrics are computed.</p>
+                    <table class="table table-hover">
+                        <thead>
                             <tr>
-                                <td class="short-name"><a href="JaroWinklerDistance.html"><strong>Jaro Winkler Distance</strong></a></td>
-                                <td class="titles">String similarity metric emphasizing common prefixes</td>
-                                <td>Ontology Concept Matching</td>
-                                <td><a href="https://w3id.org/cq4oe/metric/JaroWinklerDistance" target="_blank">https://w3id.org/cq4oe/metric/JaroWinklerDistance</a></td>
-                                <td class="keywords">Ontology Concept Matching, Metric, Classes</td>
+                                <th class="short-name">Short Name</th>
+                                <th>Title</th>
+                                <th>Task</th>
+                                <th>Identifier</th>
+                                <th>Keywords</th>
                             </tr>
+                        </thead>
+                        <tbody>
                             <tr>
-                                <td class="short-name"><a href="LevenshteinDistance.html"><strong>Levenshtein Distance</strong></a></td>
-                                <td class="titles">Character-level edit distance approximation</td>
-                                <td>Ontology Concept Matching</td>
-                                <td><a href="https://w3id.org/cq4oe/metric/LevenshteinDistance" target="_blank">https://w3id.org/cq4oe/metric/LevenshteinDistance</a></td>
-                                <td class="keywords">Ontology Concept Matching, Metric, Classes</td>
-                            </tr>
+            <td class="short-name"><a href="ClassProperty.html"><strong>ClassProperty</strong></a></td>
+            <td>Class and property generation</td>
+            <td>CQ2Term, CQ2Onto</td>
+            <td><a href="https://w3id.org/cq4oe/dimension/ClassProperty" target="_blank">https://w3id.org/cq4oe/dimension/ClassProperty</a></td>
+            <td>Term Generation, Ontology Generation, Dimension, Classes, Properties</td>
+        </tr>
+<tr>
+            <td class="short-name"><a href="PropertyCharacteristics.html"><strong>PropertyCharacteristics</strong></a></td>
+            <td>Property characteristics modelling</td>
+            <td>CQ2Onto</td>
+            <td><a href="https://w3id.org/cq4oe/dimension/PropertyCharacteristics" target="_blank">https://w3id.org/cq4oe/dimension/PropertyCharacteristics</a></td>
+            <td>Property Modelling, Dimension</td>
+        </tr>
+<tr>
+            <td class="short-name"><a href="Triple.html"><strong>Triple</strong></a></td>
+            <td>Domain and range triple evaluation</td>
+            <td>CQ2Onto</td>
+            <td><a href="https://w3id.org/cq4oe/dimension/Triple" target="_blank">https://w3id.org/cq4oe/dimension/Triple</a></td>
+            <td>Domain/Range, Dimension, Triples</td>
+        </tr>
+<tr>
+            <td class="short-name"><a href="Axiom.html"><strong>Axiom</strong></a></td>
+            <td>TBox axiom-level structural evaluation</td>
+            <td>CQ2Onto</td>
+            <td><a href="https://w3id.org/cq4oe/dimension/Axiom" target="_blank">https://w3id.org/cq4oe/dimension/Axiom</a></td>
+            <td>TBox Axioms, Dimension</td>
+        </tr>
+<tr>
+            <td class="short-name"><a href="HierarchyClosure.html"><strong>HierarchyClosure</strong></a></td>
+            <td>Hierarchy closure under reasoning</td>
+            <td>CQ2Onto</td>
+            <td><a href="https://w3id.org/cq4oe/dimension/HierarchyClosure" target="_blank">https://w3id.org/cq4oe/dimension/HierarchyClosure</a></td>
+            <td>Hierarchy Closure, Dimension</td>
+        </tr>
+<tr>
+            <td class="short-name"><a href="CQCoverage.html"><strong>CQCoverage</strong></a></td>
+            <td>CQ condition coverage under clouser level</td>
+            <td>CQ2Term, CQ2Onto</td>
+            <td><a href="https://w3id.org/cq4oe/dimension/CQCoverage" target="_blank">https://w3id.org/cq4oe/dimension/CQCoverage</a></td>
+            <td>Competency Questions, Coverage, Dimension</td>
+        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row" id="metrics" style="margin-top: 30px;">
+                <div class="col-md-12">
+                    <h3>Metrics</h3>
+                    <p>The atomic measurements computed by the evaluation pipeline.
+                       Each metric is a single, reusable measurement that may be applied across
+                       one or more dimensions.</p>
+                    <table class="table table-hover">
+                        <thead>
                             <tr>
-                                <td class="short-name"><a href="SequenceMatch.html"><strong>Sequence Match</strong></a></td>
-                                <td class="titles">Token-level string similarity comparison</td>
-                                <td>Ontology Concept Matching</td>
-                                <td><a href="https://w3id.org/cq4oe/metric/SequenceMatch" target="_blank">https://w3id.org/cq4oe/metric/SequenceMatch</a></td>
-                                <td class="keywords">Ontology Concept Matching, Metric, Classes</td>
+                                <th class="short-name">Short Name</th>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Dimension(s)</th>
+                                <th>Identifier</th>
+                                <th>Keywords</th>
+                                <th>Status</th>
                             </tr>
+                        </thead>
+                        <tbody>
                             <tr>
-                                <td class="short-name"><a href="SemanticCosineSimilarity.html"><strong>Semantic Cosine Similarity</strong></a></td>
-                                <td class="titles">Semantic distances of dense vector representations using a pretrained encoder</td>
-                                <td>Ontology Concept Matching</td>
-                                <td><a href="https://w3id.org/cq4oe/metric/SemanticCosineSimilarity" target="_blank">https://w3id.org/cq4oe/metric/SemanticCosineSimilarity</a></td>
-                                <td class="keywords">Ontology Concept Matching, Metric, Classes, Encoder</td>
-                            </tr>
-                            <tr>
-                                <td class="short-name"><a href="Synonyms.html"><strong>Synonyms</strong></a></td>
-                                <td class="titles">Exact match against WordNet synonym relations</td>
-                                <td>Ontology Concept Matching</td>
-                                <td><a href="https://w3id.org/cq4oe/metric/Synonyms" target="_blank">https://w3id.org/cq4oe/metric/Synonyms</a></td>
-                                <td class="keywords">Ontology Concept Matching, Metric, Classes, WordNet</td>
-                            </tr>
-                            <tr>
-                                <td class="short-name"><a href="InformationContent.html"><strong>Information Content</strong></a></td>
-                                <td class="titles">Semantic-level comparison using WordNet synsets and IC scores</td>
-                                <td>Ontology Concept Matching</td>
-                                <td><a href="https://w3id.org/cq4oe/metric/InformationContent" target="_blank">https://w3id.org/cq4oe/metric/InformationContent</a></td>
-                                <td class="keywords">Ontology Concept Matching, Metric, Classes, WordNet</td>
-                            </tr>
-                            <tr>
-                                <td class="short-name"><a href="CQCoverage.html"><strong>CQ Coverage</strong></a></td>
-                                <td class="titles">Fraction of gold competency questions covered by the predicted ontology</td>
-                                <td>Competency Question Coverage</td>
-                                <td><a href="https://w3id.org/cq4oe/metric/CQCoverage" target="_blank">https://w3id.org/cq4oe/metric/CQCoverage</a></td>
-                                <td class="keywords">Ontology Engineering, Metric, Competency Questions, CQ Coverage</td>
-                            </tr>
+            <td class="short-name"><a href="HardMatch.html"><strong>HardMatch</strong></a></td>
+            <td>Exact lexical string comparison</td>
+            <td>Ontology Concept Matching</td>
+            <td>ClassProperty</td>
+            <td><a href="https://w3id.org/cq4oe/metric/HardMatch" target="_blank">https://w3id.org/cq4oe/metric/HardMatch</a></td>
+            <td>Ontology Concept Matching, Metric, Classes, Properties, Lexical</td>
+            <td><span class="status-indicator Active"></span>Active</td>
+        </tr>
+<tr>
+            <td class="short-name"><a href="SequenceMatch.html"><strong>SequenceMatch</strong></a></td>
+            <td>Token-level string similarity comparison</td>
+            <td>Ontology Concept Matching</td>
+            <td>ClassProperty</td>
+            <td><a href="https://w3id.org/cq4oe/metric/SequenceMatch" target="_blank">https://w3id.org/cq4oe/metric/SequenceMatch</a></td>
+            <td>Ontology Concept Matching, Metric, Classes, Properties, Lexical</td>
+            <td><span class="status-indicator Active"></span>Active</td>
+        </tr>
+<tr>
+            <td class="short-name"><a href="LevenshteinDistance.html"><strong>LevenshteinDistance</strong></a></td>
+            <td>Character-level edit distance approximation</td>
+            <td>Ontology Concept Matching</td>
+            <td>ClassProperty</td>
+            <td><a href="https://w3id.org/cq4oe/metric/LevenshteinDistance" target="_blank">https://w3id.org/cq4oe/metric/LevenshteinDistance</a></td>
+            <td>Ontology Concept Matching, Metric, Classes, Properties, Edit Distance</td>
+            <td><span class="status-indicator Active"></span>Active</td>
+        </tr>
+<tr>
+            <td class="short-name"><a href="JaroWinklerDistance.html"><strong>JaroWinklerDistance</strong></a></td>
+            <td>String similarity emphasizing common prefixes</td>
+            <td>Ontology Concept Matching</td>
+            <td>ClassProperty</td>
+            <td><a href="https://w3id.org/cq4oe/metric/JaroWinklerDistance" target="_blank">https://w3id.org/cq4oe/metric/JaroWinklerDistance</a></td>
+            <td>Ontology Concept Matching, Metric, Classes, Properties, Lexical</td>
+            <td><span class="status-indicator Active"></span>Active</td>
+        </tr>
+<tr>
+            <td class="short-name"><a href="SemanticCosineSimilarity.html"><strong>SemanticCosineSimilarity</strong></a></td>
+            <td>Semantic distance over dense vector representations</td>
+            <td>Ontology Concept Matching</td>
+            <td>ClassProperty</td>
+            <td><a href="https://w3id.org/cq4oe/metric/SemanticCosineSimilarity" target="_blank">https://w3id.org/cq4oe/metric/SemanticCosineSimilarity</a></td>
+            <td>Ontology Concept Matching, Metric, Classes, Properties, Encoder, Semantic</td>
+            <td><span class="status-indicator Active"></span>Active</td>
+        </tr>
+<tr>
+            <td class="short-name"><a href="AggregatedTop3.html"><strong>AggregatedTop3</strong></a></td>
+            <td>Mean of the three highest non-hard similarity scores</td>
+            <td>Ontology Concept Matching</td>
+            <td>ClassProperty</td>
+            <td><a href="https://w3id.org/cq4oe/metric/AggregatedTop3" target="_blank">https://w3id.org/cq4oe/metric/AggregatedTop3</a></td>
+            <td>Ontology Concept Matching, Metric, Score Aggregation</td>
+            <td><span class="status-indicator Active"></span>Active</td>
+        </tr>
+<tr>
+            <td class="short-name"><a href="Synonyms.html"><strong>Synonyms</strong></a></td>
+            <td>Exact match against WordNet synonym relations</td>
+            <td>Ontology Concept Matching</td>
+            <td>ClassProperty</td>
+            <td><a href="https://w3id.org/cq4oe/metric/Synonyms" target="_blank">https://w3id.org/cq4oe/metric/Synonyms</a></td>
+            <td>Ontology Concept Matching, Metric, Classes, Properties, WordNet</td>
+            <td><span class="status-indicator Inactive"></span>Inactive</td>
+        </tr>
+<tr>
+            <td class="short-name"><a href="InformationContent.html"><strong>InformationContent</strong></a></td>
+            <td>Semantic-level comparison using WordNet synsets and IC scores</td>
+            <td>Ontology Concept Matching</td>
+            <td>ClassProperty</td>
+            <td><a href="https://w3id.org/cq4oe/metric/InformationContent" target="_blank">https://w3id.org/cq4oe/metric/InformationContent</a></td>
+            <td>Ontology Concept Matching, Metric, Classes, Properties, WordNet</td>
+            <td><span class="status-indicator Inactive"></span>Inactive</td>
+        </tr>
+<tr>
+            <td class="short-name"><a href="Precision.html"><strong>Precision</strong></a></td>
+            <td>Fraction of generated elements that match the gold standard</td>
+            <td>Set-Based Evaluation</td>
+            <td>ClassProperty, PropertyCharacteristics, Triple, Axiom, HierarchyClosure</td>
+            <td><a href="https://w3id.org/cq4oe/metric/Precision" target="_blank">https://w3id.org/cq4oe/metric/Precision</a></td>
+            <td>Ontology Evaluation, Metric, Precision</td>
+            <td><span class="status-indicator Active"></span>Active</td>
+        </tr>
+<tr>
+            <td class="short-name"><a href="Recall.html"><strong>Recall</strong></a></td>
+            <td>Fraction of gold elements matched by the generation</td>
+            <td>Set-Based Evaluation</td>
+            <td>ClassProperty, PropertyCharacteristics, Triple, Axiom, HierarchyClosure</td>
+            <td><a href="https://w3id.org/cq4oe/metric/Recall" target="_blank">https://w3id.org/cq4oe/metric/Recall</a></td>
+            <td>Ontology Evaluation, Metric, Recall</td>
+            <td><span class="status-indicator Active"></span>Active</td>
+        </tr>
+<tr>
+            <td class="short-name"><a href="F1.html"><strong>F1</strong></a></td>
+            <td>Harmonic mean of precision and recall</td>
+            <td>Set-Based Evaluation</td>
+            <td>ClassProperty, PropertyCharacteristics, Triple, Axiom, HierarchyClosure</td>
+            <td><a href="https://w3id.org/cq4oe/metric/F1" target="_blank">https://w3id.org/cq4oe/metric/F1</a></td>
+            <td>Ontology Evaluation, Metric, F1</td>
+            <td><span class="status-indicator Active"></span>Active</td>
+        </tr>
+<tr>
+            <td class="short-name"><a href="EmbeddingDiagnostic.html"><strong>EmbeddingDiagnostic</strong></a></td>
+            <td>Soft similarity over normalized textual serializations</td>
+            <td>Diagnostic Evaluation</td>
+            <td>Triple, Axiom</td>
+            <td><a href="https://w3id.org/cq4oe/metric/EmbeddingDiagnostic" target="_blank">https://w3id.org/cq4oe/metric/EmbeddingDiagnostic</a></td>
+            <td>Ontology Evaluation, Diagnostic, Embedding, Triples, Axioms</td>
+            <td><span class="status-indicator Active"></span>Active</td>
+        </tr>
+<tr>
+            <td class="short-name"><a href="AtLeastOneCoverage.html"><strong>AtLeastOneCoverage</strong></a></td>
+            <td>Fraction of CQs with at least one required element correctly generated</td>
+            <td>Competency Question Coverage</td>
+            <td>CQCoverage</td>
+            <td><a href="https://w3id.org/cq4oe/metric/AtLeastOneCoverage" target="_blank">https://w3id.org/cq4oe/metric/AtLeastOneCoverage</a></td>
+            <td>Ontology Engineering, Metric, Competency Questions, Coverage</td>
+            <td><span class="status-indicator Active"></span>Active</td>
+        </tr>
+<tr>
+            <td class="short-name"><a href="MeanCoverage.html"><strong>MeanCoverage</strong></a></td>
+            <td>Average per-CQ coverage rate across all retained CQs</td>
+            <td>Competency Question Coverage</td>
+            <td>CQCoverage</td>
+            <td><a href="https://w3id.org/cq4oe/metric/MeanCoverage" target="_blank">https://w3id.org/cq4oe/metric/MeanCoverage</a></td>
+            <td>Ontology Engineering, Metric, Competency Questions, Coverage</td>
+            <td><span class="status-indicator Active"></span>Active</td>
+        </tr>
+<tr>
+            <td class="short-name"><a href="FullCoverage.html"><strong>FullCoverage</strong></a></td>
+            <td>Fraction of CQs whose required elements are fully generated</td>
+            <td>Competency Question Coverage</td>
+            <td>CQCoverage</td>
+            <td><a href="https://w3id.org/cq4oe/metric/FullCoverage" target="_blank">https://w3id.org/cq4oe/metric/FullCoverage</a></td>
+            <td>Ontology Engineering, Metric, Competency Questions, Completeness, Coverage</td>
+            <td><span class="status-indicator Active"></span>Active</td>
+        </tr>
+<tr>
+            <td class="short-name"><a href="ClosureRescueCoverage.html"><strong>ClosureRescueCoverage</strong></a></td>
+            <td>CQ coverage credited via reasoner-inferred subsumption closure</td>
+            <td>Competency Question Coverage</td>
+            <td>CQCoverage, HierarchyClosure</td>
+            <td><a href="https://w3id.org/cq4oe/metric/ClosureRescueCoverage" target="_blank">https://w3id.org/cq4oe/metric/ClosureRescueCoverage</a></td>
+            <td>Ontology Engineering, Metric, Competency Questions, Reasoning, HermiT, Closure</td>
+            <td><span class="status-indicator Active"></span>Active</td>
+        </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
 
-        <div id="pie" class="row" style="margin-top: 30px;">
-            <div class="col-md-12 text-center">
-                Ontology Engineering Group
-                <a href="https://oeg.fi.upm.es" target="_blank">https://oeg.fi.upm.es</a>
-            </div>
-        </div>
+        
+<div id="pie" class="row" style="margin-top: 20px;">
+    <div class="col-md-12 text-center">
+        Ontology Engineering Group
+        <a href="https://oeg.fi.upm.es" target="_blank">https://oeg.fi.upm.es</a>
+    </div>
+</div>
+
     </body>
 </html>

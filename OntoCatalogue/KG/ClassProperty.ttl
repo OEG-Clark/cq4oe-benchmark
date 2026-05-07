@@ -11,56 +11,39 @@
 @prefix prov:    <http://www.w3.org/ns/prov#> .
 
 
-# Metric Resource: InformationContent
-<https://w3id.org/cq4oe/metric/InformationContent> a dqv:Metric, ftr:Test ;
-    dcterms:identifier "https://w3id.org/cq4oe/metric/InformationContent" ;
-    dcterms:title "Semantic-level comparison using WordNet synsets and IC scores"@en ;
-    rdfs:label "InformationContent: Semantic-level comparison using WordNet synsets and IC scores"^^xsd:string ;
+# Dimension Resource: ClassProperty
+<https://w3id.org/cq4oe/dimension/ClassProperty> a dqv:Dimension ;
+    dcterms:identifier "https://w3id.org/cq4oe/dimension/ClassProperty" ;
+    dcterms:title "Class and property generation"@en ;
+    rdfs:label "ClassProperty: Class and property generation"^^xsd:string ;
     dcat:version "0.1.0"^^xsd:string ;
-    ftr:status "Inactive"@en ;
-    dcat:landingPage <https://w3id.org/cq4oe/metric/InformationContent> ;
+    ftr:status "Active"@en ;
+    dcat:landingPage <https://w3id.org/cq4oe/dimension/ClassProperty> ;
 
     dcterms:description """
-This metric aims to evaluate semantic similarity between a generated label and a gold-standard label using WordNet synsets and Information-Content (IC) scores such as Resnik, Lin, or Jiang-Conrath. Each label is mapped to a synset, and the IC of their lowest common ancestor in the WordNet taxonomy is normalised to a similarity in [0, 1]. The method was considered but excluded from the final pipeline because IC requires a shared taxonomy, which is generally not the case for LLM-generated outputs.
-
-**Example:**
-
-Generate_Label_1: dog
-
-Generate_Label_2: cat
-
-Generate_Label_3: software
-
-Gold_Standard_Label_1: hound
-
-Gold_Standard_Label_2: feline
-
-Gold_Standard_Label_3: Wine
-
-Result:
-
-1. InformationContent(Generate_Label_1, Gold_Standard_Label_1) ≈ 0.90
-2. InformationContent(Generate_Label_2, Gold_Standard_Label_2) ≈ 0.85
-3. InformationContent(Generate_Label_3, Gold_Standard_Label_3) ≈ 0.05
-
-**What is being measured?**
-
-This metric captures taxonomy-aware semantic similarity. It is strong when both sides share a stable hierarchy and weak otherwise, which is why it remains in the catalogue only as a documented baseline.
+This dimension evaluates whether the system generates the named classes and properties needed to answer the CQs. Applied at term level under CQ2Term (per-CQ class and property generation) and at ontology level under CQ2Onto (the named classes and properties of the generated ontology).
 """ ;
 
-    dcat:keyword "Ontology Concept Matching"@en ;
-    dcat:keyword "Metric"@en ;
+    dcat:keyword "Term Generation"@en ;
+    dcat:keyword "Ontology Generation"@en ;
+    dcat:keyword "Dimension"@en ;
     dcat:keyword "Classes"@en ;
     dcat:keyword "Properties"@en ;
-    dcat:keyword "WordNet"@en ;
 
-    dqv:inDimension <https://w3id.org/cq4oe/dimension/ClassProperty> ;
+    dqv:hasQualityMetric <https://w3id.org/cq4oe/metric/HardMatch> ;
+    dqv:hasQualityMetric <https://w3id.org/cq4oe/metric/SequenceMatch> ;
+    dqv:hasQualityMetric <https://w3id.org/cq4oe/metric/LevenshteinDistance> ;
+    dqv:hasQualityMetric <https://w3id.org/cq4oe/metric/JaroWinklerDistance> ;
+    dqv:hasQualityMetric <https://w3id.org/cq4oe/metric/SemanticCosineSimilarity> ;
+    dqv:hasQualityMetric <https://w3id.org/cq4oe/metric/AggregatedTop3> ;
+    dqv:hasQualityMetric <https://w3id.org/cq4oe/metric/Precision> ;
+    dqv:hasQualityMetric <https://w3id.org/cq4oe/metric/Recall> ;
+    dqv:hasQualityMetric <https://w3id.org/cq4oe/metric/F1> ;
     dcterms:isPartOf <https://w3id.org/cq4oe/task/CQ2Term> ;
     dcterms:isPartOf <https://w3id.org/cq4oe/task/CQ2Onto> ;
 
     ftr:hasBenchmark <https://w3id.org/cq4oe/benchmark/ALL> ;
     ftr:supportedBy <https://w3id.org/cq4oe/> ;
-    dpv:isApplicableFor <https://www.wikidata.org/wiki/Q184754> ;
 
     dcterms:creator <https://orcid.org/0009-0001-9475-8159> ;
     dcat:contactPoint <https://orcid.org/0009-0001-9475-8159> ;

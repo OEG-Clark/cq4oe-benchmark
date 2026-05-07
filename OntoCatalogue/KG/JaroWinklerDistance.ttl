@@ -5,65 +5,66 @@
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix dqv:     <http://www.w3.org/ns/dqv#> .
-@prefix vivo:    <http://vivoweb.org/ontology/core#> .
 @prefix dpv:     <https://w3id.org/dpv#> .
 @prefix sio:     <http://semanticscience.org/resource/> .
 @prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+
 
 # Metric Resource: JaroWinklerDistance
-<https://w3id.org/cq4oe/metric/JaroWinklerDistance> a dqv:Metric ;
-
+<https://w3id.org/cq4oe/metric/JaroWinklerDistance> a dqv:Metric, ftr:Test ;
     dcterms:identifier "https://w3id.org/cq4oe/metric/JaroWinklerDistance" ;
-    dcterms:title "String similarity metric emphasizing common prefixes"@en ;
-    rdfs:label "JaroWinklerDistance: String similarity metric emphasizing common prefixes"^^xsd:string ;
-    vivo:abbreviation "jaro_winkler"^^xsd:string ;
-    dcat:version "0.0.1"^^xsd:string ;
+    dcterms:title "String similarity emphasizing common prefixes"@en ;
+    rdfs:label "JaroWinklerDistance: String similarity emphasizing common prefixes"^^xsd:string ;
+    dcat:version "0.1.0"^^xsd:string ;
     ftr:status "Active"@en ;
     dcat:landingPage <https://w3id.org/cq4oe/metric/JaroWinklerDistance> ;
 
-    # Descriptive Content
     dcterms:description """
-This metric computes the Jaro-Winkler similarity between a generated label and each gold-standard label, returning a score in [0, 1]. The Jaro-Winkler variant boosts matches that share a common prefix, which is useful for terminology that follows shared roots.
-
-**Calculation Process:**
-
-1. Compute the Jaro similarity between the generated label and each gold label, accounting for matching characters and transpositions within a sliding window.
-2. Apply the Winkler boost: scale up the score for pairs sharing a prefix of up to four characters.
-3. Take the maximum similarity across all gold labels.
-4. A pair is considered a match if the score is greater than or equal to 0.8 (default lexical threshold).
+This metric aims to evaluate similarity between a generated label and a gold-standard label using the Jaro-Winkler distance, which extends the Jaro distance by giving extra weight to matching prefixes (up to four characters by default). The score lies in [0, 1].
 
 **Example:**
 
-Generate_Label: WineColor
+Generate_Label_1: hasStartTimestamp
 
-Gold_Standard_Label: WineColour
+Generate_Label_2: hasStartTime
 
-JaroWinklerDistance(Generate_Label, Gold_Standard_Label) = 0.96
+Generate_Label_3: Plant
+
+Gold_Standard_Label: hasStartTimestamp
+
+Result:
+
+1. JaroWinklerDistance(Generate_Label_1, Gold_Standard_Label) = 1.00
+2. JaroWinklerDistance(Generate_Label_2, Gold_Standard_Label) ≈ 0.95
+3. JaroWinklerDistance(Generate_Label_3, Gold_Standard_Label) ≈ 0.40
 
 **What is being measured?**
 
-This metric tolerates small character-level differences, especially in suffixes (e.g. British vs American spelling, plural forms, minor typos), while penalizing changes early in the string.
+This metric captures lexical similarity weighted toward shared prefixes. It is particularly useful for property labels that follow common conventions such as `has*`, `is*`, or namespace stems like `dc:*` and `rdf:*`.
 """ ;
+
     dcat:keyword "Ontology Concept Matching"@en ;
     dcat:keyword "Metric"@en ;
     dcat:keyword "Classes"@en ;
+    dcat:keyword "Properties"@en ;
+    dcat:keyword "Lexical"@en ;
 
-    # Relationships and Provenance
+    dqv:inDimension <https://w3id.org/cq4oe/dimension/ClassProperty> ;
+    dcterms:isPartOf <https://w3id.org/cq4oe/task/CQ2Term> ;
+    dcterms:isPartOf <https://w3id.org/cq4oe/task/CQ2Onto> ;
+
+    ftr:hasBenchmark <https://w3id.org/cq4oe/benchmark/ALL> ;
+    ftr:supportedBy <https://w3id.org/cq4oe/> ;
     dpv:isApplicableFor <https://www.wikidata.org/wiki/Q184754> ;
-    ftr:hasBenchmark <https://w3id.org/cq2onto/benchmark/ALL> ;
-    sio:SIO_000234 <https://w3id.org/cq4oe/metric/JaroWinklerDistance> ;
-    ftr:supportedBy <https://w3id.org/cq2onto/> ;
-    dqv:inDimension "Ontology Engineering"^^xsd:string ;
 
-    # Provenance
     dcterms:creator <https://orcid.org/0009-0001-9475-8159> ;
     dcat:contactPoint <https://orcid.org/0009-0001-9475-8159> ;
     dcterms:publisher <https://oeg.fi.upm.es> ;
     dcterms:publisher <https://ror.org/03n6nwv02> ;
     dcterms:license <http://creativecommons.org/licenses/by/4.0/> .
 
-# Define related resources
-
+# Common related resources
 <https://orcid.org/0009-0001-9475-8159> a vcard:Individual ;
     vcard:fn "JiaYi Li"^^xsd:string ;
     vcard:hasEmail <mailto:li.jiayi@upm.es> .
@@ -77,8 +78,7 @@ This metric tolerates small character-level differences, especially in suffixes 
     rdfs:label "Universidad Politécnica de Madrid" ;
     vcard:url <https://www.upm.es/> .
 
-<https://w3id.org/cq4oe/metric/JaroWinklerDistance> a ftr:Test .
+<https://w3id.org/cq4oe/benchmark/ALL> a ftr:Benchmark ;
+    dcterms:title "CQ2OE Benchmark"@en ;
+    dcterms:description "Competency Questions for Ontology Engineering. A benchmark for evaluating LLM-assisted ontology generation from competency questions."@en .
 
-<https://w3id.org/cq2onto/benchmark/ALL> a ftr:Benchmark ;
-    dcterms:title "OntologyEngineeringEvaluationBenchmark"@en ;
-    dcterms:description "Comprehensive evaluation framework for assessing how well large language models (LLMs) can generate and match ontology concepts, properties, axioms, and competency-question answers against gold-standard ontology definitions."@en .

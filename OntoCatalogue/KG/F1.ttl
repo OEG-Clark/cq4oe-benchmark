@@ -11,50 +11,28 @@
 @prefix prov:    <http://www.w3.org/ns/prov#> .
 
 
-# Metric Resource: InformationContent
-<https://w3id.org/cq4oe/metric/InformationContent> a dqv:Metric, ftr:Test ;
-    dcterms:identifier "https://w3id.org/cq4oe/metric/InformationContent" ;
-    dcterms:title "Semantic-level comparison using WordNet synsets and IC scores"@en ;
-    rdfs:label "InformationContent: Semantic-level comparison using WordNet synsets and IC scores"^^xsd:string ;
+# Metric Resource: F1
+<https://w3id.org/cq4oe/metric/F1> a dqv:Metric, ftr:Test ;
+    dcterms:identifier "https://w3id.org/cq4oe/metric/F1" ;
+    dcterms:title "Harmonic mean of precision and recall"@en ;
+    rdfs:label "F1: Harmonic mean of precision and recall"^^xsd:string ;
     dcat:version "0.1.0"^^xsd:string ;
-    ftr:status "Inactive"@en ;
-    dcat:landingPage <https://w3id.org/cq4oe/metric/InformationContent> ;
+    ftr:status "Active"@en ;
+    dcat:landingPage <https://w3id.org/cq4oe/metric/F1> ;
 
     dcterms:description """
-This metric aims to evaluate semantic similarity between a generated label and a gold-standard label using WordNet synsets and Information-Content (IC) scores such as Resnik, Lin, or Jiang-Conrath. Each label is mapped to a synset, and the IC of their lowest common ancestor in the WordNet taxonomy is normalised to a similarity in [0, 1]. The method was considered but excluded from the final pipeline because IC requires a shared taxonomy, which is generally not the case for LLM-generated outputs.
-
-**Example:**
-
-Generate_Label_1: dog
-
-Generate_Label_2: cat
-
-Generate_Label_3: software
-
-Gold_Standard_Label_1: hound
-
-Gold_Standard_Label_2: feline
-
-Gold_Standard_Label_3: Wine
-
-Result:
-
-1. InformationContent(Generate_Label_1, Gold_Standard_Label_1) ≈ 0.90
-2. InformationContent(Generate_Label_2, Gold_Standard_Label_2) ≈ 0.85
-3. InformationContent(Generate_Label_3, Gold_Standard_Label_3) ≈ 0.05
-
-**What is being measured?**
-
-This metric captures taxonomy-aware semantic similarity. It is strong when both sides share a stable hierarchy and weak otherwise, which is why it remains in the catalogue only as a documented baseline.
+This metric aims to summarise the trade-off between Precision and Recall through their harmonic mean: F1 = 2 P R / (P + R), with F1 = 0 by convention when P + R = 0.
 """ ;
 
-    dcat:keyword "Ontology Concept Matching"@en ;
+    dcat:keyword "Ontology Evaluation"@en ;
     dcat:keyword "Metric"@en ;
-    dcat:keyword "Classes"@en ;
-    dcat:keyword "Properties"@en ;
-    dcat:keyword "WordNet"@en ;
+    dcat:keyword "F1"@en ;
 
     dqv:inDimension <https://w3id.org/cq4oe/dimension/ClassProperty> ;
+    dqv:inDimension <https://w3id.org/cq4oe/dimension/PropertyCharacteristics> ;
+    dqv:inDimension <https://w3id.org/cq4oe/dimension/Triple> ;
+    dqv:inDimension <https://w3id.org/cq4oe/dimension/Axiom> ;
+    dqv:inDimension <https://w3id.org/cq4oe/dimension/HierarchyClosure> ;
     dcterms:isPartOf <https://w3id.org/cq4oe/task/CQ2Term> ;
     dcterms:isPartOf <https://w3id.org/cq4oe/task/CQ2Onto> ;
 

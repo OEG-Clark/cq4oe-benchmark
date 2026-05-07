@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>CQCoverage: CQ condition coverage under clouser level</title>
+        <title>EmbeddingDiagnostic: Soft similarity over normalized textual serializations</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         
 <style>
@@ -49,20 +49,30 @@
                     <button type="button" class="btn btn-primary"
                             onclick="window.location.href='catalog.html'"
                             style="position: absolute; top: 10px; right: 10px;">Back</button>
-                    <h1 class="miClase text-center">CQCoverage: CQ condition coverage under clouser level</h1>
+                    <h1 class="miClase text-center">EmbeddingDiagnostic: Soft similarity over normalized textual serializations</h1>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-12 well" style="font-size: 16px;">
-                    <p>This dimension evaluates CQ completeness in the generated content. For each CQ, it measures the fraction of required elements (terms in CQ2Term, axioms in CQ2Onto) that the generation includes and correctly attributes to that CQ.</p>
+                    <p>This metric aims to evaluate near-miss similarity between generated and gold standard structural elements that fail strict matching. Each element (a triple or a TBox axiom) is rendered as a normalised text serialisation, encoded with a pretrained sentence-transformer, and compared by cosine similarity. The score is reported separately and does not affect the strict Precision, Recall, or F1 of the dimension.</p>
+<p><strong>Example:</strong></p>
+<p>Gold_Axiom: Animal SubClassOf eats some Plant</p>
+<p>Generated_Axiom: Animal SubClassOf consumes some Vegetable</p>
+<p>Result:</p>
+<ol>
+<li>Strict_match = 0    (different property and class names)</li>
+<li>EmbeddingDiagnostic ≈ 0.84    (close in meaning, flagged as a near miss)</li>
+</ol>
+<p><strong>What is being measured?</strong></p>
+<p>This metric helps diagnose how close a model came to a correct structural answer when it did not produce an exact match. It is a diagnostic for systematic deviations rather than a scoring signal, used to investigate why a generated element was rejected by strict comparison.</p>
                 </div>
             </div>
 
             <div class="row flex-space-between">
                 <div class="col-md-12 align-items-center">
-                    <h4 class="miClase text-left text-separation">Dimension information</h4>
-                    <a href="../KG/CQCoverage.ttl" title="RDF Resource Description Framework">
+                    <h4 class="miClase text-left text-separation">Metric information</h4>
+                    <a href="../KG/EmbeddingDiagnostic.ttl" title="RDF Resource Description Framework">
                         <img border="0" src="http://www.w3.org/RDF/icons/rdf_flyer.24"
                              alt="RDF Resource Description Framework Flyer Icon"/>
                     </a>
@@ -71,17 +81,17 @@
 
             <div class="row row-equal">
                 <div class="col-md-3 well tag_div"><strong>Title</strong></div>
-                <div class="col-md-9 well">CQ condition coverage under clouser level</div>
+                <div class="col-md-9 well">Soft similarity over normalized textual serializations</div>
             </div>
             <div class="row row-equal">
                 <div class="col-md-3 well tag_div"><strong>Identifier</strong></div>
                 <div class="col-md-9 well">
-                    <a href="https://w3id.org/cq4oe/dimension/CQCoverage" target="_blank">https://w3id.org/cq4oe/dimension/CQCoverage</a>
+                    <a href="https://w3id.org/cq4oe/metric/EmbeddingDiagnostic" target="_blank">https://w3id.org/cq4oe/metric/EmbeddingDiagnostic</a>
                 </div>
             </div>
             <div class="row row-equal">
                 <div class="col-md-3 well tag_div"><strong>Keywords</strong></div>
-                <div class="col-md-9 well">Competency Questions, Coverage, Dimension</div>
+                <div class="col-md-9 well">Ontology Evaluation, Diagnostic, Embedding, Triples, Axioms</div>
             </div>
             <div class="row row-equal">
                 <div class="col-md-3 well tag_div"><strong>Contact Point</strong></div>
@@ -108,12 +118,20 @@
                 </div>
             </div>
             <div class="row row-equal">
-            <div class="col-md-3 well tag_div"><strong>Metric</strong></div>
-            <div class="col-md-9 well"><ul><li><a href="AtLeastOneCoverage.html">AtLeastOneCoverage</a></li><li><a href="MeanCoverage.html">MeanCoverage</a></li><li><a href="FullCoverage.html">FullCoverage</a></li><li><a href="ClosureRescueCoverage.html">ClosureRescueCoverage</a></li></ul></div>
+            <div class="col-md-3 well tag_div"><strong>Category</strong></div>
+            <div class="col-md-9 well">Diagnostic Evaluation</div>
+        </div>
+<div class="row row-equal">
+            <div class="col-md-3 well tag_div"><strong>Dimension</strong></div>
+            <div class="col-md-9 well"><ul><li><a href="Triple.html">Triple</a></li><li><a href="Axiom.html">Axiom</a></li></ul></div>
         </div>
 <div class="row row-equal">
             <div class="col-md-3 well tag_div"><strong>Task</strong></div>
-            <div class="col-md-9 well"><ul><li><a href="CQ2Term.html">CQ2Term</a></li><li><a href="CQ2Onto.html">CQ2Onto</a></li></ul></div>
+            <div class="col-md-9 well"><ul><li><a href="CQ2Onto.html">CQ2Onto</a></li></ul></div>
+        </div>
+<div class="row row-equal">
+            <div class="col-md-3 well tag_div"><strong>Applicable for</strong></div>
+            <div class="col-md-9 well"><a href="https://www.wikidata.org/wiki/Q184754" target="_blank">https://www.wikidata.org/wiki/Q184754</a></div>
         </div>
             <div class="row row-equal">
                 <div class="col-md-3 well tag_div"><strong>Benchmark</strong></div>

@@ -11,48 +11,46 @@
 @prefix prov:    <http://www.w3.org/ns/prov#> .
 
 
-# Metric Resource: InformationContent
-<https://w3id.org/cq4oe/metric/InformationContent> a dqv:Metric, ftr:Test ;
-    dcterms:identifier "https://w3id.org/cq4oe/metric/InformationContent" ;
-    dcterms:title "Semantic-level comparison using WordNet synsets and IC scores"@en ;
-    rdfs:label "InformationContent: Semantic-level comparison using WordNet synsets and IC scores"^^xsd:string ;
+# Metric Resource: AggregatedTop3
+<https://w3id.org/cq4oe/metric/AggregatedTop3> a dqv:Metric, ftr:Test ;
+    dcterms:identifier "https://w3id.org/cq4oe/metric/AggregatedTop3" ;
+    dcterms:title "Mean of the three highest non-hard similarity scores"@en ;
+    rdfs:label "AggregatedTop3: Mean of the three highest non-hard similarity scores"^^xsd:string ;
     dcat:version "0.1.0"^^xsd:string ;
-    ftr:status "Inactive"@en ;
-    dcat:landingPage <https://w3id.org/cq4oe/metric/InformationContent> ;
+    ftr:status "Active"@en ;
+    dcat:landingPage <https://w3id.org/cq4oe/metric/AggregatedTop3> ;
 
     dcterms:description """
-This metric aims to evaluate semantic similarity between a generated label and a gold-standard label using WordNet synsets and Information-Content (IC) scores such as Resnik, Lin, or Jiang-Conrath. Each label is mapped to a synset, and the IC of their lowest common ancestor in the WordNet taxonomy is normalised to a similarity in [0, 1]. The method was considered but excluded from the final pipeline because IC requires a shared taxonomy, which is generally not the case for LLM-generated outputs.
+This metric aims to combine the output of multiple similarity methods into a single robust alignment score. It assigns 1 directly when HardMatch returns 1, and otherwise takes the mean of the three highest scores produced by the four non-hard methods (SequenceMatch, LevenshteinDistance, JaroWinklerDistance, SemanticCosineSimilarity).
 
 **Example:**
 
-Generate_Label_1: dog
+Generate_Label: has_name
 
-Generate_Label_2: cat
+Gold_Standard_Label: hasName
 
-Generate_Label_3: software
+Per-method scores:
 
-Gold_Standard_Label_1: hound
-
-Gold_Standard_Label_2: feline
-
-Gold_Standard_Label_3: Wine
+- HardMatch = 0
+- SequenceMatch = 0.93
+- LevenshteinDistance = 0.88
+- JaroWinklerDistance = 0.97
+- SemanticCosineSimilarity = 0.90
 
 Result:
 
-1. InformationContent(Generate_Label_1, Gold_Standard_Label_1) ≈ 0.90
-2. InformationContent(Generate_Label_2, Gold_Standard_Label_2) ≈ 0.85
-3. InformationContent(Generate_Label_3, Gold_Standard_Label_3) ≈ 0.05
+Top-3 of non-hard methods = {0.97, 0.93, 0.90}
+
+AggregatedTop3 = (0.97 + 0.93 + 0.90) / 3 ≈ 0.93
 
 **What is being measured?**
 
-This metric captures taxonomy-aware semantic similarity. It is strong when both sides share a stable hierarchy and weak otherwise, which is why it remains in the catalogue only as a documented baseline.
+This metric mitigates the noise of any single matcher by averaging multiple independent similarity signals while still trusting an exact match when one is available. Final acceptance also requires that the aggregated score reaches the type-specific threshold (τ_C = 0.6 for classes, τ_P = 0.7 for properties).
 """ ;
 
     dcat:keyword "Ontology Concept Matching"@en ;
     dcat:keyword "Metric"@en ;
-    dcat:keyword "Classes"@en ;
-    dcat:keyword "Properties"@en ;
-    dcat:keyword "WordNet"@en ;
+    dcat:keyword "Score Aggregation"@en ;
 
     dqv:inDimension <https://w3id.org/cq4oe/dimension/ClassProperty> ;
     dcterms:isPartOf <https://w3id.org/cq4oe/task/CQ2Term> ;

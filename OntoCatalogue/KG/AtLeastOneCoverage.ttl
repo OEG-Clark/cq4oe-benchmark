@@ -11,50 +11,41 @@
 @prefix prov:    <http://www.w3.org/ns/prov#> .
 
 
-# Metric Resource: InformationContent
-<https://w3id.org/cq4oe/metric/InformationContent> a dqv:Metric, ftr:Test ;
-    dcterms:identifier "https://w3id.org/cq4oe/metric/InformationContent" ;
-    dcterms:title "Semantic-level comparison using WordNet synsets and IC scores"@en ;
-    rdfs:label "InformationContent: Semantic-level comparison using WordNet synsets and IC scores"^^xsd:string ;
+# Metric Resource: AtLeastOneCoverage
+<https://w3id.org/cq4oe/metric/AtLeastOneCoverage> a dqv:Metric, ftr:Test ;
+    dcterms:identifier "https://w3id.org/cq4oe/metric/AtLeastOneCoverage" ;
+    dcterms:title "Fraction of CQs with at least one required element correctly generated"@en ;
+    rdfs:label "AtLeastOneCoverage: Fraction of CQs with at least one required element correctly generated"^^xsd:string ;
     dcat:version "0.1.0"^^xsd:string ;
-    ftr:status "Inactive"@en ;
-    dcat:landingPage <https://w3id.org/cq4oe/metric/InformationContent> ;
+    ftr:status "Active"@en ;
+    dcat:landingPage <https://w3id.org/cq4oe/metric/AtLeastOneCoverage> ;
 
     dcterms:description """
-This metric aims to evaluate semantic similarity between a generated label and a gold-standard label using WordNet synsets and Information-Content (IC) scores such as Resnik, Lin, or Jiang-Conrath. Each label is mapped to a synset, and the IC of their lowest common ancestor in the WordNet taxonomy is normalised to a similarity in [0, 1]. The method was considered but excluded from the final pipeline because IC requires a shared taxonomy, which is generally not the case for LLM-generated outputs.
+This metric aims to evaluate the breadth of CQ coverage by computing the fraction of competency questions for which the generation includes at least one required element. With cov_i is the individual CQ coverage rate and N the number of CQs: AtLeastOneCoverage = |{ i : cov_i > 0 }| / N.
 
 **Example:**
 
-Generate_Label_1: dog
+N = 4 CQs
 
-Generate_Label_2: cat
+CQ coverage rates cov: [1.0, 0.5, 0.0, 0.7]
 
-Generate_Label_3: software
-
-Gold_Standard_Label_1: hound
-
-Gold_Standard_Label_2: feline
-
-Gold_Standard_Label_3: Wine
+CQs with cov > 0: {1, 2, 4}    → count = 3
 
 Result:
 
-1. InformationContent(Generate_Label_1, Gold_Standard_Label_1) ≈ 0.90
-2. InformationContent(Generate_Label_2, Gold_Standard_Label_2) ≈ 0.85
-3. InformationContent(Generate_Label_3, Gold_Standard_Label_3) ≈ 0.05
+AtLeastOneCoverage = 3 / 4 = 0.75
 
 **What is being measured?**
 
-This metric captures taxonomy-aware semantic similarity. It is strong when both sides share a stable hierarchy and weak otherwise, which is why it remains in the catalogue only as a documented baseline.
+This metric reports whether the model engages with every CQ at all. A CQ left entirely unanswered fails this measure, even when others are fully covered. It is reported under both the term-level CQ2Term coverage and the axiom-level CQ2Onto coverage.
 """ ;
 
-    dcat:keyword "Ontology Concept Matching"@en ;
+    dcat:keyword "Ontology Engineering"@en ;
     dcat:keyword "Metric"@en ;
-    dcat:keyword "Classes"@en ;
-    dcat:keyword "Properties"@en ;
-    dcat:keyword "WordNet"@en ;
+    dcat:keyword "Competency Questions"@en ;
+    dcat:keyword "Coverage"@en ;
 
-    dqv:inDimension <https://w3id.org/cq4oe/dimension/ClassProperty> ;
+    dqv:inDimension <https://w3id.org/cq4oe/dimension/CQCoverage> ;
     dcterms:isPartOf <https://w3id.org/cq4oe/task/CQ2Term> ;
     dcterms:isPartOf <https://w3id.org/cq4oe/task/CQ2Onto> ;
 

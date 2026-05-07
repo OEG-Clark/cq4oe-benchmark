@@ -5,65 +5,66 @@
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix dqv:     <http://www.w3.org/ns/dqv#> .
-@prefix vivo:    <http://vivoweb.org/ontology/core#> .
 @prefix dpv:     <https://w3id.org/dpv#> .
 @prefix sio:     <http://semanticscience.org/resource/> .
 @prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+
 
 # Metric Resource: LevenshteinDistance
-<https://w3id.org/cq4oe/metric/LevenshteinDistance> a dqv:Metric ;
-
+<https://w3id.org/cq4oe/metric/LevenshteinDistance> a dqv:Metric, ftr:Test ;
     dcterms:identifier "https://w3id.org/cq4oe/metric/LevenshteinDistance" ;
     dcterms:title "Character-level edit distance approximation"@en ;
     rdfs:label "LevenshteinDistance: Character-level edit distance approximation"^^xsd:string ;
-    vivo:abbreviation "levenshtein"^^xsd:string ;
-    dcat:version "0.0.1"^^xsd:string ;
+    dcat:version "0.1.0"^^xsd:string ;
     ftr:status "Active"@en ;
     dcat:landingPage <https://w3id.org/cq4oe/metric/LevenshteinDistance> ;
 
-    # Descriptive Content
     dcterms:description """
-This metric computes the normalized Levenshtein similarity between a generated label and each gold-standard label, returning a score in [0, 1]. The Levenshtein distance counts the minimum number of single-character insertions, deletions, or substitutions needed to transform one string into another.
-
-**Calculation Process:**
-
-1. Compute the Levenshtein edit distance d(generated, gold).
-2. Normalize: similarity = 1 - d / max(len(generated), len(gold)).
-3. Take the maximum similarity across all gold labels.
-4. A pair is considered a match if the score is greater than or equal to 0.8 (default lexical threshold).
+This metric aims to evaluate character-level similarity between a generated label and a gold-standard label using the normalised Levenshtein edit distance. The raw distance counts the minimum number of single-character insertions, deletions, and substitutions needed to transform one string into the other; the score is normalised to [0, 1] as 1 − distance / max(len_a, len_b).
 
 **Example:**
 
-Generate_Label: HasColor
+Generate_Label_1: Wine
 
-Gold_Standard_Label: HasColour
+Generate_Label_2: Wines
 
-LevenshteinDistance(Generate_Label, Gold_Standard_Label) = 0.89
+Generate_Label_3: Liquor
+
+Gold_Standard_Label: Wine
+
+Result:
+
+1. LevenshteinDistance(Generate_Label_1, Gold_Standard_Label) = 1.00
+2. LevenshteinDistance(Generate_Label_2, Gold_Standard_Label) ≈ 0.80
+3. LevenshteinDistance(Generate_Label_3, Gold_Standard_Label) ≈ 0.17
 
 **What is being measured?**
 
-This metric tolerates small character-level edits anywhere in the string. It is more forgiving than HardMatch but cares only about characters, not meaning.
+This metric captures fine-grained character-level proximity between labels. It is well suited to detecting typos, plurals, and small spelling drifts, but is purely lexical and cannot detect semantic equivalence.
 """ ;
+
     dcat:keyword "Ontology Concept Matching"@en ;
     dcat:keyword "Metric"@en ;
     dcat:keyword "Classes"@en ;
+    dcat:keyword "Properties"@en ;
+    dcat:keyword "Edit Distance"@en ;
 
-    # Relationships and Provenance
+    dqv:inDimension <https://w3id.org/cq4oe/dimension/ClassProperty> ;
+    dcterms:isPartOf <https://w3id.org/cq4oe/task/CQ2Term> ;
+    dcterms:isPartOf <https://w3id.org/cq4oe/task/CQ2Onto> ;
+
+    ftr:hasBenchmark <https://w3id.org/cq4oe/benchmark/ALL> ;
+    ftr:supportedBy <https://w3id.org/cq4oe/> ;
     dpv:isApplicableFor <https://www.wikidata.org/wiki/Q184754> ;
-    ftr:hasBenchmark <https://w3id.org/cq2onto/benchmark/ALL> ;
-    sio:SIO_000234 <https://w3id.org/cq4oe/metric/LevenshteinDistance> ;
-    ftr:supportedBy <https://w3id.org/cq2onto/> ;
-    dqv:inDimension "Ontology Engineering"^^xsd:string ;
 
-    # Provenance
     dcterms:creator <https://orcid.org/0009-0001-9475-8159> ;
     dcat:contactPoint <https://orcid.org/0009-0001-9475-8159> ;
     dcterms:publisher <https://oeg.fi.upm.es> ;
     dcterms:publisher <https://ror.org/03n6nwv02> ;
     dcterms:license <http://creativecommons.org/licenses/by/4.0/> .
 
-# Define related resources
-
+# Common related resources
 <https://orcid.org/0009-0001-9475-8159> a vcard:Individual ;
     vcard:fn "JiaYi Li"^^xsd:string ;
     vcard:hasEmail <mailto:li.jiayi@upm.es> .
@@ -77,8 +78,7 @@ This metric tolerates small character-level edits anywhere in the string. It is 
     rdfs:label "Universidad Politécnica de Madrid" ;
     vcard:url <https://www.upm.es/> .
 
-<https://w3id.org/cq4oe/metric/LevenshteinDistance> a ftr:Test .
+<https://w3id.org/cq4oe/benchmark/ALL> a ftr:Benchmark ;
+    dcterms:title "CQ2OE Benchmark"@en ;
+    dcterms:description "Competency Questions for Ontology Engineering. A benchmark for evaluating LLM-assisted ontology generation from competency questions."@en .
 
-<https://w3id.org/cq2onto/benchmark/ALL> a ftr:Benchmark ;
-    dcterms:title "OntologyEngineeringEvaluationBenchmark"@en ;
-    dcterms:description "Comprehensive evaluation framework for assessing how well large language models (LLMs) can generate and match ontology concepts, properties, axioms, and competency-question answers against gold-standard ontology definitions."@en .
