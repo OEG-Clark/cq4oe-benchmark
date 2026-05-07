@@ -5,67 +5,71 @@
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix dqv:     <http://www.w3.org/ns/dqv#> .
-@prefix vivo:    <http://vivoweb.org/ontology/core#> .
 @prefix dpv:     <https://w3id.org/dpv#> .
 @prefix sio:     <http://semanticscience.org/resource/> .
 @prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+
 
 # Metric Resource: SemanticCosineSimilarity
-<https://w3id.org/cq4oe/metric/SemanticCosineSimilarity> a dqv:Metric ;
-
+<https://w3id.org/cq4oe/metric/SemanticCosineSimilarity> a dqv:Metric, ftr:Test ;
     dcterms:identifier "https://w3id.org/cq4oe/metric/SemanticCosineSimilarity" ;
-    dcterms:title "Semantic distances of dense vector representations using a pretrained encoder"@en ;
-    rdfs:label "SemanticCosineSimilarity: Semantic distances of dense vector representations using a pretrained encoder"^^xsd:string ;
-    vivo:abbreviation "semantic"^^xsd:string ;
-    dcat:version "0.0.1"^^xsd:string ;
+    dcterms:title "Semantic distance over dense vector representations"@en ;
+    rdfs:label "SemanticCosineSimilarity: Semantic distance over dense vector representations"^^xsd:string ;
+    dcat:version "0.1.0"^^xsd:string ;
     ftr:status "Active"@en ;
     dcat:landingPage <https://w3id.org/cq4oe/metric/SemanticCosineSimilarity> ;
 
-    # Descriptive Content
     dcterms:description """
-This metric computes the cosine similarity between dense vector embeddings of the generated and gold labels, produced by a pretrained sentence encoder (default: an EmbeddingGemma / sentence-transformers model). The score lies in [0, 1] after rescaling.
-
-**Calculation Process:**
-
-1. Encode both labels into fixed-dimension embedding vectors.
-2. Compute cosine similarity = (v_gen · v_gold) / (||v_gen|| · ||v_gold||).
-3. Rescale to [0, 1] if needed.
-4. Take the maximum similarity across all gold labels.
-5. A pair is considered a match if the score is greater than or equal to 0.6 (default semantic threshold).
+This metric aims to evaluate semantic similarity between a generated label and a gold-standard label by encoding each label with a pretrained sentence-transformer and computing the cosine similarity between their vector representations. The score lies in [-1, 1], with values close to 1 indicating high semantic equivalence.
 
 **Example:**
 
-Generate_Label: Beverage
+Generate_Label_1: Carnivore
 
-Gold_Standard_Label: Drink
+Generate_Label_2: madeFromGrape
 
-SemanticCosineSimilarity(Generate_Label, Gold_Standard_Label) = 0.79
+Generate_Label_3: Software
+
+Gold_Standard_Label_1: Predator
+
+Gold_Standard_Label_2: usedToMake
+
+Gold_Standard_Label_3: Wine
+
+Result:
+
+1. SemanticCosineSimilarity(Generate_Label_1, Gold_Standard_Label_1) ≈ 0.85
+2. SemanticCosineSimilarity(Generate_Label_2, Gold_Standard_Label_2) ≈ 0.78
+3. SemanticCosineSimilarity(Generate_Label_3, Gold_Standard_Label_3) ≈ 0.10
 
 **What is being measured?**
 
-This metric captures meaning, not surface form. Synonyms and near-synonyms can score highly even when the strings have no characters in common, provided the underlying encoder learned them as semantically related during pre-training.
+This metric captures semantic equivalence between labels even when their surface forms differ. It is the strongest single contributor to property-level matching in pilot evaluation, because it correctly identifies paraphrases and synonyms that purely string-based methods miss.
 """ ;
+
     dcat:keyword "Ontology Concept Matching"@en ;
     dcat:keyword "Metric"@en ;
     dcat:keyword "Classes"@en ;
+    dcat:keyword "Properties"@en ;
     dcat:keyword "Encoder"@en ;
+    dcat:keyword "Semantic"@en ;
 
-    # Relationships and Provenance
+    dqv:inDimension <https://w3id.org/cq4oe/dimension/ClassProperty> ;
+    dcterms:isPartOf <https://w3id.org/cq4oe/task/CQ2Term> ;
+    dcterms:isPartOf <https://w3id.org/cq4oe/task/CQ2Onto> ;
+
+    ftr:hasBenchmark <https://w3id.org/cq4oe/benchmark/ALL> ;
+    ftr:supportedBy <https://w3id.org/cq4oe/> ;
     dpv:isApplicableFor <https://www.wikidata.org/wiki/Q184754> ;
-    ftr:hasBenchmark <https://w3id.org/cq2onto/benchmark/ALL> ;
-    sio:SIO_000234 <https://w3id.org/cq4oe/metric/SemanticCosineSimilarity> ;
-    ftr:supportedBy <https://w3id.org/cq2onto/> ;
-    dqv:inDimension "Ontology Engineering"^^xsd:string ;
 
-    # Provenance
     dcterms:creator <https://orcid.org/0009-0001-9475-8159> ;
     dcat:contactPoint <https://orcid.org/0009-0001-9475-8159> ;
     dcterms:publisher <https://oeg.fi.upm.es> ;
     dcterms:publisher <https://ror.org/03n6nwv02> ;
     dcterms:license <http://creativecommons.org/licenses/by/4.0/> .
 
-# Define related resources
-
+# Common related resources
 <https://orcid.org/0009-0001-9475-8159> a vcard:Individual ;
     vcard:fn "JiaYi Li"^^xsd:string ;
     vcard:hasEmail <mailto:li.jiayi@upm.es> .
@@ -79,8 +83,7 @@ This metric captures meaning, not surface form. Synonyms and near-synonyms can s
     rdfs:label "Universidad Politécnica de Madrid" ;
     vcard:url <https://www.upm.es/> .
 
-<https://w3id.org/cq4oe/metric/SemanticCosineSimilarity> a ftr:Test .
+<https://w3id.org/cq4oe/benchmark/ALL> a ftr:Benchmark ;
+    dcterms:title "CQ2OE Benchmark"@en ;
+    dcterms:description "Competency Questions for Ontology Engineering. A benchmark for evaluating LLM-assisted ontology generation from competency questions."@en .
 
-<https://w3id.org/cq2onto/benchmark/ALL> a ftr:Benchmark ;
-    dcterms:title "OntologyEngineeringEvaluationBenchmark"@en ;
-    dcterms:description "Comprehensive evaluation framework for assessing how well large language models (LLMs) can generate and match ontology concepts, properties, axioms, and competency-question answers against gold-standard ontology definitions."@en .

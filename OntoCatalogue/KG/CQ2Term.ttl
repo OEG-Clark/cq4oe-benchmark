@@ -11,29 +11,41 @@
 @prefix prov:    <http://www.w3.org/ns/prov#> .
 
 
-# Dimension Resource: CQCoverage
-<https://w3id.org/cq4oe/dimension/CQCoverage> a dqv:Dimension ;
-    dcterms:identifier "https://w3id.org/cq4oe/dimension/CQCoverage" ;
-    dcterms:title "CQ condition coverage under clouser level"@en ;
-    rdfs:label "CQCoverage: CQ condition coverage under clouser level"^^xsd:string ;
+# Task Resource: CQ2Term
+<https://w3id.org/cq4oe/task/CQ2Term> a prov:Activity, ftr:Benchmark ;
+    dcterms:identifier "https://w3id.org/cq4oe/task/CQ2Term" ;
+    dcterms:title "Term-level generation of classes and properties from competency questions"@en ;
+    rdfs:label "CQ2Term: Term-level generation of classes and properties from competency questions"^^xsd:string ;
     dcat:version "0.1.0"^^xsd:string ;
     ftr:status "Active"@en ;
-    dcat:landingPage <https://w3id.org/cq4oe/dimension/CQCoverage> ;
+    dcat:landingPage <https://w3id.org/cq4oe/task/CQ2Term> ;
 
     dcterms:description """
-This dimension evaluates CQ completeness in the generated content. For each CQ, it measures the fraction of required elements (terms in CQ2Term, axioms in CQ2Onto) that the generation includes and correctly attributes to that CQ.
+**Input.** A set of competency questions (CQs) in natural language for a domain.
+
+**Output.** For each CQ, the set of classes and properties required to answer it.
+
+**Purpose.** Evaluate the conceptualisation capability of an LLM. It checks whether the model can recognise and organise the explicit classes and properties expressed in the CQs, without requiring full ontology generation.
 """ ;
 
+    dcat:keyword "Term Generation"@en ;
+    dcat:keyword "Task"@en ;
     dcat:keyword "Competency Questions"@en ;
-    dcat:keyword "Coverage"@en ;
-    dcat:keyword "Dimension"@en ;
 
+    dcterms:hasPart <https://w3id.org/cq4oe/dimension/ClassProperty> ;
+    dcterms:hasPart <https://w3id.org/cq4oe/dimension/CQCoverage> ;
+    dqv:hasQualityMetric <https://w3id.org/cq4oe/metric/HardMatch> ;
+    dqv:hasQualityMetric <https://w3id.org/cq4oe/metric/SequenceMatch> ;
+    dqv:hasQualityMetric <https://w3id.org/cq4oe/metric/LevenshteinDistance> ;
+    dqv:hasQualityMetric <https://w3id.org/cq4oe/metric/JaroWinklerDistance> ;
+    dqv:hasQualityMetric <https://w3id.org/cq4oe/metric/SemanticCosineSimilarity> ;
+    dqv:hasQualityMetric <https://w3id.org/cq4oe/metric/AggregatedTop3> ;
+    dqv:hasQualityMetric <https://w3id.org/cq4oe/metric/Precision> ;
+    dqv:hasQualityMetric <https://w3id.org/cq4oe/metric/Recall> ;
+    dqv:hasQualityMetric <https://w3id.org/cq4oe/metric/F1> ;
     dqv:hasQualityMetric <https://w3id.org/cq4oe/metric/AtLeastOneCoverage> ;
     dqv:hasQualityMetric <https://w3id.org/cq4oe/metric/MeanCoverage> ;
     dqv:hasQualityMetric <https://w3id.org/cq4oe/metric/FullCoverage> ;
-    dqv:hasQualityMetric <https://w3id.org/cq4oe/metric/ClosureRescueCoverage> ;
-    dcterms:isPartOf <https://w3id.org/cq4oe/task/CQ2Term> ;
-    dcterms:isPartOf <https://w3id.org/cq4oe/task/CQ2Onto> ;
 
     ftr:hasBenchmark <https://w3id.org/cq4oe/benchmark/ALL> ;
     ftr:supportedBy <https://w3id.org/cq4oe/> ;

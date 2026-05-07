@@ -11,51 +11,42 @@
 @prefix prov:    <http://www.w3.org/ns/prov#> .
 
 
-# Metric Resource: InformationContent
-<https://w3id.org/cq4oe/metric/InformationContent> a dqv:Metric, ftr:Test ;
-    dcterms:identifier "https://w3id.org/cq4oe/metric/InformationContent" ;
-    dcterms:title "Semantic-level comparison using WordNet synsets and IC scores"@en ;
-    rdfs:label "InformationContent: Semantic-level comparison using WordNet synsets and IC scores"^^xsd:string ;
+# Metric Resource: EmbeddingDiagnostic
+<https://w3id.org/cq4oe/metric/EmbeddingDiagnostic> a dqv:Metric, ftr:Test ;
+    dcterms:identifier "https://w3id.org/cq4oe/metric/EmbeddingDiagnostic" ;
+    dcterms:title "Soft similarity over normalized textual serializations"@en ;
+    rdfs:label "EmbeddingDiagnostic: Soft similarity over normalized textual serializations"^^xsd:string ;
     dcat:version "0.1.0"^^xsd:string ;
-    ftr:status "Inactive"@en ;
-    dcat:landingPage <https://w3id.org/cq4oe/metric/InformationContent> ;
+    ftr:status "Active"@en ;
+    dcat:landingPage <https://w3id.org/cq4oe/metric/EmbeddingDiagnostic> ;
 
     dcterms:description """
-This metric aims to evaluate semantic similarity between a generated label and a gold-standard label using WordNet synsets and Information-Content (IC) scores such as Resnik, Lin, or Jiang-Conrath. Each label is mapped to a synset, and the IC of their lowest common ancestor in the WordNet taxonomy is normalised to a similarity in [0, 1]. The method was considered but excluded from the final pipeline because IC requires a shared taxonomy, which is generally not the case for LLM-generated outputs.
+This metric aims to evaluate near-miss similarity between generated and gold standard structural elements that fail strict matching. Each element (a triple or a TBox axiom) is rendered as a normalised text serialisation, encoded with a pretrained sentence-transformer, and compared by cosine similarity. The score is reported separately and does not affect the strict Precision, Recall, or F1 of the dimension.
 
 **Example:**
 
-Generate_Label_1: dog
+Gold_Axiom: Animal SubClassOf eats some Plant
 
-Generate_Label_2: cat
-
-Generate_Label_3: software
-
-Gold_Standard_Label_1: hound
-
-Gold_Standard_Label_2: feline
-
-Gold_Standard_Label_3: Wine
+Generated_Axiom: Animal SubClassOf consumes some Vegetable
 
 Result:
 
-1. InformationContent(Generate_Label_1, Gold_Standard_Label_1) ≈ 0.90
-2. InformationContent(Generate_Label_2, Gold_Standard_Label_2) ≈ 0.85
-3. InformationContent(Generate_Label_3, Gold_Standard_Label_3) ≈ 0.05
+1. Strict_match = 0    (different property and class names)
+2. EmbeddingDiagnostic ≈ 0.84    (close in meaning, flagged as a near miss)
 
 **What is being measured?**
 
-This metric captures taxonomy-aware semantic similarity. It is strong when both sides share a stable hierarchy and weak otherwise, which is why it remains in the catalogue only as a documented baseline.
+This metric helps diagnose how close a model came to a correct structural answer when it did not produce an exact match. It is a diagnostic for systematic deviations rather than a scoring signal, used to investigate why a generated element was rejected by strict comparison.
 """ ;
 
-    dcat:keyword "Ontology Concept Matching"@en ;
-    dcat:keyword "Metric"@en ;
-    dcat:keyword "Classes"@en ;
-    dcat:keyword "Properties"@en ;
-    dcat:keyword "WordNet"@en ;
+    dcat:keyword "Ontology Evaluation"@en ;
+    dcat:keyword "Diagnostic"@en ;
+    dcat:keyword "Embedding"@en ;
+    dcat:keyword "Triples"@en ;
+    dcat:keyword "Axioms"@en ;
 
-    dqv:inDimension <https://w3id.org/cq4oe/dimension/ClassProperty> ;
-    dcterms:isPartOf <https://w3id.org/cq4oe/task/CQ2Term> ;
+    dqv:inDimension <https://w3id.org/cq4oe/dimension/Triple> ;
+    dqv:inDimension <https://w3id.org/cq4oe/dimension/Axiom> ;
     dcterms:isPartOf <https://w3id.org/cq4oe/task/CQ2Onto> ;
 
     ftr:hasBenchmark <https://w3id.org/cq4oe/benchmark/ALL> ;

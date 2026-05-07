@@ -11,47 +11,48 @@
 @prefix prov:    <http://www.w3.org/ns/prov#> .
 
 
-# Metric Resource: SequenceMatch
-<https://w3id.org/cq4oe/metric/SequenceMatch> a dqv:Metric, ftr:Test ;
-    dcterms:identifier "https://w3id.org/cq4oe/metric/SequenceMatch" ;
-    dcterms:title "Token-level string similarity comparison"@en ;
-    rdfs:label "SequenceMatch: Token-level string similarity comparison"^^xsd:string ;
+# Metric Resource: ClosureRescueCoverage
+<https://w3id.org/cq4oe/metric/ClosureRescueCoverage> a dqv:Metric, ftr:Test ;
+    dcterms:identifier "https://w3id.org/cq4oe/metric/ClosureRescueCoverage" ;
+    dcterms:title "CQ coverage credited via reasoner-inferred subsumption closure"@en ;
+    rdfs:label "ClosureRescueCoverage: CQ coverage credited via reasoner-inferred subsumption closure"^^xsd:string ;
     dcat:version "0.1.0"^^xsd:string ;
     ftr:status "Active"@en ;
-    dcat:landingPage <https://w3id.org/cq4oe/metric/SequenceMatch> ;
+    dcat:landingPage <https://w3id.org/cq4oe/metric/ClosureRescueCoverage> ;
 
     dcterms:description """
-This metric aims to evaluate token-level similarity between a generated label and a gold-standard label using Python's `difflib.SequenceMatcher`. It returns a similarity ratio in [0, 1] based on the longest contiguous matching subsequences shared by the two strings.
+This metric aims to evaluate CQ coverage with reasoning, crediting hierarchy axioms missed by strict matching but confirmed by the generated ontology's HermiT-inferred subsumption closure. Each gold axiom is decomposed into atomic SubClassOf and SubPropertyOf pairs; an axiom is rescued only when every one of its atomic pairs is present in the closure. Non-hierarchical axioms are scored only by the strict layer.
 
 **Example:**
 
-Generate_Label_1: hasVersion
+Gold_Axiom_for_CQ7: EquivalentClasses(SeafoodWine, WhiteWine ⊓ DryWine ⊓ pairsWith.Seafood)
 
-Generate_Label_2: has_version
+Atomic_Pairs: { SeafoodWine ⊑ WhiteWine, SeafoodWine ⊑ DryWine, SeafoodWine ⊑ pairsWith.Seafood }
 
-Generate_Label_3: Liquor
+Generated_Closure_Contains:
 
-Gold_Standard_Label: hasVersion
+1. SeafoodWine ⊑ WhiteWine    → matched
+2. SeafoodWine ⊑ DryWine    → matched
+3. SeafoodWine ⊑ pairsWith.Seafood    → unmatched
 
 Result:
 
-1. SequenceMatch(Generate_Label_1, Gold_Standard_Label) = 1.00
-2. SequenceMatch(Generate_Label_2, Gold_Standard_Label) ≈ 0.95
-3. SequenceMatch(Generate_Label_3, Gold_Standard_Label) ≈ 0.20
+2 of 3 atomic pairs match → axiom NOT rescued under the all-or-nothing rule. It contributes 0 to CQ7's TP count under this layer.
 
 **What is being measured?**
 
-This metric captures structural overlap between two labels at the substring level. It is more forgiving than HardMatch and matches naming-convention variants, but it remains purely lexical and does not account for meaning.
+This metric reports how much additional CQ coverage reasoning can credit when the explicit axiom strings do not match. In experiments, closure rescue raises mean coverage by an average of +1.4 points but does not turn partial CQ coverage into full CQ coverage in the evaluated runs.
 """ ;
 
-    dcat:keyword "Ontology Concept Matching"@en ;
+    dcat:keyword "Ontology Engineering"@en ;
     dcat:keyword "Metric"@en ;
-    dcat:keyword "Classes"@en ;
-    dcat:keyword "Properties"@en ;
-    dcat:keyword "Lexical"@en ;
+    dcat:keyword "Competency Questions"@en ;
+    dcat:keyword "Reasoning"@en ;
+    dcat:keyword "HermiT"@en ;
+    dcat:keyword "Closure"@en ;
 
-    dqv:inDimension <https://w3id.org/cq4oe/dimension/ClassProperty> ;
-    dcterms:isPartOf <https://w3id.org/cq4oe/task/CQ2Term> ;
+    dqv:inDimension <https://w3id.org/cq4oe/dimension/CQCoverage> ;
+    dqv:inDimension <https://w3id.org/cq4oe/dimension/HierarchyClosure> ;
     dcterms:isPartOf <https://w3id.org/cq4oe/task/CQ2Onto> ;
 
     ftr:hasBenchmark <https://w3id.org/cq4oe/benchmark/ALL> ;

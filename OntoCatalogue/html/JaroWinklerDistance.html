@@ -2,34 +2,46 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>JaroWinklerDistance: String similarity metric emphasizing common prefixes</title>
+        <title>JaroWinklerDistance: String similarity emphasizing common prefixes</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        
+<style>
+    .row { margin-bottom: 10px; }
+    .well { margin: 0; padding: 10px; min-height: 40px; }
+    .tag_div { margin-right: 10px; }
+    .row-equal { display: flex; align-items: stretch; }
+    .align-items-center { display: flex; align-items: center; }
+    .flex-space-between { display: flex; justify-content: space-between; }
+    .text-separation { margin-top: 20px; }
+    .miClase { margin-bottom: 20px; }
+    .status-indicator {
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        margin-right: 6px;
+        vertical-align: middle;
+    }
+    .status-indicator.Active { background-color: #28a745; }
+    .status-indicator.Proposed { background-color: #ffc107; }
+    .status-indicator.Inactive { background-color: #6c757d; }
+    .status-indicator.Deprecated { background-color: #dc3545; }
+    .legend-inline > * { margin-right: 12px; }
+    .table td.short-name, .table th.short-name {
+        width: 240px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    pre { background: #f7f7f9; padding: 10px; border-radius: 4px; }
+    code { color: #c7254e; background: #f9f2f4; padding: 2px 4px; border-radius: 3px; }
+    pre code { color: inherit; background: transparent; padding: 0; }
+    h1.miClase { font-size: 26px; line-height: 1.3; }
+</style>
+
     </head>
     <body>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-        <style>
-            .row { margin-bottom: 10px; }
-            .well { margin: 0; padding: 10px; min-height: 40px; }
-            .tag_div { margin-right: 10px; }
-            .row-equal { display: flex; align-items: stretch; }
-            .align-items-center { display: flex; align-items: center; }
-            .flex-space-between { display: flex; justify-content: space-between; }
-            .text-separation { margin-top: 20px; }
-            .miClase { margin-bottom: 20px; }
-            .status-indicator {
-                display: inline-block;
-                width: 14px;
-                height: 14px;
-                border-radius: 50%;
-                margin-right: 6px;
-                vertical-align: middle;
-            }
-            .status-indicator.Active { background-color: #28a745; }
-            .status-indicator.Proposed { background-color: #ffc107; }
-            .status-indicator.Inactive { background-color: #6c757d; }
-            .status-indicator.Deprecated { background-color: #dc3545; }
-            .legend-inline > * { margin-right: 12px; }
-        </style>
 
         <div class="container">
             <div class="row">
@@ -37,26 +49,26 @@
                     <button type="button" class="btn btn-primary"
                             onclick="window.location.href='catalog.html'"
                             style="position: absolute; top: 10px; right: 10px;">Back</button>
-                    <h1 class="miClase text-center">JaroWinklerDistance: String similarity metric emphasizing common prefixes</h1>
+                    <h1 class="miClase text-center">JaroWinklerDistance: String similarity emphasizing common prefixes</h1>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-12 well" style="font-size: 16px;">
-                    <p>This metric computes the Jaro-Winkler similarity between a generated label and each gold-standard label, returning a score in [0, 1]. The Jaro-Winkler variant boosts matches that share a common prefix, which is useful for terminology that follows shared roots.</p>
-<p><strong>Calculation Process:</strong></p>
-<ol>
-<li>Compute the Jaro similarity between the generated label and each gold label, accounting for matching characters and transpositions within a sliding window.</li>
-<li>Apply the Winkler boost: scale up the score for pairs sharing a prefix of up to four characters.</li>
-<li>Take the maximum similarity across all gold labels.</li>
-<li>A pair is considered a match if the score is greater than or equal to 0.8 (default lexical threshold).</li>
-</ol>
+                    <p>This metric aims to evaluate similarity between a generated label and a gold-standard label using the Jaro-Winkler distance, which extends the Jaro distance by giving extra weight to matching prefixes (up to four characters by default). The score lies in [0, 1].</p>
 <p><strong>Example:</strong></p>
-<p>Generate_Label: WineColor</p>
-<p>Gold_Standard_Label: WineColour</p>
-<p>JaroWinklerDistance(Generate_Label, Gold_Standard_Label) = 0.96</p>
+<p>Generate_Label_1: hasStartTimestamp</p>
+<p>Generate_Label_2: hasStartTime</p>
+<p>Generate_Label_3: Plant</p>
+<p>Gold_Standard_Label: hasStartTimestamp</p>
+<p>Result:</p>
+<ol>
+<li>JaroWinklerDistance(Generate_Label_1, Gold_Standard_Label) = 1.00</li>
+<li>JaroWinklerDistance(Generate_Label_2, Gold_Standard_Label) ≈ 0.95</li>
+<li>JaroWinklerDistance(Generate_Label_3, Gold_Standard_Label) ≈ 0.40</li>
+</ol>
 <p><strong>What is being measured?</strong></p>
-<p>This metric tolerates small character-level differences, especially in suffixes (e.g. British vs American spelling, plural forms, minor typos), while penalizing changes early in the string.</p>
+<p>This metric captures lexical similarity weighted toward shared prefixes. It is particularly useful for property labels that follow common conventions such as <code>has<em></code>, <code>is</em></code>, or namespace stems like <code>dc:<em></code> and <code>rdf:</em></code>.</p>
                 </div>
             </div>
 
@@ -72,7 +84,7 @@
 
             <div class="row row-equal">
                 <div class="col-md-3 well tag_div"><strong>Title</strong></div>
-                <div class="col-md-9 well">String similarity metric emphasizing common prefixes</div>
+                <div class="col-md-9 well">String similarity emphasizing common prefixes</div>
             </div>
             <div class="row row-equal">
                 <div class="col-md-3 well tag_div"><strong>Identifier</strong></div>
@@ -82,7 +94,7 @@
             </div>
             <div class="row row-equal">
                 <div class="col-md-3 well tag_div"><strong>Keywords</strong></div>
-                <div class="col-md-9 well">Ontology Concept Matching, Metric, Classes</div>
+                <div class="col-md-9 well">Ontology Concept Matching, Metric, Classes, Properties, Lexical</div>
             </div>
             <div class="row row-equal">
                 <div class="col-md-3 well tag_div"><strong>Contact Point</strong></div>
@@ -100,63 +112,61 @@
             </div>
             <div class="row row-equal">
                 <div class="col-md-3 well tag_div"><strong>Version</strong></div>
-                <div class="col-md-9 well">0.0.1</div>
+                <div class="col-md-9 well">0.1.0</div>
             </div>
             <div class="row row-equal">
                 <div class="col-md-3 well tag_div"><strong>License</strong></div>
                 <div class="col-md-9 well">
-                    <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank">
-                        http://creativecommons.org/licenses/by/4.0/
-                    </a>
+                    <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank">http://creativecommons.org/licenses/by/4.0/</a>
                 </div>
             </div>
             <div class="row row-equal">
-                <div class="col-md-3 well tag_div"><strong>Dimension</strong></div>
-                <div class="col-md-9 well">
-                    <ul>
-                        <li>Ontology Engineering</li>
-                    </ul>
-                </div>
-            </div>
+            <div class="col-md-3 well tag_div"><strong>Category</strong></div>
+            <div class="col-md-9 well">Ontology Concept Matching</div>
+        </div>
+<div class="row row-equal">
+            <div class="col-md-3 well tag_div"><strong>Dimension</strong></div>
+            <div class="col-md-9 well"><ul><li><a href="ClassProperty.html">ClassProperty</a></li></ul></div>
+        </div>
+<div class="row row-equal">
+            <div class="col-md-3 well tag_div"><strong>Task</strong></div>
+            <div class="col-md-9 well"><ul><li><a href="CQ2Term.html">CQ2Term</a></li><li><a href="CQ2Onto.html">CQ2Onto</a></li></ul></div>
+        </div>
+<div class="row row-equal">
+            <div class="col-md-3 well tag_div"><strong>Applicable for</strong></div>
+            <div class="col-md-9 well"><a href="https://www.wikidata.org/wiki/Q184754" target="_blank">https://www.wikidata.org/wiki/Q184754</a></div>
+        </div>
             <div class="row row-equal">
                 <div class="col-md-3 well tag_div"><strong>Benchmark</strong></div>
                 <div class="col-md-9 well">
-                    <a href="https://w3id.org/cq2onto/benchmark/ALL" target="_blank">OntologyEngineeringEvaluationBenchmark</a>:
-                    comprehensive evaluation framework for assessing how well large language models (LLMs)
-                    generate and match ontology concepts, properties, axioms, and competency-question
-                    answers against gold-standard ontology definitions.
+                    <a href="https://w3id.org/cq4oe/benchmark/ALL" target="_blank">CQ2OE Benchmark</a>:
+                    Competency Questions for Ontology Engineering. A benchmark for evaluating LLM-assisted ontology generation from competency questions.
                 </div>
             </div>
             <div class="row row-equal">
-                <div class="col-md-3 well tag_div"><strong>Applicable for</strong></div>
-                <div class="col-md-9 well">
-                    <a href="https://www.wikidata.org/wiki/Q184754" target="_blank">
-                        https://www.wikidata.org/wiki/Q184754
-                    </a>
-                </div>
-            </div>
-            <div class="row row-equal">
-                <div class="col-md-3 well tag_div"><strong>Metric Status</strong></div>
+                <div class="col-md-3 well tag_div"><strong>Status</strong></div>
                 <div class="col-md-2 well">
                     <span class="status-indicator Active"></span>
                     <span>Active</span>
                 </div>
                 <div class="col-md-7 d-flex align-items-center flex-wrap">
                     <div class="legend-inline">
-                        <span class="status-indicator Active" title="The metric is actively used and maintained."></span> <strong>Active</strong>
-                        <span class="status-indicator Proposed" title="The metric is under review or consideration."></span> <strong>Proposed</strong>
-                        <span class="status-indicator Inactive" title="The metric is not currently in use."></span> <strong>Inactive</strong>
-                        <span class="status-indicator Deprecated" title="The metric has been retired."></span> <strong>Deprecated</strong>
+                        <span class="status-indicator Active" title="Actively used and maintained."></span> <strong>Active</strong>
+                        <span class="status-indicator Proposed" title="Under review or consideration."></span> <strong>Proposed</strong>
+                        <span class="status-indicator Inactive" title="Considered but not used in the current pipeline."></span> <strong>Inactive</strong>
+                        <span class="status-indicator Deprecated" title="Retired."></span> <strong>Deprecated</strong>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div id="pie" class="row" style="margin-top: 20px;">
-            <div class="col-md-12 text-center">
-                Ontology Engineering Group
-                <a href="https://oeg.fi.upm.es" target="_blank">https://oeg.fi.upm.es</a>
-            </div>
-        </div>
+        
+<div id="pie" class="row" style="margin-top: 20px;">
+    <div class="col-md-12 text-center">
+        Ontology Engineering Group
+        <a href="https://oeg.fi.upm.es" target="_blank">https://oeg.fi.upm.es</a>
+    </div>
+</div>
+
     </body>
 </html>

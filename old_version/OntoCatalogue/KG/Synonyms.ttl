@@ -5,70 +5,67 @@
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix dqv:     <http://www.w3.org/ns/dqv#> .
+@prefix vivo:    <http://vivoweb.org/ontology/core#> .
 @prefix dpv:     <https://w3id.org/dpv#> .
 @prefix sio:     <http://semanticscience.org/resource/> .
 @prefix foaf:    <http://xmlns.com/foaf/0.1/> .
-@prefix prov:    <http://www.w3.org/ns/prov#> .
-
 
 # Metric Resource: Synonyms
-<https://w3id.org/cq4oe/metric/Synonyms> a dqv:Metric, ftr:Test ;
+<https://w3id.org/cq4oe/metric/Synonyms> a dqv:Metric ;
+
     dcterms:identifier "https://w3id.org/cq4oe/metric/Synonyms" ;
     dcterms:title "Exact match against WordNet synonym relations"@en ;
     rdfs:label "Synonyms: Exact match against WordNet synonym relations"^^xsd:string ;
-    dcat:version "0.1.0"^^xsd:string ;
-    ftr:status "Inactive"@en ;
+    vivo:abbreviation "synonyms"^^xsd:string ;
+    dcat:version "0.0.1"^^xsd:string ;
+    ftr:status "Active"@en ;
     dcat:landingPage <https://w3id.org/cq4oe/metric/Synonyms> ;
 
+    # Descriptive Content
     dcterms:description """
-This metric aims to evaluate whether a generated label is a recognised synonym of a gold-standard label, using WordNet's synset relations. It returns 1 when the two labels appear in the same synset and 0 otherwise. The method was considered but excluded from the final pipeline because WordNet poorly covers domain-specific ontology vocabulary.
+This metric evaluates whether the generated label, expanded with its WordNet synonyms, exactly matches any label in the gold-standard ontology.
+
+**Calculation Process:**
+
+1. Retrieve all synonyms of the generated label from WordNet, forming a generated-label set.
+2. Compare every member of the generated-label set against every gold-standard label using exact (case-insensitive) match.
+3. If at least one pair matches, the result is 1; otherwise the result is 0.
 
 **Example:**
 
-Generate_Label_1: automobile
+Generated_label: Wine
 
-Generate_Label_2: hound
+Generated_label_set: Wine, alcohol, vintage, red_wine, white_wine, dark_red, …
 
-Generate_Label_3: Wine
+Gold_standard_label: red_wine
 
-Gold_Standard_Label_1: car
-
-Gold_Standard_Label_2: dog
-
-Gold_Standard_Label_3: Liquor
-
-Result:
-
-1. Synonyms(Generate_Label_1, Gold_Standard_Label_1) = 1
-2. Synonyms(Generate_Label_2, Gold_Standard_Label_2) = 1
-3. Synonyms(Generate_Label_3, Gold_Standard_Label_3) = 0
+Result: Synonyms(Gold_standard_label, Generated_label_set) = 1
 
 **What is being measured?**
 
-This metric captures lexicographic synonymy as encoded in WordNet. It is useful as a complementary signal in general-domain text but insufficient for technical labels typical in evaluated ontologies, which is why it is retained here only for transparency and reproducibility.
+This metric identifies semantically equivalent concepts expressed through different lexical forms by leveraging the synonym relation curated in WordNet (or a comparable lexical dictionary).
 """ ;
-
     dcat:keyword "Ontology Concept Matching"@en ;
     dcat:keyword "Metric"@en ;
     dcat:keyword "Classes"@en ;
-    dcat:keyword "Properties"@en ;
     dcat:keyword "WordNet"@en ;
 
-    dqv:inDimension <https://w3id.org/cq4oe/dimension/ClassProperty> ;
-    dcterms:isPartOf <https://w3id.org/cq4oe/task/CQ2Term> ;
-    dcterms:isPartOf <https://w3id.org/cq4oe/task/CQ2Onto> ;
-
-    ftr:hasBenchmark <https://w3id.org/cq4oe/benchmark/ALL> ;
-    ftr:supportedBy <https://w3id.org/cq4oe/> ;
+    # Relationships and Provenance
     dpv:isApplicableFor <https://www.wikidata.org/wiki/Q184754> ;
+    ftr:hasBenchmark <https://w3id.org/cq2onto/benchmark/ALL> ;
+    sio:SIO_000234 <https://w3id.org/cq4oe/metric/Synonyms> ;
+    ftr:supportedBy <https://w3id.org/cq2onto/> ;
+    dqv:inDimension "Ontology Engineering"^^xsd:string ;
 
+    # Provenance
     dcterms:creator <https://orcid.org/0009-0001-9475-8159> ;
     dcat:contactPoint <https://orcid.org/0009-0001-9475-8159> ;
     dcterms:publisher <https://oeg.fi.upm.es> ;
     dcterms:publisher <https://ror.org/03n6nwv02> ;
     dcterms:license <http://creativecommons.org/licenses/by/4.0/> .
 
-# Common related resources
+# Define related resources
+
 <https://orcid.org/0009-0001-9475-8159> a vcard:Individual ;
     vcard:fn "JiaYi Li"^^xsd:string ;
     vcard:hasEmail <mailto:li.jiayi@upm.es> .
@@ -82,7 +79,8 @@ This metric captures lexicographic synonymy as encoded in WordNet. It is useful 
     rdfs:label "Universidad Politécnica de Madrid" ;
     vcard:url <https://www.upm.es/> .
 
-<https://w3id.org/cq4oe/benchmark/ALL> a ftr:Benchmark ;
-    dcterms:title "CQ2OE Benchmark"@en ;
-    dcterms:description "Competency Questions for Ontology Engineering. A benchmark for evaluating LLM-assisted ontology generation from competency questions."@en .
+<https://w3id.org/cq4oe/metric/Synonyms> a ftr:Test .
 
+<https://w3id.org/cq2onto/benchmark/ALL> a ftr:Benchmark ;
+    dcterms:title "OntologyEngineeringEvaluationBenchmark"@en ;
+    dcterms:description "Comprehensive evaluation framework for assessing how well large language models (LLMs) can generate and match ontology concepts, properties, axioms, and competency-question answers against gold-standard ontology definitions."@en .
