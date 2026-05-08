@@ -1,4 +1,5 @@
 # CQ2Onto: A benchmark for assessing the LLM-assisted ontology generation from competency questions
+[![DOI](https://zenodo.org/badge/20080308.svg)](https://doi.org/10.5281/zenodo.20080308)
 
 
 This repository contains a benchmark for assessing the performance of different LLM-based ontology generation methods from competency questions. The benchmark is built on six domain experts annotated ontologies that are exact mirroring the corresponding competency questions. 
