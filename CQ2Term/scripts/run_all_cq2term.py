@@ -4,7 +4,7 @@
 import subprocess
 from pathlib import Path
 
-PYTHON = "/Users/ljymacbook/opt/anaconda3/envs/tempautocl/bin/python"
+PYTHON = "YOUR PATH"
 
 PRED_ROOT = Path("01_predictions")
 GOLD_ROOT = Path("00_gold_standard")
