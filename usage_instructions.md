@@ -278,7 +278,7 @@ The runner **does not** need you to specify which file to evaluate. It walks `01
   - `--threshold` (default `0.6`). Controls the cosine-similarity cutoff used by the embedding-based Layer 2 in the triple evaluation. Raise to be stricter, lower to be looser.
 
 - **Datatype relaxation** (passed to `eval_triple.py` and `eval_axioms.py`):
-  - `--literal_relax yes` or `no` (default in the shipped runner: `yes`)
+  - `--literal_relax yes` or `no` (default in the shipped runner: `no`)
 
 When `--literal_relax yes`, a generic literal root in the gold (`rdfs:Literal`, `xsd:anySimpleType`, `xsd:anyAtomicType`) matches any concrete `xsd:*` or `rdf:*` datatype in the prediction, treating a concrete prediction as a sound specialization of a generic gold. Set to `no` to keep strict equality (matches the numbers in the paper's strict configuration).
 
