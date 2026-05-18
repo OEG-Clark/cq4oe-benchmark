@@ -10,9 +10,6 @@ The gold standards for both tasks and entire annotation process are also publish
  
 **Task 2: [CQ2Onto](https://w3id.org/cq4oe/task/CQ2Onto)** Given a set of competency questions in any domain, processing by LLM-based ontology generation method, producing a full OWL ontology.
 
-
-
-
 **Source Ontologies**:
 - [Wine](https://github.com/UCDavisLibrary/wine-ontology): Wine Ontology
 - [VGO](https://vocab.linkeddata.es/vgo/): VideoGame Ontolgy
@@ -20,6 +17,17 @@ The gold standards for both tasks and entire annotation process are also publish
 - [AWO](https://people.cs.uct.ac.za/~mkeet/OEbook/ontologies/AfricanWildlifeOntology1.owl): African wildlife Ontology
 - [ODRL](https://www.w3.org/ns/odrl/2/): Open Digital Rights Language Ontology
 - [Water](https://saref.etsi.org/saref4watr/v1.1.1/#clause-4-2-7): SAREF4WATR Ontolgy
+
+## Using CQ4OE
+If you want to use CQ4OE with your generated ontologies from your own baselines, please see the [usage instructions](usage_instructions.md).
+
+## Contributing to CQ4OE
+If you wish to submit your own results, please open an issue with:
+- The generated ontologies (a .ttl file for each)
+- The task it addresses (CQ2Term or CQ2onto)
+- Details on the model / approach used in the generation.
+
+We'll do our best to verify your results. Once the results have been verified, they will be added to the repository.
 
 ## Annotation
 
@@ -183,6 +191,6 @@ Given a single competency question, the LLM outputs the classes and properties n
    2. Metrics: [`AtLeastOneCoverage`](https://w3id.org/cq4oe/metric/AtLeastOneCoverage), [`MeanCoverage`](https://w3id.org/cq4oe/metric/MeanCoverage), [`FullCoverage`](https://w3id.org/cq4oe/metric/FullCoverage).
 
 
-## Ackownledgement
+## Acknowledgement
 
 This work was supported by the grant [SOEL: Supporting Ontology Engineering with Large Language Models](https://w3id.org/soel) PID2023-152703NA-I00 funded by MCIN/AEI/10.13039/501100011033 and by ERDF/UE. The authors would also like to thank the EDINT (Espacios de Datos para las Infraestructuras Urbanas Inteligentes) ontology development team for sharing the project resources for evaluation purposes.
