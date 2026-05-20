@@ -1362,6 +1362,40 @@ def main():
         if "summary" in clean:
             config["summary"] = clean.pop("summary")
 
+        # MOD: stamp cli_args onto config so the leaderboard can group runs
+        # by evaluation configuration without an --assume_config flag.
+        config["cli_args"] = {
+            k: (str(v) if hasattr(v, "__fspath__") else v)
+            for k, v in vars(args).items()
+        }
+
+        # MOD: derive an aggregated_overall block from label_matching.overall
+        # (already aggregated across ObjectProperty / DatatypeProperty /
+        # AnnotationProperty). Adds tp/fp/fn that the leaderboard expects.
+        _lm = clean.get("label_matching", {})
+        _ov = _lm.get("overall") if isinstance(_lm, dict) else None
+        if isinstance(_ov, dict):
+            _tp_g = int(_ov.get("gold_covered", 0))
+            _tp_p = int(_ov.get("pred_supported", 0))
+            _summary = config.get("summary", {}) or {}
+            _n_gold = int(_summary.get("n_gold", 0))
+            _n_pred = int(_summary.get("n_pred", 0))
+            # TP is the count of one-to-one accepted pairs, which equals
+            # min(gold_covered, pred_supported) when the alignment is strict.
+            _tp = min(_tp_g, _tp_p)
+            _fp = max(0, _n_pred - _tp)
+            _fn = max(0, _n_gold - _tp)
+            clean["aggregated_overall"] = {
+                "tp": _tp, "fp": _fp, "fn": _fn,
+                "precision": _ov.get("precision"),
+                "recall":    _ov.get("recall"),
+                "f1":        _ov.get("f1"),
+                "gold_covered":   _tp_g,
+                "pred_supported": _tp_p,
+                "gold_total":     _n_gold,
+                "pred_total":     _n_pred,
+            }
+
         results_list = []
         for section_name, section_data in clean.items():
             if isinstance(section_data, dict):
