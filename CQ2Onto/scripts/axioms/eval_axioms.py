@@ -1994,6 +1994,7 @@ def save_result_json(stats_g, stats_p, layer2, layer3, layer4, cov,
         "layer2_threshold": args.threshold,
         "layer2_model": args.model,
         "layer2_skipped": bool(args.no_layer2),
+        "cli_args": vars(args), 
     }
 
     def _compact_judgment(v):
