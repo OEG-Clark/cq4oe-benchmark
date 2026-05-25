@@ -25,6 +25,14 @@
     padding: 8px 12px; background: #f5f6f8; border-left: 3px solid #cfd6e1;
     border-radius: 3px;
   }
+  p.task-desc .catalog-links {
+    display: block; margin-top: 8px; font-style: normal;
+    font-size: 12.5px; color: #888;
+  }
+  p.task-desc .catalog-link {
+    color: #1a73e8; text-decoration: none; font-weight: 500;
+  }
+  p.task-desc .catalog-link:hover { text-decoration: underline; }
 
   /* Top home link */
   .topbar-mini {
@@ -459,6 +467,46 @@ function modelCellHTML(raw) {
   return `<span title="${raw}">${name}</span>`;
 }
 
+// ─────────────────────────────────────────────────────────────
+// Task pages + per-target (dimension) catalog pages.
+// (CATALOG_BASE is already defined above.)
+// ─────────────────────────────────────────────────────────────
+const TASK_CATALOG = {
+  cq2term: CATALOG_BASE + "/CQ2Term.html",
+  cq2onto: CATALOG_BASE + "/CQ2Onto.html",
+};
+// Target accent → dimension catalog page
+const TARGET_CATALOG = {
+  term:      CATALOG_BASE + "/ClassProperty.html",
+  prop:      CATALOG_BASE + "/PropertyCharacteristics.html",
+  triple:    CATALOG_BASE + "/Triple.html",
+  axiom:     CATALOG_BASE + "/Axiom.html",
+  hierarchy: CATALOG_BASE + "/HierarchyClosure.html",
+};
+
+// ─────────────────────────────────────────────────────────────
+// Generation-strategy (mode) display names + definitions.
+// Raw data uses normal/cqbycq/agent; the paper calls these
+// Zero-shot / Iterative / Multi-agent. mymodel is a user submission.
+// ─────────────────────────────────────────────────────────────
+const MODE_INFO = {
+  normal:  { label: "Zero-shot",  def: "Zero-shot: the full CQ set is fed to the model in a single pass." },
+  cqbycq:  { label: "Iterative",  def: "Iterative: CQs are fed to the model sequentially, one at a time." },
+  agent:   { label: "Multi-agent", def: "Multi-agent: the initial ontology is refined with RDFLib, HermiT and OOPS! for up to three iterations with backtracking." },
+  mymodel: { label: "mymodel",    def: "Your submission." },
+};
+function prettyMode(raw) {
+  const m = MODE_INFO[raw];
+  return m ? m.label : (raw || "—");
+}
+function modeTitle(raw) {
+  const m = MODE_INFO[raw];
+  return m ? m.def : (raw || "");
+}
+function modeCellHTML(raw) {
+  return `<span title="${modeTitle(raw)} (raw: ${raw})">${prettyMode(raw)}</span>`;
+}
+
 function tooltipPRF1(m) {
   if (!m) return "";
   const p  = m.p  === null || m.p  === undefined ? "—" : m.p.toFixed(1) + "%";
@@ -829,7 +877,7 @@ function buildRows(table, runs, cols, showOverall, totalDatasets) {
   const tbody = document.createElement("tbody");
   runs.forEach((run, idx) => {
     const tr = document.createElement("tr");
-    const modeCell = showMode ? `<td class="mono">${run.mode || "—"}</td>` : ``;
+    const modeCell = showMode ? `<td class="mono">${modeCellHTML(run.mode)}</td>` : ``;
     tr.innerHTML = `<td class="rank">${idx + 1}</td>${modeCell}<td class="mono">${modelCellHTML(run.model)}</td>`;
 
     cols.forEach(col => {
@@ -983,8 +1031,17 @@ function renderNav() {
     }, { extraClass: "domain" });
   });
 
-  // Task description
-  document.getElementById("task-desc").textContent = TASKS[state.benchmark][state.task].desc;
+  // Task description + OntoCatalogue links (task page + this target's dimension page)
+  const def = TASKS[state.benchmark][state.task];
+  const taskUrl = TASK_CATALOG[state.benchmark];
+  const targetUrl = TARGET_CATALOG[def.accent];
+  const bmLabel = state.benchmark === "cq2term" ? "CQ2Term" : "CQ2Onto";
+  let descHTML = def.desc;
+  const links = [];
+  if (taskUrl) links.push(`<a class="catalog-link" href="${taskUrl}" target="_blank" rel="noopener">${bmLabel} task ↗</a>`);
+  if (targetUrl) links.push(`<a class="catalog-link" href="${targetUrl}" target="_blank" rel="noopener">${def.label} metrics ↗</a>`);
+  if (links.length) descHTML += `<span class="catalog-links">Catalogue: ${links.join(" · ")}</span>`;
+  document.getElementById("task-desc").innerHTML = descHTML;
 
   // Keep URL hash in sync with current task/target
   if (typeof syncHash === "function") syncHash();
