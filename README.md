@@ -42,7 +42,7 @@ The annotation runs as a four-phase pipeline. Phase 1 fixes the conceptual backb
 
 ![Annotation pipeline](https://raw.githubusercontent.com/oeg-upm/cq4oe-benchmark/main/diagram/cq4or_anno_pipeline.png)
 
-*Figure 1. CQ4OE annotation pipeline. Include 4 Phase*
+*Figure 1. CQ4OE annotation pipeline. Include 4 Phases.*
 
 ### Annotation Guideline
 
