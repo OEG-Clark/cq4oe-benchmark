@@ -1,3 +1,19 @@
+# ============================================================================
+# Property-level evaluation of a predicted ontology against a gold ontology.
+# Parses every OWL property (Object / Datatype / Annotation) from both files
+# and evaluates them in several layers:
+#   Layer 1 — property-type distribution (how many of each type on each side).
+#   Layer 2 — per-method label matching (hard / sequence / Levenshtein /
+#             Jaro-Winkler / semantic), each run standalone with 1-to-1 greedy
+#             matching at a fixed threshold.
+#   Layer 3 — "best" combined matching: average the top-N method scores per
+#             pair, then 1-to-1 greedy select within each property type.
+#   Plus    — Functional/InverseFunctional check and a full OWL-characteristics
+#             check (delegated to eva_char_in_property.eval_characteristics).
+# Outputs: full result JSON, a best-matching CSV (the alignment table other
+# scripts consume), per-pair audit traces (CSV/JSON), and a Markdown report.
+# ============================================================================
+
 from __future__ import annotations
 
 import argparse
