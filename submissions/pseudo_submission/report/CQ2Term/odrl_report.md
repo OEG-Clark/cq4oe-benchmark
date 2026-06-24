@@ -114,12 +114,12 @@ Per-CQ accuracy (_does pred mention the right concepts in the right CQ?_) is rep
 **Missed gold terms (FN):**
 
 - Classes (1): `assetcollection`
-- Properties (16): `assignee`, `relation`, `inheritsfrom`, `onlyone`, `handlepolicyconflicts`, `andsequence`, `or`, `function`, `and`, `operand`, `inheritrelation`, `failure`, `target`, `targetpolicy`, `haspermission`, `assigner`
+- Properties (16): `inheritsfrom`, `targetpolicy`, `function`, `relation`, `failure`, `andsequence`, `assignee`, `handlepolicyconflicts`, `onlyone`, `or`, `target`, `assigner`, `haspermission`, `and`, `operand`, `inheritrelation`
 
 **Extra pred terms (FP) — don't translate to any gold term:**
 
-- Classes (17): `sequencing`, `aggregation`, `container`, `rel`, `datamodel`, `disaggregation`, `contractparty`, `andconstraint`, `contract`, `role`, `right`, `requirement`, `xorconstraint`, `remedy`, `odrl`, `violation`, `transferright`
-- Properties (12): `playsrole`, `supportsinheritance`, `isexclusive`, `nests`, `supports`, `expressedvia`, `hasright`, `hassubconstraint`, `specifies`, `directlylinkedto`, `isactivateduponfailure`, `appliesto`
+- Classes (17): `requirement`, `rel`, `right`, `xorconstraint`, `andconstraint`, `odrl`, `role`, `datamodel`, `transferright`, `violation`, `contract`, `disaggregation`, `aggregation`, `contractparty`, `sequencing`, `remedy`, `container`
+- Properties (12): `supportsinheritance`, `expressedvia`, `directlylinkedto`, `hasright`, `specifies`, `isactivateduponfailure`, `appliesto`, `playsrole`, `supports`, `hassubconstraint`, `isexclusive`, `nests`
 
 ### Per-term Coverage Overview
 
