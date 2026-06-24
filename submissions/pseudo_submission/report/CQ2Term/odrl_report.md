@@ -88,9 +88,9 @@ Each pair's per-method scores are averaged over the **top 3** methods, then pair
 | `hasconstraint` | `hasconstraint` | 1.000 | hard_match=1.00, jaro_winkler=1.00, levenshtein=1.00 |
 | `hasoperator` | `hasoperator` | 1.000 | hard_match=1.00, jaro_winkler=1.00, levenshtein=1.00 |
 | `partof` | `ispartof` | 0.868 | jaro_winkler=0.92, sequence_match=0.86, semantic=0.83 |
-| `consequence` | `isconsequenceof` | 0.842 | jaro_winkler=0.85, sequence_match=0.85, semantic=0.83 |
+| `consequence` | `isconsequenceof` | 0.841 | jaro_winkler=0.85, sequence_match=0.85, semantic=0.83 |
 | `remedy` | `remedies` | 0.824 | jaro_winkler=0.89, semantic=0.87, sequence_match=0.71 |
-| `hasaction` | `haspart` | 0.703 | jaro_winkler=0.83, semantic=0.66, sequence_match=0.62 |
+| `hasaction` | `haspart` | 0.703 | jaro_winkler=0.83, semantic=0.65, sequence_match=0.62 |
 | `obligation` | `violationof` | 0.679 | jaro_winkler=0.80, sequence_match=0.67, semantic=0.57 |
 | `hasprohibition` | `hasparty` | 0.667 | jaro_winkler=0.84, semantic=0.62, sequence_match=0.55 |
 | `scope` | `hastype` | 0.629 | semantic=0.71, jaro_winkler=0.68, sequence_match=0.50 |
@@ -114,12 +114,12 @@ Per-CQ accuracy (_does pred mention the right concepts in the right CQ?_) is rep
 **Missed gold terms (FN):**
 
 - Classes (1): `assetcollection`
-- Properties (16): `function`, `assigner`, `failure`, `inheritsfrom`, `and`, `target`, `handlepolicyconflicts`, `operand`, `or`, `relation`, `targetpolicy`, `inheritrelation`, `haspermission`, `assignee`, `onlyone`, `andsequence`
+- Properties (16): `inheritsfrom`, `failure`, `operand`, `handlepolicyconflicts`, `or`, `targetpolicy`, `onlyone`, `inheritrelation`, `function`, `haspermission`, `assignee`, `andsequence`, `and`, `relation`, `assigner`, `target`
 
 **Extra pred terms (FP) — don't translate to any gold term:**
 
-- Classes (17): `container`, `xorconstraint`, `disaggregation`, `contractparty`, `contract`, `remedy`, `rel`, `transferright`, `andconstraint`, `right`, `role`, `violation`, `sequencing`, `odrl`, `requirement`, `aggregation`, `datamodel`
-- Properties (12): `supports`, `appliesto`, `playsrole`, `expressedvia`, `specifies`, `isactivateduponfailure`, `isexclusive`, `hasright`, `supportsinheritance`, `directlylinkedto`, `hassubconstraint`, `nests`
+- Classes (17): `transferright`, `violation`, `right`, `rel`, `contractparty`, `remedy`, `contract`, `container`, `andconstraint`, `xorconstraint`, `aggregation`, `sequencing`, `disaggregation`, `datamodel`, `role`, `requirement`, `odrl`
+- Properties (12): `isactivateduponfailure`, `directlylinkedto`, `nests`, `supports`, `isexclusive`, `hassubconstraint`, `hasright`, `appliesto`, `expressedvia`, `playsrole`, `specifies`, `supportsinheritance`
 
 ### Per-term Coverage Overview
 

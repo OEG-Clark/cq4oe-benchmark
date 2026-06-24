@@ -48,8 +48,8 @@ Threshold applied: **`final_threshold = 0.6`** — pairs with averaged score bel
 | `Policy` | `Policy` | hard_match | 1.0000 |
 | `Prohibition` | `Prohibition` | hard_match | 1.0000 |
 | `Rule` | `Role` | top3_avg(jaro_winkler+levenshtein+sequence_match) | 0.7833 |
-| `LogicalConstraint` | `or constraint` | top3_avg(jaro_winkler+semantic+sequence_match) | 0.7607 |
-| `ConflictTerm` | `Conflict Resolution Strategy` | top3_avg(jaro_winkler+semantic+sequence_match) | 0.6645 |
+| `LogicalConstraint` | `or constraint` | top3_avg(jaro_winkler+semantic+sequence_match) | 0.7605 |
+| `ConflictTerm` | `Conflict Resolution Strategy` | top3_avg(jaro_winkler+semantic+sequence_match) | 0.6644 |
 
 ### Overall (Layer 3 — macro-level) Precision / Recall / F1
 
@@ -123,7 +123,7 @@ Threshold applied: **`final_threshold = 0.7`** — pairs with averaged score bel
 | Gold property | Pred property | Method(s) | Score |
 |---|---|---|---:|
 | `constraint` | `has constraint` | top3_avg(jaro_winkler+semantic+sequence_match) | 0.8755 |
-| `consequence` | `has consequence duty` | top3_avg(jaro_winkler+semantic+sequence_match) | 0.7815 |
+| `consequence` | `has consequence duty` | top3_avg(jaro_winkler+semantic+sequence_match) | 0.7812 |
 
 **Alignment summary (ObjectProperty):**
 
@@ -277,12 +277,12 @@ Each property's axioms are derived into a natural-language string and embedded w
 |---:|---|---|
 | 0.933 | `duty consequence duty` | `duty has consequence duty duty` |
 | 0.868 | `asset has policy policy` | `policy governs asset asset` |
-| 0.824 | `prohibition remedy duty` | `prohibition has remedy for violation duty` |
+| 0.823 | `prohibition remedy duty` | `prohibition has remedy for violation duty` |
 | 0.757 | `constraint` | `deontic element has constraint constraint` |
 | 0.709 | `function party` | `contract party role has party party` |
-| 0.707 | `policy permission permission` | `exclusive permission has exclusive option permission` |
+| 0.706 | `policy permission permission` | `exclusive permission has exclusive option permission` |
 | 0.705 | `policy conflict conflict term` | `policy has conflict resolution strategy conflict resolution strategy` |
-| 0.689 | `policy inherit from policy` | `asset governed by policy policy` |
+| 0.690 | `policy inherit from policy` | `asset governed by policy policy` |
 | 0.676 | `and sequence` | `sequencing has step step` |
 | 0.662 | `logical constraint operand` | `constraint has nested constraint constraint` |
 

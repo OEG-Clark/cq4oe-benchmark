@@ -91,12 +91,12 @@ Each pair's per-method scores are averaged over the **top 3** methods, then pair
 | `has duration` | `hasduration` | 1.000 | hard_match=1.00, jaro_winkler=1.00, levenshtein=1.00 |
 | `has billing date` | `hasbillingdate` | 1.000 | hard_match=1.00, jaro_winkler=1.00, levenshtein=1.00 |
 | `has billing period` | `hasbillingdateperiod` | 0.900 | jaro_winkler=0.94, sequence_match=0.89, semantic=0.88 |
-| `has start timestamp` | `hasstarttime` | 0.869 | jaro_winkler=0.94, semantic=0.84, sequence_match=0.83 |
+| `has start timestamp` | `hasstarttime` | 0.868 | jaro_winkler=0.94, semantic=0.84, sequence_match=0.83 |
 | `has period` | `hastariffperiod` | 0.772 | jaro_winkler=0.85, sequence_match=0.75, semantic=0.71 |
 | `has property` | `haspower` | 0.749 | jaro_winkler=0.87, sequence_match=0.74, levenshtein=0.64 |
 | `has measurement` | `measures` | 0.733 | semantic=0.87, jaro_winkler=0.69, sequence_match=0.64 |
-| `has geometry` | `hasgeolocation` | 0.690 | jaro_winkler=0.83, semantic=0.68, sequence_match=0.56 |
-| `operates at radio frequency` | `hasradiofrequencylevel` | 0.688 | jaro_winkler=0.71, sequence_match=0.70, semantic=0.66 |
+| `has geometry` | `hasgeolocation` | 0.691 | jaro_winkler=0.83, semantic=0.68, sequence_match=0.56 |
+| `operates at radio frequency` | `hasradiofrequencylevel` | 0.689 | jaro_winkler=0.71, sequence_match=0.70, semantic=0.66 |
 | `has timestamp` | `hasstartdate` | 0.601 | jaro_winkler=0.69, semantic=0.61, sequence_match=0.50 |
 
 ## Step 4 — Term-level Metrics
@@ -117,13 +117,13 @@ Per-CQ accuracy (_does pred mention the right concepts in the right CQ?_) is rep
 
 **Missed gold terms (FN):**
 
-- Classes (4): `water property`, `key performance indicator`, `meter`, `city`
-- Properties (5): `requires power`, `applies to`, `makes measurement`, `has key performance indicator`, `has firmware version`
+- Classes (4): `city`, `key performance indicator`, `water property`, `meter`
+- Properties (5): `has firmware version`, `requires power`, `has key performance indicator`, `makes measurement`, `applies to`
 
 **Extra pred terms (FP) — don't translate to any gold term:**
 
-- Classes (8): `tariffperiod`, `asset`, `region`, `firmware`, `geolocation`, `aspect`, `waterdistributioninfrastructure`, `billingdateperiod`
-- Properties (10): `composes`, `hastemporalsetting`, `haschemicalproperty`, `hasaspect`, `usestariff`, `usedin`, `uses`, `provides`, `definedfor`, `hastariff`
+- Classes (8): `aspect`, `firmware`, `waterdistributioninfrastructure`, `tariffperiod`, `region`, `billingdateperiod`, `geolocation`, `asset`
+- Properties (10): `hastemporalsetting`, `hastariff`, `composes`, `hasaspect`, `uses`, `haschemicalproperty`, `usestariff`, `provides`, `definedfor`, `usedin`
 
 ### Per-term Coverage Overview
 

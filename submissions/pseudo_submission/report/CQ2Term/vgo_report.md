@@ -73,7 +73,7 @@ Each pair's per-method scores are averaged over the **top 3** methods, then pair
 | `genre` | `genre` | 1.000 | hard_match=1.00, jaro_winkler=1.00, levenshtein=1.00 |
 | `item` | `item` | 1.000 | hard_match=1.00, jaro_winkler=1.00, levenshtein=1.00 |
 | `playingarea` | `playingarea` | 1.000 | hard_match=1.00, jaro_winkler=1.00, levenshtein=1.00 |
-| `inapppurchaseevent` | `inapppurchase` | 0.889 | jaro_winkler=0.94, semantic=0.88, sequence_match=0.84 |
+| `inapppurchaseevent` | `inapppurchase` | 0.888 | jaro_winkler=0.94, semantic=0.88, sequence_match=0.84 |
 
 ### Accepted property alignments
 
@@ -109,12 +109,12 @@ Per-CQ accuracy (_does pred mention the right concepts in the right CQ?_) is rep
 
 **Missed gold terms (FN):**
 
-- Properties (3): `eventtime`, `ownsitem`, `iseventassociatedtoplayer`
+- Properties (3): `iseventassociatedtoplayer`, `eventtime`, `ownsitem`
 
 **Extra pred terms (FP) — don't translate to any gold term:**
 
-- Classes (4): `achievementtype`, `friend`, `customer`, `location`
-- Properties (9): `canuse`, `makesinapppurchase`, `hastype`, `hastotalpayments`, `existsin`, `plays`, `doneat`, `makes`, `obtains`
+- Classes (4): `friend`, `customer`, `location`, `achievementtype`
+- Properties (9): `doneat`, `hastype`, `obtains`, `hastotalpayments`, `canuse`, `makesinapppurchase`, `plays`, `makes`, `existsin`
 
 ### Per-term Coverage Overview
 

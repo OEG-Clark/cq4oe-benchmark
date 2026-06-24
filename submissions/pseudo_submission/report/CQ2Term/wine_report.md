@@ -72,7 +72,7 @@ Each pair's per-method scores are averaged over the **top 3** methods, then pair
 | `whitewine` | `whitewine` | 1.000 | hard_match=1.00, jaro_winkler=1.00, levenshtein=1.00 |
 | `vintage` | `vintage` | 1.000 | hard_match=1.00, jaro_winkler=1.00, levenshtein=1.00 |
 | `vintageyear` | `vintageyear` | 1.000 | hard_match=1.00, jaro_winkler=1.00, levenshtein=1.00 |
-| `winegrape` | `grape` | 0.730 | semantic=0.92, sequence_match=0.71, levenshtein=0.56 |
+| `winegrape` | `grape` | 0.731 | semantic=0.92, sequence_match=0.71, levenshtein=0.56 |
 
 ### Accepted property alignments
 
@@ -80,7 +80,7 @@ Each pair's per-method scores are averaged over the **top 3** methods, then pair
 |---|---|---:|---|
 | `hasbody` | `hasbody` | 1.000 | hard_match=1.00, jaro_winkler=1.00, levenshtein=1.00 |
 | `hasvintageyear` | `hasvintageyear` | 1.000 | hard_match=1.00, jaro_winkler=1.00, levenshtein=1.00 |
-| `madefromgrape` | `madefrom` | 0.797 | jaro_winkler=0.92, sequence_match=0.76, semantic=0.71 |
+| `madefromgrape` | `madefrom` | 0.797 | jaro_winkler=0.92, sequence_match=0.76, semantic=0.70 |
 
 ## Step 4 — Term-level Metrics
 
@@ -100,13 +100,13 @@ Per-CQ accuracy (_does pred mention the right concepts in the right CQ?_) is rep
 
 **Missed gold terms (FN):**
 
-- Classes (5): `redbordeaux`, `bordeaux`, `whitebordeaux`, `zinfandel`, `winedescriptor`
-- Properties (2): `haswinedescriptor`, `yearvalue`
+- Classes (5): `bordeaux`, `whitebordeaux`, `zinfandel`, `winedescriptor`, `redbordeaux`
+- Properties (2): `yearvalue`, `haswinedescriptor`
 
 **Extra pred terms (FP) — don't translate to any gold term:**
 
-- Classes (3): `bouquet`, `characteristic`, `body`
-- Properties (4): `hasbouquet`, `isgoodvintage`, `hasvintage`, `hascharacteristic`
+- Classes (3): `body`, `characteristic`, `bouquet`
+- Properties (4): `hasvintage`, `hasbouquet`, `hascharacteristic`, `isgoodvintage`
 
 ### Per-term Coverage Overview
 
